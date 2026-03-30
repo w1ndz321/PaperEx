@@ -8,6 +8,7 @@ convert.py — 将 papers/ 中的 PDF 转换为 markdown/ 中的 MD 文件
 """
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -25,6 +26,53 @@ def update_stats(md_path: Path, char_count: int):
         stats = json.loads(STATS_PATH.read_text(encoding="utf-8"))
     stats[md_path.name] = char_count
     STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _clean_md(md_text: str) -> str:
+    """去除图片占位符和混乱的表格内容，保留图片中提取出的文字。"""
+    # 去除图片占位符行：**==> picture [...] intentionally omitted <==**
+    md_text = re.sub(r"\*\*==> picture \[.*?\] intentionally omitted <==\*\*\n?", "", md_text)
+
+    # 去除表格（连续的 | 开头的行）
+    md_text = re.sub(r"(?m)^\|.*\n?", "", md_text)
+
+    return md_text
+
+
+def _fix_abstract_order(md_text: str) -> str:
+    """修复双栏 PDF 导致的 abstract 段落错位问题。
+
+    双栏论文转换时，右栏溢出的片段会排到 ## Abstract 之后的第一段，
+    表现为第一段首字母小写。处理步骤：
+    1. 将首字母小写的第一段移到末尾（还原位置）
+    2. 合并所有首字母小写的段落到上一段（还原被截断的句子）
+    """
+    pattern = r"(##\s+\*?\*?Abstract\*?\*?\s*\n)(.*?)(?=\n##|\Z)"
+    match = re.search(pattern, md_text, re.DOTALL | re.IGNORECASE)
+    if not match:
+        return md_text
+
+    heading = match.group(1)
+    body = match.group(2).strip()
+    paragraphs = [p.strip() for p in body.split("\n\n") if p.strip()]
+
+    if len(paragraphs) < 2 or not paragraphs[0][0].islower():
+        return md_text
+
+    # 步骤1：首段小写，移到末尾
+    paragraphs = paragraphs[1:] + [paragraphs[0]]
+
+    # 步骤2：将仍以小写开头的段落合并到上一段
+    merged = [paragraphs[0]]
+    for p in paragraphs[1:]:
+        if p[0].islower():
+            merged[-1] = merged[-1] + " " + p
+        else:
+            merged.append(p)
+
+    fixed_body = "\n\n".join(merged)
+    md_text = md_text[:match.start()] + heading + fixed_body + md_text[match.end():]
+    return md_text
 
 
 def convert_pdf_to_md(pdf_path: Path) -> str:
@@ -45,6 +93,8 @@ def convert_one(pdf_path: Path, force: bool = False) -> tuple[Path, bool]:
 
     print(f"  转换: {pdf_path.name} → {md_path.name}")
     md_text = convert_pdf_to_md(pdf_path)
+    md_text = _clean_md(md_text)
+    md_text = _fix_abstract_order(md_text)
     md_path.write_text(md_text, encoding="utf-8")
     update_stats(md_path, len(md_text))
     print(f"  完成: {len(md_text)} 字符")

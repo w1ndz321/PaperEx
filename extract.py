@@ -82,7 +82,6 @@ def parse_md_metadata(md_path: Path) -> dict:
 
     # abstract
     abstract = _extract_section(text, "Abstract")
-
     # keywords：提取后按分号或逗号分割
     keywords = None
     kw_raw = _extract_section(text, "Keywords")
@@ -171,7 +170,16 @@ def call_llm(client: OpenAI, model: str, system_prompt: str, user_prompt: str) -
 #                 raise
 #     return {}
 
-# ─── 单篇抽取 ────────────────────────────────────────────────
+def _remove_section(text: str, *headings: str) -> tuple[str, str | None]:
+    """移除正文中指定标题的章节，返回 (处理后文本, 匹配到的标题)。"""
+    pattern = r"\n#{1,2}\s+\*?\*?(" + "|".join(re.escape(h) for h in headings) + r")\*?\*?\s*\n"
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        return text[:match.start()], match.group(1)
+    return text, None
+
+
+
 
 def extract_one(
     md_path: Path, client: OpenAI, model: str,
@@ -181,9 +189,21 @@ def extract_one(
     paper_text = md_path.read_text(encoding="utf-8")
     print(f"  文本长度: {len(paper_text)} 字符")
 
+    # 始终移除参考文献
+    paper_text, _ = _remove_section(paper_text, "References", "Bibliography", "参考文献")
+
+    # 超出限制时移除附录
     if len(paper_text) > max_input_chars:
-        print(f"  ⚠ 警告: 文本超出上限 {max_input_chars} 字符，已截断（丢弃 {len(paper_text) - max_input_chars} 字符）")
+        paper_text, removed = _remove_section(paper_text, "Appendix", "Appendices", "附录")
+        if removed:
+            print(f"  已移除附录（{removed}）")
+
+    # 仍超出限制则硬截断
+    if len(paper_text) > max_input_chars:
+        print(f"警告: 文本超出上限 {max_input_chars} 字符，已截断（丢弃 {len(paper_text) - max_input_chars} 字符）")
         paper_text = paper_text[:max_input_chars]
+
+    print(f"  处理后文本长度: {len(paper_text)} 字符")
 
     # ── 解析静态 metadata ──
     md_meta = parse_md_metadata(md_path)
