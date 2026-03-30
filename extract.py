@@ -183,8 +183,7 @@ def _remove_section(text: str, *headings: str) -> tuple[str, str | None]:
 
 def extract_one(
     md_path: Path, client: OpenAI, model: str,
-    max_entries: int = 50, max_input_chars: int = 100000,
-) -> dict:
+    max_entries: int = 50, max_input_chars: int = 100000,):
     """对一个 MD 文件执行知识抽取，返回结果字典。"""
     paper_text = md_path.read_text(encoding="utf-8")
     print(f"  文本长度: {len(paper_text)} 字符")
