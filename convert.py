@@ -5,11 +5,13 @@ convert.py — 将 papers/ 中的 PDF 转换为 markdown/ 中的 MD 文件
     python convert.py                  # 转换 papers/ 下所有 PDF
     python convert.py paper.pdf        # 转换指定文件
     python convert.py --force          # 强制重新转换已有 MD 的文件
+    python convert.py --time           # 显示详细时间统计
 """
 
 import json
 import re
 import sys
+import time
 from pathlib import Path
 
 # 项目根目录
@@ -75,37 +77,46 @@ def _fix_abstract_order(md_text: str) -> str:
     return md_text
 
 
-def convert_pdf_to_md(pdf_path: Path) -> str:
-    """将 PDF 转为 Markdown 字符串"""
+def convert_pdf_to_md(pdf_path: Path) -> tuple[str, float]:
+    """将 PDF 转为 Markdown 字符串，返回 (markdown文本, 耗时秒数)"""
     import pymupdf4llm
+    start_time = time.time()
     md_text = pymupdf4llm.to_markdown(str(pdf_path))
-    print(f"  [pymupdf4llm] 转换成功")
-    return md_text
+    elapsed = time.time() - start_time
+    print(f"  [pymupdf4llm] 转换成功，耗时 {elapsed:.2f}s")
+    return md_text, elapsed
 
 
 
-def convert_one(pdf_path: Path, force: bool = False) -> tuple[Path, bool]:
-    """转换单个 PDF，返回 (输出 MD 路径, 是否跳过)。"""
+def convert_one(pdf_path: Path, force: bool = False) -> tuple[Path, bool, float]:
+    """转换单个 PDF，返回 (输出 MD 路径, 是否跳过, 耗时秒数)。"""
     md_path = MARKDOWN_DIR / f"{pdf_path.stem}.md"
 
     if md_path.exists() and not force:
-        return md_path, True
+        return md_path, True, 0.0
 
     print(f"  转换: {pdf_path.name} → {md_path.name}")
-    md_text = convert_pdf_to_md(pdf_path)
+    md_text, elapsed = convert_pdf_to_md(pdf_path)
     md_text = _clean_md(md_text)
     md_text = _fix_abstract_order(md_text)
     md_path.write_text(md_text, encoding="utf-8")
     update_stats(md_path, len(md_text))
     print(f"  完成: {len(md_text)} 字符")
-    return md_path, False
+    return md_path, False, elapsed
 
 
 def main():
     MARKDOWN_DIR.mkdir(exist_ok=True)
 
     force = "--force" in sys.argv
+    show_time = "--time" in sys.argv
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
+
+    # 时间统计
+    total_start = time.time()
+    total_parse_time = 0.0
+    converted_count = 0
+    time_records = []  # 记录每个文件的时间
 
     if args:
         # 转换指定文件
@@ -117,9 +128,13 @@ def main():
             if not pdf_path.exists():
                 print(f"文件不存在: {pdf_path}")
                 continue
-            _, was_skipped = convert_one(pdf_path, force=force)
+            _, was_skipped, elapsed = convert_one(pdf_path, force=force)
             if was_skipped:
                 skipped += 1
+            else:
+                total_parse_time += elapsed
+                converted_count += 1
+                time_records.append((pdf_path.name, elapsed))
         if skipped:
             print(f"已跳过 {skipped} 个文件（已存在）")
     else:
@@ -131,12 +146,33 @@ def main():
         print(f"找到 {len(pdfs)} 个 PDF 文件")
         skipped = 0
         for pdf_path in pdfs:
-            _, was_skipped = convert_one(pdf_path, force=force)
+            _, was_skipped, elapsed = convert_one(pdf_path, force=force)
             if was_skipped:
                 skipped += 1
+            else:
+                total_parse_time += elapsed
+                converted_count += 1
+                time_records.append((pdf_path.name, elapsed))
         if skipped:
             print(f"已跳过 {skipped} 个文件（已存在）")
 
+    # 显示时间统计
+    total_elapsed = time.time() - total_start
+    print("\n" + "=" * 50)
+    print("时间统计:")
+    print(f"  总耗时: {total_elapsed:.2f}s")
+    print(f"  转换文件数: {converted_count}")
+
+    if converted_count > 0:
+        print(f"  纯解析耗时: {total_parse_time:.2f}s")
+        print(f"  平均每文件: {total_parse_time / converted_count:.2f}s")
+
+        if show_time and time_records:
+            print("\n  各文件耗时:")
+            for name, t in sorted(time_records, key=lambda x: x[1], reverse=True):
+                print(f"    {name}: {t:.2f}s")
+
+    print("=" * 50)
     print("全部完成。")
 
 
