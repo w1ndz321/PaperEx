@@ -97,7 +97,7 @@ def process_one(md_path: Path, client: OpenAI, model: str, cfg: dict, force: boo
     }
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  → {out_path.name}\n")
-    return True
+    return True, usage
 
 
 def collect_md_files(args: list[str]) -> list[Path]:
@@ -208,9 +208,14 @@ def main():
                     continue
 
             try:
-                ok = process_one(md_path, client, cfg["model"], cfg, force=True, stream=stream)
+                result = process_one(md_path, client, cfg["model"], cfg, force=True, stream=stream)
+                ok = result[0] if isinstance(result, tuple) else result
+                usage = result[1] if isinstance(result, tuple) else {}
                 if ok:
                     db.mark_done(stem, "preprocess")
+                    db.set_preprocess_tokens(stem,
+                        prompt_tokens=usage.get("prompt_tokens", 0),
+                        completion_tokens=usage.get("completion_tokens", 0))
                     with done_lock:
                         done_count += 1
                     print(f"  ✓ {stem}")

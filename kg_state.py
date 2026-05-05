@@ -74,8 +74,10 @@ class StateDB:
             conn.execute("CREATE INDEX IF NOT EXISTS idx_preprocess ON papers(preprocess_status)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_extract ON papers(extract_status)")
             for col in ("char_count INTEGER", "skip_reason TEXT", "extract_model TEXT",
-                        "content_hash TEXT", "convert_at TEXT",
-                        "preprocess_at TEXT", "extract_at TEXT"):
+                        "content_hash TEXT", "convert_at TEXT", "preprocess_at TEXT",
+                        "extract_at TEXT",
+                        "preprocess_prompt_tokens INTEGER", "preprocess_completion_tokens INTEGER",
+                        "extract_prompt_tokens INTEGER", "extract_completion_tokens INTEGER"):
                 try:
                     conn.execute(f"ALTER TABLE papers ADD COLUMN {col}")
                 except Exception:
@@ -195,12 +197,20 @@ class StateDB:
                 return row["stem"] if row else None
         return None
 
-    def set_extract_model(self, stem: str, model: str):
-        """记录 extract 阶段使用的模型。"""
+    def set_extract_model(self, stem: str, model: str, prompt_tokens: int = 0, completion_tokens: int = 0):
+        """记录 extract 阶段使用的模型和 token 消耗。"""
         with self._conn() as conn:
             conn.execute(
-                "UPDATE papers SET extract_model=?, updated_at=? WHERE stem=?",
-                (model, _now(), stem)
+                "UPDATE papers SET extract_model=?, extract_prompt_tokens=?, extract_completion_tokens=?, updated_at=? WHERE stem=?",
+                (model, prompt_tokens, completion_tokens, _now(), stem)
+            )
+
+    def set_preprocess_tokens(self, stem: str, prompt_tokens: int = 0, completion_tokens: int = 0):
+        """记录 preprocess 阶段的 token 消耗。"""
+        with self._conn() as conn:
+            conn.execute(
+                "UPDATE papers SET preprocess_prompt_tokens=?, preprocess_completion_tokens=?, updated_at=? WHERE stem=?",
+                (prompt_tokens, completion_tokens, _now(), stem)
             )
 
     def release(self, stem: str, stage: str):
@@ -245,21 +255,32 @@ class StateDB:
         s = self.get_stats()
         total = s["total"]
         with self._conn() as conn:
-            row = conn.execute("""
-                SELECT COUNT(char_count) as with_chars,
-                       SUM(char_count) as total_chars,
-                       AVG(char_count) as avg_chars
+            chars = conn.execute("""
+                SELECT COUNT(char_count) as cnt, SUM(char_count) as total, AVG(char_count) as avg
                 FROM papers WHERE char_count IS NOT NULL
+            """).fetchone()
+            toks = conn.execute("""
+                SELECT COALESCE(SUM(preprocess_prompt_tokens),0) as pre_in,
+                       COALESCE(SUM(preprocess_completion_tokens),0) as pre_out,
+                       COALESCE(SUM(extract_prompt_tokens),0) as ext_in,
+                       COALESCE(SUM(extract_completion_tokens),0) as ext_out
+                FROM papers
             """).fetchone()
         print(f"\n{'='*50}")
         print(f"总计: {total} 篇  (已跳过: {s['skipped']})")
         print(f"  convert:    done={s['conv_done']}  pending={s['conv_pending']}  failed={s['conv_fail']}")
         print(f"  preprocess: done={s['pre_done']}  pending={s['pre_pending']}  failed={s['pre_fail']}")
         print(f"  extract:    done={s['ext_done']}  pending={s['ext_pending']}  failed={s['ext_fail']}")
-        if row and row["with_chars"]:
-            total_chars = row["total_chars"] or 0
-            avg_chars = row["avg_chars"] or 0
-            print(f"  字符统计:   已记录={row['with_chars']}篇  总字符={total_chars:,}  平均={avg_chars:,.0f}")
+        if chars and chars["cnt"]:
+            print(f"  字符统计:   已记录={chars['cnt']}篇  总字符={chars['total']:,}  平均={int(chars['avg'] or 0):,}")
+        if toks["pre_in"] or toks["ext_in"]:
+            print(f"  Token 消耗:")
+            if toks["pre_in"]:
+                pre_done = s["pre_done"] or 1
+                print(f"    preprocess: 输入={toks['pre_in']:,}  输出={toks['pre_out']:,}  总={toks['pre_in']+toks['pre_out']:,}  均={int((toks['pre_in']+toks['pre_out'])/pre_done):,}/篇")
+            if toks["ext_in"]:
+                ext_done = s["ext_done"] or 1
+                print(f"    extract:    输入={toks['ext_in']:,}  输出={toks['ext_out']:,}  总={toks['ext_in']+toks['ext_out']:,}  均={int((toks['ext_in']+toks['ext_out'])/ext_done):,}/篇")
         print(f"{'='*50}\n")
 
 

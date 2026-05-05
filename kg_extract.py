@@ -497,7 +497,9 @@ def main():
                         (DEBUG_DIR / f"{stem}_llm_extraction.json").write_text(dbg["llm_responses"]["extraction"], encoding="utf-8")
 
                 db.mark_done(stem, "extract")
-                db.set_extract_model(stem, cfg["model"])
+                db.set_extract_model(stem, cfg["model"],
+                    prompt_tokens=tokens.get("prompt_tokens", 0),
+                    completion_tokens=tokens.get("completion_tokens", 0))
                 print(f"  ✓ {stem}: {len(result['entries'])} 条  token={tokens.get('total_tokens', 0)}")
             except Exception as e:
                 db.mark_failed(stem, "extract", str(e))
