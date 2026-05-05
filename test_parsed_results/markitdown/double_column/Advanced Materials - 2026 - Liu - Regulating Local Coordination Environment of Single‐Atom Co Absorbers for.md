@@ -1,0 +1,941 @@
+AdvancedMaterials
+www.advmat.de
+RESEARCHARTICLE
+| Regulating   |     |     | Local | Coordination        |     |     | Environment |      | of   | Single-Atom |     |
+| ------------ | --- | --- | ----- | ------------------- | --- | --- | ----------- | ---- | ---- | ----------- | --- |
+| Co Absorbers |     |     | for   | Dielectric-Magnetic |     |     |             | Dual | Loss | Modulation  |     |
+XiaoLiu1,2 YongxinQian1,2 LeiYu1,2 ZhikeSi1,2 LihongWu1,2 GengpingWan1,2 XuefeiXu1,2
+GuizhenWang1,2,3
+1InstituteofElectromagneticProtectionMaterialsandSpectralInnovationTechnology,StateKeyLaboratoryofTropicOceanEngineeringMaterialsand
+MaterialsEvaluation,SchoolofMaterialsScienceandEngineering,HainanUniversity,Haikou,Hainan,China 2CenterforNewPharmaceuticalDevelopment
+andTestingofHaikou,CenterforAdvancedStudiesinPrecisionInstruments,Haikou,Hainan,China 3KeyLaboratoryofPicoElectronMicroscopyofHainan
+Province,CenterforAdvancedStudiesinPrecisionInstruments,Haikou,Hainan,China
+Correspondence:YongxinQian(yongxinqian@hainanu.edu.cn) XuefeiXu(xuefeixu@hainanu.edu.cn) GuizhenWang(wangguizhen0@hotmail.com)
+| Received:26December2025 |     |     | Revised:26February2026 |     |     | Accepted:24March2026 |     |     |     |     |     |
+| ----------------------- | --- | --- | ---------------------- | --- | --- | -------------------- | --- | --- | --- | --- | --- |
+Keywords:dielectric–magneticsynergy|electromagneticwaveabsorption|electronicspinstate|polarizationeffects|singleatom
+ABSTRACT
+Single-atom materials with well-defined microstructures offer unique opportunities for revealing electromagnetic energy
+dissipation mechanisms. However, research on the optimization of local electronic states to achieve dielectric–magnetic
+collaborativelossesremainsrare.Herein,adipole–spinsynergisticregulationwasrealizedincobaltsingle-atom(Co-SA)absorbers
+throughatomic-scale coordinationengineering. Experimentaland theoretical analyses revealed thatasymmetric coordination
+facilitatesenhanceddipolepolarization,therebyimprovingdielectricloss,whilethelow-spintohigh-spintransitionincreasesthe
+magneticmoment,resultinginstrengthenedmagneticloss.Thisdielectric–magneticsynergisticregulationconstructssuperior
+atomic-levelabsorptioncenters,enablingoutstandingelectromagneticwaveabsorption(EWA)withaminimumreflectionlossof
+−54.87dBandaneffectiveabsorptionbandwidthof5.36GHz.Thisworkdemonstratesascalableapproachfortheprecisedesign
+andoptimizationofhigh-performanceEWAmaterialsandoffersanewinsightintotherelationshipsbetweenthesingle-atom
+coordinationenvironmentandtheEWAperformance.
+1 Introduction multicomponent and multiscale systems, and current design
+|                  |     |                 |     |      |            |       | strategies    | remain largely | dependent    | on  | simple combinations |
+| ---------------- | --- | --------------- | --- | ---- | ---------- | ----- | ------------- | -------------- | ------------ | --- | ------------------- |
+|                  |     |                 |     |      |            |       | of dielectric | and magnetic   | constituents |     | [9]. This limited   |
+| High-performance |     | electromagnetic |     | wave | absorption | (EWA) |               |                |              |     |                     |
+materials are regarded as functional materials of high strategic understanding of the intrinsic energy dissipation pathways
+relevanceduetotheircrucialrolesinsafeguardinginformation has obscured the underlying principles of electromagnetic
+securityandensuringthestableoperationofcriticalequipment attenuation and fundamentally restricted further performance
+| [1–5]. In | essence, | electromagnetic |     | waves        | (EMWs) | represent    | enhancement. |     |     |     |     |
+| --------- | -------- | --------------- | --- | ------------ | ------ | ------------ | ------------ | --- | --- | --- | --- |
+| an energy | form     | generated       | by  | the coupling | of     | electric and |              |     |     |     |     |
+magneticfieldsandpropagatingthroughspace[6,7].Therefore, Metal single atoms (SAs) implanted on nitrogen-doped carbon
+|              |          |     |          |             |           |         | matrices | provide an ideal | platform | for elucidating | the intrinsic |
+| ------------ | -------- | --- | -------- | ----------- | --------- | ------- | -------- | ---------------- | -------- | --------------- | ------------- |
+| it is widely | accepted |     | that the | synergistic | interplay | between |          |                  |          |                 |               |
+dielectric loss and magnetic loss constitutes the fundamental correlationsbetweenatomic-levelstructuresandelectromagnetic
+mechanism for high-efficiency electromagnetic attenuation [8]. properties,owingtotheirwell-definedandtunablecoordination
+However,conventionalEWAmaterialstypicallyfeaturecomplex configurations [10, 11]. Regarding dielectric-loss mechanisms,
+©2026Wiley-VCHGmbH
+AdvancedMaterials,2026;0:e72966 1of12
+https://doi.org/10.1002/adma.72966
+
+experimentalandtheoreticalstudieshavedemonstratedthatthe 2 Results
+interactions between metal SAs and neighboring N/C atoms
+disruptlocalelectronicsymmetryandgenerateabundantelectric 2.1 SynthesisandMorphologyofSingle-AtomCo
+dipoles, which give rise to dipole polarization responses in Absorbers
+the microwave range [12]. Increasing the density of SAs can
+effectivelyenhancehigh-frequencydipolarpolarizationloss,yet As illustrated in Figure 1a, the Co-SA absorber (ClCoSNC)
+excessive loading readily induces cluster formation [13]. As was synthesized via a salt-assisted strategy. Briefly, CoSO ,
+4
+clustersizeincreases,additionalandcomplexlossmechanisms dicyandiamide, glucose, and NaCl were dissolved in water and
+emerge,complicatingtheclarificationofstructure–propertyrela- freeze-dried to ensure homogeneous dispersion of Co ions and
+tionships[14].Intermsofmagnetic-lossmechanisms,hybridiza- organic precursors within the NaCl matrix. The obtained solid
+tion between the d orbitals of magnetic SAs and p orbitals of wassubsequentlyannealedat900◦Cunderanargonatmosphere.
+theN-dopedcarbonmatrixproducesmorestablespinmagnetic During this process, glucose was carbonized to form intercon-
+momentscomparedwithmagneticnanoparticles[15].Enhancing nected graphene frameworks among the salt crystals, affording
+thespinmagneticmomentcaneffectivelyincreasemagnetization a 3D Co-SA absorber/NaCl composite. The thermal expansion
+strengthandboostnatural-resonancelossinthelow-frequency ofNaClfacilitatednanosheetintergrowthatparticleboundaries,
+region[16].Nevertheless,mostreportedSAsadoptanM–N coor- whiletheconfinementeffectofthesaltdomainsenhancedcarbon
+4
+dinationconfigurationwithD hsymmetry,resultinginpartially yield[24].Oncetheannealingtemperaturesurpassedthemelting 4
+symmetricdipolepolarizationthatrestrictsfurtherenhancement pointofNaCl(800.7◦C),moltenNaClpromotedthecoordination
+of dielectric loss. Moreover, strong-field N ligands induce high ofClwithCoatoms.Simultaneously,thethermaldecomposition
+crystal field splitting energy, favoring d-electron pairing and ofCoSO releasedsulfurspecies,whichwereincorporatedinto
+4
+yieldingalowspinmagneticmoment[17].Hamperedbythelack thecarbonframeworkandestablishedlong-rangecoordination
+ofstrategiesforthesynergisticregulationofelectricdipoleand withCo-SA.SubsequentacidetchingremovedtheNaCltemplate,
+spinmagneticmoments,theintrinsiccouplingbetweendielectric yielding a 3D honeycomb-like architecture. A detailed syn-
+andmagneticlossesremainsunresolved. theticprotocolisprovidedintheExperimentalSection.Notably,
+this synthesis process can be proportionally scaled up (Figure
+Fundamentally,bothelectricdipolemomentsandspinmagnetic S1), indicating its potential for practical fabrication of EMW
+moments in SAs systems lie in the local electronic structure of absorbers.
+the metal center. Specifically, the dipole moment arises from
+the asymmetric charge distribution between the metal atom Onthisbasis,weproposeadesignconceptofelectronicstructure
+and its neighboring ligands, and can be engineered by tuning andspin-statemodulationthroughatomic-levelcoordination,as
+the electronegativity [18, 19], coordination number [20], and schematically illustrated in Figure 1b. By introducing an axial
+geometricconfiguration[21,22]ofthecoordinatingatoms.The Cl ligand and in-plane S dopants around the Co-SA center, a
+spin magnetic moment is dictated by the number of unpaired dualweak-fieldhetero-coordinationenvironmentisestablished,
+electronsinthedorbitalsofthemetalcenter,whichisstrongly giving rise to an asymmetric local coordination structure. This
+influenced by the ligand field strength of coordinated atoms tailoredconfigurationenablesthesynergisticengineeringofboth
+[23]. Therefore, rational engineering of the local coordination dipole enhancement and spin-state modulation at the same
+environmentoffersaviablestrategyforachievingthesynergistic atomic site,thereby overcomingtheinherentlimitationsofthe
+regulationofdielectricandmagneticlossesinSAsabsorbers. conventional symmetric M–N motif and constructing a highly
+4
+efficientSAabsorberwithsimultaneouslystrengtheneddielectric
+Herein,weproposeanasymmetriccoordinationstrategytosyn- andmagneticlosscapabilities.
+ergisticallymodulatetheelectricaldipoleandspinstatesofcobalt
+single-atom(Co-SA)absorbers,therebyenablingthecoordinated Scanningelectronmicroscopy(SEM)andtransmissionelectron
+regulation of dielectric and magnetic losses. Specifically, axial microscopy(TEM)images(Figure1c;FiguresS2–S6)revealthat
+Clligandsareintroducedintothefirstcoordinationshell,while thesamplepossessesreveala3Dhoneycomb-likemorphologies
+planarSdopantsareincorporatedintothesecondcoordination withinterconnectedopenpores.This3Dhoneycombframework
+shellofCo-N structure.Thisdualmodulationbreaksthedipole provides multiple scattering pathways and prolonged propaga-
+4
+symmetry and redistributes local charge, markedly enhancing tion lengths for EMWs, while heteroatom doping introduces
+polarization loss. Meanwhile, the introduction of weak-field Cl abundant defect sites and dipolar responses into the carbon
+andSligandsreducesthecrystalfieldsplittingenergy,increasing matrix[25].High-resolutionhigh-angleannulardark-fieldscan-
+the number of unpaired electrons in the Co d-orbitals (i.e., ningtransmissionelectronmicroscopy(HAADF-STEM)further
+inducing a transition from a low-spin to a high-spin state), showsnumerousisolatedbrightspots(∼0.2–0.3nm)uniformly
+therebyenhancingthemagneticloss.Benefitingfromthisdual distributed across the carbon matrix (Figure 1d), indicating
+regulation,theCo-SAabsorberexhibitsexceptionalEWAperfor- the successful anchoring of Co-SA on the designed N-doped
+manceacrossboththelow-frequencyC-bandandhigh-frequency carbonmatrix.Thisresultisconsistentwiththecharacterization
+Ku-band, with a minimum reflection loss (RL ) of −54.87 dB obtained from powder X-ray diffraction (XRD, Figure S7) and
+min
+andaneffectiveabsorptionbandwidth(EAB)of5.36GHz.This Fouriertransforminfraredspectroscopy(FTIR,FigureS8).More-
+work realizes atomic-scale optimization of localized electronic over,elementalmappingbyenergy-dispersiveX-rayspectroscopy
+states within SA absorbers and provides a new pathway for (EDS,Figure1e)furtherconfirmstheeffectiveincorporationofN,
+elucidating the coupling mechanisms between dielectric and S,andClelementsintothecarbonmatrixcombinedwithisolated
+magneticlosses. Co atoms. These results not only validate the proposed design
+2of12 AdvancedMaterials,2026
+15214095,
+0,
+Downloaded
+from
+https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966
+by
+<Shibboleth>-member@ucas.ac.cn,
+Wiley
+Online
+Library
+on
+[03/04/2026].
+See
+the
+Terms
+and
+Conditions
+(https://onlinelibrary.wiley.com/terms-and-conditions)
+on
+Wiley
+Online
+Library
+for
+rules
+of
+use;
+OA
+articles
+are
+governed
+by
+the
+applicable
+Creative
+Commons
+License
+
+FIGURE 1 Synthesis, structural design, and morphological characterization. a) The synthesis scheme of ClCoSCN. b) Design concept for
+coordination-inducedelectronic-structureandspin-statemodulation.c)SEMimage,d)HAADF-STEMimage,andEDSmappingofClCoSCN.
+butalsoestablishasolidbasisforfurtherelucidationofitsEWA aggregationandconfirmingtheisolatedsingle-atomnatureofCo
+mechanism. species,inagreementwithSTEMobservations[23].Moreover,the
+coordinationenvironmentofClCoSNCresolvedviaquantitative
+EXAFS curve fitting (Figure 2c; Figures S9 and S10, Table S1)
+2.2 StructureCharacterizationandSimulation reveals an additional peak at approximately 2.9 Å, which can
+be attributed to the Co–S interaction, indicating that sulfur
+Microstructure and surface chemical properties of the Co-SA atomshaveenteredthesecondcoordinationshellofcobalt.WT-
+absorbers were systematically investigated. The local coordina- EXAFSanalysisfurtherresolvesthebackscatteringpathsinboth
+tionstructuresofCospecieswereconfirmedbyX-rayabsorption R-space and K-space, unambiguously corroborating the above
+near-edge spectroscopy (XANES). As shown in Figure 2a, the coordinationassignments(Figure2d–i).
+absorptionedgesofCoNC,ClCoNC,andClCoSNCliebetween
+those of CoO and Co foil, indicating that the oxidation state RamanspectroscopyrevealedthattheI /I ratioofthesamples
+D G
+of the isolated Co atoms falls between Co0 and Co2+. Fourier increased from 3.19 to 3.96 with the introduction of more het-
+transformextendedX-rayabsorptionfinestructure(FT-EXAFS) eroatoms into the N-doped carbon matrix, (Figure 3a). Defect
+spectra(Figure2b)revealthatbothClCoNCandClCoSNCexhibit parameters, including the average defect distance (L ) and
+D
+a shifted and asymmetric Co–N coordination peak at ∼1.33 Å, defect density (n ), were further calculated using Equations S1
+4 D
+assignable to axial Co–Cl coordination, causing the Co center and S2 (Figure S11) [26, 27]. The incorporation of heteroatoms
+to deviate from the graphene plane [24]. Notably, no Co–Co decreased L and increased n , indicating enhanced structural
+D D
+scattering signal is detected in any sample, ruling out metallic disorder and a higher density of defects. Such abundant defect
+AdvancedMaterials,2026 3of12
+15214095,
+0,
+Downloaded
+from
+https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966
+by
+<Shibboleth>-member@ucas.ac.cn,
+Wiley
+Online
+Library
+on
+[03/04/2026].
+See
+the
+Terms
+and
+Conditions
+(https://onlinelibrary.wiley.com/terms-and-conditions)
+on
+Wiley
+Online
+Library
+for
+rules
+of
+use;
+OA
+articles
+are
+governed
+by
+the
+applicable
+Creative
+Commons
+License
+
+FIGURE 2 Structuralcharacterization.a)NormalizedXANESspectraattheCoK-edgeandb)FT-EXAFSspectraoftheCofoil,CoO,Co O ,and
+3 4
+Co-SAabsorbers.c)TheEXAFSanalysisofClCoSNCinRspace.d–i)Wavelettransform(WT).
+sites can serve as efficient polarization centers, strengthening electronic structure and charge transfer behavior, ultraviolet
+defect/dipolepolarizationunderanalternatingelectromagnetic photoelectron spectroscopy (UPS) was conducted to determine
+field and thereby promoting dielectric loss [22]. In parallel, theworkfunctions(Ф)(Figure3c).ThepristineNCexhibitsthe
+N adsorption–desorption isotherms exhibited typical type IV highestФ(5.08eV),correspondingtothelargestenergybarrierfor
+2
+hysteresisloopswithbroadporesizedistributionsforallsamples electronemission.UponincorporationofCo(CoNC),Фdecreases
+(Figure S12). Remarkably, ClCoSCN achieved a specific surface to 4.91 eV, reflecting reduced electron binding strength. Axial
+area of 903.36 m2 g−1, far surpassing most graphene- or carbon coordinationofCltotheCo–N center(ClCoNC)furtherlowers,
+4
+nanotube-based materials. The high specific surface area and Фto4.71eV,indicatinginterfacialdipoleformationandcharge
+interconnected porous architecture provide abundant interfa- redistribution[30].Notably,whenbothaxialClcoordinationand
+cial sites and prolonged propagation paths for incident EMWs, in-plane S doping are introduced (ClCoSNC), the Ф is further
+facilitatinginterfacialpolarizationandmultiplescattering[28]. loweredto4.59eV,accompaniedbyagradualincreaseincutoff
+energy(E )from16.17to16.61eV.Theseresultsdemonstrate
+cutoff
+Collectively,thesestructuralanddefect-engineeringadvantages that stepwise modulation by Co centers and heteroatom regu-
+establish a robust foundation for exploiting polarization–spin lation progressively decreases the electron escape barrier and
+coupling to enhance EWA. X-ray photoelectron spectroscopy markedlyenhancestheelectrondonorcapability.Thissynergistic
+(XPS)wasemployedtoinvestigatethesurfacecompositionand regulationreconstructsthelocalelectronclouddistributionand
+structural characteristics of the samples (Figure 3b; Figures induces a downward vacuum-level shift via interfacial dipole
+S13 and S14). Compared with CoNC, the Co 2p spectrum of polarization, as illustration schematically in Figure 3d. From
+ClCoSNCdisplaysmarkedlyenhancedsatellitepeaks,indicative an electromagnetic perspective, the reduced Ф is expected to
+of higher unpaired electron density in Co 3d orbitals and the promote interfacial charge transfer and polarization, thereby
+promotion of high-spin states [29, 30]. In addition, a slight potentially enhancing dipolar polarization and conductive loss
+positive shift of Co 2p peak indicates that Cl coordination underanalternatingelectromagneticfield[31].
+1/2
+modifies the local electronic environment of Co-SA. Combined
+XANESanalysisandhigh-resolutionC1s,Cl2p,S2p,andN1s The magnetic hysteresis loops of the samples were measured
+spectraconfirmtheformationofthedesignedCoN centerwith with a vibrating sample magnetometer, aiming to clarify the
+4
+axialClandin-planeSdoping.Tofurtherelucidatethesurface influenceofelectronicandspinregulationonmagneticresponse.
+4of12 AdvancedMaterials,2026
+15214095,
+0,
+Downloaded
+from
+https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966
+by
+<Shibboleth>-member@ucas.ac.cn,
+Wiley
+Online
+Library
+on
+[03/04/2026].
+See
+the
+Terms
+and
+Conditions
+(https://onlinelibrary.wiley.com/terms-and-conditions)
+on
+Wiley
+Online
+Library
+for
+rules
+of
+use;
+OA
+articles
+are
+governed
+by
+the
+applicable
+Creative
+Commons
+License
+
+FIGURE 3 Electronicstructureanalysisandsimulation.a)Ramanspectra.b)High-resolutionXPSspectrumofCo2p.c)UPSspectrumand
+(d)energybanddiagramsshowingthevacuumenergy(E ),E,andФ.e)Magnetichysteresisloopandf)magneticsusceptibility(HSrepresents
+VAC f
+high-spin,LSrepresentslow-spin).g)Projecteddensityofstates(PDOS)fordifferentCo-SAabsorbermodels.
+As shown in Figure 3e, ClCoSNC and ClCoNC exhibit pro- state in ClCoSNC. This higher spin state facilitates magnetic
+nounced magnetic saturation with typical S-shaped hysteresis dipole transitions and relaxation processes, thereby promoting
+loops under high fields [32, 33], whereas CoNC shows only a natural resonance, exchange resonance, and eddy current loss,
+weak magnetic response, indicating that axial Cl coordination which is the primary origin of its enhanced magnetic loss
+and in-plane S doping synergistically enhance the magnetic capability[38].
+response.Specifically,thesaturationmagnetization(Ms)values
+ofClCoSNCandClCoNCare0.42and0.39emug−1,respectively, To elucidate the intrinsic coupling between polarization pro-
+and the coercivity (Hc) of ClCoSNC is slightly lower than cesses and spin states in Co-SA absorbers, the electronic struc-
+that of ClCoNC. This phenomenon may be attributed to the tures were analyzed through density functional theory (DFT)
+synergisticmodulationinducedbyaxialClcoordinationandin- calculations(Figure3g;FiguresS15andS16).InCoNC,theden-
+plane S doping, which alters the local electronic structure and sityofstates(DOS)neartheFermilevel(E)issparse,indicativeof
+f
+coordination environment and influences magnetic anisotropy weakelectronicactivityandlimitedpolarizationcapacity.Upon
+andspin–orbitcoupling[23,34].Notably,thecombinationofhigh axial Cl coordination, the DOS near E increases substantially, f
+MsandlowHcreducestheenergybarrierformagneticmoment accompanied by pronounced orbital hybridization peaks. This
+reversal,promotingmagneticrelaxationandresonanceprocesses redistribution of electronic density enhances carrier mobility
+and thereby enhancing magnetic loss [29, 35]. By measuring andlocalchargefluctuation,therebystrengtheningpolarization
+the temperature-dependent magnetic susceptibility under zero- processes[3,35].Subsequentin-planeSdopingfurtherelevates
+fieldcooling(ZFC)conditions(Figure3f),thehigh-spinbehavior the DOS intensity and strengthens orbital hybridization, while
+of ClCoSNC and ClCoNC was further confirmed (Equations simultaneously inducing a clear asymmetry between spin-up
+S3–S6) [36, 37]. These results demonstrate that the synergistic andspin-downchannels,reflectingenhancedspinsplittingand
+effectofaxialClandin-planeSligandsresultsinahigherspin spin polarization. These findings demonstrate that modulation
+AdvancedMaterials,2026 5of12
+15214095,
+0,
+Downloaded
+from
+https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966
+by
+<Shibboleth>-member@ucas.ac.cn,
+Wiley
+Online
+Library
+on
+[03/04/2026].
+See
+the
+Terms
+and
+Conditions
+(https://onlinelibrary.wiley.com/terms-and-conditions)
+on
+Wiley
+Online
+Library
+for
+rules
+of
+use;
+OA
+articles
+are
+governed
+by
+the
+applicable
+Creative
+Commons
+License
+
+ 15214095, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966 by <Shibboleth>-member@ucas.ac.cn, Wiley Online Library on [03/04/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ofthecoordinationenvironmentenablesconcurrentregulation andmorespatiallyextendedcharge-redistributionpatterns.This
+of electronic polarization and spin states at the atomic scale, delocalizationenhanceslocalchargedistortion,whichpromotes
+establishingamechanisticfoundationforthedielectric–magnetic the generation of dynamic dipole moments under alternating
+synergythatunderpinsenhancedEWA. fields. These findings, in conjunction with the XANES/EXAFS
+resultsandDFTanalyses,enableacomprehensiveunderstanding
+|     |     |     |     |     |     | of the dielectric |     | loss mechanisms |     | in ClCoSNC: |     | (i) conduction |
+| --- | --- | --- | --- | --- | --- | ----------------- | --- | --------------- | --- | ----------- | --- | -------------- |
+2.3 ElectromagneticPerformanceAnalysis loss,arisingfromenhancedchargetransportpathwaysfacilitated
+byheteroatomdoping;(ii)dipolarpolarization,inducedbyaxial
+| The electromagnetic | parameters |     | were systematically | measured |     |                    |     |     |          |      |        |                |
+| ------------------- | ---------- | --- | ------------------- | -------- | --- | ------------------ | --- | --- | -------- | ---- | ------ | -------------- |
+|                     |            |     |                     |          |     | Co–Cl coordination |     | and | in-plane | Co–S | doping | that introduce |
+to clarify the regulatory role of polarization–spin coupling in abundant dipolar centers; (iii) interfacial polarization, associ-
+governing EMWs attenuation. The real part of the complex atedwithchargeaccumulationatheterogeneousinterfaces;and
+permittivity (ε’) reflects electric energy storage under an alter- (iv) multiple scattering and reflection, originating from the
+(εʺ)
+nating electric field, while the imaginary part represents hierarchicalporousframeworkthatprolongsEMWspropagation.
+dielectric energy dissipation [39, 40]. As shown in Figure 4a,b, The convergence of these mechanisms confirms that atomic-
+andFigureS17,bothε’andεʺvaluesofClCoSNCarehigherthan level coordination engineering translates directly into tailored
+| those of ClCoNC | and CoNC | across | 2–18 GHz, | indicating | that |            |            |         |              |     |          |              |
+| --------------- | -------- | ------ | --------- | ---------- | ---- | ---------- | ---------- | ------- | ------------ | --- | -------- | ------------ |
+|                 |          |        |           |            |      | dielectric | responses, | thereby | establishing |     | a robust | microscopic- |
+the synergistic incorporation of Cl and S increases the energy to-macroscopiccorrelationforachievingefficientandbroadband
+| storage ability | of the carbon         | matrix | and enhances | its           | energy | EMWsattenuation. |     |     |     |     |     |     |
+| --------------- | --------------------- | ------ | ------------ | ------------- | ------ | ---------------- | --- | --- | --- | --- | --- | --- |
+| dissipation.    | This dual enhancement |        | is crucial   | for achieving |        |                  |     |     |     |     |     |     |
+efficient EMWs attenuation [41]. In order to disentangle the Apart from dielectric loss, the attenuation ability of absorbers
+dielectriclossmechanisms,ε″wasseparatedintothepolarization is also strongly influenced by magnetic loss induced by high-
+lossterm(ε ″,Figure4c)andtheconductivelossterm(ε″,Figure spin states [45]. To evaluate the contribution of magnetic
+|     | p   |     |     | c   |     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+S18). ClCoSNC exhibits the largest ε ″ values across the entire (µ = µ′
+|     |     |     | p   |     |     | loss in | Co-SA | absorbers, | the | complex | permeability | r   |
+| --- | --- | --- | --- | --- | --- | ------- | ----- | ---------- | --- | ------- | ------------ | --- |
+|     |     |     |     |     |     | jµ″)    |       |            | µ′  |         | µ″           |     |
+frequency range, reflecting its stronger polarization relaxation – was analyzed, where and represent the storage
+capability.Thisenhancementcanbeascribedtothedeliberately and dissipation of magnetic energy, respectively (Figure 4f;
+engineered local coordination structure: axial Cl coordination Figure S21) [46, 47]. Compared with other samples, ClCoSNC
+µ′ µ″
+andin-planeSdopingsynergisticallyintroduceabundantdipolar exhibits higher and across most of the frequency range,
+polarization centers into the carbon matrix. Meanwhile, the indicating both stronger magnetic energy storage and more
+incorporationofheteroatomsbreaksthelocalelectronicsymme- pronounced magnetic energy dissipation [48]. Magnetic loss
+| try and generates | numerous | defect | sites, thereby | strengthening |     |     |     |     |     |     |     |     |
+| ----------------- | -------- | ------ | -------------- | ------------- | --- | --- | --- | --- | --- | --- | --- | --- |
+generallyarisesfromdomainwallmotion,hysteresisloss,natural
+defect-inducedpolarization[42].Thesefindings,consistentwith resonance, eddy current loss, and exchange resonance [38].
+the electronic structure analyses, demonstrate that tuning the However, in the GHz range, the response rate of domain walls
+| electronic | states and coordination |     | environment | of Co-SA | is an |        |           |             |     |           |          |           |
+| ---------- | ----------------------- | --- | ----------- | -------- | ----- | ------ | --------- | ----------- | --- | --------- | -------- | --------- |
+|            |                         |     |             |          |       | cannot | match the | oscillation |     | frequency | of EMWs, | rendering |
+effectiveroutetomaximizedipolarresponsesanddielectricloss, domain-wall resonance negligible. Moreover, under weak mag-
+therebyprovidingamicroscopicoriginforthesuperiorEWAper- netic fields, the energy for domain reversal is insufficient to
+formanceofClCoSNC.Thedielectriclosstangent(tanδ =ε″/ε′) form a distinct hysteresis loop, and hysteresis loss is therefore
+ε
+exhibitsasimilartrendtoε″,withClCoSNCconsistentlyshowing
+negligible.
+thehighestvalues,highlightingitssuperiordielectriclosscapa-
+bility(Figure4c;FigureS19)[43].Inparticular,itspronounced Therefore, within 2–18 GHz, magnetic loss mainly originates
+increaseabove10GHzhighlightsthecriticalroleofsynergistic
+fromnaturalresonance,exchangeresonance,andeddycurrent
+heteroatomregulationinstrengtheningdipolarpolarizationand loss,whichcanbeassessedbytheeddycurrentcoefficient(C )
+0
+enabling multiple relaxation pathways under alternating elec- (Figure 4g). In the low-frequency region (2–10 GHz), obvious
+tricfields,therebyconferringstronghigh-frequencyattenuation fluctuations in C indicate that natural resonance dominates.
+0
+capability. At intermediate frequencies (10–15 GHz), the relatively small
+|     |     |     |     |     |     | fluctuations | suggest | that | exchange | resonance | plays | the leading |
+| --- | --- | --- | --- | --- | --- | ------------ | ------- | ---- | -------- | --------- | ----- | ----------- |
+According to Debye theory, the semicircles and linear tails in role. Moreover, at high frequencies (15–18 GHz), C exhibits
+0
+| the Cole–Cole | plots correspond |     | to polarization | relaxation | and |              |            |      |      |         |           |           |
+| ------------- | ---------------- | --- | --------------- | ---------- | --- | ------------ | ---------- | ---- | ---- | ------- | --------- | --------- |
+|               |                  |     |                 |            |     | very limited | variation, | with | some | regions | remaining | constant, |
+conduction loss, respectively [44]. As shown in Figure 4d and implying that magnetic loss is attributed to exchange reso-
+FigureS20,ClCoSNCpresentsthelargestnumberofrelaxation nance combined with eddy current loss. Consistent with the
+semicirclesat6.96,9.12,11.04,and16.88GHz,underscoringthe permeability results, the C values of ClCoSNC are almost
+0
+presence of multiple polarization relaxation processes. Mean- always higher than those of ClCoNC and CoNC, confirming
+while,thelineartailsobservedinallsamplesverifyconduction itssuperiormagneticlosscapability.Themagneticlosstangent
+lossescausedbyelectronmigrationwithinthecarbonframework. (tan δµ) further reveals the frequency dependence of magnetic
+| Differential | charge density | analysis | (Figure | 4e) elucidates | the |              |      |        |       |               |     |                |
+| ------------ | -------------- | -------- | ------- | -------------- | --- | ------------ | ---- | ------ | ----- | ------------- | --- | -------------- |
+|              |                |          |         |                |     | loss (Figure | 4 h; | Figure | S22), | where ClCoSNC |     | shows stronger |
+electronredistributioninducedbystructuralmodulationatthe magnetic loss in the low-frequency region, a feature that is
+microscopiclevel.InClCoNC,thetheoreticallyuniformcharge criticalforachievingbroadbandEWA.Thisphenomenoncanbe
+distribution is already perturbed, leading to localized charge rationalized by the natural resonance frequency (Equation S7):
+accumulation and depletion. In contrast, ClCoSNC exhibits an a higher spin state enhances the effective anisotropy constant
+evenmoreintensifiednon-uniformity,characterizedbystronger (Keff), while the combination of moderate Ms and low Hc
+| 6of12 |     |     |     |     |     |     |     |     |     |     | AdvancedMaterials,2026 |     |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---------------------- | --- |
+
+FIGURE 4 Electromagneticresponseanalysis.a)ε,b)ε ″,andc)tanδ oftheCo-SAabsorbers.d)Cole–Coleplotsande)chargedensitydifference
+r p ε
+fortheCo-SAabsorbers.f)µ r ,g)C 0 ,andh)tanδµ,oftheCo-SAabsorbers.i)LossmechanismoftheCo-SAabsorbers.
+lowers the energy barrier for spin reversal, leading to a shift incidentEMWs[39].ThelossmechanismoftheCo-SAabsorbers
+of the natural resonance frequency of ClCoSNC toward the is illustrated in Figure 4i, which summarizes the cooperative
+low-frequency region [29]. Such a characteristic is essential for rolesofdielectriclossandmagneticlossoverdifferentfrequency
+achieving broadband EWA. Finally, the electromagnetic atten- regions.BeyondthespecificCo-basedsysteminvestigatedhere,
+uation characteristics of Co-SA absorbers were evaluated by theproposeddualweak-fieldasymmetriccoordinationstrategy
+the attenuation coefficient (α) (Figure S23). The α values of relies on ligand-field engineering to synchronously modulate
+ClCoSNC are consistently higher than those of ClCoNC and spin and charge polarization at the atomic scale. As this
+CoNC,indicatingthatthestrongcouplingbetweenpolarization mechanism is not limited to a specific metal center or ligand
+effects and spin states greatly improves its ability to attenuate type, it is, in principle, extendable to other transition-metal
+AdvancedMaterials,2026 7of12
+15214095,
+0,
+Downloaded
+from
+https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966
+by
+<Shibboleth>-member@ucas.ac.cn,
+Wiley
+Online
+Library
+on
+[03/04/2026].
+See
+the
+Terms
+and
+Conditions
+(https://onlinelibrary.wiley.com/terms-and-conditions)
+on
+Wiley
+Online
+Library
+for
+rules
+of
+use;
+OA
+articles
+are
+governed
+by
+the
+applicable
+Creative
+Commons
+License
+
+FIGURE 5 MeasuredandCST-simulatedEWAperformance.RLcurvesofa)CoNC,b)ClCoNC,andc)ClCoSNC.d)ComparisonplotsofRL and
+min
+EAB .e)Dependenceoft onfrequencyatquarter-wavelength.f)SmithchartoftheCo-SAabsorberswhenthethicknessis2.0mm.g)Comparison
+max m
+oftheEWApropertiesofCo-SAabsorberswithsimilarmaterials.h)RCSsimulationsatdifferentEMWsdetectionangles(−90◦<theta<90◦,phi=90◦).
+i-1)Powerlossdensity,i-2)E-field,andi-3)H-fielddistribution.
+single-atom systems, where diversifying the weak-field ligand In the frequency range of 2–18 GHz, the absorption proper-
+environment may further broaden the accessible regulation ties of NC, CoNC, ClCoNC, and ClCoSNC were systematically
+window. investigated at matching thicknesses of 1.0–5.0 mm. Owing
+to its inherently low polarizability and magnetic permeabil-
+ity, NC exhibited the poorest EWA capability (Figure S26)
+2.4 ElectromagneticWaveAbsorption [43,49].Incontrast,theothersamplesdemonstratedremarkable
+ApplicationInvestigation improvements, attributed to multiple attenuation mechanisms.
+Specifically,CoNCachievedanRL of−23.14dBatathickness
+min
+Thereflectionloss(RL)valuesofCo-SAabsorberswerederived of2.9mm,alongwithanEABof4.4GHzat2.0mm.Uponthe
+from the measured electromagnetic parameters according to introductionofaxialClcoordination,ClCoNCexhibitedsuperior
+the transmission line theory (Equations S8–S15) to assess their performancetoCoNC,reachinganRL of−46.06dBat3.3mm
+min
+practicalEWAperformance(Figure5a–d;FiguresS24andS25). andanEABof5.26GHzat2.0mm.
+8of12 AdvancedMaterials,2026
+15214095,
+0,
+Downloaded
+from
+https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966
+by
+<Shibboleth>-member@ucas.ac.cn,
+Wiley
+Online
+Library
+on
+[03/04/2026].
+See
+the
+Terms
+and
+Conditions
+(https://onlinelibrary.wiley.com/terms-and-conditions)
+on
+Wiley
+Online
+Library
+for
+rules
+of
+use;
+OA
+articles
+are
+governed
+by
+the
+applicable
+Creative
+Commons
+License
+
+ 15214095, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966 by <Shibboleth>-member@ucas.ac.cn, Wiley Online Library on [03/04/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+More importantly, the synergistic incorporation of S further that the coupling of polarization effects with high-spin states
+overcamethepoorlow-frequencyabsorptioncommonlyobserved can effectively enhance the EMW attenuation capability of
+| inconventionalabsorbers,leadingtoabroaderabsorptionrange. |     |         |          |     |     |           |     | absorbers. |     |     |     |     |     |     |
+| --------------------------------------------------------- | --- | ------- | -------- | --- | --- | --------- | --- | ---------- | --- | --- | --- | --- | --- | --- |
+| In particular,                                            |     | ClCoSNC | achieves | an  | RL  | of −54.87 | dB  | at a       |     |     |     |     |     |     |
+min
+| thicknessof2.2    |          | mmandan |              | EABofupto5.36 |                | GHz | at 1.9mm. |               |     |     |     |     |     |     |
+| ----------------- | -------- | ------- | ------------ | ------------- | -------------- | --- | --------- | ------------- | --- | --- | --- | --- | --- | --- |
+|                   |          |         |              |               |                |     |           | 3 Conclusions |     |     |     |     |     |     |
+| At different      | matching |         | thicknesses, |               | the EAB        | can | fully     | cover         |     |     |     |     |     |     |
+| the low-frequency |          | C       | band         | and the       | high-frequency |     | Ku        | band,         |     |     |     |     |     |     |
+exhibiting excellent EWA characteristics in both regions. This In summary, we develop a Co-SA absorber with an asymmet-
+|     |     |     |     |     |     |     |     | ric coordination |     | configuration | that | bridges | atomic-scale | elec- |
+| --- | --- | --- | --- | --- | --- | --- | --- | ---------------- | --- | ------------- | ---- | ------- | ------------ | ----- |
+exceptionalperformancecanbeattributedtothesynergisticeffect
+ofmultiplepolarizationmechanismsandspin-inducedmagnetic tronic regulation with macroscopic electromagnetic responses.
+loss. Through dual weak-field asymmetric coordination, the local
+electronicsymmetryandligand-fieldstrengthofCocentersare
+Inadditiontothecontributionofmultiplelossmechanisms,the concurrently modulated, enabling the simultaneous enhance-
+excellentEWAperformanceofClCoSNCisalsocloselyassociated ment of dipole polarization and spin magnetic moments. The
+with the quarter-wavelength theory and impedance matching. resulting polarization−spin coupling establishes atomic-level
+|     |     |     |     |     |     |     |     | dielectric−magnetic |     | synergy, | leading | to  | outstanding | EWA per- |
+| --- | --- | --- | --- | --- | --- | --- | --- | ------------------- | --- | -------- | ------- | --- | ----------- | -------- |
+Accordingtothequarter-wavelengththeory,theabsorptionpeak
+= −54.87
+frequency is inversely proportional to the coating thickness formance across the C and Ku bands (RL dB,
+min
+(EquationS13).Experimentalandsimulatedresultsdemonstrate EAB = 5.36 GHz). This study provides new theoretical guid-
+ahighdegreeofconsistencyinthevariationofmatchingthick- ance and experimental evidence at the atomic and electronic
+ness(t ),confirmingthecriticalroleofdestructiveinterference level for understanding and designing high-performance EWA
+m
+| in EMWs | attenuation |     | (Figure | 5e). Meanwhile, |     | the | impedance | materials. |     |     |     |     |     |     |
+| ------- | ----------- | --- | ------- | --------------- | --- | --- | --------- | ---------- | --- | --- | --- | --- | --- | --- |
+matchingcharacteristicswerefurtherverified(Figure5f;Figure
+| S27): in | the Smith | chart, | curves | closer | to  | the center | indicate |     |     |     |     |     |     |     |
+| -------- | --------- | ------ | ------ | ------ | --- | ---------- | -------- | --- | --- | --- | --- | --- | --- | --- |
+betterimpedancematching,whileshortertrajectoriesimplymore 4 ExperimentalSection
+consistentimpedanceoverabroaderfrequencyrange[41,46].It
+isevidentthattheimpedancetrajectoryofClCoSNCliesmuch 4.1 RawMaterials
+nearertothecenter,reflectingitssuperiormatchingcapabilityto
+incidentEMWs.Thisphenomenoncanbeattributedtothesyn- The chemicals were obtained from Macklin, including sulfuric
+ergisticeffectofenhancedpolarizationandelevatedspinstates, acid(H SO ,98wt%),glucose(C H O ),sodiumchloride(NaCl),
+|     |     |     |     |     |     |     |     | 2   | 4   |     | 6   | 12 6 |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | --- | --- |
+andµ cobalt chloride hexahydrate (CoCl ⋅6H O), cobalt sulfate hep-
+| whichbringsε | r   | r   | intoamorebalancedmagnitude,thereby |     |     |     |     |     |     |     |     | 2 2 |     |     |
+| ------------ | --- | --- | ---------------------------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+⋅7H
+reducingthedifferencebetweentheinputimpedanceandfree- tahydrate (CoSO O), cobalt phthalocyanine (C H CoN ),
+|     |     |     |     |     |     |     |     |     |     | 4 2 |     |     |     | 32 16 8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ------- |
+space impedance, thus further improving impedance matching sodiumsulfate(Na SO ),anddicyandiamide(C H N ,DCDA).
+|     |     |     |     |     |     |     |     |     |     | 2 4 |     |     |     | 2 4 4 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ----- |
+Allreagentswereusedasreceived,withoutfurtherpurification.
+| [50]. Taken  | together, |     | ClCoSNC,  | with    | the coupling |     | of multiple |     |     |     |     |     |     |     |
+| ------------ | --------- | --- | --------- | ------- | ------------ | --- | ----------- | --- | --- | --- | --- | --- | --- | --- |
+| polarization | effects   | and | high-spin | states, | achieved     |     | exceptional |     |     |     |     |     |     |     |
+EWAperformance,surpassingNC,CoNC,andClCoNC,aswellas
+mostpreviouslyreportedSAandmagneticabsorbers(Figure5g; 4.2 Preparation
+TableS2)[51–56].
+|     |     |     |     |     |     |     |     | In the preparation, |     | 420 | g of NaCl, | 42 g | of glucose, | 3.9354 g of |
+| --- | --- | --- | --- | --- | --- | --- | --- | ------------------- | --- | --- | ---------- | ---- | ----------- | ----------- |
+To further evaluate the engineering applicability of Co-SA CoSO ⋅7H O, and 46.48 g of DCDA were first dissolved in 4.2
+4 2
+|            |       |               |     |       |             |     |              | L of deionized |     | water under | continuous |     | stirring | for 2 h. The |
+| ---------- | ----- | ------------- | --- | ----- | ----------- | --- | ------------ | -------------- | --- | ----------- | ---------- | --- | -------- | ------------ |
+| absorbers, | radar | cross-section |     | (RCS) | simulations |     | were carried |                |     |             |            |     |          |              |
+out using CST Studio Suite 2024 under open boundary con- powder was obtained after freeze-drying of the above solution
+ditions [57, 58]. A model was constructed by coating Co- under vacuum. Finally, the as-obtained powder was pyrolyzed
+SA absorbers onto a rectangular perfect electric conductor at 900◦C under a flowing argon gas for 2 h, followed by
+|             |      | ×   |          |     |         |           |     | acid etching | treatment | with | 0.5 | M H SO | to remove | unstable |
+| ----------- | ---- | --- | -------- | --- | ------- | --------- | --- | ------------ | --------- | ---- | --- | ------ | --------- | -------- |
+| (PEC) plate | (200 |     | 200 mm). | The | coating | thickness |     | was          |           |      |     | 2      | 4         |          |
+selected at the value corresponding to the RL , and fre- Co species and NaCl. The obtained black powder was dried
+min
+quency sweeps were performed over 2–18 GHz. The simu- at 60◦C, and the sample was designated as ClCoSNC. Other
+|               |     |            |     |          |            |     |             | samples | were prepared |     | using different |     | precursors | of Co salts. |
+| ------------- | --- | ---------- | --- | -------- | ---------- | --- | ----------- | ------- | ------------- | --- | --------------- | --- | ---------- | ------------ |
+| lated results | are | consistent |     | with the | absorption |     | performance |         |               |     |                 |     |            |              |
+⋅6H
+(Figure 5h), showing that the coated plates exhibit sub- ClCoNC was synthesized in the presence of CoCl 2 2 O. NC
+⋅6H
+stantially reduced electromagnetic scattering. Moreover, the was alsosynthesizedsimilarlywithoutCoCl O.CoNC was
+|     |     |     |     |     |     |     |     |     |     |     |     |     | 2   | 2   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+suppression becomes more pronounced with stronger cou- prepared by pyrolyzing a mixture of CoPc and NC (Co con-
+|               |              |              |          |               |               |             |              | tent is approximately |                  | 2wt.%) | at  | 450◦C | under | flowing argon |
+| ------------- | ------------ | ------------ | -------- | ------------- | ------------- | ----------- | ------------ | --------------------- | ---------------- | ------ | --- | ----- | ----- | ------------- |
+| pling between |              | polarization | effects  | and           | high-spin     | states.     | CoNC,        |                       |                  |        |     |       |       |               |
+| ClCoNC,       | and          | ClCoSNC      | achieved |               | maximum       | RCS         | reductions   | for1h.                |                  |        |     |       |       |               |
+| of 25.67,     | 30.84,       | and          | 38.15    | dB m2,        | respectively. |             | In addition, |                       |                  |        |     |       |       |               |
+| power loss    | density      | and          | the      | distributions |               | of the      | electric     | and                   |                  |        |     |       |       |               |
+|               |              |              |          |               |               |             |              | 4.3                   | Characterization |        |     |       |       |               |
+| magnetic      | fields       | (Figure      | 5i)      | indicate      | that energy   | dissipation |              | is                    |                  |        |     |       |       |               |
+| mainly        | concentrated |              | in the   | ClCoSNC       | model,        | in          | line with    | its                   |                  |        |     |       |       |               |
+stronger dielectric and magnetic loss capabilities. These results Themorphologywasanalyzedbyscanningelectronmicroscopy
+(SEM,ThermoScientificVeriosG4UC)andtransmissionelec-
+| demonstrate | that | ClCoSNC |     | possesses | superior | radar | scatter- |     |     |     |     |     |     |     |
+| ----------- | ---- | ------- | --- | --------- | -------- | ----- | -------- | --- | --- | --- | --- | --- | --- | --- |
+ing suppression, effectively reducing the scattering of incident tronmicroscopy(TEM,Spectra300S/TEM).TheX-rayabsorp-
+EMWs on PEC surfaces and showing promise as an advanced tion fine structure (XAFS) spectra of Co K-edge were collected
+intransmissionmodeonacommercialLaboratory-BasedXAFS
+| electromagnetic        |     | stealth | coating. | Overall, | the | findings | confirm |     |     |     |     |     |     |       |
+| ---------------------- | --- | ------- | -------- | -------- | --- | -------- | ------- | --- | --- | --- | --- | --- | --- | ----- |
+| AdvancedMaterials,2026 |     |         |          |          |     |          |         |     |     |     |     |     |     | 9of12 |
+
+ 15214095, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966 by <Shibboleth>-member@ucas.ac.cn, Wiley Online Library on [03/04/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+spectrometer (Table XAFS-500A, Specreation Instruments Co., 9.Z.Ma,Y.Shen,X.Zhang,B.Li,Y.Chen,andC.Zhu,“EnhancedDielec-
+Ltd.). The phase composition and crystal structure were deter- tricLossInducedbyAsymmetricallyCoordinatedIronSingle-Atomswith
+CurvedConfigurationsonTuring-likeSurfacesforElectromagneticWave
+minedbyX-raydiffraction(XRD,SmartLabII,CuKαradiation).
+Absorption,”AdvancedFunctionalMaterials35(2025):2413784,https://
+| Fourier transform | infrared |     | (FTIR) spectrum |     | was characterized |     |     |     |     |     |     |     |     |     |
+| ----------------- | -------- | --- | --------------- | --- | ----------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+doi.org/10.1002/adfm.202413784.
+onanFTIRspectrometer(Bruker,TENSOR27).X-rayphotoelec-
+10.N.Wang,X.Kou,L.Zhong,etal.,“Geometry-defect-spinCoupling
+| tron spectroscopy | (XPS) | data | were recorded |     | by AXIS | SUPRA. |     |     |     |     |     |     |     |     |
+| ----------------- | ----- | ---- | ------------- | --- | ------- | ------ | --- | --- | --- | --- | --- | --- | --- | --- |
+inChiralHigh-EntropySystems:MultiscaleMechanismsofGHzElectro-
+| Raman spectra | were | acquired | using | inVia Reflex | (Renishaw). |     |     |     |     |     |     |     |     |     |
+| ------------- | ---- | -------- | ----- | ------------ | ----------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+magneticDissipation,”ScienceAdvances11(2025):adz2218,https://doi.
+Themagnetichysteresisloopsandmagneticsusceptibilitywere
+org/10.1126/sciadv.adz2218.
+measuredusingaphysicalpropertymeasurementsystem(PPMS
+|            |                     |     |            |     |      |            | 11.Z. Wei,         | Y. Liu, J. | Ding, Q.                                  | He, Q. | Zhang, | and Y. | Zhai, “Promoting |     |
+| ---------- | ------------------- | --- | ---------- | --- | ---- | ---------- | ------------------ | ---------- | ----------------------------------------- | ------ | ------ | ------ | ---------------- | --- |
+| DynaCool). | The electromagnetic |     | parameters |     | were | determined |                    |            |                                           |        |        |        |                  |     |
+|            |                     |     |            |     |      |            | ElectrocatalyticCO | 2          | ReductiontoCOviaSulfur-DopedCo-N-CSingle- |        |        |        |                  |     |
+withavectornetworkanalyzer(Ceyear3672B-S).
+AtomCatalyst,”ChineseJournalofChemistry41(2023):3553–3559,https://
+doi.org/10.1002/cjoc.202300372.
+|     |     |     |     |     |     |     | 12.W. Zhong, | Y. Qiu,    | H. Shen,           | et al., | “Electronic | Spin      | Moment | as a     |
+| --- | --- | --- | --- | --- | --- | --- | ------------ | ---------- | ------------------ | ------- | ----------- | --------- | ------ | -------- |
+|     |     |     |     |     |     |     | Catalytic    | Descriptor | for Fe Single-Atom |         | Catalysts   | Supported |        | on C N,” |
+2
+JournaloftheAmericanChemicalSociety143(2021):4405–4413,https://
+doi.org/10.1021/jacs.1c00889.
+Acknowledgements
+13.X.-C.Zhang,M.Zhang,M.-Q.Wang,L.Chang,L.Li,andM.-S.Cao,
+ThisworkwassupportedbytheNationalNaturalScienceFoundation
+“MetalSingle-AtomstowardElectromagneticWave-AbsorbingMaterials:
+| of China (Grant | Nos. | 22278101, | 52502236, | 52503339, | U24A20204, | and |          |                   |          |     |            |           |     |            |
+| --------------- | ---- | --------- | --------- | --------- | ---------- | --- | -------- | ----------------- | -------- | --- | ---------- | --------- | --- | ---------- |
+|                 |      |           |           |           |            |     | Insights | and Perspective,” | Advanced |     | Functional | Materials |     | 34 (2024): |
+22168016),theInnovationProjectforScientificandTechnologicalTalents
+2405972,https://doi.org/10.1002/adfm.202405972.
+| in Hainan Province | (Grant | No. | KJRC2023C08), | the | Innovation | Team |     |     |     |     |     |     |     |     |
+| ------------------ | ------ | --- | ------------- | --- | ---------- | ---- | --- | --- | --- | --- | --- | --- | --- | --- |
+Project of Natural Science Foundation in Hainan Province (Grant No. 14.H. Liu, X. Li, X. Zhao, et al., “Large Annular Dipoles Bounded
+525CXTD607), the Finance Science and Technology Project of Hainan betweenSingle-AtomCoandCoClusterforClarifyingElectromagnetic
+Province(GrantNo.ZDYF2020009). WaveAbsorbingMechanism,”AdvancedFunctionalMaterials33(2023):
+2304442,https://doi.org/10.1002/adfm.202304442.
+ConflictsofInterest 15.P. Gambardella, S. Rusponi, M. Veronese, et al., “Giant Magnetic
+|     |     |     |     |     |     |     | Anisotropy | of Single | Cobalt | Atoms | and Nanoparticles,” |     | Science | 300 |
+| --- | --- | --- | --- | --- | --- | --- | ---------- | --------- | ------ | ----- | ------------------- | --- | ------- | --- |
+Theauthorsdeclarenoconflictsofinterest.
+(2023):1130,https://doi.org/10.1126/science.1082857.
+|     |     |     |     |     |     |     | 16.L. Zhou, | P. Hu, | M. Bai, | et al., | “Harnessing | the | Electronic | Spin |
+| --- | --- | --- | --- | --- | --- | --- | ----------- | ------ | ------- | ------- | ----------- | --- | ---------- | ---- |
+DataAvailabilityStatement
+|     |     |     |     |     |     |     | States of | Single Atoms | for | Precise | Electromagnetic |     | Modulation,” |     |
+| --- | --- | --- | --- | --- | --- | --- | --------- | ------------ | --- | ------- | --------------- | --- | ------------ | --- |
+Thedatathatsupportthefindingsofthisstudyareavailablefromthe Advanced Materials 37 (2024): 2418321, https://doi.org/10.1002
+| correspondingauthoruponreasonablerequest. |     |     |     |     |     |     | /adma.202418321. |     |     |     |     |     |     |     |
+| ----------------------------------------- | --- | --- | --- | --- | --- | --- | ---------------- | --- | --- | --- | --- | --- | --- | --- |
+17.P.Li,L.Zhou,C.Zhao,etal.,“Single-MoleculeNano-Optoelectronics:
+InsightsfromPhysics,”ReportsonProgressinPhysics85(2022):086401.
+References
+|     |     |     |     |     |     |     | 18.W. Ni, | H. Chen, | J. Zeng, | et al., | “Regulating | Nonmetallic |     | Species |
+| --- | --- | --- | --- | --- | --- | --- | --------- | -------- | -------- | ------- | ----------- | ----------- | --- | ------- |
+1.X.Zhou,P.Min,Y.Liu,M.Jin,Z.-Z.Yu,andH.-B.Zhang,“Insulating
+beyondtheFirstCoordinationShellofSingle-atomCatalystsforHigh-
+| Electromagnetic-Shielding |     | Silicone | Compound | Enables | Direct | Potting |     |     |     |     |     |     |     |     |
+| ------------------------- | --- | -------- | -------- | ------- | ------ | ------- | --- | --- | --- | --- | --- | --- | --- | --- |
+performanceElectrocatalysis,”Energy&EnvironmentalScience16(2023):
+| Electronics,” | Science | 385 (2024): | 1205, https://doi.org/10.1126/science. |     |     |     |     |     |     |     |     |     |     |     |
+| ------------- | ------- | ----------- | -------------------------------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+3679,https://doi.org/10.1039/D3EE02090H.
+adp6581.
+|     |     |     |     |     |     |     | 19.Q. Wang, | M. Dai, | H. Li, et | al., “Asymmetric |     | Coordination |     | Induces |
+| --- | --- | --- | --- | --- | --- | --- | ----------- | ------- | --------- | ---------------- | --- | ------------ | --- | ------- |
+2.X.Zhou,Y.Du,H.Zhang,etal.,“High-EntropyNanoalloysAnchored
+|     |     |     |     |     |     |     | ElectronLocalizationatcaSitesforRobustCO |     |     |     |     | ElectroreductiontoCO,” |     |     |
+| --- | --- | --- | --- | --- | --- | --- | ---------------------------------------- | --- | --- | --- | --- | ---------------------- | --- | --- |
+onEntropy-CompensatingTwo-DimensionalOxidesforEnhancedNano- 2
+|     |     |     |     |     |     |     | Advanced | Materials | 35 (2023): | 2300695, | https://doi.org/10.1002/adma. |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | -------- | --------- | ---------- | -------- | ----------------------------- | --- | --- | --- |
+magnetism,”ScienceAdvances11(2025):adv8411,https://doi.org/10.1126/
+202300695.
+sciadv.adv8411.
+20.J.Xu,B.Li,Z.Ma,X.Zhang,etal.,“MultifunctionalFilmAssembled
+| 3.N. Qu, H. | Sun, Y. | Sun, et | al., “2D/2D Coupled |     | MOF/Fe | Composite |                                    |     |     |     |                          |     |     |     |
+| ----------- | ------- | ------- | ------------------- | --- | ------ | --------- | ---------------------------------- | --- | --- | --- | ------------------------ | --- | --- | --- |
+|             |         |         |                     |     |        |           | fromN-DopedCarbonNanofiberwithCo–N |     |     |     | 4 –OSingleAtomsforHighly |     |     |     |
+MetamaterialsEnableRobustUltra–BroadbandMicrowaveAbsorption,”
+|     |     |     |     |     |     |     | Efficient | Electromagnetic | Energy | Attenuation,” |     | Nano-Micro |     | Letters 16 |
+| --- | --- | --- | --- | --- | --- | --- | --------- | --------------- | ------ | ------------- | --- | ---------- | --- | ---------- |
+NatureCommunications15(2024):5642,https://doi.org/10.1038/s41467-
+(2024):240,https://doi.org/10.1007/s40820-024-01440-2.
+024-49762-4.
+|     |     |     |     |     |     |     | 21.Z. Ma, | Y. Shen, X. | Zhang, | B. Li, | Y. Chen, | and C. | Zhu, “Enhanced |     |
+| --- | --- | --- | --- | --- | --- | --- | --------- | ----------- | ------ | ------ | -------- | ------ | -------------- | --- |
+4.J.Tao,K.Zou,J.Zhou,etal.,“PhenolicMultipleKinetics-dynamics Dielectric Loss Induced by Asymmetrically Coordinated Iron Single-
+and Discrete Crystallization Thermodynamics in Amorphous Carbon AtomswithCurvedConfigurationsonTuring-likeSurfacesforElectro-
+Nanostructures for Electromagnetic Wave Absorption,” Nature Com- magnetic Wave Absorption,” AdvancedFunctionalMaterials 35 (2025):
+munications 15 (2024): 10337, https://doi.org/10.1038/s41467-024-54770- 2413784,https://doi.org/10.1002/adfm.202413784.
+5.
+|     |     |     |     |     |     |     | 22.H. Xu, | M. Liu, | L. Huang, | et  | al., “Enhanced |     | Dielectric | Loss |
+| --- | --- | --- | --- | --- | --- | --- | --------- | ------- | --------- | --- | -------------- | --- | ---------- | ---- |
+5.Q.Chen,Y.Wang,Y.Xiong,H.Hu,N.Meng,andY.Liao,“FiberMate- via Six-Coordinated Er Single Atoms on Porous Carbon Nanofibers
+rialsforApplicationsofElectromagneticWaveAbsorption,”Advanced for High-Performance Electromagnetic Wave Absorption,” Advanced
+FiberMaterials7(2025):1320–1349.
+|                                                          |     |     |     |     |     |     | Functional | Materials | 35 (2025): | 2502952, | https://doi.org/10.1002/adfm. |     |     |     |
+| -------------------------------------------------------- | --- | --- | --- | --- | --- | --- | ---------- | --------- | ---------- | -------- | ----------------------------- | --- | --- | --- |
+| 6.P.Gao,L.Gao,Z.Ma,M.Jiang,andM.Cao,“APerspectiveonHigh- |     |     |     |     |     |     | 202502952. |           |            |          |                               |     |     |     |
+EntropyOxidesasPotentialElectromagneticWaveAbsorbers,”Advanced
+|     |     |     |     |     |     |     | 23.Y. Jin, | J. Cheng, | S. Jiang, | et al., | “Conductance |     | Reinforced | Relax- |
+| --- | --- | --- | --- | --- | --- | --- | ---------- | --------- | --------- | ------- | ------------ | --- | ---------- | ------ |
+Materials37(2025):10009,https://doi.org/10.1002/adma.202510009.
+|     |     |     |     |     |     |     | ation Attenuation | with | Strong | Metal-N | Coordination |     | in  | Multivari- |
+| --- | --- | --- | --- | --- | --- | --- | ----------------- | ---- | ------ | ------- | ------------ | --- | --- | ---------- |
+7.L. Zhao, Y. Qian, X. Xu, et al., “Thermal-insulating Carbon Foam ate π-Conjugated MOFs for Integrated Radar-Infrared Camouflage,”
+forEfficientElectromagneticEnergyAbsorptionandConversion,”Nano Advanced Materials 37 (2025): 2501330, https://doi.org/10.1002/adma.
+| Energy143(2025):111313,https://doi.org/10.1016/j.nanoen.2025.111313. |     |     |     |     |     |     | 202501330. |     |     |     |     |     |     |     |
+| -------------------------------------------------------------------- | --- | --- | --- | --- | --- | --- | ---------- | --- | --- | --- | --- | --- | --- | --- |
+8.R.Che,Y.Huang,andH.Lv,“MagnetoelectricSynergisticEffectfor 24.Z.-S.Zhu,Y.Wang,P.Wang,etal.,“MultidimensionalEngineeringof
+ElectromagneticWaveAbsorptionEnhancement,”AdvancedFunctional Single-atomCobaltCatalystsforUltrafastFenton-LikeReactions,”Nature
+Materials35(2025):2502464,https://doi.org/10.1002/adfm.202502464. Water3(2025):211–221,https://doi.org/10.1038/s44221-024-00382-8.
+| 10of12 |     |     |     |     |     |     |     |     |     |     |     | AdvancedMaterials,2026 |     |     |
+| ------ | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---------------------- | --- | --- |
+
+ 15214095, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966 by <Shibboleth>-member@ucas.ac.cn, Wiley Online Library on [03/04/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+25.X.Liu,Y.Qian,L.Wu,etal.,“3DcarbonFoam/EpoxyComposites Property,”ChemicalEngineeringJournal457(2023):141275,https://doi.
+forFrequency-tunableElectromagneticWaveAbsorptionandEnhanced org/10.1016/j.cej.2023.141275.
+ThermalManagement,”ChemicalEngineeringJournal520(2025):165916,
+41.Z.Ma,Y.Shen,X.Zhang,B.Li,Y.Chen,andC.Zhu,“Density-induced
+https://doi.org/10.1016/j.cej.2025.165916.
+|     |     |     |     |     |     |     | Proximity | Electronic | Effect | of Metal | Single-Atom |     | for Multifunctional |     |
+| --- | --- | --- | --- | --- | --- | --- | --------- | ---------- | ------ | -------- | ----------- | --- | ------------------- | --- |
+26.Y. Qian, Y. Luo, A. Haruna, et al., “Multifunctional Epoxy-Based Electromagnetic Wave Absorption,” Advanced Functional Materials 35
+| Electronic | Packaging | Material | MDCF@LDH/EP |     | for Electromagnetic |     | (2024):19604. |     |     |     |     |     |     |     |
+| ---------- | --------- | -------- | ----------- | --- | ------------------- | --- | ------------- | --- | --- | --- | --- | --- | --- | --- |
+WaveAbsorption,ThermalManagement,andFlameRetardancy,”Small
+42.M.Huang,B.Li,Y.Qian,etal.,“MofsderivedStrategyandTernary
+18(2022):2204303,https://doi.org/10.1002/smll.202204303.
+|     |     |     |     |     |     |     | Alloys Regulation |     | in Flowerlike |     | Magneticcarbon |     | Microspheres | with |
+| --- | --- | --- | --- | --- | --- | --- | ----------------- | --- | ------------- | --- | -------------- | --- | ------------ | ---- |
+27.X. Liu, J. Liu, L. Wu, et al., “One-Pot Synthesis of TiO 2 –Fe 3 O 4 Broadband Electromagnetic Wave Absorption,” Nano-Micro Letters 16
+| Bimetallic | Oxides Decorated |     | on Carbon | Nanosheets |     | as an Efficient | (2024):245. |     |     |     |     |     |     |     |
+| ---------- | ---------------- | --- | --------- | ---------- | --- | --------------- | ----------- | --- | --- | --- | --- | --- | --- | --- |
+PhotothermalMicrowaveAbsorber,”Carbon233(2025):119876,https://
+|     |     |     |     |     |     |     | 43.M. Yuan, | B.  | Li, Y. | Du, et | al., “Programmable |     | Electromagnetic |     |
+| --- | --- | --- | --- | --- | --- | --- | ----------- | --- | ------ | ------ | ------------------ | --- | --------------- | --- |
+doi.org/10.1016/j.carbon.2024.119876. WaveAbsorptionviaTailoredMetalSingleAtom-SupportInteractions,”
+28.J.Wang,S.Shi,Y.Yan,etal.,“ManganeseOxides/GrapheneAerogels Advanced Materials 37 (2025): 2417580, https://doi.org/10.1002/adma.
+| asLightweightMicrowaveAbsorbersforExtremeEnvironmentApplica- |     |     |     |     |     |     | 202417580. |     |     |     |     |     |     |     |
+| ------------------------------------------------------------ | --- | --- | --- | --- | --- | --- | ---------- | --- | --- | --- | --- | --- | --- | --- |
+tion,”ChemicalEngineeringJournal493(2024):152277,https://doi.org/10.
+|     |     |     |     |     |     |     | 44.X. Liu, | L. Wu, | J. Liu, | et al., | “Dynamically | Frequency-Tunable |     | and |
+| --- | --- | --- | --- | --- | --- | --- | ---------- | ------ | ------- | ------- | ------------ | ----------------- | --- | --- |
+1016/j.cej.2024.152277.
+EnvironmentallyStableMicrowaveAbsorbers,”CarbonEnergy6(2024):
+| 29.Q. Wei,                | P. Zhang,             | X. Guo, | et al.,      | “Atomic | Spin            | Engineering | of 589.         |          |               |        |                    |     |                 |        |
+| ------------------------- | --------------------- | ------- | ------------ | ------- | --------------- | ----------- | --------------- | -------- | ------------- | ------ | ------------------ | --- | --------------- | ------ |
+| Fe-N-C by                 | Axial Chlorine-Ligand |         | Modulation   |         | for Lightweight |             | and             |          |               |        |                    |     |                 |        |
+|                           |                       |         |              |         |                 |             | 45.X. Liu,      | X. Yuan, | Z.            | Si, et | al., “Hierarchical |     | Coconut-like    | Rigid- |
+| Efficient Electromagnetic |                       | Wave    | Absorption,” |         | Journal         | of Colloid  | and             |          |               |        |                    |     |                 |        |
+|                           |                       |         |              |         |                 |             | Soft Structured |          | Polydopamine@ |        | Co O /Ti           | C T | /PTFE Composite | for    |
+Interface Science 692 (2025): 137464, https://doi.org/10.1016/j.jcis.2025. 3 4 3 2 x
+ElectromagneticProtectionwithHighEnvironmentalStability,”Chinese
+137464.
+|            |           |        |             |                 |     |              | JournalofChemistry |     | 43  | (2025): | 3353–3364, | https://doi.org/10.1002/cjoc. |     |     |
+| ---------- | --------- | ------ | ----------- | --------------- | --- | ------------ | ------------------ | --- | --- | ------- | ---------- | ----------------------------- | --- | --- |
+| 30.M. Liu, | J. Zhang, | H. Su, | et al., “In | Situ Modulating |     | Coordination | 70201.             |     |     |         |            |                               |     |     |
+FieldsofSingle-AtomCobaltCatalystforEnhancedOxygenReduction
+46.X.Li,M.Niu,C.W.Li,etal.,“DipolePolarizationandSynchronous
+| Reaction,” | Nature Communications |     | 15 (2024): |     | 1675, https://doi.org/10. |     |                                |     |     |     |              |     |           |             |
+| ---------- | --------------------- | --- | ---------- | --- | ------------------------- | --- | ------------------------------ | --- | --- | --- | ------------ | --- | --------- | ----------- |
+|            |                       |     |            |     |                           |     | MagneticModulationInducedbyFeN |     |     |     | 4 MoietyonTi |     | 3 C 2 T x | forSuperior |
+1038/s41467-024-45990-w.
+ElectromagneticWaveAbsorptionPerformance,”CarbonEnergy7(2025):
+| 31.B.Wang,F.Huang,H.Wu,etal.,“EnhancedInterfacialPolarization |     |     |     |     |     |     | 70078. |     |     |     |     |     |     |     |
+| ------------------------------------------------------------- | --- | --- | --- | --- | --- | --- | ------ | --- | --- | --- | --- | --- | --- | --- |
+ofDefectivePorousCarbonConfinedCoPNanoparticlesFormingMott—
+|     |     |     |     |     |     |     | 47.R. Hu, | J. Luo, | H. Wen, | et al., | “Enhanced | Electromagnetic |     | Energy |
+| --- | --- | --- | --- | --- | --- | --- | --------- | ------- | ------- | ------- | --------- | --------------- | --- | ------ |
+SchottkyHeterojunctionforEfficientElectromagneticWaveAbsorption,”
+|     |     |     |     |     |     |     | Conversion | in an | Entropy-Driven |     | Dual-Magnetic |     | System | for Superior |
+| --- | --- | --- | --- | --- | --- | --- | ---------- | ----- | -------------- | --- | ------------- | --- | ------ | ------------ |
+NanoResearch16(2022):4160–4169,https://doi.org/10.1007/s12274-022-
+|     |     |     |     |     |     |     | Electromagnetic |     | Wave Absorption,” |     | Advanced | Functional |     | Materials 35 |
+| --- | --- | --- | --- | --- | --- | --- | --------------- | --- | ----------------- | --- | -------- | ---------- | --- | ------------ |
+4779-3.
+(2024):2418304,https://doi.org/10.1002/adfm.202418304.
+32.C. Zhou, C. Wu, D. Liu, and M. Yan, “Metal-Organic Frame- 48.E. Zhao, L. Chen, Q. Zhu, et al., “Carbon Nitride with Single-
+work Derived Hierarchical Co/C@V 2 O 3 Hollow Spheres as a Thin, AtomNickelasCo-CatalystforVisible-LightPromotedC—OCoupling,”
+Lightweight, and High-Efficiency Electromagnetic Wave Absorber,” ChineseJournalofChemistry41(2023):3281–3289,https://doi.org/10.1002/
+Chemistry—AEuropeanJournal25(2019):2234–2241,https://doi.org/10.
+cjoc.202300329.
+1002/chem.201805565.
+|     |     |     |     |     |     |     | 49.Y. Zhang, | L.  | Li, C. Du, | et al., | “Controllable |     | Coating NiAl-Layered |     |
+| --- | --- | --- | --- | --- | --- | --- | ------------ | --- | ---------- | ------- | ------------- | --- | -------------------- | --- |
+33.H.Zhao,F.Wang,L.Cui,X.Xu,X.Han,andY.Du,“Composition
+DoubleHydroxidesonCarbonNanofibersasAnticorrosiveMicrowave
+| Optimization | and Microstructure |     | Design | in MOFs-Derived |     | Magnetic |     |     |     |     |     |     |     |     |
+| ------------ | ------------------ | --- | ------ | --------------- | --- | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
+Absorbers,”JournalofMaterialsScience&Technology151(2023):109–118,
+| Carbon-based | Microwave | Absorbers: | a Review,” |     | Nano-MicroLetters |     | 13  |     |     |     |     |     |     |     |
+| ------------ | --------- | ---------- | ---------- | --- | ----------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+https://doi.org/10.1016/j.jmst.2022.12.022.
+(2021):208,https://doi.org/10.1007/s40820-021-00734-z.
+|     |     |     |     |     |     |     | 50.R. Liu, | X. Liu, | L. Wu, | et al., | “In-Situ | Growth | of Cross-link | NiAl- |
+| --- | --- | --- | --- | --- | --- | --- | ---------- | ------- | ------ | ------- | -------- | ------ | ------------- | ----- |
+34.N.Li,Z.Zong,F.Zhang,etal.,“BariumFerritewithHighAnisotropy
+LDHNanosheetsontheInner/OuterSurfacesofCarbonMicrotubesfor
+forUltra-BroadbandMicrowaveAbsorption,”AdvancedFunctionalMate-
+Anti-CorrosiveElectromagneticWaveAbsorption,”JournalofMaterials
+rials35(2025):2414694.
+|                                                          |              |          |             |           |         |              | Science&Technology             |     | 238 | (2025): | 109–118,                        | https://doi.org/10.1016/j.jmst. |     |     |
+| -------------------------------------------------------- | ------------ | -------- | ----------- | --------- | ------- | ------------ | ------------------------------ | --- | --- | ------- | ------------------------------- | ------------------------------- | --- | --- |
+| 35.L.Wang,X.Yu,X.Li,J.Zhang,M.Wang,andR.Che,“MOF-Derived |              |          |             |           |         |              | 2025.02.048.                   |     |     |         |                                 |                                 |     |     |
+| Yolk-Shell                                               | Ni@C@ZnO     | Schottky | Contact     | Structure |         | for Enhanced |                                |     |     |         |                                 |                                 |     |     |
+|                                                          |              |          |             |           |         |              | 51.Y.Sun,Y.Wang,H.Ma,etal.,“Fe |     |     |         | 3 CNanocrystalsEncapsulatedinN- |                                 |     |     |
+| Microwave                                                | Absorption,” | Chemical | Engineering |           | Journal | 383          | (2020):                        |     |     |         |                                 |                                 |     |     |
+DopedCarbonNanofibersasHigh-EfficientMicrowaveAbsorberswith
+123099,https://doi.org/10.1016/j.cej.2019.123099.
+|     |     |     |     |     |     |     | Superior | Oxidation/Corrosion |     | Resistance,” |     | Carbon | 178 (2021): | 515–527, |
+| --- | --- | --- | --- | --- | --- | --- | -------- | ------------------- | --- | ------------ | --- | ------ | ----------- | -------- |
+“B−C
+36.A. Cui, C. Wang, Y. Miao, et al., Bonding Configura- https://doi.org/10.1016/j.carbon.2021.03.032.
+tion Manipulation Strategy toward Synergistic Optimization of Polar- 52.Y.Hou,Z.Sheng,C.Fu,J.Kong,andX.Zhang,“HygroscopicHoley
+ization Loss and Conductive Loss for Highly Efficient Electromag- Graphene Aerogel Fibers Enable Highly Efficient Moisture Capture,
+netic Wave Absorption,” Advanced Functional Materials 35 (2024): HeatAllocationandMicrowaveAbsorption,”NatureCommunications13
+2420292. (2022):1227,https://doi.org/10.1038/s41467-022-28906-4.
+37.G.Yang,J.Zhu,P.Yuan,etal.,“RegulatingFe-spinstatebyAtomically
+|           |         |        |           |           |        |           | 53.Y. Li, | H. Wu, | K. Deng, | J. Jiang, | Z. Yang, | and | R. Zhang, | “Prepara- |
+| --------- | ------- | ------ | --------- | --------- | ------ | --------- | --------- | ------ | -------- | --------- | -------- | --- | --------- | --------- |
+| Dispersed | Mn-N in | Fe-N-C | Catalysts | with High | Oxygen | Reduction |           |        |          |           |          |     |           |           |
+tionofGraphite/Ferrite/Resin-BasedCompositeHigh-EfficiencyWave-
+Activity,”NatureCommunications12(2021):1734,https://doi.org/10.1038/
+AbsorbingMaterialsbySelectiveLaserSintering,”AdvancedEngineering
+s41467-021-21919-5.
+Materials25(2023):2301080,https://doi.org/10.1002/adem.202301080.
+38.S.Ye,S.Xie,Y.Lei,etal.,“ModulatingtheElectronicSpinstateby
+54.M.Yuan,B.Zhao,C.Yang,etal.,“RemarkableMagneticExchange
+ConstructingDual-MetalAtomicPairsforActivatingtheDynamicSiteof
+CouplingviaConstructingBi-MagneticInterfaceforBroadbandLower-
+OxygenReductionReaction,”NanoResearch16(2022):1869–1877,https://
+|     |     |     |     |     |     |     | Frequency | Microwave | Absorption,” |     | Advanced | Functional |     | Materials 32 |
+| --- | --- | --- | --- | --- | --- | --- | --------- | --------- | ------------ | --- | -------- | ---------- | --- | ------------ |
+doi.org/10.1007/s12274-022-4979-x.
+(2022):2203161,https://doi.org/10.1002/adfm.202203161.
+39.X.Xiong,H.Zhang,H.Lv,etal.,“RecentProgressinCarbon-based
+|     |     |     |     |     |     |     | 55.C. Liu, | S. Liu, | X. Feng, | et  | al., “Phthalocyanine-Mediated |     |     | Inter- |
+| --- | --- | --- | --- | --- | --- | --- | ---------- | ------- | -------- | --- | ----------------------------- | --- | --- | ------ |
+MaterialsandLossMechanismsforElectromagneticWaveAbsorption,”
+|     |     |     |     |     |     |     | facial Self-Assembly |     | of  | Magnetic | Graphene | Nanocomposites |     | toward |
+| --- | --- | --- | --- | --- | --- | --- | -------------------- | --- | --- | -------- | -------- | -------------- | --- | ------ |
+Carbon219(2024):118834,https://doi.org/10.1016/j.carbon.2024.118834.
+|     |     |     |     |     |     |     | Low-Frequency |     | Electromagnetic |     | Wave | Absorption,” | Chemical | Engi- |
+| --- | --- | --- | --- | --- | --- | --- | ------------- | --- | --------------- | --- | ---- | ------------ | -------- | ----- |
+40.X. Liu, G. Wan, L. Wu, et al., “Ti 3 C 2 /Ni 2 P/Triphenyl Phosphite neering Journal 452 (2023): 139483, https://doi.org/10.1016/j.cej.2022.
+| as Antioxidative       | Microwave |     | Absorbers | with Excellent |     | Photothermal | 139483. |     |     |     |     |     |     |        |
+| ---------------------- | --------- | --- | --------- | -------------- | --- | ------------ | ------- | --- | --- | --- | --- | --- | --- | ------ |
+| AdvancedMaterials,2026 |           |     |           |                |     |              |         |     |     |     |     |     |     | 11of12 |
+
+ 15214095, 0, Downloaded from https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.72966 by <Shibboleth>-member@ucas.ac.cn, Wiley Online Library on [03/04/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+| 56.High-Coordination |           | Engineering     | of Asymmetrical                       | Cerium      | Single-  |
+| -------------------- | --------- | --------------- | ------------------------------------- | ----------- | -------- |
+| Atoms for            | Advanced  | Electromagnetic | Wave                                  | Absorption. | Advanced |
+| Functional           | Materials | 35, 2504372     | (2025), https://doi.org/10.1002/adfm. |             |          |
+202504372.
+57.X.Liu,L.Yu,G.Zhu,etal.,“HollowPorousFeCo/Cu/CNTsComposite
+MicrosphereswithExcellentMicrowaveAbsorptionPerformance,”Nano
+Research17(2024):9857–9864,https://doi.org/10.1007/s12274-024-6963-0.
+| 58.X. Liu, | Z. Si,  | Y. Qian, et al., | “Gradient-Nested | Organic/Inorganic    |     |
+| ---------- | ------- | ---------------- | ---------------- | -------------------- | --- |
+| Aerogels   | Achieve | High Mechanical  | Strength         | and Feedback-Tunable |     |
+MicrowaveAbsorption,”Research9(2026):1074,https://doi.org/10.34133/
+research.1074.
+SupportingInformation
+AdditionalsupportinginformationcanbefoundonlineintheSupporting
+Informationsection.
+SupportingFile:adma72966-sup-0001-SuppMat.docx.
+12of12 AdvancedMaterials,2026

@@ -1,0 +1,855 @@
+# Ying 等 - 2024 - Feature selection as deep sequential generative learning
+
+Feature Selection as Deep Sequential Generative Learning
+WANGYANGYING,SchoolofComputingandAugmentedIntelligence,ArizonaStateUniversity,
+Tempe,AZ,USA
+DONGJIEWANG,DepartmentofComputerScience,UniversityofKansas,Lawrence,KS,USA
+HAIFENGCHEN,NECLaboratoriesAmericaInc,Princeton,NJ,USA
+YANJIEFU,SchoolofComputingandAugmentedIntelligence,ArizonaStateUniversity,Tempe,AZ,USA
+Featureselectionaimstoidentifythemostpattern-discriminativefeaturesubset.Inpriorliterature,filter
+(e.g.,backwardelimination)andembedded(e.g.,LASSO)methodshavehyperparameters(e.g.,top-k,score
+thresholding)andtietospecificmodels,thus,hardtogeneralize;wrappermethodssearchafeaturesubset
+inahugediscretespaceandiscomputationallycostly.Totransformthewayoffeatureselection,weregard
+aselectedfeaturesubsetasaselectiondecisiontokensequenceandreformulatefeatureselectionasadeep
+sequentialgenerativelearningtaskthatdistillsfeatureknowledgeandgeneratesdecisionsequences.Our
+methodincludesthreesteps:(1)Wedevelopadeepvariationaltransformermodeloverajointofsequential
+reconstruction,variational,andperformanceevaluatorlosses.Ourmodelcandistillfeatureselectionknowledge
+andlearnacontinuousembeddingspacetomapfeatureselectiondecisionsequencesintoembeddingvectors
+associatedwithutilityscores.(2)Weleveragethetrainedfeaturesubsetutilityevaluatorasagradientprovider
+toguidetheidentificationoftheoptimalfeaturesubsetembedding;(3)Wedecodetheoptimalfeaturesubset
+embeddingtoautoregressivelygeneratethebestfeatureselectiondecisionsequencewithautostop.Extensive
+experimentalresultsshowthisgenerativeperspectiveiseffectiveandgeneric,withoutlargediscretesearch
+spaceandexpert-specifichyperparameters.Thecodeisavailableathttp://tinyurl.com/FSDSGL.
+CCSConcepts:•Computingmethodologies→Featureselection;
+AdditionalKeyWordsandPhrases:Featureselection,automatedfeatureengineering,deepsequentialgenera-
+tivemodel
+ACMReferenceformat:
+WangyangYing,DongjieWang,HaifengChen,andYanjieFu.2024.FeatureSelectionasDeepSequential
+GenerativeLearning.ACMTrans.Knowl.Discov.Data.18,9,Article221(October2024),21pages.
+https://doi.org/10.1145/3687485
+ThisresearchwaspartiallysupportedbytheNationalScienceFoundation(NSF)viathegrantnumbers(2421864,2421803,
+2421865),NationalAcademyofEngineering,andGraingerFoundationFrontiersofEngineeringGrants.
+Authors’ContactInformation:WangyangYing(correspondingauthor),SchoolofComputingandAugmentedIntelligence,
+ArizonaStateUniversity,Tempe,AZ,USA;e-mail:yingwangyang@gmail.com;DongjieWang,DepartmentofComputer
+Science,UniversityofKansas,Lawrence,KS,USA;e-mail:wangdongjie@ku.edu;HaifengChen,NECLaboratoriesAmerica
+Inc,Princeton,NJ,USA;e-mail:haifeng@nec-labs.com;YanjieFu,SchoolofComputingandAugmentedIntelligence,
+ArizonaStateUniversity,Tempe,AZ,USA;e-mail:yanjie.fu@asu.edu.
+Permissiontomakedigitalorhardcopiesofallorpartofthisworkforpersonalorclassroomuseisgrantedwithoutfee
+providedthatcopiesarenotmadeordistributedforprofitorcommercialadvantageandthatcopiesbearthisnoticeandthe
+fullcitationonthefirstpage.Copyrightsforcomponentsofthisworkownedbyothersthantheauthor(s)mustbehonored.
+Abstractingwithcreditispermitted.Tocopyotherwise,orrepublish,topostonserversortoredistributetolists,requires
+priorspecificpermissionand/orafee.Requestpermissionsfrompermissions@acm.org.
+©2024Copyrightheldbytheowner/author(s).PublicationrightslicensedtoACM.
+ACM1556-472X/2024/10-ART221
+https://doi.org/10.1145/3687485
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:2 W.Yingetal.
+1 Introduction
+Featureselectionaimstoidentifythebestfeaturesubsetfromanoriginalfeatureset.Effectivefeature
+selectionmethodsreducedatasetdimensionality,shortentrainingtime,preventoverfitting,enhance
+generalization,and,moreover,improvetheperformanceofdownstreammachinelearning(ML)
+tasks.Thistechniquecanbeappliedtomultipledomains,includingbiomarkerdiscovery[52],traffic
+forecasting,financialanalysis,urbancomputing,clientselection[32],andsoon.
+Priorliteraturecanbecategorizedasfollows:(1)Filtermethods[5,48,51]rankfeaturesbasedon
+ascore(e.g.,relevancebetweenfeatureandlabel)andselecttop-𝑘 featuresastheoptimalfeature
+subset(e.g.,univariatefeatureselection).(2)Embeddedmethods[39,41]jointlyoptimizefeature
+selectionanddownstreampredictiontasks.Forinstance,LASSOshrinksfeaturecoefficientsby
+optimizingregressionandregularizationloss.(3)Wrappermethods[17,19,31,47]formulatefeature
+selectionasasearchingprobleminalargediscretefeaturecombinationspaceviaevolutionary
+algorithmsorgeneticalgorithmsthatcollaboratewithadownstreamMLmodel.
+However, existing studies are not sufficient. Filter methods typically overlook relationships
+betweenfeatures,aresensitivetodatadistribution,andarenon-learnable,hencetheyoftenperform
+poorly.Embeddedmethodsrelyonstrongstructuredassumptions(e.g.,sparsecoefficientsofL
+norm)anddownstreammodels(e.g.,regression),makingtheminflexible.Wrappermethodssuffer
+𝑁
+fromexponentiallygrowingdiscretesearchspace(e.g.,around2 ifthefeaturenumberisN).Can
+wedevelopamoreeffectivelearningframeworkwithoutsearchingalargediscretespace?
+OurPerspective:FeatureSelectionasSequentialGenerativeAI.TheemergingArtificialGenerative
+IntelligenceandChatGPTshowitispossibletolearncomplexandmechanism-unknownknowledge
+from historical experiences and make smart decisions in an autoregressive generative fashion.
+Followingasimilarspirit,webelievethatknowledgerelatedtofeaturesubsetscanalsobedistilled
+and embedded into a continuous space, where computation and optimization are enabled and,
+thereafter, generate a feature selection decision sequence. This generative perspective regards
+featureselection,e.g.,𝑓 𝑓 ,...,𝑓 → 𝑓 𝑓 𝑓 𝑓 ,asasequentialgenerativelearningtasktogeneratean
+1 2 7 1 2 4 6
+autoregressivefeatureselectiondecisionsequence(Figure1(b)).Thistransformsthetraditional
+wayweselectfeaturesviaaniterativesubsetselectionprocess(Figure1(a)).Underthisgenerative
+perspective,afeaturesubsetisrepresentedasafeaturetokensequenceandsubsequentlyembedded
+inadifferentiablecontinuousspace.Inthiscontinuousembeddingspace,anembeddingvector
+correspondstoafeaturesubset,andwecan(a)buildanevaluatorfunctiontoassessfeaturesubset
+utility;(b)searchtheoptimalfeaturesubsetembedding;(c)decodeanembeddingvectortogenerate
+afeatureselectiondecisionsequence.Thisgenerativelearningperspectiveprovidesgreatpotential
+todistillfeatureknowledgefromexperiencesandgeneralizewellovervariousdomaindatasets.
+Inspiredbythesefindings,weproposeadeepvariationalsequentialgenerativefeature
+selectionlearning(VTFS)frameworkthatincludesthreesteps:(1)Embedding.Wedevelopa
+variationaltransformermodelwithjointoptimizationofsequencereconstructionloss,feature
+subsetaccuracyevaluatorloss,andvariationaldistributionalignment(i.e.,Kullback–Leibler(KL))
+loss,inordertolearnafeaturesubsetembeddingspace.Thisstrategycanstrengthentheability
+ofmodeldenoisingandreducenoisefeatureselection.(2)Optimization.Aftertheconvergenceof
+theembeddingspace,weleveragetheevaluatortogenerategradientanddirectioninformation,
+enablingustoeffectivelysteergradientascent-basedsearchandidentifytheembeddingforthe
+optimalfeaturesubset.(3)Generation.Wedecodetheoptimalembeddingandautoregressively
+generatetheoptimalfeaturetokensequence.Finally,weapplytheoptimalfeaturetokensequence
+totheoriginalfeaturesettogetthebestfeaturesubset.Inaddition,topreparehistoricalfeature
+selection experiences and corresponding model performance as training data, we leverage the
+automationandexplorationpropertiesofreinforcementintelligencetodevelopatrainingdata
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:3
+Fig.1. Ourperspectivecanbe viewedasa sequencegeneration(b) ratherthanas aniterativediscrete
+selection(a).
+collector.Thecollectorcanexploreandcollectfeaturesubset-predictiveaccuracypairsastraining
+data.Thisstrategycanavoidintensivemanuallaborandimprovetrainingdataqualityanddiversity.
+Ourmaincontributionscanbesummarizedasfollows:
+(1) GenerativePerspective:Weproposeaformulation:featureselectionasdeepsequentialgener-
+ativeAItoconvertthediscreteselectionprocessintocontinuousoptimization.
+(2) Embedding-Optimization-Generation(EOG)framework:WedeveloptheEOGframework:
+embeddingfeaturesubsetstovectors,gradient-steeredoptimalembeddingidentification,
+andfeaturetokensequencegeneration.Extensiveexperimentsshowthatthisgenerative
+frameworkimprovestheeffectivenessandgeneralizationoffeatureselectioninvariousdata
+domains.
+(3) ComputingTechniques:Wedesigninterestingtechniquestoaddresscomputingissues:(a)
+reinforcement as an automated feature selection training data collector, (b) variational
+transformerwithmulti-lossesasoptimizationsupervision,and(c)performanceevaluator
+functionasgradientgenerator.
+(4) ExtensiveExperiments:Weconductextensiveexperimentsandcasestudiesacross16real-
+worlddatasetstodemonstratetheeffectiveness,robustness,andscalabilityofourframework.
+2 PreliminariesandProblemStatement
+FeatureTokenSequence.Weformulateafeaturesubsetasafeaturetokensequencesothatwecan
+encodeitintoanembeddingspacewithadeepsequentialmodel.Specifically,wetreateachfeature
+asatokenandconstructamappingtablebetweenfeaturesandtokens.Forexample,givenafeature
+subset [𝑓 ,𝑓 ,𝑓 ,𝑓 ],weconvertittoafeaturetokensequencedenotedas [𝑆𝑂𝑆,𝑡 ,𝑡 ,𝑡 ,𝑡 ,𝐸𝑂𝑆].
+1 2 4 7 1 2 4 7
+SequentialTrainingData.Toconstructadifferentialembeddingspaceforfeatureselection,we
+needtocollect𝑁 differentfeaturesubset-accuracypairsfromtheoriginalfeaturesetastraining
+data.Thenweconvertallfeaturesubsetstofeaturetokensequences.Thesedataaredenotedby
+𝑅 = (t𝑖 ,𝑣 𝑖) 𝑖 𝑁 =1 ,wheret𝑖 = [𝑡 1 ,𝑡 2 ,...,𝑡 𝑞] isthefeaturetokensequenceofthe𝑖thfeaturesubsetand𝑣 𝑖
+iscorrespondingdownstreampredictiveaccuracy.
+ProblemStatement.Formally,givenatabulardataset𝐷 = (𝑋,𝑦),where𝑋 isanoriginalfeature
+setandy isthecorrespondingtargetlabel.Wecollectthesequentialtrainingdata𝑅byconducting
+automaticallytraditionalfeatureselectionalgorithmson𝐷 andevaluatingtheperformanceof
+featuresubsetswithadownstreamMLmodel.Ourgoalisto(1)embedtheknowledgeof𝑅intoa
+differentiablecontinuousspaceand(2)generatetheoptimalfeaturesubset.Regardinggoal1,we
+learnanencoder𝜙,anevaluator𝜗,andadecoder𝜓 viajointoptimizationtogetthefeaturesubset
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:4 W.Yingetal.
+Fig.2. AnoverviewofVTFS.First,weemploythevariationaltransformer-basedsequentialmodeltoconstruct
+featuresubsetembeddingspace.Second,wesearchforbetterembeddingsbymovinglocaloptimalembeddings
+alongthegradientdirectionmaximizingthedownstreampredictiveaccuracy.Third,wegeneratethefeature
+tokensequencesinanautoregressivemannerbasedonthesebetterembeddingsandkeepthebestonewith
+thehighestdownstreamMLperformance.
+embeddingspaceE.Regardinggoal2,weidentifythebestembeddingbasedonagradientsearch
+methodandgeneratetheoptimalfeaturetokensequencet∗:
+t∗ =𝜓(𝐸∗) =argmaxM(𝑋[𝜓(𝐸)],𝑦), (1)
+𝐸∈E
+where𝜓 isadecodertogenerateafeaturetokensequencefromanyembeddingof E;𝐸∗ isthe
+optimalfeaturesubsetembedding;M isadownstreamMLtask.𝑋[] meansweusethemapping
+tabletoconvertafeaturetokensequencetoafeaturesubset.Finally,weapplyf∗to𝑋 toselectthe
+optimalfeaturesubset𝑋[t∗].
+3 Methodology
+3.1 FrameworkOverview
+Figure2showsourframework(VTFS),whichincludesthreesteps:(1)featuresubsetembedding
+spaceconstruction,(2)gradient-steeredoptimization,and(3)optimalfeaturesubsetgeneration.
+Specifically,Step1istoembedtheknowledgeoffeatureselectionintoacontinuousembedding
+space.Toaccomplishthis,wedevelopanencoder–decoder–evaluatorarchitecture,inwhichthe
+encoderencodeseachfeaturetokensequenceintoanembeddingvector;theevaluatorestimatesthe
+downstreampredictiontaskaccuracybasedonthecorrespondingembedding;thedecoderrecon-
+structstheassociatedfeaturetokensequenceusingtheembedding.Toconstructadistinguishable
+andsmoothembeddingspace,weemployavariationaltransformerasthebackboneofthesequen-
+tialmodel.Wejointlyoptimizethesequencereconstructionlossandtheperformanceestimation
+losstolearnsuchanembeddingspace.Then,weemploythegradient-steeredsearchtofindthe
+betterembeddingsinStep2.Weselectthetop-k featuretokensequencefromthecollecteddata
+basedonpredictiveaccuracy.Theyareconvertedintoembeddingsusingthewell-trainedencoder.
+Afterthat,basedonthegradientofthewell-trainedevaluator,wemovetheseembeddingsalong
+thedirectionmaximizingthedownstreamtaskperformancetogetbetterones.Finally,inStep3,we
+feedthebetterembeddingsintothewell-traineddecodertogeneratethefeaturetokensequences
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:5
+andthenconvertthemtothefeaturesubsets.ThefeaturesubsetwiththehighestdownstreamML
+performanceisregardedastheoptimalresult.
+3.2 FeatureSubsetEmbeddingSpaceConstructionviaVariationalTransformer
+ThesuccessofChatGPTillustratesthatintricatehumanknowledgecanbeeffectivelyembedded
+withinalargeembeddingspaceviasequentialmodeling.Thisinspirationencouragesthatfeature
+selection,asaformofhumanknowledge,canlikewisebeintegratedintoacontinuousembedding
+space.However,differentfromChatGPT,weexpectthisembeddingspaceshouldnotonlypreserve
+theknowledgeoffeaturesubsetsbutalsomaintainthequalityofthesesubsets.Thisiscrucialfor
+theeffectiveidentificationoftheoptimalfeatureselectionresult.Toachievethis,wedevelopan
+encoder–decoder–evaluatorlearningparadigm.Theadvantagesofthisperspectiveare(1)convert
+discretesearchintocontinuousoptimizationinembeddingspace;(2)enabletheintegrationof
+generalizationandrobustnesstechniques.
+FeatureSubsetsasSequenceswithShuffling-BasedAugmentations.Thesequentialtrainingdata
+areusedtoconstructthecontinuousembeddingspace.Wefindthattheorderofthefeaturetoken
+sequencedoesn’tinfluencethepredictiveaccuracy.Thus,weproposeashuffling-basedstrategy
+toquicklycollectmorelegaldatasamples.Forinstance,giveonesample [𝑡 ,𝑡 ,𝑡 ] →0.867.We
+1 2 3
+can shuffle the order of the sequence to generate more semantically equivalent data samples:
+[𝑡 ,𝑡 ,𝑡 ] → 0.867, [𝑡 ,𝑡 ,𝑡 ] → 0.867. The shuffling augmentation strategy enhances both the
+2 1 3 3 2 1
+volume and diversity of data, enabling the construction of an empirical training set that more
+accuratelyrepresentsthetruepopulation.Thisstrategyissignificantindevelopingamoreeffective
+continuousembeddingspace.
+VariationalTransformer-BasedFeatureSubsetEmbeddingModel.Wedevelopanencoder–decoder–
+evaluatorframeworktoembedcomplexfeaturelearningknowledgeintoacontinuousembedding
+space.Suchaspaceshouldpreservetheinfluenceofdifferentfeaturesubsets,whilealsomaintaining
+asmoothstructuretofacilitatetheidentificationofsuperiorembeddings.Toaccomplishthis,we
+adoptthevariationaltransformer[18,42]asthebackboneofthesequentialmodeltoimplement
+thisframework.
+The Encoder aims to embed various observed feature subsets (e.g., feature token sequences)
+into an embedding vector, each of which is associated with a corresponding utility. We use a
+variationaltransformertoencodetheobservedfeaturesubsets.Thetransformerencodestoken
+sequenceswithself-attentionandconstructsanembeddingspacemoreaccurately.Thevariational
+module regularizes the distribution of a latent embedding space into a normal distribution to
+smooththeembeddingspaceandadvancedownstreamtasks.Formally,consideratrainingdataset
+𝑅 = (t𝑖 ,𝑣 𝑖) 𝑖 𝑁 =1 ,wheret𝑖 = [𝑡 1 ,𝑡 2 ,...,𝑡 𝑞] isafeaturetokensequenceofthe𝑖thfeaturesubset,𝑣 𝑖 is
+thecorrespondingpredictiveaccuracy,𝑞isthenumbertokensofthe𝑖thfeaturetokensequence,
+and𝑁 isthenumberoftrainingsamples.Tosimplifythenotation,weusethenotation (t,𝑣) to
+representanytrainingsample.Wefirstemployatransformerencoder𝜙 tolearntheembeddingof
+thefeaturetokensequence,denotedbye=𝜙(t).Weassumethatthelearnedembeddingsefollow
+theformatofnormaldistribution.Then,twofullyconnectedlayersareimplementedtoestimate
+themeanmandvariance𝜎 ofthisdistribution.Afterthat,wecansampleanembeddingvectore∗
+fromthedistributionviathereparameterizationtechnique.Thisprocessisdenotedby
+e∗ =m+𝜀∗𝑒𝑥𝑝(𝜎), (2)
+where𝜀 referstothenoisedvectorsampledfromastandardnormaldistribution.Thesampled
+vectore∗isregardedastheinputofthefollowingdecoderandevaluator.
+TheDecoder aimstoreconstructafeaturetokensequenceusingtheembeddinge∗.Whenthe
+bestembeddingpointisobtainedfromtheoptimizationstep,thedecodercangeneratetheoptimal
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:6 W.Yingetal.
+featuretokensequenceinanautoregressivemanner.Weutilizeatransformerdecodertoparse
+theinformationofe∗ andaddasoftmaxlayerbehindittoestimatetheprobabilityofthenext
+featuretokenbasedonthepreviousones.Formally,thecurrenttokenthatneedstobedecodedis
+𝑡 𝑗,andthepreviouslycompletedfeaturetokensequenceis𝑡 1 ...𝑡 𝑗−1 .Theprobabilityofthe 𝑗thtoken
+shouldbe
+𝑃 𝜓(𝑡 𝑗|e∗,[𝑡 1 ,𝑡 2 ,...,𝑡 𝑗−1 ]) = (cid:205) 𝑒𝑥 𝑒 𝑝 𝑥 ( 𝑝 𝑧 𝑗 ( ) 𝑧) , (3)
+𝑞
+where𝑧 𝑗 representsthe 𝑗thoutputofthesoftmaxlayer,𝜓 referstothedecoder.Thejointestimated
+likelihoodoftheentirefeaturetokensequenceshouldbe
+𝑞
+(cid:214)
+𝑃 𝜓(t|e∗) = 𝑃 𝜓(𝑡 𝑗|e∗,[𝑡 1 ,𝑡 2 ,...,𝑡 𝑗−1 ]). (4)
+𝑗=1
+TheEvaluator aimstoevaluatethepredictiveaccuracybasedontheembeddinge∗ andthen
+providesagradienttofacilitatetheidentificationofthebestembeddingpointsthroughgradient-
+basedsearchmethods.Morespecifically,weimplementedasinglefullyconnectedneurallayer,
+followedbyaregressorastheevaluator.Eachembeddingcorrespondswithadownstreampredictive
+accuracy.Theevaluatoraimstopredicttheaccuraciesbasedontheembeddingswhentrainingthe
+EOGframework.Afterconvergence,thewell-trainedevaluatorwillprovideagradienttoguidethe
+searchdirectioninthecontinuousspacetoidentifytheembeddingwiththehighestaccuracy.This
+calculationprocesscanbedenotedby
+𝑣(cid:165)=𝜗(e∗), (5)
+where𝜗 referstotheevaluatorand𝑣(cid:165)isthepredictedaccuracyvia𝜗.
+TheJointOptimization.Wejointlytraintheencoder,decoder,andevaluatortolearnthecontinuous
+embeddingspace.Therearethreeobjectives:(a)Minimizingthereconstructionlossbetweenthe
+reconstructedfeaturetokensequenceandtherealone,denotedby
+L𝑟𝑒𝑐 =−𝑙𝑜𝑔𝑃 𝜓(t|e∗)
+𝑞
+(cid:213)
+=− 𝑙𝑜𝑔𝑃 𝜓(𝑡 𝑗|e∗,[𝑡 1 ,𝑡 2 ,...,𝑡 𝑗−1 ]), (6)
+𝑗=1
+(b)Minimizingtheestimationlossbetweenthepredictedaccuracyandtherealone,denotedby
+L𝑒𝑣𝑡 =𝑀𝑆𝐸(𝑣,𝑣(cid:165)), (7)
+(c)MinimizingtheKLdivergencebetweenthelearneddistributionofthefeaturesubsetandthe
+standardnormaldistribution,denotedby
+L𝑘𝑙 =𝑒𝑥𝑝(𝜎)−(1+𝜎)+(𝑚)2. (8)
+Thefirsttwoobjectivesensurethateachpointwithintheembeddingspaceisassociatedwitha
+specificfeaturesubsetanditscorrespondingpredictiveaccuracy.Thelastobjectivesmoothensthe
+embeddingspace,therebyenhancingtheefficacyofthefollowinggradient-steeredsearchstep.We
+tradeoffthesethreelossesandjointlyoptimizethemby
+L =𝛼L𝑒𝑣𝑡 +𝛽L𝑟𝑒𝑐 +𝛾L𝑘𝑙 , (9)
+where𝛼,𝛽,and𝛾 arehyperparameters.
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:7
+3.3 Gradient-SteeredOptimization
+Afterobtainingthefeaturesubsetembeddingspace,weemployagradient-ascentsearchmethodto
+findbetterfeaturesubsetembedding.Morespecifically,weinitiatetheprocessbyselectingthetop-𝑘
+featuretokensequencesfromthecollecteddatabasedonthecorrespondingpredictiveaccuracies.
+Subsequently,weleveragetheencoderthathasbeenwell-trainedinthelaststeptoconvertthese
+featuretokensequencesintolocaloptimalembeddings.Afterthat,weadoptagradient-ascent
+algorithmtomovetheseembeddingsalongthedirectionmaximizingthedownstreampredictive
+accuracy.Thegradientutilizedinthisprocessisderivedfromthewell-trainedevaluator𝜗.Taking
+theembeddinge∗asanillustrativeexample,themovingcalculationprocessisasfollows:
+𝜕𝜗
+e+ =e∗+𝜂 , (10)
+𝜕e∗
+where𝜂 isthemovingstepsande+isthebetterembedding.
+3.4 OptimalFeatureSubsetGeneration
+Once we identify the better embeddings, we will generate the better feature token sequences
+basedontheminanautoregressivemanner.Formally,wetaketheembeddinge+asanexample
+toillustratethegenerationprocess.Inthe 𝑗-iteration,weassumethatthepreviouslygenerated
+featuretokensequenceis𝑡 1 ...𝑡 𝑗−1 andthewaitingtogeneratetokenis𝑡 𝑗.Theestimationprobability
+forgenerating𝑡
+𝑗
+istomaximizethefollowinglikelihoodbasedonthewell-traineddecoder𝜓:
+𝑡 𝑗 =argmax(𝑃 𝜓(𝑡 𝑗|e+,[𝑡 1 ,...,𝑡 𝑗−1 ]). (11)
+Wewilliterativelygeneratethepossiblefeaturetokensuntilfindingtheendtoken(i.e.,<EOS>).For
+instance,ifthegeneratedtokensequenceis“[𝑡 ,𝑡 ,𝑡 ,<𝐸𝑂𝑆 >,𝑡 ],wewillcutfromthe<EOS>
+2 6 5 8
+tokenandkeep[𝑡 ,𝑡 ,𝑡 ]asthefinalgenerationresult.Finally,weselectthecorrespondingfeatures
+2 5 6
+accordingtothesefeaturetokensandoutputthefeaturesubsetwiththehighestpredictiveaccuracy
+as the optimal feature subset. Algorithm 1 shows the pseudo-code of the entire optimization
+procedure.
+3.5 Improvements:ReinforcedDataCollectorforSequentialTrainingData
+Theconstructionofembeddingspaceneedstocollecttrainingdataaboutobservedexperiences
+onhowgeneratingafeaturesubsetcanleadtoimprovedperformance.Thevolume,quality,and
+diversity of training data influence the quality of embeddings learned by the EOG framework,
+thereafter,impacttheutilityofageneratedfeaturesubset.WechooseReinforcementLearning
+(RL) to collect training data for three aspects: (1) Volume: we should collect a lot of training
+data.Theself-learningofRLenablesautomateddatageneration;(2)Quality:weshouldcollect
+high-performancecasesassuccessfulexperiences.TheexploitationofRLfacilitatesthegeneration
+ofmorehigh-performancetrainingdata.(3)Diversity:trainingdatashouldnotignorerandom,
+exploratory,andfailurecasesaslessons.TheexplorationofRLcandiversifythetrainingdata.Our
+perspectiveistoviewreinforcementintelligenceasatrainingdatacollectorinordertoachieve
+volume(self-learningenabledautomation),diversity(exploration),andquality(exploitation).
+Toimplementthisidea,wedesignreinforcementagentstoautomaticallydecidehowtoselect
+crucialandeffectivefeatures,asshowninFigure3.Thereinforcementexplorationexperiences
+and corresponding accuracy will be used as training data. Specifically, the approach includes:
+(1)Multi-Agents:Wedesignagentsforeachfeature.(2)Actions:Ineachreinforcementiteration,
+eachagentwilldeterminewhethertoselectthecorrespondingfeature.Thentheselectedfeatures
+constituteafeaturesubset.(3)Environment:Theenvironmentisthefeaturespace,representingan
+updatedfeaturesubset.Whenagentstakeactionstoselectanewfeaturesubset,thestateoffeature
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:8 W.Yingetal.
+Algorithm1:EntireOptimizationProcedure
+Input :Theoriginaldataset𝐷 = (𝑋,𝑦)
+Output:TheOptimalFeatureSubset𝑋[t∗]
+1 Collectingtrainingdataset𝑅 = (t𝑖 ,𝑣 𝑖) 𝑖 𝑁 =1 .
+2
+Initializetheencoder𝜙,decoder𝜓 andevaluator𝜃.
+3 FeatureSubsetEmbeddingSpaceConstruction:
+4
+for𝑖𝑛𝑒𝑝𝑜𝑐ℎdo
+5 for𝑖𝑛𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑏𝑎𝑡𝑐ℎ𝑒𝑠 do
+6
+Encode:e=𝜙(t).
+7
+Estimate:m,𝜎.
+8
+Reparameterization:e∗ =m+𝜀∗𝑒𝑥𝑝(𝜎).
+9
+Decodeloss:L𝑟𝑒𝑐 =−𝑙𝑜𝑔𝑃 𝜓(t|e∗).
+10
+Evaluateloss:L𝑒𝑣𝑡 =𝑀𝑆𝐸(𝑣,𝜃(e∗)).
+11
+KLloss:L𝑘𝑙 =𝑒𝑥𝑝(𝜎)−(1+𝜎)+(m)2.
+12
+Backward:L =𝛼L𝑒𝑣𝑡 +𝛽L𝑟𝑒𝑐 +𝛾L𝑘𝑙
+13 end
+14 end
+15 Gradient-steeredOptimization:
+16
+Selecttop-𝑘 featuretokensequences(t)𝑘 from𝑅.
+17
+EncodeandReparameterization:(e∗)𝑘 =𝑟𝑒𝑝𝑎𝑟𝑎𝑚𝑒𝑡𝑒𝑟𝑖𝑧𝑎𝑡𝑖𝑜𝑛(𝜙((t)𝑘)).
+18 Update(e∗)𝑘 with𝜂 steps:(e+)𝑘 = (e∗)𝑘 +𝜂∗ 𝜕( 𝜕 e 𝜗 ∗)𝑘 .
+19 OptimalFeatureSubsetGeneration:
+20
+Generation:(t+)𝑘 =𝜓((e∗)𝑘).
+21
+Optimalfeaturesubset:X[t∗] =argmaxM(𝑋[(t+)𝑘],𝑦).
+Fig.3. Reinforcementdatacollector.
+space(environment)changes.Thestaterepresentsthestatisticalcharacteristicsoftheselected
+featuresubspace.(4)RewardFunction:Therewardisthepredictiveaccuracyofthedownstream
+RandomForest(RF)modelbasedonthecurrentenvironment.(5)TrainingandOptimization:
+Ourreinforcementdatacollectorincludestwostagesateachiteration:controlandtraining.In
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:9
+Table1. DatasetKeyStatistics
+Dataset Task #Samples #Features
+SpectF C 267 44
+SVMGuid3 C 1243 21
+GermanCredit C 1001 24
+UCICredit C 30,000 25
+SpamBase C 4,601 57
+Ap_omentum C 275 10,936
+Ionosphere C 351 34
+Activity C 10,299 561
+Mice-Protein C 1,080 77
+Openml-586 R 1,000 25
+Openml-589 R 1,000 25
+Openml-607 R 1,000 50
+Openml-616 R 500 50
+Openml-618 R 1,000 50
+Openml-620 R 1,000 25
+Openml-637 R 500 50
+WereportedF1-scoreforclassification(C)and1-RAEforregression(R),respectively.RAE,relativeabsoluteerror.
+thecontrolstage,eachagenttakesactionsbasedontheirpolicynetworks,whichtakethecurrent
+stateasinputandoutputrecommendedactionsandthenextstate.Theagentswillchangethe
+sizeandcontentsofanewfeaturespace.Weregardthenewfeaturespaceasanenvironment.
+Meanwhile,theactionstakenbyfeatureagentsgenerateanoverallreward.Thisrewardwillthen
+beassignedtoeachparticipatingagent.Inthetrainingstage,theagentstraintheirpoliciesvia
+experiencereplayindependently.Theagentusesitscorrespondingmini-batchsamplestotrainits
+DeepQ-Network[30],inordertoobtainthemaximumlong-termrewardbasedontheBellman
+Equation.Theagentshavenaivepoliciesinthebeginningandexplorediversefeaturesubsetswith
+randomnesstocollectvariousfeaturesubsetsandcorrespondingRFaccuracy.Astheagentpolicies
+grow,wecancollectmorehigh-qualityfeaturesubsetswithhigheraccuracy.Inthisway,wecan
+collectlotsoftrainingdatasamplesduringtheiterativeexplorationprocess.Theimplementation
+detailsofthedatacollectorareincludedinthecodereleasedintheabstract.
+4 Experiments
+4.1 ExperimentalSetup
+DataDescription.Weperformexperimentsusingadiversesetof16datasetssourcedfromvarious
+domains,includingthosefromUCIrvineandOpenML.Thesedatasetsareclassifiedbasedontheir
+tasktypesintotwocategories:(1)classification(C)and(2)regression(R).Thestatisticaldetailsof
+thesedatasetsarepresentedinTable1.
+EvaluationDesign.Foreachofthe16domaindatasets,werandomlyconstructedtwoindependent
+datasubsets:AandB.DatasubsetAwasseenbyourmethod.Weusedthisdatasubsettocollect
+feature subset-accuracy training data pairs (e.g., 𝑓 𝑓 𝑓 → 0.817) and construct feature subset
+1 4 6
+embeddingspace.DatasubsetB wasneverseenbyourmethod.Afterdeterminingtheoptimal
+featuretokensequence,suchas𝑓 𝑓 𝑓 ,usingDatasubsetA,wedirectlyappliedthisfeaturetoken
+2 5 6𝐴
+sequencetoDatasubsetB,yieldingthefeaturesubset{𝑓
+2
+,𝑓
+5
+,𝑓
+6
+}𝐵.Thisfeaturesubsetwasused
+toevaluatetheeffectivenessofourmethod.WeuseRFasthepredictivemodelforalldatasets.
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:10 W.Yingetal.
+The RF is robust, stable, and widely used for evaluation in many feature selection methods. It
+controlsmodel-levelperformancevariancesinordertoexaminetheimpactsoffeatureselection.
+F1-scoreand1-RelativeAbsoluteErrorareregardedastheevaluationmetricsforclassificationand
+regressiontasks,respectively.Forthetwometrics,thehigherthevalueis,thebetterthequalityof
+thefeaturesubsetis.
+Baseline Algorithms. We compare our method (VTFS) with 12 widely used feature selection
+algorithms:(1)K-BEST[48]selectsthetop-𝑘featureswiththehighestimportancescores;(2)mRMR
+[33]selectsafeaturesubsetbymaximizingrelevancewithlabelsandminimizingfeature–feature
+redundancy;(3)DNP [23]employsagreedyfeatureselectionbasedonDeepNeuralNetwork
+(DNN);(4)DeepPink [29]combinesknockoffs[1]andDNNstoaddressfeatureselectionproblems;
+(5)KnockoffGAN [16](shortasGAN)utilizesGANtogenerateknockofffeaturesthatarenotlimited
+toGaussiandistribution,enablingfeatureselection;(6)MCDM [9]ensemblefeatureselectionasa
+Multi-CriteriaDecision-Makingproblem,whichusestheVIKORsortalgorithmtorankfeatures
+basedonthejudgmentofmultiplefeatureselectionmethods;(7)RFE[7]recursivelydeletesthe
+weakestfeatures;(8)LASSO [41]shrinksthecoefficientsofuselessfeaturestozerobysparsity
+regularizationtoselectfeatures;(9)LASSONet [21](shortasLNet)isaneuralnetworkwithsparsity
+toencouragethenetworktouseonlyasubsetofinputfeatures;(10)GFS[4]isagroup-basedfeature
+selectionmethodviainteractiveRL;(11)MARLFS [25]usesRLtocreateanagentforeachfeature
+tolearnapolicytoselectordeselectthecorrespondingfeature,andtreatfeatureredundancyand
+downstreamtaskperformanceasrewards;(12)SARLFS [27]isasimplifiedversionofMARLFSto
+leverageasingleagenttoreplacemultipleagentstodecidetheselectionactionsofallfeatures;
+(13)GRACES [2]considerstherelationshipamongsamples,whichtransformsatabulardataset
+intoagraphtoselectfeatures.ToevaluatethenecessityofeachtechnicalcomponentofVTFS,we
+developtwomodelvariants:(i)VTFS∗ removesthevariationalinferencecomponentandsolely
+usestheTransformertocreatethefeaturesubsetembeddingspace;(ii)VTFS− adoptsLSTM[11]to
+learnthefeaturesubsetembeddingspace.
+HyperparametersandReproducibility.(1)DataCollector:Weusethereinforcementdatacollector
+toexplore300epochstocollectfeaturesubset-predictiveaccuracydatapairsandrandomlyshuffle
+eachfeaturesequence25timestoaugmentthetrainingdata.(2)FeatureSubsetEmbedding:We
+mapfeaturetokenstoa64-dimensionalembeddingandusea2-layernetworkforbothencoder
+anddecoder,withamulti-headsettingof8andafeed-forwardlayerdimensionof256.Thelatent
+dimensionoftheVariationalAutoEncoderissetto64.Theestimatorconsistsofa2-layerfeed-
+forwardnetwork,witheachlayerhavingadimensionof200.Thevaluesof𝛼,𝛽,and𝛾 are0.8,0.2,
+and0.001,respectively.Wesetthebatchsizeas1,024,thetrainingepochsas100,andthelearning
+rateas0.0001.(3)OptimalEmbeddingSearchandReconstruction:Weusethetop25featuresetsto
+searchforthefeaturesubsetsandkeeptheoptimalfeaturesubset.
+EnvironmentalSettings.AllexperimentsareconductedontheUbuntu22.04.3LTSoperating
+system,Intel(R)Core(TM)i9-13900KFCPU@3GHz,and1wayRTX4090and32GBofRAM,with
+thePython3.11.4andPyTorch2.0.1.
+4.2 OverallPerformance
+In this experiment, we evaluate the performance of VTFS and baseline algorithms for feature
+selectionon16datasetsintermsofF1-scoreor1-RAE.Table2showsthecomparisonresults.We
+canfindthatVTFSconsistentlysurpassesotherbaselinemodelsacrossalldatasets,achievingan
+averageperformanceimprovementof3%overthesecond-bestbaselinemodel.Theunderlying
+driverofthisobservationisthatVTFScancompressthefeaturelearningknowledgeintoalarge
+embeddingspace.Suchacompressionfacilitatesamoreeffectivesearchfortheoptimalfeature
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:11
+Table2. OverallPerformance
+Dataset Original K-Best mRMR DNP DeepPink GAN MCDM RFE LASSO LNet GFS MARLFS SARLFS GRACES VTFS
+SpectF 75.96 78.21 78.21 80.80 75.01 79.16 80.36 80.80 79.16 75.96 75.01 75.01 79.16 81.86 84.58(+3.32%)
+SVMGuide3 77.81 76.84 76.84 77.12 76.55 77.91 76.66 78.07 77.91 76.44 83.12 76.84 76.22 78.07 85.02(+2.29%)
+GermanCredit 64.88 66.79 66.79 68.43 64.88 66.31 70.85 64.86 66.4 63.97 67.54 66.31 63.12 69.85 73.50(+3.74%)
+UCICredit 80.19 80.59 80.59 79.94 80.43 80.59 74.46 80.28 77.94 80.05 79.96 80.24 80.05 80.59 81.21(+0.77%)
+SpamBase 92.68 92.02 92.34 91.79 92.68 92.34 88.95 91.68 91.81 91.67 92.25 92.35 90.94 92.68 93.53(+0.92%)
+Ap_omentum 66.19 84.49 84.49 82.03 82.03 84.49 84.49 84.49 82.03 83.02 82.03 84.49 84.49 83.02 86.52(+2.40%)
+Ionosphere 92.85 91.32 94.27 94.12 92.85 94.27 88.64 95.69 88.17 88.38 91.34 89.92 88.51 95.69 97.13(+1.50%)
+Activity 96.17 96.07 95.92 95.87 96.12 96.17 96.12 95.87 95.92 96.17 96.12 95.87 95.87 96.17 97.33(+1.21%)
+Mice-Protein 74.99 77.32 78.68 77.29 77.47 78.68 78.69 77.29 78.71 76.4 77.35 76.4 74.53 78.68 81.96(+4.13%)
+Openml-586 54.95 57.68 57.64 60.74 58.47 60.74 57.95 58.1 60.67 58.28 62.27 58.27 56.98 62.27 63.99(+2.76%)
+Openml-589 50.95 57.17 57.17 54.68 57.42 57.17 55.43 54.25 58.74 57.55 44.72 57.39 53.48 55.43 61.13(+4.07%)
+Openml-607 51.73 54.64 55.17 55.14 55.68 57.88 55.56 54.39 58.10 55.38 45.7 54.99 53.28 57.88 62.72(+7.95%)
+Openml-616 15.63 26.95 25.45 25.93 26.74 28.56 22.92 24.08 28.98 25.98 22.93 26.29 23.06 28.56 33.85(+16.8%)
+Openml-618 46.89 51.79 51.08 51.73 51.46 52.40 50.9 50.64 47.41 51.11 52.40 51.87 48.54 51.73 55.91(+6.69%)
+Openml-620 51.01 55.03 55.03 55.66 55.66 55.94 55.66 53.96 57.99 55.94 58.99 55.42 53.98 57.99 62.58(+6.09%)
+Openml-637 14.95 21.06 20.49 20.45 20.47 21.12 22.16 17.82 26.02 19.43 39.12 20.75 19.45 26.02 42.18(+7.82%)
+Thebestandthesecond-bestresultsarehighlightedbyboldandunderlinedfonts,respectively.Weevaluateclassification(C)andregression(R)tasksintermsof
+F1-scoreand1-RAE,respectively.Thehigherthevalueis,thebetterthefeaturespacequalityis.TheboldpercentagereflectstheimprovementsofVTFScompared
+withthebestbaselinemodel.
+selectionresult.Moreover,anotherinterestingobservationisthatthealgorithmrankingsecond-
+bestvariesacrossdifferentdatasets.Apossiblereasonfortheobservationisthattraditionalfeature
+selection methods are designed based on varying criteria, resultingin a limited generalization
+capabilityacrossdifferentscenarios.Insummary,thisexperimentshowstheeffectivenessofVTFS
+infeatureselection,underscoringthegreatpotentialofgenerativeAIinthisdomain.
+4.3 StudyoftheInfluenceofVariationalTransformerforContinuousSpace
+Construction
+OneoftheimportantnoveltiesofVTFSinvolvesasequentialmodeltoembedfeaturelearning
+knowledgeintoanembeddingspace.Toanalyzetheinfluenceoftheselectionofthesequential
+model,wedeveloptwomodelvariants:(1)VTFS−,whichemploysanLSTMmodelasthebackbone
+of the sequential model; (2) VTFS∗, which removes the variational inference component and
+exclusivelyusesatransformermodel.Figure4showsthecomparisonresultsintermsofF1-score
+and1-RAEforclassificationandregressiontasks,respectively.WecanfindthatVTFSoutperforms
+VTFS∗withagreatperformancegapacrossalldatasets.Theunderlyingdriverforthisobservation
+is that the variational inference component in VTFS enhances the smoothness of the learned
+featuresubsetembeddingspace.Thissmoothnessfacilitatesamoreeffectivesearchforoptimal
+featureselectionresults.Additionally,anotherinterestingobservationisthatVTFS∗ surpasses
+VTFS− acrossalldatasetsinbothclassificationandregressiontasks.Apotentialreasonforthis
+observationisthatthetransformerarchitecture,comparedtoLSTM,ismoreadeptatcapturing
+complexcorrelationsbetweendifferentfeaturecombinationsandtheirimpactondownstream
+ML task performance. Moreover, it is noticed that even when solely employing LSTM, VTFS−
+still outperforms the second-best baseline algorithm across various datasets. This observation
+underscoresthesuccessandeffectivenessofthegenerativeAIperspectiveofVTFS.Inconclusion,
+thisexperimentindicatesthenecessityofeachtechnicalcomponentofVTFS.
+4.4 StudyoftheEffectivenessofRL-BasedDataCollector
+In VTFS, we emphasize the capability of the RL-based data collector to gather higher-quality
+andmorediversetrainingdata,therebyfacilitatingtheconstructionofabetterembeddingspace.
+ToassesstheimpactoftheRL-baseddatacollector,weestablishedthreecontrolgroupsonfour
+datasets:(1)randomlycollectingtrainingdatasamplestoconstructthefeaturesubsetembedding
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:12 W.Yingetal.
+Fig.4. Analysisoftheimpactofdifferentfeaturesubsetembeddingmodulesonfeatureselection.
+spaceandgeneratethefeaturesubset;(2)usingthesecondbestbaselineofeachdatasettoobtain
+thefeaturesubset;(3)directlyusingoriginalfeaturesetforprediction.Figure5showsthatthe
+trainingdatacollectedbytheRL-datacollectorcanhelpidentifyafeaturesubsetsuperiortoall
+controlgroups.TheunderlyingdriveristhattheRL-baseddatacollectorcanproducehigher-quality
+anddiversedata,contributingtothecreationofamoreeffectiveembeddingspace.Thisenhanced
+embedding space facilitates the identification of the best feature subset based on the gradient
+searchmethod.Anotherobservationiswhenconstructingtheembeddingspaceusingrandomly
+collecteddataandsubsequentlysearchingfortheoptimalfeaturesubset,theperformanceinthe
+downstreamMLtasksignificantlyimprovescomparedtotheoriginalfeaturesetbutinthreecases
+worsethanthesecond-bestbaselines.ThissuggeststhatVTFScanlearnfeaturesubsetknowledge,
+therebyidentifyinganeffectivefeaturesubsettoimprovedownstreamperformance.However,
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:13
+Fig.5. Analysisoftheeffectivenessofdatacollectoronselectingtheeffectivefeaturesubset.
+Fig.6. Analysisoftheimpactofdataaugmentationonselectingtheeffectivefeaturesubset.
+collectingdiversetrainingdataisnecessaryandimportant,whichmakestheembeddingspace
+moredistinguishabletoidentifysuperiorfeatureselectionoutcomes.Insummary,thisexperiment
+demonstrates that the RL-based data collector is an indispensable component to maintain the
+excellentfeatureselectionperformanceofVTFS.
+4.5 StudyoftheImpactofDataAugmentation
+Sincetheorderofthefeaturetokensequencedoesnotinfluencethedownstreampredictiveaccu-
+racy,weproposeadataaugmentationstrategybyrandomlyshufflingthefeaturetokensequenceto
+generatemorelegaltrainingsamples.Toassesstheimpactofdataaugmentation,weincrementally
+increasethenumberofshufflingsandobserveitsimpactonperformanceimprovements.From
+Figure6,wecanobservethatwiththeincreaseoftheshufflingnumber,thedownstreamMLperfor-
+mancehasalsobeenimprovedacrossdifferentdatasetswithgreatgaps.Apotentialexplanationfor
+thisobservationisthattheaugmentationofshufflingepochsenhancesdatadiversityandvolume.
+Theseenhancementssignificantlyimprovetheconstructionofadistinguishableandinformative
+embeddingspace,yieldingsuperiorfeatureselectionperformance.Insummary,theexperiment
+reflectsthenecessityofthedataaugmentationstrategyinVTFSforkeepinggoodperformance.
+4.6 StudyoftheTrainingDataConsistentQualityCollectedbyRL-BasedDataCollector
+andShuffling
+SincethereisrandomnessinRL-baseddatacollectoranddatashuffling,wedevelopvariantstoverify
+theimpactofpotentiallyinconsistenttrainingdata:(1)VTFS-RL:usingtwodifferentrandomseeds
+toinitialRLrespectivelyandthencollectthetrainingdata;(2)VTFS-Shuffle:usingtwodifferent
+random seeds to shuffle the training data of VTFS, respectively. Figure 7 shows that the final
+performanceofthebestfeaturesubsetgeneratedbyourframeworkhasslightfluctuationsdueto
+theinconsistentqualityofdatasamples.However,ourmethodstillachievessuperiorperformance
+compared to the best baselines. The underlying explanation is that despite the RL-based data
+collectorandshufflingoperationcausingpotentialdatainconsistency,thecollectedtrainingdata
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:14 W.Yingetal.
+Fig.7. Analysisofthetrainingdataconsistentquality.
+Table3. TimeandSpaceComplexityAnalysisinTermsoftheFeatureSize,RunningTime,and
+ParameterSize
+DataCollect Parameter TrainingTime Inference
+#Features #Samples
+300Epochs Size 100Epochs Time
+SpectF 44 267 66.15 0.387231MB 67.68 0.29
+SVMGuide3 21 1,243 140.45 0.382792MB 55.15 0.13
+GermanCredit 24 1,001 102.18 0.383371MB 65.93 0.12
+UCICredit 25 30,000 2710.51 0.383371MB 63.67 0.12
+SpamBase 57 4601 390.88 0.38974MB 66.95 0.40
+Ap_omentum 10,936 275 10,315.71 2.489387MB 1,118.52 22.08
+Ionosphere 34 351 67.96 0.385301MB 61.14 0.16
+Activity 561 10,299 9052.31 0.487012MB 762.85 4.53
+Mice-Protein 77 1,080 634.77 0.3936MB 68.35 0.51
+Openml-586 25 1,000 225.42 0.383564MB 61.74 0.12
+Openml-589 25 1,000 209.02 0.383564MB 61.53 0.12
+Openml-607 50 1,000 326.04 0.388389MB 70.12 0.32
+Openml-616 50 500 165.69 0.388389MB 68.17 0.32
+Openml-618 50 1,000 341.57 0.388389MB 70.56 0.32
+Openml-620 25 1,000 209.22 0.383564MB 62.89 0.12
+Openml-637 50 500 164.20 0.388389MB 68.87 0.32
+remains high-quality. The continuous space constructed by our framework based on observed
+diverse training datasets remains effective and robust, thereby generating the optimal feature
+subset.
+4.7 StudyoftheTimeandSpaceComplexity
+ToassessthetimeandspacecomplexityofVTFS,wereportVTFS’strainingtime,inferencetime,
+parametersize,anddatacollectiontimeacrossalldatasets.Table3showsthecomparisonresults.
+Foramoreclearcomparison,weorganizedthedatasetforcomparisonbasedonthefeaturenumber
+anddatasetcategory,asshowninFigures8and9.Inthemodeltrainingstage,themodeltraining
+timeandparametersizeincreasewiththegrowthofthefeaturenumber.Wecanobservethatasthe
+featurenumberincreasesfrom21(SVMGuide3)to10,936(AP_omentum)(520-foldincrease),there
+isonlya20-foldincrease(55.15sto1118.52s)inthetrainingtimeanda7-foldincrease(0.3827
+MBto2.4894MB)inmodelsize.Inotherwords,despitethesubstantialincreaseinthenumberof
+features,thecorrespondinggrowthintrainingtimeandspacecomplexityisrelativelymodest.In
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:15
+Fig.8. Timeandspacecomplexityanalysisonclassificationtaskintermsofthefeaturesize,trainingtime,
+inferencetime,parametersize,anddatacollectiontime.
+Fig.9. Timeandspacecomplexityanalysisonregressiontaskintermsofthefeaturesize,trainingtime,
+inferencetime,parametersize,anddatacollectiontime.
+theinferencestage(frominputtingafeaturetokensequencetooutputtingthebestfeaturetoken
+sequence),wecanobservethatthetimecoststillincreaseswiththegrowthofthefeaturenumber.
+However,thepredictiontimeinthisstageisinthemillisecondrange,resultinginaveryshort
+timedespiteahugenumberoffeatures.Theunderlyingdriveristhatweembedthefeaturetoken
+sequenceintoafixedandlow-dimensionalembedding,makingthegradient-steeredoptimization
+processcompletewithinaveryshorttime.Thus,thisobservationindicatesthatVTFSexhibits
+exceptionalscalability,especiallywhendealingwithhigh-dimensionalfeaturespaces.Inthedata
+collectionstage,weobservethatthetimerequiredforRL-baseddatacollectionincreaseswith
+thegrowthofthefeaturenumberandsamplenumber.Forexample,thefeaturenumberofthe
+UCICreditdatasetisrelativelysmall(25),butthesamplenumberishuge(30,000),resultingina
+highdatacollectingtimecomparedtothedatasetofasimilarfeaturenumber(e.g.,theGerman
+Creditdataset).ThereasonisthattheRL-baseddatacollectorusesasuperviseddownstreamto
+evaluatetheutilityofthefeaturesubsetineachiteration.Thedatasetwithmoresamplesneeds
+moretimetotrainthedownstreamMLtask.Despitetakingrelativelylongercomparedtomodel
+training, this process is entirely automated, reducing the need for manual intervention. It can
+learn and adapt to different data collection scenarios, thereby enhancing the adaptability and
+effectivenessofdatacollection.Furthermore,Weanalyzethecomputationcomplexitybetween
+VTFSandbaselines.Figure10showstheK-best,mRMR,LASSO,RFE,andMCDMcostlesstime,but
+arelessaccurate.ComparedwithotherbaselinessuchasDeepPink,GRACES,MARLSFS,andsoon,
+ourmethodcostslessandachievessuperiorperformance.However,(1)featureselectionisnota
+datapreparation/processingstepandnottimingcriticalformosttasks;(2)thetimecostincreaseof
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:16 W.Yingetal.
+Fig.10. TimecomplexityanalysisbetweenVTFSandbaselines.Thex-axisandy-axisrepresenttheperfor-
+manceandtimecostofeachmethod,respectively.
+Fig.11. AnalysisoftherobustnessofVTFSondifferentdownstreamMLmodels.DT,decisiontree;KNN,
+K-nearestneighborhood;SVM,supportvectormachine;XGB,XGBoost.
+trainingourmethodisacceptable.Comparedwiththetimecosts(daysormonthslevel)ofhuman
+manualfeatureengineering,ourmethodsavestime.(3)Althoughourmethodcostsabitmoretime
+comparedtosomebaselines,itachievesmuchbetterfeatureengineeringperformance.(4)Basedon
+suchencode–decodegenerativedesign,wecanusethestrategyofpretrainingafoundationmodel
+andthenfinetuningtoreducetrainingtimecosts.
+4.8 RobustnessCheck
+ToevaluatetherobustnessofdifferentfeatureselectionalgorithmswithvaryingdownstreamML
+models,wereplacetheRFmodelwithsupportvectormachine,XGBoost,K-nearestneighborhood,
+anddecisiontree.TheperformanceofthesealgorithmswasthenevaluatedusingtheSVMGuide3
+and German Credit datasets. Figure 11 shows the comparison results in terms of F1-score. We
+canfindthatVTFSconsistentlybeatsotherfeatureselectionbaselinesregardlessofthedown-
+stream ML model. The underlying driver is that VTFS can tailor the feature selection strategy
+based on the specific characteristics of downstream ML models. This is achieved by collecting
+suitablesequentialtrainingdatathatismostsuitableforeachmodeltype.Moreover,VTFSembeds
+featurelearningknowledgeintoacontinuousembeddingspacewhichenhancesitsrobustnessand
+generalizationcapabilityacrossdifferentMLmodels.Insummary,thisexperimentdemonstrates
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:17
+Fig.12. CaseStudy:Eachdatasetconsistsof5realfeaturesand45fakefeatures.WhencomparedtoMARLFS,
+VTFSdemonstratesasuperiorabilitytoselectfeaturesubsetsthataremorecloselytotherealfeaturesin
+bothdatasetsandeffectivelyavoididentifyingfakefeaturesasrealones.
+that VTFS can maintain its excellent and stable feature selection performance across different
+MLmodels.
+4.9 CaseStudy:VTFSExhibitsNoiseResistanceandQualityFeatureAttention
+TheOpenMLdatasetsaresimulatedbyhumanexperts.Soweknowtherealrelevantfeatureswithin
+thesedatasets.Thus,wedesignacasestudytoshowtheoverlapbetweentheselectedfeatures
+andtherealones.Here,wetakeopenml_607andopenml_618datasetsasexamples.Bothofthem
+have5realfeaturesand45fakefeatures.WeemployMARLFS[25]toserveasacomparativemodel
+alongsideVTFS.Figure12showsthecomparisonresults.Regardingtheopenml_607dataset,we
+canfindthatVTFSselects7features,ofwhich4arerealand3arefake.Incontrast,MARLFSselects
+27features,withonly4beingrealandtheremaining23beingfake.Fortheopenml_618dataset,
+VTFSmaintainsasimilarperformance.WhileMARLFSsuccessfullyidentifiesallrealfeatures,it
+alsoincludes19fakefeaturesinitsselection.Theseobservationsindicatethat,incomparisonto
+MARLFS,VTFSismoreeffectiveatunderstandingthecomplexrelationshipswithinthefeature
+space.Asaresult,itisabletoproduceafeaturesubsetthatmorecloselyalignswiththeactual
+features,therebyreducingthelikelihoodofmakingfalse-positiveerrors.Insummary,thiscase
+studydemonstratesthatVTFSexhibitsrobustnessinfilteringoutnoisewithinthefeaturespace
+andiscapableofproducinghigh-qualityandreliablefeaturesubsets.
+5 RelatedWork
+Featureselectionmethodsareanimportantpartoffeatureengineering[6,12,44,45,49,50],which
+canbedividedintothreecategoriesaccordingtotheselectionstrategies[22]:(1)filtermethods;(2)
+wrappermethods;(3)embeddedmethods.
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:18 W.Yingetal.
+Thefiltermethods[10,33,48]evaluatefeaturesbycalculatingthecorrelationbetweenfeatures
+basedonstatisticalpropertiesofdataandselectsthefeaturesubsetwiththehighestscore.Univariate
+statisticaltests,suchasvarianceanalysisF-test[3],arewidelyusedinfiltermethods.TheF-statistic
+valuesareusedasrankingscoresforeachfeature,wherehigherF-statisticvaluescorrespondto
+moreimportantfeatures.Otherclassicalstatisticalmethods,includingStudent’st-test[53],Pearson
+correlationtest[28],Chi-squaretest[40],Kolmogorov-Smirnovtest[15],Wilkslambdatest[14],
+andWilcoxonsigned-ranktest[35],canbesimilarlyappliedtofeatureselection.Thesemethods
+havelowcomputationalcomplexityandcanefficientlyselectfeaturesubsetsfromhigh-dimensional
+datasets.However,theyignorethedependencyandinteractionamongfeatures,potentiallyleading
+tosuboptimalresults.
+Thewrappermethods[20,24,27,43,52]arebasedonaspecificdataset,defineaMLmodelin
+advance,anditerativelyevaluatethecandidatefeaturesubset.Forinstance,RL-basedmethods
+modelthefeatureselectionprocesswithamulti-agentsystem,whereagentsdecidewhetherto
+selectaparticularfeature,optimizetheutilityofselectedfeaturesubsets,andusetheutilityand
+featureredundancyasrewardfeedbackineachiteration.Thesemethodsoftenoutperformfilter
+methodsastheyenumeratevariouscombinationsoffeaturesubsets.However,duetotheneed
+to enumerate all possible feature subsets, it is an NP-hard problem, and the evaluation using
+downstreamMLmodelsaftereachiterationleadstolowercomputationalefficiency.Thesemethods
+maysufferfromconvergencedifficultiesandinstability,potentiallymakingitdifficulttoidentify
+theoptimalfeaturesubset.
+Theembeddedmethods[7,13,21,41]transformthefeatureselectiontaskintoaregularization
+terminthepredictionlossofaMLmodeltoacceleratetheselectionprocess.Forexample,LASSO
+assumesalineardependencybetweeninputfeaturesandoutput,penalizingtheL1normoffeature
+weights.LASSOassoproducesasparsesolutionwheretheweightsofirrelevantfeaturesaresetto
+zero.However,LASSOfailstocapturenon-lineardependencies.Thethreetypesofmethodshave
+excellentperformanceonspecificMLmodels.However,thefilterandembeddedmethodsexhibit
+limitedgeneralizationabilityovervariousdomaindatasetsanddownstreampredictivemodels.
+Thewrappermethodssufferfromlargesearchspaceandcannotensuretheidentificationofglobal
+optimal.
+In addition, other studies have proposed two types of hybrid feature selection methods: (1)
+homogeneousmethods[34,36,38];(2)heterogeneousmethods[8,37,46].However,thesemethods
+are limited by the basic aggregation strategies. Thus, it is critical to develop a new research
+perspectivetoenhancethegeneralizationandeffectiveness.Incontrasttotheaboveexistingworks,
+weproposeanovelgenerativeAIperspectivethatembedstheknowledgeoffeatureselectioninto
+acontinuousembeddingspaceandtheneffectivelyidentifiesfeaturesubsetsusingthegradient-
+steeredsearchandautoregressivegeneration.
+6 Conclusion
+Thisarticleexploresanewresearchperspectiveonthefeatureselectionproblem:embeddingfeature
+selectionknowledgeintoacontinuousspaceandgeneratingthebestfeaturesubsetsbasedona
+gradient-ascentsearchmethod.Weimplementathree-stepframeworktomapfeaturesubsetinto
+anembeddingspaceforoptimizingfeatureselection:(1)Wedevelopadeepvariationaltransformer-
+basedencoder–decoder–evaluatorframeworktolearnacontinuousembeddingspacethatcanmap
+featuresubsetsintoembeddingvectorsassociatedwithutilityscores.(2)Weleveragethewell-
+trainedfeaturesubsetutilityevaluatorasagradientprovidertoidentifytheoptimalfeaturesubset
+embedding.(3)Wedecodetheoptimalfeaturesubsetembeddingtogeneratethebestfeaturesubset
+inanautoregressivemanner.Ourresearchfindingsindicatethat(1)theencoder–decoder–evaluator
+frameworkeffectivelyconstructsthefeaturesubsetembeddingspaceandmaintainstheutilityof
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:19
+featuresubsets;(2)thegradient-basedsearchstrategygeneratesgradientanddirectioninformation
+toeffectivelysteerthegradientascent-basedsearchandidentifytheoptimalfeaturesubset.In
+the future, we aim to enhance the generalization capability of VTFS across various domains,
+scenarios,anddistributions,andvalidatethemethodinreal-worldapplicationscenariossuchas
+bioinformatics.
+References
+[1] EmmanuelJeanCandès,YingyingFan,LucasJanson,andJinchiLv.2016.Panningforgold:Model-freeknockoffsfor
+high-dimensionalcontrolledvariableselection,Vol.1610.DepartmentofStatistics,StanfordUniversityStanford,CA,
+USA.
+[2] CanChen,ScottT.Weiss,andYang-YuLiu.2023.Graphconvolutionalnetwork-basedfeatureselectionforhigh-
+dimensionalandlow-samplesizedata.Bioinformatics 39,4(April2023),btad135.DOI:https://doi.org/10.1093/
+bioinformatics/btad135https://academic.oup.com/bioinformatics/article-pdf/39/4/btad135/50087112/btad135.pdf
+[3] NadirOmerFadlElssied,OthmanIbrahim,andAhmedHamzaOsman.2014.Anovelfeatureselectionbasedon
+one-wayanovaf-testfore-mailspamclassification.ResearchJournalofAppliedSciences,EngineeringandTechnology
+7,3(2014),625–638.
+[4] WeiFan,KunpengLiu,HaoLiu,AhmadHariri,DejingDou,andYanjieFu.2021.Autogfs:Automatedgroup-based
+featureselectionviainteractivereinforcementlearning.InProceedingsoftheSIAMInternationalConferenceonData
+Mining(SDM’21).SIAM,342–350.
+[5] GeorgeForman.2003.Anextensiveempiricalstudyoffeatureselectionmetricsfortextclassification.Journalof
+MachineLearningResearch3(March2003),1289–1305.
+[6] NanxuGong,WangyangYing,DongjieWang,andYanjieFu.2024.Neuro-symbolicembeddingforshortandeffective
+featureselectionviaautoregressivegeneration.arXiv:2404.17157.Retrievedfromhttps://doi.org/10.48550/arXiv.2404.
+17157
+[7] PabloM.Granitto,CesareFurlanello,FrancoBiasioli,andFlaviaGasperi.2006.Recursivefeatureeliminationwith
+randomforestforPTR-MSanalysisofagroindustrialproducts.ChemometricsandIntelligentLaboratorySystems83,2
+(2006),83–90.
+[8] MohammadNazmulHaque,NasimulNoman,ReginaBerretta,andPabloMoscato.2016.Heterogeneousensemble
+combinationsearchusinggeneticalgorithmforclassimbalanceddataclassification.PLoSOne11,1(2016),e0146116.
+[9] AminHashemi,MohammadBagherDowlatshahi,andHosseinNezamabadi-pour.2022.Ensembleoffeatureselection
+algorithms:Amulti-criteriadecision-makingapproach.InternationalJournalofMachineLearningandCybernetics13,
+1(2022),49–69.
+[10] XiaofeiHe,DengCai,andParthaNiyogi.2005.Laplacianscoreforfeatureselection.AdvancesinNeuralInformation
+ProcessingSystems18(2005),507–514.
+[11] SeppHochreiterandJürgenSchmidhuber.1997.Longshort-termmemory.NeuralComputation9,8(1997),1735–1780.
+[12] XiaohanHuang,DongjieWang,ZhiyuanNing,ZiyueQiao,QingqingLong,HaoweiZhu,MinWu,YuanchunZhou,
+andMengXiao.2024.Enhancingtabulardataoptimizationwithaflexiblegraph-basedreinforcedexplorationstrategy.
+arXiv:2406.07404.Retrievedfromhttps://doi.org/10.48550/arXiv.2406.07404
+[13] YanyongHuang,ZongxinShen,YuxinCai,XiuwenYi,DongjieWang,FengmaoLv,andTianruiLi.2023.C2IMUFS:
+Complementaryandconsensuslearning-basedincompletemulti-viewunsupervisedfeatureselection.IEEETransac-
+tionsonKnowledgeandDataEngineering35,10(2023),10681–10694.DOI:https://doi.org/10.1109/TKDE.2023.3266595
+[14] RianneHupseandNicoKarssemeijer.2010.Theeffectoffeatureselectionmethodsoncomputer-aideddetectionof
+massesinmammograms.PhysicsinMedicine&Biology55,10(2010),2893.
+[15] AlexeiIvanovandGiuseppeRiccardi.2012.Kolmogorov-Smirnovtestforfeatureselectioninemotionrecognition
+fromspeech.InProceedingsoftheIEEEInternationalConferenceonAcoustics,SpeechandSignalProcessing(ICASSP
+’12).IEEE,5125–5128.
+[16] JamesJordon,JinsungYoon,andMihaelavanderSchaar.2018.KnockoffGAN:Generatingknockoffsforfeatureselec-
+tionusinggenerativeadversarialnetworks.InProceedingsoftheInternationalConferenceonLearningRepresentations.
+[17] YeongSeogKim,W.NickStreet,andFilippoMenczer.2000.Featureselectioninunsupervisedlearningviaevolutionary
+search.InProceedingsofthe6thACMSIGKDDInternationalConferenceonKnowledgeDiscoveryandDataMining,
+365–369.
+[18] DiederikP.KingmaandMaxWelling.2013.Auto-encodingvariationalbayes.https://doi.org/10.48550/arXiv.1312.6114
+[19] RonKohaviandGeorgeH.John.1997.Wrappersforfeaturesubsetselection.ArtificialIntelligence97,1–2(1997),
+273–324.
+[20] RiccardoLeardi.1996.3-GeneticAlgorithmsinFeatureSelection.InGeneticAlgorithmsinMolecularModeling,
+JamesDevillers(Ed.).AcademicPress,London,67–86.DOI:https://doi.org/10.1016/B978-012213810-2/50004-9
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+221:20 W.Yingetal.
+[21] IsmaelLemhadri,FengRuan,andRobTibshirani.2021.Lassonet:Neuralnetworkswithfeaturesparsity.InProceedings
+oftheInternationalConferenceonArtificialIntelligenceandStatistics.PMLR,10–18.
+[22] JundongLi,KeweiCheng,SuhangWang,FredMorstatter,RobertP.Trevino,JiliangTang,andHuanLiu.2017.Feature
+selection:Adataperspective.ACMComputingSurveys(CSUR)50,6(2017),1–45.
+[23] BoLiu,YingWei,YuZhang,andQiangYang.2017.Deepneuralnetworksforhighdimension,lowsamplesizedata.
+InProceedingsoftheInternationalJointConferenceonArtificialIntelligence,2287–2293.
+[24] DugangLiu,PengxiangCheng,HongZhu,XingTang,YanyuChen,XiaotingWang,WeikePan,ZhongMing,and
+XiuqiangHe.2023.DIWIFT:Discoveringinstance-wiseinfluentialfeaturesfortabulardata.InProceedingsoftheACM
+WebConference2023,1673–1682.
+[25] KunpengLiu,YanjieFu,PengfeiWang,LeWu,RuiBo,andXiaolinLi.2019.Automatingfeaturesubspaceexploration
+viamulti-agentreinforcementlearning.InProceedingsofthe25thACMSIGKDDInternationalConferenceonKnowledge
+Discovery&DataMining,207–215.
+[26] KunpengLiu,DongjieWang,WanDu,DapengOliverWu,andYanjieFu.2023b.Interactivereinforcedfeatureselection
+withtraversestrategy.KnowledgeandInformationSystems65,5(2023),1935–1962.
+[27] KunpengLiu,PengfeiWang,DongjieWang,WanDu,DapengOliverWu,andYanjieFu.2021.Efficientreinforced
+featureselectionviaearlystoppingtraversestrategy.InProceedingsoftheIEEEInternationalConferenceonData
+Mining(ICDM’21).IEEE,399–408.
+[28] YaqingLiu,YongMu,KeyuChen,YimingLi,andJinghuanGuo.2020.Dailyactivityfeatureselectioninsmarthomes
+basedonpearsoncorrelationcoefficient.NeuralProcessingLetters51(2020),1771–1787.
+[29] YangLu,YingyingFan,JinchiLv,andWilliamStaffordNoble.2018.DeepPINK:Reproduciblefeatureselectionin
+deepneuralnetworks.AdvancesinNeuralInformationProcessingSystems31(2018),8676–8686.
+[30] VolodymyrMnih,KorayKavukcuoglu,DavidSilver,AndreiA.Rusu,JoelVeness,MarcG.Bellemare,AlexGraves,Mar-
+tinRiedmiller,AndreasK.Fidjeland,GeorgOstrovski,StigPetersen,CharlesBeattie,AmirSadik,IoannisAntonoglou,
+HelenKing,DharshanKumaran,DaanWierstra,ShaneLegg,andDemisHassabis.2015.Human-levelcontrolthrough
+deepreinforcementlearning.Nature518,7540(2015),529–533.
+[31] PatrenahalliM.NarendraandKeinosukeFukunaga.1977.Abranchandboundalgorithmforfeaturesubsetselection.
+IEEETransactionsonComputers9(1977),917–922.
+[32] ZhiyuanNing,ChunlinTian,MengXiao,WeiFan,PengyangWang,LiLi,PengfeiWang,andYuanchunZhou.2024.
+FedGCS:Agenerativeframeworkforefficientclientselectioninfederatedlearningviagradient-basedoptimization.
+arXiv:2405.06312.Retrievedfromhttps://doi.org/10.48550/arXiv.2405.06312
+[33] HanchuanPeng,FuhuiLong,andChrisDing.2005.Featureselectionbasedonmutualinformationcriteriaofmax-
+dependency,max-relevance,andmin-redundancy.IEEETransactionsonPatternAnalysisandMachineIntelligence27,
+8(2005),1226–1238.
+[34] BarbaraPes,NicolettaDessì,andMartaAngioni.2017.Exploitingtheensembleparadigmforstablefeatureselection:
+Acasestudyonhigh-dimensionalgenomicdata.InformationFusion35(2017),132–147.
+[35] S.FouziaSayeedunnisa,NagaratnaPHegde,andKhaleelUrRahmanKhan.2018.Wilcoxonsignedrankbased
+featureselectionforsentimentclassification.InProceedingsoftheSecondInternationalConferenceonComputational
+IntelligenceandInformatics(ICCII’17).Springer,293–310.
+[36] BorjaSeijo-Pardo,VerónicaBolón-Canedo,andAmparoAlonso-Betanzos.2017.Testingdifferentensembleconfigura-
+tionsforfeatureselection.NeuralProcessingLetters46,3(2017),857–880.
+[37] BorjaSeijo-Pardo,VerónicaBolón-Canedo,andAmparoAlonso-Betanzos.2019.Ondevelopinganautomaticthreshold
+appliedtofeatureselectionensembles.InformationFusion45(2019),227–245.
+[38] BorjaSeijo-Pardo,IagoPorto-Díaz,VerónicaBolón-Canedo,andAmparoAlonso-Betanzos.2017.Ensemblefeature
+selection:Homogeneousandheterogeneousapproaches.Knowledge-BasedSystems118(2017),124–139.
+[39] V.Sugumaran,V.Muralidharan,andK.I.Ramachandran.2007.Featureselectionusingdecisiontreeandclassification
+throughproximalsupportvectormachineforfaultdiagnosticsofrollerbearing.MechanicalSystemsandSignal
+Processing21,2(2007),930–942.
+[40] IkramSumaiyaThaseenandCherukuriAswaniKumar.2017.Intrusiondetectionmodelusingfusionofchi-square
+featureselectionandmulticlassSVM.JournalofKingSaudUniversity-ComputerandInformationSciences29,4(2017),
+462–472.
+[41] RobertTibshirani.1996.Regressionshrinkageandselectionviathelasso.JournaloftheRoyalStatisticalSociety:Series
+B(Methodological)58,1(1996),267–288.
+[42] AshishVaswani,NoamShazeer,NikiParmar,JakobUszkoreit,LlionJones,AidanN.Gomez,LukaszKaiser,andIllia
+Polosukhin.2017.Attentionisallyouneed.AdvancesinNeuralInformationProcessingSystems30(2017),5998–6008.
+[43] JoãoVitorino,MiguelSilva,EvaMaia,andIsabelPraça.2024.Reliablefeatureselectionforadversariallyrobust
+cyber-attackdetection.AnnalsofTelecommunicationsabs/2404.04188(2024),1–15.
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
+FeatureSelectionasDeepSequentialGenerativeLearning 221:21
+[44] XinyuanWang,DongjieWang,WangyangYing,RuiXie,HaifengChen,andYanjieFu.2024.Knockoff-guidedfeature
+selectionviaasinglepre-trainedreinforcedagent.arXiv:2403.04015.
+[45] MengXiao,DongjieWang,MinWu,KunpengLiu,HuiXiong,YuanchunZhou,andYanjieFu.2024.Traceable
+group-wiseself-optimizingfeaturetransformationlearning:Adualoptimizationperspective.ACMTransactionson
+KnowledgeDiscoveryfromData18,4(2024),1–22.
+[46] MengXiao,DongjieWang,MinWu,PengfeiWang,YuanchunZhou,andYanjieFu.2023.Beyonddiscreteselection:
+Continuousembeddingspaceoptimizationforgenerativefeatureselection.InProceedingsoftheIEEEInternational
+ConferenceonDataMining(ICDM’23).IEEE,688–697.
+[47] JihoonYangandVasantHonavar.1998.FeatureSubsetSelectionUsingaGeneticAlgorithm.InFeatureExtraction,
+ConstructionandSelection:ADataMiningPerspective,HuanLiuandHiroshiMotoda(Eds.),Springer,Boston,MA,
+117–136.DOI:https://doi.org/10.1007/978-1-4615-5725-8_8
+[48] YimingYangandJanO.Pedersen.1997.Acomparativestudyonfeatureselectionintextcategorization.InInternational
+ConferenceonMachineLearning(ICML),Vol.97.Nashville,TN,USA,35.
+[49] WangyangYing,DongjieWang,XuanmingHu,YuanchunZhou,CharuC.Aggarwal,andYanjieFu.2024.Unsupervised
+generativefeaturetransformationviagraphcontrastivepre-trainingandmulti-objectivefine-tuning.arXiv:2405.16879.
+[50] WangyangYing,DongjieWang,KunpengLiu,LeileiSun,andYanjieFu.2023.Self-optimizingfeaturegenerationvia
+categoricalhashingrepresentationandhierarchicalreinforcementcrossing.InProceedingsoftheIEEEInternational
+ConferenceonDataMining(ICDM’23).IEEE,748–757.
+[51] LeiYuandHuanLiu.2003.Featureselectionforhigh-dimensionaldata:Afastcorrelation-basedfiltersolution.In
+Proceedingsofthe20thInternationalConferenceonMachineLearning(ICML’03),856–863.
+[52] WeiliangZhang,ZhenMeng,DongjieWang,MinWu,KunpengLiu,YuanchunZhou,andMengXiao.2024.Enhanced
+geneselectioninsingle-cellgenomics:Pre-filteringsynergyandreinforcedoptimization.arXiv:2406.07418.Retrieved
+fromhttps://doi.org/10.48550/arXiv.2406.07418
+[53] NinaZhouandLipoWang.2007.AmodifiedT-testfeatureselectionmethodanditsapplicationontheHapMap
+genotypedata.Genomics,Proteomics&Bioinformatics5,3–4(2007),242–249.
+Received6March2024;revised5July2024;accepted5August2024
+ACMTransactionsonKnowledgeDiscoveryfromData,Vol.18,No.9,Article221.Publicationdate:October2024.
