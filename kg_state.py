@@ -32,6 +32,19 @@ STAGES = ("convert", "preprocess", "extract")
 TASK_TIMEOUT = 600  # 10 分钟
 
 
+def resolve_db_path(input_dir=None) -> Path:
+    """根据传入目录自动推断 DB 路径，统一存放在 db/ 文件夹下。
+    input_dir 可以是 Path 或 str，取其最后一段目录名作为 DB 文件名。
+    例: downloads/sample  → db/sample.db
+        markdown/sample   → db/sample.db
+        None              → db/default.db
+    """
+    db_dir = BASE_DIR / "db"
+    db_dir.mkdir(exist_ok=True)
+    name = Path(input_dir).name if input_dir else "default"
+    return db_dir / f"{name}.db"
+
+
 def _now() -> str:
     """返回格式化时间字符串：月/日/年/时:分:秒"""
     return datetime.now().strftime("%m/%d/%Y/%H:%M:%S")
@@ -175,7 +188,8 @@ class StateDB:
 
     def check_and_set_hash(self, stem: str, content_hash: str) -> str | None:
         """尝试写入 content_hash。
-        若哈希已存在（重复文件），返回已有文件的 stem；否则写入并返回 None。
+        若哈希已存在且属于其他文件（真正的重复），返回已有文件的 stem；
+        若哈希属于自身（断点续跑场景），或首次写入，返回 None。
         线程安全：并发冲突时通过捕获唯一约束异常处理。
         """
         with self._conn() as conn:
@@ -183,6 +197,8 @@ class StateDB:
                 "SELECT stem FROM papers WHERE content_hash=?", (content_hash,)
             ).fetchone()
             if existing:
+                if existing["stem"] == stem:
+                    return None  # 自己找到自己，断点续跑，不算重复
                 return existing["stem"]
             try:
                 conn.execute(
@@ -190,11 +206,11 @@ class StateDB:
                     (content_hash, _now(), stem)
                 )
             except Exception:
-                # 并发冲突：另一个线程刚写入了相同哈希，查出它是谁
                 row = conn.execute(
                     "SELECT stem FROM papers WHERE content_hash=?", (content_hash,)
                 ).fetchone()
-                return row["stem"] if row else None
+                if row and row["stem"] != stem:
+                    return row["stem"]
         return None
 
     def set_extract_model(self, stem: str, model: str, prompt_tokens: int = 0, completion_tokens: int = 0):

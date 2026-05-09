@@ -342,11 +342,14 @@ def build_output(meta_from_preprocess: dict, kg_parsed: dict, doc_id: str, model
 
 # ─── 抽取主逻辑 ─────────────────────────────────────────────
 
-def load_meta(stem: str) -> dict | None:
-    """从 kg_output/ 读取 preprocess 写入的结果。"""
-    out_path = OUTPUT_DIR / f"{stem}.json"
+def load_meta(md_path: Path) -> dict | None:
+    """从 kg_output/ 读取 preprocess 写入的结果，路径镜像 markdown/ 的子目录结构。"""
+    out_path = OUTPUT_DIR / md_path.relative_to(MARKDOWN_DIR).with_suffix(".json")
     if not out_path.exists():
-        return None
+        # 兼容旧的平铺结构
+        out_path = OUTPUT_DIR / f"{md_path.stem}.json"
+        if not out_path.exists():
+            return None
     return json.loads(out_path.read_text(encoding="utf-8"))
 
 
@@ -366,7 +369,7 @@ def extract_one(md_path, client, model, max_input_chars, temperature, debug, str
     if debug: debug_info["processed_text"] = text
 
     # 读取 preprocess 结果（格式为 {"metadata": {...}, "entries": []}）
-    file_data = load_meta(md_path.stem)
+    file_data = load_meta(md_path)
     if not file_data:
         print(f"  ⚠ 未找到 kg_output/{md_path.stem}.json，请先运行 kg_preprocess.py")
         return None, debug_info, token_usage
@@ -450,9 +453,16 @@ def main():
         print("⚠ 并发模式下自动关闭 --stream")
         stream = False
 
-    # 初始化状态库
-    from kg_state import StateDB
-    db = StateDB()
+    # 初始化状态库（DB 文件名根据输入目录自动命名）
+    from kg_state import StateDB, resolve_db_path
+    _input_dir = None
+    if args and len(args) == 1:
+        _p = Path(args[0])
+        if not _p.is_absolute() and (MARKDOWN_DIR / _p).is_dir():
+            _input_dir = MARKDOWN_DIR / _p
+        elif _p.is_dir():
+            _input_dir = _p
+    db = StateDB(resolve_db_path(_input_dir))
     if reset_failed:
         db.reset_failed("extract")
 
@@ -487,7 +497,8 @@ def main():
                     db.mark_failed(stem, "extract", "preprocess 结果不存在")
                     continue
 
-                out_path = OUTPUT_DIR / f"{stem}.json"
+                out_path = OUTPUT_DIR / md_path.relative_to(MARKDOWN_DIR).with_suffix(".json")
+                out_path.parent.mkdir(parents=True, exist_ok=True)
                 out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 
                 if debug:

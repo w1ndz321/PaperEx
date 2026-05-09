@@ -136,8 +136,8 @@ def main():
         return
 
     # 初始化状态库
-    from kg_state import StateDB
-    db = StateDB()
+    from kg_state import StateDB, resolve_db_path
+    db = StateDB(resolve_db_path(input_dir))
     db.register_files([p.stem for p in pdfs])
 
     min_md_chars = int(os.environ.get("MIN_MD_CHARS", "10000"))

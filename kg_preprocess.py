@@ -32,7 +32,8 @@ BASE_DIR = Path(__file__).parent
 
 
 def process_one(md_path: Path, client: OpenAI, model: str, cfg: dict, force: bool, stream: bool) -> bool:
-    out_path = OUTPUT_DIR / f"{md_path.stem}.json"
+    rel = md_path.relative_to(MARKDOWN_DIR)
+    out_path = OUTPUT_DIR / rel.with_suffix(".json")
     if out_path.exists() and not force:
         print(f"[跳过] {md_path.name}")
         return False
@@ -95,6 +96,7 @@ def process_one(md_path: Path, client: OpenAI, model: str, cfg: dict, force: boo
         },
         "entries": [],
     }
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  → {out_path.name}\n")
     return True, usage
@@ -159,9 +161,16 @@ def main():
         print("没有找到 MD 文件")
         return
 
-    # 初始化状态库
-    from kg_state import StateDB
-    db = StateDB()
+    # 初始化状态库（DB 文件名根据输入目录自动命名）
+    from kg_state import StateDB, resolve_db_path
+    _input_dir = None
+    if args and len(args) == 1:
+        _p = Path(args[0])
+        if not _p.is_absolute() and (MARKDOWN_DIR / _p).is_dir():
+            _input_dir = MARKDOWN_DIR / _p
+        elif _p.is_dir():
+            _input_dir = _p
+    db = StateDB(resolve_db_path(_input_dir))
     if reset_failed:
         db.reset_failed("preprocess")
 
@@ -196,7 +205,7 @@ def main():
                 continue
 
             # force 模式：直接处理；非 force：若已有输出则跳过
-            out_path = OUTPUT_DIR / f"{stem}.json"
+            out_path = OUTPUT_DIR / md_path.relative_to(MARKDOWN_DIR).with_suffix(".json")
             if out_path.exists() and not force:
                 import json as _json
                 existing = _json.loads(out_path.read_text(encoding="utf-8"))
