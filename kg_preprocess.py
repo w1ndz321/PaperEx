@@ -80,7 +80,15 @@ def process_one(md_path: Path, client: OpenAI, model: str, cfg: dict, force: boo
 
     doc_id = generate_doc_id(md_meta.get("title"), md_path.stem)
 
-    # Step 5: 写出（只有 metadata，entries 为空）
+    # 读取已有 entries（重跑 preprocess 时不覆盖 extract 结果）
+    existing_entries = []
+    if out_path.exists():
+        try:
+            existing_entries = json.loads(out_path.read_text(encoding="utf-8")).get("entries", [])
+        except Exception:
+            pass
+
+    # Step 5: 写出 metadata，保留已有 entries
     result = {
         "metadata": {
             "doc_id": doc_id,
@@ -94,7 +102,7 @@ def process_one(md_path: Path, client: OpenAI, model: str, cfg: dict, force: boo
             "secondary_disciplines": discipline.get("secondary_disciplines"),
             "keywords": md_meta.get("_keywords_from_paper") or discipline.get("keywords", []),
         },
-        "entries": [],
+        "entries": existing_entries,
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -10,7 +10,7 @@
 | 内容重复跳过 | 7 篇 |
 | 知识条目总计 | 6,818 条 |
 | 平均每篇 | 47.0 条 |
-
+1
 ## 与 v1 核心对比
 
 v1 问题：quantitative_result evidence 中位数仅 449 字符，perf_result 仅 582
