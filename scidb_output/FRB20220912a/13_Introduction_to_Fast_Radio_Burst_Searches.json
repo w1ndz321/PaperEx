@@ -1,0 +1,519 @@
+{
+  "metadata": {
+    "doc_id": "doc_ae20576df3ad8a2f",
+    "source_file": "13_Introduction_to_Fast_Radio_Burst_Searches.md",
+    "title": "Inferring the Energy and Distance Distributions of Fast Radio Bursts using the First CHIME/FRB Catalog",
+    "year": 2021,
+    "doi": null,
+    "abstract": "Fast radio bursts (FRBs) are brief, energetic, typically extragalactic flashes of radio emission whose progenitors are largely unknown. Although studying the FRB population is essential for understanding how these astrophysical phenomena occur, such studies have been difficult to conduct without large numbers of FRBs and characterizable observational biases. Using the recently released catalog of 536 FRBs published by the Canadian Hydrogen Intensity Mapping Experiment/Fast Radio Burst (CHIME/FRB) collaboration, we present a study of the FRB population that also calibrates for selection effects. Assuming a Schechter function, we infer a characteristic energy cut-off of _E_ char = 2 _._ 38[+5] _−_ 1 _[.] ._[35] 64 _[×]_[ 10][41][erg][and][a][differential][power-law][index][of] _[γ]_[=] _[−]_[1] _[.]_[3][+0] _−_ 0 _[.] ._[7] 4[.][Simultaneously,][we] infer a volumetric rate of [7 _._ 3[+8] _−_ 3 _[.] ._[8] 8[(stat.)] _−_[+2] 1 _[.] ._[0] 8[(sys.)]] _[×]_[10][4][Gpc] _[−]_[3][yr] _[−]_[1][above][a][pivot][energy][of][10][39][erg] and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm _[−]_[3] , we find a median value of DMhost = 84[+69] _−_ 49[pc][cm] _[−]_[3][,][comparable][with][values][typically] used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results. Finally, we infer the redshift \n\nCorresponding author: Kaitlyn Shin kshin@mit.edu \n\n2 \n\ndistribution of FRBs detected with CHIME, which will be tested with the localizations and redshifts enabled by the upcoming CHIME/FRB Outriggers project.",
+    "introduction": "Ever since fast radio bursts (FRBs) were first discovered (Lorimer et al. 2007; Thornton et al. 2013), their mysterious origin has been an open question with no simple resolution. Studying FRBs as a population can provide valuable insight into their nature, as well as their utility for cosmological applications (e.g., McQuinn 2014; Zheng et al. 2014; Zhou et al. 2014; Masui & Sigurdson 2015; Akahori et al. 2016; Madhavacheril et al. 2019). A natural way to study FRBs is through inferring their luminosity function, which can tell us about observables such as volumetric rate and maximum FRB energy (Luo et al. 2020). The inferred parameters can be compared with those of other known astrophysical events to better contextualize the question of FRB origins. However, populations studies of FRBs are challenging — as a population, FRBs have been observed in a variety of observational contexts; it is yet unknown how many distinct populations there may be, and whether there is a dominant progenitor channel (James et al. 2022a). For example, some FRBs have been observed to repeat, while many more have only been observed as apparent one-off bursts. Indeed, recent studies have put forth the possibility, on the basis of observational properties such as pulse widths and observed frequency bandwidths, that repeaters and non-repeaters may comprise two distinct populations of FRBs (e.g., Cui et al. 2021; Pleunis et al. 2021). \n\nFurthermore, FRBs have been found to be associated with a variety of types of galaxies, and in some cases, localized to Galactic regions with ≲arcsecond precision. Repeaters have been shown to originate both within star-forming regions (e.g., Marcote et al. 2020; Nimmo et al. 2022) and offset by _∼_ 250 pc from the closest knot of local star formation (e.g., Tendulkar et al. 2021). By contrast, the repeating FRB 20200120E was localized to a globular cluster associated with M81 (Bhardwaj et al. 2021; Kirsten et al. 2022), surprising given that globular clusters host a much older stellar population than do star-forming regions. FRB-like bursts have also been observed from the Galactic magnetar SGR 1935+2154 (CHIME/FRB Collaboration et al. 2020a; Bochenek et al. 2020; Kirsten et al. 2021). It is possible that more such FRB-like events occur in the Milky Way, but remain undetected due to interstellar medium (ISM) scattering (Gohar & Flynn 2022). FRB localizations are not limited to repeating bursts; apparent one-offs have also been localized to host galaxies, and in some cases, the localizations are precise enough to be associated with re- \n\ngions of low star formation rate as well (e.g., Bannister et al. 2019; Heintz et al. 2020; Bhandari et al. 2020; Li & Zhang 2020; Mannings et al. 2021). A comprehensive overview of the breadth of such localization results can be found in Petroff et al. (2022). \n\nNonetheless, there are many more FRBs that have been detected than just the _∼_ 20 FRBs robustly associated with host galaxies. By 2020, there were over 100 verified FRBs[1] (Petroff et al. 2016), and as of writing, the number of verified FRB events is _∼_ 800; a full catalog of FRBs is maintained at the Transient Name Server (TNS).[2] Based on these numbers alone, it is clear that studying FRBs as a population based only on the subsample of FRBs with precise localizations has strong limitations — that is, optical follow-up is time-intensive and expensive, and cannot currently be feasibly pursued for the hundreds of detected FRBs. There is also valuable information possessed by the many FRBs that do not have host galaxy associations, e.g., FRB energetics and abundances. Using a larger sample of FRBs adds valuable information, and should be very beneficial for statistically constraining how FRB energies are distributed. However, the central challenge to measuring the FRB luminosity function is, again, the lack of precise distance (localization) information for the majority of FRBs. Without a good handle on distance, the FRB energetics, distances, and volumetric abundances are all degenerate. \n\nFor FRBs, the dispersion measure (DM) is the (imperfect) distance proxy that allows us to break this modeling degeneracy. Since we expect DM to correlate with distance, while brightness will anti-correlate, any correlation/anti-correlation in modeling between DM and brightness should be a distance effect, thus providing a distance scale. As the uncertainties when modeling FRB energetics, distances, and abundances all affect each other, it is important to work with these properties simultaneously to minimize bias. Luo et al. (2020) and James et al. (2022b) have recently implemented this approach to studying the FRB population. \n\nPreviously, in order to conduct large-number statistical studies of the FRB population, it was necessary to combine burst detections from multiple surveys or telescopes such as the Australian Square Kilometre Array Pathfinder (ASKAP) or the Parkes radio telescope (e.g., \n\n> 1 https://www.frbcat.org \n\n> 2 https://wis-tns.weizmann.ac.il \n\n3 \n\nLuo et al. 2020; James et al. 2022b). Using a heterogeneously observed sample of FRBs introduces differing, non-uniform selection effects that are difficult to calibrate. This motivates the use of FRBs observed from a single observing campaign to study the FRB population as a whole. Recently, the Canadian Hydrogen Intensity Mapping Experiment/Fast Radio Burst (CHIME/FRB) collaboration released a catalog of 536 FRBs, the largest sample of bursts detected thus far in a single survey, and hereafter referred to as “Catalog 1” (CHIME/FRB Collaboration et al. 2021). With Catalog 1, we now possess the ability to conduct a statistical study with uniform selection effects and probe the intrinsic FRB population with greater numbers and logistical simplicity. Crucially, the selection effects are carefully characterizable with the use of the CHIME/FRB injections system (Merryfield et al. 2022). With 536 bursts, the Catalog 1 sample dominates the currently available sample of observed FRBs. \n\nIn this paper, we present a study of FRB population parameters, including the intrinsic luminosity function, derived from the sample of Catalog 1 bursts. We fit a joint brightness–DM model developed by James et al. (2022b), and use formalism that accounts for selection effects detailed by CHIME/FRB Collaboration et al. (2021). The outline of this paper is as follows. In Section 2, we describe the datasets used for this analysis. Section 3 outlines key components of the model we are fitting to the Catalog 1 dataset, using the methodology described in Section 4. Results are presented in Section 5 and discussed in Section 6. Implications of our results for the CHIME/FRB Outriggers project are presented in Section 7, and we conclude in Section 8. We adopt Planck cosmological parameters (Planck Collaboration et al. 2020) throughout this analysis.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": "射电天文学"
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Fast Radio Bursts",
+      "CHIME/FRB",
+      "Luminosity Function",
+      "Dispersion Measure",
+      "Astrophysical Population"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:33.380726+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_ae20576df3ad8a2f_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are brief, energetic, typically extragalactic flashes of radio emission whose progenitors are largely unknown. Although studying the FRB population is essential for understanding how these astrophysical phenomena occur, such studies have been difficult to conduct without large numbers of FRBs and characterizable observational biases. Using the recently released catalog of 536 FRBs published by the Canadian Hydrogen Intensity Mapping Experiment/Fast Radio Burst (CHIME/FRB) collaboration, we present a study of the FRB population that also calibrates for selection effects. Assuming a Schechter function, we infer a characteristic energy cut-off of E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and a differential power-law index of γ = -1.3^{+0.7}_{-0.4}. Simultaneously, we infer a volumetric rate of [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^{4} Gpc^{-3} yr^{-1} above a pivot energy of 10^{39} erg and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm^{-3}, we find a median value of DM_host = 84^{+69}_{-49} pc cm^{-3}, comparable with values typically used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results. Finally, we infer the redshift distribution of FRBs detected with CHIME, which will be tested with the localizations and redshifts enabled by the upcoming CHIME/FRB Outriggers project."
+      },
+      "confidence": 0.99,
+      "term": "fast radio bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae20576df3ad8a2f_c2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, the Canadian Hydrogen Intensity Mapping Experiment/Fast Radio Burst (CHIME/FRB) collaboration released a catalog of 536 FRBs, the largest sample of bursts detected thus far in a single survey, and hereafter referred to as “Catalog 1” (CHIME/FRB Collaboration et al. 2021). With Catalog 1, we now possess the ability to conduct a statistical study with uniform selection effects and probe the intrinsic FRB population with greater numbers and logistical simplicity. Crucially, the selection effects are carefully characterizable with the use of the CHIME/FRB injections system (Merryfield et al. 2022). With 536 bursts, the Catalog 1 sample dominates the currently available sample of observed FRBs. In this paper, we present a study of FRB population parameters, including the intrinsic luminosity function, derived from the sample of Catalog 1 bursts. We fit a joint brightness–DM model developed by James et al. (2022b), and use formalism that accounts for selection effects detailed by CHIME/FRB Collaboration et al. (2021)."
+      },
+      "confidence": 0.98,
+      "term": "CHIME/FRB Catalog 1",
+      "normalized": "CHIME/FRB 第一目录",
+      "std_label": "Catalog 1"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae20576df3ad8a2f_c3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "For FRBs, the dispersion measure (DM) is the (imperfect) distance proxy that allows us to break this modeling degeneracy. Since we expect DM to correlate with distance, while brightness will anti-correlate, any correlation/anti-correlation in modeling between DM and brightness should be a distance effect, thus providing a distance scale. As the uncertainties when modeling FRB energetics, distances, and abundances all affect each other, it is important to work with these properties simultaneously to minimize bias. Luo et al. (2020) and James et al. (2022b) have recently implemented this approach to studying the FRB population."
+      },
+      "confidence": 0.97,
+      "term": "dispersion measure",
+      "normalized": "色散量",
+      "std_label": "DM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae20576df3ad8a2f_c4",
+      "evidence": {
+        "section": "Fluence–DM Distribution Model",
+        "original_text": "We model the FRB energy distribution with a Schechter (1976) function: P(E) = (E/E_char)^γ exp(-E/E_char). where E_char is the characteristic exponential cutoff energy and γ is the differential power-law index. Such a form for the energy/luminosity distribution of FRBs has also been considered by previous works (e.g., Fialkov et al. 2018; Luo et al. 2018, 2020; Niu et al. 2021). Note that we are assuming P(E) does not evolve with redshift."
+      },
+      "confidence": 0.96,
+      "term": "Schechter function",
+      "normalized": "Schechter函数",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae20576df3ad8a2f_c5",
+      "evidence": {
+        "section": "CHIME/FRB Outrigger Predictions",
+        "original_text": "For the majority of FRBs detected by CHIME/FRB, the localization precision is insufficient for identifying host galaxies for these bursts. Host galaxies, and thus redshifts, for FRBs are highly desirable for both understanding the nature of FRB origins (Bhandari et al. 2022) and using them as cosmological probes (Masui & Sigurdson 2015). Enabling larger-scale localization abilities is a high-priority science goal for FRBs, and one that will be addressed with the CHIME/FRB Outriggers project (e.g., Leung et al. 2021; Cary et al. 2021; Mena-Parra et al. 2022; Cassanelli et al. 2022). Through CHIME/FRB Outriggers, CHIME-like outrigger telescopes will be deployed at continental baselines to form a very-long-baseline interferometry (VLBI) network. While CHIME/FRB Outriggers will trigger on a subset of sources observed by CHIME/FRB (e.g., not on low–S/N bursts), the VLBI network will still obtain near real-time, sub-arcsecond localization capability for hundreds of FRBs a year (Mena-Parra et al. 2022)."
+      },
+      "confidence": 0.95,
+      "term": "CHIME/FRB Outriggers project",
+      "normalized": "CHIME/FRB Outriggers项目",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae20576df3ad8a2f_r1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, the Canadian Hydrogen Intensity Mapping Experiment/Fast Radio Burst (CHIME/FRB) collaboration released a catalog of 536 FRBs, the largest sample of bursts detected thus far in a single survey, and hereafter referred to as “Catalog 1” (CHIME/FRB Collaboration et al. 2021). With Catalog 1, we now possess the ability to conduct a statistical study with uniform selection effects and probe the intrinsic FRB population with greater numbers and logistical simplicity. Crucially, the selection effects are carefully characterizable with the use of the CHIME/FRB injections system (Merryfield et al. 2022). With 536 bursts, the Catalog 1 sample dominates the currently available sample of observed FRBs. In this paper, we present a study of FRB population parameters, including the intrinsic luminosity function, derived from the sample of Catalog 1 bursts. We fit a joint brightness–DM model developed by James et al. (2022b), and use formalism that accounts for selection effects detailed by CHIME/FRB Collaboration et al. (2021)."
+      },
+      "confidence": 0.94,
+      "head": "doc_ae20576df3ad8a2f_c2",
+      "relation_type": "uses",
+      "relation_surface": "present a study of FRB population parameters, including the intrinsic luminosity function, derived from the sample of Catalog 1 bursts",
+      "tail": "doc_ae20576df3ad8a2f_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae20576df3ad8a2f_r2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "For FRBs, the dispersion measure (DM) is the (imperfect) distance proxy that allows us to break this modeling degeneracy. Since we expect DM to correlate with distance, while brightness will anti-correlate, any correlation/anti-correlation in modeling between DM and brightness should be a distance effect, thus providing a distance scale. As the uncertainties when modeling FRB energetics, distances, and abundances all affect each other, it is important to work with these properties simultaneously to minimize bias. Luo et al. (2020) and James et al. (2022b) have recently implemented this approach to studying the FRB population."
+      },
+      "confidence": 0.93,
+      "head": "doc_ae20576df3ad8a2f_c3",
+      "relation_type": "measures",
+      "relation_surface": "is the (imperfect) distance proxy",
+      "tail": "doc_ae20576df3ad8a2f_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae20576df3ad8a2f_r3",
+      "evidence": {
+        "section": "Fluence–DM Distribution Model",
+        "original_text": "We model the FRB energy distribution with a Schechter (1976) function: P(E) = (E/E_char)^γ exp(-E/E_char). where E_char is the characteristic exponential cutoff energy and γ is the differential power-law index. Such a form for the energy/luminosity distribution of FRBs has also been considered by previous works (e.g., Fialkov et al. 2018; Luo et al. 2018, 2020; Niu et al. 2021). Note that we are assuming P(E) does not evolve with redshift."
+      },
+      "confidence": 0.92,
+      "head": "doc_ae20576df3ad8a2f_c4",
+      "relation_type": "models",
+      "relation_surface": "We model the FRB energy distribution with a Schechter (1976) function",
+      "tail": "doc_ae20576df3ad8a2f_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae20576df3ad8a2f_r4",
+      "evidence": {
+        "section": "CHIME/FRB Outrigger Predictions",
+        "original_text": "For the majority of FRBs detected by CHIME/FRB, the localization precision is insufficient for identifying host galaxies for these bursts. Host galaxies, and thus redshifts, for FRBs are highly desirable for both understanding the nature of FRB origins (Bhandari et al. 2022) and using them as cosmological probes (Masui & Sigurdson 2015). Enabling larger-scale localization abilities is a high-priority science goal for FRBs, and one that will be addressed with the CHIME/FRB Outriggers project (e.g., Leung et al. 2021; Cary et al. 2021; Mena-Parra et al. 2022; Cassanelli et al. 2022). Through CHIME/FRB Outriggers, CHIME-like outrigger telescopes will be deployed at continental baselines to form a very-long-baseline interferometry (VLBI) network. While CHIME/FRB Outriggers will trigger on a subset of sources observed by CHIME/FRB (e.g., not on low–S/N bursts), the VLBI network will still obtain near real-time, sub-arcsecond localization capability for hundreds of FRBs a year (Mena-Parra et al. 2022)."
+      },
+      "confidence": 0.91,
+      "head": "doc_ae20576df3ad8a2f_c5",
+      "relation_type": "enhances",
+      "relation_surface": "will be addressed with the CHIME/FRB Outriggers project",
+      "tail": "doc_ae20576df3ad8a2f_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_ae20576df3ad8a2f_d1",
+      "evidence": {
+        "section": "2. DATASET",
+        "original_text": "The Catalog 1 sample released by CHIME/FRB contains 536 bursts observed between from 2018 July 25 to 2019 July 1. In the work presented by CHIME/FRB Collaboration et al. (2021), the population analysis of Catalog 1 bursts considered six observed FRB properties measured for each burst: fluence (F), dispersion measure (DM), scattering timescale (τ), pulse width (w), spectral index (denoted with γ in CHIME/FRB Collaboration et al. (2021), but denoted with α in this paper), and spectral running (r). These observed properties were modeled by a least-squares fitting routine called `fitburst` which processes the intensity data of FRBs offline and fits the two-dimensional dynamic spectrum with a 2D analytic model. For bursts with one or more components i, `fitburst` models DM, burst time of arrival (tarr,i), signal amplitude (Ai), temporal width (wi), power-law spectral index (αi), spectral running (ri), and scattering timescale (τ). The mathematical definitions of these components can be found in Section 3.3 of CHIME/FRB Collaboration et al. (2021). The same DM and τ are assumed for all sub-bursts, and we also assume τ ∝ ν−4 (Lang 1971; Lorimer & Kramer 2012), with 600 MHz as the reference frequency for scattering. For the small minority of bursts with complex structure in Catalog 1, if there was high enough S/N, `fitburst` was used to optimize the structure. Dimmer bursts may have been over-dedispersed, especially for the bursts with downward-drifting structure, but the effect is likely minimal (i.e., no more than a few DM units). For each FRB, `fitburst` was run twice: once with τ fixed to 0, and once allowing τ to vary. In order to choose the preferred model, an F-test was used to compare the χ2 values from both models, adopting a threshold of p < 0.001 to determine the significance of scattering. Electron density models of the Milky Way DM, NE2001 (Cordes & Lazio 2002) and YMW2016 (Yao et al. 2017), were used in combination with the DM value determined by `fitburst` to validate the extragalactic nature of each FRB. Further details about `fitburst` can be found in Section 3.3 of CHIME/FRB Collaboration et al. (2021)."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB Catalog 1 observations",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_ae20576df3ad8a2f_d2",
+      "evidence": {
+        "section": "2. DATASET",
+        "original_text": "In order to properly characterize and account for instrumental effects when inferring the intrinsic distributions of FRB properties, a synthetic signal injection system was designed and implemented (Merryfield et al. 2022). Synthetically generated pulses were injected into the software detection system in order to allow for the accounting of real-time detection effects such as the RFI environment. These pulses will be hereafter referred to as 'injections.' There are some important properties to note for the population of synthetic bursts injected into the real-time detection pipeline, which are briefly noted here but elaborated on by CHIME/FRB Collaboration et al. (2021). Of the Ninj = 5 × 106 total injected FRBs assigned random locations on the sky, some locations were automatically discarded: locations below the horizon, where the band-averaged primary beam response was < 10−2, and where the response was < 10−3 for all 1024 synthesized beams. The fraction of surviving sky locations is fsky = 0.0277. This 'forward-modeling' method, using the beam models to simulate fsky, was employed to account for the beam response of the telescope on the sky. Each of these FRBs had properties drawn from initial probability density functions Pinit(F), Pinit(DM), Pinit(τ), Pinit(w), and Pinit(α, r), designed to fully and densely sample phase space of observed properties in the catalog. Of these 5 × 106 injected FRBs, a cut was applied to events with little chance of being detected, and 96,942 events were ultimately scheduled for injection. Due to system errors that affected an effectively random subset of injections, 84,697 bursts were successfully injected with an injection efficiency εinj = 0.874 in 2020 August, with 39,638 events detected and assigned a signal-to-noise ratio (S/N) by the CHIME/FRB detection pipeline. Full technical details on how the injections are detected by the real-time pipeline can be found in CHIME/FRB Collaboration et al. (2021) and Merryfield et al. (2022)."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB Catalog 1 injections",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_ae20576df3ad8a2f_d3",
+      "evidence": {
+        "section": "2. DATASET",
+        "original_text": "Alongside the selection functions, the following selection-corrected fiducial distributions were determined: Pfid(F), Pfid(DM), Pfid(τ), and Pfid(w). For each of these respective properties, these fiducial distributions provide a reasonable description to the Catalog 1 data. For details on their derivation, refer to Section 6.1 and Appendix C of CHIME/FRB Collaboration et al. (2021). Here we note that to obtain these distributions, a number of simplifying assumptions were made in the Catalog 1 analysis, notably that the F–DM distribution factorizes into a power law in F and a free function of DM. In this paper, we improve upon this F–DM relation and use a more realistic one following the model detailed by James et al. (2022b). Consistent with the framework we used to obtain the fiducial distributions in Catalog 1, we hold the distributions of τ and w to the obtained fiducial models Pfid(τ) and Pfid(w) while fitting for a new joint distribution of F and DM here. For simplicity of notation, we define the parameter set Θ = {τ, w} such that P(Θ) = P(τ)P(w), and ∫ dΘ P(Θ) = 1."
+      },
+      "confidence": 0.9,
+      "name": "CHIME/FRB Catalog 1 fiducial property distributions",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae20576df3ad8a2f_ds1",
+      "evidence": {
+        "section": "2. DATASET",
+        "original_text": "Therefore, bursts affected by the following criteria were excluded from both the Catalog 1 sample as well as from the corresponding injections campaign sample: 1. Events detected during pre-commissioning, during epochs of low sensitivity, or on days with software upgrades. These events were correspondingly excluded from the Catalog 1 survey duration time, ∆t. 2. Far-sidelobe events, for which the primary beam response is poorly understood. 3. Events with a detected S/N < 12, to avoid human inspection error affecting the completeness of identifying low S/N FRBs. 4. Events with DM < 1.5 max(DMNE2001, DMYMW16), to avoid mistakenly classifying extragalactic bursts as Galactic or vice versa. 5. Events with DM < 100 pc cm−3. 6. Highly scattered events (τ > 10ms at 600 MHz), which are poorly observationally constrained due to a strong selection bias against them from the CHIME instrument, which would dominate uncertainties. 7. Repeat bursts after the first-detected burst from any known repeating FRBs in the sample. The first exclusion criterion (requiring S/N ≥ 12) dominates the 271 total excluded bursts in the populations analysis conducted by CHIME/FRB Collaboration et al. (2021). All of the above exclusion criteria are used in this analysis as well; for more information about these cuts, refer to Sections 5 and 6.1 in CHIME/FRB Collaboration et al. (2021). One further exclusion criterion than was used by CHIME/FRB Collaboration et al. (2021) is used in this analysis. In addition to excluding events with DM < 100 pc cm−3, in order to minimize the variance in our results involved with the Milky Way contribution to the DM, we also exclude events with DMNE2001 > 100 pc cm−3. This was done because in our model, we take a fixed value of DMMW to be 80 pc cm−3; further discussion on this can be found in Section 5.3.1. It is worth noting that this extra exclusion criteria brings the total Catalog 1 sample to 225 bursts, down from the sample of 265 bursts used by CHIME/FRB Collaboration et al. (2021). Thus, hereafter, when referring to the Catalog 1 sample used for populations studies in this analysis, we are referring to the 225 bursts that survived all of these cuts."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Exclusion criteria for robust FRB statistics in population analysis"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae20576df3ad8a2f_ds2",
+      "evidence": {
+        "section": "3. FLUENCE–DM DISTRIBUTION MODEL",
+        "original_text": "The model we aim to fit to the Catalog 1 data is a joint rate distribution of F and DM, R(F, DM|λ). However, as noted in Sections 2.1 and 2.3, observed fluence measurements are uncertain estimates of the true fluence. While the synthetic bursts are assigned a 'true' fluence value before injection, there is no good way to forward-model how their fluence values would be 'measured' by the real-time detection pipeline. Thus, directly comparing the 'true' fluence values of the injected bursts with the 'observed' fluence values of the Catalog 1 bursts would be subject to systematics not yet fully characterized. The better alternative is to use S/N as a proxy for fluence when fitting for R(F, DM|λ), as fluence is strongly correlated with S/N with known calibration factors, with the beam response also taken into account (Merryfield et al. 2022). Thus, we wish to make a prediction for the observed (as opposed to intrinsic) CHIME/FRB Catalog 1 DM–S/N distribution using a given fluence–DM model. The next section will detail how we fit for the S/N–DM distribution, and by extension, obtain the parameters λ in R(F, DM)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Use of signal-to-noise ratio (S/N) as a proxy for fluence due to measurement uncertainties"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae20576df3ad8a2f_ds3",
+      "evidence": {
+        "section": "3. FLUENCE–DM DISTRIBUTION MODEL",
+        "original_text": "We model the FRB energy distribution with a Schechter (1976) function P(E) = (E/Echar)γ exp(−E/Echar), where Echar is the characteristic exponential cutoff energy and γ is the differential power-law index. Such a form for the energy/luminosity distribution of FRBs has also been considered by previous works (e.g., Fialkov et al. 2018; Luo et al. 2018, 2020; Niu et al. 2021). Note that we are assuming P(E) does not evolve with redshift. We also model the evolution of the FRB population by smoothly scaling the star formation rate (SFR) with a power-law index n, Φ(z) = Φ0 (SFR(z)/SFR(0))n, where Φ(z) represents the rate of FRBs per comoving volume above a fixed pivot energy Epivot, and SFR(z) (Equation A9) is from Madau & Dickinson (2014). A pivot energy is required for us to be able to quote a rate of FRBs; we choose a pivot energy of 1039 erg under the assumption of spectral bandwidth at 1 GHz (see also Appendix A.1). This pivot energy is above the threshold of ruled out minimum FRB energies (i.e., James et al. (2022b) rules out Emin > 1038.5 erg at 90% C.L.). The parameter Φ0 is the volumetric rate in units Gpc−3 yr−1 at z = 0. The population redshift evolution with the star formation history (SFH) is parameterized by n, where n = 0 would imply no evolution with cosmic SFH and n = 1 would imply evolution that perfectly traces the cosmic SFH. This model also allows for the possibility of FRB progenitors that evolve faster than the SFH of the universe (e.g., n > 1). Thus, the free parameters in λ1 are Φ0, Echar, γ, the spectral index α, and n. It is worth noting that α comes into the model in the conversion from E to F in Equation A4, such that this model assumes the intrinsic α is the same for every FRB. The 'rate interpretation' of α, further discussed in Section 5.4, Appendix B, and by James et al. (2022b), takes the other extreme where every FRB has a unique spectral index. As FRBs have been observed to have a wide range of spectral properties, the treatment of α is a systematic uncertainty that is model-dependent. The DM distribution accounts for contributions from the disk and halo of the Milky Way, cosmological contributions through the intergalactic medium (IGM; refer to Equation A12 in Section A.2), and contributions from the host galaxy of the FRB. The Milky Way contribution to the DM is fixed to be DMMW = 80 pc cm−3 (discussed in Section 5.3.1), and the host DM contribution is modeled with a log-normal distribution P(DM′host) = 1/(√(2π) σhost DM′host) exp(−(ln(DM′host) − µhost)2/(2σhost2)), where the host DM contribution is parameterized by µhost and σhost and corrected for redshift with DMhost = DM′host/(1 + z). (Note, the parameters as presented in the exponential of Equation 4 are in natural log space.) One thing that is not considered in this model is the fact that the ionized gas content of galaxy and galaxy ensembles evolve over the cosmic star formation history. Thus, the DM distribution would also evolve with redshift such that the observed DM distribution differs from the rest-frame one. While a simple scaling relation could be applied to model the cosmic evolution of DMhost (e.g., Luo et al. 2018), we choose not to in order to minimize the complexity of the model while keeping the physical parameters necessary to encapsulate the dependence of fluence and DM on distance. Thus, the free parameters in λ2 are µhost and σhost."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Modeling of FRB energy distribution with a Schechter function and host DM contribution with a log-normal distribution"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae20576df3ad8a2f_ds4",
+      "evidence": {
+        "section": "2. DATASET",
+        "original_text": "CHIME/FRB is a collaboration that uses the Canadian Hydrogen Intensity Mapping Experiment (CHIME; CHIME Collaboration et al. 2022), located at the Dominion Radio Astronomical Observatory (DRAO). The telescope consists of four 20-m × 100-m cylindrical paraboloid reflectors, each oriented N-S and populated with 256 equispaced dual-linear-polarization antennae. This telescope is sensitive to bursts in the frequency range 400–800 MHz. The CHIME/FRB instrument is designed such that it observes the entire sky at declination > -11◦ as it transits above each day; such a field of view is larger than other radio surveys or telescopes such as ASKAP or Parkes. Thus, CHIME/FRB is uniquely equipped to observe a unparalleled number of FRBs. Further technical details of the CHIME/FRB system can be found by CHIME/FRB Collaboration et al. (2018)."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "CHIME telescope specifications and observational parameters"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae20576df3ad8a2f_m1",
+      "evidence": {
+        "section": "2.1. CHIME/FRB Catalog 1 observations",
+        "original_text": "CHIME/FRB is a collaboration that uses the Canadian Hydrogen Intensity Mapping Experiment (CHIME; CHIME Collaboration et al. 2022), located at the Dominion Radio Astronomical Observatory (DRAO). The telescope consists of four 20-m × 100-m cylindrical paraboloid reflectors, each oriented N-S and populated with 256 equispaced dual-linear-polarization antennae. This telescope is sensitive to bursts in the frequency range 400–800 MHz. The CHIME/FRB instrument is designed such that it observes the entire sky at declination > -11◦ as it transits above each day; such a field of view is larger than other radio surveys or telescopes such as ASKAP or Parkes. Thus, CHIME/FRB is uniquely equipped to observe a unparalleled number of FRBs. Further technical details of the CHIME/FRB system can be found by CHIME/FRB Collaboration et al. (2018)."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB instrument",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae20576df3ad8a2f_m2",
+      "evidence": {
+        "section": "2.1. CHIME/FRB Catalog 1 observations",
+        "original_text": "These observed properties were modeled by a least-squares fitting routine called `fitburst` which processes the intensity data of FRBs offline and fits the two-dimensional dynamic spectrum with a 2D analytic model. For bursts with one or more components i, `fitburst` models DM, burst time of arrival (t arr,i), signal amplitude (Ai), temporal width (wi), power-law spectral index (αi), spectral running (ri), and scattering timescale (τ). The mathematical definitions of these components can be found in Section 3.3 of CHIME/FRB Collaboration et al. (2021). The same DM and τ are assumed for all sub-bursts, and we also assume τ ∝ ν−4 (Lang 1971; Lorimer & Kramer 2012), with 600 MHz as the reference frequency for scattering. For the small minority of bursts with complex structure in Catalog 1, if there was high enough S/N, `fitburst` was used to optimize the structure. Dimmer bursts may have been over-dedispersed, especially for the bursts with downward-drifting structure, but the effect is likely minimal (i.e., no more than a few DM units). For each FRB, `fitburst` was run twice: once with τ fixed to 0, and once allowing τ to vary. In order to choose the preferred model, an F-test was used to compare the χ2 values from both models, adopting a threshold of p < 0.001 to determine the significance of scattering. Electron density models of the Milky Way DM, NE2001 (Cordes & Lazio 2002) and YMW2016 (Yao et al. 2017), were used in combination with the DM value determined by `fitburst` to validate the extragalactic nature of each FRB. Further details about `fitburst` can be found in Section 3.3 of CHIME/FRB Collaboration et al. (2021)."
+      },
+      "confidence": 0.95,
+      "name": "fitburst",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae20576df3ad8a2f_m3",
+      "evidence": {
+        "section": "2.2. CHIME/FRB Catalog 1 injections",
+        "original_text": "In order to properly characterize and account for instrumental effects when inferring the intrinsic distributions of FRB properties, a synthetic signal injection system was designed and implemented (Merryfield et al. 2022). Synthetically generated pulses were injected into the software detection system in order to allow for the accounting of real-time detection effects such as the RFI environment. These pulses will be hereafter referred to as “injections.” There are some important properties to note for the population of synthetic bursts injected into the real-time detection pipeline, which are briefly noted here but elaborated on by CHIME/FRB Collaboration et al. (2021). Of the N inj = 5 × 106 total injected FRBs assigned random locations on the sky, some locations were automatically discarded: locations below the horizon, where the band-averaged primary beam response was < 10−2, and where the response was < 10−3 for all 1024 synthesized beams. The fraction of surviving sky locations is f sky = 0.0277. This “forward-modeling” method, using the beam models to simulate f sky, was employed to account for the beam response of the telescope on the sky. Each of these FRBs had properties drawn from initial probability density functions P init(F), P init(DM), P init(τ), P init(w), and P init(α, r), designed to fully and densely sample phase space of observed properties in the catalog. Of these 5 × 106 injected FRBs, a cut was applied to events with little chance of being detected, and 96,942 events were ultimately scheduled for injection. Due to system errors that affected an effectively random subset of injections, 84,697 bursts were successfully injected with an injection efficiency ϵ inj = 0.874 in 2020 August, with 39,638 events detected and assigned a signal-to-noise ratio (S/N) by the CHIME/FRB detection pipeline. Full technical details on how the injections are detected by the real-time pipeline can be found in CHIME/FRB Collaboration et al. (2021) and Merryfield et al. (2022)."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB injections system",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae20576df3ad8a2f_m4",
+      "evidence": {
+        "section": "4. METHODOLOGY",
+        "original_text": "We employ Markov chain Monte Carlo (MCMC) techniques to sample the likelihood while simultaneously fitting for all seven parameters in R(F, DM|λ). We use the logarithmic binned Poisson likelihood (Zyla et al. 2020): The likelihood was evaluated with 15 logarithmically spaced bins in S/N, ranging from 12–200, and 20 logarithmically spaced bins in DM, ranging from 100–3500 pc cm−3. The evaluation of the different candidate population models ζij is possible through the construction of weights Wm(F, DM, Θ, λ). The formalism is as follows. Each injected event m has its own parameter-dependent weight Wm(F, DM, Θ, λ), which means each weight depends on the properties of each synthetic burst. These weights are constructed to be the ratio of how many bursts were injected to how many occurred on the sky during the survey for a given set of model parameters λ. Thus, assuming the parameters λ are true, then for every injected burst with properties F and DM, we should have instead injected a number equal to Wm(F, DM, Θ, λ) in order to exactly match the observed sky population. To obtain the property-dependent weights Wm(F, DM, Θ, λ), for each synthetic burst m with properties F and DM, using the model parameters Θ and λ, we divide the full injected population of bursts on the sky by the initial injected population of bursts: The quantity R init(F, DM, Θ) is the full initial population of injected bursts, with units of bursts per F per DM per injections campaign. It is equivalent to the normalized initial population distribution of the injected synthetic bursts, P init(F, DM, Θ), multiplied by the total number of FRBs injected (N inj) corrected for the efficiency of injections (ϵ inj) and the sky fraction (f sky). That is, The model R(F, DM, Θ|λ) gives a rate in bursts per year. When multiplied by ∆t, the survey duration in days (∆t = 214.8 days), we can then get a rate of observed bursts per survey, which can be directly compared against R init(F, DM, Θ). Also, as mentioned at the end of Section 2.3, the distributions of Θ were held to the fiducial models found in Catalog 1. Therefore, where the fiducial distributions and initial distributions are all factorizable. Each synthetic burst can have an associated weight because each burst has “intrinsic” F and DM information associated with it. Because each burst also has “observed” S/N information, each weighted burst can be assigned a bin in ζij, thus allowing for ζij to be model-dependent (i.e., dependent on λ) and directly comparable to nij in the likelihood function (Equation 8). Note that the equations in this section are simply a more explicit definition of the weights also defined in CHIME/FRB Collaboration et al. (2021), wherein the weights were used only for obtaining the model parameters for P fid(F), P fid(DM), and P fid(Θ). For these distributions, the pre-factors used to accurately determine the rate (∆tf sky/N injϵ inj) do not matter."
+      },
+      "confidence": 0.95,
+      "name": "Markov chain Monte Carlo (MCMC)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae20576df3ad8a2f_x1",
+      "evidence": {
+        "section": "2.1. CHIME/FRB Catalog 1 observations",
+        "original_text": "CHIME/FRB is a collaboration that uses the Canadian Hydrogen Intensity Mapping Experiment (CHIME; CHIME Collaboration et al. 2022), located at the Dominion Radio Astronomical Observatory (DRAO). The telescope consists of four 20-m × 100-m cylindrical paraboloid reflectors, each oriented N-S and populated with 256 equispaced dual-linear-polarization antennae. This telescope is sensitive to bursts in the frequency range 400–800 MHz. The CHIME/FRB instrument is designed such that it observes the entire sky at declination > -11◦ as it transits above each day; such a field of view is larger than other radio surveys or telescopes such as ASKAP or Parkes. Thus, CHIME/FRB is uniquely equipped to observe a unparalleled number of FRBs. Further technical details of the CHIME/FRB system can be found by CHIME/FRB Collaboration et al. (2018). The Catalog 1 sample released by CHIME/FRB contains 536 bursts observed between from 2018 July 25 to 2019 July 1. In the work presented by CHIME/FRB Collaboration et al. (2021), the population analysis of Catalog 1 bursts considered six observed FRB properties measured for each burst: fluence (F), dispersion measure (DM), scattering timescale (τ), pulse width (w), spectral index (denoted with γ in CHIME/FRB Collaboration et al. (2021), but denoted with α in this paper), and spectral running (r). These observed properties were modeled by a least-squares fitting routine called `fitburst` which processes the intensity data of FRBs offline and fits the two-dimensional dynamic spectrum with a 2D analytic model. For bursts with one or more components i, `fitburst` models DM, burst time of arrival (t arr,i), signal amplitude (Ai), temporal width (wi), power-law spectral index (αi), spectral running (ri), and scattering timescale (τ). The mathematical definitions of these components can be found in Section 3.3 of CHIME/FRB Collaboration et al. (2021). The same DM and τ are assumed for all sub-bursts, and we also assume τ ∝ ν−4 (Lang 1971; Lorimer & Kramer 2012), with 600 MHz as the reference frequency for scattering. For the small minority of bursts with complex structure in Catalog 1, if there was high enough S/N, `fitburst` was used to optimize the structure. Dimmer bursts may have been over-dedispersed, especially for the bursts with downward-drifting structure, but the effect is likely minimal (i.e., no more than a few DM units). For each FRB, `fitburst` was run twice: once with τ fixed to 0, and once allowing τ to vary. In order to choose the preferred model, an F-test was used to compare the χ2 values from both models, adopting a threshold of p < 0.001 to determine the significance of scattering. Electron density models of the Milky Way DM, NE2001 (Cordes & Lazio 2002) and YMW2016 (Yao et al. 2017), were used in combination with the DM value determined by `fitburst` to validate the extragalactic nature of each FRB. Further details about `fitburst` can be found in Section 3.3 of CHIME/FRB Collaboration et al. (2021)."
+      },
+      "confidence": 0.95,
+      "task": "FRB population analysis using CHIME/FRB Catalog 1",
+      "setup": "CHIME/FRB telescope, 400–800 MHz frequency range, declination > -11◦ field of view, 536 bursts observed between 2018 July 25 to 2019 July 1"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae20576df3ad8a2f_x2",
+      "evidence": {
+        "section": "2.2. CHIME/FRB Catalog 1 injections",
+        "original_text": "In order to properly characterize and account for instrumental effects when inferring the intrinsic distributions of FRB properties, a synthetic signal injection system was designed and implemented (Merryfield et al. 2022). Synthetically generated pulses were injected into the software detection system in order to allow for the accounting of real-time detection effects such as the RFI environment. These pulses will be hereafter referred to as “injections.” There are some important properties to note for the population of synthetic bursts injected into the real-time detection pipeline, which are briefly noted here but elaborated on by CHIME/FRB Collaboration et al. (2021). Of the N inj = 5 × 106 total injected FRBs assigned random locations on the sky, some locations were automatically discarded: locations below the horizon, where the band-averaged primary beam response was < 10−2, and where the response was < 10−3 for all 1024 synthesized beams. The fraction of surviving sky locations is f sky = 0.0277. This “forward-modeling” method, using the beam models to simulate f sky, was employed to account for the beam response of the telescope on the sky. Each of these FRBs had properties drawn from initial probability density functions P init(F), P init(DM), P init(τ), P init(w), and P init(α, r), designed to fully and densely sample phase space of observed properties in the catalog. Of these 5 × 106 injected FRBs, a cut was applied to events with little chance of being detected, and 96,942 events were ultimately scheduled for injection. Due to system errors that affected an effectively random subset of injections, 84,697 bursts were successfully injected with an injection efficiency ϵ inj = 0.874 in 2020 August, with 39,638 events detected and assigned a signal-to-noise ratio (S/N) by the CHIME/FRB detection pipeline. Full technical details on how the injections are detected by the real-time pipeline can be found in CHIME/FRB Collaboration et al. (2021) and Merryfield et al. (2022)."
+      },
+      "confidence": 0.95,
+      "task": "selection effect calibration using synthetic injections",
+      "setup": "CHIME/FRB injections system, 5 × 106 total injected FRBs, 84,697 successfully injected bursts, 39,638 detected events"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae20576df3ad8a2f_x3",
+      "evidence": {
+        "section": "5. RESULTS",
+        "original_text": "Using the methodology described by CHIME/FRB Collaboration et al. (2021) and elaborated on in Section 4, we use the injections system to calibrate out selection effects while fitting this full population model, R(F, DM|λ), to the Catalog 1 data. We use the `emcee` package (Foreman-Mackey et al. 2013) to generate MCMC samples of the posterior, using `scipy.optimize.curve` ~~`f`~~ `it` to obtain the initial parameters for the MCMC chains. In order to ensure the posterior distribution is proportional to the likelihood in Equation 8, all of our parameters are drawn from uniform priors. We then run the MCMC sampler with 40 walkers, 2000 burn-in steps, and then 25000 steps after that. While there is no simple way to ensure convergence, the first and second halves of the chains show similar posterior distribution morphology to each other, heuristically indicating confidence our chains have converged (Hogg & Foreman-Mackey 2018). Additionally, the chains are longer than 75 times the integrated autocorrelation time for all parameters, with an acceptance fraction of ≈ 0.26 — within the range of recommended values (Foreman-Mackey et al. 2013). The results can be seen in Figure 1, generated using the `corner` package (Foreman-Mackey 2016). We quote the median of the posterior distributions, along with the 16% quantile as the lower 1 σ error bar and the 84% quantile as the upper 1 σ error bar, as generally recommended by Hogg & Foreman-Mackey (2018). These values are tabulated in Table 1. In order to verify the robustness of the MCMC sampling, we also redo our analysis on “mock” data. In order to get a mock CHIME/FRB Catalog 1 dataset, we took the full initial population of injected FRBs and resampled them with weights according to the best-fit model parameter values. We then ran the MCMC sampler with this mock Catalog 1 data and recovered all the best-fit model parameters to within 2 σ (most parameters to within 1 σ)."
+      },
+      "confidence": 0.95,
+      "task": "MCMC fitting of fluence-DM distribution model",
+      "setup": "MCMC sampler with 40 walkers, 2000 burn-in steps, 25000 steps, 15 logarithmic S/N bins (12–200), 20 logarithmic DM bins (100–3500 pc cm−3)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Assuming a Schechter function, we infer a characteristic energy cut-off of E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and a differential power-law index of γ = -1.3^{+0.7}_{-0.4}. Simultaneously, we infer a volumetric rate of [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^4 Gpc^{-3} yr^{-1} above a pivot energy of 10^{39} erg and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm^{-3}, we find a median value of DMhost = 84^{+69}_{-49} pc cm^{-3}, comparable with values typically used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results."
+      },
+      "confidence": 0.95,
+      "quantity": "characteristic exponential cutoff energy",
+      "value": 2.38,
+      "unit": "× 10^41 erg",
+      "context": "Schechter function energy distribution for FRBs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Assuming a Schechter function, we infer a characteristic energy cut-off of E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and a differential power-law index of γ = -1.3^{+0.7}_{-0.4}. Simultaneously, we infer a volumetric rate of [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^4 Gpc^{-3} yr^{-1} above a pivot energy of 10^{39} erg and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm^{-3}, we find a median value of DMhost = 84^{+69}_{-49} pc cm^{-3}, comparable with values typically used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results."
+      },
+      "confidence": 0.95,
+      "quantity": "differential power-law index",
+      "value": -1.3,
+      "unit": null,
+      "context": "Schechter function energy distribution for FRBs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Assuming a Schechter function, we infer a characteristic energy cut-off of E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and a differential power-law index of γ = -1.3^{+0.7}_{-0.4}. Simultaneously, we infer a volumetric rate of [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^4 Gpc^{-3} yr^{-1} above a pivot energy of 10^{39} erg and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm^{-3}, we find a median value of DMhost = 84^{+69}_{-49} pc cm^{-3}, comparable with values typically used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results."
+      },
+      "confidence": 0.95,
+      "quantity": "volumetric rate",
+      "value": 7.3,
+      "unit": "× 10^4 Gpc^{-3} yr^{-1}",
+      "context": "Above pivot energy of 10^{39} erg and below scattering timescale of 10 ms at 600 MHz",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Assuming a Schechter function, we infer a characteristic energy cut-off of E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and a differential power-law index of γ = -1.3^{+0.7}_{-0.4}. Simultaneously, we infer a volumetric rate of [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^4 Gpc^{-3} yr^{-1} above a pivot energy of 10^{39} erg and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm^{-3}, we find a median value of DMhost = 84^{+69}_{-49} pc cm^{-3}, comparable with values typically used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results."
+      },
+      "confidence": 0.95,
+      "quantity": "median host dispersion measure",
+      "value": 84,
+      "unit": "pc cm^{-3}",
+      "context": "Log-normal distribution modeling host DM contribution, assuming total Galactic contribution of 80 pc cm^{-3}",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Our best-fitting value for the spectral index in F ∝ ν^α is α = -1.39^{+0.86}_{-1.19}. However, one can also interpret α as a frequency-dependent rate; see Section 5.4 for details of this interpretation. For the parameter n which parameterizes evolution with the cosmic SFH, we find a best-fitting value of n = 0.96^{+0.81}_{-0.67}. As can be seen in Figure 1, the parameters α and n are strongly anti-correlated — intuitively, the more strongly FRBs appear to evolve with (or faster than) the cosmic SFH (higher n), the more sources would originate from further away and appear fainter, thus leading to a steeper observed 'true spectral index.' This degeneracy is stronger under the 'rate interpretation' of α. The parameter for the cutoff energy E_char is also correlated (anti-correlated) with n (α), as the more energetic we expect FRBs can be, the more FRBs we should be able to observe further away (fainter)."
+      },
+      "confidence": 0.95,
+      "quantity": "spectral index",
+      "value": -1.39,
+      "unit": null,
+      "context": "Interpreted as true FRB spectral index (F ∝ ν^α)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Our best-fitting value for the spectral index in F ∝ ν^α is α = -1.39^{+0.86}_{-1.19}. However, one can also interpret α as a frequency-dependent rate; see Section 5.4 for details of this interpretation. For the parameter n which parameterizes evolution with the cosmic SFH, we find a best-fitting value of n = 0.96^{+0.81}_{-0.67}. As can be seen in Figure 1, the parameters α and n are strongly anti-correlated — intuitively, the more strongly FRBs appear to evolve with (or faster than) the cosmic SFH (higher n), the more sources would originate from further away and appear fainter, thus leading to a steeper observed 'true spectral index.' This degeneracy is stronger under the 'rate interpretation' of α. The parameter for the cutoff energy E_char is also correlated (anti-correlated) with n (α), as the more energetic we expect FRBs can be, the more FRBs we should be able to observe further away (fainter)."
+      },
+      "confidence": 0.95,
+      "quantity": "power-law index for evolution with cosmic SFH",
+      "value": 0.96,
+      "unit": null,
+      "context": "Modeling FRB population evolution scaled by star formation rate",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The parameters in λ_2 are µ_host and σ_host. Modeling the host galaxy contribution of the FRB to its DM as a log-normal distribution, our best-fit values are µ_host × log10(e) = 1.93^{+0.38}_{-0.26} and σ_host × log10(e) = 0.41^{+0.20}_{-0.21}. These values correspond to a median DM'_host value of 84^{+69}_{-49} pc cm^{-3}, with a standard deviation of 174^{+319}_{-128} pc cm^{-3}."
+      },
+      "confidence": 0.95,
+      "quantity": "log-normal distribution parameter µ_host",
+      "value": 1.93,
+      "unit": "× log10(e)",
+      "context": "Parameterizing log-normal distribution of host galaxy DM contribution",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The parameters in λ_2 are µ_host and σ_host. Modeling the host galaxy contribution of the FRB to its DM as a log-normal distribution, our best-fit values are µ_host × log10(e) = 1.93^{+0.38}_{-0.26} and σ_host × log10(e) = 0.41^{+0.20}_{-0.21}. These values correspond to a median DM'_host value of 84^{+69}_{-49} pc cm^{-3}, with a standard deviation of 174^{+319}_{-128} pc cm^{-3}."
+      },
+      "confidence": 0.95,
+      "quantity": "log-normal distribution parameter σ_host",
+      "value": 0.41,
+      "unit": "× log10(e)",
+      "context": "Parameterizing log-normal distribution of host galaxy DM contribution",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae20576df3ad8a2f_qr9",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The parameters in λ_2 are µ_host and σ_host. Modeling the host galaxy contribution of the FRB to its DM as a log-normal distribution, our best-fit values are µ_host × log10(e) = 1.93^{+0.38}_{-0.26} and σ_host × log10(e) = 0.41^{+0.20}_{-0.21}. These values correspond to a median DM'_host value of 84^{+69}_{-49} pc cm^{-3}, with a standard deviation of 174^{+319}_{-128} pc cm^{-3}."
+      },
+      "confidence": 0.95,
+      "quantity": "standard deviation of host DM distribution",
+      "value": 174,
+      "unit": "pc cm^{-3}",
+      "context": "Log-normal distribution modeling host DM contribution",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae20576df3ad8a2f_p1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "We find a local rate of bursts above 10^{39} erg and below a scattering of 10 ms at 600 MHz of 7.3^{+8.8}_{-3.8} × 10^4 Gpc^{-3} yr^{-1}. This volumetric rate appears consistent with the rate presented by James et al. (2022a), who found a rate of bursts above 10^{39} erg of 8.7^{+3.9}_{-1.7} × 10^4 bursts Gpc^{-3} yr^{-1}, and is also broadly consistent with other studies as well (e.g., Lu & Piro 2019; Ravi 2019; Luo et al. 2020). On the surface, the consistent volumetric rates is interesting to note when considering the different frequency bands of the respective samples of FRBs. However, great caution should be employed when directly comparing these values, as the rates presented by other studies do not employ a scattering cut. As noted by CHIME/FRB Collaboration et al. (2021), there is evidence that there is a notable population of FRBs with a scattering timescale at 600 MHz larger than 10 ms that is missed by CHIME/FRB observations. Although highly scattered bursts were excluded from this analysis due to the poorly constrained nature of their population, including such highly scattered bursts may greatly increase our volumetric rate, possibly making the rate found in this analysis less comparable with other derived rates."
+      },
+      "confidence": 0.95,
+      "metric": "volumetric rate above 10^{39} erg",
+      "compared_to": "James et al. (2022a), other studies"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae20576df3ad8a2f_p2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "We find log10 E_char (erg) to be 41.38^{+0.50}_{-0.51}, in fairly good agreement with the James et al. (2022a) result of log10 E_max (erg) of 41.70^{+0.06}_{-0.53}. (Note James et al. (2022a) preferred to model the energy distribution with a power law with a maximum energy cutoff rather than as a Schechter function, although both models were tested with comparable results.)"
+      },
+      "confidence": 0.95,
+      "metric": "characteristic energy cut-off",
+      "compared_to": "James et al. (2022a)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae20576df3ad8a2f_p3",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "We also find a differential power-law energy distribution index of γ = -1.3^{+0.7}_{-0.4}. This result is in broad agreement with the results of Hashimoto et al. (2022), who also used Catalog 1 data to explore the energy function of FRBs, albeit employing a different methodology (e.g., they do not fit for a distance distribution simultaneously) and using a different subset of bursts released by CHIME/FRB Collaboration et al. (2021). Within error bars, this power-law index is also in agreement with what Luo et al. (2020) found (-1.79^{+0.35}_{-0.31}) using a heterogenous sample of FRBs, including bursts from UTMOST-SS (Caleb et al. 2017) and from CRAFT (Shannon et al. 2018). Interesting to note is that James et al. (2022a), who developed the model R(F, DM|λ) we use in this analysis, find a steeper power-law index value (-2.09^{+0.10}_{-0.14}) using a sample of ASKAP and Parkes FRBs, though it is still consistent with our results within 2σ statistical uncertainties."
+      },
+      "confidence": 0.95,
+      "metric": "differential power-law energy index",
+      "compared_to": "Hashimoto et al. (2022), Luo et al. (2020), James et al. (2022a)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae20576df3ad8a2f_p4",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "When interpreting α as a true spectral index, every FRB is observed as a broad-band burst with the same spectral index. Using a sample of 23 FRBs detected with ASKAP, Macquart et al. (2019) find α = -1.5, a default value adopted in other studies (e.g., Lu & Piro 2019). Using a Gaussian prior on α = -1.5 ± 0.3, James et al. (2022b) find a consistent α = -1.55^{+0.18}_{-0.18}. Our result of α = -1.39^{+0.86}_{-1.19} is consistent with α ≈ -1.5, although our statistical uncertainties are larger than those of the aforementioned quoted values."
+      },
+      "confidence": 0.95,
+      "metric": "spectral index",
+      "compared_to": "Macquart et al. (2019), James et al. (2022b)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae20576df3ad8a2f_p5",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Both James et al. (2022a) and our analysis find 'central' values of DM'_host well within statistical errors of each other, as well as within 'typical' host galaxy contributions which are often quoted as ∼ 50 pc cm^{-3} (e.g., Shannon et al. 2018) or ∼ 100 pc cm^{-3} (e.g., Cordes & Chatterjee 2019)."
+      },
+      "confidence": 0.95,
+      "metric": "median host DM contribution",
+      "compared_to": "James et al. (2022a), typical literature values"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_ae20576df3ad8a2f_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using the recently released catalog of 536 FRBs published by the Canadian Hydrogen Intensity Mapping Experiment/Fast Radio Burst (CHIME/FRB) collaboration, we present a study of the FRB population that also calibrates for selection effects. Assuming a Schechter function, we infer a characteristic energy cut-off of E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and a differential power-law index of γ = -1.3^{+0.7}_{-0.4}. Simultaneously, we infer a volumetric rate of [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^{4} Gpc^{-3} yr^{-1} above a pivot energy of 10^{39} erg and below a scattering timescale of 10 ms at 600 MHz, and find we cannot significantly constrain the cosmic evolution of the FRB population with star formation rate. Modeling the host dispersion measure (DM) contribution as a log-normal distribution and assuming a total Galactic contribution of 80 pc cm^{-3}, we find a median value of DMhost = 84^{+69}_{-49} pc cm^{-3}, comparable with values typically used in the literature. Proposed models for FRB progenitors should be consistent with the energetics and abundances of the full FRB population predicted by our results. Finally, we infer the redshift distribution of FRBs detected with CHIME, which will be tested with the localizations and redshifts enabled by the upcoming CHIME/FRB Outriggers project."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_ae20576df3ad8a2f_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Using the CHIME/FRB Catalog 1 data, we improve upon the initial Catalog 1 populations analysis by fitting a more physical model to the fluence and DMs of the FRBs, a model initially developed in previous works (e.g., Luo et al. 2020; James et al. 2022b). We use the weighting formalism developed in CHIME/FRB Collaboration et al. (2021), which makes use of the injected synthetic pulses to calibrate out selection function effects when fitting the model to the observed FRB data. The model fits for 7 parameters: a volumetric rate Φ0, a spectral index α, a differential power-law energy index γ, a characteristic exponential cutoff energy E_char, a power-law index n for smooth-scaling evolution with SFR, and parameters µ_host and σ_host that parameterize the log-normal distribution of the host DM contribution. We also explore the 'rate interpretation' of α. We find a volumetric rate of FRBs above 10^{39} erg and below a scattering of 10 ms at 600 MHz of Φ0 = [7.3^{+8.8}_{-3.8}(stat.)^{+2.0}_{-1.8}(sys.)] × 10^{4} Gpc^{-3} yr^{-1}. We also find tight constraints on the energy distribution observed by CHIME/FRB, modeled as a Schechter function, with E_char = 2.38^{+5.35}_{-1.64} × 10^{41} erg and γ = -1.3^{+0.7}_{-0.4}. However, the constraints on the remainder of the parameters are much weaker. In particular, the constraints on n, µ_host, and σ_host may significantly improve with the use of redshift information for many FRBs. Such a sample of redshift information would be enabled by the upcoming CHIME/FRB Outriggers project, for which we predict the observed FRB redshift distribution. The distribution shows that the application of CHIME-detected FRBs to cosmological studies may be limited to the z < 2 regime, which seems to limit the possibility of using these FRBs to probe events such as Helium reionization, but does allow for FRB lensing studies."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_ae20576df3ad8a2f_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The current study is limited to five-component HEAs in alkaline media; generalizability to acid-stable compositions remains to be demonstrated. Furthermore, the long-term stability beyond 24 hours and the performance under practical device conditions have not been evaluated. The DFT calculations were performed on idealized slab models that do not capture surface reconstruction effects under operating potentials. Additionally, the precise contributions of individual elements to the overall activity cannot be deconvoluted from the present experimental data alone. However, the constraints on the remainder of the parameters are much weaker. In particular, the constraints on n, µ_host, and σ_host may significantly improve with the use of redshift information for many FRBs. Such a sample of redshift information would be enabled by the upcoming CHIME/FRB Outriggers project, for which we predict the observed FRB redshift distribution. The distribution shows that the application of CHIME-detected FRBs to cosmological studies may be limited to the z < 2 regime, which seems to limit the possibility of using these FRBs to probe events such as Helium reionization, but does allow for FRB lensing studies. As the amount of data seems to be the limiting factor for this FRB populations study, it is promising that CHIME/FRB has continued to detect a large number of FRBs since Catalog 1 (which only included bursts up to 2019 July 1). These observed FRBs, combined with knowledge about survey selection effects provided by the injections system, and possibly redshift information with the commissioning of CHIME/FRB Outriggers, suggest much more powerful populations-level constraints in the near future. With more data comes more responsibility to handle subtle effects — namely, how best to treat repeating sources versus apparent one-off bursts when modeling the FRB distribution. Such a question would be of particular importance when exploring population behavior in a parameter space where repeater bursts would dominate, such as events with large pulse widths. In addition, proper modeling of repeater and non-repeater sources — whether apparently or intrinsically non-repeating — would enable future large-sample population studies to investigate to what extent all FRBs may repeat. Further in the future, care must be taken to properly incorporate redshift information into populations studies while accounting for the selection biases (e.g., repeater or high-S/N) that lead to some, but not all, FRBs having associated redshifts."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_ae20576df3ad8a2f_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Future studies should explore HEAs in other electrocatalytic reactions such as CO2 reduction and nitrogen reduction. Additionally, machine learning-guided composition screening could accelerate the discovery of optimal HEA formulations. In-situ/operando characterization techniques such as X-ray absorption spectroscopy are needed to directly probe the multi-path electron transfer mechanism under working conditions. Long-term durability testing under industrially relevant current densities exceeding 500 mA/cm² is essential to assess practical viability. However, the constraints on the remainder of the parameters are much weaker. In particular, the constraints on n, µ_host, and σ_host may significantly improve with the use of redshift information for many FRBs. Such a sample of redshift information would be enabled by the upcoming CHIME/FRB Outriggers project, for which we predict the observed FRB redshift distribution. The distribution shows that the application of CHIME-detected FRBs to cosmological studies may be limited to the z < 2 regime, which seems to limit the possibility of using these FRBs to probe events such as Helium reionization, but does allow for FRB lensing studies. As the amount of data seems to be the limiting factor for this FRB populations study, it is promising that CHIME/FRB has continued to detect a large number of FRBs since Catalog 1 (which only included bursts up to 2019 July 1). These observed FRBs, combined with knowledge about survey selection effects provided by the injections system, and possibly redshift information with the commissioning of CHIME/FRB Outriggers, suggest much more powerful populations-level constraints in the near future. With more data comes more responsibility to handle subtle effects — namely, how best to treat repeating sources versus apparent one-off bursts when modeling the FRB distribution. Such a question would be of particular importance when exploring population behavior in a parameter space where repeater bursts would dominate, such as events with large pulse widths. In addition, proper modeling of repeater and non-repeater sources — whether apparently or intrinsically non-repeating — would enable future large-sample population studies to investigate to what extent all FRBs may repeat. Further in the future, care must be taken to properly incorporate redshift information into populations studies while accounting for the selection biases (e.g., repeater or high-S/N) that lead to some, but not all, FRBs having associated redshifts."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

@@ -1,0 +1,630 @@
+{
+  "metadata": {
+    "doc_id": "doc_d2bec97ea29d5f0e",
+    "source_file": "07_Investigating_FRB_20240114A_with_FAST_Morphological_Classification.md",
+    "title": "Interpretable Concept-based Deep Learning Framework for Multimodal Human Behavior Modeling",
+    "year": 2024,
+    "doi": null,
+    "abstract": "_**Abstract**_ **—In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying** _**what**_ **concepts that lead to the predictions and** _**where**_ **they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domainspecific explanations.**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Affective Computing",
+      "Explainable AI",
+      "Multimodal Learning",
+      "Human Behavior Modeling",
+      "Concept-based Deep Learning"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:49:09.305619+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.98,
+      "term": "Affective Computing",
+      "normalized": "情感计算",
+      "std_label": "AC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.97,
+      "term": "Attention-Guided Concept Model",
+      "normalized": "注意力引导概念模型",
+      "std_label": "AGCM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "There is an increasing interest in developing interpretable or eXplainable Artificial Intelligence (XAI) to improve model transparency in AC. As shown in Fig. 1 (b), approaches such as post-hoc explanations [26, 38, 42] and map-based methods [11, 21, 24] have emerged to address this need. However, these techniques primarily focus on identifying important regions or parameters within deep neural networks, rather than providing an explicit, causal explanation for the predictions. This limitation is especially pronounced in AC, where opposing facial Action Units, like AU12 (Lip Corner Puller) associated with positive emotion and AU15 (Lip Corner Depressor) linked to negative emotion, can occur in the same facial region. Meanwhile, the alignment and co-learning from multimodal sources pose even greater challenges for these approaches due to the inherently different properties of multimodal knowledge. Therefore, they often face a trade-off between performance and interpretability, which, in high-risk XAI, may undermine the system’s trustworthiness [43]. Consider a common question: How would a human expert explain their prediction of an individual with highly conversational engagement? They would likely point to the activation of specific facial muscles, such as the zygomatic major, indicating engaged smiles, a strong positive indicator of engagement. Meanwhile, the forward gaze direction, proper gesture, body language, and audio indicators can also be used to recognize engagement. Thus, a good explanation from an AC model should address two key aspects: what indicators or concepts (e.g., facial muscle activations) contribute to the prediction, and where these concepts are observed. Furthermore, the importance of multimodal learning is self-evident in real-world AC applications [1, 15, 53]. Training and interpreting AC models with multimodal alignment and co-learning is another key challenge in affective XAI [7]."
+      },
+      "confidence": 0.96,
+      "term": "explainable Artificial Intelligence",
+      "normalized": "可解释人工智能",
+      "std_label": "XAI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.95,
+      "term": "Facial Expression Recognition",
+      "normalized": "面部表情识别",
+      "std_label": "FER"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "There is an increasing interest in developing interpretable or eXplainable Artificial Intelligence (XAI) to improve model transparency in AC. As shown in Fig. 1 (b), approaches such as post-hoc explanations [26, 38, 42] and map-based methods [11, 21, 24] have emerged to address this need. However, these techniques primarily focus on identifying important regions or parameters within deep neural networks, rather than providing an explicit, causal explanation for the predictions. This limitation is especially pronounced in AC, where opposing facial Action Units, like AU12 (Lip Corner Puller) associated with positive emotion and AU15 (Lip Corner Depressor) linked to negative emotion, can occur in the same facial region. Meanwhile, the alignment and co-learning from multimodal sources pose even greater challenges for these approaches due to the inherently different properties of multimodal knowledge. Therefore, they often face a trade-off between performance and interpretability, which, in high-risk XAI, may undermine the system’s trustworthiness [43]. Consider a common question: How would a human expert explain their prediction of an individual with highly conversational engagement? They would likely point to the activation of specific facial muscles, such as the zygomatic major, indicating engaged smiles, a strong positive indicator of engagement. Meanwhile, the forward gaze direction, proper gesture, body language, and audio indicators can also be used to recognize engagement. Thus, a good explanation from an AC model should address two key aspects: what indicators or concepts (e.g., facial muscle activations) contribute to the prediction, and where these concepts are observed. Furthermore, the importance of multimodal learning is self-evident in real-world AC applications [1, 15, 53]. Training and interpreting AC models with multimodal alignment and co-learning is another key challenge in affective XAI [7]."
+      },
+      "confidence": 0.94,
+      "term": "multimodal learning",
+      "normalized": "多模态学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c6",
+      "evidence": {
+        "section": "Related Work",
+        "original_text": "Recent efforts to enhance the explainability of affective computing models have largely relied on post-hoc, map-based visualizations, and concept-based learning. Recent attempts on concept-based models [35, 57] try to encapsulate specific, human-understandable features through concept embeddings C that are learned in a fully supervised manner. These models learn the mapping X → C → Z , where x ∈ X represents the raw image pixels and z ∈ Z represents the task labels. Specifically, a concept generator G ˆ generates concept embeddings, denoted as c = G ( x ), with c ˆ ∈ C representing the learned concepts within a bottleneck layer C . Subsequently, a facial expression predictor y maps the ˆ ˆ concept embeddings to task labels z ∈ Z , where z = y (ˆ c ). While concept-based models offer a more interpretable framework than map-based approaches, ongoing research is focused on integrating this explainable architecture with multimodal learning and performance-optimized strategies [35]. Moreover, a key challenge lies in integrating spatial explanations, which reveal where the model is focusing, with concept-based explanations, which clarify what contributes to the prediction. Achieving this synergy is essential for enhancing both the interpretability and practical utility of models in high-stakes applications."
+      },
+      "confidence": 0.93,
+      "term": "concept-based learning",
+      "normalized": "基于概念的学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "There is an increasing interest in developing interpretable or eXplainable Artificial Intelligence (XAI) to improve model transparency in AC. As shown in Fig. 1 (b), approaches such as post-hoc explanations [26, 38, 42] and map-based methods [11, 21, 24] have emerged to address this need. However, these techniques primarily focus on identifying important regions or parameters within deep neural networks, rather than providing an explicit, causal explanation for the predictions. This limitation is especially pronounced in AC, where opposing facial Action Units, like AU12 (Lip Corner Puller) associated with positive emotion and AU15 (Lip Corner Depressor) linked to negative emotion, can occur in the same facial region. Meanwhile, the alignment and co-learning from multimodal sources pose even greater challenges for these approaches due to the inherently different properties of multimodal knowledge. Therefore, they often face a trade-off between performance and interpretability, which, in high-risk XAI, may undermine the system’s trustworthiness [43]. Consider a common question: How would a human expert explain their prediction of an individual with highly conversational engagement? They would likely point to the activation of specific facial muscles, such as the zygomatic major, indicating engaged smiles, a strong positive indicator of engagement. Meanwhile, the forward gaze direction, proper gesture, body language, and audio indicators can also be used to recognize engagement. Thus, a good explanation from an AC model should address two key aspects: what indicators or concepts (e.g., facial muscle activations) contribute to the prediction, and where these concepts are observed. Furthermore, the importance of multimodal learning is self-evident in real-world AC applications [1, 15, 53]. Training and interpreting AC models with multimodal alignment and co-learning is another key challenge in affective XAI [7]."
+      },
+      "confidence": 0.92,
+      "term": "Action Units",
+      "normalized": "动作单元",
+      "std_label": "AU"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d2bec97ea29d5f0e_c8",
+      "evidence": {
+        "section": "AGCM for Interpretable Engagement Estimation",
+        "original_text": "The generalizability of the framework to downstream applications is essential for establishing a trustworthy AC system. Real-life affective signal processing is inherently more ambiguous, complex, and diverse compared to the well-defined FER task. One good example is human-human interactions, where the conversational engagement score is designed to measure the level and rate of engagement between participants, illustrating the broader and more nuanced requirements of real-world AC applications. In this section, we use the NOvice eXpert Interaction (NOXI) dataset, a large-scale, well-annotated human-human interaction dataset with the engagement label, to illustrate AGCM’s generalization capacity in real-world AC contexts. We conduct both qualitative and quantitative evaluations, demonstrating that AGCM achieves robust performance by automatically identifying key indicators and highlighting essential concepts. NOXI [15] is designed for the analysis of human interaction in real-world, cross-cultural settings. It includes video recordings of novice-expert interactions in eight languages (English, French, German, Spanish, Indonesian, Arabic, Dutch, and Italian), with AU capture via Microsoft Kinect [59]. The dataset spans over 50 hours of video and is annotated with a by-frame engagement score ranging from 0 to 1. For our experiments, we utilize 76 videos (over 1.5 million frames) for training and 20 videos (over 500,000 frames) for testing."
+      },
+      "confidence": 0.91,
+      "term": "engagement estimation",
+      "normalized": "参与度估计",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.95,
+      "head": "doc_d2bec97ea29d5f0e_c2",
+      "relation_type": "enhances",
+      "relation_surface": "addresses these limitations",
+      "tail": "doc_d2bec97ea29d5f0e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.94,
+      "head": "doc_d2bec97ea29d5f0e_c2",
+      "relation_type": "uses",
+      "relation_surface": "provides learnable conceptual explanations by identifying",
+      "tail": "doc_d2bec97ea29d5f0e_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.93,
+      "head": "doc_d2bec97ea29d5f0e_c2",
+      "relation_type": "enhances",
+      "relation_surface": "is extendable to any spatial and temporal signals through",
+      "tail": "doc_d2bec97ea29d5f0e_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the contemporary era of intelligent connectivity, Affective Computing (AC), which enables systems to recognize, interpret, and respond to human behavior states, has become an integrated part of many AI systems. As one of the most critical components of responsible AI and trustworthiness in all human-centered systems, explainability has been a major concern in AC. Particularly, the recently released EU General Data Protection Regulation requires any high-risk AI systems to be sufficiently interpretable, including biometric-based systems and emotion recognition systems widely used in the affective computing field. Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.92,
+      "head": "doc_d2bec97ea29d5f0e_c2",
+      "relation_type": "enhances",
+      "relation_surface": "validates the efficiency on",
+      "tail": "doc_d2bec97ea29d5f0e_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "There is an increasing interest in developing interpretable or eXplainable Artificial Intelligence (XAI) to improve model transparency in AC. As shown in Fig. 1 (b), approaches such as post-hoc explanations [26, 38, 42] and map-based methods [11, 21, 24] have emerged to address this need. However, these techniques primarily focus on identifying important regions or parameters within deep neural networks, rather than providing an explicit, causal explanation for the predictions. This limitation is especially pronounced in AC, where opposing facial Action Units, like AU12 (Lip Corner Puller) associated with positive emotion and AU15 (Lip Corner Depressor) linked to negative emotion, can occur in the same facial region. Meanwhile, the alignment and co-learning from multimodal sources pose even greater challenges for these approaches due to the inherently different properties of multimodal knowledge. Therefore, they often face a trade-off between performance and interpretability, which, in high-risk XAI, may undermine the system’s trustworthiness [43]. Consider a common question: How would a human expert explain their prediction of an individual with highly conversational engagement? They would likely point to the activation of specific facial muscles, such as the zygomatic major, indicating engaged smiles, a strong positive indicator of engagement. Meanwhile, the forward gaze direction, proper gesture, body language, and audio indicators can also be used to recognize engagement. Thus, a good explanation from an AC model should address two key aspects: what indicators or concepts (e.g., facial muscle activations) contribute to the prediction, and where these concepts are observed. Furthermore, the importance of multimodal learning is self-evident in real-world AC applications [1, 15, 53]. Training and interpreting AC models with multimodal alignment and co-learning is another key challenge in affective XAI [7]."
+      },
+      "confidence": 0.91,
+      "head": "doc_d2bec97ea29d5f0e_c3",
+      "relation_type": "enhances",
+      "relation_surface": "to improve model transparency in",
+      "tail": "doc_d2bec97ea29d5f0e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "There is an increasing interest in developing interpretable or eXplainable Artificial Intelligence (XAI) to improve model transparency in AC. As shown in Fig. 1 (b), approaches such as post-hoc explanations [26, 38, 42] and map-based methods [11, 21, 24] have emerged to address this need. However, these techniques primarily focus on identifying important regions or parameters within deep neural networks, rather than providing an explicit, causal explanation for the predictions. This limitation is especially pronounced in AC, where opposing facial Action Units, like AU12 (Lip Corner Puller) associated with positive emotion and AU15 (Lip Corner Depressor) linked to negative emotion, can occur in the same facial region. Meanwhile, the alignment and co-learning from multimodal sources pose even greater challenges for these approaches due to the inherently different properties of multimodal knowledge. Therefore, they often face a trade-off between performance and interpretability, which, in high-risk XAI, may undermine the system’s trustworthiness [43]. Consider a common question: How would a human expert explain their prediction of an individual with highly conversational engagement? They would likely point to the activation of specific facial muscles, such as the zygomatic major, indicating engaged smiles, a strong positive indicator of engagement. Meanwhile, the forward gaze direction, proper gesture, body language, and audio indicators can also be used to recognize engagement. Thus, a good explanation from an AC model should address two key aspects: what indicators or concepts (e.g., facial muscle activations) contribute to the prediction, and where these concepts are observed. Furthermore, the importance of multimodal learning is self-evident in real-world AC applications [1, 15, 53]. Training and interpreting AC models with multimodal alignment and co-learning is another key challenge in affective XAI [7]."
+      },
+      "confidence": 0.9,
+      "head": "doc_d2bec97ea29d5f0e_c7",
+      "relation_type": "measures",
+      "relation_surface": "associated with",
+      "tail": "doc_d2bec97ea29d5f0e_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d2bec97ea29d5f0e_r7",
+      "evidence": {
+        "section": "AGCM for Interpretable Engagement Estimation",
+        "original_text": "The generalizability of the framework to downstream applications is essential for establishing a trustworthy AC system. Real-life affective signal processing is inherently more ambiguous, complex, and diverse compared to the well-defined FER task. One good example is human-human interactions, where the conversational engagement score is designed to measure the level and rate of engagement between participants, illustrating the broader and more nuanced requirements of real-world AC applications. In this section, we use the NOvice eXpert Interaction (NOXI) dataset, a large-scale, well-annotated human-human interaction dataset with the engagement label, to illustrate AGCM’s generalization capacity in real-world AC contexts. We conduct both qualitative and quantitative evaluations, demonstrating that AGCM achieves robust performance by automatically identifying key indicators and highlighting essential concepts. NOXI [15] is designed for the analysis of human interaction in real-world, cross-cultural settings. It includes video recordings of novice-expert interactions in eight languages (English, French, German, Spanish, Indonesian, Arabic, Dutch, and Italian), with AU capture via Microsoft Kinect [59]. The dataset spans over 50 hours of video and is annotated with a by-frame engagement score ranging from 0 to 1. For our experiments, we utilize 76 videos (over 1.5 million frames) for training and 20 videos (over 500,000 frames) for testing."
+      },
+      "confidence": 0.89,
+      "head": "doc_d2bec97ea29d5f0e_c2",
+      "relation_type": "enhances",
+      "relation_surface": "demonstrates its generalizability on",
+      "tail": "doc_d2bec97ea29d5f0e_c8"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d2bec97ea29d5f0e_d1",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "RAF-DB [34] is a widely-used static FER dataset sourced from the internet, containing 6 basic emotion labels (Surprise, Disgust, Fear, Happiness, Sadness, Anger), and a Neutral label. The dataset includes 12,271 images in the training set and 3,068 images for testing."
+      },
+      "confidence": 0.95,
+      "name": "RAF-DB",
+      "modality": "image",
+      "domain": "affective computing, facial expression recognition"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d2bec97ea29d5f0e_d2",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "AffectNet [40] is one of the largest FER datasets, comprising 420,000 facial images annotated with categorical emotion labels. We utilize AffectNet-8, which consists of 291,651 manually labeled images with 8-class emotion labels (Neutral, Happy, Angry, Sad, Fear, Surprise, Disgust, and Contempt). In addition, we employ AffectNet-7, which contains 287,401 images annotated with seven emotion labels (excluding Contempt). The test set contains approximately 3,500 images."
+      },
+      "confidence": 0.95,
+      "name": "AffectNet",
+      "modality": "image",
+      "domain": "affective computing, facial expression recognition"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d2bec97ea29d5f0e_d3",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "Aff-Wild2 [30] is a large-scale in-the-wild dataset specifically designed for FER and AU detection. It includes over 2.7 million frames from 564 videos with 554 subjects. We use the **by-frame** FER subset which is manually labeled with 8-class discrete emotions (Neutral, Anger, Disgust, Fear, Happiness, Sadness, Surprise, Other). It also provides manual annotation of 12 AUs."
+      },
+      "confidence": 0.95,
+      "name": "Aff-Wild2",
+      "modality": "multimodal",
+      "domain": "affective computing, facial expression recognition, action unit detection"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d2bec97ea29d5f0e_d4",
+      "evidence": {
+        "section": "V. AGCM FOR INTERPRETABLE ENGAGEMENT ESTIMATION",
+        "original_text": "NOXI [15] is designed for the analysis of human interaction in real-world, cross-cultural settings. It includes video recordings of novice-expert interactions in eight languages (English, French, German, Spanish, Indonesian, Arabic, Dutch, and Italian), with AU capture via Microsoft _Kinect_ [59]. The dataset spans over 50 hours of video and is annotated with a **by-frame** engagement score ranging from 0 to 1. For our experiments, we utilize 76 videos (over 1.5 million frames) for training and 20 videos (over 500,000 frames) for testing."
+      },
+      "confidence": 0.95,
+      "name": "NOXI (NOvice eXpert Interaction)",
+      "modality": "multimodal",
+      "domain": "affective computing, human-human interaction, engagement estimation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d2bec97ea29d5f0e_ds1",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "AGCM is designed to be flexible and extendable to all kinds of discrete or continuous concepts, provided suitable concept annotations are available. In this work, we use the most commonly used audio-visual pair as an example. For the audio concepts, pitch, pitch variation, pitch stability (Jitter), loudness, loudness variation, and speech rate are used. For the visual modality, AUs, gaze direction, and head pose are used. Unlike AUs, which are binary in nature (activated or inactivated), gaze, head pose and acoustic concepts are continuous and must be mapped into a probability space to fit the conceptbased framework. Specifically, gaze concepts are defined as the degree of direct forward gaze in both horizontal and vertical planes, where 1 represents directly looking forward and 0 indicates looking elsewhere. Head pose concepts capture deviations in yaw (head shake) and pitch (head nod). These gaze and head pose concepts are scaled to the range [0 _,_ 1] to fit within the concept probability generator, and corresponding heatmaps are generated based on facial landmarks, similar to Section III-A. All acoustic concept labels are normalized to the range [0 _,_ 1] before AGCM training. To ensure alignment with the visual concepts, the video data is split into one-second clips (FPS=30), with a 33ms stride applied to capture temporal information effectively. For clips containing complete silence, both pitch and loudness are set to 0, indicating no contribution from the audio modality. Variations in loudness and pitch are calculated using their first-order derivatives, representing the rate of change for these acoustic features, while the Jitter is inherently a percentage. For videos featuring multiple speakers, the audio track for each subject will be individually separated to minimize noise and ensure clarity."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Concept generation setup for audio-visual modalities including normalization and mapping of continuous concepts"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d2bec97ea29d5f0e_ds2",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "Our experimental setup is summarized as follows: AGCM utilized a pre-trained Vision Transformer as the backbone feature extractor [19]. Similar to [35], the backbone was pretrained on VGGFace2 [16] for the facial recognition task. After pre-training, the classification header was removed and replaced with the AGCM workflow. Facial images were cropped from the video dataset using the InsightFace detector [4]. To prevent overfitting, the preprocessing stage incorporated random data augmentation techniques, including horizontal flipping, random rotation, and random erasing. For datasets lacking AU annotations, we utilized OpenFace 2.0 [8] to automatically extract 18 Action Units (AUs), which served as intermediary concepts in our proposed framework. All models were trained for 100 epochs, with early stopping to avoid overfitting, and optimized using the Adam optimizer (learning rate set to 0.0001). The AGCM generated concepts using a Dropout rate of 0.01 and Leaky-ReLU activation. The concept probability and map loss weights were set to 1, ensuring a balanced focus on both conceptual explanation and task prediction. AGCM used HuBERT [27] feature extractor for the audio input. During concept fusion, the learning of the vision branch was frozen, and the Acoustic Concept Generator (ACG) was fine-tuned for 100 epochs, with early stopping (learning rate set to 0.0001). All experiments were conducted on a workstation equipped with dual 48GB Nvidia RTX 6000 Ada GPUs, running a Linux-based PyTorch environment. For quantitative performance evaluation, we report the average performance over four random seeds."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Implementation details including hardware, software environment, and training parameters"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d2bec97ea29d5f0e_ds3",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "The efficiency of predicted concepts is a critical metric for both performance as well as explainability. To evaluate the reliability of learned concept representations, we employ the Concept Alignment Score (CAS) [57], which measures how well the predicted concepts align with their corresponding ground truth labels. Unlike traditional accuracy, which struggles with defining thresholds between “activated” and “inactivated” concepts, CAS uses homogeneity scores and clustering algorithms to assess the proximity of predicted concepts to ground truth, providing a more robust measure of concept alignment."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Concept Alignment Score (CAS) as a metric for evaluating the reliability of learned concept representations"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d2bec97ea29d5f0e_m1",
+      "evidence": {
+        "section": "III. METHODS",
+        "original_text": "In this paper, we propose an interpretable concept-based framework: the Attention-Guided Concept Model (AGCM), which localizes and learns the key indicators during training and then makes the final prediction according to the contribution of these intermediate concepts. This framework incorporates spatial concept information and multimodal concept fusion within a powerful attention-based architecture, combining the advantage of both domain-specific explanation and state-of-the-art performance. As shown in Fig. 4, the proposed Attention-Guided Concept Model (AGCM) is designed to enhance both the accuracy and explainability of the concept-based models. The model begins by processing the input facial image x through a transformer backbone φ(·), which converts the image into a patch-level representation. This representation effectively captures local and global features by dividing the image into patches and is essential for subsequent processing. The core component of AGCM is the Attention-Guided Concept Generator (ACG), which integrates two attention mechanisms: Multi-scale Spatial Attention (MSA) and Channel Attended Concept Mapping (CACM). The MSA block focuses on spatial features at multiple scales, enabling the model to capture both fine-grained and coarse details within the image. For example, recognizing the concept of the cheek region may require a broader attention area compared to the eye region. To achieve this, three MSA heads are employed to capture diverse spatial patterns, each generating a concept attention map aˆi. These maps are then weighted and summed to produce a final concept attention map, which is utilized to update the concept map loss during training. Complementing the spatial attention, CACM enhances the model’s focus along the channel dimension. By applying attention to the most informative feature channels, CACM ensures robust feature selection across multiple channels, which is crucial for accurately interpreting complex facial expressions. The proposed framework also includes a concept probability generator p(·) that computes the probability of each activated concept. This mechanism facilitates concept supervision by quantifying the contribution of individual concepts to the predicted label. Importantly, ACG considers both activated and inactivated concept embeddings because the absence of certain concepts (e.g., deactivation of AUs) can also provide valuable information about one’s facial expressions. The i-th predicted activated concepts, ˆc[+]i[, and inactivated concepts,][ ˆ]c[−]i[,] are weighted by their respective probabilities from p(·). The probability score p indicates the likelihood that the activated concept contributes to the final prediction. These are then concatenated and passed to the task predictor y(·), which is a one-layer fully connected network, to generate the final task label[ˆ]t. Therefore, it is designed to be adaptable and expandable to any discrete or continuous concepts, given that appropriate concept annotations are available."
+      },
+      "confidence": 0.95,
+      "name": "Attention-Guided Concept Model (AGCM)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d2bec97ea29d5f0e_m2",
+      "evidence": {
+        "section": "III. METHODS",
+        "original_text": "Alignment, fusion, and co-learning are three primary challenges in multimodal learning, involving the ability to identify, combine, and transfer knowledge across different modalities [7], particularly in the context of interpretable AC [18]. After training the visual concept branch in the first stage, AGCM integrates visual information with any other temporal modalities through concept fusion. In this work, we demonstrate AGCM is an expandable multimodal architecture, using the most commonly used audio-visual fusion as an example, which involves identifying audio information using an acoustic concept generator and joining and transferring knowledge via a late fusion concept-label classifier. As shown in Fig. 5, the fusion stage builds upon the visual-based branch from the previous stage. During the fusion stage, the task predictor from the visual branch is removed, transforming it into a Visual Attention-Guided Concept Generator. This visual generator is responsible for extracting and predicting key visual concepts, including AUs, gaze direction, and head poses. To ensure stability and reliability in visual concept prediction, the parameters of the visual branch are frozen, preventing further modifications during the audio-visual training phase. This approach allows the model to harness pre-learned visual knowledge without overfitting, facilitating robust integrated learning across diverse input modalities. In parallel with the visual concept branch, the fusion stage introduces an audio brunch with an Acoustic Concept Generator (ACG) to process the audio input. This generator identifies relevant audio information using an acoustic feature extractor, denoted as G(·). These features are then mapped into activated (ˆc[+]i[)][and][inactivated][(]ˆc[−]i[)][acoustic][concept] embeddings. The probability of activation for each concept is computed through an acoustic concept probability generator p(·), which quantifies the likelihood of each acoustic concept being present in the input. For downstream applications, the audio branch can be replaced or expanded to incorporate other temporal modalities, such as Electrocardiogram (ECG), Electroencephalogram (EEG), or Electrodermal Activity (EDA), provided the appropriate data and annotations are available. Once the visual and temporal concepts are extracted, they are aligned and concatenated to form a unified multimodal representation. In this architecture, a key assumption is made: for a given video clip, temporal concepts are shared across all frames. This allows the model to maintain temporal coherence in the audio stream while aligning it with frame-specific visual features. The bottleneck layer serves to compress the multimodal information, ensuring that only the most relevant aspects of the fused representation are retained for further processing. The concatenated concepts are then passed through a sequential bottleneck layer, denoted as ˆc0, ..., ˆck, where k represents the number of samples in the sequence. To capture the temporal and contextual relationships between frames, the fusion branch employs a sequence-to-sequence concept-label predictor y(·), using a transformer architecture. This predictor is designed to handle sequential data, leveraging the temporal dependencies between consecutive frames in a video. By utilizing sequential learning, the model effectively integrates and co-learns multimodal information across time, improving the accuracy of by-frame predictions. This is particularly important for tasks where affective signals evolve over time, such as conversational engagement estimation or mental health assessment. The final task label is generated on a per-frame basis, with the model predicting the affective state for each frame in the video sequence. The combination of multimodal concept embeddings allows the VA-AGCM to provide robust and accurate predictions, as it captures a wider range of cues that contribute to affective behavior. Notably, the AGCM framework is readily extendable to other temporal modalities by incorporating additional branches for new data inputs."
+      },
+      "confidence": 0.95,
+      "name": "Expandable Multimodal AGCM Concept Fusion",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d2bec97ea29d5f0e_m3",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "AGCM is designed to be flexible and extendable to all kinds of discrete or continuous concepts, provided suitable concept annotations are available. In this work, we use the most commonly used audio-visual pair as an example. For the audio concepts, pitch, pitch variation, pitch stability (Jitter), loudness, loudness variation, and speech rate are used. For the visual modality, AUs, gaze direction, and head pose are used. Unlike AUs, which are binary in nature (activated or inactivated), gaze, head pose and acoustic concepts are continuous and must be mapped into a probability space to fit the conceptbased framework. Specifically, gaze concepts are defined as the degree of direct forward gaze in both horizontal and vertical planes, where 1 represents directly looking forward and 0 indicates looking elsewhere. Head pose concepts capture deviations in yaw (head shake) and pitch (head nod). These gaze and head pose concepts are scaled to the range [0,1] to fit within the concept probability generator, and corresponding heatmaps are generated based on facial landmarks, similar to Section III-A. All acoustic concept labels are normalized to the range [0,1] before AGCM training. To ensure alignment with the visual concepts, the video data is split into one-second clips (FPS=30), with a 33ms stride applied to capture temporal information effectively. For clips containing complete silence, both pitch and loudness are set to 0, indicating no contribution from the audio modality. Variations in loudness and pitch are calculated using their first-order derivatives, representing the rate of change for these acoustic features, while the Jitter is inherently a percentage. For videos featuring multiple speakers, the audio track for each subject will be individually separated to minimize noise and ensure clarity. Furthermore, the AGCM framework is flexible and can incorporate other temporal modalities with continuous or discrete values, provided the appropriate data and annotations are available."
+      },
+      "confidence": 0.95,
+      "name": "Concept Generation Setup",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d2bec97ea29d5f0e_m4",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "Our experimental setup is summarized as follows: AGCM utilized a pre-trained Vision Transformer as the backbone feature extractor [19]. Similar to [35], the backbone was pretrained on VGGFace2 [16] for the facial recognition task. After pre-training, the classification header was removed and replaced with the AGCM workflow. Facial images were cropped from the video dataset using the InsightFace detector [4]. To prevent overfitting, the preprocessing stage incorporated random data augmentation techniques, including horizontal flipping, random rotation, and random erasing. For datasets lacking AU annotations, we utilized OpenFace 2.0 [8] to automatically extract 18 Action Units (AUs), which served as intermediary concepts in our proposed framework. All models were trained for 100 epochs, with early stopping to avoid overfitting, and optimized using the Adam optimizer (learning rate set to 0.0001). The AGCM generated concepts using a Dropout rate of 0.01 and Leaky-ReLU activation. The concept probability and map loss weights were set to 1, ensuring a balanced focus on both conceptual explanation and task prediction. AGCM used HuBERT [27] feature extractor for the audio input. During concept fusion, the learning of the vision branch was frozen, and the Acoustic Concept Generator (ACG) was fine-tuned for 100 epochs, with early stopping (learning rate set to 0.0001). All experiments were conducted on a workstation equipped with dual 48GB Nvidia RTX 6000 Ada GPUs, running a Linux-based PyTorch environment. For quantitative performance evaluation, we report the average performance over four random seeds."
+      },
+      "confidence": 0.95,
+      "name": "Implementation Details",
+      "method_type": "protocol"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d2bec97ea29d5f0e_x1",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "Given the complexity and necessity of determining not only what key concepts contribute the most to the prediction but also where these concepts appear, we begin by evaluating the visual branch on RAF-DB and AffectNet. To assess the efficiency of the proposed AGCM framework against the previous feature-based and explainable models, we compared this work with a feature-based model, end-to-end map-based explainable models (with CNN and ViT backbones), previous conceptbased explainable models, and the state-of-the-art black-box model without explicit model explainability. The feature-based model uses only handcrafted features (e.g., AUs) as input, and a 3-layer Fully Connected (FC) neural network with ReLU activation, matching the complexity of AGCM’s task predictor. Table II presents the overall accuracy of various models on RAF-DB, AffectNet-7, and AffectNet-8. The proposed AGCM framework achieves the highest accuracy across all datasets, with 94.40% on RAF-DB, 69.45% on AffectNet-7, and 65.62% on AffectNet-8. These results demonstrate AGCM’s significant improvement over the classic feature-based methods, particularly on RAF-DB (+27.36%) and AffectNet-8 (+28.51%). AGCM also outperforms state-of-the-art blackbox transformer models including S2D [17] and Poster++ [39], providing gains of 1.83% on RAF-DB and 1.86% on AffectNet-8 compared to S2D. This highlights AGCM’s ability to match and exceed black-box model performance while maintaining conceptual explainability. Furthermore, AGCM demonstrates superior results compared to interpretable mapbased approaches, with a 3.37% improvement on RAF-DB and over 4% on AffectNet. When compared to the previous concept-based model [35], AGCM shows consistent gains across all datasets, benefiting from its spatial concept and attention learning. Table III presents the class-wise performance comparison between the proposed AGCM framework and the blackbox transformer-based Poster++ model [39] on RAF-DB and AffectNet-8. The results clearly demonstrate the effectiveness of AGCM in delivering a more balanced performance across all FER classes than Poster++, resulting in higher average accuracy on both datasets. The result shows the efficiency of considering conceptual prior knowledge, such as AUs and ROI maps, into the training process to quantify the individual concept’s contribution towards predicting the label. On RAF-DB, AGCM consistently outperforms Poster++ across nearly all emotion classes, particularly in challenging categories such as Anger and Disgust, where AGCM achieves significant improvements of +6.26% and +10.55%, respectively. AGCM also demonstrates superior performance in the Fear class (+18.58%), while maintaining competitive accuracy in easier classes like Happy and Neutral. Similarly, on AffectNet-8, AGCM provides improved accuracy in most categories, including notable gains in Anger (+5.85%), Disgust (+3.58%), and Happy (+3.02%). Although Poster++ marginally outperforms AGCM in the Sad and Surprise categories, AGCM still delivers a more balanced overall performance, as evidenced by the higher average accuracy (+1.84%). The consistent class-wise improvements offered by AGCM highlight its ability to maintain strong performance across both datasets, even in the presence of class imbalance and data variability. More importantly, AGCM not only surpasses Poster++ in terms of average accuracy but also achieves these gains while preserving the model’s interpretability, which is essential for applications requiring both performance and transparency."
+      },
+      "confidence": 0.95,
+      "task": "Evaluating Visual-based AGCM",
+      "setup": "RAF-DB, AffectNet-7, AffectNet-8 datasets, Vision Transformer backbone, Adam optimizer"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d2bec97ea29d5f0e_x2",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "AGCM framework is designed to be expandable to multimodal inputs and concepts. In this work, we use the most commonly used audio-visual dataset as an example, demonstrating the AGCM’s capacity for aligning and co-learning information from spatial and temporal modalities. To evaluate the overall performance of the AGCM framework in a multimodal context, we conducted comprehensive experiments using the audio-visual Aff-Wild2 dataset. Table IV presents the performance comparison in terms of the average F-1 score on the Aff-Wild2 dataset. The proposed AGCM framework consistently outperforms feature-based, map-based, and concept-based interpretable models. Notably, AGCM in a multimodal setting achieves competitive results compared to state-of-the-art black-box models that leverage multimodal data, while maintaining conceptual explainability. Specifically, AGCM attains an F-1 score of 47.52% by combining visual and audio inputs, outperforming visual-only AGCM (+2.57%) and CEM (+4.92%), showing that generally it works better in the multimodal setting. In comparison to feature-based models, AGCM demonstrates a significant improvement (+22.25%), emphasizing the effectiveness of concept-level multimodal alignment and co-learning. While CNN-based map models [11] show stronger performance among map-based approaches, they still lag behind AGCM (by 3.03%) and AGCM (by 5.6%). The black-box MMAE model [58] achieves the highest F-1 score of 48.93%, largely due to its use of a pre-trained transformer (Masked Autoencoder or MAE), which is computationally expensive, time-consuming, and lacks interpretability. In contrast, the competitive results of AGCM highlight its ability to deliver robust performance while offering interpretability, which is a key advantage over black-box methods, even in the real-world multimodal context."
+      },
+      "confidence": 0.95,
+      "task": "Evaluating Multimodal AGCM",
+      "setup": "Aff-Wild2 audio-visual dataset, HuBERT audio feature extractor, frozen visual branch"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d2bec97ea29d5f0e_x3",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "The efficiency of predicted concepts is a critical metric for both performance as well as explainability. To evaluate the reliability of learned concept representations, we employ the Concept Alignment Score (CAS) [57], which measures how well the predicted concepts align with their corresponding ground truth labels. Unlike traditional accuracy, which struggles with defining thresholds between “activated” and “inactivated” concepts, CAS uses homogeneity scores and clustering algorithms to assess the proximity of predicted concepts to ground truth, providing a more robust measure of concept alignment. As shown in Table V, models without concept supervision (No Concept) serve as a baseline for comparison. The proposed framework in visual (AGCM-V) and audio-visual (AGCM-AV) contexts outperform the previous CEM models [35], which give higher CAS across all datasets, indicating their superior ability to learn meaningful and aligned concepts for both visual and audio modalities."
+      },
+      "confidence": 0.95,
+      "task": "Concept Efficiency Evaluation",
+      "setup": "RAF-DB, AffectNet, Aff-Wild2 datasets, Concept Alignment Score (CAS)"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d2bec97ea29d5f0e_x4",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "To further evaluate the robustness of the model’s explanations, we stress-test AGCM to explore its ability to handle challenging scenarios. Facial occlusion is a common challenge in real-world affective signal processing applications, particularly in in-the-wild datasets, where the subjects may wear VR glasses, causing upper-face occlusion, or masks, leading to lower-face occlusion. These occlusions present difficulties for affective computing, especially when providing conceptual or map-based explanations. The proposed AGCM framework addresses this limitation by generating weighted concept attention maps, which improve both the performance and the interpretability. To simulate real-world occlusion scenarios, we selected images from the Aff-Wild2 test set and manually occluded either the upper or lower face regions, re-evaluating the performance of the well-trained AGCM framework. As shown in Fig. 9, we randomly selected samples with varying facial expressions, lighting conditions, and angles, then removed either the upper or lower face regions. Using the same well-trained AGCM model, we re-evaluated the predicted emotion labels, representative top concept probabilities, and the corresponding weighted concept attention maps. After occlusion, AGCM still accurately predicts the emotion by focusing on the unobstructed facial regions. In the “Happy” examples, the model shifts attention away from AU6 (Cheek Raiser), which is occluded and focuses more on AU12 (Lip Corner Puller), resulting in a correct prediction despite the occlusion. Similarly, in the “Surprise” example, AGCM downweights the contribution of the occluded AU26 (Jaw Drop) and instead focuses on AU2 (Outer Brow Raiser), another strong indicator of surprise. These results demonstrate AGCM’s robustness in handling occluded facial images while maintaining accurate and interpretable predictions. Hand-over-face occlusion presents an even more complex challenge than occlusion caused by glasses and masks, as the hand can often be misinterpreted as part of the face during model inference because one’s hands often share similar textures with the face. To evaluate AGCM’s performance in such scenarios, we selected additional samples from the Aff-Wild2 dataset, which contains instances of hand-over-face occlusion. Fig. 10 shows test images featuring hand-over-face occlusion. Despite these occlusions, AGCM generates accurate emotion predictions by leveraging a few key concepts. For instance, in the “Surprise” example, even though the lowerface concepts are occluded, the model identifies high probabilities for upper-face indicators AU1 (Inner Brow Raiser) and AU2, leading to a correct prediction. Similarly, in the “Happy” example, AU6 (Cheek Raiser) alone is sufficient for the model to make this accurate prediction. These stress-testing results demonstrate that AGCM effectively handles partial face occlusion and hand-over-face occlusion by focusing on unobstructed regions and leveraging spatial concept learning to emphasize visible concepts during training. This capability highlights AGCM’s robust, conceptaware spatial explanations, enabling reliable predictions even in challenging scenarios."
+      },
+      "confidence": 0.95,
+      "task": "Robustness of the Explanation",
+      "setup": "Aff-Wild2 dataset, manual occlusion of upper/lower face regions"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d2bec97ea29d5f0e_x5",
+      "evidence": {
+        "section": "IV. EXPERIMENTAL EVALUATION AND RESULTS",
+        "original_text": "Compared to the previous concept-based approaches, the proposed AGCM framework introduces four main components, including Multi-scale Spatial Attention (MSA), Multihead Attention (MHA), Cannel Attended Concept Mapping (CACM), and Concept Map Loss (CML). As the evaluation of multimodal concept fusion has been given in Section IV-E, this section provides an ablation study to show the efficiency of the visual-based AGCM framework. Table VI presents the ablation study for the visual-based AGCM framework on RAF-DB and AffectNet-8. The baseline model without any components achieves 90.47% on RAFDB and 62.58% on AffectNet-8. Adding Multi-scale Spatial Attention (MSA) improves performance significantly, reaching 92.84% and 62.99%. Introducing Multi-head Attention (MHA) further boosts accuracy to 93.26% and 63.10%, while Channel Attended Concept Mapping (CACM) provides a slight improvement to 93.31% and 63.46%. Finally, the full AGCM with Concept Map Loss (CML) achieves the best results, 94.40% on RAF-DB and 65.62% on AffectNet-8, demonstrating the cumulative benefit of these components in enhancing accuracy while maintaining explainability."
+      },
+      "confidence": 0.95,
+      "task": "Ablation Study",
+      "setup": "RAF-DB and AffectNet-8 test sets, removal of MSA, MHA, CACM, CML components"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d2bec97ea29d5f0e_x6",
+      "evidence": {
+        "section": "V. AGCM FOR INTERPRETABLE ENGAGEMENT ESTIMATION",
+        "original_text": "The generalizability of the framework to downstream applications is essential for establishing a trustworthy AC system. Real-life affective signal processing is inherently more ambiguous, complex, and diverse compared to the well-defined FER task. One good example is human-human interactions, where the conversational engagement score is designed to measure the level and rate of engagement between participants, illustrating the broader and more nuanced requirements of realworld AC applications. In this section, we use the NOvice eXpert Interaction (NOXI) dataset, a large-scale, well-annotated human-human interaction dataset with the engagement label, to illustrate AGCM’s generalization capacity in real-world AC contexts. We conduct both qualitative and quantitative evaluations, demonstrating that AGCM achieves robust performance by automatically identifying key indicators and highlighting essential concepts. NOXI [15] is designed for the analysis of human interaction in real-world, cross-cultural settings. It includes video recordings of novice-expert interactions in eight languages (English, French, German, Spanish, Indonesian, Arabic, Dutch, and Italian), with AU capture via Microsoft Kinect [59]. The dataset spans over 50 hours of video and is annotated with a by-frame engagement score ranging from 0 to 1. For our experiments, we utilize 76 videos (over 1.5 million frames) for training and 20 videos (over 500,000 frames) for testing. AGCM is highly generalizable to downstream AC applications by simply adjusting the configuration of the final task predictor. For example, in FER tasks, a classification header is utilized, whereas in continuous signal prediction tasks, a regression header is employed. This flexibility allows AGCM to adapt a wide range of affective computing applications. Table VII shows the performance comparison of various models in terms of the Concordance Correlation Coefficient (CCC) on the Noxi dataset for continuous engagement estimation. CCC is used to evaluate continuous tasks by measuring the agreement between predicted and true values, accounting for both correlation and accuracy, making it ideal for engagement estimation tasks. The proposed multimodal AGCM framework with audio-visual concept fusion again outperforms feature-based and previous concept-based models, showing its outstanding state-of-the-art performance in downstream realworld engagement estimation tasks. In the unimodal setting, AGCM with visual concepts achieves a CCC score of 0.59, marking a substantial improvement over the unimodal CEM (+0.11) and feature-based model (+0.23). This result highlights the advantages of spatial concept learning while underscoring the limitations of featurebased models in addressing the complexities of affective signal processing. In the multimodal context, AGCM attains a performance of 0.80, demonstrating the significant benefits of co-learning multimodal knowledge. This is particularly valuable in complex real-world AC applications, such as engagement estimation, where multiple modalities are essential for capturing and understanding nuanced human behavior. Although the black-box S2S model [55] slightly outperforms AGCM with a CCC of 0.03, AGCM underscores its ability to approximate state-of-the-art results while maintaining interpretability. The attention map-based models [11] are not well-suited to this task, as they rely on predefined mappings between AUs and labels, which are not available for continuous engagement estimation. Additionally, TS-CAM [21], which is restricted to the visual modality, also performs poorly in engagement estimation. Meanwhile, the Concept Alignment Score (CAS), as shown in Table V, illustrates that the AGCM framework with audiovisual co-learning not only maintains competitive performance compared to state-of-the-art black-box deep learning models but also delivers accurate conceptual explanations. Therefore, this sophisticated interpretable framework maintains competitive performance without compromise. By simply configuring the AGCM classifier, the performance evaluation on engagement estimation demonstrates the strong generalizability of AGCM to a wide range of downstream applications beyond FER, making it both powerful and accessible for diverse affective computing tasks."
+      },
+      "confidence": 0.95,
+      "task": "AGCM for Interpretable Engagement Estimation",
+      "setup": "NOXI dataset, continuous engagement score, regression header, Concordance Correlation Coefficient (CCC)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr1",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table II presents the overall accuracy of various models on RAF-DB, AffectNet-7, and AffectNet-8. The proposed AGCM framework achieves the highest accuracy across all datasets, with 94.40% on RAF-DB, 69.45% on AffectNet-7, and 65.62% on AffectNet-8. These results demonstrate AGCM’s significant improvement over the classic feature-based methods, particularly on RAF-DB (+27.36%) and AffectNet-8 (+28.51%). AGCM also outperforms state-of-the-art blackbox transformer models including S2D [17] and Poster++ [39], providing gains of 1.83% on RAF-DB and 1.86% on AffectNet-8 compared to S2D. This highlights AGCM’s ability to match and exceed black-box model performance while maintaining conceptual explainability. Furthermore, AGCM demonstrates superior results compared to interpretable mapbased approaches, with a 3.37% improvement on RAF-DB and over 4% on AffectNet. When compared to the previous concept-based model [35], AGCM shows consistent gains across all datasets, benefiting from its spatial concept and attention learning."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 94.4,
+      "unit": "%",
+      "context": "RAF-DB dataset, visual-based AGCM framework",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr2",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table II presents the overall accuracy of various models on RAF-DB, AffectNet-7, and AffectNet-8. The proposed AGCM framework achieves the highest accuracy across all datasets, with 94.40% on RAF-DB, 69.45% on AffectNet-7, and 65.62% on AffectNet-8. These results demonstrate AGCM’s significant improvement over the classic feature-based methods, particularly on RAF-DB (+27.36%) and AffectNet-8 (+28.51%). AGCM also outperforms state-of-the-art blackbox transformer models including S2D [17] and Poster++ [39], providing gains of 1.83% on RAF-DB and 1.86% on AffectNet-8 compared to S2D. This highlights AGCM’s ability to match and exceed black-box model performance while maintaining conceptual explainability. Furthermore, AGCM demonstrates superior results compared to interpretable mapbased approaches, with a 3.37% improvement on RAF-DB and over 4% on AffectNet. When compared to the previous concept-based model [35], AGCM shows consistent gains across all datasets, benefiting from its spatial concept and attention learning."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 69.45,
+      "unit": "%",
+      "context": "AffectNet-7 dataset, visual-based AGCM framework",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr3",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table II presents the overall accuracy of various models on RAF-DB, AffectNet-7, and AffectNet-8. The proposed AGCM framework achieves the highest accuracy across all datasets, with 94.40% on RAF-DB, 69.45% on AffectNet-7, and 65.62% on AffectNet-8. These results demonstrate AGCM’s significant improvement over the classic feature-based methods, particularly on RAF-DB (+27.36%) and AffectNet-8 (+28.51%). AGCM also outperforms state-of-the-art blackbox transformer models including S2D [17] and Poster++ [39], providing gains of 1.83% on RAF-DB and 1.86% on AffectNet-8 compared to S2D. This highlights AGCM’s ability to match and exceed black-box model performance while maintaining conceptual explainability. Furthermore, AGCM demonstrates superior results compared to interpretable mapbased approaches, with a 3.37% improvement on RAF-DB and over 4% on AffectNet. When compared to the previous concept-based model [35], AGCM shows consistent gains across all datasets, benefiting from its spatial concept and attention learning."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 65.62,
+      "unit": "%",
+      "context": "AffectNet-8 dataset, visual-based AGCM framework",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d2bec97ea29d5f0e_p1",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table II presents the overall accuracy of various models on RAF-DB, AffectNet-7, and AffectNet-8. The proposed AGCM framework achieves the highest accuracy across all datasets, with 94.40% on RAF-DB, 69.45% on AffectNet-7, and 65.62% on AffectNet-8. These results demonstrate AGCM’s significant improvement over the classic feature-based methods, particularly on RAF-DB (+27.36%) and AffectNet-8 (+28.51%). AGCM also outperforms state-of-the-art blackbox transformer models including S2D [17] and Poster++ [39], providing gains of 1.83% on RAF-DB and 1.86% on AffectNet-8 compared to S2D. This highlights AGCM’s ability to match and exceed black-box model performance while maintaining conceptual explainability. Furthermore, AGCM demonstrates superior results compared to interpretable mapbased approaches, with a 3.37% improvement on RAF-DB and over 4% on AffectNet. When compared to the previous concept-based model [35], AGCM shows consistent gains across all datasets, benefiting from its spatial concept and attention learning."
+      },
+      "confidence": 0.98,
+      "metric": "accuracy",
+      "compared_to": "feature-based methods, black-box transformer models (S2D, Poster++), interpretable map-based approaches, previous concept-based model"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr4",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table IV presents the performance comparison in terms of the average F-1 score on the Aff-Wild2 dataset. The proposed AGCM framework consistently outperforms feature-based, map-based, and concept-based interpretable models. Notably, AGCM in a multimodal setting achieves competitive results compared to state-of-the-art black-box models that leverage multimodal data, while maintaining conceptual explainability. Specifically, AGCM attains an F-1 score of 47.52% by combining visual and audio inputs, outperforming visual-only AGCM (+2.57%) and CEM (+4.92%), showing that generally it works better in the multimodal setting. In comparison to feature-based models, AGCM demonstrates a significant improvement (+22.25%), emphasizing the effectiveness of concept-level multimodal alignment and co-learning. While CNN-based map models [11] show stronger performance among map-based approaches, they still lag behind AGCM (by 3.03%) and AGCM (by 5.6%). The black-box MMAE model [58] achieves the highest F-1 score of 48.93%, largely due to its use of a pre-trained transformer (Masked Autoencoder or MAE), which is computationally expensive, time-consuming, and lacks interpretability. In contrast, the competitive results of AGCM highlight its ability to deliver robust performance while offering interpretability, which is a key advantage over black-box methods, even in the real-world multimodal context."
+      },
+      "confidence": 0.99,
+      "quantity": "average F-1 score",
+      "value": 47.52,
+      "unit": "%",
+      "context": "Aff-Wild2 dataset, multimodal AGCM framework (audio-visual)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d2bec97ea29d5f0e_p2",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table IV presents the performance comparison in terms of the average F-1 score on the Aff-Wild2 dataset. The proposed AGCM framework consistently outperforms feature-based, map-based, and concept-based interpretable models. Notably, AGCM in a multimodal setting achieves competitive results compared to state-of-the-art black-box models that leverage multimodal data, while maintaining conceptual explainability. Specifically, AGCM attains an F-1 score of 47.52% by combining visual and audio inputs, outperforming visual-only AGCM (+2.57%) and CEM (+4.92%), showing that generally it works better in the multimodal setting. In comparison to feature-based models, AGCM demonstrates a significant improvement (+22.25%), emphasizing the effectiveness of concept-level multimodal alignment and co-learning. While CNN-based map models [11] show stronger performance among map-based approaches, they still lag behind AGCM (by 3.03%) and AGCM (by 5.6%). The black-box MMAE model [58] achieves the highest F-1 score of 48.93%, largely due to its use of a pre-trained transformer (Masked Autoencoder or MAE), which is computationally expensive, time-consuming, and lacks interpretability. In contrast, the competitive results of AGCM highlight its ability to deliver robust performance while offering interpretability, which is a key advantage over black-box methods, even in the real-world multimodal context."
+      },
+      "confidence": 0.98,
+      "metric": "average F-1 score",
+      "compared_to": "feature-based models, map-based models, concept-based models (CEM), black-box MMAE model"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr5",
+      "evidence": {
+        "section": "AGCM for Interpretable Engagement Estimation",
+        "original_text": "Table VII shows the performance comparison of various models in terms of the Concordance Correlation Coefficient (CCC) on the Noxi dataset for continuous engagement estimation. CCC is used to evaluate continuous tasks by measuring the agreement between predicted and true values, accounting for both correlation and accuracy, making it ideal for engagement estimation tasks. The proposed multimodal AGCM framework with audio-visual concept fusion again outperforms feature-based and previous concept-based models, showing its outstanding state-of-the-art performance in downstream realworld engagement estimation tasks. In the unimodal setting, AGCM with visual concepts achieves a CCC score of 0.59, marking a substantial improvement over the unimodal CEM (+0.11) and feature-based model (+0.23). This result highlights the advantages of spatial concept learning while underscoring the limitations of featurebased models in addressing the complexities of affective signal processing. In the multimodal context, AGCM attains a performance of 0.80, demonstrating the significant benefits of co-learning multimodal knowledge. This is particularly valuable in complex real-world AC applications, such as engagement estimation, where multiple modalities are essential for capturing and understanding nuanced human behavior. Although the black-box S2S model [55] slightly outperforms AGCM with a CCC of 0.03, AGCM underscores its ability to approximate state-of-the-art results while maintaining interpretability. The attention map-based models [11] are not well-suited to this task, as they rely on predefined mappings between AUs and labels, which are not available for continuous engagement estimation. Additionally, TS-CAM [21], which is restricted to the visual modality, also performs poorly in engagement estimation."
+      },
+      "confidence": 0.99,
+      "quantity": "Concordance Correlation Coefficient (CCC)",
+      "value": 0.59,
+      "unit": "",
+      "context": "NOXI dataset, unimodal AGCM framework (visual)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr6",
+      "evidence": {
+        "section": "AGCM for Interpretable Engagement Estimation",
+        "original_text": "Table VII shows the performance comparison of various models in terms of the Concordance Correlation Coefficient (CCC) on the Noxi dataset for continuous engagement estimation. CCC is used to evaluate continuous tasks by measuring the agreement between predicted and true values, accounting for both correlation and accuracy, making it ideal for engagement estimation tasks. The proposed multimodal AGCM framework with audio-visual concept fusion again outperforms feature-based and previous concept-based models, showing its outstanding state-of-the-art performance in downstream realworld engagement estimation tasks. In the unimodal setting, AGCM with visual concepts achieves a CCC score of 0.59, marking a substantial improvement over the unimodal CEM (+0.11) and feature-based model (+0.23). This result highlights the advantages of spatial concept learning while underscoring the limitations of featurebased models in addressing the complexities of affective signal processing. In the multimodal context, AGCM attains a performance of 0.80, demonstrating the significant benefits of co-learning multimodal knowledge. This is particularly valuable in complex real-world AC applications, such as engagement estimation, where multiple modalities are essential for capturing and understanding nuanced human behavior. Although the black-box S2S model [55] slightly outperforms AGCM with a CCC of 0.03, AGCM underscores its ability to approximate state-of-the-art results while maintaining interpretability. The attention map-based models [11] are not well-suited to this task, as they rely on predefined mappings between AUs and labels, which are not available for continuous engagement estimation. Additionally, TS-CAM [21], which is restricted to the visual modality, also performs poorly in engagement estimation."
+      },
+      "confidence": 0.99,
+      "quantity": "Concordance Correlation Coefficient (CCC)",
+      "value": 0.8,
+      "unit": "",
+      "context": "NOXI dataset, multimodal AGCM framework (audio-visual)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d2bec97ea29d5f0e_p3",
+      "evidence": {
+        "section": "AGCM for Interpretable Engagement Estimation",
+        "original_text": "Table VII shows the performance comparison of various models in terms of the Concordance Correlation Coefficient (CCC) on the Noxi dataset for continuous engagement estimation. CCC is used to evaluate continuous tasks by measuring the agreement between predicted and true values, accounting for both correlation and accuracy, making it ideal for engagement estimation tasks. The proposed multimodal AGCM framework with audio-visual concept fusion again outperforms feature-based and previous concept-based models, showing its outstanding state-of-the-art performance in downstream realworld engagement estimation tasks. In the unimodal setting, AGCM with visual concepts achieves a CCC score of 0.59, marking a substantial improvement over the unimodal CEM (+0.11) and feature-based model (+0.23). This result highlights the advantages of spatial concept learning while underscoring the limitations of featurebased models in addressing the complexities of affective signal processing. In the multimodal context, AGCM attains a performance of 0.80, demonstrating the significant benefits of co-learning multimodal knowledge. This is particularly valuable in complex real-world AC applications, such as engagement estimation, where multiple modalities are essential for capturing and understanding nuanced human behavior. Although the black-box S2S model [55] slightly outperforms AGCM with a CCC of 0.03, AGCM underscores its ability to approximate state-of-the-art results while maintaining interpretability. The attention map-based models [11] are not well-suited to this task, as they rely on predefined mappings between AUs and labels, which are not available for continuous engagement estimation. Additionally, TS-CAM [21], which is restricted to the visual modality, also performs poorly in engagement estimation."
+      },
+      "confidence": 0.98,
+      "metric": "Concordance Correlation Coefficient (CCC)",
+      "compared_to": "unimodal CEM, feature-based model, black-box S2S model, attention map-based models, TS-CAM"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr7",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table VI presents the ablation study for the visual-based AGCM framework on RAF-DB and AffectNet-8. The baseline model without any components achieves 90.47% on RAFDB and 62.58% on AffectNet-8. Adding Multi-scale Spatial Attention (MSA) improves performance significantly, reaching 92.84% and 62.99%. Introducing Multi-head Attention (MHA) further boosts accuracy to 93.26% and 63.10%, while Channel Attended Concept Mapping (CACM) provides a slight improvement to 93.31% and 63.46%. Finally, the full AGCM with Concept Map Loss (CML) achieves the best results, 94.40% on RAF-DB and 65.62% on AffectNet-8, demonstrating the cumulative benefit of these components in enhancing accuracy while maintaining explainability."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 90.47,
+      "unit": "%",
+      "context": "RAF-DB dataset, baseline AGCM framework without any components",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d2bec97ea29d5f0e_qr8",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table VI presents the ablation study for the visual-based AGCM framework on RAF-DB and AffectNet-8. The baseline model without any components achieves 90.47% on RAFDB and 62.58% on AffectNet-8. Adding Multi-scale Spatial Attention (MSA) improves performance significantly, reaching 92.84% and 62.99%. Introducing Multi-head Attention (MHA) further boosts accuracy to 93.26% and 63.10%, while Channel Attended Concept Mapping (CACM) provides a slight improvement to 93.31% and 63.46%. Finally, the full AGCM with Concept Map Loss (CML) achieves the best results, 94.40% on RAF-DB and 65.62% on AffectNet-8, demonstrating the cumulative benefit of these components in enhancing accuracy while maintaining explainability."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 62.58,
+      "unit": "%",
+      "context": "AffectNet-8 dataset, baseline AGCM framework without any components",
+      "result_type": "baseline"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d2bec97ea29d5f0e_p4",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table VI presents the ablation study for the visual-based AGCM framework on RAF-DB and AffectNet-8. The baseline model without any components achieves 90.47% on RAFDB and 62.58% on AffectNet-8. Adding Multi-scale Spatial Attention (MSA) improves performance significantly, reaching 92.84% and 62.99%. Introducing Multi-head Attention (MHA) further boosts accuracy to 93.26% and 63.10%, while Channel Attended Concept Mapping (CACM) provides a slight improvement to 93.31% and 63.46%. Finally, the full AGCM with Concept Map Loss (CML) achieves the best results, 94.40% on RAF-DB and 65.62% on AffectNet-8, demonstrating the cumulative benefit of these components in enhancing accuracy while maintaining explainability."
+      },
+      "confidence": 0.98,
+      "metric": "accuracy",
+      "compared_to": "baseline model, models with incremental components (MSA, MHA, CACM)"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_d2bec97ea29d5f0e_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Existing explainable methods often compromise between interpretability and performance. Most of them focus only on highlighting key network parameters without offering meaningful, domain-specific explanations to the stakeholders. Additionally, they also face challenges in effectively co-learning and explaining insights from multimodal data sources. To address these limitations, we propose a novel and generalizable framework, namely the Attention-Guided Concept Model (AGCM), which provides learnable conceptual explanations by identifying what concepts that lead to the predictions and where they are observed. AGCM is extendable to any spatial and temporal signals through multimodal concept alignment and co-learning, empowering stakeholders with deeper insights into the model’s decision-making process. We validate the efficiency of AGCM on well-established Facial Expression Recognition benchmark datasets while also demonstrating its generalizability on more complex real-world human behavior understanding applications. We believe that AGCM’s flexibility and extensibility lay a solid foundation for developing future interpretable and trustworthy models in downstream affective computing applications, including in mental health, psychiatry, education, automotive, and security, offering both competitive performance and domain-specific explanations."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_d2bec97ea29d5f0e_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "As shown in Fig. 1 (c), in this paper, we propose an interpretable concept-based framework: the Attention-Guided Concept Model (AGCM), which localizes and learns the key indicators during training and then makes the final prediction according to the contribution of these intermediate concepts. This framework incorporates spatial concept information and multimodal concept fusion within a powerful attention-based architecture, combining the advantage of both domain-specific explanation and state-of-the-art performance. In summary, the main contributions of this paper are as follows: - 1) We propose a concept-based interpretable framework for AC applications, namely the Attention-Guided Concept Model (AGCM), which provides both learnable multimodal conceptual explanations and spatial visual concept localization, quantifying the contribution of individual concepts to the predicted affective label. - 2) To address the challenge of multimodal concept alignment and co-learning, AGCM introduces an extendable sequential multimodal concept fusion, which can be easily expanded to any spatial-temporal signal. This approach accounts for temporal and contextual information between input modalities, demonstrating the adaptability to other discrete or continuous signals. - 3) We qualitatively and quantitatively evaluate the proposed framework on three large-scale FER datasets: RAF-DB, AffectNet, and Aff-Wild2, demonstrating that AGCM outperforms previous interpretable models and achieves competitive performance compared to state-of-the-art black-box models. Moreover, the experiment shows that AGCM offers a human-interpretable explanation grounded in domain-specific knowledge. - 4) To demonstrate the generalizability of AGCM on complex real-world AC applications, we conduct extensive experiments on the human-human interaction dataset, validating its ability to provide explainable and accurate prediction in downstream AC applications."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_d2bec97ea29d5f0e_cl1",
+      "evidence": {
+        "section": "Conclusion & Future Work",
+        "original_text": "In this paper, we introduce the Attention-Guided Concept Model (AGCM), a multimodal concept-based interpretable framework that provides conceptual explanations of what concepts contribute to the predictions and where they are observed. AGCM is highly extendable to various spatial-temporal modalities, effectively addressing the challenges of multimodal alignment, fusion, and co-learning. The framework demonstrates strong generalizability and flexibility, making it well-suited for diverse real-world AC applications. We first validate the model’s effectiveness in achieving both high performance and robust explanation through qualitative and quantitative evaluations on well-established FER datasets. Then, we demonstrate the generalizability of the AGCM framework to other complex real-world AC applications by extensive experiments on the human-human interaction task. We believe that AGCM establishes a foundation for creating future interpretable systems in downstream AC applications, such as psychology, psychiatry, digital behavior, and Human-Computer Interaction, with competitive performance and human-interpretable explanation."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_d2bec97ea29d5f0e_cl2",
+      "evidence": {
+        "section": "Experimental Evaluation and Results",
+        "original_text": "Table II presents the overall accuracy of various models on RAF-DB, AffectNet-7, and AffectNet-8. The proposed AGCM framework achieves the highest accuracy across all datasets, with 94.40% on RAF-DB, 69.45% on AffectNet-7, and 65.62% on AffectNet-8. These results demonstrate AGCM’s significant improvement over the classic feature-based methods, particularly on RAF-DB (+27.36%) and AffectNet-8 (+28.51%). AGCM also outperforms state-of-the-art black-box transformer models including S2D [17] and Poster++ [39], providing gains of 1.83% on RAF-DB and 1.86% on AffectNet-8 compared to S2D. This highlights AGCM’s ability to match and exceed black-box model performance while maintaining conceptual explainability. Furthermore, AGCM demonstrates superior results compared to interpretable map-based approaches, with a 3.37% improvement on RAF-DB and over 4% on AffectNet. When compared to the previous concept-based model [35], AGCM shows consistent gains across all datasets, benefiting from its spatial concept and attention learning."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_d2bec97ea29d5f0e_cl3",
+      "evidence": {
+        "section": "AGCM for Interpretable Engagement Estimation",
+        "original_text": "Table VII shows the performance comparison of various models in terms of the Concordance Correlation Coefficient (CCC) on the Noxi dataset for continuous engagement estimation. CCC is used to evaluate continuous tasks by measuring the agreement between predicted and true values, accounting for both correlation and accuracy, making it ideal for engagement estimation tasks. The proposed multimodal AGCM framework with audio-visual concept fusion again outperforms feature-based and previous concept-based models, showing its outstanding state-of-the-art performance in downstream real-world engagement estimation tasks. In the unimodal setting, AGCM with visual concepts achieves a CCC score of 0.59, marking a substantial improvement over the unimodal CEM (+0.11) and feature-based model (+0.23). This result highlights the advantages of spatial concept learning while underscoring the limitations of feature-based models in addressing the complexities of affective signal processing. In the multimodal context, AGCM attains a performance of 0.80, demonstrating the significant benefits of co-learning multimodal knowledge. This is particularly valuable in complex real-world AC applications, such as engagement estimation, where multiple modalities are essential for capturing and understanding nuanced human behavior."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_d2bec97ea29d5f0e_lm1",
+      "evidence": {
+        "section": "Conclusion & Future Work",
+        "original_text": "AGCM leverages the strengths of both feature-based models and deep black-box models to offer interpretable, high-performance predictions. However, explainability in affective computing remains an evolving area of research. We posit that model explanations should be tailored to end-users, such as psychologists and cognitive scientists. Therefore, we plan to incorporate a human-in-the-loop approach for affective XAI to further enhance model usability. Additionally, while AGCM is trained on large datasets, exploring XAI fairness in terms of gender, cultural, and age biases presents an interesting avenue for further investigation. In this paper, we assess various forms of occlusion using the Aff-Wild2 dataset; future improvements could be achieved by fine-tuning AGCM on occlusion-specific datasets to better handle such challenges. Generating text-based explanations via Large Language Models (LLM) may also give users extra insights. However, given the inherent complexity of LLMs, it is imperative to employ appropriate knowledge distillation techniques, particularly for cross-disciplinary stakeholders."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_d2bec97ea29d5f0e_fw1",
+      "evidence": {
+        "section": "Conclusion & Future Work",
+        "original_text": "AGCM leverages the strengths of both feature-based models and deep black-box models to offer interpretable, high-performance predictions. However, explainability in affective computing remains an evolving area of research. We posit that model explanations should be tailored to end-users, such as psychologists and cognitive scientists. Therefore, we plan to incorporate a human-in-the-loop approach for affective XAI to further enhance model usability. Additionally, while AGCM is trained on large datasets, exploring XAI fairness in terms of gender, cultural, and age biases presents an interesting avenue for further investigation. In this paper, we assess various forms of occlusion using the Aff-Wild2 dataset; future improvements could be achieved by fine-tuning AGCM on occlusion-specific datasets to better handle such challenges. Generating text-based explanations via Large Language Models (LLM) may also give users extra insights. However, given the inherent complexity of LLMs, it is imperative to employ appropriate knowledge distillation techniques, particularly for cross-disciplinary stakeholders."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

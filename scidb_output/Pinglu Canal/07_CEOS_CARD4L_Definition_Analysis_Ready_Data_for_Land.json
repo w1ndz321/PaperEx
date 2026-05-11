@@ -1,0 +1,417 @@
+{
+  "metadata": {
+    "doc_id": "doc_59c56f2c0af1c938",
+    "source_file": "07_CEOS_CARD4L_Definition_Analysis_Ready_Data_for_Land.md",
+    "title": "CEOS’ Mission is to optimize societal benefit from Earth observation",
+    "year": null,
+    "doi": null,
+    "abstract": "CEOS’ Mission is to optimize societal benefit from Earth observation. However, many satellite data users, particularly those in developing countries, lack the expertise, infrastructure and internet bandwidth to efficiently and effectively access, preprocess, and utilize the growing volume of space-based data for local, regional, and national decision-making. Furthermore, even sophisticated users of EO data typically invest a large proportion of their effort into data preparation. This is a major barrier to full and successful utilization of space-based data, and threatens the success of major global and regional initiatives supported by the Committee on Earth Observation Satellites (CEOS). As data volumes grow, this barrier is becoming more significant for all users.",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "测绘科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "管理学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Earth observation",
+      "satellite data",
+      "data access",
+      "CEOS",
+      "societal benefit"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:33:03.638610+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c1",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "Countries and international organizations have expressed a desire for support from CEOS to facilitate access to and processing of satellite data into CEOS Analysis Ready Data for Land (CARD4L) products. Systematic and regular provision of CARD4L will greatly reduce the burden on global satellite data users. The provision of this data is possible through many options including systematic processing and distribution, processing on hosted platforms, and processing via toolkits provided to users. This document serves to develop a land surface (including coastal regions) imaging CARD4L guideline and description for CEOS Agencies. This document intends to improve the current and future provision of EO data and to maximise the value of the data to users and address the needs of the majority of global users. In addition, CEOS is developing a Data Cube (spatially aligned time series stack of pixels) architecture that depends on CARD4L to allow immediate creation of Data Cubes and subsequent analyses. The result of this effort will be improved interoperability among datasets, facilitating time series analyses and enhanced global use and scientific value of satellite data."
+      },
+      "confidence": 0.99,
+      "term": "CEOS Analysis Ready Data for Land",
+      "normalized": "CEOS陆地分析就绪数据",
+      "std_label": "CARD4L"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c2",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "CEOS’ Mission is to optimize societal benefit from Earth observation. However, many satellite data users, particularly those in developing countries, lack the expertise, infrastructure and internet bandwidth to efficiently and effectively access, preprocess, and utilize the growing volume of space-based data for local, regional, and national decision-making. Furthermore, even sophisticated users of EO data typically invest a large proportion of their effort into data preparation. This is a major barrier to full and successful utilization of space-based data, and threatens the success of major global and regional initiatives supported by the Committee on Earth Observation Satellites (CEOS). As data volumes grow, this barrier is becoming more significant for all users."
+      },
+      "confidence": 0.99,
+      "term": "Committee on Earth Observation Satellites",
+      "normalized": "地球观测卫星委员会",
+      "std_label": "CEOS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c3",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "In addition, CEOS is developing a Data Cube (spatially aligned time series stack of pixels) architecture that depends on CARD4L to allow immediate creation of Data Cubes and subsequent analyses. The result of this effort will be improved interoperability among datasets, facilitating time series analyses and enhanced global use and scientific value of satellite data."
+      },
+      "confidence": 0.98,
+      "term": "Data Cube",
+      "normalized": "数据立方体",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c4",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "General Metadata – Dataset and pixel descriptive information that establish the lineage of the product and provide confidence to the user that it is authoritative, by detailing the steps taken to produce the data in its current state. This includes: satellite, instrument, acquisition date and time, spatial boundaries, pixel locations, mode, processing details, spectral or frequency response and grid projection."
+      },
+      "confidence": 0.97,
+      "term": "General Metadata",
+      "normalized": "通用元数据",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c5",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Quality Metadata -Dataset and pixel descriptive information such as quality flags which allow users to make informed decisions about the suitability of the products for a particular use. For example clouds, cloud shadows, missing data, saturation and accuracy assessments."
+      },
+      "confidence": 0.97,
+      "term": "Quality Metadata",
+      "normalized": "质量元数据",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c6",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Measurement-based / Radiometric Calibration – Adjustments for sensor/instrument gains, biases, offsets and adjustments for sensor viewing angle with respect to the pixel position on the surface, which allow the majority of users to apply the data directly rather than, in general, undertaking these steps themselves. Ideally, CARD4L will provide geophysical quantities such as surface reflectance, temperature, or backscatter amplitude facilitating the use of observations from multiple platforms and sensors."
+      },
+      "confidence": 0.96,
+      "term": "Measurement-based / Radiometric Calibration",
+      "normalized": "基于测量的/辐射校准",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c7",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Geometric Calibration – Establishing ground position, taking into account terrain (orthorectification) and ground control points and assessing absolute position accuracy. Geometric calibration allows products to be used with other spatial data, and in particular to be ‘stacked as time-series’. Adjustments for ground variability typically use a Digital Elevation Model (DEM)."
+      },
+      "confidence": 0.97,
+      "term": "Geometric Calibration",
+      "normalized": "几何校准",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c8",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Geometric Calibration – Establishing ground position, taking into account terrain (orthorectification) and ground control points and assessing absolute position accuracy. Geometric calibration allows products to be used with other spatial data, and in particular to be ‘stacked as time-series’. Adjustments for ground variability typically use a Digital Elevation Model (DEM)."
+      },
+      "confidence": 0.96,
+      "term": "Digital Elevation Model",
+      "normalized": "数字高程模型",
+      "std_label": "DEM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c9",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Atmospheric Correction – Adjustments for atmospheric effects (absorption and scattering) due to water vapor, ozone, molecular scattering, and aerosols."
+      },
+      "confidence": 0.98,
+      "term": "Atmospheric Correction",
+      "normalized": "大气校正",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_59c56f2c0af1c938_c10",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "It is anticipated CEOS Agencies will map their sensor specifications to the specifications of CARD4L through the CEOS Land Surface Imaging Virtual Constellation (LSI-VC). This process will provide users with the needed information on CARD4L content and provisions to obtain this data."
+      },
+      "confidence": 0.95,
+      "term": "CEOS Land Surface Imaging Virtual Constellation",
+      "normalized": "CEOS陆地表面成像虚拟星座",
+      "std_label": "LSI-VC"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r1",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "Countries and international organizations have expressed a desire for support from CEOS to facilitate access to and processing of satellite data into CEOS Analysis Ready Data for Land (CARD4L) products. Systematic and regular provision of CARD4L will greatly reduce the burden on global satellite data users. The provision of this data is possible through many options including systematic processing and distribution, processing on hosted platforms, and processing via toolkits provided to users. This document serves to develop a land surface (including coastal regions) imaging CARD4L guideline and description for CEOS Agencies. This document intends to improve the current and future provision of EO data and to maximise the value of the data to users and address the needs of the majority of global users."
+      },
+      "confidence": 0.94,
+      "head": "doc_59c56f2c0af1c938_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "supported by",
+      "tail": "doc_59c56f2c0af1c938_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r2",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "In addition, CEOS is developing a Data Cube (spatially aligned time series stack of pixels) architecture that depends on CARD4L to allow immediate creation of Data Cubes and subsequent analyses. The result of this effort will be improved interoperability among datasets, facilitating time series analyses and enhanced global use and scientific value of satellite data."
+      },
+      "confidence": 0.95,
+      "head": "doc_59c56f2c0af1c938_c3",
+      "relation_type": "depends_on",
+      "relation_surface": "depends on",
+      "tail": "doc_59c56f2c0af1c938_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r3",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "The following parameters are used to assess the minimum requirements of CARD4L, which differ for each sensor type. Any higher level derived data products (e.g. composites or indices), or additional corrections that meet or exceed these minimum requirements, would also be considered CARD4L. General Metadata – Dataset and pixel descriptive information that establish the lineage of the product and provide confidence to the user that it is authoritative, by detailing the steps taken to produce the data in its current state. This includes: satellite, instrument, acquisition date and time, spatial boundaries, pixel locations, mode, processing details, spectral or frequency response and grid projection."
+      },
+      "confidence": 0.93,
+      "head": "doc_59c56f2c0af1c938_c1",
+      "relation_type": "uses",
+      "relation_surface": "includes",
+      "tail": "doc_59c56f2c0af1c938_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r4",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "The following parameters are used to assess the minimum requirements of CARD4L, which differ for each sensor type. Any higher level derived data products (e.g. composites or indices), or additional corrections that meet or exceed these minimum requirements, would also be considered CARD4L. Quality Metadata -Dataset and pixel descriptive information such as quality flags which allow users to make informed decisions about the suitability of the products for a particular use. For example clouds, cloud shadows, missing data, saturation and accuracy assessments."
+      },
+      "confidence": 0.93,
+      "head": "doc_59c56f2c0af1c938_c1",
+      "relation_type": "uses",
+      "relation_surface": "includes",
+      "tail": "doc_59c56f2c0af1c938_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r5",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "The following parameters are used to assess the minimum requirements of CARD4L, which differ for each sensor type. Any higher level derived data products (e.g. composites or indices), or additional corrections that meet or exceed these minimum requirements, would also be considered CARD4L. Measurement-based / Radiometric Calibration – Adjustments for sensor/instrument gains, biases, offsets and adjustments for sensor viewing angle with respect to the pixel position on the surface, which allow the majority of users to apply the data directly rather than, in general, undertaking these steps themselves. Ideally, CARD4L will provide geophysical quantities such as surface reflectance, temperature, or backscatter amplitude facilitating the use of observations from multiple platforms and sensors."
+      },
+      "confidence": 0.93,
+      "head": "doc_59c56f2c0af1c938_c1",
+      "relation_type": "uses",
+      "relation_surface": "includes",
+      "tail": "doc_59c56f2c0af1c938_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r6",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "The following parameters are used to assess the minimum requirements of CARD4L, which differ for each sensor type. Any higher level derived data products (e.g. composites or indices), or additional corrections that meet or exceed these minimum requirements, would also be considered CARD4L. Geometric Calibration – Establishing ground position, taking into account terrain (orthorectification) and ground control points and assessing absolute position accuracy. Geometric calibration allows products to be used with other spatial data, and in particular to be ‘stacked as time-series’. Adjustments for ground variability typically use a Digital Elevation Model (DEM)."
+      },
+      "confidence": 0.93,
+      "head": "doc_59c56f2c0af1c938_c1",
+      "relation_type": "uses",
+      "relation_surface": "includes",
+      "tail": "doc_59c56f2c0af1c938_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r7",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Geometric Calibration – Establishing ground position, taking into account terrain (orthorectification) and ground control points and assessing absolute position accuracy. Geometric calibration allows products to be used with other spatial data, and in particular to be ‘stacked as time-series’. Adjustments for ground variability typically use a Digital Elevation Model (DEM)."
+      },
+      "confidence": 0.94,
+      "head": "doc_59c56f2c0af1c938_c7",
+      "relation_type": "uses",
+      "relation_surface": "typically use",
+      "tail": "doc_59c56f2c0af1c938_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_59c56f2c0af1c938_r8",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "Countries and international organizations have expressed a desire for support from CEOS to facilitate access to and processing of satellite data into CEOS Analysis Ready Data for Land (CARD4L) products. Systematic and regular provision of CARD4L will greatly reduce the burden on global satellite data users. The provision of this data is possible through many options including systematic processing and distribution, processing on hosted platforms, and processing via toolkits provided to users. This document serves to develop a land surface (including coastal regions) imaging CARD4L guideline and description for CEOS Agencies. This document intends to improve the current and future provision of EO data and to maximise the value of the data to users and address the needs of the majority of global users."
+      },
+      "confidence": 0.92,
+      "head": "doc_59c56f2c0af1c938_c1",
+      "relation_type": "enhances",
+      "relation_surface": "facilitate access to and processing of",
+      "tail": "doc_59c56f2c0af1c938_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_59c56f2c0af1c938_d1",
+      "evidence": {
+        "section": "Definition",
+        "original_text": "CEOS Analysis Ready Data for Land (CARD4L) are satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets. The definition of CARD4L is not exclusive or prescriptive. A range of data products will be produced by CEOS Agencies to meet the needs of a diverse user community and many of those products are analysis ready data to their users. However, this definition of CARD4L reflects the attributes of fundamental measurement products for the majority of global remote sensing users with land imaging applications, and are the minimum level required to support time series analysis and data interoperability. CARD4L will therefore be geophysical measurements that are comparable in space and time, with sufficient per-pixel (observation) metadata to enable users to select ‘observations of interest’ for their analyses."
+      },
+      "confidence": 0.95,
+      "name": "CEOS Analysis Ready Data for Land (CARD4L)",
+      "modality": "multimodal",
+      "domain": "Earth observation, remote sensing"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds1",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "General Metadata – Dataset and pixel descriptive information that establish the lineage of the product and provide confidence to the user that it is authoritative, by detailing the steps taken to produce the data in its current state. This includes: satellite, instrument, acquisition date and time, spatial boundaries, pixel locations, mode, processing details, spectral or frequency response and grid projection."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "General metadata requirements for CARD4L products including lineage, acquisition details, and processing information"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds2",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Quality Metadata -Dataset and pixel descriptive information such as quality flags which allow users to make informed decisions about the suitability of the products for a particular use. For example clouds, cloud shadows, missing data, saturation and accuracy assessments."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Quality metadata requirements for CARD4L products including quality flags and accuracy assessments"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds3",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Measurement-based / Radiometric Calibration – Adjustments for sensor/instrument gains, biases, offsets and adjustments for sensor viewing angle with respect to the pixel position on the surface, which allow the majority of users to apply the data directly rather than, in general, undertaking these steps themselves. Ideally, CARD4L will provide geophysical quantities such as surface reflectance, temperature, or backscatter amplitude facilitating the use of observations from multiple platforms and sensors."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Measurement-based/Radiometric calibration requirements for CARD4L products"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds4",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Geometric Calibration – Establishing ground position, taking into account terrain (orthorectification) and ground control points and assessing absolute position accuracy. Geometric calibration allows products to be used with other spatial data, and in particular to be ‘stacked as time-series’. Adjustments for ground variability typically use a Digital Elevation Model (DEM)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Geometric calibration requirements for CARD4L products including orthorectification and absolute position accuracy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds5",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Solar and View Angle Correction – Adjustments for local solar and view angles with respect to the pixel position."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Solar and view angle correction requirements for optical sensor CARD4L products"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds6",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Atmospheric Correction – Adjustments for atmospheric effects (absorption and scattering) due to water vapor, ozone, molecular scattering, and aerosols."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Atmospheric correction requirements for optical sensor CARD4L products"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds7",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Radiometric Correction for Topography – Adjustments for radiometric variations due to terrain slope and aspect using a DEM"
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Radiometric correction for topography requirements for radar sensor CARD4L products"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_59c56f2c0af1c938_ds8",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "Radiometric Correction for Incidence Angle – Adjustments for radiometric variations due to radar incidence angle"
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Radiometric correction for incidence angle requirements for radar sensor CARD4L products"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_59c56f2c0af1c938_ca1",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "CEOS’ Mission is to optimize societal benefit from Earth observation. However, many satellite data users, particularly those in developing countries, lack the expertise, infrastructure and internet bandwidth to efficiently and effectively access, preprocess, and utilize the growing volume of space-based data for local, regional, and national decision-making. Furthermore, even sophisticated users of EO data typically invest a large proportion of their effort into data preparation. This is a major barrier to full and successful utilization of space-based data, and threatens the success of major global and regional initiatives supported by the Committee on Earth Observation Satellites (CEOS). As data volumes grow, this barrier is becoming more significant for all users. Countries and international organizations have expressed a desire for support from CEOS to facilitate access to and processing of satellite data into CEOS Analysis Ready Data for Land (CARD4L) products. Systematic and regular provision of CARD4L will greatly reduce the burden on global satellite data users. The provision of this data is possible through many options including systematic processing and distribution, processing on hosted platforms, and processing via toolkits provided to users."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_59c56f2c0af1c938_ca2",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "In addition, CEOS is developing a Data Cube (spatially aligned time series stack of pixels) architecture that depends on CARD4L to allow immediate creation of Data Cubes and subsequent analyses. The result of this effort will be improved interoperability among datasets, facilitating time series analyses and enhanced global use and scientific value of satellite data. The call for CARD4L across many CEOS Agencies, users, and in other communities, is being driven by practical requirements to reduce the demand for limited resources and expertise in the preparation of data, and to ensure that those preparatory steps are fully accounted and understood.[1] These drivers are becoming stronger as the community seeks to apply rapidly growing data volumes from a range of sensors in new ways, especially as time series. Effective implementation of CARD4L requires that the core benefits are understood so that steps to produce CARD4L do indeed deliver benefits. Too general a definition of CARD4L will lead to a meaningless rebadging of products. Conversely, overly specific definitions will limit applicability and will not provide the general guidance required."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_59c56f2c0af1c938_cl1",
+      "evidence": {
+        "section": "Definition",
+        "original_text": "CEOS Analysis Ready Data for Land (CARD4L) are satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets. The definition of CARD4L is not exclusive or prescriptive. A range of data products will be produced by CEOS Agencies to meet the needs of a diverse user community and many of those products are analysis ready data to their users. However, this definition of CARD4L reflects the attributes of fundamental measurement products for the majority of global remote sensing users with land imaging applications, and are the minimum level required to support time series analysis and data interoperability. CARD4L will therefore be geophysical measurements that are comparable in space and time, with sufficient per-pixel (observation) metadata to enable users to select ‘observations of interest’ for their analyses."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_59c56f2c0af1c938_cl2",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "The following parameters are used to assess the minimum requirements of CARD4L, which differ for each sensor type. Any higher level derived data products (e.g. composites or indices), or additional corrections that meet or exceed these minimum requirements, would also be considered CARD4L. For All Sensors: General Metadata – Dataset and pixel descriptive information that establish the lineage of the product and provide confidence to the user that it is authoritative, by detailing the steps taken to produce the data in its current state. This includes: satellite, instrument, acquisition date and time, spatial boundaries, pixel locations, mode, processing details, spectral or frequency response and grid projection. Quality Metadata -Dataset and pixel descriptive information such as quality flags which allow users to make informed decisions about the suitability of the products for a particular use. For example clouds, cloud shadows, missing data, saturation and accuracy assessments. Measurement-based / Radiometric Calibration – Adjustments for sensor/instrument gains, biases, offsets and adjustments for sensor viewing angle with respect to the pixel position on the surface, which allow the majority of users to apply the data directly rather than, in general, undertaking these steps themselves. Ideally, CARD4L will provide geophysical quantities such as surface reflectance, temperature, or backscatter amplitude facilitating the use of observations from multiple platforms and sensors. Geometric Calibration – Establishing ground position, taking into account terrain (orthorectification) and ground control points and assessing absolute position accuracy. Geometric calibration allows products to be used with other spatial data, and in particular to be ‘stacked as time-series’. Adjustments for ground variability typically use a Digital Elevation Model (DEM). For Optical Sensors Only: Solar and View Angle Correction – Adjustments for local solar and view angles with respect to the pixel position. Atmospheric Correction – Adjustments for atmospheric effects (absorption and scattering) due to water vapor, ozone, molecular scattering, and aerosols. For Radar Sensors Only: Radiometric Correction for Topography – Adjustments for radiometric variations due to terrain slope and aspect using a DEM. Radiometric Correction for Incidence Angle – Adjustments for radiometric variations due to radar incidence angle."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_59c56f2c0af1c938_lm1",
+      "evidence": {
+        "section": "Preamble",
+        "original_text": "Effective implementation of CARD4L requires that the core benefits are understood so that steps to produce CARD4L do indeed deliver benefits. Too general a definition of CARD4L will lead to a meaningless rebadging of products. Conversely, overly specific definitions will limit applicability and will not provide the general guidance required."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_59c56f2c0af1c938_fw1",
+      "evidence": {
+        "section": "Requirements",
+        "original_text": "It is anticipated CEOS Agencies will map their sensor specifications to the specifications of CARD4L through the CEOS Land Surface Imaging Virtual Constellation (LSI-VC). This process will provide users with the needed information on CARD4L content and provisions to obtain this data."
+      },
+      "confidence": 0.92
+    }
+  ]
+}

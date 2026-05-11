@@ -1,0 +1,659 @@
+{
+  "metadata": {
+    "doc_id": "doc_98d757499dd3a9d2",
+    "source_file": "05_Identification_of_UAVs_using_RF_Fingerprinting_and_Deep_Learning_Networks.md",
+    "title": "Proposed approach for UAV identification using RF fingerprinting and machine learning",
+    "year": 2025,
+    "doi": null,
+    "abstract": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring.",
+    "introduction": "The growing use of autonomous systems has led to the widespread adoption of unmanned aerial, ground, and marine vehicles in various industries. These technologies play a key role in areas such as surveillance, logistics, and industrial automation. To enhance their performance, researchers have explored AI-based control methods, including fuzzy logic and swarm optimization [1-3]. AI-driven techniques have proven particularly useful in improving drones' and robotic systems' decisionmaking and navigation capabilities [4-6]. At the same time, as UAVs become more common in both civilian and military settings, the need for effective detection systems has become increasingly important to ensure security and regulatory compliance. \n\nResearchers have explored various machine learning approaches for detecting drones, using different sensing methods. One broad survey discusses a plethora of drone detection strategies [7], including those based on audio analysis [8, 9], computer vision [10-12], and data fusion [13, 14]. Audio-based techniques identify drones by analyzing their unique sound signatures, while computer vision methods rely on deep learning models like YOLO and Mask R-CNN to recognize drones in images or video. Meanwhile, fusion models combine multiple data sources to improve identification accuracy and reliability. \n\n_MoMLeT-2025: 7th International Workshop on Modern Machine Learning Technologies, June, 14, 2025, Lviv-Shatsk, Ukraine_ \n\n> ∗ Corresponding author. \n\n> † These authors contributed equally. y_kondrat2002@yahoo.com (Y. Kondratenko); owlvano@gmail.com (I. Sova); kozlov_ov@ukr.net (O. Kozlov); v86651984@gmail.com (V. Kuzmenko) \n\n> 0000-0001-7736-883X (Y. Kondratenko); 0000-0002-8972-4069 (I. Sova); 0000-0003-2069-5578 (O. Kozlov); 0000-0001-8064-0726 (V. Kuzmenko) \n\n> © 2025 Copyright for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0). \n\nCEUR WorkshopProceedings ISSN 1613-0073ceur-ws.org \n\nAs UAV identification becomes more complex, artificial intelligence methods—such as fuzzy logic—offer a promising way to enhance both accuracy and adaptability. Fuzzy logic has been successfully applied to a range of intelligent decision-making tasks, from optimizing rule-based systems to improving classification techniques [15, 16]. Studies have shown its effectiveness in refining detection models and making them more flexible in dynamic environments. \n\nRadio frequency machine learning (RFML) has recently emerged as a powerful tool for UAV identification, thanks to its ability to recognize electromagnetic signal patterns. Researchers have focused on several key areas, including signal processing and feature extraction [17-19], modulation classification [20, 21], and specific emitter identification [22-24]. More recently, the use of generative adversarial networks (GANs) in RFML has helped strengthen models against adversarial attacks [25, 26]. While these advancements show promise, RFML is still a developing field, with ongoing research needed to refine optimization techniques and enhance real-world performance. \n\nRecent research demonstrates increasing interest in multimodal fusion techniques, particularly those that integrate radio frequency signals with audio data to enhance identification accuracy [27]. It has been suggested that incorporating audio information may improve the robustness of RF datasets to noise and environmental variability. Nevertheless, the practical implementation of such approaches poses significant challenges, particularly in constructing well-balanced, synchronized datasets of radio and audio signals under real-world conditions. Moreover, additional constraints emerge when capturing UAV acoustic signatures in actual operating environments. Despite these difficulties, recent studies have proposed viable ways of integrating audio-based feature extraction techniques for raw RF signal data, which are extended and incorporated in the present work. \n\nIn parallel, efforts have emerged to create open-source datasets of drone RF signals, most notably the initiative described in [28], which outlines a systematic framework for the collection and preliminary analysis of raw RF emissions from unmanned aerial vehicles. While this work lays foundational groundwork, it provides only a cursory demonstration of the dataset's applicability to machine learning tasks. \n\nIn this study, we expand upon the abovementioned methodologies, and propose a method for constructing features using radio frequency fingerprinting techniques, namely power spectral density, short-time Fourier transform, and wavelets. The resulting feature vectors are applied to several machine learning methods for drone identification. By conducting extensive experiments, we assess the potential of these feature extraction techniques for practical applications in real-world environments.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "电子、通信与自动控制技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Radio-frequency machine learning",
+      "unmanned aerial vehicle",
+      "artificial neural network",
+      "digital signal processing",
+      "Fourier transform",
+      "spectral analysis",
+      "wavelet transform."
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:00.775433+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.99,
+      "term": "unmanned aerial vehicle",
+      "normalized": "无人机",
+      "std_label": "UAV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.98,
+      "term": "radio frequency fingerprinting",
+      "normalized": "射频指纹识别",
+      "std_label": "RF fingerprinting"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.98,
+      "term": "convolutional neural network",
+      "normalized": "卷积神经网络",
+      "std_label": "CNN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.97,
+      "term": "wavelet-based feature extraction",
+      "normalized": "基于小波的特征提取",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c5",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "This section describes the RF dataset used to evaluate the effectiveness of the proposed approach — the DroneRF dataset. This is a public dataset provided by [28]. It contains raw RF signal data acquired from two 40MHz receivers that capture the 2.4-2.48 MHz range. The dataset contains background noise data when no drone is present, as well as data captured from three types of drones: Parrot Bebop, Parrot AR, and DJI Phantom. Since two receivers were used, every data sample consists of two signals: low-band and high-band. Figure 2 depicts the raw sample of the DroneRF dataset. The data packets related to drone activity are clearly observable, as the signal’s amplitude drastically increases. Table 1 illustrates the summary of the DroneRF dataset. The dataset authors provide 3 experiment levels to work with: drone presence, drone type and drone flight mode. For this research, only the second level experiment level was chosen. One can pinpoint the class imbalance of the dataset, which is a result of different sample sizes of different classes and of the varying numbers of flight mode classes for each drone. Therefore, data resampling techniques and stratified cross-validation will be used to address this issue."
+      },
+      "confidence": 0.99,
+      "term": "DroneRF dataset",
+      "normalized": "DroneRF数据集",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c6",
+      "evidence": {
+        "section": "Power Spectral Density",
+        "original_text": "The power spectral density (PSD) describes how the power of a signal or process is distributed across different frequency components [32]. To calculate PSD, one must obtain a frequency-domain representation of a signal using the discrete Fourier transform (DFT) [33], which is calculated as follows: where 𝑥(𝑛) is the time signal at time index 𝑛, 𝑁 denotes the total number of samples in the signal, 𝑘 is the index of the frequency component ranging from 0 to 𝑁−1, and 𝑗 is the imaginary unit. Consequently, the formula to determine the PSD of the signal would be: where 𝑓 describes the sampling frequency of the signal. According to the Nyquist-Shannon sampling theorem, the sample rate must be at least twice the bandwidth of the signal to avoid aliasing. Ergo, the sampling rate of 80MHz was chosen, due to the fact the signal bandwidth is 40MHz. Because every signal packet is represented by a low- and high-band component, both of these components should be used for computing the PSD [28]. Therefore, after computing the DFT of both segments, we concatenate the resulting spectral information as such: () () where 𝑋 and 𝑋 denote the DFT of the low- and high-band components respectively, and 𝑐 is the normalization factor. It is calculated as follows: () where 𝑄 is the number of samples to take from the end of the lower spectra 𝑋 and the star of the () upper spectra 𝑋 , and 𝑀 is the total number of frequency bins in 𝑋. The normalization factor ensures spectral continuity between the two parts of the spectrum, while introducing spectral bias. Figure 3 shows the average PSD for each of the classes present in the dataset. During the preprocessing stage, PSD vectors are calculated separately for each signal frame."
+      },
+      "confidence": 0.98,
+      "term": "power spectral density",
+      "normalized": "功率谱密度",
+      "std_label": "PSD"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c7",
+      "evidence": {
+        "section": "Short-time Fourier Transform",
+        "original_text": "While DFT outputs the frequency-domain representation of a signal, analysis of the temporal characteristics proves ineffective. Instead, one may use the short-time Fourier transform (STFT) [34, 35]. It splits the signal information into smaller overlapping segments and applies the Fourier transform to each segment. The resulting output is the spectrogram: a two-dimensional array that describes the frequency content of a signal over time. The discrete STFT is given by: where 𝑋(𝑚, 𝑘) is the STFT at time index 𝑚 and frequency index 𝑘, 𝑥(𝑛) is the original discrete timesignal, 𝜔(𝑛) is the window function applied to the signal, 𝑚 is the index of the window and 𝑁 is the length of the window. For the purposes of this research, the following values have been chosen: 𝑁 = 511, and 𝜔(𝑛) — Hanning window, a classic windowing function used in signal processing. Additionally, the signal is also zero-padded at the end to ensure the signal fits exactly into an integer number of window segments [36], so that all of the signal is included in the output. As a result, the STFT computed with these parameters has 17 timeframes and 256 frequency bins. An example of the generated STFT spectrogram is displayed on Figure 4. Following the STFT transformation of the signal data, instead of using the raw spectrogram itself, several other features are inferred from this representation: spectral centroid, spectral flux and spectral entropy. The following features are then concatenated in a single feature vector."
+      },
+      "confidence": 0.98,
+      "term": "short-time Fourier transform",
+      "normalized": "短时傅里叶变换",
+      "std_label": "STFT"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c8",
+      "evidence": {
+        "section": "Wavelets",
+        "original_text": "Wavelet transforms are a mathematical tool used in signal processing to analyze data at multiple scales or resolutions [37]. Unlike Fourier transforms, which decompose a signal into sine and cosine functions with fixed frequencies, wavelet transforms break the signal into components that capture both frequency and time information, allowing for the analysis of signals that are non-stationary (i.e., their frequency content changes over time). In this work, wavelet packet decomposition (WPD), an extension of discrete wavelet transform (DWT), is used to generate a flexible and detailed multi-resolution analysis of a signal [38]. While the DWT only decomposes the signal into approximation and detail coefficients (low and highfrequency components), the WPD goes further by decomposing both the approximation and detail components at each level. The result is a binary tree structure of wavelet coefficients, where each node represents either approximation or detail coefficients. This binary tree structure allows for a more flexible and complete decomposition, as each node can be further decomposed into finer frequency bands. Figure 5 shows the visual representation of the WPD: the time- and frequency-domain representations of each decomposition level. We use 6 levels of decomposition in WPD, resulting in 64 set of coefficients, and apply the FIR approximation of the Meyer wavelet. Finally, each vector is characterized with two features: the root mean squared error (RMS) and the standard deviation (STD) of each coefficient vector. As a result, each feature vector consists of 64 ∙2 = 128 features."
+      },
+      "confidence": 0.97,
+      "term": "wavelet packet decomposition",
+      "normalized": "小波包分解",
+      "std_label": "WPD"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_98d757499dd3a9d2_c9",
+      "evidence": {
+        "section": "RNN",
+        "original_text": "Recurrent neural networks (RNNs) are specialized for handling sequential data, making them ideal for tasks like time-series analysis or recognizing patterns that change over time [40]. Unlike traditional feedforward networks, RNNs feature recurrent connections that allow information to be passed through from one time step to the next, which helps them capture temporal dependencies in data. Figure 7 describes the RNN architecture. This model is composed of 2 long short-term memory (LSTM) modules, four dense modules and a SoftMax output layer. The long short-term memory (LSTM) modules incorporate 64 units each, meaning a number of neurons that comprise the hidden state of the layer. The dense module pipeline is identical to the CNN model architecture. The fully connected modules receive the flattened input vector from the convolution modules and are composed of a fully connected (dense) layer, a batch normalization layer, and a parametric rectified linear (PReLU) unit activation layer with a default value of 0.25. The four dense layers contain 512, 256, 128 and 4 neurons, respectively."
+      },
+      "confidence": 0.98,
+      "term": "recurrent neural network",
+      "normalized": "循环神经网络",
+      "std_label": "RNN"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_98d757499dd3a9d2_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.95,
+      "head": "doc_98d757499dd3a9d2_c3",
+      "relation_type": "enhances",
+      "relation_surface": "offer the highest classification accuracy",
+      "tail": "doc_98d757499dd3a9d2_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_98d757499dd3a9d2_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.94,
+      "head": "doc_98d757499dd3a9d2_c4",
+      "relation_type": "enhances",
+      "relation_surface": "paired with wavelet-based feature extraction, offer the highest classification accuracy",
+      "tail": "doc_98d757499dd3a9d2_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_98d757499dd3a9d2_r3",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "This study conducts research and comparative analysis on machine learning classification methods for optimizing the identification of unmanned aerial vehicles using radio frequency fingerprinting techniques, namely power spectral density, short-time Fourier transform, and wavelets. Specifically, the proposed approach has been evaluated with an open-source dataset (DroneRF), and compared against different ML-based classification methods using various feature vectors (PSD, STFT-based and wavelet-based). The results demonstrate the effectiveness of convolutional neural networks for RF-based machine learning using wavelet-based feature extraction. The proposed CNN shows a high classification accuracy of 97%, effectively determining the drone type. The classifier demonstrates a 7% improvement in classification accuracy over the model presented in [27], despite both approaches utilizing wavelet-based feature vectors. This improvement is primarily attributed to careful tuning of the training parameters, wavelet packet decomposition settings, and the CNN architecture, which collectively enhanced the model's ability to extract and learn discriminative features for UAV identification."
+      },
+      "confidence": 0.96,
+      "head": "doc_98d757499dd3a9d2_c2",
+      "relation_type": "uses",
+      "relation_surface": "RF fingerprinting techniques, namely power spectral density, short-time Fourier transform, and wavelets",
+      "tail": "doc_98d757499dd3a9d2_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_98d757499dd3a9d2_r4",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "This study conducts research and comparative analysis on machine learning classification methods for optimizing the identification of unmanned aerial vehicles using radio frequency fingerprinting techniques, namely power spectral density, short-time Fourier transform, and wavelets. Specifically, the proposed approach has been evaluated with an open-source dataset (DroneRF), and compared against different ML-based classification methods using various feature vectors (PSD, STFT-based and wavelet-based). The results demonstrate the effectiveness of convolutional neural networks for RF-based machine learning using wavelet-based feature extraction. The proposed CNN shows a high classification accuracy of 97%, effectively determining the drone type. The classifier demonstrates a 7% improvement in classification accuracy over the model presented in [27], despite both approaches utilizing wavelet-based feature vectors. This improvement is primarily attributed to careful tuning of the training parameters, wavelet packet decomposition settings, and the CNN architecture, which collectively enhanced the model's ability to extract and learn discriminative features for UAV identification."
+      },
+      "confidence": 0.95,
+      "head": "doc_98d757499dd3a9d2_c5",
+      "relation_type": "measures",
+      "relation_surface": "evaluated with an open-source dataset (DroneRF)",
+      "tail": "doc_98d757499dd3a9d2_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_98d757499dd3a9d2_r5",
+      "evidence": {
+        "section": "Wavelets",
+        "original_text": "Wavelet transforms are a mathematical tool used in signal processing to analyze data at multiple scales or resolutions [37]. Unlike Fourier transforms, which decompose a signal into sine and cosine functions with fixed frequencies, wavelet transforms break the signal into components that capture both frequency and time information, allowing for the analysis of signals that are non-stationary (i.e., their frequency content changes over time). In this work, wavelet packet decomposition (WPD), an extension of discrete wavelet transform (DWT), is used to generate a flexible and detailed multi-resolution analysis of a signal [38]. While the DWT only decomposes the signal into approximation and detail coefficients (low and highfrequency components), the WPD goes further by decomposing both the approximation and detail components at each level. The result is a binary tree structure of wavelet coefficients, where each node represents either approximation or detail coefficients. This binary tree structure allows for a more flexible and complete decomposition, as each node can be further decomposed into finer frequency bands. Figure 5 shows the visual representation of the WPD: the time- and frequency-domain representations of each decomposition level. We use 6 levels of decomposition in WPD, resulting in 64 set of coefficients, and apply the FIR approximation of the Meyer wavelet. Finally, each vector is characterized with two features: the root mean squared error (RMS) and the standard deviation (STD) of each coefficient vector. As a result, each feature vector consists of 64 ∙2 = 128 features."
+      },
+      "confidence": 0.97,
+      "head": "doc_98d757499dd3a9d2_c8",
+      "relation_type": "belongs_to",
+      "relation_surface": "wavelet packet decomposition (WPD), an extension of discrete wavelet transform (DWT), is used",
+      "tail": "doc_98d757499dd3a9d2_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_98d757499dd3a9d2_r6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "This section describes the experimental results for the various feature vectors (PSD, STFT and wavelet) and the two ML-based classification methods (CNN, RNN). As specified in section 2, the CNN classifier consists of three convolution modules, four dense modules (composed of 512, 256, 128 and 4 neurons, respectively), and SoftMax output layer. The RNN classifier, in turn, replaces the three convolution modules with two long short-term memory layers, each containing a state vector of size 64. The classification performance is validated using a stratified K-fold cross-validation (with 𝐾= 5). The accuracy is evaluated by using the test subsets generated by each fold’s split, and the resulting evaluations are used to generate confusion matrices. This allows us to visualize the average performance of the trained model. Figures 8, 9 and 10 illustrate the confusion matrices for the PSD, STFT and wavelet datasets, respectively, using CNN(a) and RNN(b) model architectures. Additionally, Table 2 offers a comparative analysis of the performance metrics obtained during the training process. The accuracy and F1-score metrics are computed for each obtained test evaluation vector."
+      },
+      "confidence": 0.94,
+      "head": "doc_98d757499dd3a9d2_c3",
+      "relation_type": "compares",
+      "relation_surface": "compared against different ML-based classification methods",
+      "tail": "doc_98d757499dd3a9d2_c9"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_98d757499dd3a9d2_d1",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "This section describes the RF dataset used to evaluate the effectiveness of the proposed approach — the DroneRF dataset. This is a public dataset provided by [28]. It contains raw RF signal data acquired from two 40MHz receivers that capture the 2.4-2.48 MHz range. The dataset contains background noise data when no drone is present, as well as data captured from three types of drones: Parrot Bebop, Parrot AR, and DJI Phantom. Since two receivers were used, every data sample consists of two signals: low-band and high-band. Figure 2 depicts the raw sample of the DroneRF dataset. The data packets related to drone activity are clearly observable, as the signal’s amplitude drastically increases. Table 1 illustrates the summary of the DroneRF dataset. The dataset authors provide 3 experiment levels to work with: drone presence, drone type and drone flight mode. For this research, only the second level experiment level was chosen. One can pinpoint the class imbalance of the dataset, which is a result of different sample sizes of different classes and of the varying numbers of flight mode classes for each drone. Therefore, data resampling techniques and stratified cross-validation will be used to address this issue."
+      },
+      "confidence": 0.95,
+      "name": "DroneRF dataset",
+      "modality": "tabular",
+      "domain": "radio frequency signal processing, unmanned aerial vehicle identification"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_98d757499dd3a9d2_ds1",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "This section describes the RF dataset used to evaluate the effectiveness of the proposed approach — the DroneRF dataset. This is a public dataset provided by [28]. It contains raw RF signal data acquired from two 40MHz receivers that capture the 2.4-2.48 MHz range. The dataset contains background noise data when no drone is present, as well as data captured from three types of drones: Parrot Bebop, Parrot AR, and DJI Phantom. Since two receivers were used, every data sample consists of two signals: low-band and high-band. Figure 2 depicts the raw sample of the DroneRF dataset. The data packets related to drone activity are clearly observable, as the signal’s amplitude drastically increases. Table 1 illustrates the summary of the DroneRF dataset. The dataset authors provide 3 experiment levels to work with: drone presence, drone type and drone flight mode. For this research, only the second level experiment level was chosen. One can pinpoint the class imbalance of the dataset, which is a result of different sample sizes of different classes and of the varying numbers of flight mode classes for each drone. Therefore, data resampling techniques and stratified cross-validation will be used to address this issue."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "RF signal data format with low-band and high-band components from two receivers"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_98d757499dd3a9d2_ds2",
+      "evidence": {
+        "section": "Data preprocessing",
+        "original_text": "Since the dataset consists of long data packets that include silent intervals, only the RF data packets on drone activity have to be extracted. The main reason for this decision is to obtain meaningful temporal feature information. In the preprocessing stage, a thresholding technique was used to segment signal data into RF packets. Considering that the background noise packets lack any RF information related to drone activity, thresholding is not applied to them. The resulting packets are subsequently split into equally-sized chunks that contain 4000 samples each. Finally, the dataset is balanced using an undersampling technique via generating centroids based on K-means clustering [29, 30]. This technique is applied only to the majority class (background noise data)."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Data preprocessing protocol for RF signal segmentation and chunking"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_98d757499dd3a9d2_ds3",
+      "evidence": {
+        "section": "Power Spectral Density",
+        "original_text": "Because every signal packet is represented by a low- and high-band component, both of these components should be used for computing the PSD [28]. Therefore, after computing the DFT of both segments, we concatenate the resulting spectral information as such: () () where 𝑋 and 𝑋 denote the DFT of the low- and high-band components respectively, and 𝑐 is the normalization factor. It is calculated as follows: () where 𝑄 is the number of samples to take from the end of the lower spectra 𝑋 and the star of the () upper spectra 𝑋 , and 𝑀 is the total number of frequency bins in 𝑋. The normalization factor ensures spectral continuity between the two parts of the spectrum, while introducing spectral bias. Figure 3 shows the average PSD for each of the classes present in the dataset. During the preprocessing stage, PSD vectors are calculated separately for each signal frame. For the proposed approach, the following values have been chosen: 𝑄= 10, 𝑀= 2048. This way, the value of 𝑄 is small enough to combine the two spectral vectors while being large enough to average out any random fluctuations."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "PSD feature vector calculation method with concatenated low- and high-band spectra"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_98d757499dd3a9d2_ds4",
+      "evidence": {
+        "section": "Short-time Fourier Transform",
+        "original_text": "For the purposes of this research, the following values have been chosen: 𝑁 = 511, and 𝜔(𝑛) — Hanning window, a classic windowing function used in signal processing. Additionally, the signal is also zero-padded at the end to ensure the signal fits exactly into an integer number of window segments [36], so that all of the signal is included in the output. As a result, the STFT computed with these parameters has 17 timeframes and 256 frequency bins. An example of the generated STFT spectrogram is displayed on Figure 4. Following the STFT transformation of the signal data, instead of using the raw spectrogram itself, several other features are inferred from this representation: spectral centroid, spectral flux and spectral entropy. The following features are then concatenated in a single feature vector. Spectral centroid is a measure of the 'center of mass' of a spectrum and is often used in signal processing, particularly in the analysis of audio signals. It indicates the perceived brightness or timbre of a sound. In simple terms, it tells us where the 'center' of the power distribution is in the frequency domain. For a discrete signal, the spectral centroid 𝐶(𝑡) at time 𝑡 can be calculated as: where 𝑡 is the time frame, 𝑓 is the frequency bin index, 𝑋(𝑡, 𝑓) is the STFT of the signal at time 𝑡 and frequency bin 𝑓, and 𝐹 is the total number of frequency bins. Spectral flux is a measure of how much the spectral content of a signal changes between consecutive frames or time windows. It is often used in audio signal processing to detect changes in the sound over time, such as transitions between different musical notes, chords, or sounds in an audio signal. The spectral flux 𝑆(𝑡) at time 𝑡 is given by: Spectral entropy is a measure of the disorder or unpredictability in a signal's frequency content. It quantifies the spread or concentration of power across the frequency spectrum, with higher entropy indicating a more complex or 'noisy' spectrum, and lower entropy indicating a more predictable or 'peaked' spectrum. The spectral entropy 𝐻(𝑡) at time 𝑡 is calculated based on the equation: where 𝑝(𝑡, 𝑓) is the normalized power at frequency bin 𝑓 and time 𝑡. For the STFT spectrogram with 256 frequency bins and 17 timeframes, the number of time frames of the spectral centroid and spectral entropy is 17 as well. However, the spectral flux vector contains only 16 timeframes, because it calculates the difference between sequential time instants. Hence, the resulting feature vector contains 17 + 16 + 17 = 50 features."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "STFT spectrogram generation parameters and derived feature vector composition"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_98d757499dd3a9d2_ds5",
+      "evidence": {
+        "section": "Wavelets",
+        "original_text": "In this work, wavelet packet decomposition (WPD), an extension of discrete wavelet transform (DWT), is used to generate a flexible and detailed multi-resolution analysis of a signal [38]. While the DWT only decomposes the signal into approximation and detail coefficients (low and highfrequency components), the WPD goes further by decomposing both the approximation and detail components at each level. The result is a binary tree structure of wavelet coefficients, where each node represents either approximation or detail coefficients. This binary tree structure allows for a more flexible and complete decomposition, as each node can be further decomposed into finer frequency bands. Figure 5 shows the visual representation of the WPD: the time- and frequency-domain representations of each decomposition level. We use 6 levels of decomposition in WPD, resulting in 64 set of coefficients, and apply the FIR approximation of the Meyer wavelet. Finally, each vector is characterized with two features: the root mean squared error (RMS) and the standard deviation (STD) of each coefficient vector. As a result, each feature vector consists of 64 ∙2 = 128 features."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Wavelet packet decomposition feature extraction protocol"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_98d757499dd3a9d2_ds6",
+      "evidence": {
+        "section": "Model training parameters",
+        "original_text": "Choosing the right training methods and parameters is paramount for achieving the best model performance. In this study, various hyperparameters, including learning rate, batch size, and the number of epochs, were fine-tuned to optimize classification accuracy. To evaluate the models’ performance as precisely as possible, a stratified K-fold cross-validation procedure [41] was integrated in the training pipeline, where 𝐾= 5. In summary, a provided dataset is split into 𝐾 folds of training and testing data, which are fit and evaluated separately from each other. Every fold is made by preserving the percentage of samples in each data to address class imbalance. The following training parameters have been chosen for both CNN and RNN: Optimizer: adaptive moment estimation (Adam) [42 Loss function: categorical cross entropy; Epochs: 50; Batch size: 32; Learning rate: 0.01. Performance metric: accuracy."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Stratified K-fold cross-validation procedure for model evaluation"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_98d757499dd3a9d2_m1",
+      "evidence": {
+        "section": "Feature extraction",
+        "original_text": "The power spectral density (PSD) describes how the power of a signal or process is distributed across different frequency components [32]. To calculate PSD, one must obtain a frequency-domain representation of a signal using the discrete Fourier transform (DFT) [33], which is calculated as follows: where 𝑥(𝑛) is the time signal at time index 𝑛, 𝑁 denotes the total number of samples in the signal, 𝑘 is the index of the frequency component ranging from 0 to 𝑁−1, and 𝑗 is the imaginary unit. Consequently, the formula to determine the PSD of the signal would be: where 𝑓 describes the sampling frequency of the signal. According to the Nyquist-Shannon sampling theorem, the sample rate must be at least twice the bandwidth of the signal to avoid aliasing. Ergo, the sampling rate of 80MHz was chosen, due to the fact the signal bandwidth is 40MHz. Because every signal packet is represented by a low- and high-band component, both of these components should be used for computing the PSD [28]. Therefore, after computing the DFT of both segments, we concatenate the resulting spectral information as such: where 𝑋 and 𝑋 denote the DFT of the low- and high-band components respectively, and 𝑐 is the normalization factor. It is calculated as follows: where 𝑄 is the number of samples to take from the end of the lower spectra 𝑋 and the star of the upper spectra 𝑋 , and 𝑀 is the total number of frequency bins in 𝑋. The normalization factor ensures spectral continuity between the two parts of the spectrum, while introducing spectral bias. Figure 3 shows the average PSD for each of the classes present in the dataset. During the preprocessing stage, PSD vectors are calculated separately for each signal frame. For the proposed approach, the following values have been chosen: 𝑄= 10, 𝑀= 2048. This way, the value of 𝑄 is small enough to combine the two spectral vectors while being large enough to average out any random fluctuations."
+      },
+      "confidence": 0.95,
+      "name": "Power Spectral Density (PSD)",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_98d757499dd3a9d2_m2",
+      "evidence": {
+        "section": "Feature extraction",
+        "original_text": "While DFT outputs the frequency-domain representation of a signal, analysis of the temporal characteristics proves ineffective. Instead, one may use the short-time Fourier transform (STFT) [34, 35]. It splits the signal information into smaller overlapping segments and applies the Fourier transform to each segment. The resulting output is the spectrogram: a two-dimensional array that describes the frequency content of a signal over time. The discrete STFT is given by: where 𝑋(𝑚, 𝑘) is the STFT at time index 𝑚 and frequency index 𝑘, 𝑥(𝑛) is the original discrete timesignal, 𝜔(𝑛) is the window function applied to the signal, 𝑚 is the index of the window and 𝑁 is the length of the window. For the purposes of this research, the following values have been chosen: 𝑁 = 511, and 𝜔(𝑛) — Hanning window, a classic windowing function used in signal processing. Additionally, the signal is also zero-padded at the end to ensure the signal fits exactly into an integer number of window segments [36], so that all of the signal is included in the output. As a result, the STFT computed with these parameters has 17 timeframes and 256 frequency bins. An example of the generated STFT spectrogram is displayed on Figure 4. Following the STFT transformation of the signal data, instead of using the raw spectrogram itself, several other features are inferred from this representation: spectral centroid, spectral flux and spectral entropy. The following features are then concatenated in a single feature vector. Spectral centroid is a measure of the 'center of mass' of a spectrum and is often used in signal processing, particularly in the analysis of audio signals. It indicates the perceived brightness or timbre of a sound. In simple terms, it tells us where the 'center' of the power distribution is in the frequency domain. For a discrete signal, the spectral centroid 𝐶(𝑡) at time 𝑡 can be calculated as: where 𝑡 is the time frame, 𝑓 is the frequency bin index, 𝑋(𝑡, 𝑓) is the STFT of the signal at time 𝑡 and frequency bin 𝑓, and 𝐹 is the total number of frequency bins. Spectral flux is a measure of how much the spectral content of a signal changes between consecutive frames or time windows. It is often used in audio signal processing to detect changes in the sound over time, such as transitions between different musical notes, chords, or sounds in an audio signal. The spectral flux 𝑆(𝑡) at time 𝑡 is given by: Spectral entropy is a measure of the disorder or unpredictability in a signal's frequency content. It quantifies the spread or concentration of power across the frequency spectrum, with higher entropy indicating a more complex or 'noisy' spectrum, and lower entropy indicating a more predictable or 'peaked' spectrum. The spectral entropy 𝐻(𝑡) at time 𝑡 is calculated based on the equation: where 𝑝(𝑡, 𝑓) is the normalized power at frequency bin 𝑓 and time 𝑡. For the STFT spectrogram with 256 frequency bins and 17 timeframes, the number of time frames of the spectral centroid and spectral entropy is 17 as well. However, the spectral flux vector contains only 16 timeframes, because it calculates the difference between sequential time instants. Hence, the resulting feature vector contains 17 + 16 + 17 = 50 features."
+      },
+      "confidence": 0.95,
+      "name": "Short-Time Fourier Transform (STFT)",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_98d757499dd3a9d2_m3",
+      "evidence": {
+        "section": "Feature extraction",
+        "original_text": "Wavelet transforms are a mathematical tool used in signal processing to analyze data at multiple scales or resolutions [37]. Unlike Fourier transforms, which decompose a signal into sine and cosine functions with fixed frequencies, wavelet transforms break the signal into components that capture both frequency and time information, allowing for the analysis of signals that are non-stationary (i.e., their frequency content changes over time). In this work, wavelet packet decomposition (WPD), an extension of discrete wavelet transform (DWT), is used to generate a flexible and detailed multi-resolution analysis of a signal [38]. While the DWT only decomposes the signal into approximation and detail coefficients (low and highfrequency components), the WPD goes further by decomposing both the approximation and detail components at each level. The result is a binary tree structure of wavelet coefficients, where each node represents either approximation or detail coefficients. This binary tree structure allows for a more flexible and complete decomposition, as each node can be further decomposed into finer frequency bands. Figure 5 shows the visual representation of the WPD: the time- and frequency-domain representations of each decomposition level. We use 6 levels of decomposition in WPD, resulting in 64 set of coefficients, and apply the FIR approximation of the Meyer wavelet. Finally, each vector is characterized with two features: the root mean squared error (RMS) and the standard deviation (STD) of each coefficient vector. As a result, each feature vector consists of 64 ∙2 = 128 features."
+      },
+      "confidence": 0.95,
+      "name": "Wavelet Packet Decomposition (WPD)",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_98d757499dd3a9d2_m4",
+      "evidence": {
+        "section": "Classification",
+        "original_text": "Convolutional neural networks (CNNs) are deep learning models designed to process structured grid data, including images and spectrograms. Their ability to automatically extract features and recognize patterns makes them especially useful for tasks like radio frequency fingerprinting. Figure 6 depicts the CNN used in this research. Its architecture was proposed in [28], which was in turn motivated by LeNet architecture [39]. This classifier is composed of three convolution modules, four dense modules and a SoftMax output layer. Every convolution module consists of a one-dimensional convolution layer, batch normalization layer, rectified linear unit (ReLU) activation layer and a max pooling layer. Every subsequent layer decreases the dimension sizes: 64, 32, and 16 for the filters, and 11, 5 and 3 for kernels, respectively. The dense modules receive the flattened input vector from the convolution modules. Every dense module consists of a fully connected (dense) layer, a batch normalization layer, and a parametric rectified linear (PReLU) unit activation layer. A default value of 0.25 was chosen for the PReLU’s learnable parameter 𝑎. The four fully connected layers incorporate 512, 256, 128 and 4 neurons, respectively."
+      },
+      "confidence": 0.95,
+      "name": "Convolutional Neural Network (CNN)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_98d757499dd3a9d2_m5",
+      "evidence": {
+        "section": "Classification",
+        "original_text": "Recurrent neural networks (RNNs) are specialized for handling sequential data, making them ideal for tasks like time-series analysis or recognizing patterns that change over time [40]. Unlike traditional feedforward networks, RNNs feature recurrent connections that allow information to be passed through from one time step to the next, which helps them capture temporal dependencies in data. Figure 7 describes the RNN architecture. This model is composed of 2 long short-term memory (LSTM) modules, four dense modules and a SoftMax output layer. The long short-term memory (LSTM) modules incorporate 64 units each, meaning a number of neurons that comprise the hidden state of the layer. The dense module pipeline is identical to the CNN model architecture. The fully connected modules receive the flattened input vector from the convolution modules and are composed of a fully connected (dense) layer, a batch normalization layer, and a parametric rectified linear (PReLU) unit activation layer with a default value of 0.25. The four dense layers contain 512, 256, 128 and 4 neurons, respectively."
+      },
+      "confidence": 0.95,
+      "name": "Recurrent Neural Network (RNN)",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_98d757499dd3a9d2_x1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "This section describes the experimental results for the various feature vectors (PSD, STFT and wavelet) and the two ML-based classification methods (CNN, RNN). As specified in section 2, the CNN classifier consists of three convolution modules, four dense modules (composed of 512, 256, 128 and 4 neurons, respectively), and SoftMax output layer. The RNN classifier, in turn, replaces the three convolution modules with two long short-term memory layers, each containing a state vector of size 64. The classification performance is validated using a stratified K-fold cross-validation (with 𝐾= 5). The accuracy is evaluated by using the test subsets generated by each fold’s split, and the resulting evaluations are used to generate confusion matrices. This allows us to visualize the average performance of the trained model. Figures 8, 9 and 10 illustrate the confusion matrices for the PSD, STFT and wavelet datasets, respectively, using CNN(a) and RNN(b) model architectures. Additionally, Table 2 offers a comparative analysis of the performance metrics obtained during the training process. The accuracy and F1-score metrics are computed for each obtained test evaluation vector. It is evident from Figures 8-10 and Table 2 that the CNN using the feature vector computed from WPD coefficients achieves the best results with 97% accuracy and an F1-score of 0.97. In comparison, the PSD dataset shows the worst results: the CNN is unable to correctly determine the background noise packets, while the RNN overfits on them. The STFT-based dataset exhibits slightly better results; however, in this case, the CNN still underfits on the background noise, while the RNN fails to ascertain enough features to distinguish different drone types from each other."
+      },
+      "confidence": 0.95,
+      "task": "UAV identification using RF fingerprinting and deep learning",
+      "setup": "DroneRF dataset, stratified 5-fold cross-validation, CNN and RNN classifiers"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_98d757499dd3a9d2_x2",
+      "evidence": {
+        "section": "Model training parameters",
+        "original_text": "Choosing the right training methods and parameters is paramount for achieving the best model performance. In this study, various hyperparameters, including learning rate, batch size, and the number of epochs, were fine-tuned to optimize classification accuracy. To evaluate the models’ performance as precisely as possible, a stratified K-fold cross-validation procedure [41] was integrated in the training pipeline, where 𝐾= 5. In summary, a provided dataset is split into 𝐾 folds of training and testing data, which are fit and evaluated separately from each other. Every fold is made by preserving the percentage of samples in each data to address class imbalance. The following training parameters have been chosen for both CNN and RNN: Optimizer: adaptive moment estimation (Adam) [42]; Loss function: categorical cross entropy; Epochs: 50; Batch size: 32; Learning rate: 0.01; Performance metric: accuracy."
+      },
+      "confidence": 0.95,
+      "task": "Model training",
+      "setup": "Adam optimizer, categorical cross entropy loss, 50 epochs, batch size 32, learning rate 0.01"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The results demonstrate the effectiveness of convolutional neural networks for RF-based machine learning using wavelet-based feature extraction. The proposed CNN shows a high classification accuracy of 97%, effectively determining the drone type. The classifier demonstrates a 7% improvement in classification accuracy over the model presented in [27], despite both approaches utilizing wavelet-based feature vectors. This improvement is primarily attributed to careful tuning of the training parameters, wavelet packet decomposition settings, and the CNN architecture, which collectively enhanced the model's ability to extract and learn discriminative features for UAV identification. Figures 8, 9 and 10 illustrate the confusion matrices for the PSD, STFT and wavelet datasets, respectively, using CNN(a) and RNN(b) model architectures. Additionally, Table 2 offers a comparative analysis of the performance metrics obtained during the training process. The accuracy and F1-score metrics are computed for each obtained test evaluation vector. It is evident from Figures 8-10 and Table 2 that the CNN using the feature vector computed from WPD coefficients achieves the best results with 97% accuracy and an F1-score of 0.97."
+      },
+      "confidence": 0.98,
+      "quantity": "classification accuracy",
+      "value": 97,
+      "unit": "%",
+      "context": "CNN classifier using wavelet-based feature extraction on DroneRF dataset for UAV type identification",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_98d757499dd3a9d2_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The results demonstrate the effectiveness of convolutional neural networks for RF-based machine learning using wavelet-based feature extraction. The proposed CNN shows a high classification accuracy of 97%, effectively determining the drone type. The classifier demonstrates a 7% improvement in classification accuracy over the model presented in [27], despite both approaches utilizing wavelet-based feature vectors. This improvement is primarily attributed to careful tuning of the training parameters, wavelet packet decomposition settings, and the CNN architecture, which collectively enhanced the model's ability to extract and learn discriminative features for UAV identification. Figures 8, 9 and 10 illustrate the confusion matrices for the PSD, STFT and wavelet datasets, respectively, using CNN(a) and RNN(b) model architectures. Additionally, Table 2 offers a comparative analysis of the performance metrics obtained during the training process. The accuracy and F1-score metrics are computed for each obtained test evaluation vector. It is evident from Figures 8-10 and Table 2 that the CNN using the feature vector computed from WPD coefficients achieves the best results with 97% accuracy and an F1-score of 0.97."
+      },
+      "confidence": 0.95,
+      "metric": "classification accuracy",
+      "compared_to": "model presented in [27]"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_98d757499dd3a9d2_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Figures 8, 9 and 10 illustrate the confusion matrices for the PSD, STFT and wavelet datasets, respectively, using CNN(a) and RNN(b) model architectures. Additionally, Table 2 offers a comparative analysis of the performance metrics obtained during the training process. The accuracy and F1-score metrics are computed for each obtained test evaluation vector. It is evident from Figures 8-10 and Table 2 that the CNN using the feature vector computed from WPD coefficients achieves the best results with 97% accuracy and an F1-score of 0.97. In comparison, the PSD dataset shows the worst results: the CNN is unable to correctly determine the background noise packets, while the RNN overfits on them. The STFT-based dataset exhibits slightly better results; however, in this case, the CNN still underfits on the background noise, while the RNN fails to ascertain enough features to distinguish different drone types from each other."
+      },
+      "confidence": 0.9,
+      "metric": "classification performance",
+      "compared_to": "PSD dataset, STFT-based dataset"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Figures 8, 9 and 10 illustrate the confusion matrices for the PSD, STFT and wavelet datasets, respectively, using CNN(a) and RNN(b) model architectures. Additionally, Table 2 offers a comparative analysis of the performance metrics obtained during the training process. The accuracy and F1-score metrics are computed for each obtained test evaluation vector. It is evident from Figures 8-10 and Table 2 that the CNN using the feature vector computed from WPD coefficients achieves the best results with 97% accuracy and an F1-score of 0.97."
+      },
+      "confidence": 0.98,
+      "quantity": "F1-score",
+      "value": 0.97,
+      "unit": null,
+      "context": "CNN classifier using wavelet-based feature extraction on DroneRF dataset for UAV type identification",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr3",
+      "evidence": {
+        "section": "Model training parameters",
+        "original_text": "To evaluate the models’ performance as precisely as possible, a stratified K-fold cross-validation procedure [41] was integrated in the training pipeline, where 𝐾= 5. In summary, a provided dataset is split into 𝐾 folds of training and testing data, which are fit and evaluated separately from each other. Every fold is made by preserving the percentage of samples in each data to address class imbalance."
+      },
+      "confidence": 0.99,
+      "quantity": "number of folds",
+      "value": 5,
+      "unit": null,
+      "context": "Stratified K-fold cross-validation procedure used for model performance evaluation",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr4",
+      "evidence": {
+        "section": "Model training parameters",
+        "original_text": "Choosing the right training methods and parameters is paramount for achieving the best model performance. In this study, various hyperparameters, including learning rate, batch size, and the number of epochs, were fine-tuned to optimize classification accuracy. The following training parameters have been chosen for both CNN and RNN: Optimizer: adaptive moment estimation (Adam) [42]; Loss function: categorical cross entropy; Epochs: 50; Batch size: 32; Learning rate: 0.01; Performance metric: accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "epochs",
+      "value": 50,
+      "unit": null,
+      "context": "Training parameters chosen for both CNN and RNN models",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr5",
+      "evidence": {
+        "section": "Model training parameters",
+        "original_text": "Choosing the right training methods and parameters is paramount for achieving the best model performance. In this study, various hyperparameters, including learning rate, batch size, and the number of epochs, were fine-tuned to optimize classification accuracy. The following training parameters have been chosen for both CNN and RNN: Optimizer: adaptive moment estimation (Adam) [42]; Loss function: categorical cross entropy; Epochs: 50; Batch size: 32; Learning rate: 0.01; Performance metric: accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "batch size",
+      "value": 32,
+      "unit": null,
+      "context": "Training parameters chosen for both CNN and RNN models",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr6",
+      "evidence": {
+        "section": "Model training parameters",
+        "original_text": "Choosing the right training methods and parameters is paramount for achieving the best model performance. In this study, various hyperparameters, including learning rate, batch size, and the number of epochs, were fine-tuned to optimize classification accuracy. The following training parameters have been chosen for both CNN and RNN: Optimizer: adaptive moment estimation (Adam) [42]; Loss function: categorical cross entropy; Epochs: 50; Batch size: 32; Learning rate: 0.01; Performance metric: accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "learning rate",
+      "value": 0.01,
+      "unit": null,
+      "context": "Training parameters chosen for both CNN and RNN models",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr7",
+      "evidence": {
+        "section": "Wavelets",
+        "original_text": "We use 6 levels of decomposition in WPD, resulting in 64 set of coefficients, and apply the FIR approximation of the Meyer wavelet. Finally, each vector is characterized with two features: the root mean squared error (RMS) and the standard deviation (STD) of each coefficient vector. As a result, each feature vector consists of 64 ∙2 = 128 features."
+      },
+      "confidence": 0.99,
+      "quantity": "number of decomposition levels",
+      "value": 6,
+      "unit": null,
+      "context": "Wavelet packet decomposition (WPD) used for feature extraction",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr8",
+      "evidence": {
+        "section": "Wavelets",
+        "original_text": "We use 6 levels of decomposition in WPD, resulting in 64 set of coefficients, and apply the FIR approximation of the Meyer wavelet. Finally, each vector is characterized with two features: the root mean squared error (RMS) and the standard deviation (STD) of each coefficient vector. As a result, each feature vector consists of 64 ∙2 = 128 features."
+      },
+      "confidence": 0.99,
+      "quantity": "number of features",
+      "value": 128,
+      "unit": null,
+      "context": "Wavelet-based feature vector after WPD decomposition",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr9",
+      "evidence": {
+        "section": "Short-time Fourier Transform",
+        "original_text": "For the STFT spectrogram with 256 frequency bins and 17 timeframes, the number of time frames of the spectral centroid and spectral entropy is 17 as well. However, the spectral flux vector contains only 16 timeframes, because it calculates the difference between sequential time instants. Hence, the resulting feature vector contains 17 + 16 + 17 = 50 features."
+      },
+      "confidence": 0.99,
+      "quantity": "number of features",
+      "value": 50,
+      "unit": null,
+      "context": "STFT-based feature vector after extracting spectral centroid, flux, and entropy",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr10",
+      "evidence": {
+        "section": "Short-time Fourier Transform",
+        "original_text": "For the purposes of this research, the following values have been chosen: 𝑁 = 511, and 𝜔(𝑛) — Hanning window, a classic windowing function used in signal processing. Additionally, the signal is also zero-padded at the end to ensure the signal fits exactly into an integer number of window segments [36], so that all of the signal is included in the output. As a result, the STFT computed with these parameters has 17 timeframes and 256 frequency bins."
+      },
+      "confidence": 0.99,
+      "quantity": "window length",
+      "value": 511,
+      "unit": null,
+      "context": "STFT computation parameters",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr11",
+      "evidence": {
+        "section": "Short-time Fourier Transform",
+        "original_text": "For the purposes of this research, the following values have been chosen: 𝑁 = 511, and 𝜔(𝑛) — Hanning window, a classic windowing function used in signal processing. Additionally, the signal is also zero-padded at the end to ensure the signal fits exactly into an integer number of window segments [36], so that all of the signal is included in the output. As a result, the STFT computed with these parameters has 17 timeframes and 256 frequency bins."
+      },
+      "confidence": 0.99,
+      "quantity": "number of timeframes",
+      "value": 17,
+      "unit": null,
+      "context": "STFT spectrogram output",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr12",
+      "evidence": {
+        "section": "Short-time Fourier Transform",
+        "original_text": "For the purposes of this research, the following values have been chosen: 𝑁 = 511, and 𝜔(𝑛) — Hanning window, a classic windowing function used in signal processing. Additionally, the signal is also zero-padded at the end to ensure the signal fits exactly into an integer number of window segments [36], so that all of the signal is included in the output. As a result, the STFT computed with these parameters has 17 timeframes and 256 frequency bins."
+      },
+      "confidence": 0.99,
+      "quantity": "number of frequency bins",
+      "value": 256,
+      "unit": null,
+      "context": "STFT spectrogram output",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr13",
+      "evidence": {
+        "section": "Power Spectral Density",
+        "original_text": "According to the Nyquist-Shannon sampling theorem, the sample rate must be at least twice the bandwidth of the signal to avoid aliasing. Ergo, the sampling rate of 80MHz was chosen, due to the fact the signal bandwidth is 40MHz."
+      },
+      "confidence": 0.99,
+      "quantity": "sampling rate",
+      "value": 80,
+      "unit": "MHz",
+      "context": "PSD calculation based on Nyquist-Shannon sampling theorem for signal bandwidth of 40MHz",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr14",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "This section describes the RF dataset used to evaluate the effectiveness of the proposed approach — the DroneRF dataset. This is a public dataset provided by [28]. It contains raw RF signal data acquired from two 40MHz receivers that capture the 2.4-2.48 MHz range. The dataset contains background noise data when no drone is present, as well as data captured from three types of drones: Parrot Bebop, Parrot AR, and DJI Phantom. Since two receivers were used, every data sample consists of two signals: low-band and high-band."
+      },
+      "confidence": 0.99,
+      "quantity": "signal bandwidth",
+      "value": 40,
+      "unit": "MHz",
+      "context": "DroneRF dataset captured by two 40MHz receivers",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_98d757499dd3a9d2_qr15",
+      "evidence": {
+        "section": "Data preprocessing",
+        "original_text": "In the preprocessing stage, a thresholding technique was used to segment signal data into RF packets. Considering that the background noise packets lack any RF information related to drone activity, thresholding is not applied to them. The resulting packets are subsequently split into equally-sized chunks that contain 4000 samples each. Finally, the dataset is balanced using an undersampling technique via generating centroids based on K-means clustering [29, 30]. This technique is applied only to the majority class (background noise data)."
+      },
+      "confidence": 0.99,
+      "quantity": "chunk size",
+      "value": 4000,
+      "unit": "samples",
+      "context": "Data preprocessing stage splitting RF packets into equally-sized chunks",
+      "result_type": "measurement"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_98d757499dd3a9d2_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper explores key challenges in machine learning classification for optimizing the identification of unmanned aerial vehicles (UAVs) using radio frequency (RF) features and introduces an improved approach based on specific fingerprinting techniques. The study begins by discussing essential data preprocessing steps and feature extraction techniques relevant to RF-based signal analysis for UAVs identification. Several RF feature representations—such as Power Spectral Density (PSD), Short-Time Fourier Transform (STFT), and wavelet-based methods—are tested and compared. The proposed strategy is evaluated on an opensource dataset using different machine learning classifiers. Results indicate that convolutional neural networks (CNNs), when paired with wavelet-based feature extraction, offer the highest classification accuracy, making it possible to differentiate UAV types more effectively. These findings underscore the growing role of deep learning in RF-based UAV identification, with important implications for security and spectrum monitoring."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_98d757499dd3a9d2_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "This study conducts research and comparative analysis on machine learning classification methods for optimizing the identification of unmanned aerial vehicles using radio frequency fingerprinting techniques, namely power spectral density, short-time Fourier transform, and wavelets. Specifically, the proposed approach has been evaluated with an open-source dataset (DroneRF), and compared against different ML-based classification methods using various feature vectors (PSD, STFT-based and wavelet-based). The results demonstrate the effectiveness of convolutional neural networks for RF-based machine learning using wavelet-based feature extraction. The proposed CNN shows a high classification accuracy of 97%, effectively determining the drone type. The classifier demonstrates a 7% improvement in classification accuracy over the model presented in [27], despite both approaches utilizing wavelet-based feature vectors. This improvement is primarily attributed to careful tuning of the training parameters, wavelet packet decomposition settings, and the CNN architecture, which collectively enhanced the model's ability to extract and learn discriminative features for UAV identification. These findings highlight the potential of deep learning models, particularly CNNs, in enhancing the accuracy and reliability of UAV identification through RF fingerprinting. The ability to distinguish between different drone types with high precision is crucial for applications such as airspace security, unauthorized drone identification, and spectrum monitoring. Moreover, the use of wavelet-based feature extraction proves to be a significant factor in improving classification performance, reinforcing its viability as a preprocessing technique for RF-based machine learning tasks."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_98d757499dd3a9d2_lm1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recent research demonstrates increasing interest in multimodal fusion techniques, particularly those that integrate radio frequency signals with audio data to enhance identification accuracy [27]. It has been suggested that incorporating audio information may improve the robustness of RF datasets to noise and environmental variability. Nevertheless, the practical implementation of such approaches poses significant challenges, particularly in constructing well-balanced, synchronized datasets of radio and audio signals under real-world conditions. Moreover, additional constraints emerge when capturing UAV acoustic signatures in actual operating environments. Despite these difficulties, recent studies have proposed viable ways of integrating audio-based feature extraction techniques for raw RF signal data, which are extended and incorporated in the present work. In parallel, efforts have emerged to create open-source datasets of drone RF signals, most notably the initiative described in [28], which outlines a systematic framework for the collection and preliminary analysis of raw RF emissions from unmanned aerial vehicles. While this work lays foundational groundwork, it provides only a cursory demonstration of the dataset's applicability to machine learning tasks."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_98d757499dd3a9d2_lm2",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "Table 1 illustrates the summary of the DroneRF dataset. The dataset authors provide 3 experiment levels to work with: drone presence, drone type and drone flight mode. For this research, only the second level experiment level was chosen. One can pinpoint the class imbalance of the dataset, which is a result of different sample sizes of different classes and of the varying numbers of flight mode classes for each drone. Therefore, data resampling techniques and stratified cross-validation will be used to address this issue."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_98d757499dd3a9d2_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Future research could explore the integration of additional deep learning architectures, such as hybrid models, or augmentation of the data preprocessing stage to optimize the feature vectors, or further optimization of the RNNs in the context of radio frequency machine learning. Additionally, testing the proposed model on real-time or larger-scale datasets could provide insights into its robustness under varying environmental conditions and signal interference. Expanding this work could lead to the development of more efficient and scalable UAV identification systems, contributing to advancements in security and autonomous air traffic management."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

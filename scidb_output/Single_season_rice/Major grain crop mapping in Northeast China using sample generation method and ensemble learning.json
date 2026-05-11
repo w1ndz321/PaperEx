@@ -1,0 +1,795 @@
+{
+  "metadata": {
+    "doc_id": "doc_8f7833172f4695b1",
+    "source_file": "Major grain crop mapping in Northeast China using sample generation method and ensemble learning.md",
+    "title": "Mapping major grain crops in Northeast China from 2019 to 2023 using multi-stage spatially uniform sampling and ensemble learning",
+    "year": 2025,
+    "doi": "10.1016/j.eja.2025.127678",
+    "abstract": "a _College of Land Science and Technology, China Agricultural University, Beijing 100083, China_ b _Key Laboratory of Remote Sensing for Agri-Hazards, Ministry of Agriculture and Rural Affairs, Beijing 100083, China_",
+    "introduction": "Food production is a cornerstone of agriculture, and China feeds one’s arable land fifth of the global population using just 7 % of the world (FAO, 2023). Accurate distribution data of major grain crops (MGC) is essential for assessing the stability and sustainability of agricultural production. The three provinces of Northeast China contributing 20.9 % of China’s total grain output in 2020, major grain crops, including maize, rice, and soybean, made up 98.7 % of this output (National Bureau of Statistics of China, 2023). MGC provides 50 % of the world’s crop-derived calories, and is also crucial for producing cooking oil, animal feed, starch, and clean energy (Erenstein et al., 2022; Tilman et al., 2011). In recent years, the frequency of extreme weather events has risen, and social events like the COVID-19 pandemic may also impact agricultural production in Northeast China (Lesk et al., 2016; Pan et al., 2020). High-resolution MGC maps are crucial for growth monitoring, disaster prevention, agricultural insurance claims, production structure adjustments, and ensuring food security. However, such maps have not \n\nbeen available for Northeast China in recent years. \n\nIn recent decades, developed economies have established government-led crop monitoring systems that integrate remote sensing and survey data. Notable examples include the USDA’s Cropland Data Layer (CDL), AAFC’s crop inventory, and ESA’s Sen2Agri monitoring system (Boryan et al., 2011; Fisette et al., 2013; You and Sun, 2022). Despite their strengths, these systems are not available in many less-developed countries, including China. In recent years, the increasing availability of medium- to high-resolution remote sensing data, along with advancements in algorithms and cloud computing, have driven significant progress in large-scale crop mapping. Current crop mapping research and applications primarily utilize spectral and textural differences of optical data to identify crop types, multi-temporal optical vegetation indices (OVIs) are also widely used (Dong and Xiao, 2016; Zeng et al., 2022). Wardlow and Egbert. (2008) used time-series MODIS 250 m NDVI data to develop land use/land cover (LULC) maps of the central US plains, successfully distinguishing maize, sorghum, and soybean. Sentinel-2A/B (S2) satellites provide data with up to 10 m \n\n- Corresponding author at: College of Land Science and Technology, China Agricultural University, Beijing 100083, China. _E-mail address:_ lilixch@cau.edu.cn (L. Li). \n\n> 1 These authors contributed equally: Xueqian Hu, Shuo Zhang. \n\nhttps://doi.org/10.1016/j.eja.2025.127678 Received 29 April 2025; Accepted 4 May 2025 Available online 13 May 2025 \n\n1161-0301/© 2025 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies. \n\n> _X. Hu et al.                                                                                                                                                                                                                                       European Journal of Agronomy 169 (2025) 127678_ \n\nresolution and a short revisit cycle, offering unique red-edge bands prone to distinguish maize from soybean (You and Dong, 2020). Dong et al. (2020) combined Landsat-7/8 and S2 data to create monthly NDVI image sets, used the phenology-based time-weighted dynamic time warping (TWDTW) method to map early-season winter wheat in China at 30 m resolution from 2016 to 2018. Li et al. (2023) used deep neural networks and random forests (RF) with time-series S2 images to overcome the effects of phenological changes on crop identification, and produced 10 m resolution maps of maize cultivation changes in China from 2017 to 2021. Similarly, You et al. (2021) applied a layered mapping strategy with an RF classifier, using time-series S2 images and their derived temporal and textural features to create 10 m resolution maps of maize, soybean, and rice in Northeast China from 2017 to 2019. However, optical data collection is susceptible to lighting and weather conditions. In contrast, microwave remote sensing, with its ability to penetrate clouds and rain, provides new opportunities for crop mapping (Erlykin and Wolfendale, 2010). Currently, multi-temporal, multi-polarization SAR data has become the mainstream for crop identification. The introduction of scattering models such as the Michigan Microwave Canopy Scattering (MIMICS) model and Water Cloud (WC) model, along with various radar vegetation indices (RVI) based on backscatter coefficients and polarization decomposition, has enabled microwave remote sensing to effectively identify crops like rice, maize, and sugarcane (Attema and Ulaby, 1978; Kim et al., 2014; Nasirzadehdizaji et al., 2019). For example, Sun et al. (2023) used time-series Sentinel-1 (S1) data in a U-Net semantic segmentation model to achieve high-precision rice area mapping in Southeast Asia. Studies have shown that combining optical and radar data significantly improves crop identification accuracy compared to using a single data source (McNairn et al., 2002). Shen et al. (2023) employed the TWDTW method, and combined Sentinel-1/2 images to create a single-season rice distribution map for China from 2017 to 2022. \n\nMachine learning and deep learning algorithms are widely used for remote sensing classification due to their high adaptability and accuracy, enabling efficient automated processing huge amounts of data. Current crop mapping research primarily relies on machine learning algorithms such as the maximum likelihood method, decision trees, and support vector machines (SVM). The maximum likelihood method integrates Bayesian theory and prior knowledge for crop classification, but its performance decreases with a high number of feature bands (Guo et al., 2023). Decision trees can handle multi-output problems, but the poor generalization ability limits their effectiveness with high-dimensional data. SVM is stable and accurate for complex data classification and regression problems in crop remote sensing, but its performance is mediocre for multi-target classification and high-dimensional feature spaces (Guo et al., 2022; Sheykhmousa et al., 2020 ). Due to the limitations of single classifiers, the use of ensemble learning is becoming more prevalent (Mohammed and Kora, 2023). Ensemble learning mainly includes bagging, boosting, and stacking methods, integrating multiple models or predictions to improve classification results (Zhang et al., 2022). Overall, the accuracy of machine learning methods relies heavily on the quality of the training data. \n\nSample quality is a critical factor affecting the accuracy of machine learning models. Reliable and ample sample data are essential for highprecision crop mapping, especially over large temporal and spatial scales. However, researchers often face the challenge of limited groundtruth samples. Field surveys, while a traditional and flexible method for obtaining samples, are inefficient, costly, and their accuracy relies heavily on the surveyor’s experience (Prasad et al., 2006). Another method to obtain ground-truth data is through visual interpretation of high-resolution images (Huang et al., 2022). Li et al. (2017) used Landsat-8 data to develop the first all-season training and validation sample set for global land cover classification. Crops often exhibit similar visual characteristics at different growth stages, making visual interpretation more difficult and uncertain. Obtaining sample data from reliable data products and prior knowledge is another effective approach \n\n(Wang et al., 2019). Lin et al. (2022) generated high-quality training samples for the target year by transferring information on the relative positions of different crops in the spectral feature space from historical data. However, the generated samples require preprocessing before model training. Data purification is often used as a post-processing step for generating samples, but it may be limited by computational intensity, failing to fully utilize the \"spatial-spectral\" features of the data, and risking an imbalance in sample quantity and quality after purification (Frenay and Verleysen, 2014). \n\nThis study integrates optical and radar data to map MGC in Northeast China. The specific objectives are as follows: (i) Demonstrating the effectiveness of a multi-stage spatially uniform sampling model and progressive sample purification framework for the generating and purification of common crop samples; (ii) Using an ensemble learningbased machine learning classification model for high-precision crop classification that addresses challenges related to growth stages and cross-regional variations; (iii) Producing 10 m resolution maps of maize, rice, and soybean in Northeast China for the period from 2019 to 2023.",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "crop mapping",
+      "remote sensing",
+      "ensemble learning",
+      "sample purification",
+      "Northeast China"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:44:23.543192+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Food production is a cornerstone of agriculture, and China feeds one’s arable land fifth of the global population using just 7 % of the world (FAO, 2023). Accurate distribution data of major grain crops (MGC) is essential for assessing the stability and sustainability of agricultural production. The three provinces of Northeast China contributing 20.9 % of China’s total grain output in 2020, major grain crops, including maize, rice, and soybean, made up 98.7 % of this output (National Bureau of Statistics of China, 2023). MGC provides 50 % of the world’s crop-derived calories, and is also crucial for producing cooking oil, animal feed, starch, and clean energy (Erenstein et al., 2022; Tilman et al., 2011). In recent years, the frequency of extreme weather events has risen, and social events like the COVID-19 pandemic may also impact agricultural production in Northeast China (Lesk et al., 2016; Pan et al., 2020). High-resolution MGC maps are crucial for growth monitoring, disaster prevention, agricultural insurance claims, production structure adjustments, and ensuring food security. However, such maps have not been available for Northeast China in recent years."
+      },
+      "confidence": 0.99,
+      "term": "major grain crops",
+      "normalized": "主要粮食作物",
+      "std_label": "MGC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Food production is a cornerstone of agriculture, and China feeds one’s arable land fifth of the global population using just 7 % of the world (FAO, 2023). Accurate distribution data of major grain crops (MGC) is essential for assessing the stability and sustainability of agricultural production. The three provinces of Northeast China contributing 20.9 % of China’s total grain output in 2020, major grain crops, including maize, rice, and soybean, made up 98.7 % of this output (National Bureau of Statistics of China, 2023). MGC provides 50 % of the world’s crop-derived calories, and is also crucial for producing cooking oil, animal feed, starch, and clean energy (Erenstein et al., 2022; Tilman et al., 2011). In recent years, the frequency of extreme weather events has risen, and social events like the COVID-19 pandemic may also impact agricultural production in Northeast China (Lesk et al., 2016; Pan et al., 2020). High-resolution MGC maps are crucial for growth monitoring, disaster prevention, agricultural insurance claims, production structure adjustments, and ensuring food security. However, such maps have not been available for Northeast China in recent years."
+      },
+      "confidence": 0.99,
+      "term": "Northeast China",
+      "normalized": "中国东北地区",
+      "std_label": "NE"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In recent decades, developed economies have established government-led crop monitoring systems that integrate remote sensing and survey data. Notable examples include the USDA’s Cropland Data Layer (CDL), AAFC’s crop inventory, and ESA’s Sen2Agri monitoring system (Boryan et al., 2011; Fisette et al., 2013; You and Sun, 2022). Despite their strengths, these systems are not available in many less-developed countries, including China. In recent years, the increasing availability of medium- to high-resolution remote sensing data, along with advancements in algorithms and cloud computing, have driven significant progress in large-scale crop mapping. Current crop mapping research and applications primarily utilize spectral and textural differences of optical data to identify crop types, multi-temporal optical vegetation indices (OVIs) are also widely used (Dong and Xiao, 2016; Zeng et al., 2022). Wardlow and Egbert. (2008) used time-series MODIS 250 m NDVI data to develop land use/land cover (LULC) maps of the central US plains, successfully distinguishing maize, sorghum, and soybean. Sentinel-2A/B (S2) satellites provide data with up to 10 m resolution and a short revisit cycle, offering unique red-edge bands prone to distinguish maize from soybean (You and Dong, 2020). Dong et al. (2020) combined Landsat-7/8 and S2 data to create monthly NDVI image sets, used the phenology-based time-weighted dynamic time warping (TWDTW) method to map early-season winter wheat in China at 30 m resolution from 2016 to 2018."
+      },
+      "confidence": 0.98,
+      "term": "remote sensing",
+      "normalized": "遥感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Machine learning and deep learning algorithms are widely used for remote sensing classification due to their high adaptability and accuracy, enabling efficient automated processing huge amounts of data. Current crop mapping research primarily relies on machine learning algorithms such as the maximum likelihood method, decision trees, and support vector machines (SVM). The maximum likelihood method integrates Bayesian theory and prior knowledge for crop classification, but its performance decreases with a high number of feature bands (Guo et al., 2023). Decision trees can handle multi-output problems, but the poor generalization ability limits their effectiveness with high-dimensional data. SVM is stable and accurate for complex data classification and regression problems in crop remote sensing, but its performance is mediocre for multi-target classification and high-dimensional feature spaces (Guo et al., 2022; Sheykhmousa et al., 2020 ). Due to the limitations of single classifiers, the use of ensemble learning is becoming more prevalent (Mohammed and Kora, 2023). Ensemble learning mainly includes bagging, boosting, and stacking methods, integrating multiple models or predictions to improve classification results (Zhang et al., 2022). Overall, the accuracy of machine learning methods relies heavily on the quality of the training data."
+      },
+      "confidence": 0.98,
+      "term": "machine learning",
+      "normalized": "机器学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Machine learning and deep learning algorithms are widely used for remote sensing classification due to their high adaptability and accuracy, enabling efficient automated processing huge amounts of data. Current crop mapping research primarily relies on machine learning algorithms such as the maximum likelihood method, decision trees, and support vector machines (SVM). The maximum likelihood method integrates Bayesian theory and prior knowledge for crop classification, but its performance decreases with a high number of feature bands (Guo et al., 2023). Decision trees can handle multi-output problems, but the poor generalization ability limits their effectiveness with high-dimensional data. SVM is stable and accurate for complex data classification and regression problems in crop remote sensing, but its performance is mediocre for multi-target classification and high-dimensional feature spaces (Guo et al., 2022; Sheykhmousa et al., 2020 ). Due to the limitations of single classifiers, the use of ensemble learning is becoming more prevalent (Mohammed and Kora, 2023). Ensemble learning mainly includes bagging, boosting, and stacking methods, integrating multiple models or predictions to improve classification results (Zhang et al., 2022). Overall, the accuracy of machine learning methods relies heavily on the quality of the training data."
+      },
+      "confidence": 0.97,
+      "term": "ensemble learning",
+      "normalized": "集成学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Sample quality is a critical factor affecting the accuracy of machine learning models. Reliable and ample sample data are essential for highprecision crop mapping, especially over large temporal and spatial scales. However, researchers often face the challenge of limited groundtruth samples. Field surveys, while a traditional and flexible method for obtaining samples, are inefficient, costly, and their accuracy relies heavily on the surveyor’s experience (Prasad et al., 2006). Another method to obtain ground-truth data is through visual interpretation of high-resolution images (Huang et al., 2022). Li et al. (2017) used Landsat-8 data to develop the first all-season training and validation sample set for global land cover classification. Crops often exhibit similar visual characteristics at different growth stages, making visual interpretation more difficult and uncertain. Obtaining sample data from reliable data products and prior knowledge is another effective approach (Wang et al., 2019). Lin et al. (2022) generated high-quality training samples for the target year by transferring information on the relative positions of different crops in the spectral feature space from historical data. However, the generated samples require preprocessing before model training. Data purification is often used as a post-processing step for generating samples, but it may be limited by computational intensity, failing to fully utilize the 'spatial-spectral' features of the data, and risking an imbalance in sample quantity and quality after purification (Frenay and Verleysen, 2014)."
+      },
+      "confidence": 0.96,
+      "term": "sample generation method",
+      "normalized": "样本生成方法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Sentinel-2A/B (S2) satellites provide data with up to 10 m resolution and a short revisit cycle, offering unique red-edge bands prone to distinguish maize from soybean (You and Dong, 2020). Dong et al. (2020) combined Landsat-7/8 and S2 data to create monthly NDVI image sets, used the phenology-based time-weighted dynamic time warping (TWDTW) method to map early-season winter wheat in China at 30 m resolution from 2016 to 2018. Li et al. (2023) used deep neural networks and random forests (RF) with time-series S2 images to overcome the effects of phenological changes on crop identification, and produced 10 m resolution maps of maize cultivation changes in China from 2017 to 2021. Similarly, You et al. (2021) applied a layered mapping strategy with an RF classifier, using time-series S2 images and their derived temporal and textural features to create 10 m resolution maps of maize, soybean, and rice in Northeast China from 2017 to 2019."
+      },
+      "confidence": 0.98,
+      "term": "Sentinel-2",
+      "normalized": "哨兵-2",
+      "std_label": "S2"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, optical data collection is susceptible to lighting and weather conditions. In contrast, microwave remote sensing, with its ability to penetrate clouds and rain, provides new opportunities for crop mapping (Erlykin and Wolfendale, 2010). Currently, multi-temporal, multi-polarization SAR data has become the mainstream for crop identification. The introduction of scattering models such as the Michigan Microwave Canopy Scattering (MIMICS) model and Water Cloud (WC) model, along with various radar vegetation indices (RVI) based on backscatter coefficients and polarization decomposition, has enabled microwave remote sensing to effectively identify crops like rice, maize, and sugarcane (Attema and Ulaby, 1978; Kim et al., 2014; Nasirzadehdizaji et al., 2019). For example, Sun et al. (2023) used time-series Sentinel-1 (S1) data in a U-Net semantic segmentation model to achieve high-precision rice area mapping in Southeast Asia. Studies have shown that combining optical and radar data significantly improves crop identification accuracy compared to using a single data source (McNairn et al., 2002). Shen et al. (2023) employed the TWDTW method, and combined Sentinel-1/2 images to create a single-season rice distribution map for China from 2017 to 2022."
+      },
+      "confidence": 0.98,
+      "term": "Sentinel-1",
+      "normalized": "哨兵-1",
+      "std_label": "S1"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c9",
+      "evidence": {
+        "section": "Method",
+        "original_text": "To balance accuracy and computational efficiency, this study used the bagging ensemble learning strategy for classifying and mapping MGC in NE, as shown in Fig. 10. The training sample set and monthly feature set were fed into the classifier, generating monthly classification results for each year from May to September. RF has strong generalization ability and predictive performance, making it our classifier of choice (Breiman, 2001). The number of trees for each RF classifier was set to 200, with other hyperparameters set to GEE platform defaults. This study took into account the phenological differences of MGC and applied a weighted voting strategy to integrate the monthly classification results."
+      },
+      "confidence": 0.97,
+      "term": "random forest",
+      "normalized": "随机森林",
+      "std_label": "RF"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8f7833172f4695b1_c10",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We utilized Sentinel-1/2 data available on the GEE platform and its derived feature set to create maps of major grain crops in Northeast China (NE-MGCM) for 2019–2023 (Fig. 11). As shown in Figs. 1 and 11, maize is the most widely cultivated crop in NE, growing across plains, hills, and valleys, especially in the SNP, one of the world’s three golden maize belts. Rice is mainly distributed in bands along rivers, with the highest concentration in the SJP in eastern HLJ province. Soybean is increasingly cultivated from south to north in NE, with HLJ province accounting for 48.14 % of China’s total soybean planting area (National Bureau of Statistics of China, 2023). The southeastern and northwestern regions of NE are primarily mountainous, limited by water and heat conditions, with sparse crop distribution, where forest is the primary land cover type."
+      },
+      "confidence": 0.99,
+      "term": "Northeast China major grain crop maps",
+      "normalized": "中国东北地区主要粮食作物分布图",
+      "std_label": "NE-MGCM"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Food production is a cornerstone of agriculture, and China feeds one’s arable land fifth of the global population using just 7 % of the world (FAO, 2023). Accurate distribution data of major grain crops (MGC) is essential for assessing the stability and sustainability of agricultural production. The three provinces of Northeast China contributing 20.9 % of China’s total grain output in 2020, major grain crops, including maize, rice, and soybean, made up 98.7 % of this output (National Bureau of Statistics of China, 2023). MGC provides 50 % of the world’s crop-derived calories, and is also crucial for producing cooking oil, animal feed, starch, and clean energy (Erenstein et al., 2022; Tilman et al., 2011). In recent years, the frequency of extreme weather events has risen, and social events like the COVID-19 pandemic may also impact agricultural production in Northeast China (Lesk et al., 2016; Pan et al., 2020). High-resolution MGC maps are crucial for growth monitoring, disaster prevention, agricultural insurance claims, production structure adjustments, and ensuring food security. However, such maps have not been available for Northeast China in recent years."
+      },
+      "confidence": 0.95,
+      "head": "doc_8f7833172f4695b1_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "including",
+      "tail": "doc_8f7833172f4695b1_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In recent decades, developed economies have established government-led crop monitoring systems that integrate remote sensing and survey data. Notable examples include the USDA’s Cropland Data Layer (CDL), AAFC’s crop inventory, and ESA’s Sen2Agri monitoring system (Boryan et al., 2011; Fisette et al., 2013; You and Sun, 2022). Despite their strengths, these systems are not available in many less-developed countries, including China. In recent years, the increasing availability of medium- to high-resolution remote sensing data, along with advancements in algorithms and cloud computing, have driven significant progress in large-scale crop mapping. Current crop mapping research and applications primarily utilize spectral and textural differences of optical data to identify crop types, multi-temporal optical vegetation indices (OVIs) are also widely used (Dong and Xiao, 2016; Zeng et al., 2022). Wardlow and Egbert. (2008) used time-series MODIS 250 m NDVI data to develop land use/land cover (LULC) maps of the central US plains, successfully distinguishing maize, sorghum, and soybean. Sentinel-2A/B (S2) satellites provide data with up to 10 m resolution and a short revisit cycle, offering unique red-edge bands prone to distinguish maize from soybean (You and Dong, 2020). Dong et al. (2020) combined Landsat-7/8 and S2 data to create monthly NDVI image sets, used the phenology-based time-weighted dynamic time warping (TWDTW) method to map early-season winter wheat in China at 30 m resolution from 2016 to 2018."
+      },
+      "confidence": 0.94,
+      "head": "doc_8f7833172f4695b1_c3",
+      "relation_type": "uses",
+      "relation_surface": "utilize spectral and textural differences of optical data to identify crop types",
+      "tail": "doc_8f7833172f4695b1_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Machine learning and deep learning algorithms are widely used for remote sensing classification due to their high adaptability and accuracy, enabling efficient automated processing huge amounts of data. Current crop mapping research primarily relies on machine learning algorithms such as the maximum likelihood method, decision trees, and support vector machines (SVM). The maximum likelihood method integrates Bayesian theory and prior knowledge for crop classification, but its performance decreases with a high number of feature bands (Guo et al., 2023). Decision trees can handle multi-output problems, but the poor generalization ability limits their effectiveness with high-dimensional data. SVM is stable and accurate for complex data classification and regression problems in crop remote sensing, but its performance is mediocre for multi-target classification and high-dimensional feature spaces (Guo et al., 2022; Sheykhmousa et al., 2020 ). Due to the limitations of single classifiers, the use of ensemble learning is becoming more prevalent (Mohammed and Kora, 2023). Ensemble learning mainly includes bagging, boosting, and stacking methods, integrating multiple models or predictions to improve classification results (Zhang et al., 2022). Overall, the accuracy of machine learning methods relies heavily on the quality of the training data."
+      },
+      "confidence": 0.93,
+      "head": "doc_8f7833172f4695b1_c4",
+      "relation_type": "enhances",
+      "relation_surface": "widely used for remote sensing classification due to their high adaptability and accuracy",
+      "tail": "doc_8f7833172f4695b1_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Machine learning and deep learning algorithms are widely used for remote sensing classification due to their high adaptability and accuracy, enabling efficient automated processing huge amounts of data. Current crop mapping research primarily relies on machine learning algorithms such as the maximum likelihood method, decision trees, and support vector machines (SVM). The maximum likelihood method integrates Bayesian theory and prior knowledge for crop classification, but its performance decreases with a high number of feature bands (Guo et al., 2023). Decision trees can handle multi-output problems, but the poor generalization ability limits their effectiveness with high-dimensional data. SVM is stable and accurate for complex data classification and regression problems in crop remote sensing, but its performance is mediocre for multi-target classification and high-dimensional feature spaces (Guo et al., 2022; Sheykhmousa et al., 2020 ). Due to the limitations of single classifiers, the use of ensemble learning is becoming more prevalent (Mohammed and Kora, 2023). Ensemble learning mainly includes bagging, boosting, and stacking methods, integrating multiple models or predictions to improve classification results (Zhang et al., 2022). Overall, the accuracy of machine learning methods relies heavily on the quality of the training data."
+      },
+      "confidence": 0.92,
+      "head": "doc_8f7833172f4695b1_c5",
+      "relation_type": "enhances",
+      "relation_surface": "integrating multiple models or predictions to improve classification results",
+      "tail": "doc_8f7833172f4695b1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Sample quality is a critical factor affecting the accuracy of machine learning models. Reliable and ample sample data are essential for highprecision crop mapping, especially over large temporal and spatial scales. However, researchers often face the challenge of limited groundtruth samples. Field surveys, while a traditional and flexible method for obtaining samples, are inefficient, costly, and their accuracy relies heavily on the surveyor’s experience (Prasad et al., 2006). Another method to obtain ground-truth data is through visual interpretation of high-resolution images (Huang et al., 2022). Li et al. (2017) used Landsat-8 data to develop the first all-season training and validation sample set for global land cover classification. Crops often exhibit similar visual characteristics at different growth stages, making visual interpretation more difficult and uncertain. Obtaining sample data from reliable data products and prior knowledge is another effective approach (Wang et al., 2019). Lin et al. (2022) generated high-quality training samples for the target year by transferring information on the relative positions of different crops in the spectral feature space from historical data. However, the generated samples require preprocessing before model training. Data purification is often used as a post-processing step for generating samples, but it may be limited by computational intensity, failing to fully utilize the 'spatial-spectral' features of the data, and risking an imbalance in sample quantity and quality after purification (Frenay and Verleysen, 2014)."
+      },
+      "confidence": 0.91,
+      "head": "doc_8f7833172f4695b1_c6",
+      "relation_type": "enhances",
+      "relation_surface": "generated high-quality training samples",
+      "tail": "doc_8f7833172f4695b1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Sentinel-2A/B (S2) satellites provide data with up to 10 m resolution and a short revisit cycle, offering unique red-edge bands prone to distinguish maize from soybean (You and Dong, 2020). Dong et al. (2020) combined Landsat-7/8 and S2 data to create monthly NDVI image sets, used the phenology-based time-weighted dynamic time warping (TWDTW) method to map early-season winter wheat in China at 30 m resolution from 2016 to 2018. Li et al. (2023) used deep neural networks and random forests (RF) with time-series S2 images to overcome the effects of phenological changes on crop identification, and produced 10 m resolution maps of maize cultivation changes in China from 2017 to 2021. Similarly, You et al. (2021) applied a layered mapping strategy with an RF classifier, using time-series S2 images and their derived temporal and textural features to create 10 m resolution maps of maize, soybean, and rice in Northeast China from 2017 to 2019."
+      },
+      "confidence": 0.95,
+      "head": "doc_8f7833172f4695b1_c7",
+      "relation_type": "uses",
+      "relation_surface": "provide data with up to 10 m resolution and a short revisit cycle",
+      "tail": "doc_8f7833172f4695b1_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, optical data collection is susceptible to lighting and weather conditions. In contrast, microwave remote sensing, with its ability to penetrate clouds and rain, provides new opportunities for crop mapping (Erlykin and Wolfendale, 2010). Currently, multi-temporal, multi-polarization SAR data has become the mainstream for crop identification. The introduction of scattering models such as the Michigan Microwave Canopy Scattering (MIMICS) model and Water Cloud (WC) model, along with various radar vegetation indices (RVI) based on backscatter coefficients and polarization decomposition, has enabled microwave remote sensing to effectively identify crops like rice, maize, and sugarcane (Attema and Ulaby, 1978; Kim et al., 2014; Nasirzadehdizaji et al., 2019). For example, Sun et al. (2023) used time-series Sentinel-1 (S1) data in a U-Net semantic segmentation model to achieve high-precision rice area mapping in Southeast Asia. Studies have shown that combining optical and radar data significantly improves crop identification accuracy compared to using a single data source (McNairn et al., 2002). Shen et al. (2023) employed the TWDTW method, and combined Sentinel-1/2 images to create a single-season rice distribution map for China from 2017 to 2022."
+      },
+      "confidence": 0.94,
+      "head": "doc_8f7833172f4695b1_c8",
+      "relation_type": "uses",
+      "relation_surface": "microwave remote sensing, with its ability to penetrate clouds and rain, provides new opportunities for crop mapping",
+      "tail": "doc_8f7833172f4695b1_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r8",
+      "evidence": {
+        "section": "Method",
+        "original_text": "To balance accuracy and computational efficiency, this study used the bagging ensemble learning strategy for classifying and mapping MGC in NE, as shown in Fig. 10. The training sample set and monthly feature set were fed into the classifier, generating monthly classification results for each year from May to September. RF has strong generalization ability and predictive performance, making it our classifier of choice (Breiman, 2001). The number of trees for each RF classifier was set to 200, with other hyperparameters set to GEE platform defaults. This study took into account the phenological differences of MGC and applied a weighted voting strategy to integrate the monthly classification results."
+      },
+      "confidence": 0.96,
+      "head": "doc_8f7833172f4695b1_c9",
+      "relation_type": "belongs_to",
+      "relation_surface": "RF has strong generalization ability and predictive performance, making it our classifier of choice",
+      "tail": "doc_8f7833172f4695b1_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r9",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We utilized Sentinel-1/2 data available on the GEE platform and its derived feature set to create maps of major grain crops in Northeast China (NE-MGCM) for 2019–2023 (Fig. 11). As shown in Figs. 1 and 11, maize is the most widely cultivated crop in NE, growing across plains, hills, and valleys, especially in the SNP, one of the world’s three golden maize belts. Rice is mainly distributed in bands along rivers, with the highest concentration in the SJP in eastern HLJ province. Soybean is increasingly cultivated from south to north in NE, with HLJ province accounting for 48.14 % of China’s total soybean planting area (National Bureau of Statistics of China, 2023). The southeastern and northwestern regions of NE are primarily mountainous, limited by water and heat conditions, with sparse crop distribution, where forest is the primary land cover type."
+      },
+      "confidence": 0.97,
+      "head": "doc_8f7833172f4695b1_c10",
+      "relation_type": "measures",
+      "relation_surface": "create maps of major grain crops in Northeast China",
+      "tail": "doc_8f7833172f4695b1_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8f7833172f4695b1_r10",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We utilized Sentinel-1/2 data available on the GEE platform and its derived feature set to create maps of major grain crops in Northeast China (NE-MGCM) for 2019–2023 (Fig. 11). As shown in Figs. 1 and 11, maize is the most widely cultivated crop in NE, growing across plains, hills, and valleys, especially in the SNP, one of the world’s three golden maize belts. Rice is mainly distributed in bands along rivers, with the highest concentration in the SJP in eastern HLJ province. Soybean is increasingly cultivated from south to north in NE, with HLJ province accounting for 48.14 % of China’s total soybean planting area (National Bureau of Statistics of China, 2023). The southeastern and northwestern regions of NE are primarily mountainous, limited by water and heat conditions, with sparse crop distribution, where forest is the primary land cover type."
+      },
+      "confidence": 0.96,
+      "head": "doc_8f7833172f4695b1_c10",
+      "relation_type": "uses",
+      "relation_surface": "utilized Sentinel-1/2 data available on the GEE platform and its derived feature set",
+      "tail": "doc_8f7833172f4695b1_c3"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8f7833172f4695b1_d1",
+      "evidence": {
+        "section": "Additional information",
+        "original_text": "Northeast China major grain crop maps (NE-MGCM) from 2019–2023 with a 10 m resolution are available. The dataset is available in the Google Earth Engine at https://code.earthengine.google.com/042b17018a2ec5983d0520bcb3104c82, and its spatial reference system is EPSG: 4326 (WGS 1984). JavaScript that is used for crop classification on the GEE platform is available."
+      },
+      "confidence": 0.95,
+      "name": "NE-MGCM (Northeast China Major Grain Crop Maps)",
+      "modality": "image",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8f7833172f4695b1_d2",
+      "evidence": {
+        "section": "2.3.2. Training sample generation",
+        "original_text": "After purification, the training sample set for 2019–2023 includes 159,760 samples: 78,850 maize, 41,785 rice, and 39,125 soybean samples. The spatial distribution of the training sample set is shown in Fig. 9."
+      },
+      "confidence": 0.9,
+      "name": "Training sample set",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8f7833172f4695b1_d3",
+      "evidence": {
+        "section": "2.2.2. Sample data collection",
+        "original_text": "After removing mislabelled samples and those located on roads or field edges, a total of 24,709 sample points (including field and visually interpreted points) were obtained for the five years from 2019 to 2023. The sample points were categorized into four land cover types: maize, rice, soybean, and others. The 'others' category included buildings, forests, water, and other land covers. All sample data were used for validation. Fig. 3 shows the quantity and spatial distribution of the four types of sample points over the five years."
+      },
+      "confidence": 0.9,
+      "name": "Validation sample set",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8f7833172f4695b1_d4",
+      "evidence": {
+        "section": "2.3.3. Model and classification",
+        "original_text": "This study calculated 39 features, including five categories: original spectral features, vegetation indices, texture features, radar features, and terrain features, using monthly Sentinel-1/2 imagery to form the initial feature set. Feature selection was performed using an RF algorithm-based feature importance evaluation method. The top 20 most important features were selected as the optimal set for the monthly feature set from May to September 2019–2023. As shown in Table 2, the vegetation index features include NDVI, LSWI, GWCCI, Green Chlorophyll Vegetation Index (GCVI), Bare Soil Index (BSI), Normalized Difference Tillage Index (NDTI), Normalized Difference Snow Index (NDSI), Greenness Index (GI), and Green Vegetation Index (VIgreen) (Han, 2020; Ni et al., 2021; Xu, 2024; Xuan et al., 2023; You et al., 2021; Zhu, 2018). The texture features comprise Homogeneity (HOM), Entropy (ENT), and Angular Second Moment (ASM) (Xu, 2024). The radar features include VV-polarized backscatter coefficient (δVV0), VH-polarized backscatter coefficient (δVH0), and Polarization Ratio (PR, PR = δVV0/δVH0). The terrain features include Elevation and Slope."
+      },
+      "confidence": 0.85,
+      "name": "Monthly feature set",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8f7833172f4695b1_ds1",
+      "evidence": {
+        "section": "Additional information",
+        "original_text": "Northeast China major grain crop maps (NE-MGCM) from 2019–2023 with a 10 m resolution are available. The dataset is available in the Google Earth Engine at https://code.earthengine.google.com/042b17018a2ec5983d0520bcb3104c82, and its spatial reference system is EPSG: 4326 (WGS 1984). JavaScript that is used for crop classification on the GEE platform is available."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "10 m resolution raster dataset with EPSG:4326 (WGS 1984) spatial reference system"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8f7833172f4695b1_ds2",
+      "evidence": {
+        "section": "2.3.4. Accuracy evaluation",
+        "original_text": "To evaluate the crop mapping accuracy for the MGC in NE, this study used all measured sample data from the five years as a validation set. The map accuracy for each year was assessed using a confusion matrix, which includes producer accuracy (PA), user accuracy (UA), overall accuracy (OA), coefficient, and F1 score (Eq. 5). In addition to the validation sample set, cross-validation was conducted using statistical data and publicly available data products. First, the predicted planting areas of the three major grain crops were compared with statistical data for 36 municipal-level administrative regions in NE to verify prediction accuracy. Second, we utilized the data products listed in Table 1 for validation, applied the Pearson correlation coefficient (R2) and Root Mean Square Error (RMSE) metrics for linear regression with the crop maps to assess mapping accuracy (Eqs. 6, 7)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Accuracy assessment using confusion matrix metrics (PA, UA, OA, Kappa, F1) and validation with statistical data and public products"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8f7833172f4695b1_ds3",
+      "evidence": {
+        "section": "2.2.2. Sample data collection",
+        "original_text": "The sample points were categorized into four land cover types: maize, rice, soybean, and others. The 'others' category included buildings, forests, water, and other land covers."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Sample categorization into maize, rice, soybean, and others (including buildings, forests, water)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8f7833172f4695b1_ds4",
+      "evidence": {
+        "section": "2.3.1. Data preprocessing",
+        "original_text": "To fill data gaps caused by meteorological factors such as cloud cover, we produced monthly composite imagery. For potential gaps caused by cloud removal in S2 data, we used the multispectral data conversion coefficient developed by Xie et al. (2022) and used Landsat-8/9 data to fill them. The phenological periods of the three MGC in NE as shown in Fig. 5. The typical growing season for maize, rice, and soybean in HLJ, JL, and LN provinces runs from May to September. To create monthly imagery datasets, we performed monthly mean composites of S2 SR data from May to September for the years 2019–2023. Bilinear interpolation was applied for resampling to standardize the spatial resolution of various data and bands to 10 m. Due to the malfunction of the S1 B satellite, monthly mean composites and SAR feature calculations were only performed for the S1 GRD data from 2019 to 2021."
+      },
+      "confidence": 0.85,
+      "spec_type": "env_requirement",
+      "description": "Data preprocessing includes monthly mean composites, bilinear interpolation resampling to 10 m, and gap filling with Landsat-8/9"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8f7833172f4695b1_m1",
+      "evidence": {
+        "section": "2.3.2",
+        "original_text": "This study utilized a sample generation method comprising two components: a multi-stage spatially uniform sampling model and a progressive sample purification framework. The former uses existing optical remote sensing images to generate uniformly distributed and representative crop training samples for any given year. The flowchart is shown in Fig. 6, and the model is divided into three stages. In the first stage, a sufficiently large and spatially uniform undefined sample pool is created automatically, based on the scale of farmland in the study area. The second stage is to provide a label layer with clear categories for an undefined sample pool. Creating the label layer requires considering the phenological differences of various cover types at a local spatial scale. We identified three indices that are sensitive to vegetation growth and can accurately distinguish the MGC, including NDVI, Land Surface Water Index (LSWI), and Greenness and Water Content Composite Index (GWCCI) (Eqs. 1–3) (Chen et al., 2023). Fig. 7 shows the values of these indices for maize, rice, soybean, and others across different months, along with the rules for determining their label layers. In the third stage, the model assigns crop labels to the undefined samples based on the spatial consistency between the different crop label layers and the undefined sample pool. After three stages of processing, we created an initial training sample set that is sufficiently large, uniformly distributed spatially, balanced in category proportions, and highly representative."
+      },
+      "confidence": 0.95,
+      "name": "multi-stage spatially uniform sampling model",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8f7833172f4695b1_m2",
+      "evidence": {
+        "section": "2.3.2",
+        "original_text": "To address potential noise from boundary effects and labeling errors, the sample purification framework must be applied first to eliminate unreliable samples, as shown in Fig. 8. The framework processes the sample data in two aspects: intra-class purification and inter-class purification. First, neighborhood-weighted constraint (NWC) filtering analyzes the spectral characteristics of each sample unit and its surrounding area to determine the plot type. This step removes suspicious samples from heterogeneous plots within the same class. Second, spectral iterative self-cleaning (SIS) filtering based on spectral variations of each class of sample data and inter-class separability, removes mislabeled samples from different classes. After purification, the training – sample set for 2019 2023 includes 159,760 samples: 78,850 maize, 41,785 rice, and 39,125 soybean samples. The spatial distribution of the training sample set is shown in Fig. 9."
+      },
+      "confidence": 0.95,
+      "name": "progressive sample purification framework",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8f7833172f4695b1_m3",
+      "evidence": {
+        "section": "2.3.3",
+        "original_text": "To balance accuracy and computational efficiency, this study used the bagging ensemble learning strategy for classifying and mapping MGC in NE, as shown in Fig. 10. The training sample set and monthly feature set were fed into the classifier, generating monthly classification results for each year from May to September. RF has strong generalization ability and predictive performance, making it our classifier of choice (Breiman, 2001). The number of trees for each RF classifier was set to 200, with other hyperparameters set to GEE platform defaults. This study took into account the phenological differences of MGC and applied a weighted voting strategy to integrate the monthly classification results (Eq. 4)."
+      },
+      "confidence": 0.95,
+      "name": "bagging ensemble learning strategy",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8f7833172f4695b1_m4",
+      "evidence": {
+        "section": "2.3.3",
+        "original_text": "RF has strong generalization ability and predictive performance, making it our classifier of choice (Breiman, 2001). The number of trees for each RF classifier was set to 200, with other hyperparameters set to GEE platform defaults."
+      },
+      "confidence": 0.95,
+      "name": "Random Forest (RF)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8f7833172f4695b1_m5",
+      "evidence": {
+        "section": "2.3.3",
+        "original_text": "This study took into account the phenological differences of MGC and applied a weighted voting strategy to integrate the monthly classification results (Eq. 4)."
+      },
+      "confidence": 0.95,
+      "name": "weighted voting strategy",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8f7833172f4695b1_m6",
+      "evidence": {
+        "section": "2.3.3",
+        "original_text": "This study calculated 39 features, including five categories: original spectral features, vegetation indices, texture features, radar features, and terrain features, using monthly Sentinel-1/2 imagery to form the initial feature set. Feature selection was performed using an RF algorithm-based feature importance evaluation method. The top 20 most important features were selected as the optimal set for the monthly feature set from May to September 2019–2023."
+      },
+      "confidence": 0.95,
+      "name": "RF algorithm-based feature importance evaluation method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8f7833172f4695b1_x1",
+      "evidence": {
+        "section": "2.2.1",
+        "original_text": "The satellite imagery data for this study was collected from the openaccess Google Earth Engine (GEE) platform. GEE provides a wide range of freely available satellite remote sensing data and has robust data filtering and processing algorithms. We chose S2 surface reflectance (SR) data for NE from 2019 to 2023 as the primary data. Studies show high consistency between Landsat-8/9 and S2 imagery, which is often used in conjunction (Xu et al., 2023). We selected Landsat-8/9 data to address potential data gaps. To utilize the structural and dielectric information in SAR data and improve crop separability, we extracted S1 GRD data for NE from GEE and integrated it with optical data for feature fusion."
+      },
+      "confidence": 0.95,
+      "task": "major grain crop mapping in Northeast China",
+      "setup": "Sentinel-1/2 imagery, Google Earth Engine platform, Northeast China study area, 2019-2023 period"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8f7833172f4695b1_x2",
+      "evidence": {
+        "section": "2.2.2",
+        "original_text": "Field surveys and visual interpretation are traditional sample collection strategies. We conducted field surveys on the planting situation of the three major crops in NE from 2019 to 2023. Surveyors used handheld GPS devices to mark the geographic locations of representative fields, recorded crop types, and captured field photos. Due to the vastness of NE, the number of field samples was relatively small and could not cover all agricultural regions. Therefore, visual interpretation was used to increase the sample quantity. We performed visual interpretation using false-color composite S2 images on the GEE platform, supplemented by historical imagery from Google Earth. Sample points were expanded by referencing the spectral and textural features of the field points in the imagery. After removing mislabelled samples and those located on roads or field edges, a total of 24,709 sample points (including field and visually interpreted points) were obtained for the five years from 2019 to 2023. The sample points were categorized into four land cover types: maize, rice, soybean, and others. The 'others' category included buildings, forests, water, and other land covers. All sample data were used for validation."
+      },
+      "confidence": 0.95,
+      "task": "training sample generation and purification",
+      "setup": "field surveys, visual interpretation, multi-stage spatially uniform sampling model, progressive sample purification framework"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8f7833172f4695b1_x3",
+      "evidence": {
+        "section": "2.3.4",
+        "original_text": "To evaluate the crop mapping accuracy for the MGC in NE, this study used all measured sample data from the five years as a validation set. The map accuracy for each year was assessed using a confusion matrix, which includes producer accuracy (PA), user accuracy (UA), overall accuracy (OA), coefficient, and F1 score (Eq. 5). In addition to the validation sample set, cross-validation was conducted using statistical data and publicly available data products. First, the predicted planting areas of the three major grain crops were compared with statistical data for 36 municipal-level administrative regions in NE to verify prediction accuracy. Second, we utilized the data products listed in Table 1 for validation, applied the Pearson correlation coefficient (R2) and Root Mean Square Error (RMSE) metrics for linear regression with the crop maps to assess mapping accuracy (Eqs. 6, 7)."
+      },
+      "confidence": 0.95,
+      "task": "accuracy evaluation of crop maps",
+      "setup": "confusion matrix, validation sample set, statistical data, publicly available data products"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Validation with 24,709 field samples from 2019 to 2023 showed that NE-MGCM achieved an average OA of 94.96 %, an average Kappa coefficient of 0.9264, and average PA for maize, rice, and soybean of 93.34 %, 95.61 %, and 95.32 %, respectively. NE-MGCM demonstrated high consistency with official statistical data and outperformed other similar data products in overall performance, effectively reflecting the temporal and spatial distribution changes of MGC. The results indicated that the method used in this study can accurately monitor MGC planting structures and spatial distributions, and provide valuable data support for regional production policy formulation and sustainable agricultural development."
+      },
+      "confidence": 0.98,
+      "quantity": "overall accuracy",
+      "value": 94.96,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Validation with 24,709 field samples from 2019 to 2023 showed that NE-MGCM achieved an average OA of 94.96 %, an average Kappa coefficient of 0.9264, and average PA for maize, rice, and soybean of 93.34 %, 95.61 %, and 95.32 %, respectively. NE-MGCM demonstrated high consistency with official statistical data and outperformed other similar data products in overall performance, effectively reflecting the temporal and spatial distribution changes of MGC. The results indicated that the method used in this study can accurately monitor MGC planting structures and spatial distributions, and provide valuable data support for regional production policy formulation and sustainable agricultural development."
+      },
+      "confidence": 0.98,
+      "quantity": "Kappa coefficient",
+      "value": 0.9264,
+      "unit": null,
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Validation with 24,709 field samples from 2019 to 2023 showed that NE-MGCM achieved an average OA of 94.96 %, an average Kappa coefficient of 0.9264, and average PA for maize, rice, and soybean of 93.34 %, 95.61 %, and 95.32 %, respectively. NE-MGCM demonstrated high consistency with official statistical data and outperformed other similar data products in overall performance, effectively reflecting the temporal and spatial distribution changes of MGC. The results indicated that the method used in this study can accurately monitor MGC planting structures and spatial distributions, and provide valuable data support for regional production policy formulation and sustainable agricultural development."
+      },
+      "confidence": 0.98,
+      "quantity": "producer accuracy (PA) for maize",
+      "value": 93.34,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Validation with 24,709 field samples from 2019 to 2023 showed that NE-MGCM achieved an average OA of 94.96 %, an average Kappa coefficient of 0.9264, and average PA for maize, rice, and soybean of 93.34 %, 95.61 %, and 95.32 %, respectively. NE-MGCM demonstrated high consistency with official statistical data and outperformed other similar data products in overall performance, effectively reflecting the temporal and spatial distribution changes of MGC. The results indicated that the method used in this study can accurately monitor MGC planting structures and spatial distributions, and provide valuable data support for regional production policy formulation and sustainable agricultural development."
+      },
+      "confidence": 0.98,
+      "quantity": "producer accuracy (PA) for rice",
+      "value": 95.61,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Validation with 24,709 field samples from 2019 to 2023 showed that NE-MGCM achieved an average OA of 94.96 %, an average Kappa coefficient of 0.9264, and average PA for maize, rice, and soybean of 93.34 %, 95.61 %, and 95.32 %, respectively. NE-MGCM demonstrated high consistency with official statistical data and outperformed other similar data products in overall performance, effectively reflecting the temporal and spatial distribution changes of MGC. The results indicated that the method used in this study can accurately monitor MGC planting structures and spatial distributions, and provide valuable data support for regional production policy formulation and sustainable agricultural development."
+      },
+      "confidence": 0.98,
+      "quantity": "producer accuracy (PA) for soybean",
+      "value": 95.32,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The five-year average OA was 94.96 %, peaking at 96.08 % in 2021. The Kappa coefficient varied from 0.9112 to 0.9419, with a five-year average of 0.9264, and the highest value was also observed in 2021. Among the three crops, rice had the highest average F1 score (95.39 %), followed by soybean (93.73 %), and maize (92.60 %), indicating a negative correlation with their respective planting areas. As shown in Table 3 , the rice has the highest classification accuracy, followed by soybean and maize."
+      },
+      "confidence": 0.98,
+      "quantity": "overall accuracy (OA)",
+      "value": 96.08,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation for the year 2021",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The five-year average OA was 94.96 %, peaking at 96.08 % in 2021. The Kappa coefficient varied from 0.9112 to 0.9419, with a five-year average of 0.9264, and the highest value was also observed in 2021. Among the three crops, rice had the highest average F1 score (95.39 %), followed by soybean (93.73 %), and maize (92.60 %), indicating a negative correlation with their respective planting areas. As shown in Table 3 , the rice has the highest classification accuracy, followed by soybean and maize."
+      },
+      "confidence": 0.98,
+      "quantity": "Kappa coefficient",
+      "value": 0.9419,
+      "unit": null,
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation for the year 2021",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The five-year average OA was 94.96 %, peaking at 96.08 % in 2021. The Kappa coefficient varied from 0.9112 to 0.9419, with a five-year average of 0.9264, and the highest value was also observed in 2021. Among the three crops, rice had the highest average F1 score (95.39 %), followed by soybean (93.73 %), and maize (92.60 %), indicating a negative correlation with their respective planting areas. As shown in Table 3 , the rice has the highest classification accuracy, followed by soybean and maize."
+      },
+      "confidence": 0.98,
+      "quantity": "F1 score for rice",
+      "value": 95.39,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr9",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The five-year average OA was 94.96 %, peaking at 96.08 % in 2021. The Kappa coefficient varied from 0.9112 to 0.9419, with a five-year average of 0.9264, and the highest value was also observed in 2021. Among the three crops, rice had the highest average F1 score (95.39 %), followed by soybean (93.73 %), and maize (92.60 %), indicating a negative correlation with their respective planting areas. As shown in Table 3 , the rice has the highest classification accuracy, followed by soybean and maize."
+      },
+      "confidence": 0.98,
+      "quantity": "F1 score for soybean",
+      "value": 93.73,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr10",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The five-year average OA was 94.96 %, peaking at 96.08 % in 2021. The Kappa coefficient varied from 0.9112 to 0.9419, with a five-year average of 0.9264, and the highest value was also observed in 2021. Among the three crops, rice had the highest average F1 score (95.39 %), followed by soybean (93.73 %), and maize (92.60 %), indicating a negative correlation with their respective planting areas. As shown in Table 3 , the rice has the highest classification accuracy, followed by soybean and maize."
+      },
+      "confidence": 0.98,
+      "quantity": "F1 score for maize",
+      "value": 92.6,
+      "unit": "%",
+      "context": "NE-MGCM (Northeast China Major Grain Crop Map) validation using 24,709 field samples from 2019 to 2023",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr11",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, rice, and soybean, the R² and RMSE ranged from 0.902 to 0.974 and 118.20kha to 215.46kha, 0.988–0.997 and 48.80kha to 58.84kha, and 0.977–0.990 and 116.76 kha to 204.05 kha, respectively. Maize had the lowest R² in 2019 (0.902), which increased in subsequent years, reaching the highest RMSE of 215.46 kha in 2021. Rice had its lowest R² in 2022 (0.988), with the highest RMSE in 2020 (68.61 kha). Soybean had the lowest R² in 2021 (0.977), with the highest RMSE in 2022 (204.05 kha). The trend lines for all three crops fell to the left of the isogram, suggesting that the mapping area was generally higher than the statistical data. Rice had the highest R² and RMSE values, with trend lines closest to the isogram, indicating the most accurate estimations. Overall, the NE-MGCM exhibits strong consistency with statistical data for the crop areas across NE over four years."
+      },
+      "confidence": 0.98,
+      "quantity": "Pearson correlation coefficient (R²) for maize",
+      "value": 0.902,
+      "unit": null,
+      "context": "NE-MGCM mapping area compared with municipal-level statistical data for maize in 2019",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr12",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, rice, and soybean, the R² and RMSE ranged from 0.902 to 0.974 and 118.20kha to 215.46kha, 0.988–0.997 and 48.80kha to 58.84kha, and 0.977–0.990 and 116.76 kha to 204.05 kha, respectively. Maize had the lowest R² in 2019 (0.902), which increased in subsequent years, reaching the highest RMSE of 215.46 kha in 2021. Rice had its lowest R² in 2022 (0.988), with the highest RMSE in 2020 (68.61 kha). Soybean had the lowest R² in 2021 (0.977), with the highest RMSE in 2022 (204.05 kha). The trend lines for all three crops fell to the left of the isogram, suggesting that the mapping area was generally higher than the statistical data. Rice had the highest R² and RMSE values, with trend lines closest to the isogram, indicating the most accurate estimations. Overall, the NE-MGCM exhibits strong consistency with statistical data for the crop areas across NE over four years."
+      },
+      "confidence": 0.98,
+      "quantity": "Root Mean Square Error (RMSE) for maize",
+      "value": 215.46,
+      "unit": "kha",
+      "context": "NE-MGCM mapping area compared with municipal-level statistical data for maize in 2021",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr13",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, rice, and soybean, the R² and RMSE ranged from 0.902 to 0.974 and 118.20kha to 215.46kha, 0.988–0.997 and 48.80kha to 58.84kha, and 0.977–0.990 and 116.76 kha to 204.05 kha, respectively. Maize had the lowest R² in 2019 (0.902), which increased in subsequent years, reaching the highest RMSE of 215.46 kha in 2021. Rice had its lowest R² in 2022 (0.988), with the highest RMSE in 2020 (68.61 kha). Soybean had the lowest R² in 2021 (0.977), with the highest RMSE in 2022 (204.05 kha). The trend lines for all three crops fell to the left of the isogram, suggesting that the mapping area was generally higher than the statistical data. Rice had the highest R² and RMSE values, with trend lines closest to the isogram, indicating the most accurate estimations. Overall, the NE-MGCM exhibits strong consistency with statistical data for the crop areas across NE over four years."
+      },
+      "confidence": 0.98,
+      "quantity": "Pearson correlation coefficient (R²) for rice",
+      "value": 0.988,
+      "unit": null,
+      "context": "NE-MGCM mapping area compared with municipal-level statistical data for rice in 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr14",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, rice, and soybean, the R² and RMSE ranged from 0.902 to 0.974 and 118.20kha to 215.46kha, 0.988–0.997 and 48.80kha to 58.84kha, and 0.977–0.990 and 116.76 kha to 204.05 kha, respectively. Maize had the lowest R² in 2019 (0.902), which increased in subsequent years, reaching the highest RMSE of 215.46 kha in 2021. Rice had its lowest R² in 2022 (0.988), with the highest RMSE in 2020 (68.61 kha). Soybean had the lowest R² in 2021 (0.977), with the highest RMSE in 2022 (204.05 kha). The trend lines for all three crops fell to the left of the isogram, suggesting that the mapping area was generally higher than the statistical data. Rice had the highest R² and RMSE values, with trend lines closest to the isogram, indicating the most accurate estimations. Overall, the NE-MGCM exhibits strong consistency with statistical data for the crop areas across NE over four years."
+      },
+      "confidence": 0.98,
+      "quantity": "Root Mean Square Error (RMSE) for rice",
+      "value": 68.61,
+      "unit": "kha",
+      "context": "NE-MGCM mapping area compared with municipal-level statistical data for rice in 2020",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr15",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, rice, and soybean, the R² and RMSE ranged from 0.902 to 0.974 and 118.20kha to 215.46kha, 0.988–0.997 and 48.80kha to 58.84kha, and 0.977–0.990 and 116.76 kha to 204.05 kha, respectively. Maize had the lowest R² in 2019 (0.902), which increased in subsequent years, reaching the highest RMSE of 215.46 kha in 2021. Rice had its lowest R² in 2022 (0.988), with the highest RMSE in 2020 (68.61 kha). Soybean had the lowest R² in 2021 (0.977), with the highest RMSE in 2022 (204.05 kha). The trend lines for all three crops fell to the left of the isogram, suggesting that the mapping area was generally higher than the statistical data. Rice had the highest R² and RMSE values, with trend lines closest to the isogram, indicating the most accurate estimations. Overall, the NE-MGCM exhibits strong consistency with statistical data for the crop areas across NE over four years."
+      },
+      "confidence": 0.98,
+      "quantity": "Pearson correlation coefficient (R²) for soybean",
+      "value": 0.977,
+      "unit": null,
+      "context": "NE-MGCM mapping area compared with municipal-level statistical data for soybean in 2021",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8f7833172f4695b1_qr16",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, rice, and soybean, the R² and RMSE ranged from 0.902 to 0.974 and 118.20kha to 215.46kha, 0.988–0.997 and 48.80kha to 58.84kha, and 0.977–0.990 and 116.76 kha to 204.05 kha, respectively. Maize had the lowest R² in 2019 (0.902), which increased in subsequent years, reaching the highest RMSE of 215.46 kha in 2021. Rice had its lowest R² in 2022 (0.988), with the highest RMSE in 2020 (68.61 kha). Soybean had the lowest R² in 2021 (0.977), with the highest RMSE in 2022 (204.05 kha). The trend lines for all three crops fell to the left of the isogram, suggesting that the mapping area was generally higher than the statistical data. Rice had the highest R² and RMSE values, with trend lines closest to the isogram, indicating the most accurate estimations. Overall, the NE-MGCM exhibits strong consistency with statistical data for the crop areas across NE over four years."
+      },
+      "confidence": 0.98,
+      "quantity": "Root Mean Square Error (RMSE) for soybean",
+      "value": 204.05,
+      "unit": "kha",
+      "context": "NE-MGCM mapping area compared with municipal-level statistical data for soybean in 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8f7833172f4695b1_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We created confusion matrices for the four data products using the validation sample set and calculated their PA, UA, F1, and OA, as shown in Table 4. From 2019–2021, Li-MM’s OA ranged from 96.52 % to 97.75 %, with an F1 score for maize between 92.25 % and 93.64 %. These values were higher than NE-MGCM’s, except for a slightly lower Kappa coefficient, indicating Li-MM’s advantage in identifying maize. Shen-RM exhibited an OA between 95.22 % and 96.34 %, with an F1 score for rice between 83.50 % and 88.42 %, and a Kappa coefficient between 0.8078 and 0.8616. However, Shen-RM’s F1 score and Kappa coefficient were noticeably lower than those of NE-MGCM, suggesting less robustness in classifying specific categories. Mei-SM’s OA ranged from 95.24 % to 97.31 %, with F1 scores for soybean between 80.37 % and 89.43 %, and a Kappa coefficient from 0.7769 to 0.8790. It is important to note that Li-MM, Shen-RM, and Mei-SM are single-crop mapping products, resulting in lower mapping complexity compared to multi-crop products. Xuan-CM, a multi-crop mapping product, achieved an OA between 93.54 % and 94.35 %, with a Kappa coefficient from 0.9032 and 0.9163. Although these metrics are slightly lower than those of NE-MGCM, Xuan-CM still achieves high mapping accuracy."
+      },
+      "confidence": 0.95,
+      "metric": "overall accuracy (OA)",
+      "compared_to": "Li-MM, Shen-RM, Mei-SM, Xuan-CM"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8f7833172f4695b1_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For maize, Li-MM’s R² values ranged from 0.926 to 0.977, and RMSE from 90.09 kha to 197.82 kha. Xuan-CM’s R² values were between 0.899 and 0.949, with RMSE from 201.41 kha to 254.15 kha. From 2019–2021, the R² values for all three products showed an increasing trend. Li-MM had the highest correlation with statistical data, followed by NE-MGCM, with Xuan-CM having the lowest. Li-MM showed better consistency with statistical data compared to NE-MGCM and Xuan-CM."
+      },
+      "confidence": 0.95,
+      "metric": "Pearson correlation coefficient (R²) for maize",
+      "compared_to": "Li-MM, Xuan-CM"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8f7833172f4695b1_p3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For rice mapping, Shen-RM’s R² values ranged from 0.943 to 0.969, with RMSE from 39.27 kha to 51.61 kha. Xuan-CM’s R² values were between 0.975 and 0.992, with RMSE from 66.65 kha to 86.28 kha. NE-MGCM had the highest correlation with statistical data, but Shen-RM showed the best consistency. Xuan-CM was lower in both aspects. Additionally, Shen-RM’s trend lines were consistently to the right of the isogram, indicating its mapped areas were lower than the statistical data."
+      },
+      "confidence": 0.95,
+      "metric": "Pearson correlation coefficient (R²) for rice",
+      "compared_to": "Shen-RM, Xuan-CM"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8f7833172f4695b1_p4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For soybean mapping, Mei-SM’s R² values ranged from 0.936 to 0.944, with RMSE from 78.69 kha to 90.74 kha. Xuan-CM’s R² values ranged from 0.811 to 0.923, with RMSE from 122.91 kha to 169.72 kha. NE-MGCM’s R² values ranged from 0.977 to 0.990, showing the highest correlation with statistical data and significantly outperforming Mei-SM and Xuan-CM. Mei-SM had the best consistency with statistical data, while Xuan-CM’s performance was average in both correlation and consistency."
+      },
+      "confidence": 0.95,
+      "metric": "Pearson correlation coefficient (R²) for soybean",
+      "compared_to": "Mei-SM, Xuan-CM"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8f7833172f4695b1_p5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Compared to the four public data products, NE-MGCM had the highest correlation with statistical data for the three crop planting area. However, its consistency was slightly lower than the single-crop mapping products Li-MM, Shen-RM, and Mei-SM. Compared to Xuan-CM, which also maps NE maize, rice, and soybean, NE-MGCM not only exhibits superior accuracy but also has a higher resolution of 10 m. Overall, NE-MGCM, as a multi-crop classification product, represents a significant advancement in mapping accuracy and reliability compared to existing data products."
+      },
+      "confidence": 0.95,
+      "metric": "Overall performance",
+      "compared_to": "Li-MM, Shen-RM, Mei-SM, Xuan-CM"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_8f7833172f4695b1_ca1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "This study integrates optical and radar data to map MGC in Northeast China. The specific objectives are as follows: (i) Demonstrating the effectiveness of a multi-stage spatially uniform sampling model and progressive sample purification framework for the generating and purification of common crop samples; (ii) Using an ensemble learningbased machine learning classification model for high-precision crop classification that addresses challenges related to growth stages and cross-regional variations; (iii) Producing 10 m resolution maps of maize, rice, and soybean in Northeast China for the period from 2019 to 2023."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_8f7833172f4695b1_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Accurate mapping of large-scale MGC spatial distribution is essential for agricultural policy development, disaster management, and food security. This study utilized Sentinel-1/2 imagery and a sample automated generation method, combined with an ensemble learning model, to produce the NE-MGCM, a 10 m resolution MGC map for NE China from 2019 to 2023. This method significantly reduced the need for the number of field samples, and the generated samples can cover the MGC planting area in the study region evenly. Validation with 24,709 field samples from 2019 to 2023 showed that NE-MGCM achieved an average OA of 94.96 %, an average Kappa coefficient of 0.9264, and average PA for maize, rice, and soybean of 93.34 %, 95.61 %, and 95.32 %, respectively. NE-MGCM demonstrated high consistency with official statistical data and outperformed other similar data products in overall performance, effectively reflecting the temporal and spatial distribution changes of MGC. The results indicated that the method used in this study can accurately monitor MGC planting structures and spatial distributions, and provide valuable data support for regional production policy formulation and sustainable agricultural development."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8f7833172f4695b1_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Although the mapping reliability of NE-MGCM has significantly improved, uncertainties still exist. First, significant differences in image availability across regions persisted. We used Landsat-8/9 data with similar band settings to fill the gaps in the S2 images. In addition, due to an S1 B malfunction at the end of 2021, SAR data and its derived features were only used in 2019–2021. This inconsistency in data types and quality may reduce the accuracy of crop identification. Second, the sample auto-generation and purification methods still required a certain amount of field data to establish classification rules and assign labels to generated samples. Therefore, field data quality is critically influencing the overall quality of generated samples. Additionally, NE spans 38.72° N to 53.55° N, and changes in latitude and elevation result in differences in water and heat conditions, affecting the phenology of MGC. Although this study used monthly mean composite images and ensemble learning methods to reduce the impact of growth period differences, the potential impacts on mapping accuracy should still be considered."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_8f7833172f4695b1_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The planting status of MGC in various regions of NE China varies significantly, and NE-MGCM can accurately capture these differences. We have selected two regions to highlight these details (Fig. 17). The region shown in Fig. 17 (a) is located in the southern SNP, a traditional maize-growing area in NE China, with only a small amount of rice distributed near the river in the southwest. From 2019–2023, the crop planting structure and distribution in this area remained stable. The region shown in Fig. 17 (b) is located in the eastern SJP, where rice is the predominant crop, while maize and soybean are also intercropped. From 2019–2023, rice planting areas in this region were relatively stable, with only a slight contraction in 2023. However, the maize planting area showed a state of contraction-expansion-contraction-expansion over the five years, while the trend of soybean was the opposite. This interannual variation aligns with the trends shown in Fig. 15, primarily due to the soybean-maize rotation system."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

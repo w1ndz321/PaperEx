@@ -1,0 +1,582 @@
+{
+  "metadata": {
+    "doc_id": "doc_cf74c024f7de2f43",
+    "source_file": "09_Memory_in_Burst_Occurrence_of_Repeating_FRBs.md",
+    "title": "Memory in the Burst Occurrence of Repeating FRBs",
+    "year": 2024,
+    "doi": "10.11922/sciencedb.01092",
+    "abstract": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs.",
+    "introduction": "Fast Radio Bursts (FRBs) represent one of the most powerful astronomical phenomena discovered in recent years (Cordes & Chatterjee 2019; Bailes 2022). Characterized by their brief yet energetic emissions, lasting merely a few milliseconds, they release energy comparable to what the sun emits over several days. The study of FRBs holds the promise of unveiling critical insights into the cosmic medium, the distribution of matter among galaxies and galaxy clusters (Akahori et al. 2016; Petroff et al. 2019). Moreover, observing the delay and frequency drift in FRBs offers valuable insights into the nature and origin of these mysterious cosmic phenomena (Hessels et al. 2019; Metzger et al. 2019), which can help constrain theoretical models and shed light on the mechanisms responsible for their generation. These investigations bear significant physical implications and contribute to our understanding of fundamental astrophysical processes. One of the most significant discoveries in the study of FRBs is the identification of a repeating FRB known as FRB 20121102A (Spitler et al. 2016). This repeating burst has provided valuable insights into the physical nature of FRBs and has supported models that propose an extragalactic neutron star as the origin of these bursts (Hessels 2017; Josephy et al. 2019; Lyu et al. 2021; Li et al. 2022). \n\npwang@ihep.ac.cn \n\nCorresponding author: Ping Wang \n\n2 \n\nHowever, the origin and propagation mechanisms surrounding FRBs remain mysterious, inspiring an abundance of theories. Among the proposed models, the collision or merger of compact objects like neutron stars or black holes, and the activity of highly magnetized neutron stars, known as magnetars, have attracted substantial attention. The discovery of X-ray emissions accompanying an FRB from a magnetar in the Milky Way, for instance, hints at the plausible role of magnetars in FRB production (Bochenek et al. 2020; Andersen et al. 2020; Li et al. 2021a). Furthermore, the young, highly magnetized, extragalactic neutron star model, supported by the observation of FRB 20121102A, has also found support within possible models (Spitler et al. 2016). \n\nDespite the progress made in understanding their physical properties through the study of host galaxies, current models do not fully explain all aspects of FRBs (Zhang 2020, 2023; Kirsten et al. 2024). In particular, the phenomenon of repeating bursts, in which multiple bursts emerge from the same source, remains a substantial enigma. Although some FRBs are observed to repeat, others appear as one-off events without subsequent detections. This contrast raises intriguing questions about the nature of these bursts. The presence of non-repeating FRBs is clear; however, it remains an open question whether these observed non-repetitive bursts might still exhibit repetitive behavior under extended observation periods or with improved detection technologies. As noted in Zhang (2023), the hypothesis that all FRBs could potentially repeat has not been definitively ruled out and requires further investigation. Supporting this notion, Kirsten et al. (2024) provide empirical evidence suggesting that high-energy burst distributions of certain hyperactive repeating sources resemble those of the non-repeating FRB population. This observation indicates that apparently non-repeating FRB sources may simply be the rarest bursts from repeating sources, which could be observable across different energy scales. Continued research into the intermittent phenomena and the extended time intervals between these FRBs, as exhibited in existing records, is essential to develop a more complete understanding of FRB activity. The findings of Kirsten et al. (2024) underscore the complexity of categorizing FRBs definitively as repeaters or nonrepeaters based on current observational capabilities and highlight the need for sustained observational efforts across multiple energy thresholds. \n\nSince the identification of the first FRB in 2007 (Lorimer et al. 2007), the tally of discovered FRBs has increased to more than 700, showing over 60 instances of repeated burst phenomena (Xu et al. 2023). The ongoing debate on the fundamental difference, if any, between the origins and physical mechanisms of repeating and non-repeating bursts continues to stimulate investigation. Recent efforts by FAST, involving continuous observations of several repeating FRBs with low threshold and high time resolution, have collected a wealth of data on repeating FRBs. This rich repository of information provides an opportunity to uncover more clues about the origin mechanisms of FRBs and the key temporal characteristics of repeating bursts through rigorous statistical analysis. \n\nThe temporal analysis of repeating FRBs suggests an evolving nature of their sources over time. If the emission of FRBs followed a Poisson process, the occurrence of bursts would be random, with a consistent number within any given time frame. However, recent research has considered the likelihood of periodicity in the timing of FRB events (The CHIME/FRB Collaboration et al. 2022; Wei et al. 2022), and evidence points to a non-Poisson distribution in some repeating FRBs (Wang & Yu 2017; Oppermann et al. 2018; Wang et al. 2023; Du et al. 2024). A newly identified characteristic, demonstrated by the scaling properties in burst timing across diverse sources, persists despite the variable environments of these sources (Du et al. 2024). The uniformity observed in time interval distributions from different FRB sources, even when influenced by varying fluences, emphasizes the significance of interevent time statistics in understanding the dynamics of bursts. Contrasting with the distribution of burst energy, these findings could underline the potential to uncover key dynamics of the burst mechanism through statistical examination of the event time distributions (Kumar et al. 2020). \n\nThe specific distribution function, scaled by the average interval time of the bursts λ[¯] , is expressed as \n\n\nThe mean waiting time, denoted as λ[¯] is dependent on magnitude I of fluence and defined during continuous observing periods. This distribution closely approximates the function commonly known as the generalized Pareto distribution (Hosking & Wallis 1987), \n\n\nwhere β and γ are fitting parameters. Specifically, for γ as the shape parameter, which determines how the tail of the distribution decays. The Pareto distribution, known for its heavy-tailed nature, is well-suited for modeling \n\n3 \n\nphenomena where rare but significant events have a large impact, such as the intense intermitent bursts observed in the waiting time distribution of repeating FRBs. Unlike the Weibull distribution, which is customized to model both clustered and spread-out events through its scale and shape parameters, the Pareto distribution effectively captures the sporadic nature of FRBs, where long periods of inactivity are interrupted by sudden, extreme bursts. By focusing on the occurrence of these irregular events, the Pareto distribution may provide a more fitting framework than nonPoisson distributions like the Weibull, particularly in accurately representing the extreme values denoted by heavy-tail is crucial to understanding FRBs dynamics. \n\nBased on the previously established scale-invariant waiting time distribution Eq. 1, P (or f ) (Du et al. 2024), this study investigates the temporal characteristics of the occurrences of FRB, specifically focusing on the distribution of time intervals between successive bursts in repeating FRBs. We analyze the conditional probability distribution PI (λ|λ0), where λ0 represents the interval between the last two bursts. For Poisson processes, which lack memory effects, PI (λ|λ0) is expected to be identical to PI (λ) and independent of λ0. However, our study aims to explore potential deviations from this behavior in repeating FRBs, which may indicate the presence of memory effects. We further quantify these temporal characteristics through various statistical measures, such as average time intervals and residual times under different conditions. These findings could provide insights into the probability of future burst occurrences based on existing observations of FRBs, contributing to a deeper understanding of the mechanisms governing FRB activity. Additionally, we propose a unified framework that might explain the waiting times of both repeating and apparently non-repeating FRBs.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "fast radio bursts",
+      "waiting time statistics",
+      "memory effect",
+      "repeating FRBs",
+      "astrophysical processes"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:38:15.753374+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.99,
+      "term": "fast radio bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.98,
+      "term": "waiting time",
+      "normalized": "等待时间",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.97,
+      "term": "memory effect",
+      "normalized": "记忆效应",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Fast Radio Bursts (FRBs) represent one of the most powerful astronomical phenomena discovered in recent years (Cordes & Chatterjee 2019; Bailes 2022). Characterized by their brief yet energetic emissions, lasting merely a few milliseconds, they release energy comparable to what the sun emits over several days. The study of FRBs holds the promise of unveiling critical insights into the cosmic medium, the distribution of matter among galaxies and galaxy clusters (Akahori et al. 2016; Petroff et al. 2019). Moreover, observing the delay and frequency drift in FRBs offers valuable insights into the nature and origin of these mysterious cosmic phenomena (Hessels et al. 2019; Metzger et al. 2019), which can help constrain theoretical models and shed light on the mechanisms responsible for their generation. These investigations bear significant physical implications and contribute to our understanding of fundamental astrophysical processes. One of the most significant discoveries in the study of FRBs is the identification of a repeating FRB known as FRB 20121102A (Spitler et al. 2016). This repeating burst has provided valuable insights into the physical nature of FRBs and has supported models that propose an extragalactic neutron star as the origin of these bursts (Hessels 2017; Josephy et al. 2019; Lyu et al. 2021; Li et al. 2022)."
+      },
+      "confidence": 0.98,
+      "term": "repeating FRBs",
+      "normalized": "重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Despite the progress made in understanding their physical properties through the study of host galaxies, current models do not fully explain all aspects of FRBs (Zhang 2020, 2023; Kirsten et al. 2024). In particular, the phenomenon of repeating bursts, in which multiple bursts emerge from the same source, remains a substantial enigma. Although some FRBs are observed to repeat, others appear as one-off events without subsequent detections. This contrast raises intriguing questions about the nature of these bursts. The presence of non-repeating FRBs is clear; however, it remains an open question whether these observed non-repetitive bursts might still exhibit repetitive behavior under extended observation periods or with improved detection technologies. As noted in Zhang (2023), the hypothesis that all FRBs could potentially repeat has not been definitively ruled out and requires further investigation. Supporting this notion, Kirsten et al. (2024) provide empirical evidence suggesting that high-energy burst distributions of certain hyperactive repeating sources resemble those of the non-repeating FRB population. This observation indicates that apparently non-repeating FRB sources may simply be the rarest bursts from repeating sources, which could be observable across different energy scales."
+      },
+      "confidence": 0.96,
+      "term": "non-repeating FRBs",
+      "normalized": "非重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Based on the previously established scale-invariant waiting time distribution Eq. 1, P (or f ) (Du et al. 2024), this study investigates the temporal characteristics of the occurrences of FRB, specifically focusing on the distribution of time intervals between successive bursts in repeating FRBs. We analyze the conditional probability distribution PI (λ|λ0), where λ0 represents the interval between the last two bursts. For Poisson processes, which lack memory effects, PI (λ|λ0) is expected to be identical to PI (λ) and independent of λ0. However, our study aims to explore potential deviations from this behavior in repeating FRBs, which may indicate the presence of memory effects. We further quantify these temporal characteristics through various statistical measures, such as average time intervals and residual times under different conditions. These findings could provide insights into the probability of future burst occurrences based on existing observations of FRBs, contributing to a deeper understanding of the mechanisms governing FRB activity. Additionally, we propose a unified framework that might explain the waiting times of both repeating and apparently non-repeating FRBs."
+      },
+      "confidence": 0.95,
+      "term": "scale-invariant waiting time distribution",
+      "normalized": "尺度不变的等待时间分布",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Based on the previously established scale-invariant waiting time distribution Eq. 1, P (or f ) (Du et al. 2024), this study investigates the temporal characteristics of the occurrences of FRB, specifically focusing on the distribution of time intervals between successive bursts in repeating FRBs. We analyze the conditional probability distribution PI (λ|λ0), where λ0 represents the interval between the last two bursts. For Poisson processes, which lack memory effects, PI (λ|λ0) is expected to be identical to PI (λ) and independent of λ0. However, our study aims to explore potential deviations from this behavior in repeating FRBs, which may indicate the presence of memory effects. We further quantify these temporal characteristics through various statistical measures, such as average time intervals and residual times under different conditions. These findings could provide insights into the probability of future burst occurrences based on existing observations of FRBs, contributing to a deeper understanding of the mechanisms governing FRB activity. Additionally, we propose a unified framework that might explain the waiting times of both repeating and apparently non-repeating FRBs."
+      },
+      "confidence": 0.94,
+      "term": "conditional probability distribution",
+      "normalized": "条件概率分布",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cf74c024f7de2f43_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The specific distribution function, scaled by the average interval time of the bursts λ[¯] , is expressed as ... The mean waiting time, denoted as λ[¯] is dependent on magnitude I of fluence and defined during continuous observing periods. This distribution closely approximates the function commonly known as the generalized Pareto distribution (Hosking & Wallis 1987), where β and γ are fitting parameters. Specifically, for γ as the shape parameter, which determines how the tail of the distribution decays. The Pareto distribution, known for its heavy-tailed nature, is well-suited for modeling phenomena where rare but significant events have a large impact, such as the intense intermitent bursts observed in the waiting time distribution of repeating FRBs. Unlike the Weibull distribution, which is customized to model both clustered and spread-out events through its scale and shape parameters, the Pareto distribution effectively captures the sporadic nature of FRBs, where long periods of inactivity are interrupted by sudden, extreme bursts. By focusing on the occurrence of these irregular events, the Pareto distribution may provide a more fitting framework than nonPoisson distributions like the Weibull, particularly in accurately representing the extreme values denoted by heavy-tail is crucial to understanding FRBs dynamics."
+      },
+      "confidence": 0.95,
+      "term": "generalized Pareto distribution",
+      "normalized": "广义帕累托分布",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.96,
+      "head": "doc_cf74c024f7de2f43_c1",
+      "relation_type": "measures",
+      "relation_surface": "analyze the waiting time statistics",
+      "tail": "doc_cf74c024f7de2f43_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.95,
+      "head": "doc_cf74c024f7de2f43_c2",
+      "relation_type": "belongs_to",
+      "relation_surface": "present in",
+      "tail": "doc_cf74c024f7de2f43_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.94,
+      "head": "doc_cf74c024f7de2f43_c3",
+      "relation_type": "enhances",
+      "relation_surface": "provides a unified description",
+      "tail": "doc_cf74c024f7de2f43_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The specific distribution function, scaled by the average interval time of the bursts λ[¯] , is expressed as ... The mean waiting time, denoted as λ[¯] is dependent on magnitude I of fluence and defined during continuous observing periods. This distribution closely approximates the function commonly known as the generalized Pareto distribution (Hosking & Wallis 1987), where β and γ are fitting parameters. Specifically, for γ as the shape parameter, which determines how the tail of the distribution decays. The Pareto distribution, known for its heavy-tailed nature, is well-suited for modeling phenomena where rare but significant events have a large impact, such as the intense intermitent bursts observed in the waiting time distribution of repeating FRBs. Unlike the Weibull distribution, which is customized to model both clustered and spread-out events through its scale and shape parameters, the Pareto distribution effectively captures the sporadic nature of FRBs, where long periods of inactivity are interrupted by sudden, extreme bursts. By focusing on the occurrence of these irregular events, the Pareto distribution may provide a more fitting framework than nonPoisson distributions like the Weibull, particularly in accurately representing the extreme values denoted by heavy-tail is crucial to understanding FRBs dynamics."
+      },
+      "confidence": 0.93,
+      "head": "doc_cf74c024f7de2f43_c6",
+      "relation_type": "uses",
+      "relation_surface": "closely approximates",
+      "tail": "doc_cf74c024f7de2f43_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Based on the previously established scale-invariant waiting time distribution Eq. 1, P (or f ) (Du et al. 2024), this study investigates the temporal characteristics of the occurrences of FRB, specifically focusing on the distribution of time intervals between successive bursts in repeating FRBs. We analyze the conditional probability distribution PI (λ|λ0), where λ0 represents the interval between the last two bursts. For Poisson processes, which lack memory effects, PI (λ|λ0) is expected to be identical to PI (λ) and independent of λ0. However, our study aims to explore potential deviations from this behavior in repeating FRBs, which may indicate the presence of memory effects. We further quantify these temporal characteristics through various statistical measures, such as average time intervals and residual times under different conditions. These findings could provide insights into the probability of future burst occurrences based on existing observations of FRBs, contributing to a deeper understanding of the mechanisms governing FRB activity. Additionally, we propose a unified framework that might explain the waiting times of both repeating and apparently non-repeating FRBs."
+      },
+      "confidence": 0.94,
+      "head": "doc_cf74c024f7de2f43_c7",
+      "relation_type": "measures",
+      "relation_surface": "analyze",
+      "tail": "doc_cf74c024f7de2f43_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.92,
+      "head": "doc_cf74c024f7de2f43_c3",
+      "relation_type": "compares",
+      "relation_surface": "may account for both",
+      "tail": "doc_cf74c024f7de2f43_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cf74c024f7de2f43_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.92,
+      "head": "doc_cf74c024f7de2f43_c3",
+      "relation_type": "compares",
+      "relation_surface": "may account for both",
+      "tail": "doc_cf74c024f7de2f43_c5"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cf74c024f7de2f43_d1",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "The first dataset is FRB 20121102A, comprising 1652 bursts detected over 59.5 hours across 47 days (Li et al. 2021b). The second dataset focuses on FRB 20201124A, featuring 1863 bursts observed over 82 hours spanning 54 days (Xu et al. 2022). The third dataset is related to FRB 20220912A, which includes 1076 bursts in 8.67 hours over approximately 55 days (Zhang et al. 2023). The fourth dataset involves another extremely active episode of FRB 20201124A, containing 881 bursts observed in approximately 4 hours within a 4-day period (Zhou et al. 2022). For the purpose of differentiation, in this paper, the two datasets related to FRB 20201124A in sequence of time will be denoted as FRB 20201124A(A) and FRB 20201124A(B) in the following sections. All datasets were recently acquired by FAST, which provided high raw sensitivity and temporal resolution detection (Qian et al. 2020), effectively reducing the flux threshold by up to three times compared to previous observations for FRB 20121102A (refer to Li et al. (2021b) and the references cited therein). Recent research on FRB 20121102A and FRB 20201124A has revealed an absence of periodicity or quasiperiodicity on timescales ranging from 1 ms to 1, 000 s (Li et al. 2021b; Xu et al. 2022). Due to the discontinuous nature of the observations conducted by FAST, we redefine the waiting time as the recurrence interval between consecutive events observed within the same observational period [see Fig. 1(a)]. In our analysis, we focus on waiting times, denoted λ, for bursts with fluence exceeding a specified threshold value I. Here, λ = ti+1 −ti, where ti and ti+1 represent the arrival times of the i th and (i+1) th bursts, respectively. Throughout our statistical calculations, we use logarithmic binning to ensure that each timescale is appropriately represented. Despite this, the calculation of the probability density function (PDF) makes the exact number and width of the bins less significant. In this context, the uncertainty associated with the counts of waiting times is estimated by Nj, where Nj represents the number of waiting times counted in the jth bin (Lin & Sang 2019; Wei et al. 2021)."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20121102A burst dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cf74c024f7de2f43_d2",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "The second dataset focuses on FRB 20201124A, featuring 1863 bursts observed over 82 hours spanning 54 days (Xu et al. 2022). For the purpose of differentiation, in this paper, the two datasets related to FRB 20201124A in sequence of time will be denoted as FRB 20201124A(A) and FRB 20201124A(B) in the following sections. All datasets were recently acquired by FAST, which provided high raw sensitivity and temporal resolution detection (Qian et al. 2020), effectively reducing the flux threshold by up to three times compared to previous observations for FRB 20121102A (refer to Li et al. (2021b) and the references cited therein). Recent research on FRB 20121102A and FRB 20201124A has revealed an absence of periodicity or quasiperiodicity on timescales ranging from 1 ms to 1, 000 s (Li et al. 2021b; Xu et al. 2022). Due to the discontinuous nature of the observations conducted by FAST, we redefine the waiting time as the recurrence interval between consecutive events observed within the same observational period [see Fig. 1(a)]. In our analysis, we focus on waiting times, denoted λ, for bursts with fluence exceeding a specified threshold value I. Here, λ = ti+1 −ti, where ti and ti+1 represent the arrival times of the i th and (i+1) th bursts, respectively. Throughout our statistical calculations, we use logarithmic binning to ensure that each timescale is appropriately represented. Despite this, the calculation of the probability density function (PDF) makes the exact number and width of the bins less significant. In this context, the uncertainty associated with the counts of waiting times is estimated by Nj, where Nj represents the number of waiting times counted in the jth bin (Lin & Sang 2019; Wei et al. 2021)."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20201124A(A) burst dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cf74c024f7de2f43_d3",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "The third dataset is related to FRB 20220912A, which includes 1076 bursts in 8.67 hours over approximately 55 days (Zhang et al. 2023). All datasets were recently acquired by FAST, which provided high raw sensitivity and temporal resolution detection (Quan et al. 2020), effectively reducing the flux threshold by up to three times compared to previous observations for FRB 20121102A (refer to Li et al. (2021b) and the references cited therein). Recent research on FRB 20121102A and FRB 20201124A has revealed an absence of periodicity or quasiperiodicity on timescales ranging from 1 ms to 1, 000 s (Li et al. 2021b; Xu et al. 2022). Due to the discontinuous nature of the observations conducted by FAST, we redefine the waiting time as the recurrence interval between consecutive events observed within the same observational period [see Fig. 1(a)]. In our analysis, we focus on waiting times, denoted λ, for bursts with fluence exceeding a specified threshold value I. Here, λ = ti+1 −ti, where ti and ti+1 represent the arrival times of the i th and (i+1) th bursts, respectively. Throughout our statistical calculations, we use logarithmic binning to ensure that each timescale is appropriately represented. Despite this, the calculation of the probability density function (PDF) makes the exact number and width of the bins less significant. In this context, the uncertainty associated with the counts of waiting times is estimated by Nj, where Nj represents the number of waiting times counted in the jth bin (Lin & Sang 2019; Wei et al. 2021)."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20220912A burst dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cf74c024f7de2f43_d4",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "The fourth dataset involves another extremely active episode of FRB 20201124A, containing 881 bursts observed in approximately 4 hours within a 4-day period (Zhou et al. 2022). For the purpose of differentiation, in this paper, the two datasets related to FRB 20201124A in sequence of time will be denoted as FRB 20201124A(A) and FRB 20201124A(B) in the following sections. All datasets were recently acquired by FAST, which provided high raw sensitivity and temporal resolution detection (Qian et al. 2020), effectively reducing the flux threshold by up to three times compared to previous observations for FRB 20121102A (refer to Li et al. (2021b) and the references cited therein). Recent research on FRB 20121102A and FRB 20201124A has revealed an absence of periodicity or quasiperiodicity on timescales ranging from 1 ms to 1, 000 s (Li et al. 2021b; Xu et al. 2022). Due to the discontinuous nature of the observations conducted by FAST, we redefine the waiting time as the recurrence interval between consecutive events observed within the same observational period [see Fig. 1(a)]. In our analysis, we focus on waiting times, denoted λ, for bursts with fluence exceeding a specified threshold value I. Here, λ = ti+1 −ti, where ti and ti+1 represent the arrival times of the i th and (i+1) th bursts, respectively. Throughout our statistical calculations, we use logarithmic binning to ensure that each timescale is appropriately represented. Despite this, the calculation of the probability density function (PDF) makes the exact number and width of the bins less significant. In this context, the uncertainty associated with the counts of waiting times is estimated by Nj, where Nj represents the number of waiting times counted in the jth bin (Lin & Sang 2019; Wei et al. 2021)."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20201124A(B) burst dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_cf74c024f7de2f43_ds1",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "Due to the discontinuous nature of the observations conducted by FAST, we redefine the waiting time as the recurrence interval between consecutive events observed within the same observational period [see Fig. 1(a)]. In our analysis, we focus on waiting times, denoted λ, for bursts with fluence exceeding a specified threshold value I. Here, λ = ti+1 −ti, where ti and ti+1 represent the arrival times of the i th and (i+1) th bursts, respectively. Throughout our statistical calculations, we use logarithmic binning to ensure that each timescale is appropriately represented. Despite this, the calculation of the probability density function (PDF) makes the exact number and width of the bins less significant. In this context, the uncertainty associated with the counts of waiting times is estimated by Nj, where Nj represents the number of waiting times counted in the jth bin (Lin & Sang 2019; Wei et al. 2021)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Waiting time definition and fluence threshold application for burst analysis"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_cf74c024f7de2f43_ds2",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "It is worth noting that a secondary peak in waiting time, ranging from a few to tens of milliseconds, was observed in the four burst source datasets, possibly due to the specific criteria used to characterize separate outbursts (Li et al. 2021b; Jahns et al. 2023; Xu et al. 2022; Zhang et al. 2023; Zhou et al. 2022). Unlike the first peak, the location of the secondary peak remains constant as the fluence increases (Li et al. 2021b), disrupting the universal scaling relation (Du et al. 2024). As the occurrence of the first peak depends on the intensity of activity from the originating source and to ensure a uniform treatment across all distributions, we only consider the waiting times within the scaling region; that is, the minimal waiting time interval surpasses the secondary peak range, approximately 10 s for FRB 20121102A and FRB 20201124A(A), and 1 s for FRB 20220912A and FRB 20201124A(B)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Data filtering criteria to exclude secondary peak waiting times for scaling analysis"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_cf74c024f7de2f43_ds3",
+      "evidence": {
+        "section": "DATA AVAILABILITY",
+        "original_text": "All data analyzed in this article are included in references (Li et al. 2021b; Xu et al. 2022; Zhang et al. 2023; Zhou et al. 2022) separately. They are also openly available in the Science Data Bank at [DATASET] https://doi.org/10.11922/sciencedb.01092 (Li et al. 2021b), [DATASET] https://doi.org/10.57760/sciencedb.08058 (Zhang et al. 2023), [DATASET] https://doi.org/10.57760/sciencedb.06762 (Zhou et al. 2022), and [DATASET] https://doi.org/10.6084/m9.figshare.19688854.v2 (Xu et al. 2022)."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Public data availability references and DOI links for the analyzed datasets"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_cf74c024f7de2f43_m1",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "To quantitatively characterize the memory effect, we examine the distribution of subsequent waiting times under different preceding conditions, that is, different values of the previous waiting time denoted as λ0, represented as PI (λ|λ0). To distinguish the magnitude of λ0, the entire waiting time sequence is sorted in ascending order in time and divided into four subsets q1, q2, q3 and q4, each containing an equal number of elements. Fig. 2 provides a comparative analysis of the waiting time distribution λP[¯] I (λ|λ0) when the preceding condition λ0 is placed in q1 (green symbols) and q4 (blue symbols). Furthermore, the distribution of waiting times without considering the preceding condition, λP[¯] (λ), is plotted with the complete data sequence designated as q0 (red symbols). In addition, different fluence thresholds are shown for different sources of FRB with various symbols, and the actual results are statistically independent of the magnitude of the fluence threshold. For the same FRB source and under the same preconditions, it can be observed that the waiting times have nearly the same distribution form under different fluence thresholds. The best-fit lines (the dashed lines) are obtained using the Markov Chain Monte Carlo (MCMC) method, and more detailed fitting information is listed in Table 1."
+      },
+      "confidence": 0.95,
+      "name": "conditional probability distribution analysis",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_cf74c024f7de2f43_m2",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "The best-fit lines (the dashed lines) are obtained using the Markov Chain Monte Carlo (MCMC) method, and more detailed fitting information is listed in Table 1. From the table, we observe differences in the γ values between certain datasets, especially for datasets with preconditions from q1 and q4, which exhibit a statistical significance approximately from 1.0 to 3.5σ (3.5, 0.94, 2.0, 3.2 for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B), respectively). This indicates a moderate to strong likelihood that the observed differences are not due to random chance, suggesting potential underlying variations between these comparisons of q1 and q4. However, the results of 0.94σ and 2.0σ are less significant and indicate that, for these particular comparisons, the evidence for the differences is weaker and could more likely be due to statistical fluctuations for limited samples. These mixed significance levels highlight the complexity of interpreting results with the current dataset size and the variability inherent in FRBs. Although some findings point to meaningful differences, they fall short of the more rigorous thresholds typically required for definitive conclusions. This underscores the need for caution when interpreting the results and highlights the importance of acquiring more extensive data."
+      },
+      "confidence": 0.95,
+      "name": "Markov Chain Monte Carlo (MCMC) fitting",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_cf74c024f7de2f43_m3",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "As illustrated in Fig. 2, PI (λ|λ0) generally exhibits an evident dependence on the preceding condition values λ0, and changes its functional form accordingly. Later, when performing the specific calculations for a two-sample KolmogorovSmirnov (K-S) test, we will quantitatively discuss the difference of the distributions PI (λ|λ0) again. Similarly to PI (λ), PI (λ|λ0) demonstrates independence from the magnitude of fluence I. Hence, in subsequent analyzes, the magnitude of fluence I will be omitted unless explicitly needed. As observed in Fig. 2, when λ0 is taken from q1 and q4, respectively, shorter waiting times are more probable (P (λ|λ0)) in the interval λ/λ[¯] < 1 compared to longer waiting times. In contrast, for λ/λ >[¯] 1, the situation is reversed. Across the entire range, the P (λ|λ0) without any preceding condition (λ0 ∈ q0) falls between these two cases."
+      },
+      "confidence": 0.95,
+      "name": "two-sample Kolmogorov-Smirnov (K-S) test",
+      "method_type": "protocol"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cf74c024f7de2f43_x1",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "For the purpose of studying the issue of temporal clustering of repeating FRBs, we search four high-quality datasets, The first dataset is FRB 20121102A, comprising 1652 bursts detected over 59.5 hours across 47 days (Li et al. 2021b). The second dataset focuses on FRB 20201124A, featuring 1863 bursts observed over 82 hours spanning 54 days (Xu et al. 2022). The third dataset is related to FRB 20220912A, which includes 1076 bursts in 8.67 hours over approximately 55 days (Zhang et al. 2023). The fourth dataset involves another extremely active episode of FRB 20201124A, containing 881 bursts observed in approximately 4 hours within a 4-day period (Zhou et al. 2022). For the purpose of differentiation, in this paper, the two datasets related to FRB 20201124A in sequence of time will be denoted as FRB 20201124A(A) and FRB 20201124A(B) in the following sections. All datasets were recently acquired by FAST, which provided high raw sensitivity and temporal resolution detection (Qian et al. 2020), effectively reducing the flux threshold by up to three times compared to previous observations for FRB 20121102A (refer to Li et al. (2021b) and the references cited therein). Recent research on FRB 20121102A and FRB 20201124A has revealed an absence of periodicity or quasiperiodicity on timescales ranging from 1 ms to 1, 000 s (Li et al. 2021b; Xu et al. 2022)."
+      },
+      "confidence": 0.95,
+      "task": "waiting time statistics analysis of repeating FRBs",
+      "setup": "analysis of four datasets from FAST telescope observations"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cf74c024f7de2f43_x2",
+      "evidence": {
+        "section": "2. METHOD AND RESULTS",
+        "original_text": "From the preceding analysis, it is statistically evident that the time intervals between the first two bursts in repeating FRBs generally exert an evident influence on the occurrence of subsequent bursts. A realistic question arises: If a time t has elapsed since the last burst without a subsequent occurrence, what is the average waiting time until the next burst? To answer this, one must calculate the expected residual time λ[ˆ] (t|λ0). For the special case t = 0, which means that there is no time elapsed since the last burst, λ[ˆ] (t = 0|λ0) = λ[ˆ] (λ0). Based on the definition of residual time and the known waiting time distribution (Eq. 2), one can deduce that λ[ˆ] (t|λ0) = ∫∞ t λP (λ|λ0)dλ / ∫∞ t P (λ|λ0)dλ. For distribution P (λ|λ0) that satisfied the Eq. (2), we can obtain λ[ˆ] (t|λ0) = λ[¯] (1 + β(t/λ[¯] )) / (γ − 1 − β), where the integral is conducted under the condition that γ > 2.0. When there is no memory effect, λ[ˆ] (t|λ0) is independent of both λ0 and t. Conversely, if a memory effect exists, a clear dependency will be observed. The uncertainty in λ[ˆ] (t|λ0) arises from the statistical error in the number of waiting time data (Lin & Sang 2019; Wei et al. 2021) measured at t = 0 or other values. This uncertainty is then propagated into the calculation of the residual time."
+      },
+      "confidence": 0.95,
+      "task": "conditional residual time calculation",
+      "setup": "calculation of expected residual time based on waiting time distribution"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr1",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "The first dataset is FRB 20121102A, comprising 1652 bursts detected over 59.5 hours across 47 days (Li et al. 2021b). The second dataset focuses on FRB 20201124A, featuring 1863 bursts observed over 82 hours spanning 54 days (Xu et al. 2022). The third dataset is related to FRB 20220912A, which includes 1076 bursts in 8.67 hours over approximately 55 days (Zhang et al. 2023). The fourth dataset involves another extremely active episode of FRB 20201124A, containing 881 bursts observed in approximately 4 hours within a 4-day period (Zhou et al. 2022)."
+      },
+      "confidence": 0.99,
+      "quantity": "number of bursts",
+      "value": 1652,
+      "unit": null,
+      "context": "FRB 20121102A dataset, detected over 59.5 hours across 47 days",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr2",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "The second dataset focuses on FRB 20201124A, featuring 1863 bursts observed over 82 hours spanning 54 days (Xu et al. 2022)."
+      },
+      "confidence": 0.99,
+      "quantity": "number of bursts",
+      "value": 1863,
+      "unit": null,
+      "context": "FRB 20201124A dataset, observed over 82 hours spanning 54 days",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr3",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "The third dataset is related to FRB 20220912A, which includes 1076 bursts in 8.67 hours over approximately 55 days (Zhang et al. 2023)."
+      },
+      "confidence": 0.99,
+      "quantity": "number of bursts",
+      "value": 1076,
+      "unit": null,
+      "context": "FRB 20220912A dataset, observed in 8.67 hours over approximately 55 days",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr4",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "The fourth dataset involves another extremely active episode of FRB 20201124A, containing 881 bursts observed in approximately 4 hours within a 4-day period (Zhou et al. 2022)."
+      },
+      "confidence": 0.99,
+      "quantity": "number of bursts",
+      "value": 881,
+      "unit": null,
+      "context": "FRB 20201124A(B) dataset, observed in approximately 4 hours within a 4-day period",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr5",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "From the table, we observe differences in the γ values between certain datasets, especially for datasets with preconditions from q1 and q4, which exhibit a statistical significance approximately from 1.0 to 3.5σ (3.5, 0.94, 2.0, 3.2 for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B), respectively). This indicates a moderate to strong likelihood that the observed differences are not due to random chance, suggesting potential underlying variations between these comparisons of q1 and q4. However, the results of 0.94σ and 2.0σ are less significant and indicate that, for these particular comparisons, the evidence for the differences is weaker and could more likely be due to statistical fluctuations for limited samples. These mixed significance levels highlight the complexity of interpreting results with the current dataset size and the variability inherent in FRBs. Although some findings point to meaningful differences, they fall short of the more rigorous thresholds typically required for definitive conclusions. This underscores the need for caution when interpreting the results and highlights the importance of acquiring more extensive data. Furthermore, we compared the significance of the parameter γ under different preconditions (q0, q1, q2, q3, q4) for FRB 20201124A(A) and FRB 20201124A(B). The significance levels were found to be (0.59, 0.39, 0.19, 0.41, 0.80), indicating similarity within 1σ. Given that FRB 20201124A(B) occurred during a highly active period spanning 4 days, this similarity in γ suggests an intrinsic connection in the burst behavior of the repeating FRB source during different active periods. This finding further supports the idea that the parameter γ may capture underlying mechanisms that govern FRB activity, even across varying levels of source activity."
+      },
+      "confidence": 0.95,
+      "quantity": "parameter γ",
+      "value": 3.72,
+      "unit": null,
+      "context": "FRB 20121102A, unconditional waiting time distribution (λ0 ∈ q0)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr6",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "From the table, we observe differences in the γ values between certain datasets, especially for datasets with preconditions from q1 and q4, which exhibit a statistical significance approximately from 1.0 to 3.5σ (3.5, 0.94, 2.0, 3.2 for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B), respectively). This indicates a moderate to strong likelihood that the observed differences are not due to random chance, suggesting potential underlying variations between these comparisons of q1 and q4. However, the results of 0.94σ and 2.0σ are less significant and indicate that, for these particular comparisons, the evidence for the differences is weaker and could more likely be due to statistical fluctuations for limited samples. These mixed significance levels highlight the complexity of interpreting results with the current dataset size and the variability inherent in FRBs. Although some findings point to meaningful differences, they fall short of the more rigorous thresholds typically required for definitive conclusions. This underscores the need for caution when interpreting the results and highlights the importance of acquiring more extensive data. Furthermore, we compared the significance of the parameter γ under different preconditions (q0, q1, q2, q3, q4) for FRB 20201124A(A) and FRB 20201124A(B). The significance levels were found to be (0.59, 0.39, 0.19, 0.41, 0.80), indicating similarity within 1σ. Given that FRB 20201124A(B) occurred during a highly active period spanning 4 days, this similarity in γ suggests an intrinsic connection in the burst behavior of the repeating FRB source during different active periods. This finding further supports the idea that the parameter γ may capture underlying mechanisms that govern FRB activity, even across varying levels of source activity."
+      },
+      "confidence": 0.95,
+      "quantity": "parameter γ",
+      "value": 2.78,
+      "unit": null,
+      "context": "FRB 20201124A(A), unconditional waiting time distribution (λ0 ∈ q0)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr7",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "From the table, we observe differences in the γ values between certain datasets, especially for datasets with preconditions from q1 and q4, which exhibit a statistical significance approximately from 1.0 to 3.5σ (3.5, 0.94, 2.0, 3.2 for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B), respectively). This indicates a moderate to strong likelihood that the observed differences are not due to random chance, suggesting potential underlying variations between these comparisons of q1 and q4. However, the results of 0.94σ and 2.0σ are less significant and indicate that, for these particular comparisons, the evidence for the differences is weaker and could more likely be due to statistical fluctuations for limited samples. These mixed significance levels highlight the complexity of interpreting results with the current dataset size and the variability inherent in FRBs. Although some findings point to meaningful differences, they fall short of the more rigorous thresholds typically required for definitive conclusions. This underscores the need for caution when interpreting the results and highlights the importance of acquiring more extensive data. Furthermore, we compared the significance of the parameter γ under different preconditions (q0, q1, q2, q3, q4) for FRB 20201124A(A) and FRB 20201124A(B). The significance levels were found to be (0.59, 0.39, 0.19, 0.41, 0.80), indicating similarity within 1σ. Given that FRB 20201124A(B) occurred during a highly active period spanning 4 days, this similarity in γ suggests an intrinsic connection in the burst behavior of the repeating FRB source during different active periods. This finding further supports the idea that the parameter γ may capture underlying mechanisms that govern FRB activity, even across varying levels of source activity."
+      },
+      "confidence": 0.95,
+      "quantity": "parameter γ",
+      "value": 3.34,
+      "unit": null,
+      "context": "FRB 20220912A, unconditional waiting time distribution (λ0 ∈ q0)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cf74c024f7de2f43_qr8",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "From the table, we observe differences in the γ values between certain datasets, especially for datasets with preconditions from q1 and q4, which exhibit a statistical significance approximately from 1.0 to 3.5σ (3.5, 0.94, 2.0, 3.2 for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B), respectively). This indicates a moderate to strong likelihood that the observed differences are not due to random chance, suggesting potential underlying variations between these comparisons of q1 and q4. However, the results of 0.94σ and 2.0σ are less significant and indicate that, for these particular comparisons, the evidence for the differences is weaker and could more likely be due to statistical fluctuations for limited samples. These mixed significance levels highlight the complexity of interpreting results with the current dataset size and the variability inherent in FRBs. Although some findings point to meaningful differences, they fall short of the more rigorous thresholds typically required for definitive conclusions. This underscores the need for caution when interpreting the results and highlights the importance of acquiring more extensive data. Furthermore, we compared the significance of the parameter γ under different preconditions (q0, q1, q2, q3, q4) for FRB 20201124A(A) and FRB 20201124A(B). The significance levels were found to be (0.59, 0.39, 0.19, 0.41, 0.80), indicating similarity within 1σ. Given that FRB 20201124A(B) occurred during a highly active period spanning 4 days, this similarity in γ suggests an intrinsic connection in the burst behavior of the repeating FRB source during different active periods. This finding further supports the idea that the parameter γ may capture underlying mechanisms that govern FRB activity, even across varying levels of source activity."
+      },
+      "confidence": 0.95,
+      "quantity": "parameter γ",
+      "value": 2.65,
+      "unit": null,
+      "context": "FRB 20201124A(B), unconditional waiting time distribution (λ0 ∈ q0)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_cf74c024f7de2f43_p1",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "For comparison, when the same preceding condition λ0 is applied after random shuffling, the value of λ/[ˆ] λ[¯] is always approximately 1.0 (plus symbols in Fig. 3), indicating that the memory effect has been disrupted. Specifically, we note that FRB 20201124A(A) shows no significant difference from shuffled sequences, suggesting a lack of strong memory effects. In contrast, FRB 20201124A(B) probably exhibits more pronounced memory effects due to the intense burst activity over a short period, where such effects may be more evident. This variability highlights the complexity of FRB behavior, which may depend on the activity period and other unknown factors."
+      },
+      "confidence": 0.95,
+      "metric": "memory effect significance",
+      "compared_to": "shuffled sequences"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_cf74c024f7de2f43_p2",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "For the case of t = 0 (Fig. 5(a)), since λ[ˆ] (0) = (λ[ˆ] (0|λ[−] 0[) + ˆ][λ][(0][|][λ][+] 0[))][/][2,][the][results] show that λ[ˆ] (0|λ[−] 0[)][(solid][green][triangle) and][λ][ˆ][(0][|][λ][+] 0[) (solid][red][triangle) are approximately symmetrical][to][λ][ˆ][(0)][(solid] blue circle) = 1 (relative to λ[¯] ), and due to the memory effect, λ[ˆ] (0|λ[+] 0[)][is][significantly][greater][than][λ][ˆ][(0][|][λ][−] 0[).][The] statistical significance of these differences in this case is (4.5, 2.9, 4.1, 4.2) for FRB 20121102A, FRB 20220912A, FRB in20201124A(A)Fig. 5(b), thatandis,FRBλ[ˆ] ( λ2¯20201124A(B),[|][λ] 0[+][)][is][generally] respectively.[greater][than] Similar[λ][ˆ][(] λ¯2[|][λ] 0[−] memory[).][In][this] effects[case,] as[the] shown[significance] in Fig.[of] 5(a)[these] are[differences] also evident[is] (0.8, 1.5, 2.9, 3.2). Compared to the situation at t = 0, the reduction in significance may primarily be due to the increased statistical fluctuations caused by the reduced sample size. Furthermore, due to the memory effect, since the time elapsed is t = λ/[¯] 2 for the last burst was introduced, the symmetry between the residual times as shown in Fig. 5(a) is broken due to the arising of λ[¯] , which is mostly contributed from q+."
+      },
+      "confidence": 0.95,
+      "metric": "conditional residual time λ[ˆ] (t|λ0)",
+      "compared_to": "different preceding conditions (q+, q−, q0)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_cf74c024f7de2f43_p3",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "Further fitting analysis reveals that P (λ|λ0) can also be well approximated by P (λ|λ0) ∼ f (λ/λ, λ[¯] 0/λ[¯] )/λ[¯] . Deviations from an exponential function can be well described by the Tsallis q-exponential function (Du et al. 2024). The parameter γ in Eq. (2) plays a key role in demonstrating the memory effects that the preceding condition values λ0 have on subsequent FRB bursts and their degree of clustering. More details about γ that are affected by different preceding conditions are provided in Table 1. For preconditioned intervals from q1, q2, q3 to q4, the parameter γ generally decreases monotonically, a pattern that holds across the four datasets. However, considering the presence of fitting errors, there is a possible likelihood that overlapping intervals for γ could occur between adjacent preconditioned intervals, such as between [q1, q2], [q2, q3], and [q3, q4], and we also cannot completely rule out the possibility of overlapping intervals between [q1, q4]. After all, current statistical data samples are limited, and grouping further reduces the number of samples, which may lead to fluctuations in the statistical results. Furthermore, if the uncertainty of waiting times counts in the time intervals is considered, the parameter γ may differ compared to scenarios where this uncertainty is not taken into account. However, a precise determination of the values of the model parameter is not the main objective of this study. Instead, we primarily explore how different preconditioning, such as q1, q2, q3, or q4, influences the time intervals between subsequent FRB bursts, essentially studying the memory effect."
+      },
+      "confidence": 0.95,
+      "metric": "parameter γ",
+      "compared_to": "different preconditioned intervals (q1, q2, q3, q4)"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_cf74c024f7de2f43_ca1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Understanding the nature of repeating fast radio bursts (FRBs) is crucial to probe their underlying physics. In this work, we analyze the waiting time statistics between bursts of three repeating FRBs from four datasets. We find a universally pronounced dependency of the waiting times on the previous time interval (denoted as λ0). We observe a temporal clustering where short waiting times tend to be followed by short ones, and long by long comparative to their mean value. This memory dependency is manifested in the conditional mean waiting time as well as in the conditional mean residual time to the next burst, both of which increase in direct proportion to λ0. Consequently, the likelihood of experiencing a subsequent FRB burst within a given time window after the preceding burst is generally influenced by the burst history. We reveal that for the first time, these memory effects are present in the scale-invariant preconditioned waiting time distribution. We show that the memory effect provides a unified description of waiting times which may account for both the repeating FRBs and the apparent non-repeating FRBs (i.e. only observed one time). These results shed new light on the mechanism of FRBs."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_cf74c024f7de2f43_ca2",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Based on the previously established scale-invariant waiting time distribution Eq. 1, P (or f ) (Du et al. 2024), this study investigates the temporal characteristics of the occurrences of FRB, specifically focusing on the distribution of time intervals between successive bursts in repeating FRBs. We analyze the conditional probability distribution PI (λ|λ0), where λ0 represents the interval between the last two bursts. For Poisson processes, which lack memory effects, PI (λ|λ0) is expected to be identical to PI (λ) and independent of λ0. However, our study aims to explore potential deviations from this behavior in repeating FRBs, which may indicate the presence of memory effects. We further quantify these temporal characteristics through various statistical measures, such as average time intervals and residual times under different conditions. These findings could provide insights into the probability of future burst occurrences based on existing observations of FRBs, contributing to a deeper understanding of the mechanisms governing FRB activity. Additionally, we propose a unified framework that might explain the waiting times of both repeating and apparently non-repeating FRBs."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_cf74c024f7de2f43_cl1",
+      "evidence": {
+        "section": "SUMMARY",
+        "original_text": "In conclusion, we have analyzed the statistics of waiting times between bursts (above certain fluence threshold values I) of three repeating FRBs. Our observations reveal a notable memory effect in these events, wherein small waiting times tend to follow small ones, and large waiting times follow large ones. This clustering of FRBs has been quantified using four metrics: (i) conditional distribution function, (ii) conditional mean recurrence time, (iii) conditional risk function, and (iv) conditional residual time. Each of these metrics generally deviates from their respective unconditional counterparts. The memory effect proves particularly beneficial as it enables us, as demonstrated in Fig. 5, to utilize relevant elapsed time data since the last burst to achieve a more accurate burst estimation. For both repeating FRBs in their active periods and the apparent non-repeating FRBs that have been observed to burst only once, a unified description of waiting time is provided. As a natural conclusion from the above results: Even if all FRBs are essentially repeating FRBs, the longer it has been since we have seen from those currently classified as one-off FRBs, the longer we may have to wait to see another burst, even if it is a repeating FRB. Conversely, the more recently observed one-off FRBs are more likely to be seen bursting again in a shorter period of time."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_cf74c024f7de2f43_cl2",
+      "evidence": {
+        "section": "DISCUSSION",
+        "original_text": "The three burst sources analyzed in this paper have very different burst environments and properties. However, the statistical analysis results of these three repeating FRBs with the largest sample sizes indicate that the scale-invariant waiting time distribution and the clustering and memory of bursts are universal. This may be well used to explain the burst event characteristics of repeating FRBs that have been active in the past, as well as to explain the burst event characteristics that have only been observed once but may be repeating bursts. Although the existence of true one-offs is not ruled out, Eq. (4) has also shown that when γ = 2.0, the expected residual time diverges and tends to be infinite, and this corresponds to the case of spikes like δ function of time dependent burst rate (Aschwanden & McTiernan 2010), which mimics a true one-off burst from an observational perspective. Hence, Eq. (2) offers a comprehensive explanation of the statistical characteristics of the waiting time distribution, accommodating the behavior of both repeating and one-off FRBs."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_cf74c024f7de2f43_lm1",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "From the table, we observe differences in the γ values between certain datasets, especially for datasets with preconditions from q1 and q4, which exhibit a statistical significance approximately from 1.0 to 3.5σ (3.5, 0.94, 2.0, 3.2 for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B), respectively). This indicates a moderate to strong likelihood that the observed differences are not due to random chance, suggesting potential underlying variations between these comparisons of q1 and q4. However, the results of 0.94σ and 2.0σ are less significant and indicate that, for these particular comparisons, the evidence for the differences is weaker and could more likely be due to statistical fluctuations for limited samples. These mixed significance levels highlight the complexity of interpreting results with the current dataset size and the variability inherent in FRBs. Although some findings point to meaningful differences, they fall short of the more rigorous thresholds typically required for definitive conclusions. This underscores the need for caution when interpreting the results and highlights the importance of acquiring more extensive data."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_cf74c024f7de2f43_lm2",
+      "evidence": {
+        "section": "METHOD AND RESULTS",
+        "original_text": "We conducted a two-sample K-S test comparing the differential distributions P (λ|λ0) where the preceding condition values λ0 come from q1 and q4. The K-S statistics and P-values for FRB 20121102A, FRB 20220912A, FRB 20201124A(A) and FRB 20201124A(B) are as follows: (0.38, 0.14), (0.39, 0.11), (0.22, 0.78) and (0.37, 0.19). All p-values are greater than the 0.05 threshold, indicating that there are no statistically significant differences. However, the small size and discrete nature of the binned data likely contribute to the increase in P-values, potentially obscuring subtle differences between distributions that the K-S test might miss. Therefore, a larger sample is potentially needed to further investigate and perhaps arrive at a significant p-value. For the results of FRB 20201124A(A), it could be associated with the instability of these distributions when dealing with limited statistics, with the expectation of achieving improved statistical results as more observational data become available."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_cf74c024f7de2f43_lm3",
+      "evidence": {
+        "section": "DISCUSSION",
+        "original_text": "Our findings highlight general trends, but the limited sample size of independent repeating FRBs means that some exceptions may arise, and our conclusions should be interpreted with caution. The rarity and variability of FRBs underscore the need for more extensive datasets to validate and refine these preliminary insights. Advancements in detection technologies will likely provide the larger datasets needed to support our initial findings and enable more detailed studies of the characteristics and effects of FRB memory. Future observations will be crucial for verifying these trends, refining our understanding of FRB behavior, and uncovering significant patterns that may not yet be fully apparent. Continued research and data collection are essential for advancing our knowledge and confirming or challenging these early findings, ultimately deepening our understanding of these cosmic phenomena."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_cf74c024f7de2f43_fw1",
+      "evidence": {
+        "section": "DISCUSSION",
+        "original_text": "Future observations will be crucial for verifying these trends, refining our understanding of FRB behavior, and uncovering significant patterns that may not yet be fully apparent. Continued research and data collection are essential for advancing our knowledge and confirming or challenging these early findings, ultimately deepening our understanding of these cosmic phenomena."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_cf74c024f7de2f43_fw2",
+      "evidence": {
+        "section": "DISCUSSION",
+        "original_text": "However, more research is needed to determine the precise mechanisms that lead to the intermittent nature of FRBs and the extended periods between bursts. The ubiquity of this behavior implies the presence of a straightforward mechanism. In this mechanism, as time progresses, the variable responsible for triggering the burst increasingly deviates from the burst threshold on average. These “fluctuations” in the variable effectively preserve the memory of the last event within the system for extended periods, thereby contributing to the observed absence of time dependent aging. It is important to emphasize that these findings are in fact model independent, which means that they do not rely on any preconceived model of burst occurrence. Bak et al. (Bak 1996; Bak et al. 2002) suggests that the observed scaling law in burst events reflects a complex spatiotemporal pattern. This may be interpreted as an intermittent energy release from a self-organized system , which is consistent with the theoretical constructs of critical phenomena. Analogous memory effects, attributable to long-term correlations, have also been recently identified in the statistical analysis of two FRBs (Wang et al. 2023), which address the self-similarity inherent in these processes, the framework of SOC currently offers the most compelling approach."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

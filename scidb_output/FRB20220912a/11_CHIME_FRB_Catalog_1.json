@@ -1,0 +1,575 @@
+{
+  "metadata": {
+    "doc_id": "doc_8b70248ef8aed4f0",
+    "source_file": "11_CHIME_FRB_Catalog_1.md",
+    "title": "The First CHIME/FRB Fast Radio Burst Catalog",
+    "year": 2021,
+    "doi": null,
+    "abstract": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of _α_ = _−_ 1 _._ 40 _±_ 0 _._ 11(stat.) _−_[+0] 0 _.[.]_[06] 09[(sys.),] consistent with the _−_ 3 _/_ 2 expectation for a non-evolving population in Euclidean space. We find _α_ is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 _±_ 30(stat.) _−_[+140] 130[(sys.)]] _[/]_[sky] _[/]_[day above a fluence of 5 Jy ms at 600 MHz,][with scatter-] ing time at 600 MHz under 10 ms, and DM above 100 pc cm _[−]_[3] . \n\n_Keywords:_ Radio transient sources (2008), Compact objects (288), Catalogs (205)",
+    "introduction": "Although the first Fast Radio Burst (FRB) was discovered nearly a decade and a half ago (Lorimer et al. 2007), the nature of these sources remains a mystery. Now securely determined to originate from external galaxies, generally from cosmological distances (e.g., Tendulkar et al. 2017; Macquart et al. 2020), FRBs inhabit a unique and extreme portion of radio luminosity/time scale phase space \n\nCHIME/FRB Catalog 1 \n\n3 \n\n(e.g., Cordes & Chatterjee 2019) compared to other radio transients and hence are of great interest. Moreover, all-sky rates of _∼_ 10[3] per day (Bhandari et al. 2018) indicate that the phenomenon is ubiquitous. The mystery of FRBs therefore signals a common cosmic phenomenon borne from extreme, unknown environments. \n\nOne major clue regarding the nature of FRBs is that some repeat (Spitler et al. 2016), with periodic activity observed in two sources (CHIME/FRB Collaboration et al. 2020a; Rajwade et al. 2020). Repetition rules out cataclysmic models for at least the repeating FRB sources, though it remains unclear whether all FRBs are repeating sources that come with vastly different waiting times between repetitions (Ravi 2019; James et al. 2020). Evidence for distinct emission phenomena has come from repeat bursts being wider than those from apparent non-repeaters (Scholz et al. 2016; CHIME/FRB Collaboration et al. 2019a; Fonseca et al. 2020). Additionally, the two localized repeating FRBs whose hosts have measured properties (Chatterjee et al. 2017; Marcote et al. 2020) are in late-type galaxies that have star formation, whereas localizations of apparent non-repeaters indicate these latter sources can sometimes reside in galaxies with modest or little star formation (Bhandari et al. 2020). To date, one Galactic magnetar has shown both repeated X-ray bursts and a radio burst of luminosity close to the FRB range (CHIME/FRB Collaboration et al. 2020b; Bochenek et al. 2020). This suggests that repeaters may be young, active magnetars, a scenario consistent with localizations of repeating FRBs to star-forming locations (Chatterjee et al. 2017; Marcote et al. 2020). Volumetric rate comparisons between FRBs and giant magnetar flares have been used to support the magnetar scenario (e.g., CHIME/FRB Collaboration et al. 2020b); however, uncertainties in current rate estimates are large, being dominated by either small number statistics or by systematics from including multiple different surveys having distinct biases. Detailed studies of a larger sample of FRBs from a single survey, repeating or not, are clearly of great value. \n\nA detailed study of large numbers of FRBs, in a single homogeneous survey with a well-measured instrument selection function, is desirable for many additional reasons. A wide-field survey of many FRBs could be used to probe large-scale structure through spatial correlations (Masui & Sigurdson 2015), or combined with galaxy surveys to search for correlations and variations with redshift (e.g., Rafiei-Ravandi et al. 2020). Furthermore, the FRB sky distribution can be correlated with Galactic direction to investigate claims of Galactic Plane avoidance (Burke-Spolaor & Bannister 2014; Petroff et al. 2014; Keane & Petroff 2015). Large FRB samples in different frequency ranges can help elucidate the population’s average spectrum (e.g., Karastergiou et al. 2015; Chawla et al. 2017) or effects of FRB radio wave propagation in local environments (Cordes et al. 2017). Moreover, a large sample of FRBs can be used to determine the population’s energy distribution function (Vedantham et al. 2016; Lawrence et al. 2017; James et al. 2019; Hashimoto et al. 2020; James et al. 2021a,b), which contains evidence of the redshift distribution of FRB sources, as well as their detectability as a function of survey sensitivity for a given telescope. Analyses of dispersion measure (DM) distributions, especially comparing repeaters and apparent non-repeaters, can reveal different source class locations and environments, as could searches for differences in scattering times or bandwidths. Additionally, correlations among parameters can be investigated with a large enough sample; for example, a DM–scattering correlation could signal either that the local environment contributes to both measures (Qiu et al. 2020), or that galaxy halos along the line of sight cause radio wave scattering (Vedantham & Phinney 2019). Alternatively, a width–DM correlation is expected due to Hubble expansion if DM is indeed a faithful proxy for cosmic distance as recent studies suggest (Macquart \n\nCHIME/FRB Collaboration: M. Amiri, _et al._ \n\n4 \n\n\n**----- Start of picture text -----**<br>\n90<br>60<br>30<br>0<br>CHIME/FRB Non-Repeating CHIME/FRB Repeating<br>30<br>24 [h] 21 [h] 18 [h] 15 [h] 12 [h] 9 [h] 6 [h] 3 [h] 0 [h]<br>Right ascension (J2000)<br>Declination (J2000)<br>**----- End of picture text -----**<br>\n\n\n**Figure 1.** Sky distribution of 18 repeating sources and 474 sources that have not been observed to repeat. The gray shaded region at the bottom is outside the CHIME/FRB field of view, below declination _−_ 11 _[◦]_ . The gray lines in the background are the Galactic Plane and lines of constant Galactic longitude spaced by 30 _[◦]_ . CHIME, being a transit telescope, has relatively uniform exposure in this Mercator projection of equatorial coordinates. \n\net al. 2020). However, all previous and current surveys have limited fields-of-view, sensitivity, survey durations, and/or processing capabilities, rendering them incapable of detecting sufficiently large numbers of FRBs to address many or all of the above possibilities. Past efforts have required the combination of the results from several individual surveys to boost statistical power; but, these surveys have different and largely undetermined instrumental transfer functions, which result in strong biases in their data sets (Connor 2019). The detection of a large number of events with a single instrument, for which a well-defined selection function can be robustly determined, can therefore enable significant progress in the field. \n\nThe CHIME/FRB Project (CHIME/FRB Collaboration et al. 2018) uses the Canadian Hydrogen Intensity Mapping Experiment (CHIME) to detect FRBs in the 400–800-MHz band. CHIME’s large collecting area and wide field-of-view make it an excellent FRB detector. Indeed, during a few initial weeks of pre-commissioning, CHIME/FRB detected over a dozen new FRBs, demonstrating that the phenomenon exists down to 400 MHz, the lowest known frequency at that time (CHIME/FRB Collaboration et al. 2019b). CHIME/FRB also detected the second known source to emit repeat bursts (CHIME/FRB Collaboration et al. 2019c). Since then, CHIME/FRB has discovered an additional 17 repeaters (CHIME/FRB Collaboration et al. 2019a; Fonseca et al. 2020), as well as one that repeats regularly (CHIME/FRB Collaboration et al. 2020a). These repeating sources, published rapidly to allow the community to assist with localization efforts (e.g., Marcote et al. 2020), are part of a larger number of FRBs detected by CHIME/FRB during its first year of operation. Here we present the first FRB Catalog released by CHIME/FRB, hereafter referred to as “Catalog 1”. We include 536 bursts detected between 25 July 2018 and 1 July 2019 including all bursts from repeating sources previously published in other works. The sky distribution of these bursts is shown in Figure 1. \n\nThis paper is organized as follows. In Section 2, we describe the observing parameters, including a brief synopsis of the instrument, pipeline and overall methodologies used, as well as our sky exposure, sensitivity thresholds, and our determination of instrumental biases. In Section 3, we describe the \n\nCHIME/FRB Catalog 1 \n\n5 \n\ncontents of our catalog and how they were determined, including burst localizations and properties, along with relevant tables and figures. Section 4 describes our method for injecting synthetic signals into the our detection pipeline for calibrating selection biases. In Section 5, we compare parameter distributions for repeaters and apparent non-repeaters, in order to identify differences between these types of sources. In Section 6, we show parameter distributions corrected for instrumental biases and deduce cosmic distributions for many key FRB parameters, including the FRB fluence distribution. In Section 7 we discuss these results in the context of other FRB findings in the literature, and briefly describe contemporaneous analyses of these same data that are presented in accompanying papers. We present our conclusions in Section 8.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": "射电天文学"
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "fast radio bursts",
+      "radio transient sources",
+      "astronomical catalogs",
+      "CHIME telescope",
+      "dispersion measure"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:49:21.231970+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.99,
+      "term": "fast radio burst",
+      "normalized": "快速射电暴",
+      "std_label": "FRB"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.98,
+      "term": "CHIME/FRB Project",
+      "normalized": "CHIME/FRB项目",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.97,
+      "term": "repeating FRB",
+      "normalized": "重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.97,
+      "term": "apparent non-repeater",
+      "normalized": "非重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.98,
+      "term": "dispersion measure",
+      "normalized": "色散量",
+      "std_label": "DM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.96,
+      "term": "scattering time",
+      "normalized": "散射时间",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.97,
+      "term": "fluence",
+      "normalized": "流量密度",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.96,
+      "term": "intrinsic temporal width",
+      "normalized": "固有时间宽度",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.96,
+      "term": "spectral bandwidth",
+      "normalized": "频谱带宽",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8b70248ef8aed4f0_c10",
+      "evidence": {
+        "section": "4. SYNTHETIC SIGNAL INJECTION",
+        "original_text": "As for any astrophysical instrument, CHIME/FRB has a transfer function, introduces selection biases, and adds noise due both to the nature of the telescope and the software detection pipeline. These instrument characteristics need to be carefully characterized so that they can be accounted for in any population analysis of FRB events and their distributions, as is performed in Section 6 below. We account for these biases through careful measurements of the telescope beam, calibration, and noise properties, and by probing the selection function using Monte Carlo techniques with synthetic events injected into the CHIME/FRB software system. This strategy mimics the Monte Carlo event generator techniques used in particle physics, with the exception that real-time telescope noise and the RFI environment are incorporated by injecting the events in situ while the telescope is operating. The Monte Carlo injection system was designed to allow synthetic FRBs to be injected into the realtime pipeline with user-defined properties. Injected pulses (hereafter “injections”) are suitably flagged to ensure none are mistaken as genuine astrophysical signals. In this way, we measure instrumental biases, and using this knowledge, in Section 6 determine actual cosmic FRB property distributions."
+      },
+      "confidence": 0.95,
+      "term": "synthetic signal injection",
+      "normalized": "合成信号注入",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8b70248ef8aed4f0_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.98,
+      "head": "doc_8b70248ef8aed4f0_c2",
+      "relation_type": "measures",
+      "relation_surface": "detected",
+      "tail": "doc_8b70248ef8aed4f0_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8b70248ef8aed4f0_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.97,
+      "head": "doc_8b70248ef8aed4f0_c3",
+      "relation_type": "compares",
+      "relation_surface": "differ from",
+      "tail": "doc_8b70248ef8aed4f0_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8b70248ef8aed4f0_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.96,
+      "head": "doc_8b70248ef8aed4f0_c3",
+      "relation_type": "compares",
+      "relation_surface": "have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution",
+      "tail": "doc_8b70248ef8aed4f0_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8b70248ef8aed4f0_r4",
+      "evidence": {
+        "section": "4. SYNTHETIC SIGNAL INJECTION",
+        "original_text": "As for any astrophysical instrument, CHIME/FRB has a transfer function, introduces selection biases, and adds noise due both to the nature of the telescope and the software detection pipeline. These instrument characteristics need to be carefully characterized so that they can be accounted for in any population analysis of FRB events and their distributions, as is performed in Section 6 below. We account for these biases through careful measurements of the telescope beam, calibration, and noise properties, and by probing the selection function using Monte Carlo techniques with synthetic events injected into the CHIME/FRB software system. This strategy mimics the Monte Carlo event generator techniques used in particle physics, with the exception that real-time telescope noise and the RFI environment are incorporated by injecting the events in situ while the telescope is operating. The Monte Carlo injection system was designed to allow synthetic FRBs to be injected into the realtime pipeline with user-defined properties. Injected pulses (hereafter “injections”) are suitably flagged to ensure none are mistaken as genuine astrophysical signals. In this way, we measure instrumental biases, and using this knowledge, in Section 6 determine actual cosmic FRB property distributions."
+      },
+      "confidence": 0.95,
+      "head": "doc_8b70248ef8aed4f0_c10",
+      "relation_type": "uses",
+      "relation_surface": "probing the selection function using Monte Carlo techniques with synthetic events injected into the CHIME/FRB software system",
+      "tail": "doc_8b70248ef8aed4f0_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8b70248ef8aed4f0_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.94,
+      "head": "doc_8b70248ef8aed4f0_c5",
+      "relation_type": "correlates_with",
+      "relation_surface": "DM is correlated with distance",
+      "tail": "doc_8b70248ef8aed4f0_c7"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8b70248ef8aed4f0_d1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+]0 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+]140 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB Catalog 1",
+      "modality": "tabular",
+      "domain": "astronomy, radio transient sources"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8b70248ef8aed4f0_d2",
+      "evidence": {
+        "section": "4. SYNTHETIC SIGNAL INJECTION",
+        "original_text": "As for any astrophysical instrument, CHIME/FRB has a transfer function, introduces selection biases, and adds noise due both to the nature of the telescope and the software detection pipeline. These instrument characteristics need to be carefully characterized so that they can be accounted for in any population analysis of FRB events and their distributions, as is performed in Section 6 below. We account for these biases through careful measurements of the telescope beam, calibration, and noise properties, and by probing the selection function using Monte Carlo techniques with synthetic events injected into the CHIME/FRB software system. This strategy mimics the Monte Carlo event generator techniques used in particle physics, with the exception that real-time telescope noise and the RFI environment are incorporated by injecting the events in situ while the telescope is operating. The Monte Carlo injection system was designed to allow synthetic FRBs to be injected into the realtime pipeline with user-defined properties. Injected pulses (hereafter “injections”) are suitably flagged to ensure none are mistaken as genuine astrophysical signals. In this way, we measure instrumental biases, and using this knowledge, in Section 6 determine actual cosmic FRB property distributions. The details of the injection system will be described elsewhere. Here we provide a brief description of the use of the injection system to quantify our instrumental and software detection pipeline biases. Figure 9 shows a schematic drawing of the injection system as it is currently set up in the full CHIME/FRB system (see also Figures 4 and 6 in CHIME/FRB Collaboration et al. 2018). FRB signals are generated using the internally-developed simpulse library. simpulse generates FRBs at the CHIME/FRB frequency channel width and sampling time with an intrinsic running power-law spectrum, DM, pulse width, and scattering time. The simpulse library accounts for intrachannel dispersion smearing and other sampling effects that would occur at the correlator stage for an astrophysical signal. The injected FRB signal is multiplied with the complex spectral signature of the CHIME telescope’s primary beam and FFT synthesized beams evaluated at the chosen position in the sky. Signals are scaled to the same absolute flux (Jy) units as the live telescope data stream. Prior to beamforming, an absolute calibration (derived from daily observations of bright continuum pointsources through CHIME’s visibility data stream) is applied to the baseband data in the X-engine. Thus, we generate our simulated signals in flux units, taking care to also apply factors introduced in the beamforming and upchannelization process."
+      },
+      "confidence": 0.9,
+      "name": "CHIME/FRB Synthetic Injection Dataset",
+      "modality": "tabular",
+      "domain": "astronomy, radio transient sources"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8b70248ef8aed4f0_ds1",
+      "evidence": {
+        "section": "3. CHIME/FRB CATALOG 1",
+        "original_text": "In this section, we present Catalog 1, including for each event, the event name, arrival time, sky location, DM, pulse width, scattering time, spectral parameters, and various measures of signal strength. In Table 2, we provide a description of each field from the Catalog. The Catalog itself is available in machine readable format accompanying the online version of this article. It contains entries for each event or, in the case of complex-morphology bursts, each subcomponent of the event. A short excerpt from the Catalog can be found in Appendix E. During the period considered for Catalog 1, there were 28 occurrences where a trigger from the real-time system fit all criteria for an FRB but, due to a malfunction of the system, intensity data were not saved. There is no way to determine whether these events would have been classified as true FRBs upon human inspection. Next, we discuss how we determine the values for each catalog field."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Catalog fields include event name, arrival time, sky location, DM, pulse width, scattering time, spectral parameters, and signal strength measures."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8b70248ef8aed4f0_ds2",
+      "evidence": {
+        "section": "3.1. Event naming: transient name server",
+        "original_text": "Each of our detected FRBs has been assigned a name provided by the Transient Name Server (TNS), the official International Astronomical Union (IAU) mechanism for reporting new astronomical transients. TNS names have format FRB YYYYMMDDx where YYYY is a 4-digit year, MM is a 2-digit month code, DD is a 2-digit day (all in UTC), and x is a string of 1 to 3 Latin letters, beginning with “A” for the first source reported to the TNS for the relevant UTC day, “Z” for the 26th, and in lowercase letters after this i.e. “aa” for the 27th, and so forth, up to and including “zzz”, for a total of 18278 possible unique FRBs reported on a given UTC day. The TNS functions as more than a name server, and in fact hosts basic data for all submitted FRBs. For Catalog 1 the hosted data are derived from the real-time CHIME/FRB detection pipeline. Chief among the hosted data are the DM, SNR, dispersion-corrected arrival time at 400 MHz, and sky-position estimates with localization contours that can be downloaded in a machine-readable format. For previously published CHIME/FRB-detected events that are also in Catalog 1, we provide the previously published name (that followed an ad hoc and now outdated naming scheme) in the Catalog as well for reference, but we recommend henceforth referring exclusively to the TNS name. To aid the community in acquiring TNS names for their FRBs (both those already and yet-to-be detected), we provide in Appendix A instructions for doing so."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Event naming follows Transient Name Server (TNS) format FRB YYYYMMDDx."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8b70248ef8aed4f0_ds3",
+      "evidence": {
+        "section": "3.2. Event localization",
+        "original_text": "We provide sky localizations for each of our events, determined via the header metadata determined in real-time by L1 and stored in L4. These localizations are presented in Catalog 1 as their central coordinates and approximate uncertainties, with actual localization error regions presented as plots in Figure 6. We follow the same localization method detailed in CHIME/FRB Collaboration et al. (2019a). Ratios among per-beam SNR values are fit using least squares to beam model predictions for a grid of model sky locations and model intrinsic spectra. The mapping between ∆ χ2 and confidence interval is constructed from an ensemble of pulsar events identified by the real-time system, such that true positions fall within contours of a given confidence interval the appropriate fraction of the time. While this uncertainty treatment is most appropriate for pulsar-like spectra, we note that the true positions of the two localized repeaters (including 19 bursts from FRB20180916B observed over a range of hour angles), both emitting band-limited and morphologically complex bursts, are contained in the uncertainty regions of their respective CHIME/FRB SNR-based localizations. In the E-W direction, the grid of model locations is chosen to contain the main lobe of the primary beam. This span includes the first-order side lobes of the formed beams, which leads to the disjointed uncertainty regions seen in Figure 6. Where tabulated, we report the extent of the 68% confidence interval closest to the beam with the strongest detection. The disjointed contours, which include the near side lobes, can be found on the TNS for a variety of common confidence intervals."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Localization via per-beam SNR ratios fitted to beam model predictions."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8b70248ef8aed4f0_ds4",
+      "evidence": {
+        "section": "3.3. Event morphologies",
+        "original_text": "The SNR-optimized DM and tarr estimates were then provided as initial guesses to a least-squares fitting routine, fitburst, that directly models the two-dimensional dynamic spectra in terms of fundamental burst parameters. For a single burst, the parameters modeled by fitburst are: DM; tarr, signal amplitude (A), temporal width (w), power-law spectral index (γ) and “running” of the spectral index (r), and a timescale for multi-path scattering of the FRB signal (τ; e.g., McKinnon 2014). The composite model for a scattered, single-component dynamic spectrum with label i (Si) is defined as Si = Ai × Fi × Ti, where: Ai is the overall amplitude of the ith burst component; Fi ≡ Fi(γi, ri) is a term that defines the time-independent spectral energy distribution as a function of frequency (f), relative to an arbitrary reference value (f0): and Ti ≡ Ti(DM, tarr,i, wi, τ) is a term that models the temporal shape of the burst: The form of Ti shown in Equation 2 is taken directly from McKinnon (2014), which represents the convolution between a Gaussian profile and a time-dependent exponential function, the latter function with characteristic decay timescale τ and truncated at t = tarr,i by a Heaviside function. Using the above definitions, we modeled a multi-component burst as S = n iSi = n iAi × Fi × Ti, where n is the number of distinct sub-bursts in the observed dynamic spectrum. We set f0 = 400.1953125 MHz which is the center of our lowest frequency channel, in order to be consistent with L1 configuration settings. Both DM and τ are considered to be “global” parameters, such that all sub-burst components are assumed to possess the same dispersion and scattering properties, while all parameters with subscript i indicate component-specific parameters. Moreover, we assumed that t(DM) = k DM(f−2 − f0−2), where k=(2.41 × 10−4)−1 s pc−1 cm3 MHz2(consistent with physical expectations for dispersion in a cold plasma), and that τ ∝ f−4 (Lang 1971; Lorimer, D. R. and Kramer, M. 2005), where we use 600 MHz as the scattering reference frequency. For a given CHIME/FRB event with n sub-bursts, we fitted for (2 + 5n) parameters with fitburst through χ2 minimization between the n-component model and full-resolution L1 data. We accounted for intra-channel dispersion smearing during each fit iteration by evaluating the model spectrum S at 8 and 4 times the data resolution in time and frequency, respectively, and subsequently downsampling to the data resolution. Moreover, all CHIME/FRB raw data were processed for automatic excision of narrowband RFI and noise-baseline subtraction prior to model fitting, though we did not explicitly calibrate the CHIME bandpass."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Burst parameters modeled via fitburst: DM, arrival time, amplitude, temporal width, spectral index, spectral running, scattering time."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8b70248ef8aed4f0_ds5",
+      "evidence": {
+        "section": "3.4. Event signal strength",
+        "original_text": "In Catalog 1, our ability to determine burst fluences is limited by the uncertainty of our burst localization combined with CHIME’s complex and rapidly varying beam pattern. In particular, the spectral structure of the beam pattern and overall beam response can change significantly over the extent of the header localization region obtained for each burst, making it difficult to reliably correct fluence measurements for beam attenuation. Localization uncertainty, and to a lesser extent beam model uncertainty, introduces an unknown primary beam response that is a strong function of a bursts uncertain hour angle (see Figure 6). As such, we assume that each burst was detected along the meridian of the primary beam (at the peak sensitivity of the burst declination arc). Thus, our fluence measurements are biased low, as bursts off-meridian will experience beam attenuation that we are not accounting for. Note that the errors on the fluences, discussed below, do not quantify this bias—the measurements we provide are most appropriately interpreted as lower limits, with an uncertainty on the limiting value. A detailed description of the automated fluence calibration pipeline, including an explanation of current limitations, will be provided elsewhere. Here, we summarize the procedure, which is similar to that used in previous CHIME/FRB papers (CHIME/FRB Collaboration et al. 2019b,c; Josephy et al. 2019; CHIME/FRB Collaboration et al. 2019a; Fonseca et al. 2020). Transit observations of steady sources with known spectral properties are used to sample the conversion from CHIME/FRB beamformer units to Janskys as a function of frequency across the primary beam. We pair each burst with the calibration spectrum of the nearest steady source transit, closest first in declination, then in time. We assume N-S beam symmetry, so that sources on both sides of zenith can be used for each event. By applying the calibration spectrum to the total-intensity data for each burst, we derive a dynamic spectrum in physical units roughly corrected for N-S primary beam variations. The fluence is then derived by integrating the burst extent in the band-averaged time series, while the peak flux is the maximum value within the burst extent (at 0.98304 ms resolution). The error due to differences in the primary beam between the calibrator and the assumed FRB location along the meridian is estimated by using steady sources from a single day to calibrate each other and measuring the average fractional error compared to known flux values. This contributes a relative error on the order of 20% to the flux measurements. The error due to temporal variation in the calculated beamformer unit to Jansky conversion spectra is determined by measuring the RMS variation over a period of roughly two weeks surrounding the burst arrival. This also captures uncertainty due to calibrator source variability on that time scale, and contributes a relative error on the order of 13% to the flux measurements, depending on the calibrator used. These two errors are also combined with the RMS of the off-pulse in the band-averaged time series to form the overall errors presented in Catalog 1. We note again that the errors estimated here do not encapsulate the bias due to our assumption that each burst is detected along the meridian of the primary beam, which causes our measurements to be biased low."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Fluence calibration using steady source transits, with bias due to unknown beam location."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8b70248ef8aed4f0_ds6",
+      "evidence": {
+        "section": "5. COMPARISON OF REPEATERS VERSUS APPARENT NON-REPEATERS",
+        "original_text": "For both analyses, we perform a set of cuts on the catalog to remove events which are especially susceptible to selection effects that are challenging to quantify. These include the following: 1. Events with bonsai SNR < 12 are rejected, since below this threshold there could have been real events detected by our pipeline but subsequently classified as noise upon human inspection. During human classification, events with SNR ≥ 12 are visually unambiguous as either FRBs or RFI. 2. Events having DM < 1.5 max(DMNE2001, DMYMW16) are rejected. This cut is more stringent than that used for classifying events as extragalactic FRBs. The purpose is to reduce unquantified incompleteness coming from misidentifying FRBs when localization errors induce an error in the estimated Galactic DM. It also reduces any dependence our results may have on the poorly understood systematic errors associated with the Galactic DM models. 3. Events detected in far side-lobes are rejected, as our primary beam is poorly understood in this regime. These far side-lobe events have visually-identified “spiky” signatures in the burst spectrum (e.g., CHIME/FRB Collaboration et al. 2020b). These cuts eliminate 205 Catalog 1 FRBs (dominated by the SNR cut) from the following analysis."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Analysis cuts: SNR ≥ 12, DM > 1.5 max Galactic DM, exclude far side-lobe events."
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8b70248ef8aed4f0_m1",
+      "evidence": {
+        "section": "2. OBSERVATIONS",
+        "original_text": "The CHIME telescope, its FRB detection instrument, and real-time pipeline have been described in detail elsewhere (see Table 1; CHIME/FRB Collaboration et al. 2018). Briefly, the telescope is located on the grounds of the Dominion Radio Astrophysical Observatory (DRAO) near Penticton, British Columbia, Canada, and consists of four 20-m × 100-m cylindrical paraboloid reflectors oriented N-S, with each cylinder axis populated by 256 equispaced dual-linear-polarization antennas sensitive in the frequency range 400–800 MHz. CHIME has no moving parts. The CHIME/FRB detector views the entire sky north of declination −11◦ (a configurable choice, see below) every day as it transits overhead. Sources northward of declination +70◦ are visible twice per day, on opposite sides of the North Celestial Pole. The 2048 antenna signals are amplified, conditioned, digitized, and split into 1024 frequency channels at 2.56-µs time resolution by the portion of CHIME’s correlator called the “F-Engine”, which uses 128 custom-built field programmable gate array (FPGA)-based “ICE” Motherboards (Bandura et al. 2016) housed in two radio frequency interference (RFI)-shielded shipping containers located under the reflectors. The signals are then sent to the “X-Engine”, which consists of 256 liquid-cooled GPU-based compute nodes located in two custom RFI-shielded shipping containers located adjacent to the reflectors. Within the X-Engine, the spatial correlation is performed and polarizations are summed, forming 1024 independent total intensity sky beams along the N-S primary beam (256 N-S × 4 E-W; Ng et al. 2017), as well as up-channelization to the 16k frequency channels at 0.983-ms time resolution used in the real-time FRB search. Formed beams are spaced evenly in sin θ N-S from θ = −60◦ to θ = +60◦, where θ is the angle from zenith along the meridian. Formed beam centers are separated by 0.4◦; the FWHM of each beam is approximately 0.5◦ at 400 MHz and 0.25◦ at 800 MHz, though the aspect ratio E-W versus N-S changes with declination (see Ng et al. 2017, for details)."
+      },
+      "confidence": 0.95,
+      "name": "CHIME telescope",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8b70248ef8aed4f0_m2",
+      "evidence": {
+        "section": "2. OBSERVATIONS",
+        "original_text": "Each beam’s data are searched in real time for FRBs using a custom-developed triggering software pipeline consisting of four stages termed L0, L1, L2/L3 and L4 (CHIME/FRB Collaboration et al. 2018). Briefly, L0 is effectively the spatial correlation, beamforming, and up-channelization stage described above. L1 is the primary search workhorse, with initial cleaning of RFI (of either anthropogenic or solar origin), followed by a highly optimized tree-style dedispersion, spectral-weighting, and peak-search algorithm (called “bonsai”). L1 is executed on a dedicated cluster of 128 CPUbased nodes located in a third, custom-built shipping container adjacent to the telescope. L1 nodes are constantly buffering intensity data which can be saved upon detection of a candidate FRB event. L2/L3 combines results from all beams and groups detections to identify likely unique events, as well as further reject RFI, identify known sources, and verify a source’s extragalactic nature via its DM combined with the NE2001 (Cordes & Lazio 2002) and YMW16 (Yao et al. 2017) models of the maximum Milky Way DM. Metadata headers (containing detection beam locations, initial DM, pulse width and signal strength estimates) for FRB candidates are stored in the L4 database, and raw intensity data buffered by L1 are saved to disk for offline analysis."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB real-time triggering pipeline",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8b70248ef8aed4f0_m3",
+      "evidence": {
+        "section": "3.3. Event morphologies",
+        "original_text": "The SNR-optimized DM and tarr estimates were then provided as initial guesses to a least-squares fitting routine, fitburst, that directly models the two-dimensional dynamic spectra in terms of fundamental burst parameters. For a single burst, the parameters modeled by fitburst are: DM; tarr, signal amplitude (A), temporal width (w), power-law spectral index (γ) and “running” of the spectral index (r), and a timescale for multi-path scattering of the FRB signal (τ; e.g., McKinnon 2014). The composite model for a scattered, single-component dynamic spectrum with label i (Si) is defined as Si = Ai × Fi × Ti, where: Ai is the overall amplitude of the ith burst component; Fi ≡ Fi(γi, ri) is a term that defines the time-independent spectral energy distribution as a function of frequency (f), relative to an arbitrary reference value (f0): Fi = (f/f0)γi + ri log(f/f0), and Ti ≡ Ti(DM, tarr,i, wi, τ) is a term that models the temporal shape of the burst: Ti = exp(−(t − tarr,i)2/(2wi2)) × exp(−(t − tarr,i)/τ) × H(t − tarr,i). The form of Ti shown in Equation 2 is taken directly from McKinnon (2014), which represents the convolution between a Gaussian profile and a time-dependent exponential function, the latter function with characteristic decay timescale τ and truncated at t = tarr,i by a Heaviside function. Using the above definitions, we modeled a multi-component burst as S = ∑i Si = ∑i Ai × Fi × Ti, where n is the number of distinct sub-bursts in the observed dynamic spectrum. We set f0 = 400.1953125 MHz which is the center of our lowest frequency channel, in order to be consistent with L1 configuration settings. Both DM and τ are considered to be “global” parameters, such that all sub-burst components are assumed to possess the same dispersion and scattering properties, while all parameters with subscript i indicate component-specific parameters. Moreover, we assumed that t(DM) = k DM(f−2 − f0−2), where k = (2.41 × 10−4)−1 s pc−1 cm3 MHz2 (consistent with physical expectations for dispersion in a cold plasma), and that τ ∝ f−4 (Lang 1971; Lorimer, D. R. and Kramer, M. 2005), where we use 600 MHz as the scattering reference frequency. For a given CHIME/FRB event with n sub-bursts, we fitted for (2 + 5n) parameters with fitburst through χ2 minimization between the n-component model and full-resolution L1 data. We accounted for intra-channel dispersion smearing during each fit iteration by evaluating the model spectrum S at 8 and 4 times the data resolution in time and frequency, respectively, and subsequently downsampling to the data resolution. Moreover, all CHIME/FRB raw data were processed for automatic excision of narrowband RFI and noise-baseline subtraction prior to model fitting, though we did not explicitly calibrate the CHIME bandpass."
+      },
+      "confidence": 0.95,
+      "name": "fitburst",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8b70248ef8aed4f0_m4",
+      "evidence": {
+        "section": "4. SYNTHETIC SIGNAL INJECTION",
+        "original_text": "The Monte Carlo injection system was designed to allow synthetic FRBs to be injected into the realtime pipeline with user-defined properties. Injected pulses (hereafter “injections”) are suitably flagged to ensure none are mistaken as genuine astrophysical signals. In this way, we measure instrumental biases, and using this knowledge, in Section 6 determine actual cosmic FRB property distributions. The details of the injection system will be described elsewhere. Here we provide a brief description of the use of the injection system to quantify our instrumental and software detection pipeline biases. Figure 9 shows a schematic drawing of the injection system as it is currently set up in the full CHIME/FRB system (see also Figures 4 and 6 in CHIME/FRB Collaboration et al. 2018). FRB signals are generated using the internally-developed simpulse library. simpulse generates FRBs at the CHIME/FRB frequency channel width and sampling time with an intrinsic running power-law spectrum, DM, pulse width, and scattering time. The simpulse library accounts for intrachannel dispersion smearing and other sampling effects that would occur at the correlator stage for an astrophysical signal. The injected FRB signal is multiplied with the complex spectral signature of the CHIME telescope’s primary beam and FFT synthesized beams evaluated at the chosen position in the sky. Signals are scaled to the same absolute flux (Jy) units as the live telescope data stream. Prior to beamforming, an absolute calibration (derived from daily observations of bright continuum pointsources through CHIME’s visibility data stream) is applied to the baseband data in the X-engine. Thus, we generate our simulated signals in flux units, taking care to also apply factors introduced in the beamforming and upchannelization process."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB synthetic signal injection system",
+      "method_type": "software"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8b70248ef8aed4f0_x1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.)−[+]0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.)−[+]140 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm−3."
+      },
+      "confidence": 0.95,
+      "task": "CHIME/FRB survey and catalog generation",
+      "setup": "CHIME telescope, 400–800 MHz band, transit observations from 2018 July 25 to 2019 July 1"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8b70248ef8aed4f0_x2",
+      "evidence": {
+        "section": "5. COMPARISON OF REPEATERS VERSUS APPARENT NON-REPEATERS",
+        "original_text": "For both analyses, we perform a set of cuts on the catalog to remove events which are especially susceptible to selection effects that are challenging to quantify. These include the following: 1. Events with bonsai SNR < 12 are rejected, since below this threshold there could have been real events detected by our pipeline but subsequently classified as noise upon human inspection. During human classification, events with SNR ≥ 12 are visually unambiguous as either FRBs or RFI. 2. Events having DM < 1.5 max(DMNE2001, DMYMW16) are rejected. This cut is more stringent than that used for classifying events as extragalactic FRBs. The purpose is to reduce unquantified incompleteness coming from misidentifying FRBs when localization errors induce an error in the estimated Galactic DM. It also reduces any dependence our results may have on the poorly understood systematic errors associated with the Galactic DM models. 3. Events detected in far side-lobes are rejected, as our primary beam is poorly understood in this regime. These far side-lobe events have visually-identified “spiky” signatures in the burst spectrum (e.g., CHIME/FRB Collaboration et al. 2020b). These cuts eliminate 205 Catalog 1 FRBs (dominated by the SNR cut) from the following analysis. The assumption of identical biases for non-repeaters and repeaters is certainly untrue since we reduce our trigger threshold for the directions and DMs of previously detected FRBs, to be additionally sensitive to repeat bursts. For this reason, unless specified otherwise, we compare only the first-detected repeater events for each repeating source, since that event’s trigger threshold was at the nominal value, thereby eliminating any possible disparity, and avoiding statistical complications of having multiple events per source. More subtly, the assumption of identical biases for repeaters and apparent non-repeaters, even with identical thresholds, is also likely untrue given the differences in burst widths and bandwidths shown below and described in detail by Pleunis et al. (2021, submitted) and previously reported (CHIME/FRB Collaboration et al. 2019a; Fonseca et al. 2020), coupled with the fact that selection effects are correlated (as discussed in detail in Section 6). Nevertheless, in this analysis we are only sensitive to differences in the selection-induced correlations between the two sub-populations, which, while we have not explored this effect in detail, we expect it to be small and unlikely to affect the conclusions of our comparison. Note that although we consider only Catalog 1 events with SNR ≥ 12, we have verified that all conclusions below hold when all catalog events, regardless of SNR, are included. For all distribution comparisons, we report probabilities from both Anderson–Darling (AD) and Kolmogorov–Smirnov (KS) tests, where a p-value < 0.01 implies > 99% confidence that the two samples are drawn from different underlying distributions."
+      },
+      "confidence": 0.95,
+      "task": "comparison of repeater versus apparent non-repeater properties",
+      "setup": "CHIME/FRB Catalog 1 data, cuts: SNR ≥ 12, DM > 1.5 max Galactic DM, exclude far side-lobe events"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8b70248ef8aed4f0_x3",
+      "evidence": {
+        "section": "6. INTRINSIC CHARACTERISTICS OF THE FRB POPULATION",
+        "original_text": "Here we infer the properties of the intrinsic FRB population from the observed CHIME/FRB Catalog 1 data. The central challenge is to account for selection biases, i.e., the fact that the probability to detect an FRB depends on its properties in a complicated way, and to account for instrument-induced errors in the measured quantities. To correct the observed property distributions for these effects, we use the injection system described in Section 4. Here we give a brief overview of the methods used to account for selection effects. A more detailed description of our FRB inference pipeline, including additional methods used for cross-checks, will be described elsewhere. We present distributions of FRB properties corrected for selection biases and perform a more detailed examination of the data in the property space of fluence and DM: inferring the overall FRB sky rate, the fluence distribution, and examining how the fluence distribution depends on DM. For the present population analysis, we will consider six FRB properties: fluence (F), DM, scattering timescale (τ), intrinsic width (w), spectral index (γ), and spectral running (r). Using injections to compensate for selection effects is complicated by the fact that both the selection effects, and the intrinsic FRB population, may be correlated in the high-dimensional phase space of FRB properties. For instance, we expect a selection bias against high-DM bursts because DM-smearing dilutes the burst signal in time. However, this bias is weaker if FRBs have a wider intrinsic pulse profile since the smearing would then have a smaller relative effect. It is also weaker if FRBs have flatter spectra, since a larger fraction of the signal would come from higher frequencies where the effect of smearing is reduced. There is also an interplay with signal loss from our data filtering and flagging, which more adversely affects low-DM events. Thus, in principle, the distributions of all three of these properties (and in fact all FRB properties) should be modeled and fit simultaneously to be fully consistent. We instead make a number of simplifying assumptions, and defer a full multi-dimensional intrinsic correlations analysis to future work. To simplify the analysis, we study FRB properties one or two at a time, holding the distributions for the rest of the properties fixed at a fiducial population model that provides a reasonable overall description of the data. As we show in the next section, it is possible to robustly compensate for correlations in the selection effects so long as correlations in the intrinsic population are small."
+      },
+      "confidence": 0.95,
+      "task": "intrinsic FRB population property inference",
+      "setup": "CHIME/FRB Catalog 1 data, synthetic signal injection system to calibrate selection biases"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8b70248ef8aed4f0_qr1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.99,
+      "quantity": "number of FRBs detected",
+      "value": 536,
+      "unit": null,
+      "context": "CHIME/FRB Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8b70248ef8aed4f0_qr2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources."
+      },
+      "confidence": 0.99,
+      "quantity": "number of bursts from repeating sources",
+      "value": 62,
+      "unit": null,
+      "context": "from 18 previously reported repeating sources",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8b70248ef8aed4f0_qr3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+0] 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space."
+      },
+      "confidence": 0.98,
+      "quantity": "power-law index for cumulative fluence distribution",
+      "value": -1.4,
+      "unit": null,
+      "context": "inferred from catalog data",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8b70248ef8aed4f0_qr4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We infer a sky rate of [525 ± 30(stat.) −[+140] 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.98,
+      "quantity": "sky rate",
+      "value": 525,
+      "unit": "events per sky per day",
+      "context": "above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8b70248ef8aed4f0_qr5",
+      "evidence": {
+        "section": "2.3. Sensitivity threshold",
+        "original_text": "The median 95% completeness across all bursts is approximately 5 Jy ms."
+      },
+      "confidence": 0.95,
+      "quantity": "median 95% completeness fluence threshold",
+      "value": 5,
+      "unit": "Jy ms",
+      "context": "across all bursts",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8b70248ef8aed4f0_p1",
+      "evidence": {
+        "section": "5.4. Burst temporal width and bandwidth distribution comparisons",
+        "original_text": "Figure 14 shows the distributions of measured widths (i.e., no upper limits, with scattering and DM smearing from the finite frequency channel size omitted) for first-detected repeater events and apparent non-repeaters. For multi-component bursts, we have plotted the mean of each component width, unless one sub-component width is an upper limit (2 cases), in which case we plot the width of the first sub-component for which it is measurable. The distributions are statistically extremely unlikely to have arisen from identical underlying distributions, with pAD = 7.3 × 10 −5 and pKS = 5.6 × 10 −5 , with repeaters on average broader. This difference in repeater and apparent non-repeater burst widths was previously reported based onlimited data (CHIME/FRB Collaboration et al. 2019a; Fonseca et al. 2020) and is strongly supported by the Catalog 1 data. The result strongly persists when including SNR < 12 bursts, and also when including upper limits on burst widths. Because omission of upper limits represents a loss of information, we also applied two statistical tests that can incorporate upper limits (i.e. “left-censored” data in survival analysis parlance): the log-rank test (Harrington & Fleming 1982) and Peto & Peto’s modification (Peto & Peto 1972) of the Gehan-Wilcoxon test (Gehan 1965), both implemented using the R NADA package’s cendiff routine[6] (Helsel 2005; R Core Team 2020; Lopaka 2020). Both tests yield p-values that strongly support different underlying populations, with p = 5 × 10 −10 and 7 × 10 −10 , respectively."
+      },
+      "confidence": 0.97,
+      "metric": "intrinsic temporal width",
+      "compared_to": "repeaters vs apparent non-repeaters"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8b70248ef8aed4f0_p2",
+      "evidence": {
+        "section": "5.4. Burst temporal width and bandwidth distribution comparisons",
+        "original_text": "For each burst, Catalog 1 contains both the lowest and highest frequencies at which the burst was detected, and hence the difference, which is approximately the event bandwidth. The Catalog 1 values are uncorrected for instrumental bandpass response, however. Under the reasonable assumption that on average, the correction is the same for non-repeaters and repeater bursts, we can compare the bandwidth distributions for the two groups. This is shown in Figure 15 (left). A substantial difference in distributions is apparent by eye, and confirmed statistically (pAD = 1.3 × 10 −4 , pKS = 2.3 × 10 −4 ). The bandwidth properties of repeaters versus apparent non-repeaters are discussed in more detail by Pleunis et al. (2021)."
+      },
+      "confidence": 0.96,
+      "metric": "spectral bandwidth",
+      "compared_to": "repeaters vs apparent non-repeaters"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8b70248ef8aed4f0_p3",
+      "evidence": {
+        "section": "5.1. Sky distribution comparisons",
+        "original_text": "First we compare the sky distributions of repeaters and non-repeaters, specifically their right ascension and declination distributions (see Figure 10). For right ascension, we find no difference in the distributions (pAD = 0.22, pKS = 0.24), with both consistent with a uniform distribution when including bursts at all declinations. Similarly for declination, the two distributions are statistically consistent (pAD = 0.55, pKS = 0.49). Note that the declination distributions in Figure 10 are not corrected for exposure and sensitivity, but such corrections affect both repeaters and non-repeaters similarly. One caveat is that near the North Celestial Pole, our source density is high due to the long exposure (see Figure 4) which results in confusion that makes repeater identification more difficult than at lower declinations. Ignoring the Polar region only strengthens the conclusions that the declination distributions of repeaters and apparent non-repeaters are statistically consistent with arising from the same sky distribution. We note that the apparent peak in the declination distribution of non-repeating FRBs at ∼ 28 ◦ is consistent within 2 σ with the remainder of the distribution."
+      },
+      "confidence": 0.95,
+      "metric": "sky distribution (right ascension and declination)",
+      "compared_to": "repeaters vs apparent non-repeaters"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8b70248ef8aed4f0_p4",
+      "evidence": {
+        "section": "5.2. DM comparisons",
+        "original_text": "Next, we consider the observed and extragalactic DMs of apparent non-repeaters and first-detected repeater events from Catalog 1, where extragalactic DM is defined as the observed DM minus the maximal line-of-sight component predicted by NE2001; see Figure 11. We find that the distributions are consistent with being drawn from the same underlying distribution for DM (pAD = 0.35, pKS = 0.33) and for extragalactic DM (pAD = 0.34, pKS = 0.24)."
+      },
+      "confidence": 0.95,
+      "metric": "dispersion measure (DM)",
+      "compared_to": "repeaters vs apparent non-repeaters"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8b70248ef8aed4f0_p5",
+      "evidence": {
+        "section": "5.3. Signal strength comparisons",
+        "original_text": "Next we compare direct measures of signal strength, SNR, as measured by the initial trigger SNR from our real-time FRB search code bonsai (CHIME/FRB Collaboration et al. 2018) and also by our intensity data burst code, fitburst (see Section 3.3). Note that neither of these two SNR measurements is a faithful representation of the true signal strength at the telescope aperture, because of the complex, frequency-dependent CHIME beam response. Moreover, bonsai SNR is corrupted by RFI mitigation (clipping) for very bright bursts, an effect with complex behavior in time and spectral frequency. The repeater and non-repeater samples could be differentially affected by the beam, clipping, or other effects, since the two populations have intrinsically different spectro-temporal properties (studied in detail below). Even so, the comparison is interesting since an observed difference is indicative of an intrinsic difference in the populations, even if it might be indirect through correlated observational effects. The distributions are shown in Figure 12. The repeater and apparent non-repeater distributions are consistent with being drawn from the same population for both SNR measures (pAD = 0.65, pKS = 0.44 for bonsai SNR and pAD = 0.08, pKS = 0.26 for fitburst SNR)."
+      },
+      "confidence": 0.9,
+      "metric": "signal strength (SNR)",
+      "compared_to": "repeaters vs apparent non-repeaters"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8b70248ef8aed4f0_p6",
+      "evidence": {
+        "section": "5.4. Burst temporal width and bandwidth distribution comparisons",
+        "original_text": "We can also compare distributions of scattering times for apparent non-repeaters and repeaters in Catalog 1. A difference might be expected if the local source environment between repeaters and non-repeaters differed, and if scattering in the local environment dominated over other sources of scattering. Figure 15 (right) shows measured scattering times (ignoring upper limits) for the repeaters and apparent non-repeaters. For repeaters, the scattering time plotted is the most constraining from all of the sources’ repeat bursts. Our statistical tests indicate no evidence for the distributions being from different underlying populations (pAD = 0.42, pKS = 0.32). We also verified this result using the log-rank test and the modified Gehan-Wilcoxon test. Both tests yielded p-values indicating consistent underlying populations, with p = 0.1 and 0.3, respectively."
+      },
+      "confidence": 0.95,
+      "metric": "scattering time",
+      "compared_to": "repeaters vs apparent non-repeaters"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_8b70248ef8aed4f0_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a catalog of 536 fast radio bursts (FRBs) detected by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) Project between 400 and 800 MHz from 2018 July 25 to 2019 July 1, including 62 bursts from 18 previously reported repeating sources. The catalog represents the first large sample, including bursts from repeaters and non-repeaters, observed in a single survey with uniform selection effects. This facilitates comparative and absolute studies of the FRB population. We show that repeaters and apparent non-repeaters have sky locations and dispersion measures (DMs) that are consistent with being drawn from the same distribution. However, bursts from repeating sources differ from apparent non-repeaters in intrinsic temporal width and spectral bandwidth. Through injection of simulated events into our detection pipeline, we perform an absolute calibration of selection effects to account for systematic biases. We find evidence for a population of FRBs—comprising a large fraction of the overall population—with a scattering time at 600 MHz in excess of 10 ms, of which only a small fraction are observed by CHIME/FRB. We infer a powerlaw index for the cumulative fluence distribution of α = −1.40 ± 0.11(stat.) −[+]0 0.[.]06 09[(sys.),] consistent with the −3/2 expectation for a non-evolving population in Euclidean space. We find α is steeper for high-DM events and shallower for low-DM events, which is what would be expected when DM is correlated with distance. We infer a sky rate of [525 ± 30(stat.) −[+]140 130[(sys.)]] [/]sky [/]day above a fluence of 5 Jy ms at 600 MHz, with scattering time at 600 MHz under 10 ms, and DM above 100 pc cm −3."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_8b70248ef8aed4f0_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "This catalog represents by far the largest number of FRBs collected in a uniform manner using a single telescope and detection pipeline. This uniformity is helpful for studying FRB property distributions, as past analyses have been complicated by using FRBs from multiple surveys having very different survey parameters (e.g. Lawrence et al. 2017). The central challenge in studying the FRB population from our data set is compensating for selection effects (e.g. it is more difficult to measure a narrow intrinsic burst width in the presence of strong scattering) and instrument-induced biases (e.g. it is more difficult to measure narrow intrinsic burst widths due to our finite time resolution) in event reconstruction. For some FRB properties (e.g., fluence, scattering), selection effects are strong and our fractional completeness varies by orders of magnitude across the range of detected values for the property. For other properties (e.g., DM), selection are at the factor-of-two level. We use two strategies for dealing with these selection effects. In this section, we compare repeater burst properties to those of apparent non-repeaters, under the reasonable assumption both suffer the same selection biases, subject to minor caveats discussed below. In this way we can deduce in a direct way differences in properties between the two observational classes. However, this comparative method does not permit an absolute measurement of the characteristics of either population, for example the fluence distribution or overall sky rate. In contrast, in Section 6, we explicitly measure and compensate for selection effects using injections, but only for the total population for which we have the best statistics."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8b70248ef8aed4f0_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The fitting procedure described here has a number of limitations, including that the model may be an imperfect description of the intrinsic burst morphologies; inhomogeneities in the spectral frequency response from the beam and non-uniform noise; limited ability of the least-squares optimizer to converge on a global best fit and represent uncertainties; and the reliance on human judgement to assess adequate convergence and determine component count for complex bursts. These limitations are discussed in detail in Appendix B, where we also describe metrics that can be used to assess the quality of the fits on a burst-by-burst basis. Improvements to this procedure, including the use of Markov Chain Monte Carlo (MCMC) techniques and an automatic determination of n, are ongoing and will be the subject of future CHIME/FRB catalogs."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8b70248ef8aed4f0_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "In Catalog 1, our ability to determine burst fluences is limited by the uncertainty of our burst localization combined with CHIME’s complex and rapidly varying beam pattern. In particular, the spectral structure of the beam pattern and overall beam response can change significantly over the extent of the header localization region obtained for each burst, making it difficult to reliably correct fluence measurements for beam attenuation. Localization uncertainty, and to a lesser extent beam model uncertainty, introduces an unknown primary beam response that is a strong function of a bursts uncertain hour angle (see Figure 6). As such, we assume that each burst was detected along the meridian of the primary beam (at the peak sensitivity of the burst declination arc). Thus, our fluence measurements are biased low, as bursts off-meridian will experience beam attenuation that we are not accounting for. Note that the errors on the fluences, discussed below, do not quantify this bias—the measurements we provide are most appropriately interpreted as lower limits, with an uncertainty on the limiting value."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8b70248ef8aed4f0_lm3",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The sensitivity of the telescope during the injections campaign in August 2020 is not perfectly representative of the sensitivity during the catalog period one to two years earlier. Based on the detection SNRs of pulsars (tabulated daily), we estimate our noise levels have improved by 6% since the beginning of the survey and 3% since midpoint of the survey period. These changes are accounted for in our population analysis and systematic error budget as described in Appendix D. Furthermore, several periods of low sensitivity or differing instrument configurations (including the pre-commissioning period over which our first 13 bursts were discovered) are not well represented by the injections campaign. These periods, and the bursts discovered therein, are thus excised from further analyses that rely on injections. Finally, numerous tweaks to the operations of the instrument have occurred over and since the observation period. These tweaks mostly served to streamline observations and to increase the instrument uptime (for which we have a separate accounting) and have caused only small changes in our completeness. However, since our observations occurred prior to the availability of the injections system, changes in our completeness over time are difficult to quantify. Such effects should be better quantified in future data releases where injections can be performed throughout the observations."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_8b70248ef8aed4f0_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Improvements to this procedure, including the use of Markov Chain Monte Carlo (MCMC) techniques and an automatic determination of n, are ongoing and will be the subject of future CHIME/FRB catalogs. A detailed description of the automated fluence calibration pipeline, including an explanation of current limitations, will be provided elsewhere. Such effects should be better quantified in future data releases where injections can be performed throughout the observations. We will report on a more detailed analysis of this possible correlation in future work, but discuss it briefly in Section 7.3. A more detailed description of our FRB inference pipeline, including additional methods used for cross-checks, will be described elsewhere. Rigorously testing this assumption is beyond the scope of this paper and will be deferred to future work, except for F and DM, which we study briefly in Section 6.2. Given the limited statistical power of our sample of ∼250 events, we expect such correlations to have a small impact on our results. We do, however, check for intrinsic correlations through a series of jackknife tests described in Section C.3, finding some evidence that such correlations may exist."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

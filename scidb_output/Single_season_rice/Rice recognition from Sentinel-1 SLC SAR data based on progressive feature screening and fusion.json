@@ -1,0 +1,668 @@
+{
+  "metadata": {
+    "doc_id": "doc_d83335731c4cf478",
+    "source_file": "Rice recognition from Sentinel-1 SLC SAR data based on progressive feature screening and fusion.md",
+    "title": "Enhancing rice recognition accuracy in SAR images through multi-temporal and multi-feature data fusion",
+    "year": 2024,
+    "doi": "10.1016/j.jag.2024.104196",
+    "abstract": "a _College of Astronautics, Nanjing University of Aeronautics and Astronautics, Nanjing 211106, China_ b _State Key Laboratory of Information Engineering in Surveying, Mapping and Remote Sensing, Wuhan University, Wuhan 430079, China_ c _Xinjiang Uygur Autonomous Region Surveying and Mapping Achievement Center, Beijing 100830, China_",
+    "introduction": "Rice is a crucial staple feeding over half of the global population (Kuenzer and Knauer, 2013), utilizing more than 12 % of the world’s arable land (Nakai, 2018). Monitoring rice is vital for sustainable development (Orynbaikyzy et al., 2019). Optical remote sensing is pivotal in estimating crop area, monitoring growth, and predicting yields. However, regions where rice is cultivated often face challenges obtaining high-quality optical data due to persistent rainy and cloudy conditions (Liu et al., 2019; Zhu and Woodcock, 2012). Advancements in synthetic aperture radar (SAR) technology offer a promising solution. SAR is not hindered by weather conditions, allowing the acquisition of data in various seasons and weather scenarios, capturing dynamic \n\nsurface changes. Rice recognition using SAR has gained attention (Mullissa et al., 2018; Wang et al., 2018; Zhang et al., 2019). Dualpolarized SAR, particularly sensitive to vegetation characteristics, proves valuable for accurate feature recognition, especially considering rice’s diverse scattering properties during different growth stages (Sivasankar et al., 2020). The Sentinel-1 satellite, equipped with four acquisition modes, including Strip Map (SM), Interferometric Wide Swath (IW), Extra Wide-Swath (EW), Wave (WV), enhances dualpolarization SAR data. Among these modes, IW is the primary choice for land applications. While Ground Range Detected (GRD) products lack phase information, limiting polarization analysis accuracy, SLC products offer more precise phase information, enhancing sensitivity to crop growth changes. This advantage aids in distinguishing crops from \n\n* Corresponding authors. \n\n_E-mail addresses:_ sijingtian@nuaa.edu.cn (S. Tian), qhsheng@nuaa.edu.cn (Q. Sheng), cuihaocasm@whu.edu.cn (H. Cui), guozhang@whu.edu.cn (G. Zhang), jun. li@nuaa.edu.cn (J. Li), wangbo_nuaa@nuaa.edu.cn (B. Wang), 18009910290@163.com (Z. Xie). \n\nhttps://doi.org/10.1016/j.jag.2024.104196 \n\nReceived 4 January 2024; Received in revised form 28 September 2024; Accepted 30 September 2024 Available online 7 October 2024 \n\n1569-8432/© 2024 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY-NC license ( http://creativecommons.org/licenses/bync/4.0/ ). \n\n> _S. Tian et al.                                                                                                                                                                                                                                     International Journal of Applied Earth Observation and Geoinformation 134 (2024) 104196_ \n\nland cover and enables finer surface characteristic analysis, essential for accurate rice identification. \n\nSAR image classification and recognition algorithms are typically categorized into statistical algorithms based on grayscale cell features (Xiang et al., 2013) and target decomposition algorithms based on electromagnetic wave scattering characteristics (Zhang et al., 2020). The pixel-based method analyzes target statistical characteristics and lacks a specific mechanism. Backscatter coefficient-based methods demonstrate varying patterns in rice growth cycles compared to other features (Inoue et al., 2014). Results indicate that rice’s backscatter coefficient changes with growth parameters (Yang et al., 2018). Utilizing HH and VV polarization, a precise rice identification is achieved by capturing the backscatter coefficient variation over time (Nguyen et al., 2015). However, characterizing rice growth cycle variations using the backscatter coefficient assumes a uniformly distributed canopy of tiny water droplets, which doesn’t hold true in field measurements. The uneven distribution of rice canopy layers horizontally, especially in the vegetative growth period, affects the main scattering mechanism due to changes in the interval between adjacent rice mounds. Polarimetric decomposition parameters also reflect rice’s electromagnetic wave scattering characteristics. The scattering characteristics obtained by H/α decomposition exhibit regular changes on the H/α classification plane (Izumi et al., 2017). H/α decomposition is a technique in SAR data analysis for interpreting radar echo scattering mechanisms. It distinguishes different surface targets and their scattering, crucial for surface classification and vegetation monitoring. Nevertheless, the presence of many scatterers in the zonal boundary region within the H/α classification plane poses challenges for their direct identification and classification using H/α decomposition parameters. Several studies highlight limitations of SAR image-based H/α decomposition as a monitoring basis for features during any growth period (Salma et al., 2022). The evolution of Sentinel-1 SLC products in rice recognition emphasizes comprehensive utilization of advanced features, data fusion, and advanced data analysis technology to enhance accuracy and broaden the application of rice recognition. \n\nExcellent classifiers are crucial for crops recognition, especially when dealing with multi-temporal polarization data (Wei et al., 2022). Statistical classifiers, such as Wishart (Liu et al., 2016), and standard machine learning algorithms like support vector machines (SVM), as well as deep learning networks such as recurrent neural networks (RNN), are employed to extract and interpret features. These approaches allow for a more comprehensive description of various feature attributes, thereby enhancing feature recognition capabilities (Ndikumana et al., 2018). In recent years, recurrent neural networks (RNNs), particularly long-term short-term memory RNNs (LSTM), have proven to be effective deep learning methods for end-to-end time series classification. LSTMs address the issue of gradient vanishing or explosion that may occur with increasing time series data. The application of RNNs to the time series classification of crops has gained traction. For instance, Bazzi et al. successfully used backscatter coefficient features in conjunction with recurrent neural networks to achieve a 97 % accuracy in classifying crops in France (Bazzi et al., 2019). \n\nThis paper proposes a method to enhance rice recognition accuracy in synthetic aperture radar (SAR) images by combining multi-temporal and multi-feature data. Instead of relying solely on the backscatter coα efficient, this approach integrates backscatter coefficient and H/ decomposition parameter features. The method automatically categorizes five ground features using features fusion. Firstly, using Gaussian fitting statistical distribution method, the coarse selection of samples with different features at different time is fuzzy extracted. Secondly, by analyzing the inter-group features of the samples, the time feature combinations of different time series features are established. Then, taking the features of the samples as input, the rice growth was expressed through the combination of the temporal growth height of rice and the radar scattering model. Thirdly, we use bidirectional LSTM (BiLSTM) network to express rice growth under SAR image sample \n\nfeatures fusion. The accuracy of ground classification is evaluated before and after data fusion. Validation data is input into KNN (K-Nearest Neighbors), SVM (Support Vector Machine), and BiLSTM classifiers, demonstrating the feasibility of the data fusion method (DF: σ[f] ). The objective of this paper also compares single features (SF: VV, VH), combined features (CF:VV + VH;H*α; σ[f] ). And to enable us to identify generalizations of adjacent extended regions with sample features. \n\nUsing the 2018 time-series Sentinel1 SLC data comprising the rice growth season from May to October, we investigate sample features that express the difference between rice growth and other land features, and apply progressive feature fusion to map rice in two neighboring cities in 2018. By combining the sample point screening under the fuzzy rough Gaussian fitting statistical distribution and the feature fusion model under the length and height curve of rice, a rice recognition method based on progressive feature screening and fusion was proposed, and the fused feature samples were applied to the BiLSTM recognition classifier. It has the potential to identify rice from two adjacent spliced Sentinel1 SLC images with a small number of samples. The progressive feature fusion method is very important for rice recognition, which will be helpful for resource management and food security.",
+    "primary_discipline": {
+      "level1": "测绘科学技术",
+      "level2": "遥感技术",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "农学",
+        "level2": "作物学",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Rice recognition",
+      "SAR",
+      "Feature fusion",
+      "BiLSTM",
+      "Sentinel-1"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:43:10.254988+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Rice, a crucial global food crop, necessitates accurate mapping for food security assessment. China, a major rice producer and consumer, includes Jiangsu Province as a significant rice production region. The Hongzehu (HZH) area in Jiangsu contributes substantially to rice supply, supporting food security locally and province-wide. Rice recognition using SAR has gained attention. Dual-polarized SAR, particularly sensitive to vegetation characteristics, proves valuable for accurate feature recognition, especially considering rice’s diverse scattering properties during different growth stages. The study area’s data sets were categorized into five classes: rice, water, impervious surface, wood, and wasteland. Rice fields and wood samples were obtained in 2018 through sampling areas of interest identified in Google Earth images and field surveys."
+      },
+      "confidence": 0.99,
+      "term": "rice",
+      "normalized": "水稻",
+      "std_label": "Rice"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sentinel-1 SAR data, particularly Single Look Complex (SLC) products, holds promise for precise crop mapping with enhanced phase and polarization information, enhancing sensitivity to rice growth changes by analyzing rice surface features information. However, challenges persist, especially climate impacts and timing inconsistencies between fields for planting rice. To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. The evolution of Sentinel-1 SLC products in rice recognition emphasizes comprehensive utilization of advanced features, data fusion, and advanced data analysis technology to enhance accuracy and broaden the application of rice recognition. Using the 2018 time-series Sentinel1 SLC data comprising the rice growth season from May to October, we investigate sample features that express the difference between rice growth and other land features, and apply progressive feature fusion to map rice in two neighboring cities in 2018."
+      },
+      "confidence": 0.98,
+      "term": "Sentinel-1 SLC SAR data",
+      "normalized": "Sentinel-1 SLC SAR数据",
+      "std_label": "Sentinel-1 SLC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. We introduce fuzzy coarse screening based on statistical distribution characteristics and refine it with Gaussian fitting. A model incorporating time-series sample separation and polarization decomposition feature fusion based on rice growth height enhances rice growth expression. For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features. Experimental results demonstrate the method’s efficacy in two cities with a limited number of sampling points. The progressive feature fusion (DF) method outperforms classical classification methods using single feature (SF) or combined features (CF). Our proposed strategy proves effective for rice mapping applications, providing a promising approach for leveraging Sentinel-1 SLC SAR data."
+      },
+      "confidence": 0.97,
+      "term": "progressive feature screening and fusion method",
+      "normalized": "渐进式特征筛选与融合方法",
+      "std_label": "PFSF"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features. Experimental results demonstrate the method’s efficacy in two cities with a limited number of sampling points. The progressive feature fusion (DF) method outperforms classical classification methods using single feature (SF) or combined features (CF). Our proposed strategy proves effective for rice mapping applications, providing a promising approach for leveraging Sentinel-1 SLC SAR data. In conclusion, our study enhances accuracy in identifying rice fields and characterizing rice growth, contributing to improved food security assessments despite challenges associated with rainy seasons and planting times."
+      },
+      "confidence": 0.96,
+      "term": "BiLSTM network",
+      "normalized": "双向长短期记忆网络",
+      "std_label": "BiLSTM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "SAR image classification and recognition algorithms are typically categorized into statistical algorithms based on grayscale cell features and target decomposition algorithms based on electromagnetic wave scattering characteristics. The pixel-based method analyzes target statistical characteristics and lacks a specific mechanism. Backscatter coefficient-based methods demonstrate varying patterns in rice growth cycles compared to other features. Results indicate that rice’s backscatter coefficient changes with growth parameters. Utilizing HH and VV polarization, a precise rice identification is achieved by capturing the backscatter coefficient variation over time. However, characterizing rice growth cycle variations using the backscatter coefficient assumes a uniformly distributed canopy of tiny water droplets, which doesn’t hold true in field measurements."
+      },
+      "confidence": 0.95,
+      "term": "backscatter coefficient",
+      "normalized": "后向散射系数",
+      "std_label": "σ"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Polarimetric decomposition parameters also reflect rice’s electromagnetic wave scattering characteristics. The scattering characteristics obtained by H/α decomposition exhibit regular changes on the H/α classification plane. H/α decomposition is a technique in SAR data analysis for interpreting radar echo scattering mechanisms. It distinguishes different surface targets and their scattering, crucial for surface classification and vegetation monitoring. Nevertheless, the presence of many scatterers in the zonal boundary region within the H/α classification plane poses challenges for their direct identification and classification using H/α decomposition parameters. Several studies highlight limitations of SAR image-based H/α decomposition as a monitoring basis for features during any growth period."
+      },
+      "confidence": 0.94,
+      "term": "H/α decomposition",
+      "normalized": "H/α分解",
+      "std_label": "H/α"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c7",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "MIMICS (MIchigan MIcrowave Canopy Scattering) model is based on the microwave radiation transmission model, and the vegetation scatterers are decomposed into the canopy, trunk layer and ground surface layer of vegetation. The distribution of each organ of vegetation presents certain rules, which can be described through certain functional relationships. The corresponding microwave backscattering is divided into five parts. On this basis, Durden et al. regarded rice as a continuum composed of discrete scatterers. The scattering mainly occurred in the canopy layer and the underlying surface layer of rice. The underlying surface is basically water, which can be simulated as a smooth mirror, and its effect on radar electromagnetic wave is mirror reflection. Therefore, the interaction mechanism between radar microwave and canopy and water surface can be simplified, and rice backscattering can be divided into four parts."
+      },
+      "confidence": 0.93,
+      "term": "MIMICS model",
+      "normalized": "MIMICS模型",
+      "std_label": "MIMICS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d83335731c4cf478_c8",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "In this study, polarization entropy H and mean scattering Angle α were used to characterize the changes of crop scattering information, and were combined with VV and VH backscattering coefficients to achieve data fusion. The characteristic fusion index (σ[f]) of polarization growth named DF method can be obtained. In order to further understand the expression of different characteristics on rice growth, the comparison of sample mean values curves after weighted optimization with different features is shown in Fig. 9. It can be seen that DF method is more consistent with the growth trend of rice and more separable in each phase compared with other feature fusion (SF, CF) methods."
+      },
+      "confidence": 0.92,
+      "term": "feature fusion (DF) method",
+      "normalized": "特征融合(DF)方法",
+      "std_label": "DF"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. We introduce fuzzy coarse screening based on statistical distribution characteristics and refine it with Gaussian fitting. A model incorporating time-series sample separation and polarization decomposition feature fusion based on rice growth height enhances rice growth expression. For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features. Experimental results demonstrate the method’s efficacy in two cities with a limited number of sampling points. The progressive feature fusion (DF) method outperforms classical classification methods using single feature (SF) or combined features (CF). Our proposed strategy proves effective for rice mapping applications, providing a promising approach for leveraging Sentinel-1 SLC SAR data."
+      },
+      "confidence": 0.91,
+      "head": "doc_d83335731c4cf478_c3",
+      "relation_type": "enhances",
+      "relation_surface": "proves effective for rice mapping applications",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sentinel-1 SAR data, particularly Single Look Complex (SLC) products, holds promise for precise crop mapping with enhanced phase and polarization information, enhancing sensitivity to rice growth changes by analyzing rice surface features information. However, challenges persist, especially climate impacts and timing inconsistencies between fields for planting rice. To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. The evolution of Sentinel-1 SLC products in rice recognition emphasizes comprehensive utilization of advanced features, data fusion, and advanced data analysis technology to enhance accuracy and broaden the application of rice recognition."
+      },
+      "confidence": 0.9,
+      "head": "doc_d83335731c4cf478_c2",
+      "relation_type": "uses",
+      "relation_surface": "holds promise for precise crop mapping",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. We introduce fuzzy coarse screening based on statistical distribution characteristics and refine it with Gaussian fitting. A model incorporating time-series sample separation and polarization decomposition feature fusion based on rice growth height enhances rice growth expression. For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features. Experimental results demonstrate the method’s efficacy in two cities with a limited number of sampling points. The progressive feature fusion (DF) method outperforms classical classification methods using single feature (SF) or combined features (CF). Our proposed strategy proves effective for rice mapping applications, providing a promising approach for leveraging Sentinel-1 SLC SAR data."
+      },
+      "confidence": 0.89,
+      "head": "doc_d83335731c4cf478_c3",
+      "relation_type": "uses",
+      "relation_surface": "proposes a progressive feature screening and fusion method using multi-temporal SAR images",
+      "tail": "doc_d83335731c4cf478_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features. Experimental results demonstrate the method’s efficacy in two cities with a limited number of sampling points. The progressive feature fusion (DF) method outperforms classical classification methods using single feature (SF) or combined features (CF). Our proposed strategy proves effective for rice mapping applications, providing a promising approach for leveraging Sentinel-1 SLC SAR data. In conclusion, our study enhances accuracy in identifying rice fields and characterizing rice growth, contributing to improved food security assessments despite challenges associated with rainy seasons and planting times."
+      },
+      "confidence": 0.88,
+      "head": "doc_d83335731c4cf478_c4",
+      "relation_type": "enhances",
+      "relation_surface": "advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "SAR image classification and recognition algorithms are typically categorized into statistical algorithms based on grayscale cell features and target decomposition algorithms based on electromagnetic wave scattering characteristics. The pixel-based method analyzes target statistical characteristics and lacks a specific mechanism. Backscatter coefficient-based methods demonstrate varying patterns in rice growth cycles compared to other features. Results indicate that rice’s backscatter coefficient changes with growth parameters. Utilizing HH and VV polarization, a precise rice identification is achieved by capturing the backscatter coefficient variation over time. However, characterizing rice growth cycle variations using the backscatter coefficient assumes a uniformly distributed canopy of tiny water droplets, which doesn’t hold true in field measurements."
+      },
+      "confidence": 0.87,
+      "head": "doc_d83335731c4cf478_c5",
+      "relation_type": "measures",
+      "relation_surface": "demonstrate varying patterns in rice growth cycles",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Polarimetric decomposition parameters also reflect rice’s electromagnetic wave scattering characteristics. The scattering characteristics obtained by H/α decomposition exhibit regular changes on the H/α classification plane. H/α decomposition is a technique in SAR data analysis for interpreting radar echo scattering mechanisms. It distinguishes different surface targets and their scattering, crucial for surface classification and vegetation monitoring. Nevertheless, the presence of many scatterers in the zonal boundary region within the H/α classification plane poses challenges for their direct identification and classification using H/α decomposition parameters. Several studies highlight limitations of SAR image-based H/α decomposition as a monitoring basis for features during any growth period."
+      },
+      "confidence": 0.86,
+      "head": "doc_d83335731c4cf478_c6",
+      "relation_type": "measures",
+      "relation_surface": "reflect rice’s electromagnetic wave scattering characteristics",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r7",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "MIMICS (MIchigan MIcrowave Canopy Scattering) model is based on the microwave radiation transmission model, and the vegetation scatterers are decomposed into the canopy, trunk layer and ground surface layer of vegetation. The distribution of each organ of vegetation presents certain rules, which can be described through certain functional relationships. The corresponding microwave backscattering is divided into five parts. On this basis, Durden et al. regarded rice as a continuum composed of discrete scatterers. The scattering mainly occurred in the canopy layer and the underlying surface layer of rice. The underlying surface is basically water, which can be simulated as a smooth mirror, and its effect on radar electromagnetic wave is mirror reflection. Therefore, the interaction mechanism between radar microwave and canopy and water surface can be simplified, and rice backscattering can be divided into four parts."
+      },
+      "confidence": 0.85,
+      "head": "doc_d83335731c4cf478_c7",
+      "relation_type": "derives",
+      "relation_surface": "regarded rice as a continuum composed of discrete scatterers",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d83335731c4cf478_r8",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "In this study, polarization entropy H and mean scattering Angle α were used to characterize the changes of crop scattering information, and were combined with VV and VH backscattering coefficients to achieve data fusion. The characteristic fusion index (σ[f]) of polarization growth named DF method can be obtained. In order to further understand the expression of different characteristics on rice growth, the comparison of sample mean values curves after weighted optimization with different features is shown in Fig. 9. It can be seen that DF method is more consistent with the growth trend of rice and more separable in each phase compared with other feature fusion (SF, CF) methods."
+      },
+      "confidence": 0.84,
+      "head": "doc_d83335731c4cf478_c8",
+      "relation_type": "enhances",
+      "relation_surface": "is more consistent with the growth trend of rice and more separable",
+      "tail": "doc_d83335731c4cf478_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d83335731c4cf478_d1",
+      "evidence": {
+        "section": "2.2. Data source and sample dataset",
+        "original_text": "In this study, observations utilized the single look complex (SLC) Sentinel-1 (S1) product with a C-band dual polarization (VH + VV) mode. The S1 product offers a 12-day revisit period and all-weather imaging capabilities, with an incidence angle ranging from 32.189° to 34.21°. The data were acquired in Interferometric Wide Swath (IW) mode, featuring a width of 250 km and a resolution of 5 m * 20 m. The experimental Sentinel-1 SAR images were obtained from the Copernicus Open Access Hub. The study encompassed the entire growth cycle of rice in Suqian and Huaian cities. Throughout the growing season (mid-May to the end of October), 14 (7 * 2) Sentinel-1 images were composited from pairs captured at similar times to cover the study area comprehensively. The level-1 SLC products underwent processing steps, including orbit correction, radiation correction, deburst, polarization matrix, multi-looking, speckle removal, and geocoding. The study area’s data sets were categorized into five classes: rice, water, impervious surface, wood, and wasteland. The SAR dataset was constructed by merging high-resolution images from Google Earth and 10 m land cover classification maps (Karra et al., 2021) for sample selection. Using regions of interest with weakly supervised prior information can provide sample support for large-scale high-resolution land cover classification (Cui et al., 2024). To minimize errors in sample selection, impervious surface, wasteland, and water body samples were chosen based on attributes that remained consistent in the land cover – map over three years (2017 2019). Rice fields and wood samples were obtained in 2018 through sampling areas of interest identified in Google Earth images and field surveys. The sample set was then divided into training and test sets in an 8:2 ratio, with the former used for model training and the latter for verification. Detailed information on the sample set is provided in Table 1."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-1 SLC SAR time-series dataset for rice recognition",
+      "modality": "image",
+      "domain": "remote sensing, agriculture"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d83335731c4cf478_d2",
+      "evidence": {
+        "section": "2.2. Data source and sample dataset",
+        "original_text": "The study area’s data sets were categorized into five classes: rice, water, impervious surface, wood, and wasteland. The SAR dataset was constructed by merging high-resolution images from Google Earth and 10 m land cover classification maps (Karra et al., 2021) for sample selection. Using regions of interest with weakly supervised prior information can provide sample support for large-scale high-resolution land cover classification (Cui et al., 2024). To minimize errors in sample selection, impervious surface, wasteland, and water body samples were chosen based on attributes that remained consistent in the land cover – map over three years (2017 2019). Rice fields and wood samples were obtained in 2018 through sampling areas of interest identified in Google Earth images and field surveys. The sample set was then divided into training and test sets in an 8:2 ratio, with the former used for model training and the latter for verification. Detailed information on the sample set is provided in Table 1."
+      },
+      "confidence": 0.9,
+      "name": "Ground feature sample dataset for SAR classification",
+      "modality": "tabular",
+      "domain": "remote sensing, agriculture"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds1",
+      "evidence": {
+        "section": "2.2. Data source and sample dataset",
+        "original_text": "The level-1 SLC products underwent processing steps, including orbit correction, radiation correction, deburst, polarization matrix, multi-looking, speckle removal, and geocoding."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Standardized preprocessing pipeline for Sentinel-1 SLC products"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds2",
+      "evidence": {
+        "section": "2.2. Data source and sample dataset",
+        "original_text": "To minimize errors in sample selection, impervious surface, wasteland, and water body samples were chosen based on attributes that remained consistent in the land cover – map over three years (2017 2019). Rice fields and wood samples were obtained in 2018 through sampling areas of interest identified in Google Earth images and field surveys."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Sample selection protocol based on multi-year land cover consistency and field surveys"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds3",
+      "evidence": {
+        "section": "2.2. Data source and sample dataset",
+        "original_text": "Unlike fully polarized scattering, dual-polarized SAR is characterized by a 2 * 2 covariance matrix (C2) (Mandal et al., 2019). C11 represents the VV backscattering coefficient, and C22 represents the VH backscattering coefficient. Notably, C21 and C22 are complex numbers, with the ’*’ symbol indicating complex conjugation."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Covariance matrix (C2) format for dual-polarized SAR data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds4",
+      "evidence": {
+        "section": "2.2. Data source and sample dataset",
+        "original_text": "We employed the SNAP platform, developed by the European Space Agency (ESA), for the computation of C2. The polarimetric decomposition process, based on eigenvectors and eigenvalues, referred to as the H/α decomposition, was conducted using PolSARPro 6.0. In the context of the decomposition method, H and α are defined as follows: where (=1, 2) is the eigenvalue, and (=1, 2) is the corresponding eigenvector. H represents the entropy-based component and is a measure of randomness or disorder in the data. The value range of H is [0,1]. The value range of α is [0°, 90°], α stands for the alpha angle and is associated with the orientation or rotation of the scattering mechanism. It characterizes the polarimetric response of the target."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "H/α decomposition parameter definitions and calculation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds5",
+      "evidence": {
+        "section": "2.3.2. Feature fusion of model rice growth height based on enhanced MIMICS",
+        "original_text": "In this study, polarization entropy H and mean scattering Angle α were used to characterize the changes of crop scattering information, and were combined with VV and VH backscattering coefficients to achieve data fusion. The characteristic fusion index ( σf ) of polarization growth named DF method can be obtained: In the above formula, TVV , TVH , TH and Tα respectively represent the interest values of VV backscattering coefficient, VH backscattering coefficient, polarization scattering entropy H, and average scattering Angle α."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Feature fusion index (σf) calculation formula combining VV, VH, H, and α"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds6",
+      "evidence": {
+        "section": "2.3.2. Feature fusion of model rice growth height based on enhanced MIMICS",
+        "original_text": "The method used to determine the separability between samples is referred to as the J-M distance (Cai et al., 2019; Chang et al., 2020; Wei et al., 2021). The calculation formula of J-M distance as follows: where, p(x / wi) is the probability that the ith pixel belongs to category wi, and Jij is 0–2. The larger the value, the higher the degree of separation between samples. By comparing the size of Jij of different features with the coarse sample points, the four images of 5, 6, 8 and 10 months were finally selected for rice classification as the Table 2. At this time, the J-M distance of the three samples (wasteland, rice and wood land) was above 1.9, indicating a good sample separation degree."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "J-M distance calculation for sample separability evaluation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds7",
+      "evidence": {
+        "section": "2.3.2. Feature fusion of model rice growth height based on enhanced MIMICS",
+        "original_text": "With the growth of rice, there is a correlation between the growth parameters of rice plant height and the growth days of rice. The average value of rice plant height on the corresponding date in the study area is shown in Fig. 7 below. The change of plant height will directly affect the backscattering coefficient that returns to the radar receiving antenna after various scatterings after irradiation by radar wave."
+      },
+      "confidence": 0.8,
+      "spec_type": "quality_standard",
+      "description": "Rice growth height curve data used for feature fusion model optimization"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d83335731c4cf478_ds8",
+      "evidence": {
+        "section": "2.3.2. Feature fusion of model rice growth height based on enhanced MIMICS",
+        "original_text": "Because of the complex form of the analytical model, it is difficult to get the undetermined parameter values by traditional methods. Therefore, in this paper, Genetic Algorithm was used to determine the optimal parameter values of the rice height growth model (9) based on improved MIMICS. The Table 3 shows the parameter estimates under DF weighted optimization method in different times."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Parameter estimation for rice height growth model using Genetic Algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d83335731c4cf478_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. We introduce fuzzy coarse screening based on statistical distribution characteristics and refine it with Gaussian fitting. A model incorporating time-series sample separation and polarization decomposition feature fusion based on rice growth height enhances rice growth expression. For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features."
+      },
+      "confidence": 0.95,
+      "name": "progressive feature screening and fusion method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d83335731c4cf478_m2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Due to variations in the seeding time of rice across different plots on cultivated land, and the susceptibility of rice recognition on cultivated land to two types of surface features woods planted in cultivated land and newly opened wasteland, a fuzzy screening of different features for these three categories is necessary. This screening aims to select feature values within the fluctuation range of the statistical distribution model of frequency occurrence at a specific time, thereby expressing surface feature samples on cultivated land. Additionally, due to the distinct scattering characteristics of different ground objects, the backscattering coefficient and the polarization decomposition parameter Alpha, which vary with time, are crucial parameters in SAR ground object identification (Yang et al., 2021). To enhance the analysis of rice planting in neighboring areas and minimize errors stemming from planting time differences, a Gaussian fitting statistical distribution model was applied to the feature counts of three categories of different ground samples that were challenging to distinguish from rice on cultivated land (see Fig. 4). While mitigating errors caused by rice planting time in neighboring areas, points of interest representing various features of different samples were further selected."
+      },
+      "confidence": 0.95,
+      "name": "fuzzy coarse screening based on Gaussian fitting statistical distribution",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d83335731c4cf478_m3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To effectively utilize SAR image information, it is imperative to calculate the separation degree between different types of radar samples based on various combinations of time and phase. In this context, some sample points do not facilitate the differentiation of samples and make minimal contributions to sample separation; therefore, they should be excluded. The method used to determine the separability between samples is referred to as the J-M distance (Cai et al., 2019; Chang et al., 2020; Wei et al., 2021). The calculation formula of J-M distance as follows: Jij = ∫√(p(x/wi)p(x/wj)) dx where, p(x/wi) is the probability that the ith pixel belongs to category wi, and Jij is 0–2. The larger the value, the higher the degree of separation between samples. By comparing the size of Jij of different features with the coarse sample points, the four images of 5, 6, 8 and 10 months were finally selected for rice classification as the Table 2. At this time, the J-M distance of the three samples (wasteland, rice and wood land) was above 1.9, indicating a good sample separation degree. A reliable sample point representing the whole growth cycle can be obtained by combining the points of interest in each period."
+      },
+      "confidence": 0.95,
+      "name": "J-M distance",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d83335731c4cf478_m4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "In this study, polarization entropy H and mean scattering Angle α were used to characterize the changes of crop scattering information, and were combined with VV and VH backscattering coefficients to achieve data fusion. The characteristic fusion index (σf) of polarization growth named DF method can be obtained: σf = TVV + TVH + TH + Tα In the above formula, TVV, TVH, TH and Tα respectively represent the interest values of VV backscattering coefficient, VH backscattering coefficient, polarization scattering entropy H, and average scattering Angle α."
+      },
+      "confidence": 0.95,
+      "name": "feature fusion index (σf)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d83335731c4cf478_m5",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "MIMICS (MIchigan MIcrowave Canopy Scattering) model (Liang and Pierce, 2004; Ulaby et al., 1990) is based on the microwave radiation transmission model, and the vegetation scatterers are decomposed into the canopy, trunk layer and ground surface layer of vegetation (Davitt et al., 2020; Mandal et al., 2020). The distribution of each organ of vegetation presents certain rules, which can be described through certain functional relationships. The corresponding microwave backscattering is divided into five parts, and the model is as follows: σ0 = σ0v + σ0g + σ0vg + σ0gv + σ0vvg On this basis, Durden et al. regarded rice as a continuum composed of discrete scatterers. The scattering mainly occurred in the canopy layer and the underlying surface layer of rice. The underlying surface is basically water, which can be simulated as a smooth mirror, and its effect on radar electromagnetic wave is mirror reflection. Therefore, the interaction mechanism between radar microwave and canopy and water surface can be simplified, and rice backscattering can be divided into four parts: After the microwave beam emitted by the radar is shot into the rice layer, it directly returns to the rice layer in the original direction, and the backscattered signal is received by the radar, which is the direct backscattering of rice. After the microwave beam is shot into the rice layer, it is shot into the underlying water surface through the attenuation effect of the canopy, and reflected back to the rice layer from the water surface, and the direction of the microwave beam is changed by the scattering effect of the canopy. This is the single scattering through rice plants after surface scattering. After the microwave beam is shot into the rice layer, the scattering effect of the rice layer causes the microwave beam to change direction and shoot into the underlying water surface, and then shoot out by the reflection of the water surface and the attenuation effect of the canopy. This is the reflection of the scatterer through the underlying surface after a single scattering. After the microwave beam enters the rice layer, it penetrates into the underlying water surface through the attenuation effect of the canopy layer, reflects back to the rice layer from the water surface, returns in the original direction through the backscattering effect of the rice layer, reflects from the water surface to the canopy layer, and then emits through the attenuation effect of the canopy layer. This is the multiple reflections of the underlying water surface and the rice plant. In general, the direct backscattering term of rice (1) basically increases during the whole growth and development of rice; (2) and (3) occupy a large proportion in the backscattering coefficient of rice, and the process is interactive, which basically determines the size of the backscattering coefficient; while (4) the random distribution of multiple scattering is large. It accounts for a relatively small proportion in rice backscattering and can be ignored within a certain simulation accuracy. Therefore, rice backscattering is simplified into two parts: the direct scattering of rice canopy and the secondary scattering of rice surface. The calculation formula is as follows: σ0 = σ0v + τ2σg (7) In the formula, σ0v represents the direct backscattering coefficient of rice canopy, and τ represents the transmittance of rice. σ0g represents the backscattering coefficient of rice-water surface. It can be further stated as follows. σ0 = a * h + b * h2 + c (8) where, a, b, and c are undetermined parameters. σ0 was used as a combination of different growth polarization characteristics to characterize the growth characteristics of rice. Because of the complex form of the analytical model, it is difficult to get the undetermined parameter values by traditional methods. Therefore, in this paper, Genetic Algorithm was used to determine the optimal parameter values of the rice height growth model (9) based on improved MIMICS. The Table 3 shows the parameter estimates under DF weighted optimization method in different times."
+      },
+      "confidence": 0.95,
+      "name": "rice growth fusion features weighted optimization model based on enhanced MIMICS",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d83335731c4cf478_m6",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Long short-term memory (LSTM), known for their exceptional time series learning capabilities, find extensive application in text recognition, time series prediction, natural language processing, computer vision, and various other domains (Thorp and Drajat, 2021). The LSTM unit controls the memory unit through the gating mechanism to effectively mine the growth characteristics of rice in the time dimension, thus completing the rice recognition task with high precision (Crisostomo de Castro Filho et al., 2020; Sun et al., 2022). To enhance the LSTM, we use a bidirectional LSTM (BiLSTM) initialized according to time-series feature fusion. The idea of BiLSTM is to input the four extracted time series into two LSTMS in the forward and reverse directions respectively, then connect the implicit layers of the two networks together, and finally jointly access the output layer for prediction (Hameed et al., 2019). BiLSTM models, in contrast to oneway LSTM models, are more efficient in leveraging contextual information, as they consider both preceding and succeeding fragments when generating output at a specific time (Crisostomo de Castro Filho et al., 2020; Sun et al., 2022). In order to fully understand the timing information of multiple features such as VH feature and single feature (SF) or combination feature (CF) or fusion feature (DF), a BiLSTM model was designed after the feature fusion of optimized sample selection. The BiLSTM architecture consists of two branches, two connection layers, and Softmax activation functions for classifying the output. Finally, the cross-entropy loss function and the Adam optimizer are used to compile the model. One of the branches consists of a forward and backward layer, each equipped with LSTM units to capture past and future information. In order to better express rice growth information, the input of branch 1 is the time series of VH polarization, and the input of Branch 2 is the time series of SF or CF or DF optimized sample points. Since the optimized time is 4 SAR observations, the input time series size is 4 * 1. Each branch consists of a double bilayer with a hidden layer dimension of 32, which combines the time-varying features of the forward and backward directions with the LSTM structure. Next, the output of the two branches is joined and the connected information is processed using two fully connected layers. The SF or CF or DF features of one branch of BiLSTM were combined with the VH features of another branch of BILSTM to identify rice and other ground objects. The DF feature in one of the BiLSTM branches represents the network structure diagram of rice growth recognition, as shown in Fig. 10."
+      },
+      "confidence": 0.95,
+      "name": "bidirectional LSTM (BiLSTM)",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d83335731c4cf478_x1",
+      "evidence": {
+        "section": "Materials and methods",
+        "original_text": "The study area, Hongzehu (HZH), situated in Huaian and Suqian cities, Jiangsu Province, China, extends from 118° 20′E to 119° 10′E longitude and from 33° 00′N to 33° 40′N latitude. Characterized by an even distribution of land and water, it exhibits a subtropical temperate monsoon climate. The region encompasses diverse land surface types, such as cultivated land, water bodies, and impervious surfaces (IS). In SAR images, the cultivated land includes rice, economic forest, nursery, mulberry, and fruit trees collectively referred to as wood. Additionally, there are newly opened lands termed wasteland on the cultivated land. The cultivated land, predominantly cultivating rice, undergoes significant seasonal changes, while water bodies and impervious surfaces (IS) display spatial dispersion. Early in the growth stage, distinguishing rice from water is challenging, and in the middle and late growth stages, identifying rice solely based on scattering features in SAR images is difficult due to similarities with wood, wasteland, and impervious surfaces. Single temporal-resolution SAR images lack the ability to capture temporal dynamics, and a single feature cannot consider spatial relationships adequately. Therefore, accurate data fusion of spatiotemporal geographic data extracted from the image is crucial for comprehensive feature identification. This study focuses on the depicted area (Fig. 1), to intuitively show the relationship between samples and images, Suqian, Huai’an, and the areas around Hongzehu (HZH) are chosen as study areas. Hongzehu (HZH) is selected for its clear display, abundant water resources, fertile soil, and suitable climate for rice growth. Example location images are rice-growing season data processed from Sentinel-1 SLC images, with sample selection (see Section 2.2) used for illustration. The rice calendar shown in Fig. 2."
+      },
+      "confidence": 0.95,
+      "task": "rice recognition from Sentinel-1 SLC SAR data",
+      "setup": "Hongzehu (HZH) area in Jiangsu Province, China, using Sentinel-1 SLC SAR data covering the rice growing season (May to October) in 2018"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d83335731c4cf478_x2",
+      "evidence": {
+        "section": "Materials and methods",
+        "original_text": "In this study, observations utilized the single look complex (SLC) Sentinel-1 (S1) product with a C-band dual polarization (VH + VV) mode. The S1 product offers a 12-day revisit period and all-weather imaging capabilities, with an incidence angle ranging from 32.189° to 34.21°. The data were acquired in Interferometric Wide Swath (IW) mode, featuring a width of 250 km and a resolution of 5 m * 20 m. The experimental Sentinel-1 SAR images were obtained from the Copernicus Open Access Hub. The study encompassed the entire growth cycle of rice in Suqian and Huaian cities. Throughout the growing season (mid-May to the end of October), 14 (7 * 2) Sentinel-1 images were composited from pairs captured at similar times to cover the study area comprehensively. The level-1 SLC products underwent processing steps, including orbit correction, radiation correction, deburst, polarization matrix, multi-looking, speckle removal, and geocoding. The study area’s data sets were categorized into five classes: rice, water, impervious surface, wood, and wasteland. The SAR dataset was constructed by merging high-resolution images from Google Earth and 10 m land cover classification maps (Karra et al., 2021) for sample selection. Using regions of interest with weakly supervised prior information can provide sample support for large-scale high-resolution land cover classification (Cui et al., 2024). To minimize errors in sample selection, impervious surface, wasteland, and water body samples were chosen based on attributes that remained consistent in the land cover – map over three years (2017 2019). Rice fields and wood samples were obtained in 2018 through sampling areas of interest identified in Google Earth images and field surveys. The sample set was then divided into training and test sets in an 8:2 ratio, with the former used for model training and the latter for verification. Detailed information on the sample set is provided in Table 1. We employed the SNAP platform, developed by the European Space Agency (ESA), for the computation of C2. The polarimetric decomposition process, based on eigenvectors and eigenvalues, referred to as the H/α decomposition, was conducted using PolSARPro 6.0."
+      },
+      "confidence": 0.95,
+      "task": "data processing and sample dataset construction",
+      "setup": "Sentinel-1 SLC SAR data processing using SNAP and PolSARPro, sample selection based on Google Earth images and land cover maps"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d83335731c4cf478_x3",
+      "evidence": {
+        "section": "Experiments and results",
+        "original_text": "The confusion matrix diagram of the BiLSTM classification based on test datasets is shown in Fig. 12. This depiction is based on diverse features and is conducted under the test set conditions, contributing to a comprehensive understanding of the classification performance. Table 4 lists five types of ground object accuracy indexes in BiLSTM based on different features in the predicted data set. Compared with other feature classification, the accuracy of rice with DF method is 94 %, which can better distinguish rice, wasteland and wood, and the overall accuracy is 93 %. Both all or single grounds recognition have high accuracy, which indicates the effectiveness of DF method."
+      },
+      "confidence": 0.95,
+      "task": "comparison classification results of different features",
+      "setup": "BiLSTM classifier evaluation using test datasets with different feature sets (SF, CF, DF)"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d83335731c4cf478_x4",
+      "evidence": {
+        "section": "Experiments and results",
+        "original_text": "The rice recognition of other grounds map by different classifiers (random forest (RF), support vector machine (SVM) and BiLSTM based on feature fusion method (DF) is shown in Fig. 13. It can be seen that BiLSTM has the best effect in rice recognition, which can distinguish rice well from surrounding small roads, while RF classification is not accurate in the boundary recognition of rice fields and roads. Then there is support vector machine classification, which is easy to misclassify wood land from rice. Table 5 is a quantitative evaluation of the accuracy of DF method under different classifiers. The following two indexes were used to evaluate the classification Accuracy. Overall Accuracy (OA) refers to the total number of correctly classified pixels divided by the total number of pixels. The Kappa coefficient is an index used for consistency testing and can be used to measure the effect of classification (Lin et al., 2022; Zhou et al., 2019). The F1 score of the five categories of ground objects is shown in Table 6. The ROC indexes of five categories of ground objects under different classifiers are shown in Fig. 14. DF-BiLSTM classification accuracy is better than DF-RF classification accuracy, and better than SVM classification accuracy for the classification of rice, Impervious surface and wasteland which is due to the combination of the temporal characteristics of rice growth and the scattering feature fusion. The progressive feature fusion method proposed in this paper can effectively express the growth scattering of rice under SAR images."
+      },
+      "confidence": 0.95,
+      "task": "comparison of classification in different classifiers",
+      "setup": "Evaluation of DF method using RF, SVM, and BiLSTM classifiers"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d83335731c4cf478_x5",
+      "evidence": {
+        "section": "Experiments and results",
+        "original_text": "In this section, we identified rice in two surrounding cities (Huaian City and Suqian City) of the study area, and compared the rice maps obtained by DF method combined BiLSTM (DF-BiLSTM) with rice products obtained by existing products of the study area globally and locally. The high-resolution products of 2018 single-season rice (10 m/ 20 m) named Shen rice map (Shen et al., 2023) in Suqian and Huaian, Jiangsu, China was used as comparison products. The method is based on time-weighted dynamic time by combining sentinel-2 and Sentinel-1 GRD data warping (TWDTW) method is used to recognize rice. As shown in Fig. 15. It can be seen that the overall range of spatial position of rice identified by comparison products and this study is consistent. The proposed method DF-BiLSTM has a good extraction effect on the boundary between rice and other ground objects."
+      },
+      "confidence": 0.95,
+      "task": "rice recognition expanded to two cities and comparison with existing products",
+      "setup": "Application of DF-BiLSTM method to Huaian and Suqian cities, comparison with Shen rice map product"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d83335731c4cf478_x6",
+      "evidence": {
+        "section": "Experiments and results",
+        "original_text": "Under various fusion methods, a comparison of rice area recognition and statistical data fitting in the two cities, namely Suqian City and Huai’an, is illustrated in Fig. 16. In this paper, the different classification method (RF,SVM,BiLSTM) of two Cities was used to analyze the rice map under the fusion of features (DF), and the pixel method was used to calculate the DF methods to optimize and confirm the rice area obtained under the RF, SVM, BiLSTM methods. Compared with the agricultural statistical data, the rice area obtained by the DF-BiLSTM method had the best fitting effect with the agricultural statistical data. The DF-BilSTM method has the best fitting effect on rice area and agricultural statistics. Compared to the statistical data, the rice area in both municipalities is underestimated using the RF and BiLSTM classifiers. Additionally, plotting a 1:1 line from two points (i.e., cities) and fitting a trend line using the slope as an evaluation metric may only be appropriate for larger data sets or more complete plots. The slope fitting between DF-BiLSTM results and agricultural cohabitation data is 0.93, which is higher than that of other classification methods for rice products. Through this comparison, the high correlation with other methods compared to agricultural statistical data sets indicates that the BiLSTM rice recognition results based on feature fusion (DF) are reasonable. The visualization results of DF-BiLSTM in identifying rice in two cities have better expression for high-resolution images than the existing rice products, and it is effective for both cities to identify rice, which verifies the effectiveness of the progressive method proposed in this paper."
+      },
+      "confidence": 0.95,
+      "task": "comparison with statistical data",
+      "setup": "Comparison of rice area recognition results from DF method (RF, SVM, BiLSTM) with agricultural statistical data for Suqian and Huaian cities"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The DF-BiLSTM classification demonstrated the highest performance, achieving an OA up to 95.22 % and a kappa value of up to 0.94. When compared to SVM and RF classifiers, the BiLSTM enhances the classification of various quantitative features. However, the DF method outperforms the SF and CF methods in terms of accuracy. Specifically, the overall classification accuracy of RF (91.28 % overall accuracy (OA)) under the DF method surpasses that of SVM (88.56 % OA). While the classification performance of BiLSTM surpasses that of RF, and RF outperforms SVM, it is worth noting that the differences in classification based on σ[f ] were not particularly significant. In conclusion, this method, combined with growth curve optimization and feature fusion, effectively leverages the phenological data of rice growth and establishes a connection with temporal SAR image information. This approach contributes to enhancing the accuracy of rice recognition. It’s worth noting that the weight information from the optimized feature fusion is subsequently integrated into the BiLSTM classifier. This enables the creation of a classification model for rice and other ground objects, facilitating pixel-by-pixel image prediction and successfully achieving rice recognition."
+      },
+      "confidence": 0.98,
+      "quantity": "Overall Accuracy (OA)",
+      "value": 95.22,
+      "unit": "%",
+      "context": "BiLSTM classifier with optimized samples fusion feature (DF) method for rice recognition in the HZH study area",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The DF-BiLSTM classification demonstrated the highest performance, achieving an OA up to 95.22 % and a kappa value of up to 0.94. When compared to SVM and RF classifiers, the BiLSTM enhances the classification of various quantitative features. However, the DF method outperforms the SF and CF methods in terms of accuracy. Specifically, the overall classification accuracy of RF (91.28 % overall accuracy (OA)) under the DF method surpasses that of SVM (88.56 % OA). While the classification performance of BiLSTM surpasses that of RF, and RF outperforms SVM, it is worth noting that the differences in classification based on σ[f ] were not particularly significant. In conclusion, this method, combined with growth curve optimization and feature fusion, effectively leverages the phenological data of rice growth and establishes a connection with temporal SAR image information. This approach contributes to enhancing the accuracy of rice recognition. It’s worth noting that the weight information from the optimized feature fusion is subsequently integrated into the BiLSTM classifier. This enables the creation of a classification model for rice and other ground objects, facilitating pixel-by-pixel image prediction and successfully achieving rice recognition."
+      },
+      "confidence": 0.98,
+      "quantity": "Kappa coefficient",
+      "value": 0.94,
+      "unit": null,
+      "context": "BiLSTM classifier with optimized samples fusion feature (DF) method for rice recognition in the HZH study area",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Specifically, the overall classification accuracy of RF (91.28 % overall accuracy (OA)) under the DF method surpasses that of SVM (88.56 % OA). While the classification performance of BiLSTM surpasses that of RF, and RF outperforms SVM, it is worth noting that the differences in classification based on σ[f ] were not particularly significant. In conclusion, this method, combined with growth curve optimization and feature fusion, effectively leverages the phenological data of rice growth and establishes a connection with temporal SAR image information. This approach contributes to enhancing the accuracy of rice recognition. It’s worth noting that the weight information from the optimized feature fusion is subsequently integrated into the BiLSTM classifier. This enables the creation of a classification model for rice and other ground objects, facilitating pixel-by-pixel image prediction and successfully achieving rice recognition."
+      },
+      "confidence": 0.98,
+      "quantity": "Overall Accuracy (OA)",
+      "value": 91.28,
+      "unit": "%",
+      "context": "Random Forest (RF) classifier with DF method for rice recognition",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Specifically, the overall classification accuracy of RF (91.28 % overall accuracy (OA)) under the DF method surpasses that of SVM (88.56 % OA). While the classification performance of BiLSTM surpasses that of RF, and RF outperforms SVM, it is worth noting that the differences in classification based on σ[f ] were not particularly significant. In conclusion, this method, combined with growth curve optimization and feature fusion, effectively leverages the phenological data of rice growth and establishes a connection with temporal SAR image information. This approach contributes to enhancing the accuracy of rice recognition. It’s worth noting that the weight information from the optimized feature fusion is subsequently integrated into the BiLSTM classifier. This enables the creation of a classification model for rice and other ground objects, facilitating pixel-by-pixel image prediction and successfully achieving rice recognition."
+      },
+      "confidence": 0.98,
+      "quantity": "Overall Accuracy (OA)",
+      "value": 88.56,
+      "unit": "%",
+      "context": "Support Vector Machine (SVM) classifier with DF method for rice recognition",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Table 4 lists five types of ground object accuracy indexes in BiLSTM based on different features in the predicted data set. Compared with other feature classification, the accuracy of rice with DF method is 94 %, which can better distinguish rice, wasteland and wood, and the overall accuracy is 93 %. Both all or single grounds recognition have high accuracy, which indicates the effectiveness of DF method."
+      },
+      "confidence": 0.97,
+      "quantity": "Rice recognition accuracy",
+      "value": 94.96,
+      "unit": "%",
+      "context": "BiLSTM classifier with DF method for rice recognition",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d83335731c4cf478_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The DF-BiLSTM classification demonstrated the highest performance, achieving an OA up to 95.22 % and a kappa value of up to 0.94. When compared to SVM and RF classifiers, the BiLSTM enhances the classification of various quantitative features. However, the DF method outperforms the SF and CF methods in terms of accuracy. Specifically, the overall classification accuracy of RF (91.28 % overall accuracy (OA)) under the DF method surpasses that of SVM (88.56 % OA). While the classification performance of BiLSTM surpasses that of RF, and RF outperforms SVM, it is worth noting that the differences in classification based on σ[f ] were not particularly significant."
+      },
+      "confidence": 0.95,
+      "metric": "Overall Accuracy (OA)",
+      "compared_to": "SVM classifier, RF classifier"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d83335731c4cf478_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Compared with other feature classification, the accuracy of rice with DF method is 94 %, which can better distinguish rice, wasteland and wood, and the overall accuracy is 93 %. Both all or single grounds recognition have high accuracy, which indicates the effectiveness of DF method."
+      },
+      "confidence": 0.95,
+      "metric": "Rice recognition accuracy",
+      "compared_to": "SF method, CF method"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d83335731c4cf478_p3",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Compared with the literature (Shen et al., 2023), Sentinel1 and Sentinel2 multisource data were used to identify rice as shown in Fig. 17 in a large-scale study area. The slope of the literature in two cities of Jiangsu Province in 2018 was 0.77, and the slope of the study area fitting in this paper was 0.94. It can be seen that the proposed method has a good effect on rice identification in the adjacent two cities. By adding the slope and fitting line as evaluation metric to the comparative experimental figure, the rice classification of the two cities in 2018 using the proposed method and the comparison literature method is determined."
+      },
+      "confidence": 0.95,
+      "metric": "Rice area fitting slope",
+      "compared_to": "Shen_rice map method"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The slope fitting between DF-BiLSTM results and agricultural cohabitation data is 0.93, which is higher than that of other classification methods for rice products. Through this comparison, the high correlation with other methods compared to agricultural statistical data sets indicates that the BiLSTM rice recognition results based on feature fusion (DF) are reasonable. The visualization results of DF-BiLSTM in identifying rice in two cities have better expression for high-resolution images than the existing rice products, and it is effective for both cities to identify rice, which verifies the effectiveness of the progressive method proposed in this paper."
+      },
+      "confidence": 0.95,
+      "quantity": "Rice area fitting slope",
+      "value": 0.94,
+      "unit": null,
+      "context": "DF-BiLSTM method compared to agricultural statistical data for rice area in two cities",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d83335731c4cf478_qr7",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Compared with the literature (Shen et al., 2023), Sentinel1 and Sentinel2 multisource data were used to identify rice as shown in Fig. 17 in a large-scale study area. The slope of the literature in two cities of Jiangsu Province in 2018 was 0.77, and the slope of the study area fitting in this paper was 0.94. It can be seen that the proposed method has a good effect on rice identification in the adjacent two cities. By adding the slope and fitting line as evaluation metric to the comparative experimental figure, the rice classification of the two cities in 2018 using the proposed method and the comparison literature method is determined."
+      },
+      "confidence": 0.95,
+      "quantity": "Rice area fitting slope",
+      "value": 0.77,
+      "unit": null,
+      "context": "Shen_rice map method (using Sentinel1 and Sentinel2 multisource data) compared to agricultural statistical data for rice area in two cities",
+      "result_type": "baseline"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_d83335731c4cf478_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Rice, a crucial global food crop, necessitates accurate mapping for food security assessment. China, a major rice producer and consumer, includes Jiangsu Province as a significant rice production region. The Hongzehu (HZH) area in Jiangsu contributes substantially to rice supply, supporting food security locally and province-wide. Sentinel-1 SAR data, particularly Single Look Complex (SLC) products, holds promise for precise crop mapping with enhanced phase and polarization information, enhancing sensitivity to rice growth changes by analyzing rice surface features information. However, challenges persist, especially climate impacts and timing inconsistencies between fields for planting rice. To overcome this, our study proposes a progressive feature screening and fusion method using multi-temporal SAR images. We introduce fuzzy coarse screening based on statistical distribution characteristics and refine it with Gaussian fitting. A model incorporating time-series sample separation and polarization decomposition feature fusion based on rice growth height enhances rice growth expression. For more precise results, we advocate a multi-temporal feature fusion approach using optimized sample features in the BiLSTM network to characterize rice growth and ground features. Experimental results demonstrate the method’s efficacy in two cities with a limited number of sampling points. The progressive feature fusion (DF) method outperforms classical classification methods using single feature (SF) or combined features (CF). Our proposed strategy proves effective for rice mapping applications, providing a promising approach for leveraging Sentinel-1 SLC SAR data."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_d83335731c4cf478_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "This study proposes a method for improving rice recognition in Sentinel-1 SLC dual-polarized time-series SAR data based on progressive feature screening and fusion by combining the sample point screening under the fuzzy coarse Gaussian fitting statistical distribution with the feature fusion model under the rice growth height curve, the fusion feature samples are input to a BiLSTM network for rice recognition. The progressive method significantly enhances accuracy in rice recognition from Sentinel-1 SLC images over time. The BiLSTM classifier with optimized samples fusion feature (DF) outperforms single features (SF: VV; VH) and combined features (CF: VV + VH; H * ɑ) in different classifiers. The overall classification map in the HZH study area achieves high accuracy with an OA and Kappa value exceeding 0.95 and 0.94, respectively. The rice maps of two cities are successfully generated by using the progressive feature screening and feature fusion DF method, which is suitable for the rice generation map of two cities spliced from two Sentinel-1 SLC images. The mapped rice area exhibits superior performance, with a fitted slope of 0.938 compared to statistical yearbook planting data. This research validates a viable rice recognition map based on time-series SAR, contributing to improved rice recognition in polarimetric SAR for widespread application in surrounding areas and cities."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_d83335731c4cf478_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The data used in this paper is only Sentinel1 SLC data. Compared with the literature (Shen et al., 2023), Sentinel1 and Sentinel2 multisource data were used to identify rice as shown in Fig. 17 in a large-scale study area. The slope of the literature in two cities of Jiangsu Province in 2018 was 0.77, and the slope of the study area fitting in this paper was 0.94. It can be seen that the proposed method has a good effect on rice identification in the adjacent two cities. By adding the slope and fitting line as evaluation metric to the comparative experimental figure, the rice classification of the two cities in 2018 using the proposed method and the comparison literature method is determined. In the rice recognition study, the DF-BiLSTM classification demonstrated the highest performance, achieving an OA up to 95.22 % and a kappa value of up to 0.94. When compared to SVM and RF classifiers, the BiLSTM enhances the classification of various quantitative features. However, the DF method outperforms the SF and CF methods in terms of accuracy. Specifically, the overall classification accuracy of RF (91.28 % overall accuracy (OA)) under the DF method surpasses that of SVM (88.56 % OA). While the classification performance of BiLSTM surpasses that of RF, and RF outperforms SVM, it is worth noting that the differences in classification based on σ[f ] were not particularly significant. In conclusion, this method, combined with growth curve optimization and feature fusion, effectively leverages the phenological data of rice growth and establishes a connection with temporal SAR image information. This approach contributes to enhancing the accuracy of rice recognition. It’s worth noting that the weight information from the optimized feature fusion is subsequently integrated into the BiLSTM classifier. This enables the creation of a classification model for rice and other ground objects, facilitating pixel-by-pixel image prediction and successfully achieving rice recognition."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_d83335731c4cf478_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "However, the proposed method still has some shortcomings, for example, seasonal water boundary, some paths between rice were wrongly classified as rice, and in the optimization model of expressing the special growth characteristics of rice, the expression of different characteristics is not balanced for different change categories. Another important future research direction is to balance the different feature expressions of different categories on time series images to identify rice performance in different growth cycles."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_d83335731c4cf478_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Future developments in Sentinel-1 SLC products for rice identification should prioritize advanced features, data fusion, and advanced data analysis technologies to enhance accuracy and enable large-scale applications."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_d83335731c4cf478_fw2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Another important future research direction is to balance the different feature expressions of different categories on time series images to identify rice performance in different growth cycles."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

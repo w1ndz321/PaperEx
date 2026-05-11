@@ -1,0 +1,684 @@
+{
+  "metadata": {
+    "doc_id": "doc_6afc6507a0d41318",
+    "source_file": "14_Polarization_evolution_of_FRB_Faraday_conversion.md",
+    "title": "Polarization Evolution of Fast Radio Burst Sources in Binary Systems",
+    "year": 2023,
+    "doi": null,
+    "abstract": "Recently, some fast radio bursts (FRBs) have been reported to exhibit complex and diverse variations in Faraday rotation measurements (RM) and polarization, suggesting that dynamically evolving magnetization environments may surround them. In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. For an strongly magnetized high-mass companion binary (HMCB), when an FRB with _∼_ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A. \n\n_Keywords:_ Radio transient sources (2008); Pulsars (1306); Stellar winds(1636); Plasma physics(2089)",
+    "introduction": "Fast radio bursts (FRBs) are mysterious intense radio transients with millisecond duration at cosmological distances (for reviews, see Petroff et al. 2019; Cordes & Chatterjee 2019; Zhang 2020a; Xiao et al. 2021; Zhang 2020b, 2022). To date, a few hundred FRB sources have been detected (e.g., Lorimer et al. 2007; Thornton et al. 2013; Spitler et al. 2016; Chatterjee et al. 2017; Bannister et al. 2019). Most of them were found to be one-off events, and over 50 FRB sources showed repeating activities(Chime/Frb Collaboration et al. 2023). However, the origin of FRBs is still a big puzzle. Remarkably, FRB 20200428 was detected to be associated with an X- ray burst from the Galactic magnetar SGR 1935+2154 (Bochenek et al. 2020; CHIME/FRB Collaboration et al. 2020a; Mereghetti et al. 2020; Li et al. 2021a; Tavani et al. 2021), which established an FRB–magnetar connection. \n\nThe evolutions of dispersion measurement (DM), Faraday rotation measurement (RM), and polarization are important clues to constrain the physical origins of FRBs and their surrounding environment. The first observed repeating FRB 20121102A (Michilli et al. 2018), has an RM of up to 10[5] rad m _[−]_[2] , which is the largest of all FRBs so far. The RM of this source decreases _∼_ 15% yr _[−]_[1] (Hilmarsson et al. 2021a), while the DM increases with _d_ DM _/dt ≃_ 0 _._ 85 pc cm _[−]_[3] yr _[−]_[1] over a six year (Li et al. 2021b; Hilmarsson et al. 2021a). Most bursts from this source showed strong linear polarization (LP). However, the observation of Five-hundred- meter Aperture Spherical radio Telescope (FAST) recently revealed that a dozen bursts in nearly 2000 bursts behavior significant circular polarization(CP) with the highest one reaching the CP degree of 64% (Feng et al. 2022a). Besides, it is interesting that both FRB 20121102A and FRB 20190520B appeared significant frequency- \n\n2 \n\ndependent depolarization, which might originate from the multi-path propagation (Feng et al. 2022b; Yang et al. 2022). \n\nAnother repeater, FRB 20190520B has a very large host DM of about 900 pc cm _[−]_[3] (Niu et al. 2022; Ocker et al. 2022), which is nearly an order of magnitude higher than the other FRBs. The source also has an RM of up to 10[4] rad m _[−]_[2] , which is the second largest RM among all observed FRB sources, and showed an RM sign reversal over six months (Anna-Thomas et al. 2023), accompanied by fluctuations in the CP over a range of _±_ 10% (Feng et al. 2022a), while the DM of the source has remained almost constant over this period. \n\nThe extremely active repeater, FRB 20201124A also showed significant and irregular short timescale RM variations during the first 36 days of the observation period, then the RM value suddenly became stable during the next 18 days (Xu et al. 2022). This source also has a significant CP up to 75 % (Xu et al. 2022; Jiang et al. 2022), and the CP and LP are quasi-periodically oscillating with frequency in a small fraction of the bursts (e.g., the bursts 779 and 926). This oscillation disappears when the RM variation stops (e.g., burst 1472). Thus, the significant and diverse variations in RMs polarisations of some FRB repeaters imply the existence of a dynamically evolving magnetized environment around the FRB source (Wang et al. 2022). \n\nThere is some evidence suggesting that some FRBs might be in binary systems. First, the repeating FRB 20180916B has 16.35 days of periodic activity (CHIME/FRB Collaboration et al. 2020b), and FRB 20121102A has a possible 160-day period (Cruces et al. 2021; Rajwade et al. 2020), which may correspond to the orbital period of a binary star system. Second, there is _∼_ 250 pc offset between FRB 20180916B and the brightest region of the nearest young stellar clump in its host galaxy, the possible birthplace of FRB 20180916B (Tendulkar et al. 2021a). This indicates that the age of the central object is more than 10[5] yr. It is inconsistent with the scenario involving a young magnetar (Tendulkar et al. 2021b) but seems to agree with scenarios of the high-mass X-ray binaries (Bodaghee et al. 2012). Third, FRB 20180916B and FRB 20201124A show significant RM variations (Mckinven et al. 2022; Xu et al. 2022), which can be explained by the magnetic field reversal of the binary star along the line of sight (Wang et al. 2022; Zhao et al. 2023). Fourth, FRB 20200120E was found to be located in a globular cluster (Kirsten et al. 2022), which is known to be rich in binaries from many dynamical interactions. Fifth, FRB 20201124A has been detected to appear some changes in CP, which might be explained by FC (Xu et al. 2022) near a highly \n\nmagnetized companion. This is very similar to PSR B1744-24A in a binary system, meanwhile, it also has been observed to appear irregular large RM variation (Li et al. 2023). \n\nIn this paper, we investigate in detail the FC effect in cold plasmas and apply it to the binary system involving an FRB source, and analyze the polarization evolution of the radio bursts from the FRB source. This paper is organized as follows. In Section 2, we describe the propagation behavior of electromagnetic (EM) waves in the local magnetized cold plasma and discuss the FC effect in detail. In section 3, we calculate the radio wave propagation in the rQT region in these two scenarios illustrated in Fig. 1, and based on this, some relevant observations in FRBs and radio pulsars are explained. Finally, in Section 4, we summarise our conclusions and discuss their implications.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "物理学",
+        "level2": "等离子体物理学",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Fast Radio Bursts",
+      "Polarization",
+      "Binary Systems",
+      "Faraday Conversion",
+      "Plasma Physics"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:26.216639+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Recently, some fast radio bursts (FRBs) have been reported to exhibit complex and diverse variations in Faraday rotation measurements (RM) and polarization, suggesting that dynamically evolving magnetization environments may surround them. In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. Fast radio bursts (FRBs) are mysterious intense radio transients with millisecond duration at cosmological distances (for reviews, see Petroff et al. 2019; Cordes & Chatterjee 2019; Zhang 2020a; Xiao et al. 2021; Zhang 2020b, 2022). To date, a few hundred FRB sources have been detected (e.g., Lorimer et al. 2007; Thornton et al. 2013; Spitler et al. 2016; Chatterjee et al. 2017; Bannister et al. 2019). Most of them were found to be one-off events, and over 50 FRB sources showed repeating activities(Chime/Frb Collaboration et al. 2023). However, the origin of FRBs is still a big puzzle. Remarkably, FRB 20200428 was detected to be associated with an X-ray burst from the Galactic magnetar SGR 1935+2154 (Bochenek et al. 2020; CHIME/FRB Collaboration et al. 2020a; Mereghetti et al. 2020; Li et al. 2021a; Tavani et al. 2021), which established an FRB–magnetar connection."
+      },
+      "confidence": 0.99,
+      "term": "fast radio bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.98,
+      "term": "Faraday conversion",
+      "normalized": "法拉第转换",
+      "std_label": "FC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.98,
+      "term": "binary system",
+      "normalized": "双星系统",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Recently, some fast radio bursts (FRBs) have been reported to exhibit complex and diverse variations in Faraday rotation measurements (RM) and polarization, suggesting that dynamically evolving magnetization environments may surround them. In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. The evolutions of dispersion measurement (DM), Faraday rotation measurement (RM), and polarization are important clues to constrain the physical origins of FRBs and their surrounding environment. The first observed repeating FRB 20121102A (Michilli et al. 2018), has an RM of up to 10^5 rad m^{-2}, which is the largest of all FRBs so far. The RM of this source decreases ∼ 15% yr^{-1} (Hilmarsson et al. 2021a), while the DM increases with dDM/dt ≃ 0.85 pc cm^{-3} yr^{-1} over a six year (Li et al. 2021b; Hilmarsson et al. 2021a). Most bursts from this source showed strong linear polarization (LP). However, the observation of Five-hundred-meter Aperture Spherical radio Telescope (FAST) recently revealed that a dozen bursts in nearly 2000 bursts behavior significant circular polarization(CP) with the highest one reaching the CP degree of 64% (Feng et al. 2022a). Besides, it is interesting that both FRB 20121102A and FRB 20190520B appeared significant frequency-dependent depolarization, which might originate from the multi-path propagation (Feng et al. 2022b; Yang et al. 2022)."
+      },
+      "confidence": 0.97,
+      "term": "Faraday rotation measurement",
+      "normalized": "法拉第旋转测量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.98,
+      "term": "circular polarization",
+      "normalized": "圆偏振",
+      "std_label": "CP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.98,
+      "term": "linear polarization",
+      "normalized": "线偏振",
+      "std_label": "LP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.97,
+      "term": "high-mass companion binary",
+      "normalized": "高质量伴星双星",
+      "std_label": "HMCB"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c8",
+      "evidence": {
+        "section": "3. BINARY ENVIRONMENT",
+        "original_text": "In this work, we investigate the effect of companion stellar winds on the polarization properties of radio emissions in magnetized high-mass companion binary (HMCB) and low-mass companion binary (LMCB) systems involving an FRB source, respectively, whose parameter ranges are shown in Table 1. Before proceeding to the detailed calculations, it is useful to discuss qualitatively which type of binary systems are expected to cause a significant polarization evolution. According to Kepler’s third law, we can derive the orbital radius. We refer to the catalog of Galactic X-ray binaries (Fortin et al. 2023; Avakyan et al. 2023), where the typical values of the binary parameters are those of maximum probability in the catalog. Mc, Rc, and M˙ are dependent on the type of companion, and we first obtain typical values for Mc, and then use the empirical relationships to derive typical values for Rc and M˙ (Ekerrelaet al. 2018; Johnstone et al. 2015). The typical values for the two types of binary parameters are listed in brackets of Table 1. We note that there is a mass gap for the companion stars in the LMCB and HMCB, which is due to the fact that the parameter range was chosen with reference to the X-ray binary catalog."
+      },
+      "confidence": 0.97,
+      "term": "low-mass companion binary",
+      "normalized": "低质量伴星双星",
+      "std_label": "LMCB"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c9",
+      "evidence": {
+        "section": "2.4. The rQT region",
+        "original_text": "For a more general discussion, the magnetic field could change direction gradually, which suggests that the modal axes are changing orientation continuously. Let us consider a region in whose center (z = 0) the magnetic field along the line of sight suffers a sign reversal (θ = π/2), which we call the rQT region, in which we can expand ρV into ρV = ρ′V z and ρL, ρV can be assumed to be constant. We consider that the magnetic field and the ray are always lying in the same plane (nontwisted magnetic field). Without loss of generality, we can choose a plane such that ψB = 0. Now we define f ≡ ρV/ρL and treat f = f(˜z) as a function of the dimensionless variable z˜ = ρL z. The boundary of the rQT ˜ region [−z0, ˜z0] is determined by the condition f(˜z) ≫ 1, which implies that the natural modes are nearly circular so that FC can be considered to be negligible at the boundary. Therefore, the representation of a polarized wave passing through an rQT region on a Poincar´e sphere is that the modal axis gradually moves away from one pole of the sphere on one side (z < 0) of the rQT region, then crosses the equator of the sphere at the center (z = 0) of the rQT region and approaches the other pole of the sphere on the other side (z > 0) of the rQT region. The overall motion of the polarization state P is that it rotates at a constant latitude around this continuously evolving modal axis, which can only be determined by detailed calculations, but it is also necessary to carry out a qualitative analysis before doing so."
+      },
+      "confidence": 0.96,
+      "term": "rQT region",
+      "normalized": "rQT区域",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A. Observations of three consecutive orbital periods of the binary system PSR B1744-24A in the 1.5 GHz and 2 GHz bands show that the CP profile of the radio pulses near the superior conjunction is completely opposite to that of the normal phase (Li et al. 2023), this provides strong evidence for FC. It emitted pulses that were also observed to appear irregular large RM variation, which is very similar to some FRBs. These observations suggest that the orbital motion of pulsar and the magnetic field of companion star play a decisive role. We applied our model to V and DM of PSR B1744-24A, as shown in Fig. 12, and give the residuals of the model with the data. The LP has a depolarization in many orbital phases, thus we neglected to overplot it. Notice that these results were obtained through numerical calculation via choosing appropriate fiducial parameters due to the model’s complexity."
+      },
+      "confidence": 0.98,
+      "term": "PSR B1744-24A",
+      "normalized": "PSR B1744-24A",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6afc6507a0d41318_c11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A. FRB 20201124A is the first repeating burst with significant CP. The CP is seen to oscillate periodically with frequency in some of these bursts (Xu et al. 2022), which seems to be consistent with the strong coupling case discussed in our model. In particular, in this observation of FAST (Xu et al. 2022), burst 779 has a smaller oscillating rate and amplitude compared to burst 926. This is consistent with our model that smaller oscillation amplitudes lead to smaller oscillation rates (Equation 33), as shown in Fig. 14. The large deviation of our model from LP data of burst 779 may be due to the presence of additional absorption effects (Xu et al. 2022; Li et al. 2023; Qu & Zhang 2023) or depolarization. In particular, the fact that LP becomes less at lower frequencies is consistent with the picture of depolarization."
+      },
+      "confidence": 0.98,
+      "term": "FRB 20201124A",
+      "normalized": "FRB 20201124A",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.95,
+      "head": "doc_6afc6507a0d41318_c3",
+      "relation_type": "enhances",
+      "relation_surface": "investigate the Faraday conversion (FC) effect in a binary system involving an FRB source",
+      "tail": "doc_6afc6507a0d41318_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.94,
+      "head": "doc_6afc6507a0d41318_c2",
+      "relation_type": "induces",
+      "relation_surface": "the circular polarization (CP) component will be induced",
+      "tail": "doc_6afc6507a0d41318_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.93,
+      "head": "doc_6afc6507a0d41318_c7",
+      "relation_type": "causes",
+      "relation_surface": "can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization",
+      "tail": "doc_6afc6507a0d41318_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.92,
+      "head": "doc_6afc6507a0d41318_c3",
+      "relation_type": "produces",
+      "relation_surface": "a sufficiently significant RM reversal can be produced",
+      "tail": "doc_6afc6507a0d41318_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r5",
+      "evidence": {
+        "section": "4. SUMMARY AND DISCUSSION",
+        "original_text": "Furthermore, we investigated the scenario for the idealized rQT region in the center of which the magnetic field suffers a sign reversal. When the polarized waves pass through the rQT region, the natural wave modes will change from nearly circular to linear, and then from linear to the opposite circular. The FC effect can be generated when the EM wave passes through such a special region even in a clod plasma environment. Following the previous studies (Melrose et al. 1995; Zheleznyakov & Zlotnik 1964), we found that the polarization of the outgoing radiation is only related to the environmental parameters at the center of the rQT region and to the size of the region, i.e. Equation (26). We have studied this effect in detail and draw the following conclusions: - For the weak coupling case (νT ≫ ν), the polarized waves crossing the rQT region lead to the CP component V changing its direction of rotation, corresponding to the reversal of the V sign. - For the intermediate coupling case (νT ∼ ν), the CP at outgoing would oscillate with frequency, and the average value of the oscillating CP degree ⟨Vf⟩ is smaller compared to the incident CP, Vi because the CP component converts to an LP component (Zheleznyakov & Zlotnik 1964). It is worth noting that this effect does not proceed in reverse (Equation 29). - For the strong coupling case (νT ≪ ν, this is also the case satisfied by most binary systems), the CP Vf is the addition of a term that oscillates periodically with frequency to the incident CP. The specific behavior of the oscillation is described by Equation (30) and the amplitude of the oscillation is proportional to Li, which disappears as the incident CP is 100%."
+      },
+      "confidence": 0.94,
+      "head": "doc_6afc6507a0d41318_c9",
+      "relation_type": "enables",
+      "relation_surface": "the FC effect can be generated when the EM wave passes through such a special region",
+      "tail": "doc_6afc6507a0d41318_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r6",
+      "evidence": {
+        "section": "4. SUMMARY AND DISCUSSION",
+        "original_text": "Further, based on the observations of PSR B1744-24A and FRBs, we consider a binary system with the companion star having large-scale magnetic fields, in which the rQT region is readily encountered as illustrated in Fig. 1. Further, we considered two kinds of binary systems, LMCB and HMCB. For their typical parameters, we found that the companion magnetic field of LMCB is usually dipolar, while that of HMCB is usually radial due to its strong companion star wind. Next, we calculated their characteristic Faraday transition frequencies νT in both LMCB and HMCB, respectively, and we found that LMCB has a weak FC, while magnetized HMCB has a strong FC. The companions with higher mass loss rates and shorter periods favor the strong FC."
+      },
+      "confidence": 0.93,
+      "head": "doc_6afc6507a0d41318_c8",
+      "relation_type": "has",
+      "relation_surface": "the companion magnetic field of LMCB is usually dipolar",
+      "tail": "doc_6afc6507a0d41318_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r7",
+      "evidence": {
+        "section": "4. SUMMARY AND DISCUSSION",
+        "original_text": "Further, based on the observations of PSR B1744-24A and FRBs, we consider a binary system with the companion star having large-scale magnetic fields, in which the rQT region is readily encountered as illustrated in Fig. 1. Further, we considered two kinds of binary systems, LMCB and HMCB. For their typical parameters, we found that the companion magnetic field of LMCB is usually dipolar, while that of HMCB is usually radial due to its strong companion star wind. Next, we calculated their characteristic Faraday transition frequencies νT in both LMCB and HMCB, respectively, and we found that LMCB has a weak FC, while magnetized HMCB has a strong FC. The companions with higher mass loss rates and shorter periods favor the strong FC."
+      },
+      "confidence": 0.93,
+      "head": "doc_6afc6507a0d41318_c7",
+      "relation_type": "has",
+      "relation_surface": "that of HMCB is usually radial due to its strong companion star wind",
+      "tail": "doc_6afc6507a0d41318_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A. Observations of three consecutive orbital periods of the binary system PSR B1744-24A in the 1.5 GHz and 2 GHz bands show that the CP profile of the radio pulses near the superior conjunction is completely opposite to that of the normal phase (Li et al. 2023), this provides strong evidence for FC. It emitted pulses that were also observed to appear irregular large RM variation, which is very similar to some FRBs. These observations suggest that the orbital motion of pulsar and the magnetic field of companion star play a decisive role. We applied our model to V and DM of PSR B1744-24A, as shown in Fig. 12, and give the residuals of the model with the data. The LP has a depolarization in many orbital phases, thus we neglected to overplot it. Notice that these results were obtained through numerical calculation via choosing appropriate fiducial parameters due to the model’s complexity."
+      },
+      "confidence": 0.92,
+      "head": "doc_6afc6507a0d41318_c2",
+      "relation_type": "explains",
+      "relation_surface": "apply this model to explain some polarization observations",
+      "tail": "doc_6afc6507a0d41318_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6afc6507a0d41318_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A. FRB 20201124A is the first repeating burst with significant CP. The CP is seen to oscillate periodically with frequency in some of these bursts (Xu et al. 2022), which seems to be consistent with the strong coupling case discussed in our model. In particular, in this observation of FAST (Xu et al. 2022), burst 779 has a smaller oscillating rate and amplitude compared to burst 926. This is consistent with our model that smaller oscillation amplitudes lead to smaller oscillation rates (Equation 33), as shown in Fig. 14. The large deviation of our model from LP data of burst 779 may be due to the presence of additional absorption effects (Xu et al. 2022; Li et al. 2023; Qu & Zhang 2023) or depolarization. In particular, the fact that LP becomes less at lower frequencies is consistent with the picture of depolarization."
+      },
+      "confidence": 0.92,
+      "head": "doc_6afc6507a0d41318_c2",
+      "relation_type": "explains",
+      "relation_surface": "apply this model to explain some polarization observations",
+      "tail": "doc_6afc6507a0d41318_c11"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_6afc6507a0d41318_d1",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "Observations of three consecutive orbital periods of the binary system PSR B1744-24A in the 1.5 GHz and 2 GHz bands show that the CP profile of the radio pulses near the superior conjunction is completely opposite to that of the normal phase (Li et al. 2023), this provides strong evidence for FC. It emitted pulses that were also observed to appear irregular large RM variation, which is very similar to some FRBs. These observations suggest that the orbital motion of pulsar and the magnetic field of companion star play a decisive role. We applied our model to V and DM of PSR B1744-24A, as shown in Fig. 12, and give the residuals of the model with the data. The LP has a depolarization in many orbital phases, thus we neglected to overplot it. Notice that these results were obtained through numerical calculation via choosing appropriate fiducial parameters due to the model’s complexity. The reason that RM is not measured near the superior conjunction may be that the strong FC makes the variation of the Stoke parameters Q, U with frequency no longer oscillating quasi-periodically with each other, but very chaotic, and therefore RM cannot be measured. Furthermore, we investigated how sensitive the model is to variations in the binary parameters in Fig. 13. The window of strong FC becomes narrower for higher observation frequencies ν and lower transition frequencies νT, owing to the coupling parameter C ∝ (ν/νT)^4. The rQT region’s plasma parameters n0 and B0 are coupled in νT (see Equation 26). The DM drops sharply near the superior conjunction, due to the more dense plasma here. The smaller nw,0 leads to a smaller DM."
+      },
+      "confidence": 0.9,
+      "name": "PSR B1744-24A polarization and DM orbital evolution dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_6afc6507a0d41318_d2",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "FRB 20201124A is the first repeating burst with significant CP. The CP is seen to oscillate periodically with frequency in some of these bursts (Xu et al. 2022), which seems to be consistent with the strong coupling case discussed in our model. In particular, in this observation of FAST (Xu et al. 2022), burst 779 has a smaller oscillating rate and amplitude compared to burst 926. This is consistent with our model that smaller oscillation amplitudes lead to smaller oscillation rates (Equation 33), as shown in Fig. 14. The large deviation of our model from LP data of burst 779 may be due to the presence of additional absorption effects (Xu et al. 2022; Li et al. 2023; Qu & Zhang 2023) or depolarization. In particular, the fact that LP becomes less at lower frequencies is consistent with the picture of depolarization."
+      },
+      "confidence": 0.9,
+      "name": "FRB 20201124A polarization oscillation dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6afc6507a0d41318_ds1",
+      "evidence": {
+        "section": "2.2. Faraday Conversion",
+        "original_text": "To better understand the physical meaning of Equation (7), one usually introduces the concept of the Poincare sphere (Fig. 2). The Poincar´e sphere represents a polarization state as a unit vector P determined by both latitude 2χ and longitude 2ψ, which characterize the ellipticity of the polarized wave and the relative phase of its LP component, respectively. The north (V = 1) and south (V = −1) poles of the sphere represent the right and left CP, respectively, while the equator (χ = 0) corresponds to complete LP. The polarization of the natural wave modes are mutually orthogonal, as shown by Equation (6). They can be represented by two diametrically opposite points (±2χB, ±2ψB) at two ends of the diameter axis through the center of the Poincar´e sphere. This axis is called the modal axis. Together with Equation (8), the Poincar´e sphere provides a geometric interpretation of the generalized Faraday rotation. It shows that the polarization point P rotates around the modal axis at a constant latitude, and the speed of rotation ρ is determined by the natural mode properties of the medium. The parameters ρQ, ρU and ρV are calculated from the dielectric tensor of the plasma (which is exactly equivalent to the natural wave modes we derived on the previous section), and their detailed expressions are given in Equation (9)."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Standardized polarization measurement protocol for binary system radio bursts"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6afc6507a0d41318_ds2",
+      "evidence": {
+        "section": "2.3. Toy model",
+        "original_text": "The PA is defined as ψ = 1/2 arctan(Uf/Qf). Substituting the specific expression for Qf and Uf, we notice that once the effect of the FC becomes significant, the PA no longer has a simple power-law relationship with frequency, i.e. we cannot measure the RM in the traditional sense (21), this is because the presence of changes in V interferes the conversion between Q and U. A common method for measuring RM is “QU fitting”, which models the Stokes Q and U quasi-periodic oscillations introduced by Faraday rotation (Mckinven et al. 2021; O’Sullivan et al. 2012)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized method for measuring RM via QU fitting"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6afc6507a0d41318_ds3",
+      "evidence": {
+        "section": "3.2. The characteristic transition frequency",
+        "original_text": "In this work, we investigate the effect of companion stellar winds on the polarization properties of radio emissions in magnetized high-mass companion binary (HMCB) and low-mass companion binary (LMCB) systems involving an FRB source, respectively, whose parameter ranges are shown in Table 1. Before proceeding to the detailed calculations, it is useful to discuss qualitatively which type of binary systems are expected to cause a significant polarization evolution. According to Kepler’s third law, we can derive the orbital radius. We refer to the catalog of Galactic X-ray binaries (Fortin et al. 2023; Avakyan et al. 2023), where the typical values of the binary parameters are those of maximum probability in the catalog. Mc, Rc, and M˙ are dependent on the type of companion, and we first obtain typical values for Mc, and then use the empirical relationships to derive typical values for Rc and M˙ (Eker et al. 2018; Johnstone et al. 2015). The typical values for the two types of binary parameters are listed in brackets of Table 1. We note that there is a mass gap for the companion stars in the LMCB and HMCB, which is due to the fact that the parameter range was chosen with reference to the X-ray binary catalog."
+      },
+      "confidence": 0.85,
+      "spec_type": "env_requirement",
+      "description": "Binary system parameter ranges for polarization evolution modeling"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6afc6507a0d41318_m1",
+      "evidence": {
+        "section": "2. DESCRIPTION OF POLARISATION WAVE RADIATIVE TRANSFER",
+        "original_text": "To better understand the physical meaning of Equation (7), one usually introduces the concept of the Poincare sphere (Fig. 2). The Poincar´e sphere represents a polarization state as a unit vector _**P**_ determined by both latitude 2 _χ_ and longitude 2 _ψ_ , which characterize the ellipticity of the polarized wave and the relative phase of its LP component, respectively. The north ( _V_ = 1) and south ( _V_ = _−_ 1) poles of the sphere represent the right and left CP, respectively, while the equator ( _χ_ = 0) corresponds to complete LP. The polarization of the natural wave modes are mutually orthogonal, as shown by Equation (6). They can be represented by two diametrically opposite points ( _±_ 2 _χ_ B _, ±_ 2 _ψ_ B ) at two ends of the diameter axis through the center of the Poincar´e sphere. This axis is called the modal axis. Together with Equation (8), the Poincar´e sphere provides a geometric interpretation of the generalized Faraday rotation. It shows that the polarization point _P_ rotates around the modal axis at a constant latitude, and the speed of rotation _ρ_ is determined by the natural mode properties of the medium."
+      },
+      "confidence": 0.95,
+      "name": "Poincaré sphere representation",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6afc6507a0d41318_m2",
+      "evidence": {
+        "section": "2. DESCRIPTION OF POLARISATION WAVE RADIATIVE TRANSFER",
+        "original_text": "A common method for measuring RM is “QU fitting”, which models the Stokes Q and U quasi-periodic oscillations introduced by Faraday rotation (Mckinven et al. 2021; O’Sullivan et al. 2012)."
+      },
+      "confidence": 0.95,
+      "name": "QU fitting method for RM measurement",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6afc6507a0d41318_m3",
+      "evidence": {
+        "section": "2. DESCRIPTION OF POLARISATION WAVE RADIATIVE TRANSFER",
+        "original_text": "To proceed with the semi-quantitative calculation, we can define the modal coupling coefficient _C_ (Melrose & Robinson 1994; Melrose et al. 1995). Physically, _C_ is the ratio of the velocity ( _|ρ_ ˆ _[′] |_ ) of the modal axis endpoint as it crosses the equator to the velocity ( _|_ _**ρ** |_ ) of the rotation of the polarization point around the modal axis. The case of _C ≪_ 1 is denoted as weak coupling, in which the rotation of the polarization point is dominant ( _|ρ_ ˆ _[′] | ≪|_ _**ρ** |_ ). As the modal axis turns from one pole of the sphere to the other, the polarization point rotates very fast so that the modal axis ”drags” the polarization point and flips over together, which leads to the CP component _V_ changing its direction of rotation across the rQT region, corresponding to the reversal of the _V_ sign. The case _C ≫_ 1 is denoted as strong coupling, in which the modal axis rotates faster, the modes are tightly coupled at the center. As the modal axis reverses its direction, the polarization point does not move significantly due to the relatively slow rotation of the polarization point around the modal axis. Therefore, the polarization point remains near its original position and the final result is that the CP changes by a small fraction. The case of intermediate coupling ( _C ∼_ 1), however, is very elusive, but it can be expected that a small change from the plasma parameters will lead to a significant change in the final polarization. Mathematically, a simple approximation of _C_ in the present context takes the form (Cohen 1960; Melrose 2010): _C = (ν/ν_T)^4_, where ν_T is the transition frequency."
+      },
+      "confidence": 0.95,
+      "name": "Modal coupling coefficient C",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6afc6507a0d41318_m4",
+      "evidence": {
+        "section": "2. DESCRIPTION OF POLARISATION WAVE RADIATIVE TRANSFER",
+        "original_text": "The evolution of the polarization of an EM wave is determined entirely by its two natural wave modes decomposed in the medium, which can be described by the transfer equation for the Stokes parameters (Melrose & McPhedran 1991): d(Q, U, V)/dz = (ρ_Q, ρ_U, ρ_V) × (Q, U, V). An alternative way to write Equation (7) is dP/dz = ρ × P, where _**ρ**_ = (ρ_Q, ρ_U, ρ_V) is the eigenvectors of the square matrix in Equation (7), which corresponds to one of the two natural modes, and (Q, U, V) describes the polarization state of the EM wave."
+      },
+      "confidence": 0.95,
+      "name": "Stokes parameters transfer equation",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_6afc6507a0d41318_x1",
+      "evidence": {
+        "section": "3. BINARY ENVIRONMENT",
+        "original_text": "Next, we will solve the transfer equation (7) numerically by substituting the specific environmental parameters of the binary star system. Let us now consider the binary system configuration illustrated in Fig. 7, where the XY Z coordinate system is chosen so that the orbital plane lies in the XY plane, the rotation axis Ω of the companion star lies in the XZ plane, and whose angles with the Z axis and the magnetic axes are denoted θ_Ω and α respectively. The unit vector in the direction of the line of sight (LOS) can be denoted as n̂_LOS = (sin θ_L cos ϕ_L, sin θ_L sin ϕ_L, cos θ_L). For a typical LOS inclination of θ_L = π/4, we first plot the RM evolution with orbital phase ϕ_orb for the magnetized HMCBs and LMCBs, as shown in Fig. 5 and 6. For the magnetized HMCBs, we take the type parameters in Table 1. We find that for strongly magnetized HMCBs, the companion stellar wind can be expected to contribute RM values of up to 10^5 rad m^{-2} and that the RM undergoes sign reversal easily, as shown in Fig. 5."
+      },
+      "confidence": 0.95,
+      "task": "numerical calculation of polarization evolution in binary systems",
+      "setup": "numerical solving of transfer equation with binary system parameters"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_6afc6507a0d41318_x2",
+      "evidence": {
+        "section": "3. BINARY ENVIRONMENT",
+        "original_text": "We applied our model to V and DM of PSR B1744-24A, as shown in Fig. 12, and give the residuals of the model with the data. The LP has a depolarization in many orbital phases, thus we neglected to overplot it. Notice that these results were obtained through numerical calculation via choosing appropriate fiducial parameters due to the model’s complexity. The reason that RM is not measured near the superior conjunction may be that the strong FC makes the variation of the Stoke parameters Q, U with frequency no longer oscillating quasi-periodically with each other, but very chaotic, and therefore RM cannot be measured."
+      },
+      "confidence": 0.95,
+      "task": "model application to PSR B1744-24A observations",
+      "setup": "fitting model to observed CP and DM evolution data"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_6afc6507a0d41318_x3",
+      "evidence": {
+        "section": "3. BINARY ENVIRONMENT",
+        "original_text": "FRB 20201124A is the first repeating burst with significant CP. The CP is seen to oscillate periodically with frequency in some of these bursts (Xu et al. 2022), which seems to be consistent with the strong coupling case discussed in our model. In particular, in this observation of FAST (Xu et al. 2022), burst 779 has a smaller oscillating rate and amplitude compared to burst 926. This is consistent with our model that smaller oscillation amplitudes lead to smaller oscillation rates (Equation 33), as shown in Fig. 14. The large deviation of our model from LP data of burst 779 may be due to the presence of additional absorption effects (Xu et al. 2022; Li et al. 2023; Qu & Zhang 2023) or depolarization. In particular, the fact that LP becomes less at lower frequencies is consistent with the picture of depolarization."
+      },
+      "confidence": 0.95,
+      "task": "model application to FRB 20201124A observations",
+      "setup": "fitting model to observed oscillating polarization structure"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6afc6507a0d41318_m5",
+      "evidence": {
+        "section": "2. DESCRIPTION OF POLARISATION WAVE RADIATIVE TRANSFER",
+        "original_text": "For a typical astrophysical environment, the radiative transfer usually performs in the QL approximation, i.e. ρ_L ≪ ρ_V, with a difference of Y/2 between them. In the QT region, the natural mode is elliptically polarized, where it leads to the interconversion between CP and LP components, and we can define an FC rate to quantify this effect, which is ρ_FC = (ω_p^2 ω_B sin^2 θ)/(2ω^3 c). On the other hand, in the QL region, the natural mode is almost circularly polarized and the modal axis is almost along the vertical axis of the Poincar´e sphere. In this scenario, it only changes the polarization angle ψ of the incident EM wave, and similarly, we can define the Faraday rotation rate ρ_FR = (ω_p^2 ω_B cos θ)/(2ω^2 c)."
+      },
+      "confidence": 0.95,
+      "name": "Faraday conversion (FC) effect analysis",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6afc6507a0d41318_m6",
+      "evidence": {
+        "section": "3. BINARY ENVIRONMENT",
+        "original_text": "For the LMCBs, we have R_A ≫ R_orb, so that the companion field is dominated by a dipole field, and there exists an rQT region near the magnetic axis, as shown in Fig. 1(a). Then the characteristic transition frequency of the case can be estimated as ν_T ≃ (B_c R_c^3)/(2π R_orb^2 L_θ). For the HMCB, one has R_c ≪ R_A ≪ R_orb, so that the companion field is radially dominant, as shown in Fig. 1(b), and the characteristic transition frequency is ν_T ≃ (B_c R_c^2)/(2π R_orb L_θ). Here we assume that the size of the rQT region is proportional to the radius of its location (L_θ ∝ R_orb), due to the self-similarity of the field. In both cases above, the dependence of the characteristic transition frequency on the radius is very dramatic. For the adopted parameters, we can see that the LMCBs have a weak FC, while the magnetized HMCBs have a strong FC."
+      },
+      "confidence": 0.95,
+      "name": "Characteristic transition frequency ν_T estimation",
+      "method_type": "model"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The first observed repeating FRB 20121102A (Michilli et al. 2018), has an RM of up to 10^5 rad m^-2, which is the largest of all FRBs so far. The RM of this source decreases ∼ 15% yr^-1 (Hilmarsson et al. 2021a), while the DM increases with d DM/dt ≃ 0.85 pc cm^-3 yr^-1 over a six year (Li et al. 2021b; Hilmarsson et al. 2021a). Most bursts from this source showed strong linear polarization (LP). However, the observation of Five-hundred-meter Aperture Spherical radio Telescope (FAST) recently revealed that a dozen bursts in nearly 2000 bursts behavior significant circular polarization(CP) with the highest one reaching the CP degree of 64% (Feng et al. 2022a). Besides, it is interesting that both FRB 20121102A and FRB 20190520B appeared significant frequency-dependent depolarization, which might originate from the multi-path propagation (Feng et al. 2022b; Yang et al. 2022)."
+      },
+      "confidence": 0.95,
+      "quantity": "Faraday rotation measurement",
+      "value": 100000,
+      "unit": "rad m^-2",
+      "context": "FRB 20121102A",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Another repeater, FRB 20190520B has a very large host DM of about 900 pc cm^-3 (Niu et al. 2022; Ocker et al. 2022), which is nearly an order of magnitude higher than the other FRBs. The source also has an RM of up to 10^4 rad m^-2, which is the second largest RM among all observed FRB sources, and showed an RM sign reversal over six months (Anna-Thomas et al. 2023), accompanied by fluctuations in the CP over a range of ± 10% (Feng et al. 2022a), while the DM of the source has remained almost constant over this period."
+      },
+      "confidence": 0.95,
+      "quantity": "Dispersion measurement",
+      "value": 900,
+      "unit": "pc cm^-3",
+      "context": "FRB 20190520B host",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Another repeater, FRB 20190520B has a very large host DM of about 900 pc cm^-3 (Niu et al. 2022; Ocker et al. 2022), which is nearly an order of magnitude higher than the other FRBs. The source also has an RM of up to 10^4 rad m^-2, which is the second largest RM among all observed FRB sources, and showed an RM sign reversal over six months (Anna-Thomas et al. 2023), accompanied by fluctuations in the CP over a range of ± 10% (Feng et al. 2022a), while the DM of the source has remained almost constant over this period."
+      },
+      "confidence": 0.95,
+      "quantity": "Faraday rotation measurement",
+      "value": 10000,
+      "unit": "rad m^-2",
+      "context": "FRB 20190520B",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The extremely active repeater, FRB 20201124A also showed significant and irregular short timescale RM variations during the first 36 days of the observation period, then the RM value suddenly became stable during the next 18 days (Xu et al. 2022). This source also has a significant CP up to 75 % (Xu et al. 2022; Jiang et al. 2022), and the CP and LP are quasi-periodically oscillating with frequency in a small fraction of the bursts (e.g., the bursts 779 and 926). This oscillation disappears when the RM variation stops (e.g., burst 1472). Thus, the significant and diverse variations in RMs polarisations of some FRB repeaters imply the existence of a dynamically evolving magnetized environment around the FRB source (Wang et al. 2022)."
+      },
+      "confidence": 0.95,
+      "quantity": "Circular polarization degree",
+      "value": 75,
+      "unit": "%",
+      "context": "FRB 20201124A",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr5",
+      "evidence": {
+        "section": "2.4. The rQT region",
+        "original_text": "At the centre of the rQT region, there are n0 = 10^4 cm^-3, B0 = 100G, thus νT ∼ 3GHz."
+      },
+      "confidence": 0.95,
+      "quantity": "electron number density",
+      "value": 10000,
+      "unit": "cm^-3",
+      "context": "center of the rQT region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr6",
+      "evidence": {
+        "section": "2.4. The rQT region",
+        "original_text": "At the centre of the rQT region, there are n0 = 10^4 cm^-3, B0 = 100G, thus νT ∼ 3GHz."
+      },
+      "confidence": 0.95,
+      "quantity": "magnetic field strength",
+      "value": 100,
+      "unit": "G",
+      "context": "center of the rQT region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr7",
+      "evidence": {
+        "section": "2.4. The rQT region",
+        "original_text": "At the centre of the rQT region, there are n0 = 10^4 cm^-3, B0 = 100G, thus νT ∼ 3GHz."
+      },
+      "confidence": 0.95,
+      "quantity": "characteristic Faraday transition frequency",
+      "value": 3,
+      "unit": "GHz",
+      "context": "center of the rQT region with n0 = 10^4 cm^-3, B0 = 100G",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr8",
+      "evidence": {
+        "section": "3.1. Properties of companion stars",
+        "original_text": "The nw,0 is the electron number density of the star surface nw,0 = M˙/(4πRc^2vwμmmp)."
+      },
+      "confidence": 0.9,
+      "quantity": "electron number density",
+      "value": 100000000,
+      "unit": "cm^-3",
+      "context": "companion star surface",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr9",
+      "evidence": {
+        "section": "3.3. Numerical calculations",
+        "original_text": "For the magnetized HMCBs, we take the type parameters in Table 1. We find that for strongly magnetized HMCBs, the companion stellar wind can be expected to contribute RM values of up to 10^5 rad m^-2 and that the RM undergoes sign reversal easily, as shown in Fig. 5."
+      },
+      "confidence": 0.95,
+      "quantity": "Faraday rotation measurement",
+      "value": 100000,
+      "unit": "rad m^-2",
+      "context": "strongly magnetized HMCBs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr10",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "We take the binary parameters with Rorb = 0.85 R⊙, Rc = 0.12 R⊙, Bc = 300G, nw,0 = 4.5 × 10^7 cm^-3, Vi = 0.5, θL = 5/12 π, α = 0."
+      },
+      "confidence": 0.95,
+      "quantity": "electron number density",
+      "value": 45000000,
+      "unit": "cm^-3",
+      "context": "companion surface for PSR B1744-24A model",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr11",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "We take the binary parameters with Rorb = 0.85 R⊙, Rc = 0.12 R⊙, Bc = 300G, nw,0 = 4.5 × 10^7 cm^-3, Vi = 0.5, θL = 5/12 π, α = 0."
+      },
+      "confidence": 0.95,
+      "quantity": "magnetic field strength",
+      "value": 300,
+      "unit": "G",
+      "context": "companion surface for PSR B1744-24A model",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr12",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "The observed oscillating polarization structure of the burst 926 of FRB 20201124A (Xu et al. 2022). The points represent the observation data, and the lines represent the fitting line with νRM ≃ 11.0 GHz, νCM ≃ 0.4 GHz."
+      },
+      "confidence": 0.95,
+      "quantity": "oscillation amplitude parameter",
+      "value": 0.4,
+      "unit": "GHz",
+      "context": "burst 926 of FRB 20201124A",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6afc6507a0d41318_qr13",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "The observed oscillating polarization structure of the burst 926 of FRB 20201124A (Xu et al. 2022). The points represent the observation data, and the lines represent the fitting line with νRM ≃ 11.0 GHz, νCM ≃ 0.4 GHz."
+      },
+      "confidence": 0.95,
+      "quantity": "oscillation rate parameter",
+      "value": 11,
+      "unit": "GHz",
+      "context": "burst 926 of FRB 20201124A",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_6afc6507a0d41318_p1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The first observed repeating FRB 20121102A (Michilli et al. 2018), has an RM of up to 10^5 rad m^-2, which is the largest of all FRBs so far. Another repeater, FRB 20190520B has a very large host DM of about 900 pc cm^-3 (Niu et al. 2022; Ocker et al. 2022), which is nearly an order of magnitude higher than the other FRBs. The source also has an RM of up to 10^4 rad m^-2, which is the second largest RM among all observed FRB sources."
+      },
+      "confidence": 0.95,
+      "metric": "RM",
+      "compared_to": "other FRBs"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_6afc6507a0d41318_p2",
+      "evidence": {
+        "section": "3.4. Discussion for the observations of PSR B1744-24A and FRB 20201124A",
+        "original_text": "In particular, in this observation of FAST (Xu et al. 2022), burst 779 has a smaller oscillating rate and amplitude compared to burst 926. This is consistent with our model that smaller oscillation amplitudes lead to smaller oscillation rates (Equation 33), as shown in Fig. 14."
+      },
+      "confidence": 0.95,
+      "metric": "CP oscillation amplitude and rate",
+      "compared_to": "burst 926"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_6afc6507a0d41318_ca1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Recently, some fast radio bursts (FRBs) have been reported to exhibit complex and diverse variations in Faraday rotation measurements (RM) and polarization, suggesting that dynamically evolving magnetization environments may surround them. In this paper, we investigate the Faraday conversion (FC) effect in a binary system involving an FRB source and analyze the polarization evolution of FRBs. For an strongly magnetized high-mass companion binary (HMCB), when an FRB with ∼ 100% linear polarization passes through the radial magnetic field of the companion star, the circular polarization (CP) component will be induced and oscillate symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can cause CP to oscillate with frequency at a very drastic rate, which may lead to depolarization. Near the superior conjunction of the binary orbit, the DM varies significantly due to the dense plasma near the companion, and the significant FC also occurs in this region. As the pulsar moves away from the superior conjunction, the CP gradually tends towards zero and then returns to its value before incidence. We also investigate the effect of the rotation of the companion star. We find that a sufficiently significant RM reversal can be produced at large magnetic inclinations and the RM variation is very diverse. Finally, we apply this model to explain some polarization observations of PSR B1744-24A and FRB 20201124A."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6afc6507a0d41318_cl1",
+      "evidence": {
+        "section": "4. SUMMARY AND DISCUSSION",
+        "original_text": "In this paper, we investigate in detail the FC effect in cold plasmas and apply it to the binary system involving an FRB source. Then we analyze the polarization evolution of the radio bursts from the FRB source in the binary system. First, we summarise the dispersion relation and polarization properties of the natural wave modes of polarized waves in different cold plasma environments (which can be described by ϵ) and reveal the correlations between them (i.e. Equations A28, A27 and 5). By combining the transfer equation (7) of the Stokes parameters, we depicted the polarization evolution due to the propagation of polarized waves in a plasma. Furthermore, we investigated the scenario for the idealized rQT region in the center of which the magnetic field suffers a sign reversal. When the polarized waves pass through the rQT region, the natural wave modes will change from nearly circular to linear, and then from linear to the opposite circular. The FC effect can be generated when the EM wave passes through such a special region even in a clod plasma environment. Following the previous studies (Melrose et al. 1995; Zheleznyakov & Zlotnik 1964), we found that the polarization of the outgoing radiation is only related to the environmental parameters at the center of the rQT region and to the size of the region, i.e. Equation (26). We have studied this effect in detail and draw the following conclusions: - For the weak coupling case (νT ≫ ν), the polarized waves crossing the rQT region lead to the CP component V changing its direction of rotation, corresponding to the reversal of the V sign. - For the intermediate coupling case (νT ∼ ν), the CP at outgoing would oscillate with frequency, and the average value of the oscillating CP degree ⟨Vf⟩ is smaller compared to the incident CP, Vi because the CP component converts to an LP component (Zheleznyakov & Zlotnik 1964). It is worth noting that this effect does not proceed in reverse (Equation 29). - For the strong coupling case (νT ≪ ν, this is also the case satisfied by most binary systems), the CP Vf is the addition of a term that oscillates periodically with frequency to the incident CP. The specific behavior of the oscillation is described by Equation (30) and the amplitude of the oscillation is proportional to Li, which disappears as the incident CP is 100%. Further, based on the observations of PSR B1744-24A and FRBs, we consider a binary system with the companion star having large-scale magnetic fields, in which the rQT region is readily encountered as illustrated in Fig. 1. Further, we considered two kinds of binary systems, LMCB and HMCB. For their typical parameters, we found that the companion magnetic field of LMCB is usually dipolar, while that of HMCB is usually radial due to its strong companion star wind. Next, we calculated their characteristic Faraday transition frequencies νT in both LMCB and HMCB, respectively, and we found that LMCB has a weak FC, while magnetized HMCB has a strong FC. The companions with higher mass loss rates and shorter periods favor the strong FC. For an strongly magnetized HMCB, when a fully linearly polarised FRB passes through the radial magnetic field of the companion star, its CP component will be induced and oscillates symmetrically around the point with the CP degree equal to zero, the rate and amplitude of the oscillation decrease as the frequency increases. The very strong plasma column density in the HMCBs can lead to CP oscillating with frequency at a very drastic rate, which may lead to depolarization. The oscillation behavior of the polarization with frequency alters significantly as the pulsar is in a different orbital phase. And the significant variation in polarisation only occurs near the superior conjunction, with the CP gradually tends towards zero and then returns to its value before incidence as the pulsar moves away from the superior conjunction. We also investigated the effect of the rotation of the companion star and found that a sufficiently significant RM reversal can be produced at large magnetic inclinations and that this variation in RM is very diverse. If the spin period of the companion star is shorter than the orbital period, the evolution of RM is modulated mainly by the spin period; if the orbital period is shorter, the evolution of RM is mainly modulated by the orbital motion. By introducing the eccentricity of the binary system and considering only the contribution of the companion wind, it is sufficient to fit well the complex and diverse RM variations observed in recent FRBs. However, since the rotation of the companion star only modifies the magnetic field configuration, this does not affect the DM. The DM value reaches the maximum when the pulsar is at the superior conjunction. As the pulsar moves away from the superior conjunction, the DM decreases rapidly. On the other hand, even typical LMCB also can produce strong FC if the LOS is sufficiently parallel to the orbit, the binary system PSR B1744-24A is one such example (Li et al. 2023). Observations of three consecutive orbital periods of the binary system PSR B1744-24A in the 1.5 GHz and 2 GHz bands show that the CP profile of the radio pulses near the superior conjunction is completely opposite to that of the normal phase (Li et al. 2023), this provides strong evidence for FC. We have thus obtained the evolution of polarization (V, L) and DM with orbital phase (Fig. 12) for this binary, which can explain the observations of this binary system very well. Due to FC, the CP sign of the radio pulse near the superior conjunction is reversed. Furthermore, for higher frequencies, the window for the strong FC becomes narrower due to the coupling parameter C ∝ ν4. And we suggest that the reason that RM is not observed near the superior conjunction may be because the strong FC interferes with the periodic conversion between Q and U, so that the PA no longer has a simple power-law relationship with frequency, i.e. we cannot measure RM in the conventional sense. In some bursts of FRB 20201124A, the CP is seen to oscillate periodically with frequency (Xu et al. 2022), which is in good agreement with the strong coupling case discussed in our model. In particular, burst 779 has a smaller oscillating rate and amplitude compared to burst 926, which is consistent with our model’s expectation, as shown in Fig. 14."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_6afc6507a0d41318_lm1",
+      "evidence": {
+        "section": "4. SUMMARY AND DISCUSSION",
+        "original_text": "In general, the polarization evolution due to the propagation effect in this model is independent of the FRB radiation energy, however, due to the very high luminosity of the FRBs, there might be non-linear effects near the FRB radiation region (Lu & Phinney 2020; Yang & Zhang 2020), as well as the radiation pressure of the FRB may also interact with the environment medium (Yang 2021) and thus come to influence the polarization. There is a great deal of detail involved and it is beyond the scope of our work at present. A detailed analysis of these effects will be performed in the future."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_6afc6507a0d41318_fw1",
+      "evidence": {
+        "section": "4. SUMMARY AND DISCUSSION",
+        "original_text": "In general, the polarization evolution due to the propagation effect in this model is independent of the FRB radiation energy, however, due to the very high luminosity of the FRBs, there might be non-linear effects near the FRB radiation region (Lu & Phinney 2020; Yang & Zhang 2020), as well as the radiation pressure of the FRB may also interact with the environment medium (Yang 2021) and thus come to influence the polarization. There is a great deal of detail involved and it is beyond the scope of our work at present. A detailed analysis of these effects will be performed in the future."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "metadata": {
+    "doc_id": "doc_75f15a4b19270ca1",
+    "source_file": "05b_Rice_crop_detection_LSTM_BiLSTM_Sentinel_1_time_series.md",
+    "title": "Hugo Crisóstomo de Castro Filho, Osmar Abílio de Carvalho Júnior, Osmar Luiz Ferreira de Carvalho, Pablo Pozzobon de Bem, Rebeca dos Santos de Moura, Anesmar Olino de Albuquerque, Cristiano Rosa Silva, Pedro Henrique Guimarães Ferreira, Renato Fontes Guimarães and Roberto Arnaldo Trancoso Gomes",
+    "year": 2020,
+    "doi": null,
+    "abstract": "**Hugo Crisóstomo de Castro Filho[1] , Osmar Abílio de Carvalho Júnior[1,] * , Osmar Luiz Ferreira de Carvalho[2] , Pablo Pozzobon de Bem[1] , Rebeca dos Santos de Moura[1] , Anesmar Olino de Albuquerque[1] , Cristiano Rosa Silva[1] , Pedro Henrique Guimarães Ferreira[2] , Renato Fontes Guimarães[1] and Roberto Arnaldo Trancoso Gomes[1]**",
+    "introduction": "Spatiotemporal monitoring of rice plantations is crucial information for the development of policies for economic growth, food security, and environmental conservation [1]. In many regions of the world, official data used to estimate cultivated areas is based on surveys of statistical data through field visits and farmers’ interviews, which is a very slow, expensive, and laborious process [2]. In this context, remote sensing images allow systematic coverage of a wide geographic area over time, quickly and at a low cost. Thus, in recent decades, different remote sensing data and digital image processing have been developed to monitor crops [3–5], especially rice plantations [6–8]. \n\nIn mapping rice paddies, many remote sensing studies were carried out before 2000, in the 1980s and 1990s, using optical images [9–11], microwave images [12–14], and a combination of these two data [15]. An essential approach to rice plantation detection came with phenological behavior analysis, which requires a dense time series to distinguish it from other crops or between different rice-growing systems. In the optical image time series, various sensors have been evaluated in mapping rice planting: Landsat Series (Terrestrial Remote Sensing Satellite) [16–18], NOAA AVHRR [19–21], SPOT [22–24], and MODIS [25–30]. However, optical data analysis requires sensors with a high temporal resolution to acquire enough cloudless images to create reliable time series. In certain places, there are severe climatic limitations to obtain cloudless images throughout the rice-growing season. \n\nSynthetic Aperture Radar (SAR) data overcomes meteorological and lighting concerns, allowing the construction of continuous time series. Different SAR sensors have been used to map rice-growing regions. Considering the X-band (8–12 GHz) radar, several types of research used the sensors: TerraSAR-X [31–34] and COnstellation of small Satellites for the Mediterranean basin Observation (COSMO)-SkyMed [33,35–38]. Among the C-Band radar sensors (4–8 GHz) used to map the rice crops were: European Remote Sensing Satellite (ERS) [12,39–41], Radarsat [42–47], and Advanced Synthetic Aperture Radar (ASAR) [48–52]. Finally, studies on rice mapping with L-band radar sensors (15–30) used the ALOS Phased Array type L-band Synthetic Aperture Radar (PALSAR) [53–55]. \n\nThe advent of the European Space Agency’s Sentinel-1A images (C-band) has significantly increased the volume of high revisit time SAR data with free availability, resulting in greater dissemination and advancement in crop mapping research. These denser time-series SAR data allow us to capture short phenological stages, increasing the classification capacity. Monitoring and mapping the pattern of rice cultivation from Sentinel-1 time-series images has been tested in different locations around the world: Bangladesh [56], China [57], France [58], India [56,59], Japan [60], Spain [57], USA [57], Vietnam [57,61–64]. Some studies also integrate the Sentinel-1 image with optical images from the Landsat 8 Operational Land Imager (OLI) and the Sentinel-2 A/B [65–68]. \n\nRecently, Deep Learning has reached the state-of-the-art in the field of computer vision, obtaining a significant advantage in the classification of natural images [69–71] and remote sensing data [72–74]. In studies of dense time series, the Recurrent Neural Network (RNN) methods are the most promising due to their ability to analyze sequential data [75]. Among RNNs, the Long Short-Term Memory (LSTM) model [76] is widely used to capture time correlation efficiently. Therefore, LSTM allows the evaluation of plantations’ phenological variation, detecting pixel coherence between time sequence data. In remote sensing data, the LSTM model was applied in: change detection in bi-temporal images [75,77], time-series classification to distinguish crops [78–82], land use/land cover [83,84], and vegetation dynamics [85]. \n\nThis research aims to evaluate methods to detect rice cultivation in southern Brazil from the Sentinel-1 time series, using the LSTM and Bidirectional LSTM (Bi-LSTM) methods. The study compared the results based on LSTM and Bidirectional LSTM (Bi-LSTM) with traditional machine learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB).",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "农学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "remote sensing",
+      "rice cultivation",
+      "Sentinel-1",
+      "LSTM",
+      "deep learning"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:41:41.544216+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.99,
+      "term": "Synthetic Aperture Radar",
+      "normalized": "合成孔径雷达",
+      "std_label": "SAR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.98,
+      "term": "Long Short-Term Memory",
+      "normalized": "长短期记忆网络",
+      "std_label": "LSTM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.98,
+      "term": "Bidirectional LSTM",
+      "normalized": "双向长短期记忆网络",
+      "std_label": "Bi-LSTM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.97,
+      "term": "rice crop detection",
+      "normalized": "水稻作物检测",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.98,
+      "term": "Sentinel-1 time series",
+      "normalized": "Sentinel-1时间序列",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.95,
+      "term": "Savitzky-Golay filter",
+      "normalized": "Savitzky-Golay滤波器",
+      "std_label": "S-G filter"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.95,
+      "term": "McNemar test",
+      "normalized": "McNemar检验",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, Deep Learning has reached the state-of-the-art in the field of computer vision, obtaining a significant advantage in the classification of natural images [69–71] and remote sensing data [72–74]. In studies of dense time series, the Recurrent Neural Network (RNN) methods are the most promising due to their ability to analyze sequential data [75]. Among RNNs, the Long Short-Term Memory (LSTM) model [76] is widely used to capture time correlation efficiently. Therefore, LSTM allows the evaluation of plantations’ phenological variation, detecting pixel coherence between time sequence data. In remote sensing data, the LSTM model was applied in: change detection in bi-temporal images [75,77], time-series classification to distinguish crops [78–82], land use/land cover [83,84], and vegetation dynamics [85]. This research aims to evaluate methods to detect rice cultivation in southern Brazil from the Sentinel-1 time series, using the LSTM and Bidirectional LSTM (Bi-LSTM) methods. The study compared the results based on LSTM and Bidirectional LSTM (Bi-LSTM) with traditional machine learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB)."
+      },
+      "confidence": 0.97,
+      "term": "Recurrent Neural Network",
+      "normalized": "循环神经网络",
+      "std_label": "RNN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.96,
+      "term": "Support Vector Machines",
+      "normalized": "支持向量机",
+      "std_label": "SVM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.96,
+      "term": "Random Forest",
+      "normalized": "随机森林",
+      "std_label": "RF"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.96,
+      "term": "k-Nearest Neighbors",
+      "normalized": "k近邻",
+      "std_label": "k-NN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_75f15a4b19270ca1_c12",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.96,
+      "term": "Normal Bayes",
+      "normalized": "正态贝叶斯",
+      "std_label": "NB"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_75f15a4b19270ca1_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.94,
+      "head": "doc_75f15a4b19270ca1_c3",
+      "relation_type": "enhances",
+      "relation_surface": "was the best model",
+      "tail": "doc_75f15a4b19270ca1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_75f15a4b19270ca1_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.93,
+      "head": "doc_75f15a4b19270ca1_c2",
+      "relation_type": "enhances",
+      "relation_surface": "achieved high accuracy values",
+      "tail": "doc_75f15a4b19270ca1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_75f15a4b19270ca1_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.95,
+      "head": "doc_75f15a4b19270ca1_c5",
+      "relation_type": "uses",
+      "relation_surface": "aims to map rice crops from Sentinel-1 time series",
+      "tail": "doc_75f15a4b19270ca1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_75f15a4b19270ca1_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.92,
+      "head": "doc_75f15a4b19270ca1_c6",
+      "relation_type": "enhances",
+      "relation_surface": "minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter",
+      "tail": "doc_75f15a4b19270ca1_c4"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_75f15a4b19270ca1_d1",
+      "evidence": {
+        "section": "3.1. Dataset and Pre-Processing",
+        "original_text": "The research used a Sentinel-1 time series over two years (2017 and 2018). The images are available free of charge by the European Space Agency (ESA) (https://scihub.copernicus.eu/dhus/#/home). The Sentinel-1 images correspond to the C band (5.4 GHz) with four modes with different spatial resolutions and swath width [100]. The present research used the product Ground Range Detected (GRD) in Interferometric Wide Swath mode, with a 10-m resolution image and a large swath width (250 km). The Sentinel-1 revisit cycle is 12 days, obtaining 30 images per year for the study area, which totals 60 images for the 2017–2018 period. We adopted two years of images because the rice cycle starts in half a year and ends in the next. Besides, investigates indicate that the adoption of two-year time signatures facilitates the detection of targets with phenological cycles [101,102]. This temporal resolution allows following the phenological behavior of the rice plantation. In this research, we used Vertical transmit and Horizontal receive (VH) polarization since other studies have shown that the VH polarized backscatter is more sensitive to rice-crop growth than other polarizations [62,65]. The pre-processing of the images used the Sentinel Application Platform (SNAP) software, considering the following workflow [103]: apply orbit file; calibration (procedure that converts digital pixel values to radiometrically calibrated SAR backscatter); a range-Doppler terrain correction by utilizing the SRTM digital terrain model; and linear conversion in decibels (dB). The corrected images (2017–2018) were stacking in just one file generated a temporal cube."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-1 SAR time series for rice crop detection",
+      "modality": "time_series",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_75f15a4b19270ca1_d2",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "The dataset was a manual collection of 28,000-pixel samples (denoised temporal signatures), containing seven classes with equal distribution (4000 samples per class), showing a well-distributed, systematic, and stratified sampling [131] (Figure 6). In this manual sampling of the ground truth points, we used previous surveys of mapping rice crops and high-resolution images from Google Earth to determine the exact location of known points. The sampling process considered balanced data sets that positively impacted the classification results [132]. The train/validation/test split had a total of 19,600-pixel samples for training (70%), 5600-pixel samples for validation (20%), and 2800-pixel samples for testing (10%). The mapping considered the following land-use/land-cover classes: rice crops, the fallow period between rice crops, bodies of water (rivers, lakes, and reservoir), riparian forest/reforestation, grassland, flooded grassland, and other types of crops. We disregard the areas of the city using a mask. In the study region, the vast majority of the rice grown occurred in lowland areas using flood irrigation. The visual interpretation of high-resolution images quickly detects this type of management. The planting has a characteristic pattern, containing the dikes that follow the contour curve and the transversal dikes that divide the land into rectangular plots. The captured and retention of water allows the field to flood during the growing season."
+      },
+      "confidence": 0.95,
+      "name": "Ground truth pixel samples for land use/land cover classification",
+      "modality": "tabular",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_75f15a4b19270ca1_ds1",
+      "evidence": {
+        "section": "3.2. SAR Image Denoising",
+        "original_text": "Following other strategies to reduce noise and create a high-quality satellite image time series, we use a two-stage filtering scheme [104,105]: (a) elimination of speckle noise using a 3D-Gamma filter, and (b) smoothing of time series using the method of Savitzky and Golay (S-G) [106]. Most filters operate in the spatial domain, using moving windows that perform statistical calculations of central value or adaptive methods. However, noise reduction in the SAR time series allows approaches that integrate the spatial and temporal dimensions to improve the quality of noise reduction [107–110]. In this context, three-dimensional (3D) filters use spatial-temporal neighborhood information to derive the noise-free value [111,112] (Figure 3). Considering only the spatial domain, the effect of sliding window filters only increases with the expansion of the window size, which reduces the effective spatial resolution. On the other hand, spatiotemporal filters increase the amount of information in the time domain, reducing the edge-blurred effect. For example, the central pixel value of a 3 × 3 window uses nine pixels in the calculation, while a 3 × 3 × 3 cubic window uses 27 pixels in the same area. We adapted the Gamma adaptive filter [113] for a 3D window considering spatiotemporal data. The Gamma filter allows image conservation, filtering homogeneous surfaces, and preserving the edges. The window size used was 5 × 5 in the spatial domain and 9 in the temporal dimension. Besides, we use the Savitzky and Golay (S-G) method for smoothing the SAR data in the temporal domain [104]. The S-G filter combines noise elimination and preserves the phenological attributes (height, shape, and asymmetry) [101,114,115]. This procedure established a long-term change trend curve that eliminates small interferences still present and establishes a gradual process of the annual rice-crop cycle."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Two-stage SAR image denoising protocol using 3D Gamma filter and Savitzky-Golay smoothing"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_75f15a4b19270ca1_ds2",
+      "evidence": {
+        "section": "3.1. Dataset and Pre-Processing",
+        "original_text": "The pre-processing of the images used the Sentinel Application Platform (SNAP) software, considering the following workflow [103]: apply orbit file; calibration (procedure that converts digital pixel values to radiometrically calibrated SAR backscatter); a range-Doppler terrain correction by utilizing the SRTM digital terrain model; and linear conversion in decibels (dB). The corrected images (2017–2018) were stacking in just one file generated a temporal cube."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized pre-processing workflow for Sentinel-1 GRD images using SNAP software"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_75f15a4b19270ca1_ds3",
+      "evidence": {
+        "section": "3.4. Accuracy Assessment",
+        "original_text": "Accurate analysis of remote sensing image classifications is essential to compare algorithms and establish product quality. In the present study, we use the accuracy metrics from confusion matrix widely used in studies of land-use/land-cover classification, including the overall accuracy, Kappa coefficient, and commission and omission errors [133,134]. Overall accuracy is the most straightforward metric, calculated by dividing the sum of pixels correctly classified by the total number of pixels analyzed [134]. Congalton [133] introduced the Kappa coefficient for accuracy analysis of remote sensing data. The Kappa coefficient is a popular measure of agreement among raters (intermediate reliability) with a value range of −1 to +1 [135]. Commission and omission errors are a very effective way of representing the accuracy of each classified category. Commission error (Type I-false positive) occurs when classifying a pixel as a land-cover/land-use category that is not. Meanwhile, the omission error (Type II-false negative) is not to classify the pixel as a land-cover/land-use category when it is. We used the McNemar test [136] to assess the statistical significance of differences in remote sensing classification accuracy [137]. McNemar’s test principle is based on the evaluation of a contingency table with a 2 × 2 dimension considering only correct and incorrect points for two different methods (Table 1). In the relative comparison between different classification algorithms, the chi-square (χ2) statistic has one degree of freedom and uses exclusively discordant samples (f12 e f21) (Equation (3)). The null hypothesis of marginal homogeneity means equivalent results between the two classifications. If the result χ2 is higher than the values of the χ2 distribution table, we reject the null hypothesis and assume that the marginal proportion of each classification method is significant and with different behavior. As in other studies that compare classification algorithms, we used the same set of validation data for McNemar’s analysis, consisting of a sample independent of the training set. Therefore, the test used 1200 samples per mapping unit (totaling 8400 samples)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Accuracy assessment protocol using confusion matrix metrics and McNemar test"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m1",
+      "evidence": {
+        "section": "3.2. SAR Image Denoising",
+        "original_text": "Following other strategies to reduce noise and create a high-quality satellite image time series, we use a two-stage filtering scheme [104,105]: (a) elimination of speckle noise using a 3D-Gamma filter, and (b) smoothing of time series using the method of Savitzky and Golay (S-G) [106]. Most filters operate in the spatial domain, using moving windows that perform statistical calculations of central value or adaptive methods. However, noise reduction in the SAR time series allows approaches that integrate the spatial and temporal dimensions to improve the quality of noise reduction [107–110]. In this context, three-dimensional (3D) filters use spatial-temporal neighborhood information to derive the noise-free value [111,112] (Figure 3). Considering only the spatial domain, the effect of sliding window filters only increases with the expansion of the window size, which reduces the effective spatial resolution. On the other hand, spatiotemporal filters increase the amount of information in the time domain, reducing the edge-blurred effect. For example, the central pixel value of a 3 × 3 window uses nine pixels in the calculation, while a 3 × 3 × 3 cubic window uses 27 pixels in the same area. We adapted the Gamma adaptive filter [113] for a 3D window considering spatiotemporal data. The Gamma filter allows image conservation, filtering homogeneous surfaces, and preserving the edges. The window size used was 5 × 5 in the spatial domain and 9 in the temporal dimension."
+      },
+      "confidence": 0.95,
+      "name": "3D Gamma filter",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m2",
+      "evidence": {
+        "section": "3.2. SAR Image Denoising",
+        "original_text": "Besides, we use the Savitzky and Golay (S-G) method for smoothing the SAR data in the temporal domain [104]. The S-G filter combines noise elimination and preserves the phenological attributes (height, shape, and asymmetry) [101,114,115]. This procedure established a long-term change trend curve that eliminates small interferences still present and establishes a gradual process of the annual rice-crop cycle."
+      },
+      "confidence": 0.95,
+      "name": "Savitzky and Golay (S-G) filter",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m3",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "RNN architectures are very efficient when dealing with sequenced data, and its application has increased in the last few years in many scientific areas [116]. Hochreiter et al. [76] proposed Long Short-Term Memory (LSTM) architecture, one of the most common RNN architecture, which shows state-of-the-art results for sequential data tasks because of its ability to capture long time dependencies [117]. The architecture structure presents a memory cell that holds a current state over different sequential instances and non-linear dependencies that control information entering and exiting the cell [117,118]. Figure 4 shows LSTM architecture, where Xt is the input vector, Ct is the memory from the current block, and ht is the output of the current block. Sigmoid (σ) and hyperbolic tangent (tanh) are the nonlinearities and the vector operations are element-wise multiplication (x) and element-wise concatenation (+). Furthermore, Ct-1 and ht-1 are the memory and output from the previous block."
+      },
+      "confidence": 0.95,
+      "name": "Long Short-Term Memory (LSTM)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m4",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "Many studies have been carried out to improve the LSTM architecture. One of the most powerful approaches is Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are generally more effective when handling contextual information since their output at a given time depends on both previous and next segments, contrasting with LSTM models that are unidirectional [119,120]. The Bi-LSTM architecture has a forward and a backward layer that consists of LSTM units to apprehend past and future information (Figure 5)."
+      },
+      "confidence": 0.95,
+      "name": "Bidirectional LSTM (Bi-LSTM)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m5",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "In this paper, we compared the RNN methods (LSTM and Bi-LSTM) with traditional Machine Learning methods used in the remote sensing application: (1) Support Vector Machine (SVM) [122]; (2) Random Forest (RF) [123–125]; (3) k-NN [126], and (4) Normal Bayes. The SVM algorithm allocates prediction vectors into a higher dimensional plane, separating the different classes using linear or non-linear kernel functions [127]."
+      },
+      "confidence": 0.95,
+      "name": "Support Vector Machine (SVM)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m6",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "The Random Forest algorithm introduced by Breiman [128] combines a high amount of binary classification trees with several bootstrap values, obtaining the final value from the majority vote from all individual trees."
+      },
+      "confidence": 0.0,
+      "name": "Random Forest (RF)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m7",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "The k-NN method is widely used in remote sensing imagery and does not require training a model since the classification of a given point assumes the majority vote from its k nearest neighbors [129]."
+      },
+      "confidence": 0.0,
+      "name": "k-Nearest Neighbors (k-NN)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_75f15a4b19270ca1_m8",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "For last, the Bayesian classifier predicts a given class considering feature vectors from each class are normally distributed, usually presenting better results in data that has a high degree of feature dependencies [130]."
+      },
+      "confidence": 0.0,
+      "name": "Normal Bayes",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_75f15a4b19270ca1_x1",
+      "evidence": {
+        "section": "3.1. Dataset and Pre-Processing",
+        "original_text": "The research used a Sentinel-1 time series over two years (2017 and 2018). The images are available free of charge by the European Space Agency (ESA) (https://scihub.copernicus.eu/dhus/#/home). The Sentinel-1 images correspond to the C band (5.4 GHz) with four modes with different spatial resolutions and swath width [100]. The present research used the product Ground Range Detected (GRD) in Interferometric Wide Swath mode, with a 10-m resolution image and a large swath width (250 km). The Sentinel-1 revisit cycle is 12 days, obtaining 30 images per year for the study area, which totals 60 images for the 2017–2018 period. We adopted two years of images because the rice cycle starts in half a year and ends in the next. Besides, investigates indicate that the adoption of two-year time signatures facilitates the detection of targets with phenological cycles [101,102]. This temporal resolution allows following the phenological behavior of the rice plantation. In this research, we used Vertical transmit and Horizontal receive (VH) polarization since other studies have shown that the VH polarized backscatter is more sensitive to rice-crop growth than other polarizations [62,65]. The pre-processing of the images used the Sentinel Application Platform (SNAP) software, considering the following workflow [103]: apply orbit file; calibration (procedure that converts digital pixel values to radiometrically calibrated SAR backscatter); a range-Doppler terrain correction by utilizing the SRTM digital terrain model; and linear conversion in decibels (dB). The corrected images (2017–2018) were stacking in just one file generated a temporal cube."
+      },
+      "confidence": 0.95,
+      "task": "rice crop classification from Sentinel-1 time series",
+      "setup": "Sentinel-1 GRD VH polarization time series over two years (2017-2018), pre-processed with orbit correction, calibration, terrain correction, and dB conversion, followed by 3D Gamma and Savitzky-Golay filtering for denoising."
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_75f15a4b19270ca1_x2",
+      "evidence": {
+        "section": "3.3. RNN and Traditional Machine Learning Models",
+        "original_text": "In the present research, we used the LSTM and Bi-LSTM with two hidden layers (122 neurons in the first layer and 61 neurons in the second layer) and softmax activation function (7 outputs). We trained the models with the following hyperparameters: (a) 5000 epochs; (b) dropout rate of 0.2; (c) Adam optimizer with a starting learning rate of 0.01 (divided by 10 after 1000 epochs); and (d) mini-batch size of 128. Moreover, we used categorical cross-entropy loss function [121] presented in Equation (1), where i is the element’s number, y is the ground truth label, y’ is the predicted label, and K is the number of classes. Furthermore, to generalize the behavior from the loss function, Equation (2) shows the cost where Ω is the total set of weights and m is the total number of elements. The dataset was a manual collection of 28,000-pixel samples (denoised temporal signatures), containing seven classes with equal distribution (4000 samples per class), showing a well-distributed, systematic, and stratified sampling [131] (Figure 6). In this manual sampling of the ground truth points, we used previous surveys of mapping rice crops and high-resolution images from Google Earth to determine the exact location of known points. The sampling process considered balanced data sets that positively impacted the classification results [132]. The train/validation/test split had a total of 19,600-pixel samples for training (70%), 5600-pixel samples for validation (20%), and 2800-pixel samples for testing (10%). The mapping considered the following land-use/land-cover classes: rice crops, the fallow period between rice crops, bodies of water (rivers, lakes, and reservoir), riparian forest/reforestation, grassland, flooded grassland, and other types of crops. We disregard the areas of the city using a mask."
+      },
+      "confidence": 0.95,
+      "task": "training and evaluation of classification models",
+      "setup": "Dataset of 28,000 pixel samples (4000 per class) manually collected from ground truth points and high-resolution images, split into 70% training, 20% validation, 10% testing. Models (LSTM, Bi-LSTM, SVM, RF, k-NN, NB) were trained and evaluated for land-use/land-cover classification."
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_75f15a4b19270ca1_x3",
+      "evidence": {
+        "section": "3.4. Accuracy Assessment",
+        "original_text": "Accurate analysis of remote sensing image classifications is essential to compare algorithms and establish product quality. In the present study, we use the accuracy metrics from confusion matrix widely used in studies of land-use/land-cover classification, including the overall accuracy, Kappa coefficient, and commission and omission errors [133,134]. Overall accuracy is the most straightforward metric, calculated by dividing the sum of pixels correctly classified by the total number of pixels analyzed [134]. Congalton [133] introduced the Kappa coefficient for accuracy analysis of remote sensing data. The Kappa coefficient is a popular measure of agreement among raters (intermediate reliability) with a value range of −1 to +1 [135]. Commission and omission errors are a very effective way of representing the accuracy of each classified category. Commission error (Type I-false positive) occurs when classifying a pixel as a land-cover/land-use category that is not. Meanwhile, the omission error (Type II-false negative) is not to classify the pixel as a land-cover/land-use category when it is. We used the McNemar test [136] to assess the statistical significance of differences in remote sensing classification accuracy [137]. McNemar’s test principle is based on the evaluation of a contingency table with a 2 × 2 dimension considering only correct and incorrect points for two different methods (Table 1). In the relative comparison between different classification algorithms, the chi-square (χ2) statistic has one degree of freedom and uses exclusively discordant samples ( f 12 e f 21) (Equation (3)). The null hypothesis of marginal homogeneity means equivalent results between the two classifications. If the result χ[2] is higher than the values of the χ[2] distribution table, we reject the null hypothesis and assume that the marginal proportion of each classification method is significant and with different behavior. As in other studies that compare classification algorithms, we used the same set of validation data for McNemar’s analysis, consisting of a sample independent of the training set. Therefore, the test used 1200 samples per mapping unit (totaling 8400 samples)."
+      },
+      "confidence": 0.95,
+      "task": "accuracy assessment and statistical comparison of classification models",
+      "setup": "Accuracy metrics (overall accuracy, Kappa, commission/omission errors) computed from confusion matrices. McNemar test performed on an independent validation set (1200 samples per class, total 8400) to assess statistical significance of differences between models."
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The macro analysis presented in Table 2 shows high accuracy and kappa values for all models (>97% in all metrics). The filter applied in the raw data can explain this behavior because it increases inter-class similarities and maximizes extra-classes differences. In addition, the seven classes are very different from each other, increasing effectiveness. Despite the high metrics in the macro analysis, there is a significant difference within the most critical classes for this study (1 and 2). We can observe from the Confusion Matrixes (Figure 14) that Classes 3, 4, 5, 6, and 7 present very similar results for all models. Classes 1 and 2 show the most significant values of confusion between classes, which are the most critical for the present research. Furthermore, the evaluation of the Commission and Omission errors within those classes clearly indicates that the RNN models had more consistent results than other methods. To verify the statistical differences between the models, we performed the McNemar test presented in Table 5. Thus, using a significance level of 0.05, two pairs of models are equivalent (RF/SVM and NB/k-NN). The results obtained show that even though the Deep Learning and Machine Learning models presented high values, the Deep Learning models had statistical advantages and had a significant improvement in the most critical classes. Even though Bi-LSTM and LSTM presented statistical differences, the high values of these models within classes 1 and 2 are due to the temporal signature behavior, which shows a relatively symmetrical shape with sinusoidal (periodic) characteristics. In this scenario, the forward and backward sequences within the RNN model’s trajectory are very similar, with opposing derivatives for each instance in the time-sequenced data, yet with the same approximate module."
+      },
+      "confidence": 0.98,
+      "quantity": "overall accuracy",
+      "value": 97,
+      "unit": "%",
+      "context": "rice crop detection using LSTM, Bi-LSTM, SVM, RF, k-NN, and NB models from Sentinel-1 time series in West Rio Grande do Sul, Brazil",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_75f15a4b19270ca1_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The macro analysis presented in Table 2 shows high accuracy and kappa values for all models (>97% in all metrics). The filter applied in the raw data can explain this behavior because it increases inter-class similarities and maximizes extra-classes differences. In addition, the seven classes are very different from each other, increasing effectiveness. Despite the high metrics in the macro analysis, there is a significant difference within the most critical classes for this study (1 and 2). We can observe from the Confusion Matrixes (Figure 14) that Classes 3, 4, 5, 6, and 7 present very similar results for all models. Classes 1 and 2 show the most significant values of confusion between classes, which are the most critical for the present research. Furthermore, the evaluation of the Commission and Omission errors within those classes clearly indicates that the RNN models had more consistent results than other methods. To verify the statistical differences between the models, we performed the McNemar test presented in Table 5. Thus, using a significance level of 0.05, two pairs of models are equivalent (RF/SVM and NB/k-NN). The results obtained show that even though the Deep Learning and Machine Learning models presented high values, the Deep Learning models had statistical advantages and had a significant improvement in the most critical classes. Even though Bi-LSTM and LSTM presented statistical differences, the high values of these models within classes 1 and 2 are due to the temporal signature behavior, which shows a relatively symmetrical shape with sinusoidal (periodic) characteristics. In this scenario, the forward and backward sequences within the RNN model’s trajectory are very similar, with opposing derivatives for each instance in the time-sequenced data, yet with the same approximate module."
+      },
+      "confidence": 0.95,
+      "metric": "overall accuracy",
+      "compared_to": "Bi-LSTM, LSTM, SVM, RF, k-NN, NB"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The training stage for each model presented different procedures to achieve the optimal configuration. To obtain the best LSTM and Bi-LSTM models, we monitored the categorical validation loss. Both models presented low categorical loss values (0.027 for Bi-LSTM and 0.029 for LSTM). Traditional Machine Learning methods require parameter tuning. SVM with third-degree polynomial kernels, RF with 150 trees, k-NN with ten neighbors, and Normal Bayes with 1 × 10−9 variation smoothing presented the best results. After performing the optimal hyper-parameter tuning, we analyzed the model’s performances by comparing their test samples confusion matrixes (Figure 14), accuracy, kappa score (Table 2), Commission and Omission Errors (Tables 3 and 4), and McNemar Test (Table 5)."
+      },
+      "confidence": 0.97,
+      "quantity": "categorical validation loss",
+      "value": 0.027,
+      "unit": null,
+      "context": "Bi-LSTM model training for rice crop detection",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The training stage for each model presented different procedures to achieve the optimal configuration. To obtain the best LSTM and Bi-LSTM models, we monitored the categorical validation loss. Both models presented low categorical loss values (0.027 for Bi-LSTM and 0.029 for LSTM). Traditional Machine Learning methods require parameter tuning. SVM with third-degree polynomial kernels, RF with 150 trees, k-NN with ten neighbors, and Normal Bayes with 1 × 10−9 variation smoothing presented the best results. After performing the optimal hyper-parameter tuning, we analyzed the model’s performances by comparing their test samples confusion matrixes (Figure 14), accuracy, kappa score (Table 2), Commission and Omission Errors (Tables 3 and 4), and McNemar Test (Table 5)."
+      },
+      "confidence": 0.97,
+      "quantity": "categorical validation loss",
+      "value": 0.029,
+      "unit": null,
+      "context": "LSTM model training for rice crop detection",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_75f15a4b19270ca1_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Furthermore, another significant advantage of the RNN models is the computational cost in the classification. The time to classify the 13000 × 13000 pixel image is about 50 min for Bi-LSTM and LSTM, 104 min for SVM, 110 min for Random Forest, 13 h for k-NN, and 3 h for Normal Bayes. The RNN methods are two times faster than SVM (the faster Traditional Machine Learning method) in the classification processing, having a much more useful application in practical scenarios."
+      },
+      "confidence": 0.98,
+      "metric": "classification processing time",
+      "compared_to": "Bi-LSTM, LSTM, SVM, RF, k-NN, NB"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Furthermore, another significant advantage of the RNN models is the computational cost in the classification. The time to classify the 13000 × 13000 pixel image is about 50 min for Bi-LSTM and LSTM, 104 min for SVM, 110 min for Random Forest, 13 h for k-NN, and 3 h for Normal Bayes. The RNN methods are two times faster than SVM (the faster Traditional Machine Learning method) in the classification processing, having a much more useful application in practical scenarios."
+      },
+      "confidence": 0.98,
+      "quantity": "classification processing time",
+      "value": 50,
+      "unit": "min",
+      "context": "Bi-LSTM and LSTM models classifying a 13000 × 13000 pixel image",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Furthermore, another significant advantage of the RNN models is the computational cost in the classification. The time to classify the 13000 × 13000 pixel image is about 50 min for Bi-LSTM and LSTM, 104 min for SVM, 110 min for Random Forest, 13 h for k-NN, and 3 h for Normal Bayes. The RNN methods are two times faster than SVM (the faster Traditional Machine Learning method) in the classification processing, having a much more useful application in practical scenarios."
+      },
+      "confidence": 0.98,
+      "quantity": "classification processing time",
+      "value": 104,
+      "unit": "min",
+      "context": "SVM model classifying a 13000 × 13000 pixel image",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Furthermore, another significant advantage of the RNN models is the computational cost in the classification. The time to classify the 13000 × 13000 pixel image is about 50 min for Bi-LSTM and LSTM, 104 min for SVM, 110 min for Random Forest, 13 h for k-NN, and 3 h for Normal Bayes. The RNN methods are two times faster than SVM (the faster Traditional Machine Learning method) in the classification processing, having a much more useful application in practical scenarios."
+      },
+      "confidence": 0.98,
+      "quantity": "classification processing time",
+      "value": 110,
+      "unit": "min",
+      "context": "Random Forest model classifying a 13000 × 13000 pixel image",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Furthermore, another significant advantage of the RNN models is the computational cost in the classification. The time to classify the 13000 × 13000 pixel image is about 50 min for Bi-LSTM and LSTM, 104 min for SVM, 110 min for Random Forest, 13 h for k-NN, and 3 h for Normal Bayes. The RNN methods are two times faster than SVM (the faster Traditional Machine Learning method) in the classification processing, having a much more useful application in practical scenarios."
+      },
+      "confidence": 0.98,
+      "quantity": "classification processing time",
+      "value": 13,
+      "unit": "h",
+      "context": "k-NN model classifying a 13000 × 13000 pixel image",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_75f15a4b19270ca1_qr8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Furthermore, another significant advantage of the RNN models is the computational cost in the classification. The time to classify the 13000 × 13000 pixel image is about 50 min for Bi-LSTM and LSTM, 104 min for SVM, 110 min for Random Forest, 13 h for k-NN, and 3 h for Normal Bayes. The RNN methods are two times faster than SVM (the faster Traditional Machine Learning method) in the classification processing, having a much more useful application in practical scenarios."
+      },
+      "confidence": 0.98,
+      "quantity": "classification processing time",
+      "value": 3,
+      "unit": "h",
+      "context": "Normal Bayes model classifying a 13000 × 13000 pixel image",
+      "result_type": "main_result"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_75f15a4b19270ca1_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Synthetic Aperture Radar (SAR) time series allows describing the rice phenological cycle by the backscattering time signature. Therefore, the advent of the Copernicus Sentinel-1 program expands studies of radar data (C-band) for rice monitoring at regional scales, due to the high temporal resolution and free data distribution. Recurrent Neural Network (RNN) model has reached state-of-the-art in the pattern recognition of time-sequenced data, obtaining a significant advantage at crop classification on the remote sensing images. One of the most used approaches in the RNN model is the Long Short-Term Memory (LSTM) model and its improvements, such as Bidirectional LSTM (Bi-LSTM). Bi-LSTM models are more effective as their output depends on the previous and the next segment, in contrast to the unidirectional LSTM models. The present research aims to map rice crops from Sentinel-1 time series (band C) using LSTM and Bi-LSTM models in West Rio Grande do Sul (Brazil). We compared the results with traditional Machine Learning techniques: Support Vector Machines (SVM), Random Forest (RF), k-Nearest Neighbors (k-NN), and Normal Bayes (NB). The developed methodology can be subdivided into the following steps: (a) acquisition of the Sentinel time series over two years; (b) data pre-processing and minimizing noise from 3D spatial-temporal filters and smoothing with Savitzky-Golay filter; (c) time series classification procedures; (d) accuracy analysis and comparison among the methods. The results show high overall accuracy and Kappa (>97% for all methods and metrics). Bi-LSTM was the best model, presenting statistical differences in the McNemar test with a significance of 0.05. However, LSTM and Traditional Machine Learning models also achieved high accuracy values. The study establishes an adequate methodology for mapping the rice crops in West Rio Grande do Sul."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_75f15a4b19270ca1_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Crop mapping using SAR temporal series is an alternative to the census survey by field interviews because of its low cost and speed, supporting the Rio Grande do Sul territorial planning. In this article, we applied different models to identify large-scale rice crops from the Sentinel-1 time-series imagery, covering the municipality of Uruguaiana, Brazil’s largest producer. The model application considered a multiclass mapping to delimit the rice plantations in comparison to its surroundings. The temporal behavior of the backscatter coefficient of Sentinel-1 in the polarization of the VH on different types of targets has features and patterns that differentiate them from rice planting plots. We created a sufficiently extensive and balanced training and test dataset to improve results and statistical analysis. RNN models presented a state-of-the-art performance in identifying rice crops, with accuracy and Kappa values greater than 0.98. The comparison of these models indicates that Bi-LSTM presented the best results with statistical differences considering the significance of 0.05. An advantage of Deep Learning models is the speed with GPU acceleration being significantly faster than the traditional machine learning methods in the classification processing. The high accuracy values are due to the distinction between time series behaviors. Rice plantations present a gradual and wide variation throughout the year, acquiring a distinct temporal signature for each target. Besides, continuous and denser time series obtained from SAR data, without interference or data loss, improve the accuracy and generalizability of models. The results demonstrate that Bi-LSTM and LSTM models achieve better performance when compared to traditional Machine Learning methods."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_75f15a4b19270ca1_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The present research had higher accuracy metrics and lower discrepancies between models than the studies related above. This behavior can be explained by the high temporal resolution (61-step steps) added with intense smoothing caused by the 3D filter, which increased the intra-class similarities and highlighted the extra-class differences, facilitating the classification algorithms. The results obtained in this research show that RNN and Machine Learning methods bring significant benefits for its ease, accuracy, and simplicity, being much more useful than cense information used nowadays. Furthermore, the RNN shows significant advantages when comparing the processing time of classification, since it is much faster than any traditional Machine Learning method."
+      },
+      "confidence": 0.85
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_75f15a4b19270ca1_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The hybrid combination of convolutional and recurrent networks has applications in this study area in future studies. In this context, Teimouri et al. [81] combined the Fully Convolutional Network (FCN) and Long-Term Convolutional Memory (ConvLSTM) to classify 14 main classes of crops using Sentinel-1 temporal images in Denmark, reaching an accuracy of 86% and Intersection over Union of 0.64, respectively. Another important future research is to evaluate the classification performance using the VH and VV bands together."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_75f15a4b19270ca1_fw2",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Future research may include new architectures, integrating temporal and spatial domains, such as CNN and RNN. Another approach is to analyze non-periodic time series data, which tends to highlight the differences between Bi-LSTM and LSTM, also presenting a more significant gap between Deep Learning and traditional Machine Learning models."
+      },
+      "confidence": 0.9
+    }
+  ]
+}

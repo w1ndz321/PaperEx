@@ -1,0 +1,780 @@
+{
+  "metadata": {
+    "doc_id": "doc_128f5f461bec9be8",
+    "source_file": "10b_GlobalRice20_global_paddy_rice_dataset_multi_source_remote_sensing.md",
+    "title": "GlobalRice20: A 20 m resolution global paddy rice dataset for 2015 and 2024 derived from multi-source remote sensing",
+    "year": 2026,
+    "doi": "10.5194/essd-2026-24",
+    "abstract": "Hong Zhang[1,2,3] , Mingyang Song[1,2,3*] , Yinhaibin Ding[1,2,3] , Yazhe Xie[1,2,3] , Huadong Guo[1,2,3*] , Lu Xu[1,2] , Ji Ge[1,2,3] , Yafei Zhu[1,2,3] , Shenghan Wang[1,2,3] , Zihuan Guo[1,2,3] , Zhe Wang[1,2,3] , Haoxuan Duan[1,2,3] , Lijun Zuo[1,2,3] , Wenjiang Huang[1,2,3]",
+    "introduction": "30 \n\nThe year 2025 marks a critical milestone—a decade since the inception of the United Nations Sustainable Development Goals (SDGs). As we approach the 2030 deadline, conducting a rigorous assessment of the progress toward SDG 2 ('Zero Hunger') has become an international priority. Rice, a staple food for billions of people and accounting for over 12% of global cropland area, serves as a key indicator of agricultural sustainability and regional food self-sufficiency (Dong and \n\n1 \n\nhttps://doi.org/10.5194/essd-2026-24 Preprint. Discussion started: 27 January 2026 _⃝_ c Author(s) 2026. CC BY 4.0 License. \n\n35 \n\n40 \n\n45 \n\n50 \n\n55 \n\n60 \n\n\n\nXiao, 2016). However, accurate quantification of rice production landscapes remains a challenge. Reliable, spatially explicit, and high-resolution data are indispensable for evaluating the evolution of planting patterns and formulating targeted interventions. Despite the urgent need to monitor SDG 2 implementation, there is currently a lack of a consistent, highresolution global monitoring framework capable of capturing the granular evolution of paddy rice from the 2015 baseline to the present. \n\nCurrently, the landscape of global rice mapping is characterized by a dichotomy between global low-resolution products and regional high-resolution datasets. At the global scale, prominent datasets—including GDHY (0.5°) (Iizumi and Sakai, 2020), MIRCA2000 (Portmann et al., 2010), M3Crops (Monfreda et al., 2008), and more recent products like GGCP10 (Qin et al., 2024), GlobalCropYield5min (Cao et al., 2025), and GEOGLAM-BACS (Becker-Reshef et al., 2023)—provide valuable long-term trends essential for macro-level yield analysis. However, these coarse-resolution products suffer from mixed-pixel issues that obscure fragmentation and boundary details, lacking the spatial fidelity required for precision agricultural monitoring. In the transition zone, regional products such as MARC (Zhao et al., 2024a), GRIPC (Salmon et al., 2015), and APRA500 (Han et al., 2022) have leveraged MODIS and Sentinel time-series to refine cropping intensity maps. Conversely, at the high-resolution frontier, recent advancements have produced 10–30 m maps using Landsat and Sentinel data. Representative examples include GCD-Rice for Asia (Li et al., 2025b), CCD-Rice for China (Shen et al., 2025), EARice10 for East Asia (Song et al., 2025b), and the 2023 Africa Rice Map (Jiang et al., 2025). By integrating multi-source time-series with machine learning, these efforts have achieved high precision. However, these high-resolution efforts remain largely confined to specific countries or regions. To date, there remains a critical gap: the absence of a unified, validated, and highresolution (20 m) global rice distribution product that covers major production zones consistently across different years. With the rapid advancement of remote sensing technology, integrated observation systems have provided a wealth of multimodal data for agricultural monitoring. Optical imagery (e.g., Landsat series, Sentinel-2, and MODIS) has been widely utilized to capture the unique spectral signatures of rice during key phenological stages, leveraging its rich spectral information (Zhang et al., 2023; Hou et al., 2025; Shen et al., 2024; Ni et al., 2021). However, these sensors are susceptible to cloud and rain interference. In contrast, spaceborne Synthetic Aperture Radar (SAR) offers all-weather and day-and-night observation capabilities, demonstrating unique advantages in rice mapping (Sun et al., 2022; Ge et al., 2025b; Lin et al., 2024; Xu et al., 2023a). \n\nRecently, researchers have significantly enhanced the accuracy and robustness of rice mapping across diverse geographical environments by effectively integrating these optical and SAR data (Shen et al., 2023a; Han et al., 2021; Song et al., 2025a; Wan et al., 2024; Zhao et al., 2024b; Ge et al., 2025a). Methodologically, remote sensing-based rice mapping has evolved through three primary pathways: phenology-based, machine learning, and deep learning methods. Phenology-based approaches utilize specific growth stages; for instance, Xu et al. (2023b) proposed the Sentinel-1-based SPRI index, while Zhao et al. (2024c) developed the \"Rice-Sentinel\" framework to capture unique flooding signals. Machine learning methods have further improved automation. Liu et al. (2022a) applied Random Forest for early rice mapping, Li et al. (2025a) introduced the SPRC framework integrating phenology with probabilistic voting, and Song et al. (2025b) developed the \n\n2 \n\nhttps://doi.org/10.5194/essd-2026-24 Preprint. Discussion started: 27 January 2026 _⃝_ c Author(s) 2026. CC BY 4.0 License. \n\n75 \n\n80 \n\n85 \n\n\n\n65 SRMI index for optical-SAR fusion. More recently, deep learning has emerged as a dominant paradigm due to its superior non-linear fitting capabilities. Notable examples include the improved U-Net by Wei et al. (2021), the Full-Resolution Network (FR-Net) by Xia et al. (2022), and the lightweight XM-UNet by Ge et al. (2025c) . \n\n70 \n\nDespite these substantial advancements, producing a high-resolution global map faces technical bottlenecks stemming from the heterogeneity of remote sensing archives. Specifically, traditional methods that rely on complex interpolation or temporal aggregation often introduce noise and smooth out critical short-term phenological details (Song et al., 2025a; Yuan et al., 2022b; Blickensdörfer et al., 2022). Furthermore, SAR coverage limitations caused by orbital constraints and imaging modes — exacerbated by the loss of Sentinel-1B — often lead to complete modality missingness, posing a significant challenge for traditional models that rely on the simultaneous availability of optical and SAR observations (Shen et al., 2015; Wei et al., 2022). Most critically, fusing optical and SAR modalities is hindered by temporal asynchrony—the revisit cycles of Landsat, Sentinel-2, and Sentinel-1 do not align, resulting in irregular time-series that traditional models often struggle to handle robustly. \n\nTo bridge this gap, we developed the GlobalRice20 dataset, the first globally consistent 20 m resolution paddy rice map for the years 2015 and 2024. To overcome the challenges of irregular sampling and modal missingness, we employed an innovative \"Time-series-to-Vision\" framework. Unlike conventional methods that require regular time steps, our approach transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, allowing a customized vision model (T2VRCM) to robustly identify rice phenological patterns even in the presence of data gaps. In this study, we present the generation, validation, and analysis of the GlobalRice20 dataset, providing the first verified 20-m resolution global rice map covering 98 major producing countries for 2015 and 2024. By leveraging a novel “Time-series-to-Vision” harmonization strategy to alleviate cloud contamination, sensor asynchrony, and modality missingness, we achieved an overall accuracy of 92.33% and strong agreement with national statistics, supporting the dataset’s reliability and usability at the global scale. Furthermore, we demonstrate the dataset's utility for tracking SDG 2 progress by quantifying critical decadal shifts—such as the 15.7% expansion of rice cultivation in Africa—thereby filling a longstanding gap in highresolution global agricultural monitoring products.",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": "作物学",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": "遥感技术",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "paddy rice mapping",
+      "remote sensing",
+      "global dataset",
+      "SDG 2",
+      "agricultural monitoring"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:54:15.941874+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Here, we present GlobalRice20, the first global 20m resolution paddy rice dataset for the years 2015 and 2024. We developed a 'Time-Series-to-Vision' framework (T2VRCM) that transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, specifically designed to handle irregular sampling and missing modalities. The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. Cross-comparison with national agricultural statistics reveals a high coefficient of determination (R[2] =0.91 for 2024), confirming the dataset's reliability for national-scale accounting. Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%). This dataset fills a critical gap in global agricultural monitoring, providing a baseline for analyzing food production trends and climate impacts."
+      },
+      "confidence": 0.99,
+      "term": "GlobalRice20",
+      "normalized": "GlobalRice20数据集",
+      "std_label": "GlobalRice20"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We developed a 'Time-Series-to-Vision' framework (T2VRCM) that transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, specifically designed to handle irregular sampling and missing modalities. To bridge this gap, we developed the GlobalRice20 dataset, the first globally consistent 20 m resolution paddy rice map for the years 2015 and 2024. To overcome the challenges of irregular sampling and modal missingness, we employed an innovative 'Time-series-to-Vision' framework. Unlike conventional methods that require regular time steps, our approach transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, allowing a customized vision model (T2VRCM) to robustly identify rice phenological patterns even in the presence of data gaps."
+      },
+      "confidence": 0.98,
+      "term": "Time-Series-to-Vision framework",
+      "normalized": "时间序列到视觉框架",
+      "std_label": "T2VRCM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Currently, the landscape of global rice mapping is characterized by a dichotomy between global low-resolution products and regional high-resolution datasets. At the global scale, prominent datasets—including GDHY (0.5°) (Iizumi and Sakai, 2020), MIRCA2000 (Portmann et al., 2010), M3Crops (Monfreda et al., 2008), and more recent products like GGCP10 (Qin et al., 2024), GlobalCropYield5min (Cao et al., 2025), and GEOGLAM-BACS (Becker-Reshef et al., 2023)—provide valuable long-term trends essential for macro-level yield analysis. However, these coarse-resolution products suffer from mixed-pixel issues that obscure fragmentation and boundary details, lacking the spatial fidelity required for precision agricultural monitoring. In the transition zone, regional products such as MARC (Zhao et al., 2024a), GRIPC (Salmon et al., 2015), and APRA500 (Han et al., 2022) have leveraged MODIS and Sentinel time-series to refine cropping intensity maps. Conversely, at the high-resolution frontier, recent advancements have produced 10–30 m maps using Landsat and Sentinel data. Representative examples include GCD-Rice for Asia (Li et al., 2025b), CCD-Rice for China (Shen et al., 2025), EARice10 for East Asia (Song et al., 2025b), and the 2023 Africa Rice Map (Jiang et al., 2025). By integrating multi-source time-series with machine learning, these efforts have achieved high precision. However, these high-resolution efforts remain largely confined to specific countries or regions."
+      },
+      "confidence": 0.97,
+      "term": "paddy rice mapping",
+      "normalized": "水稻田制图",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Accurate, high-resolution spatial data of paddy rice are indispensable for assessing global food security and tracking progress toward Sustainable Development Goal 2 (Zero Hunger). The year 2025 marks a critical milestone—a decade since the inception of the United Nations Sustainable Development Goals (SDGs). As we approach the 2030 deadline, conducting a rigorous assessment of the progress toward SDG 2 ('Zero Hunger') has become an international priority. Rice, a staple food for billions of people and accounting for over 12% of global cropland area, serves as a key indicator of agricultural sustainability and regional food self-sufficiency."
+      },
+      "confidence": 0.99,
+      "term": "Sustainable Development Goal 2",
+      "normalized": "可持续发展目标2",
+      "std_label": "SDG 2"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c5",
+      "evidence": {
+        "section": "Materials",
+        "original_text": "For SAR data, we utilized C-band imagery from the Sentinel-1 satellite, which offers all-weather observation capabilities essential for penetrating cloud cover in tropical rice-growing regions. We selected Interferometric Wide (IW) swath mode Ground Range Detected (GRD) products with a 10-m spatial resolution. The data underwent standard preprocessing on GEE, including thermal noise removal, radiometric calibration, and terrain correction. Because Sentinel-1B was unavailable for the 2015 baseline and ceased operations before 2024, SAR observations for both years rely primarily on Sentinel-1A. Both VV and VH polarizations were utilized, and the SAR acquisitions were aggregated into 12-day mean composites for both 2015 and 2024."
+      },
+      "confidence": 0.98,
+      "term": "Sentinel-1",
+      "normalized": "哨兵-1卫星",
+      "std_label": "Sentinel-1"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c6",
+      "evidence": {
+        "section": "Materials",
+        "original_text": "Optical data were sourced from different sensors to maximize spatial resolution and availability for the respective target years. For 2024, we utilized Sentinel-2 MSI Level-2A surface reflectance data (10-m resolution), applying a cloud-masking algorithm to remove invalid observations. For the 2015 target year, as Sentinel-2 data were not yet available, we utilized Landsat-8 OLI surface reflectance data with a 30-m spatial resolution. We calculated the Land Surface Water Index (LSWI) (Xiao et al., 2005) and Enhanced Vegetation Index (EVI) (Huete et al., 1997), widely recognized in optical remote sensing for rice mapping, to characterize the crop's unique phenological evolution."
+      },
+      "confidence": 0.98,
+      "term": "Sentinel-2",
+      "normalized": "哨兵-2卫星",
+      "std_label": "Sentinel-2"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c7",
+      "evidence": {
+        "section": "Materials",
+        "original_text": "For the 2015 target year, as Sentinel-2 data were not yet available, we utilized Landsat-8 OLI surface reflectance data with a 30-m spatial resolution. We calculated the Land Surface Water Index (LSWI) (Xiao et al., 2005) and Enhanced Vegetation Index (EVI) (Huete et al., 1997), widely recognized in optical remote sensing for rice mapping, to characterize the crop's unique phenological evolution."
+      },
+      "confidence": 0.98,
+      "term": "Landsat-8",
+      "normalized": "陆地卫星-8",
+      "std_label": "Landsat-8"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c8",
+      "evidence": {
+        "section": "Materials",
+        "original_text": "All satellite data processing was conducted on the Google Earth Engine (GEE) cloud computing platform. The primary input datasets consist of multi-temporal Synthetic Aperture Radar (SAR) and optical imagery, selected to correspond with the validation years 2015 and 2024."
+      },
+      "confidence": 0.99,
+      "term": "Google Earth Engine",
+      "normalized": "谷歌地球引擎",
+      "std_label": "GEE"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c9",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "The Gate Conv Block is the fundamental feature extraction unit of the T2VRCM encoder (Fig. 4), specifically designed to simultaneously capture local fine-grained patterns and long-range temporal dependencies of rice phenological evolution from the 2D time-series graphs. Its core functionality stems from the synergistic design of a dynamic gating mechanism and Inception-style depthwise separable convolution. The dynamic gating mechanism adaptively fuses features from two parallel processing paths (the information processing path and the gating path) and incorporates residual connections to facilitate the training of deep networks (Yu and Wang, 2025; Dauphin et al., 2017). Its core role is to perform position-wise adaptive recalibration of features, aiming to amplify discriminative patterns, suppress noise and anomalies, and automatically reduce the contribution of unreliable data sources when modalities are missing or when temporal observations are absent (Dauphin et al., 2017; Yu et al., 2022)."
+      },
+      "confidence": 0.96,
+      "term": "Gate Conv Blocks",
+      "normalized": "门控卷积块",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c10",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "While downsampling operations in the backbone network effectively extract high-dimensional semantic information, the continuously reduced spatial resolution inevitably leads to the loss of crucial fine-grained spatial details. To enhance the model's perception and modeling capabilities for both global and local regions of the line graphs, achieving collaborative interaction across hierarchical features in both channel and spatial dimensions is essential (Yuan et al., 2024a; Song et al., 2025c). For this purpose, we designed the Full-Stage Feature Interaction (FSFI) block, aiming to effectively fuse feature information from different encoder levels, thereby improving the model's classification capability. Specifically, given the outputs from the four stages as {O1, O2, O3, O4}. First, a patch embedding is applied to unify the features from all scales to a common spatial resolution, denoted as Fi ∈ R[C][i][×][h][×][w] , where i = 1,2,3,4, h = H/32, and w = W/32. The core of FSFI lies in computing the local-spatial channel similarity between the deepest feature F4 and features from all levels, thereby establishing global semantic associations."
+      },
+      "confidence": 0.96,
+      "term": "Full-Stage Feature Interaction block",
+      "normalized": "全阶段特征交互块",
+      "std_label": "FSFI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_128f5f461bec9be8_c11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%). Over this period, the global rice footprint exhibited a robust upward trajectory, registering a net growth of approximately 6.6%. Asia maintained its status as the global center of rice cultivation, though it displayed divergent sub-regional trends. Southeast and South Asia remained the primary drivers of production, benefiting from favorable agro-climatic conditions and abundant water resources (Taniushkina et al., 2024; Yuan et al., 2022a). Most notably, Africa emerged as a new global growth pole, recording a substantial 15.7% increase in planting area. This expansion is underpinned by proactive agricultural development policies and international partnerships, such as China-Africa cooperation projects (Zhang et al., 2025)."
+      },
+      "confidence": 0.97,
+      "term": "global rice area expansion",
+      "normalized": "全球水稻种植面积扩张",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Here, we present GlobalRice20, the first global 20m resolution paddy rice dataset for the years 2015 and 2024. We developed a 'Time-Series-to-Vision' framework (T2VRCM) that transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, specifically designed to handle irregular sampling and missing modalities. The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. Cross-comparison with national agricultural statistics reveals a high coefficient of determination (R[2] =0.91 for 2024), confirming the dataset's reliability for national-scale accounting."
+      },
+      "confidence": 0.99,
+      "head": "doc_128f5f461bec9be8_c2",
+      "relation_type": "uses",
+      "relation_surface": "transforms heterogeneous optical and SAR time-series into standardized 2D visual representations",
+      "tail": "doc_128f5f461bec9be8_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Accurate, high-resolution spatial data of paddy rice are indispensable for assessing global food security and tracking progress toward Sustainable Development Goal 2 (Zero Hunger). This dataset fills a critical gap in global agricultural monitoring, providing a baseline for analyzing food production trends and climate impacts. In conclusion, the high-resolution, multi-temporal rice distribution dataset constructed in this study fills a critical gap in global-scale thematic products. By providing spatially explicit and timely benchmarks, GlobalRice20 offers essential data support for global food security assessment, agricultural policy formulation, and tracking progress toward Sustainable Development Goal 2 (Zero Hunger) in the face of climate change."
+      },
+      "confidence": 0.98,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "measures",
+      "relation_surface": "provides a baseline for analyzing food production trends and climate impacts",
+      "tail": "doc_128f5f461bec9be8_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This dataset fills a critical gap in global agricultural monitoring, providing a baseline for analyzing food production trends and climate impacts. To date, there remains a critical gap: the absence of a unified, validated, and highresolution (20 m) global rice distribution product that covers major production zones consistently across different years. In conclusion, the high-resolution, multi-temporal rice distribution dataset constructed in this study fills a critical gap in global-scale thematic products."
+      },
+      "confidence": 0.97,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "enhances",
+      "relation_surface": "fills a critical gap in global agricultural monitoring",
+      "tail": "doc_128f5f461bec9be8_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. For SAR data, we utilized C-band imagery from the Sentinel-1 satellite, which offers all-weather observation capabilities essential for penetrating cloud cover in tropical rice-growing regions. We selected Interferometric Wide (IW) swath mode Ground Range Detected (GRD) products with a 10-m spatial resolution. The data underwent standard preprocessing on GEE, including thermal noise removal, radiometric calibration, and terrain correction."
+      },
+      "confidence": 0.98,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "derives",
+      "relation_surface": "was produced using Sentinel-1/2 and Landsat imagery",
+      "tail": "doc_128f5f461bec9be8_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. Optical data were sourced from different sensors to maximize spatial resolution and availability for the respective target years. For 2024, we utilized Sentinel-2 MSI Level-2A surface reflectance data (10-m resolution), applying a cloud-masking algorithm to remove invalid observations."
+      },
+      "confidence": 0.98,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "derives",
+      "relation_surface": "was produced using Sentinel-1/2 and Landsat imagery",
+      "tail": "doc_128f5f461bec9be8_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. For the 2015 target year, as Sentinel-2 data were not yet available, we utilized Landsat-8 OLI surface reflectance data with a 30-m spatial resolution. We calculated the Land Surface Water Index (LSWI) (Xiao et al., 2005) and Enhanced Vegetation Index (EVI) (Huete et al., 1997), widely recognized in optical remote sensing for rice mapping, to characterize the crop's unique phenological evolution."
+      },
+      "confidence": 0.98,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "derives",
+      "relation_surface": "was produced using Sentinel-1/2 and Landsat imagery",
+      "tail": "doc_128f5f461bec9be8_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r7",
+      "evidence": {
+        "section": "Materials",
+        "original_text": "All satellite data processing was conducted on the Google Earth Engine (GEE) cloud computing platform. The primary input datasets consist of multi-temporal Synthetic Aperture Radar (SAR) and optical imagery, selected to correspond with the validation years 2015 and 2024."
+      },
+      "confidence": 0.99,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "derives",
+      "relation_surface": "processing was conducted on the Google Earth Engine (GEE) cloud computing platform",
+      "tail": "doc_128f5f461bec9be8_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r8",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "T2VRCM is a hierarchical vision encoder, consisting of four cascaded feature extraction stages (Stages 1–4), a Full-Scale Feature Interaction (FSFI) block, and a Multi-Layer Perceptron (MLP) classification head. The Gate Conv Block is the fundamental feature extraction unit of the T2VRCM encoder (Fig. 4), specifically designed to simultaneously capture local fine-grained patterns and long-range temporal dependencies of rice phenological evolution from the 2D time-series graphs. Its core functionality stems from the synergistic design of a dynamic gating mechanism and Inception-style depthwise separable convolution."
+      },
+      "confidence": 0.97,
+      "head": "doc_128f5f461bec9be8_c2",
+      "relation_type": "uses",
+      "relation_surface": "consists of Gate Conv Blocks and Full-Stage Feature Interaction block",
+      "tail": "doc_128f5f461bec9be8_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r9",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "T2VRCM is a hierarchical vision encoder, consisting of four cascaded feature extraction stages (Stages 1–4), a Full-Scale Feature Interaction (FSFI) block, and a Multi-Layer Perceptron (MLP) classification head. While downsampling operations in the backbone network effectively extract high-dimensional semantic information, the continuously reduced spatial resolution inevitably leads to the loss of crucial fine-grained spatial details. To enhance the model's perception and modeling capabilities for both global and local regions of the line graphs, achieving collaborative interaction across hierarchical features in both channel and spatial dimensions is essential (Yuan et al., 2024a; Song et al., 2025c). For this purpose, we designed the Full-Stage Feature Interaction (FSFI) block, aiming to effectively fuse feature information from different encoder levels, thereby improving the model's classification capability."
+      },
+      "confidence": 0.97,
+      "head": "doc_128f5f461bec9be8_c2",
+      "relation_type": "uses",
+      "relation_surface": "consists of Gate Conv Blocks and Full-Stage Feature Interaction block",
+      "tail": "doc_128f5f461bec9be8_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_128f5f461bec9be8_r10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%). Over this period, the global rice footprint exhibited a robust upward trajectory, registering a net growth of approximately 6.6%. Asia maintained its status as the global center of rice cultivation, though it displayed divergent sub-regional trends. Southeast and South Asia remained the primary drivers of production, benefiting from favorable agro-climatic conditions and abundant water resources (Taniushkina et al., 2024; Yuan et al., 2022a). Most notably, Africa emerged as a new global growth pole, recording a substantial 15.7% increase in planting area. This expansion is underpinned by proactive agricultural development policies and international partnerships, such as China-Africa cooperation projects (Zhang et al., 2025)."
+      },
+      "confidence": 0.98,
+      "head": "doc_128f5f461bec9be8_c1",
+      "relation_type": "measures",
+      "relation_surface": "indicates a 6.6% expansion in global rice area",
+      "tail": "doc_128f5f461bec9be8_c11"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_128f5f461bec9be8_d1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Here, we present GlobalRice20, the first global 20m resolution paddy rice dataset for the years 2015 and 2024. We developed a 'Time-Series-to-Vision' framework (T2VRCM) that transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, specifically designed to handle irregular sampling and missing modalities. The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. Cross-comparison with national agricultural statistics reveals a high coefficient of determination (R[2] =0.91 for 2024), confirming the dataset's reliability for national-scale accounting. Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%). This dataset fills a critical gap in global agricultural monitoring, providing a baseline for analyzing food production trends and climate impacts. The dataset is available at https://doi.org/10.5281/zenodo.18168302 (Zhang et al., 2026)."
+      },
+      "confidence": 0.95,
+      "name": "GlobalRice20",
+      "modality": "image",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_128f5f461bec9be8_d2",
+      "evidence": {
+        "section": "2.3.1 Reference Sample Set",
+        "original_text": "To train and validate the T2VRCM model, a comprehensive reference dataset was constructed containing 164,000 samples across 98 countries. The samples were generated through a rigorous visual interpretation process integrating high-resolution optical imagery and existing regional rice maps. Crucially, to ensure temporal consistency and reduce label noise, we adopted a 'stable sample' strategy: selected samples were restricted to locations that maintained a consistent land cover type (either persistent rice or persistent non-rice) in both 2015 and 2024. A balanced 1:1 ratio between rice and non-rice samples was maintained to prevent class imbalance."
+      },
+      "confidence": 0.9,
+      "name": "Reference Sample Set",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_128f5f461bec9be8_d3",
+      "evidence": {
+        "section": "2.3.2 Existing Rice Maps and Statistical Data",
+        "original_text": "To assess the quality of the GlobalRice20 dataset, we compiled two types of reference data: First, we selected 12 representative global and regional datasets for spatial cross-comparison to evaluate geometric accuracy and boundary detail. These include APRA500 (Han et al., 2022), a 500-m product mapping cropping intensity across 21 Asian countries using MODIS data; SingleSeasonRice-China (Shen et al., 2023b), a 10/20-m Sentinel-based dataset covering 21 Chinese provinces; CCD-Rice (Shen et al., 2025), the first long-term (1990–2016) 30-m dataset for China’s eastern monsoon region; ChinaCropArea1km (Luo et al., 2020) and SPAM-China (Dai et al., 2025), two 1-km products generated from GLASS LAI and disaggregated statistics, respectively, serving as coarse-resolution baselines; Open-SEA-Rice-10 (Ginting et al., 2025), a recent 10-m map distinguishing triple-cropping systems in Southeast Asia; AsiaRiceYield4km (Wu et al., 2022), a long-term (1995–2015) 4-km gridded product generated via machine learning to estimate seasonal rice yields across Asia; GCD-Rice (Li et al., 2025), a long-term (1990–2023) 30-m dataset mapping seasonal rice distribution across 16 Asian countries using Landsat and Sentinel-1 data; the Japan Historical Rice Map (Carrasco et al., 2022), a long-term (1985–2019) Landsat-based dataset mapping rice field distribution in Japan using phenology and temporal aggregation; the South Korean Dynamic Rice Map (Jo et al., 2023), a dynamic paddy rice mapping product using a Recurrent U-Net deep learning model; NESEA-Rice (Han et al., 2021), a 10-m annual paddy rice dataset covering Northeast and Southeast Asia (2017–2019) developed by integrating Sentinel-1 and MODIS data; and the USDA Cropland Data Layer (Boryan et al., 2011), a 30m crop land cover product for the United States generated by the USDA using decision-tree classification of satellite imagery. Comparing our results against this diverse set—ranging from 10 m to 4 km and covering both single- and multicropping systems—ensures a robust assessment of GlobalRice20's consistency across scales. Second, to validate the extraction results at a macroscopic level, national-scale rice harvested area statistics for 2015 and 2024 were integrated from two authoritative sources: the United States Department of Agriculture (USDA) and the Food and Agriculture Organization (FAO). These standardized records served as the primary ground truth for assessing the aggregate reliability of our global maps."
+      },
+      "confidence": 0.85,
+      "name": "Existing Rice Maps and Statistical Data",
+      "modality": "multimodal",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_128f5f461bec9be8_ds1",
+      "evidence": {
+        "section": "3.4 Accuracy Assessment",
+        "original_text": "To comprehensively evaluate model performance, we adopted the following four metrics: Overall Accuracy (OA), Producer's Accuracy for the rice class (PArice ), User's Accuracy for the rice class (UArice ), and the F1 Score. Their specific formulas are as follows: OA = TP + TN TP + TN + FP + FN, PArice = TP TP + FN, UArice = TP TP + FP, F1 = 2TP 2TP + FP + FN where TP, TN, FP, and FN represent True Positives, True Negatives, False Positives, and False Negatives, respectively."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Accuracy assessment metrics for model performance and dataset validation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_128f5f461bec9be8_ds2",
+      "evidence": {
+        "section": "3.2 Time-Series- to-Vision Transformation",
+        "original_text": "To address the challenge of integrating multi- source heterogeneous time-series data, this study proposes an innovative methodology that transforms the time-series classification problem into an image classification problem. By mapping irregularly sampled multimodal time- series data into a standardized two- dimensional image representation, this approach converts challenges such as sensor temporal asynchrony, discontinuous observations, and incomplete data modalities into a visual pattern- recognition task in image space. Consequently, it leverages the powerful feature-extraction capabilities of deep-learning vision models to achieve end-to- end high-precision classification (Ni et al., 2025; Li et al., 2023). The method adopts a dual- subplot design to explicitly separate and align the optical and SAR modalities. Specifically, the upper subplot displays the two optical features, LSWI and EVI, within the same coordinate system, while the lower subplot plots the two SAR features, σVV and σVH, in a separate coordinate system. In both subplots, the horizontal X-axis represents the Day of Year (DOY, range 1–365), and the vertical Y-axis represents the value of the remote-sensing feature. Only the valid observation points tdj , vdj for each feature d are connected sequentially by straight lines according to DOY order. This design intuitively represents data missingness: if Sentinel- 2 data is absent for a period due to clouds, the line graph directly connects the valid observations before and after the gap; if an entire modality (e.g., Sentinel- 1) is completely missing, the corresponding lower subplot remains blank. To enable the model to distinguish between the different lines, four distinct yet consistent colors are assigned to the four features throughout the dataset. Finally, the two subplots are stacked vertically and uniformly resized to a standard RGB image Xi with dimensions 224 × 224 pixels. This 'Time-Series-to-Vision' transformation strategy cleverly encodes all heterogeneous, irregular, and incomplete one-dimensional time- series data into a standardized two- dimensional image representation. It systematically addresses critical challenges in multi-source fusion: heterogeneous feature representations, asynchronous acquisitions, intraseries data gaps, and complete modality missingness."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Time-series-to-Vision transformation protocol for converting heterogeneous remote sensing data into standardized 2D images"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_128f5f461bec9be8_ds3",
+      "evidence": {
+        "section": "2.2 Remote Sensing Data",
+        "original_text": "All satellite data processing was conducted on the Google Earth Engine (GEE) cloud computing platform. The primary input datasets consist of multi-temporal Synthetic Aperture Radar (SAR) and optical imagery, selected to correspond with the validation years 2015 and 2024. For SAR data, we utilized C-band imagery from the Sentinel-1 satellite, which offers all-weather observation capabilities essential for penetrating cloud cover in tropical rice-growing regions. We selected Interferometric Wide (IW) swath mode Ground Range Detected (GRD) products with a 10-m spatial resolution. The data underwent standard preprocessing on GEE, including thermal noise removal, radiometric calibration, and terrain correction. Because Sentinel-1B was unavailable for the 2015 baseline and ceased operations before 2024, SAR observations for both years rely primarily on Sentinel-1A. Both VV and VH polarizations were utilized, and the SAR acquisitions were aggregated into 12-day mean composites for both 2015 and 2024. Optical data were sourced from different sensors to maximize spatial resolution and availability for the respective target years. For 2024, we utilized Sentinel-2 MSI Level-2A surface reflectance data (10-m resolution), applying a cloud-masking algorithm to remove invalid observations. For the 2015 target year, as Sentinel-2 data were not yet available, we utilized Landsat-8 OLI surface reflectance data with a 30-m spatial resolution. We calculated the Land Surface Water Index (LSWI) (Xiao et al., 2005) and Enhanced Vegetation Index (EVI) (Huete et al., 1997), widely recognized in optical remote sensing for rice mapping, to characterize the crop's unique phenological evolution."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "Remote sensing data preprocessing and selection protocol on Google Earth Engine"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_128f5f461bec9be8_m1",
+      "evidence": {
+        "section": "3 Methodology",
+        "original_text": "To generate the global 20-m rice map, the comprehensive technical workflow of this study is illustrated in Fig. 3. The core of the methodology lies in the unified encoding of multi-source, heterogeneous remote sensing time-series data—incorporating both SAR and optical observations—into a standardized 2D line-graph visual representation. This visual proxy is subsequently analyzed using a specially designed deep learning vision-based classifier, the T2VRC Model (T2VRCM), to extract sophisticated phenological patterns and achieve high-precision global rice distribution mapping.\n\nThe remote sensing data sources used in this study encompass SAR data (Sentinel-1) and optical remote sensing data (Sentinel-2 for 2024, Landsat-8 for 2015). These are integrated with field-collected ground truth sample points to construct a global-scale rice classification dataset. Formally, we define the time series dataset as  = { Si, yi |i = 1, …, N}, containing N samples. Each sample Si is associated with a binary label yi ∈ {0,1}, where yi = 1 represents 'rice' and yi = 0 represents 'non-rice.' Si is a multivariate time series consisting of D variables. In this study, D = 4, corresponding to the optical indices {LSWI,EVI} and the SAR backscatter coefficients {σVV, σVH}. For each variable d, its observations are given by a series of (time, value) tuples: t1d, v1d , …, tnd, vnd , where t represents the observation Day of Year (DOY), and v is the corresponding feature value.\n\nThe inherent nature of this dataset is that of an irregularly-sampled time series, which is primarily manifested in three aspects：(1) Inconsistent revisit cycles: Different sensors have varying revisit cycles (e.g., 5-day composites for Sentinel-2 and 12-day composites for Sentinel-1); (2)Partial feature missingness: Optical data often suffers from missing observations due to cloud cover, and SAR data may have missing acquisitions during certain periods. (3)Complete modality absence: In some regions, an entire data modality (e.g., SAR) might be completely missing. Therefore, the research problem is defined as follows: Given this irregular time series dataset , learn a deep learning model G that can accurately predict the class label yi ∈ {0,1} for each time series sample Si.\n\nTo address the challenge of integrating multi-source heterogeneous time-series data, this study proposes an innovative methodology that transforms the time-series classification problem into an image classification problem. By mapping irregularly sampled multimodal time-series data into a standardized two-dimensional image representation, this approach converts challenges such as sensor temporal asynchrony, discontinuous observations, and incomplete data modalities into a visual pattern-recognition task in image space. Consequently, it leverages the powerful feature-extraction capabilities of deep-learning vision models to achieve end-to-end high-precision classification.\n\nThe method adopts a dual-subplot design to explicitly separate and align the optical and SAR modalities. Specifically, the upper subplot displays the two optical features, LSWI and EVI, within the same coordinate system, while the lower subplot plots the two SAR features, σVV and σVH, in a separate coordinate system. In both subplots, the horizontal X-axis represents the Day of Year (DOY, range 1–365), and the vertical Y-axis represents the value of the remote-sensing feature. Only the valid observation points tdj , vdj for each feature d are connected sequentially by straight lines according to DOY order. This design intuitively represents data missingness: if Sentinel-2 data is absent for a period due to clouds, the line graph directly connects the valid observations before and after the gap; if an entire modality (e.g., Sentinel-1) is completely missing, the corresponding lower subplot remains blank. To enable the model to distinguish between the different lines, four distinct yet consistent colors are assigned to the four features throughout the dataset.\n\nFinally, the two subplots are stacked vertically and uniformly resized to a standard RGB image Xi with dimensions 224 × 224 pixels. This 'Time-Series-to-Vision' transformation strategy cleverly encodes all heterogeneous, irregular, and incomplete one-dimensional time-series data into a standardized two-dimensional image representation. It systematically addresses critical challenges in multi-source fusion: heterogeneous feature representations, asynchronous acquisitions, intraseries data gaps, and complete modality missingness."
+      },
+      "confidence": 0.95,
+      "name": "Time-Series-to-Vision Rice Classification Model (T2VRCM)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_128f5f461bec9be8_m2",
+      "evidence": {
+        "section": "3.3.2 Gate Conv Blocks",
+        "original_text": "The Gate Conv Block is the fundamental feature extraction unit of the T2VRCM encoder (Fig. 4), specifically designed to simultaneously capture local fine-grained patterns and long-range temporal dependencies of rice phenological evolution from the 2D time-series graphs. Its core functionality stems from the synergistic design of a dynamic gating mechanism and Inception-style depthwise separable convolution.\n\nThe dynamic gating mechanism adaptively fuses features from two parallel processing paths (the information processing path and the gating path) and incorporates residual connections to facilitate the training of deep networks. Its core role is to perform position-wise adaptive recalibration of features, aiming to amplify discriminative patterns, suppress noise and anomalies, and automatically reduce the contribution of unreliable data sources when modalities are missing or when temporal observations are absent.\n\nSpecifically, given an input feature X, the module first normalizes it to obtain X' = Norm X . Its core computation can then be summarized by the following formula: Y = TokenMixer X'W1 ⊙σ X'W2 W3 + X . Here, X'W1 and X'W2 are the linear projections for the information processing path and the gating path, respectively; TokenMixer(·) is the core feature extraction operator; σ(·) is the gating activation function; and ⊙ denotes element-wise multiplication for gating modulation.\n\nIn our design, the core feature extraction operator TokenMixer(·) is specifically implemented as an Inception Depthwise Convolution (InceptionDWC) operator. InceptionDWC is an efficient convolution operator that splits the input channels into four parallel branches: an identity mapping branch, a 3×3 square depthwise convolution branch, and decomposed 1×k and k×1 strip depthwise convolution branches. Its core advantage lies in its ability to simultaneously capture local fine-grained patterns, long-range phenological temporal dependencies, and cross-modal (optical-SAR) feature relationships in the input time-series graph in a computationally efficient manner. Furthermore, this Inception-style multi-branch design significantly improves computational efficiency while maintaining model accuracy.\n\nSpecifically, for the input Z=X'W1, we split it along the channel dimension into four groups: where g is the number of channels per convolution branch. We can set a ratio rg to determine the branch channel count via g = rgC, where C is the total number of channels in Z. The split inputs are then fed into different parallel branches: Here, ks denotes the size of the small square convolution kernel (default 3), and kb denotes the size of the strip convolution kernel (default 7). Finally, the outputs from each branch are concatenated.\n\nIn summary, the Gate Convolution Block combines the efficient multi-dimensional feature extraction capability of the InceptionDWC operator with the adaptive recalibration function of the dynamic gating mechanism. This enables it to intelligently extract and enhance the most discriminative phenological features from complex 2D time-series graphs while maintaining robustness to data missingness and noise."
+      },
+      "confidence": 0.95,
+      "name": "Gate Conv Blocks",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_128f5f461bec9be8_m3",
+      "evidence": {
+        "section": "3.3.3 FSFI Block",
+        "original_text": "While downsampling operations in the backbone network effectively extract high-dimensional semantic information, the continuously reduced spatial resolution inevitably leads to the loss of crucial fine-grained spatial details. To enhance the model's perception and modeling capabilities for both global and local regions of the line graphs, achieving collaborative interaction across hierarchical features in both channel and spatial dimensions is essential. For this purpose, we designed the Full-Stage Feature Interaction (FSFI) block, aiming to effectively fuse feature information from different encoder levels, thereby improving the model's classification capability.\n\nSpecifically, given the outputs from the four stages as {O1, O2, O3, O4}. First, a patch embedding is applied to unify the features from all scales to a common spatial resolution, denoted as Fi ∈ R[C][i][×][h][×][w] , where i = 1,2,3,4, h = H/32, and w = W/32. The core of FSFI lies in computing the local-spatial channel similarity between the deepest feature F4 and features from all levels, thereby establishing global semantic associations. Concretely, the SCA (Spatial Channel Attention) mechanism takes F4 as the Query, and the concatenated features from all four levels (F ) as the key and value. FSFI first employs 1×1 convolutions to integrate cross-channel, pixel-wise contextual information, followed by 3×3 depthwise convolutions to capture local spatial context. This process can be formalized as: Subsequently, reshape Q ∈ R[C][4][×][h][×][w] ,K ∈ R[C][Σ][×][h][×][w] ,V ∈ R[C][Σ][×][h][×][w] into the forms R[C][4][×][hw] ，R[C][Σ][×][hw] , respectively. Then, compute the local spatial-channel similarity using cross-attention: Next, the output of CrossAtt Q,K, V is reshaped back to ∈R[C][4][×][h][×][w] , restored to the original feature dimension via a 1×1 convolution, and combined with a skip connection to produce F[] 4: To further enhance the model's multi-scale feature representation capability and strengthen its ability to capture key features in the 2D graphs, F[] 4 is fed into another InceptionDWC module (employing 3×3, 1×7, 7×1, and identity mapping branches) for re-enhancement, followed by another residual connection. The final output of this block, Ffuse , is represented as: In summary, the FSFI Block effectively combines the high-level semantic understanding from the deeper encoder layers with the fine-grained details from the shallower layers, significantly enhancing the model's global and local perception of the 2D time-series graphs. Finally, its highly refined output feature Ffuse is fed into a Global Average Pooling layer and the MLP Head to achieve the final high-precision rice/non-rice classification."
+      },
+      "confidence": 0.95,
+      "name": "Full-Stage Feature Interaction (FSFI) Block",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_128f5f461bec9be8_x1",
+      "evidence": {
+        "section": "2 Materials",
+        "original_text": "All satellite data processing was conducted on the Google Earth Engine (GEE) cloud computing platform. The primary input datasets consist of multi-temporal Synthetic Aperture Radar (SAR) and optical imagery, selected to correspond with the validation years 2015 and 2024.\n\nFor SAR data, we utilized C-band imagery from the Sentinel-1 satellite, which offers all-weather observation capabilities essential for penetrating cloud cover in tropical rice-growing regions. We selected Interferometric Wide (IW) swath mode Ground Range Detected (GRD) products with a 10-m spatial resolution. The data underwent standard preprocessing on GEE, including thermal noise removal, radiometric calibration, and terrain correction. Because Sentinel-1B was unavailable for the 2015 baseline and ceased operations before 2024, SAR observations for both years rely primarily on Sentinel-1A. Both VV and VH polarizations were utilized, and the SAR acquisitions were aggregated into 12-day mean composites for both 2015 and 2024.\n\nOptical data were sourced from different sensors to maximize spatial resolution and availability for the respective target years. For 2024, we utilized Sentinel-2 MSI Level-2A surface reflectance data (10-m resolution), applying a cloud-masking algorithm to remove invalid observations. For the 2015 target year, as Sentinel-2 data were not yet available, we utilized Landsat-8 OLI surface reflectance data with a 30-m spatial resolution. We calculated the Land Surface Water Index (LSWI) and Enhanced Vegetation Index (EVI), widely recognized in optical remote sensing for rice mapping, to characterize the crop's unique phenological evolution.\n\nTo train and validate the T2VRCM model, a comprehensive reference dataset was constructed containing 164,000 samples across 98 countries. The samples were generated through a rigorous visual interpretation process integrating high-resolution optical imagery and existing regional rice maps. Crucially, to ensure temporal consistency and reduce label noise, we adopted a 'stable sample' strategy: selected samples were restricted to locations that maintained a consistent land cover type (either persistent rice or persistent non-rice) in both 2015 and 2024. A balanced 1:1 ratio between rice and non-rice samples was maintained to prevent class imbalance.\n\nTo assess the quality of the GlobalRice20 dataset, we compiled two types of reference data: First, we selected 12 representative global and regional datasets for spatial cross-comparison to evaluate geometric accuracy and boundary detail. These include APRA500, SingleSeasonRice-China, CCD-Rice, ChinaCropArea1km, SPAM-China, Open-SEA-Rice-10, AsiaRiceYield4km, GCD-Rice, the Japan Historical Rice Map, the South Korean Dynamic Rice Map, NESEA-Rice, and the USDA Cropland Data Layer. Comparing our results against this diverse set—ranging from 10 m to 4 km and covering both single- and multi-cropping systems—ensures a robust assessment of GlobalRice20's consistency across scales. Second, to validate the extraction results at a macroscopic level, national-scale rice harvested area statistics for 2015 and 2024 were integrated from two authoritative sources: the United States Department of Agriculture (USDA) and the Food and Agriculture Organization (FAO). These standardized records served as the primary ground truth for assessing the aggregate reliability of our global maps."
+      },
+      "confidence": 0.95,
+      "task": "global rice mapping dataset generation and validation",
+      "setup": "Sentinel-1/2 and Landsat imagery, Google Earth Engine platform, 164,000 reference samples across 98 countries"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_128f5f461bec9be8_x2",
+      "evidence": {
+        "section": "3.5 Model Comparison",
+        "original_text": "To validate the effectiveness and superiority of the proposed T2VRCM model and its time-series-to-visualization strategy, this study comprehensively compares T2VRCM with two categories of baseline models. The first category comprises Vision Classification Models, including ResNet-18, ConvNeXt-Atto, MambaOut-Femto, ViT-Tiny, and Swin-Tiny. These models cover major paradigms from classical Convolutional Neural Networks (CNNs) to modern Transformers. The second category is Native Time-Series Classification Models, commonly used in remote sensing for rice classification. This category includes Random Forest (RF) and deep learning models such as Long Short-Term Memory (LSTM) and Transformer. To meet these models' prerequisite for regular time-series inputs, we applied corresponding preprocessing strategies: (1) for missing temporal phases, linear interpolation was used to fill gaps; (2) for regions with completely missing single modalities or features that could not be filled via interpolation, values were uniformly set to zero.\n\nTraining Configuration and Experimental Environment. To ensure fair comparison, all deep learning models were trained with a unified configuration: the optimizer was AdamW with an initial learning rate of 1e-3 combined with a cosine learning rate decay schedule; batch size was set to 64; and the number of training epochs was uniformly set to 100. All deep learning models were implemented using the PyTorch framework and trained on NVIDIA RTX 3090 GPU.\n\nTo systematically evaluate the core components of the T2VRCM architecture, we designed ablation experiments. The baseline model was constructed by stacking MambaOut encoding units using standard Depthwise Separable Convolution (DWConv), excluding the Full-Stage Feature Interaction (FSFI) module. Based on this, three variants were tested:(1) Baseline+Inception: Replacing standard DWConv with Inception Depthwise Separable Convolution (InceptionDWC); (2) Baseline+FSFI: Integrating the FSFI module for cross-stage feature fusion; (3) T2VRCM: Integrating both InceptionDWC and FSFI.\n\nExperimental results in Table 2 clearly quantify the contributions of each component. The baseline model yielded an OA of 89.19%. Integrating the InceptionDWC module boosted the performance to an OA of 90.75% (a 1.56% gain), validating the efficacy of multi-branch convolutions in capturing local textures within the 2D graphs. Independently, adding the FSFI module increased the OA to 91.17% (a 1.98% gain), highlighting the crucial role of cross-stage interaction. The complete T2VRCM achieved peak performance with an OA of 92.33%, marking a substantial total gain of 3.14% over the baseline. This synergy arises because InceptionDWC enriches semantic information, while FSFI further refines fine-grained discriminative features. Their collaborative interaction allows T2VRCM to fully leverage the representational advantages of the time-series-to-vision strategy."
+      },
+      "confidence": 0.95,
+      "task": "model performance comparison and ablation experiments",
+      "setup": "PyTorch framework, NVIDIA RTX 3090 GPU, AdamW optimizer, batch size 64, 100 epochs"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_128f5f461bec9be8_x3",
+      "evidence": {
+        "section": "4.3 Accuracy Assessment of GlobalRice20",
+        "original_text": "To strictly assess the quality of the GlobalRice20 product, we conducted a multi-level validation strategy involving ground-truth samples, spatial cross-comparison, and national statistical verification.\n\nWe computed accuracy metrics using the independent test set derived from 164,000 global samples (Fig. 6). The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%. The corresponding accuracies for 2024 improved to 92.52%, 92.12%, and 92.33%, respectively, demonstrating a clear performance gain over the 2015 baseline.\n\nFurthermore, accuracy was assessed on a country-by-country basis. Among the 2015 mapping results, 84% of countries (83 countries) achieved an OA of 0.85 or higher. In 2024, over 89% of countries (88 countries) achieved an OA of 0.85 or higher. This indicates a high level of consistency between the extracted rice distribution and the independent test samples across diverse regions and observation years.\n\nIn Asia, major rice-producing countries such as China, India, Indonesia, and Thailand all achieved overall classification accuracies above 90%. Key rice-producing regions in Africa—Congo, Guinea, Madagascar, and Nigeria—achieved overall accuracies above 85%. Additionally, countries like Brazil in South America and the United States in North America also achieved good accuracy levels.\n\nFigure 7 presents a spatial comparison between GlobalRice20 and several mainstream rice distribution datasets across nine distinct rice-cultivating regions. For comparative analysis, we selected existing rice maps with varying spatial resolutions that are temporally closest to the target years of 2015 and 2024. With a spatial resolution of 20 m, GlobalRice20 generally surpasses concurrent public regional datasets, thereby meeting the requirements for precise field-level identification. Taking Anhui and Heilongjiang provinces in China as examples, coarse-resolution datasets such as APRA500, ChinaCropArea1km, AsiaRiceYield4km, and CropArea-China exhibit blurred boundaries and fragmented geometries. Meanwhile, CCD-Rice suffers from excessive noise and significant confusion between large water bodies and paddy fields, while SingleSeasonRice-China displays substantial noise and misclassification. Consequently, these datasets fail to accurately represent the actual cultivated landscape. Similarly, in regions like Thailand and Indonesia, characterized by fragmented plots and complex cropping structures, other high-resolution datasets (e.g., NESEA-Rice10 and Open-SEA-Rice10) also exhibit significant data gaps and insufficient delineation of fine details. In contrast, GlobalRice20 clearly delineates field boundaries with regular and well-defined patch contours. It demonstrates high spatial consistency with optical remote sensing imagery, achieving a level of detail comparable to 10-m resolution products.\n\nTo further ensure the reliability of the comparison, we validated the accuracy of rice fields in the United States using the USDA NASS Cropland Data Layer (CDL) for the corresponding years. The results reveal a high spatial agreement between the two, demonstrating the robustness of our dataset across different regions and data standards.\n\nBy calculating the predicted rice planting area for each country in 2015 and 2024 and comparing it with statistical data, the results indicate that the estimated areas for both years exhibit a generally high level of consistency with the statistics (Fig. 8). The fit in 2024 is superior, with R² of 0.91 between the predicted and statistical areas (Fig. 8b), which is notably higher than that of 0.86 in 2015 (Fig. 8a). The slightly lower accuracy in 2015 can mainly be attributed to the longer revisit cycle of optical imagery and the limited coverage of SAR data in that year, which weakened the representation of time-series image features in some regions and thus affected the stability and accuracy of area estimation, as reflected in the overestimation of rice area in India in 2015. Nevertheless, the 2015 estimates still maintain a good overall fit, demonstrating the robustness of the proposed method under different year-specific and data availability conditions."
+      },
+      "confidence": 0.95,
+      "task": "accuracy assessment of GlobalRice20 dataset",
+      "setup": "164,000 global samples, 12 existing datasets for spatial cross-comparison, USDA and FAO statistics"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr1",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "T2VRCM achieved state-of-the-art performance with an OA of 92.33% and an F1 score of 92.32%, surpassing the bestperforming baseline (MambaOut-Femto) by margins of 2.89% and 2.96%, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 92.33,
+      "unit": "%",
+      "context": "Global rice classification using T2VRCM model",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%)."
+      },
+      "confidence": 0.99,
+      "quantity": "global rice area growth",
+      "value": 6.6,
+      "unit": "%",
+      "context": "Spatiotemporal analysis during the first decade of SDGs (2015–2024)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%)."
+      },
+      "confidence": 0.99,
+      "quantity": "rice area growth in Africa",
+      "value": 15.7,
+      "unit": "%",
+      "context": "Spatiotemporal analysis during the first decade of SDGs (2015–2024)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Cross-comparison with national agricultural statistics reveals a high coefficient of determination (R[2] =0.91 for 2024), confirming the dataset's reliability for national-scale accounting."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.91,
+      "unit": "",
+      "context": "Cross-comparison with national agricultural statistics for 2024",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr5",
+      "evidence": {
+        "section": "Consistency with Official Statistics",
+        "original_text": "The fit in 2024 is superior, with R² of 0.91 between the predicted and statistical areas (Fig. 8b), which is notably higher than that of 0.86 in 2015 (Fig. 8a)."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.86,
+      "unit": "",
+      "context": "Cross-comparison with national agricultural statistics for 2015",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr6",
+      "evidence": {
+        "section": "Sample-based Validation",
+        "original_text": "The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%. The corresponding accuracies for 2024 improved to 92.52%, 92.12%, and 92.33%, respectively, demonstrating a clear performance gain over the 2015 baseline."
+      },
+      "confidence": 0.99,
+      "quantity": "user's accuracy",
+      "value": 92.52,
+      "unit": "%",
+      "context": "Global rice classification for 2024 using independent test set",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr7",
+      "evidence": {
+        "section": "Sample-based Validation",
+        "original_text": "The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%. The corresponding accuracies for 2024 improved to 92.52%, 92.12%, and 92.33%, respectively, demonstrating a clear performance gain over the 2015 baseline."
+      },
+      "confidence": 0.99,
+      "quantity": "producer's accuracy",
+      "value": 92.12,
+      "unit": "%",
+      "context": "Global rice classification for 2024 using independent test set",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr8",
+      "evidence": {
+        "section": "Sample-based Validation",
+        "original_text": "The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 90.23,
+      "unit": "%",
+      "context": "Global rice classification for 2015 using independent test set",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr9",
+      "evidence": {
+        "section": "Sample-based Validation",
+        "original_text": "The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%."
+      },
+      "confidence": 0.99,
+      "quantity": "user's accuracy",
+      "value": 90.11,
+      "unit": "%",
+      "context": "Global rice classification for 2015 using independent test set",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr10",
+      "evidence": {
+        "section": "Sample-based Validation",
+        "original_text": "The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%."
+      },
+      "confidence": 0.99,
+      "quantity": "producer's accuracy",
+      "value": 90.36,
+      "unit": "%",
+      "context": "Global rice classification for 2015 using independent test set",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr11",
+      "evidence": {
+        "section": "Model Performance and Robustness",
+        "original_text": "Notably, MambaOut-Femto emerged as the top performer among the baselines, reaching an OA of 89.44%."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 89.44,
+      "unit": "%",
+      "context": "Global rice classification using MambaOut-Femto model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr12",
+      "evidence": {
+        "section": "Model Performance and Robustness",
+        "original_text": "ResNet-18 achieved an OA of 87.75% (a 2.23% gain over the Transformer), highlighting the efficacy of convolutions in extracting 2D patterns."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 87.75,
+      "unit": "%",
+      "context": "Global rice classification using ResNet-18 model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr13",
+      "evidence": {
+        "section": "Model Performance and Robustness",
+        "original_text": "Deep learning models (LSTM, Transformer) improved accuracy to 84.99% and 85.52% by modeling temporal dependencies but remained significantly lower than vision-based approaches."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 85.52,
+      "unit": "%",
+      "context": "Global rice classification using Transformer model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr14",
+      "evidence": {
+        "section": "Model Performance and Robustness",
+        "original_text": "Deep learning models (LSTM, Transformer) improved accuracy to 84.99% and 85.52% by modeling temporal dependencies but remained significantly lower than vision-based approaches."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 84.99,
+      "unit": "%",
+      "context": "Global rice classification using LSTM model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr15",
+      "evidence": {
+        "section": "Model Performance and Robustness",
+        "original_text": "Among native time-series models, RF showed basic performance (OA=83.01%) due to limited feature extraction capabilities."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 83.01,
+      "unit": "%",
+      "context": "Global rice classification using Random Forest model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr16",
+      "evidence": {
+        "section": "Ablation Experiments",
+        "original_text": "The complete T2VRCM achieved peak performance with an OA of 92.33%, marking a substantial total gain of 3.14% over the baseline."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy improvement",
+      "value": 3.14,
+      "unit": "%",
+      "context": "T2VRCM over baseline model",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr17",
+      "evidence": {
+        "section": "Ablation Experiments",
+        "original_text": "The baseline model yielded an OA of 89.19%."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy",
+      "value": 89.19,
+      "unit": "%",
+      "context": "Baseline model constructed by stacking MambaOut encoding units using standard Depthwise Separable Convolution (DWConv), excluding the Full-Stage Feature Interaction (FSFI) module",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr18",
+      "evidence": {
+        "section": "Ablation Experiments",
+        "original_text": "Integrating the InceptionDWC module boosted the performance to an OA of 90.75% (a 1.56% gain), validating the efficacy of multi-branch convolutions in capturing local textures within the 2D graphs."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy improvement",
+      "value": 1.56,
+      "unit": "%",
+      "context": "Baseline+Inception over baseline model",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_128f5f461bec9be8_qr19",
+      "evidence": {
+        "section": "Ablation Experiments",
+        "original_text": "Independently, adding the FSFI module increased the OA to 91.17% (a 1.98% gain), highlighting the crucial role of cross-stage interaction."
+      },
+      "confidence": 0.99,
+      "quantity": "overall accuracy improvement",
+      "value": 1.98,
+      "unit": "%",
+      "context": "Baseline+FSFI over baseline model",
+      "result_type": "ablation"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_128f5f461bec9be8_p1",
+      "evidence": {
+        "section": "Model Performance and Robustness",
+        "original_text": "T2VRCM achieved state-of-the-art performance with an OA of 92.33% and an F1 score of 92.32%, surpassing the bestperforming baseline (MambaOut-Femto) by margins of 2.89% and 2.96%, respectively. Among native time-series models, RF showed basic performance (OA=83.01%) due to limited feature extraction capabilities. Deep learning models (LSTM, Transformer) improved accuracy to 84.99% and 85.52% by modeling temporal dependencies but remained significantly lower than vision-based approaches. Applying the time-series-to-vision strategy enabled all vision models to outperform traditional methods. ResNet-18 achieved an OA of 87.75% (a 2.23% gain over the Transformer), highlighting the efficacy of convolutions in extracting 2D patterns. Modern architectures, such as ViT-Tiny and Swin-Tiny, surpassed an OA of 88%. Notably, MambaOut-Femto emerged as the top performer among the baselines, reaching an OA of 89.44%."
+      },
+      "confidence": 0.99,
+      "metric": "overall accuracy",
+      "compared_to": "MambaOut-Femto, ResNet-18, Transformer, LSTM, Random Forest"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_128f5f461bec9be8_p2",
+      "evidence": {
+        "section": "Sample-based Validation",
+        "original_text": "The global extraction results for 2015 yielded a UA of 90.11%, a PA of 90.36%, and an OA of 90.23%. The corresponding accuracies for 2024 improved to 92.52%, 92.12%, and 92.33%, respectively, demonstrating a clear performance gain over the 2015 baseline."
+      },
+      "confidence": 0.99,
+      "metric": "accuracy metrics",
+      "compared_to": "2015 baseline"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_128f5f461bec9be8_p3",
+      "evidence": {
+        "section": "Consistency with Official Statistics",
+        "original_text": "The fit in 2024 is superior, with R² of 0.91 between the predicted and statistical areas (Fig. 8b), which is notably higher than that of 0.86 in 2015 (Fig. 8a)."
+      },
+      "confidence": 0.99,
+      "metric": "coefficient of determination",
+      "compared_to": "2015"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_128f5f461bec9be8_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Here, we present GlobalRice20, the first global 20m resolution paddy rice dataset for the years 2015 and 2024. We developed a 'Time-Series-to-Vision' framework (T2VRCM) that transforms heterogeneous optical and SAR time-series into standardized 2D visual representations, specifically designed to handle irregular sampling and missing modalities. The dataset was produced using Sentinel-1/2 and Landsat imagery and rigorously validated against 164,000 reference samples, achieving an overall accuracy of 92.33%. Cross-comparison with national agricultural statistics reveals a high coefficient of determination (R[2] =0.91 for 2024), confirming the dataset's reliability for national-scale accounting. Spatiotemporal analysis during the first decade of SDGs (2015–2024) indicates a 6.6% expansion in global rice area, with Africa exhibiting the most significant growth (15.7%). This dataset fills a critical gap in global agricultural monitoring, providing a baseline for analyzing food production trends and climate impacts."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_128f5f461bec9be8_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "To address the persistent challenges of fusing multi-source time-series remote sensing data for global-scale agricultural monitoring, this study proposes an innovative 'Time-Series-to-Vision' classification framework and develops a specialized deep learning visual classifier, T2VRCM. By leveraging the complementary strengths of multi-source remote sensing data, we successfully generated GlobalRice20, the first validated global 20-m resolution rice distribution product for the years 2015 and 2024. The core innovation of this study lies in encoding heterogeneous, irregularly sampled Optical and SAR timeseries data into standardized 2D line-graph visual representations. This strategy effectively resolves critical technical bottlenecks—specifically sensor asynchrony, temporal discontinuity, and modal missingness—enabling high-precision, endto-end rice mapping even in complex, cloud-prone environments. Experimental results demonstrate that the proposed T2VRCM achieves an OA of 92.33% across 98 countries, significantly outperforming existing state-of-the-art native timeseries models and general vision classifiers. The generated global maps exhibit high spatial consistency and statistical reliability, confirmed through rigorous validation against both ground-truth samples and official national statistics, yielding a high correlation (R[2] = 0.91) for 2024. Based on this high-resolution dataset, we systematically analyzed the spatiotemporal evolution of global rice cultivation over the decade following the inception of SDG 2. The analysis reveals an overall growth of approximately 6.6% in the total global rice area. Notably, a pivotal geographical shift was observed: Africa emerged as the most significant growth hotspot with a 15.7% expansion, contrasting with the relative stability of traditional Asian production hubs, where the total share has slightly decreased. In conclusion, the high-resolution, multi-temporal rice distribution dataset constructed in this study fills a critical gap in global-scale thematic products. By providing spatially explicit and timely benchmarks, GlobalRice20 offers essential data support for global food security assessment, agricultural policy formulation, and tracking progress toward Sustainable Development Goal 2 (Zero Hunger) in the face of climate change."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_128f5f461bec9be8_lm1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Currently, the landscape of global rice mapping is characterized by a dichotomy between global low-resolution products and regional high-resolution datasets. At the global scale, prominent datasets—including GDHY (0.5°) (Iizumi and Sakai, 2020), MIRCA2000 (Portmann et al., 2010), M3Crops (Monfreda et al., 2008), and more recent products like GGCP10 (Qin et al., 2024), GlobalCropYield5min (Cao et al., 2025), and GEOGLAM-BACS (Becker-Reshef et al., 2023)—provide valuable long-term trends essential for macro-level yield analysis. However, these coarse-resolution products suffer from mixed-pixel issues that obscure fragmentation and boundary details, lacking the spatial fidelity required for precision agricultural monitoring. In the transition zone, regional products such as MARC (Zhao et al., 2024a), GRIPC (Salmon et al., 2015), and APRA500 (Han et al., 2022) have leveraged MODIS and Sentinel time-series to refine cropping intensity maps. Conversely, at the high-resolution frontier, recent advancements have produced 10–30 m maps using Landsat and Sentinel data. Representative examples include GCD-Rice for Asia (Li et al., 2025b), CCD-Rice for China (Shen et al., 2025), EARice10 for East Asia (Song et al., 2025b), and the 2023 Africa Rice Map (Jiang et al., 2025). By integrating multi-source time-series with machine learning, these efforts have achieved high precision. However, these high-resolution efforts remain largely confined to specific countries or regions. To date, there remains a critical gap: the absence of a unified, validated, and highresolution (20 m) global rice distribution product that covers major production zones consistently across different years."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_128f5f461bec9be8_lm2",
+      "evidence": {
+        "section": "4.3.3 Consistency with Official Statistics",
+        "original_text": "By calculating the predicted rice planting area for each country in 2015 and 2024 and comparing it with statistical data, the results indicate that the estimated areas for both years exhibit a generally high level of consistency with the statistics (Fig. 8). The fit in 2024 is superior, with R² of 0.91 between the predicted and statistical areas (Fig. 8b), which is notably higher than that of 0.86 in 2015 (Fig. 8a). The slightly lower accuracy in 2015 can mainly be attributed to the longer revisit cycle of optical imagery and the limited coverage of SAR data in that year, which weakened the representation of time-series image features in some regions and thus affected the stability and accuracy of area estimation, as reflected in the overestimation of rice area in India in 2015. Nevertheless, the 2015 estimates still maintain a good overall fit, demonstrating the robustness of the proposed method under different year-specific and data availability conditions."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_128f5f461bec9be8_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "In conclusion, the high-resolution, multi-temporal rice distribution dataset constructed in this study fills a critical gap in global-scale thematic products. By providing spatially explicit and timely benchmarks, GlobalRice20 offers essential data support for global food security assessment, agricultural policy formulation, and tracking progress toward Sustainable Development Goal 2 (Zero Hunger) in the face of climate change."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

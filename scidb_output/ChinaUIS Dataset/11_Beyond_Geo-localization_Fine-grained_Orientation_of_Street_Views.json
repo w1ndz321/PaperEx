@@ -1,0 +1,994 @@
+{
+  "metadata": {
+    "doc_id": "doc_3ce65a8816a46477",
+    "source_file": "11_Beyond_Geo-localization_Fine-grained_Orientation_of_Street_Views.md",
+    "title": "Beyond Geo-localization: Fine-grained Orientation of Street-view Images by Cross-view Matching with Satellite Imagery",
+    "year": 2026,
+    "doi": null,
+    "abstract": "Street-view imagery provides us with novel experiences to explore different places remotely. Carefully calibrated street-view images ( _e.g._ , Google Street View) can be used for different downstream tasks, _e.g._ , navigation, map features extraction. As personal highquality cameras have become much more affordable and portable, an enormous amount of crowdsourced street-view images are uploaded to the internet, but commonly with missing or noisy sensor information. To prepare this hidden treasure for “ready-to-use” status, determining missing location information and camera orientation angles are two equally important tasks. Recent methods have achieved high performance on geo-localization of street-view images by cross-view matching with a pool of geo-referenced satellite imagery. However, most of the existing works focus more on geo-localization than estimating the image orientation. In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation. We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets. \n\n**Figure 1: (a) Street-view image queries with 0**[◦] **and 315**[◦] **clockwise misalignments, (b) Geo-referenced satellite imagery as the reference for cross-view matching, and (c) Visualization of angle misalignment on a sample street-view image.** \n\ndetails that one may have overlooked earlier, and to share emotions and knowledge with the community. With advances in hardware, personal high-quality cameras have become much more affordable. Many creators are keen on sharing photos on the internet. The captured images may not be as carefully calibrated as if they were taken by a dedicated multi-sensor system ( _e.g._ , Google Street View vehicles), but the sheer volume of crowdsourced images surely provides rich information. If we can efficiently estimate the missing meta information ( _e.g._ , geo-location, camera orientation) of those images and calibrate them for “ready-to-use” status, this enormous hidden treasure can help on various downstream tasks, _e.g._ , map information extraction [5, 28, 55], car navigation and tracking [2, 17, 22, 31, 33], UAV positioning [24, 27], hazard detection [1, 22, 29, 46], social studies [47]. To accomplish this goal, we must carry out three tasks: (a) adjusting the image upright [20], (b) finding the location, and (c) estimating the viewing angle of the camera.",
+    "introduction": "Photos not only contain memories, but also provide us a brand new way to learn and perceive the world through others’ eyes, to find \n\nretrieval nature, cross-view matching with satellite imagery can be applied in large-scale searches and gives promising results. \n\nHowever, as a full decade has passed, finding only the location no longer satisfies the requirement to explore the full potential of streetview images. We encourage the community to embrace a more challenging task of _estimating the fine-grained camera orientation of street-view images_ to extend the overall objectives for three reasons: 1) With the accurate camera orientation, information extracted from street-view images, especially from using single-image algorithms ( _e.g._ , depth estimation, object detection), enables a wider range of real-world applications, _e.g._ , map creation, augmented reality, navigation. In practice, even a very small misalignment in orientation can propagate a large shift to the physical position of objects detected in images. For example, Figure 1 (c) shows that an orientation error of 15[◦] is large enough to mislocate an exit to another lane; an error of 30[◦] is sufficient to mistakenly assign attributes to the reverse direction of the road. \n\n2) Nowadays, crowdsourced high-quality 360[◦] or wide-angle images can be taken by semi-professional 360[◦] cameras or even by phones. These images are usually not carefully calibrated. It is more likely that the orientation information is missing but a rough location is labeled, rather than vice versa. Hence, the problem of finding the location of street-view images assuming the orientation is known is no longer realistic. \n\n3) After surveying recent studies, we found that the performance of cross-view geo-localization is slowly reaching saturation. Based on our experiments, we observe that by introducing a finer granularity to orientation estimation, the performance of geo-localization can be further improved. We hypothesize that the saturation of performance is reached not because of the representation power of the networks, but a lack of precision in orientation to align two images. Finding fine-grained orientation could also potentially improve the performance of geo-localization of crowdsourced images. \n\nOnly a few studies have made progress or introduced new ideas on using the orientation characteristic [9, 25, 36, 45, 56, 61]. Even fewer evaluates the orientation estimation result along with the geo-localization task [36, 45, 56, 61]. To the best of our knowledge, Shi _et al._ [36] is the only work taking orientation prediction as the main problem to solve for large scale searching. However, we found the granularity of the estimation could be improved to better fit real-world use cases and the evaluation metrics do not give enough clarity. Hence, in this work, we formally define the problem and propose a set of metrics for evaluating the fine-grained estimation of camera orientation of street-view images. In summary, our contributions lie in the following aspects: \n\n- Define a south-aligned orientation alignment coordinate and a continuous absolute angle error coordinate for orientation estimation in cross-view matching with satellite imagery. \n\n- Propose two methods to enhance the granularity of orientation estimation of street-view images without introducing any additional learnable parameters. \n\n- Propose a set of metrics for orientation estimation, which is easier to understand and gives better clarity for real-world use-cases. \n\n- Demonstrate that by incorporating fine-grained orientation estimation, the performance of geo-localization can be improved. \n\n\n**----- Start of picture text -----**<br>\nWenmiao Hu et al.<br>(a) (b) Clockwise angle shift Absolute angle error<br>180<br>Pitch<br>315<br>180<br>Roll<br>(c)<br>Clockwise angle<br>shift<br>yaw<br>**----- End of picture text -----**<br>\n\n\n**Figure 2: (a) Camera angles, (b) South-aligned reference coordinate for orientation shift, and (c) Visualization of rotation applied on images to create orientation misalignment.**",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Image-based geo-localization is a line of study aiming at inferring the camera location of street-view images. Among various geo-localization approaches",
+      "cross-view geo-localization uses georeferenced aerial images (mostly satellite imagery). Given a streetview query image (Figure 1(a))",
+      "the system finds the most similar match in a pool of satellite images (Figure 1(b))",
+      "and then takes the satellite image center as the localization result. Thanks to its image \n\ncross-view matching",
+      "camera orientation estimation",
+      "street-view imagery",
+      "satellite imagery",
+      "geo-localization"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:51:54.450514+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Street-view imagery provides us with novel experiences to explore different places remotely. Carefully calibrated street-view images (e.g., Google Street View) can be used for different downstream tasks, e.g., navigation, map features extraction. As personal highquality cameras have become much more affordable and portable, an enormous amount of crowdsourced street-view images are uploaded to the internet, but commonly with missing or noisy sensor information. To prepare this hidden treasure for “ready-to-use” status, determining missing location information and camera orientation angles are two equally important tasks. Recent methods have achieved high performance on geo-localization of street-view images by cross-view matching with a pool of geo-referenced satellite imagery. However, most of the existing works focus more on geo-localization than estimating the image orientation. In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation."
+      },
+      "confidence": 0.99,
+      "term": "street-view imagery",
+      "normalized": "街景图像",
+      "std_label": "Street-view"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Recent methods have achieved high performance on geo-localization of street-view images by cross-view matching with a pool of geo-referenced satellite imagery. However, most of the existing works focus more on geo-localization than estimating the image orientation. In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation. We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "term": "satellite imagery",
+      "normalized": "卫星图像",
+      "std_label": "Satellite"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Recent methods have achieved high performance on geo-localization of street-view images by cross-view matching with a pool of geo-referenced satellite imagery. However, most of the existing works focus more on geo-localization than estimating the image orientation. In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation. We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.98,
+      "term": "geo-localization",
+      "normalized": "地理定位",
+      "std_label": "Geo-localization"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation. We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.98,
+      "term": "fine-grained orientation estimation",
+      "normalized": "细粒度朝向估计",
+      "std_label": "Fine-grained orientation"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c5",
+      "evidence": {
+        "section": "KEYWORDS",
+        "original_text": "Image-based geo-localization is a line of study aiming at inferring the camera location of street-view images. Among various geo-localization approaches, cross-view geo-localization uses geo-referenced aerial images (mostly satellite imagery). Given a street-view query image (Figure 1(a)), the system finds the most similar match in a pool of satellite images (Figure 1(b)), and then takes the satellite image center as the localization result. Thanks to its image retrieval nature, cross-view matching with satellite imagery can be applied in large-scale searches and gives promising results."
+      },
+      "confidence": 0.97,
+      "term": "cross-view matching",
+      "normalized": "跨视图匹配",
+      "std_label": "Cross-view matching"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c6",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.96,
+      "term": "CVUSA dataset",
+      "normalized": "CVUSA数据集",
+      "std_label": "CVUSA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c7",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.96,
+      "term": "CVACT dataset",
+      "normalized": "CVACT数据集",
+      "std_label": "CVACT"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c8",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Feature interpolation (FI): Following algorithm 1, both Fs and Fg are interpolated with a scaling factor S before calculating the fine-grained cross-correlation curve. In our implementation, we increase the granularity by 10 times. The bin number with the maximum cross-correlation curve is extracted and is divided by S to obtain sub-pixel level estimation west. The resolving power of the model is refined to 0.5625 degree (360°/640 pixels)."
+      },
+      "confidence": 0.95,
+      "term": "Feature Interpolation (FI)",
+      "normalized": "特征插值",
+      "std_label": "FI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c9",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Curve smoothing (CS): Following algorithm 2, the cross-correlation curve (Fg ★ Fs)[w] is calculated with the original resolution (64 bins). To smooth the curve with scaling factor S = 10, the coarse cross-correlation curve is transformed to frequency domain with Fast Fourier Transform (FFT) and zero-padded of (S − 1) times to the middle of the curve: where W is the width of the F[w]. The output of zero-padding is again converted back by Inverse FFT (IFFT). The fine-grained orientation extractor with CS has a resolving power of 0.5625 degree."
+      },
+      "confidence": 0.95,
+      "term": "Curve Smoothing (CS)",
+      "normalized": "曲线平滑",
+      "std_label": "CS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3ce65a8816a46477_c10",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Objective functions with angle loss: To have the direct supervision on angle estimation, we propose an angle loss based on the absolute angle error (section 2.2.3). Given the ground truth orientation in feature space wgt, the estimated orientation west and the width of the feature map space W, the angle loss is given as: For the geo-localization task, we utilize the commonly used weighted soft-margin triplet loss [17, 35, 36, 38]. Given a triplet consists of an anchor query image A in one view, the positive sample P (correct match) and a negative sample N in the other view, the feature (FA) extracted from A shall have a smaller distance to the shifted and cropped feature (F′P) from the P than the shifted and cropped feature (F′N) from N. We take the cosine distance between features in our implementation. The loss function is given as: where the α = 10, following [36]. For a batch size of B, each query can form (B − 1) triplets. In each matching direction (street → satellite or satellite → street), B(B − 1) triplets are constructed. We enforce the matching on both directions and have totally 2B(B − 1) triplets in each mini-batch. The overall objective function is: L = Lmatch(A, P, N) + βLangle(A, P)."
+      },
+      "confidence": 0.94,
+      "term": "angle loss",
+      "normalized": "角度损失",
+      "std_label": "Angle loss"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r1",
+      "evidence": {
+        "section": "KEYWORDS",
+        "original_text": "Image-based geo-localization is a line of study aiming at inferring the camera location of street-view images. Among various geo-localization approaches, cross-view geo-localization uses geo-referenced aerial images (mostly satellite imagery). Given a street-view query image (Figure 1(a)), the system finds the most similar match in a pool of satellite images (Figure 1(b)), and then takes the satellite image center as the localization result. Thanks to its image retrieval nature, cross-view matching with satellite imagery can be applied in large-scale searches and gives promising results."
+      },
+      "confidence": 0.98,
+      "head": "doc_3ce65a8816a46477_c5",
+      "relation_type": "uses",
+      "relation_surface": "uses geo-referenced aerial images",
+      "tail": "doc_3ce65a8816a46477_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Recent methods have achieved high performance on geo-localization of street-view images by cross-view matching with a pool of geo-referenced satellite imagery. However, most of the existing works focus more on geo-localization than estimating the image orientation. In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation."
+      },
+      "confidence": 0.97,
+      "head": "doc_3ce65a8816a46477_c5",
+      "relation_type": "enhances",
+      "relation_surface": "achieves high performance on geo-localization",
+      "tail": "doc_3ce65a8816a46477_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.96,
+      "head": "doc_3ce65a8816a46477_c4",
+      "relation_type": "enhances",
+      "relation_surface": "improves the performance on geo-localization",
+      "tail": "doc_3ce65a8816a46477_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works."
+      },
+      "confidence": 0.95,
+      "head": "doc_3ce65a8816a46477_c8",
+      "relation_type": "enhances",
+      "relation_surface": "improves the granularity of the orientation estimation",
+      "tail": "doc_3ce65a8816a46477_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r5",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works."
+      },
+      "confidence": 0.95,
+      "head": "doc_3ce65a8816a46477_c9",
+      "relation_type": "enhances",
+      "relation_surface": "improves the granularity of the orientation estimation",
+      "tail": "doc_3ce65a8816a46477_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r6",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS",
+        "original_text": "We evaluate the orientation estimation and geo-localization on two commonly used datasets, CVUSA [50] and CVACT [25]. Both datasets contain 35,532 training street-satellite matched pairs and 8,884 test pairs. All images are angle-aligned. At the training time, random shifting and cropping (if with limited FOV) are applied to street-view images. In testing, we followed the orientation shift given to each matched pair in [36]. Note that the two datasets are collected in the US and Australia separately and have a non-negligible domain shift. CVUSA contains a mix of commercial, residential, suburban, and rural areas and CVACT leans towards urban/suburban styles. Additionally, the satellite images in CVUSA have a higher ground coverage but a lower resolution than CVACT, which introduces another substantial domain shift."
+      },
+      "confidence": 0.94,
+      "head": "doc_3ce65a8816a46477_c6",
+      "relation_type": "measures",
+      "relation_surface": "evaluate the orientation estimation and geo-localization",
+      "tail": "doc_3ce65a8816a46477_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r7",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS",
+        "original_text": "We evaluate the orientation estimation and geo-localization on two commonly used datasets, CVUSA [50] and CVACT [25]. Both datasets contain 35,532 training street-satellite matched pairs and 8,884 test pairs. All images are angle-aligned. At the training time, random shifting and cropping (if with limited FOV) are applied to street-view images. In testing, we followed the orientation shift given to each matched pair in [36]. Note that the two datasets are collected in the US and Australia separately and have a non-negligible domain shift. CVUSA contains a mix of commercial, residential, suburban, and rural areas and CVACT leans towards urban/suburban styles. Additionally, the satellite images in CVUSA have a higher ground coverage but a lower resolution than CVACT, which introduces another substantial domain shift."
+      },
+      "confidence": 0.94,
+      "head": "doc_3ce65a8816a46477_c7",
+      "relation_type": "measures",
+      "relation_surface": "evaluate the orientation estimation and geo-localization",
+      "tail": "doc_3ce65a8816a46477_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3ce65a8816a46477_r8",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "We adapt the architecture from DSM [36] and proposed two different approaches to obtain fine-grained orientation estimation without introducing any additional learnable parameters. On top of the commonly used triplet loss [45], we defined a new angle loss based on the absolute angle error system (see Section 2.2.3) to learn the angle shift explicitly."
+      },
+      "confidence": 0.0,
+      "head": "doc_3ce65a8816a46477_c10",
+      "relation_type": "enhances",
+      "relation_surface": "provides direct supervision on the orientation estimation",
+      "tail": "doc_3ce65a8816a46477_c4"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3ce65a8816a46477_d1",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS 3.1 Datasets and Metrics",
+        "original_text": "We evaluate the orientation estimation and geo-localization on two commonly used datasets, CVUSA [50] and CVACT [25]. Both datasets contain 35,532 training street-satellite matched pairs and 8,884 test pairs. All images are angle-aligned. At the training time, random shifting and cropping (if with limited FOV) are applied to street-view images. In testing, we followed the orientation shift given to each matched pair in [36]. Note that the two datasets are collected in the US and Australia separately and have a non-negligible domain shift. CVUSA contains a mix of commercial, residential, suburban, and rural areas and CVACT leans towards urban/suburban styles. Additionally, the satellite images in CVUSA have a higher ground coverage but a lower resolution than CVACT, which introduces another substantial domain shift. All street-view images and polar-transformed satellite images are resized to [128 , 512] pixels in height and width."
+      },
+      "confidence": 0.95,
+      "name": "CVUSA dataset",
+      "modality": "image",
+      "domain": "computer vision, geo-localization"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3ce65a8816a46477_d2",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS 3.1 Datasets and Metrics",
+        "original_text": "We evaluate the orientation estimation and geo-localization on two commonly used datasets, CVUSA [50] and CVACT [25]. Both datasets contain 35,532 training street-satellite matched pairs and 8,884 test pairs. All images are angle-aligned. At the training time, random shifting and cropping (if with limited FOV) are applied to street-view images. In testing, we followed the orientation shift given to each matched pair in [36]. Note that the two datasets are collected in the US and Australia separately and have a non-negligible domain shift. CVUSA contains a mix of commercial, residential, suburban, and rural areas and CVACT leans towards urban/suburban styles. Additionally, the satellite images in CVUSA have a higher ground coverage but a lower resolution than CVACT, which introduces another substantial domain shift. All street-view images and polar-transformed satellite images are resized to [128 , 512] pixels in height and width."
+      },
+      "confidence": 0.95,
+      "name": "CVACT dataset",
+      "modality": "image",
+      "domain": "computer vision, geo-localization"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3ce65a8816a46477_ds1",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS 3.1 Datasets and Metrics",
+        "original_text": "All street-view images and polar-transformed satellite images are resized to [128 , 512] pixels in height and width."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Street-view and satellite image pairs are resized to a fixed resolution of 128x512 pixels."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3ce65a8816a46477_ds2",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS 3.1 Datasets and Metrics",
+        "original_text": "Both datasets contain 35,532 training street-satellite matched pairs and 8,884 test pairs. All images are angle-aligned. At the training time, random shifting and cropping (if with limited FOV) are applied to street-view images."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Images are angle-aligned (north-aligned) in the original datasets, and random orientation shifts are applied during training for augmentation."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3ce65a8816a46477_ds3",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Satellite images are polar-transformed [36] to a similar viewing point and size as the street-view images to physically reduce the gap between street-view and satellite view images. Figure 3 left top shows the effect of polar transformation."
+      },
+      "confidence": 0.85,
+      "spec_type": "format_rule",
+      "description": "Satellite images undergo polar transformation to align perspective with street-view images before feature extraction."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3ce65a8816a46477_ds4",
+      "evidence": {
+        "section": "3.2 Implementation Details",
+        "original_text": "For fair comparison, batch size B is set to 32 as [35, 36, 48, 52, 57]. We use Adam [21] optimizer with an initial learning rate of 11 e−5 , learning rate decrease on plateau is applied with factor 0.5, patience 8. The maximum training time is set to 200 epochs and the early stopping threshold is 30 epochs."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Training uses a batch size of 32, Adam optimizer with initial learning rate 1e-5, and early stopping after 30 epochs of no improvement."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3ce65a8816a46477_ds5",
+      "evidence": {
+        "section": "2.4 Metrics",
+        "original_text": "To evaluate the performance of orientation estimation, mean angle error, r@2° , r@5° are used. Visualization of angle error histogram is presented to compare the differences among models. To demonstrate the improvement in geo-localization brought by fine-grained orientation estimation, recall at the top 1 sample (r@1) is used for known/unknown orientation test."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Evaluation metrics for orientation estimation include mean angle error, accuracy below specific thresholds (e.g., r@2°, r@5°), and fine-grained error histograms."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3ce65a8816a46477_ds6",
+      "evidence": {
+        "section": "3.2 Implementation Details",
+        "original_text": "For unknown orientation, images can rotate up to 360° . The rotation unit is about 0.70° , corresponding to the shift in one pixel of the input image."
+      },
+      "confidence": 0.85,
+      "spec_type": "format_rule",
+      "description": "Street-view images are randomly rotated (up to 360°) during training to create orientation misalignment, with a rotation unit of approximately 0.7° per pixel shift."
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3ce65a8816a46477_m1",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Feature interpolation (FI): Following algorithm 1, both Fs and Fg are interpolated with a scaling factor S before calculating the fine-grained cross-correlation curve. In our implementation, we increase the granularity by 10 times. The bin number with the maximum cross-correlation curve is extracted and is divided by S to obtain sub-pixel level estimation west. The resolving power of the model is refined to 0.5625 degree (360°/640 pixels)."
+      },
+      "confidence": 0.95,
+      "name": "Feature Interpolation (FI)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3ce65a8816a46477_m2",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Curve smoothing (CS): Following algorithm 2, the cross-correlation curve (Fg ★ Fs)[w] is calculated with the original resolution (64 bins). To smooth the curve with scaling factor S = 10, the coarse cross-correlation curve is transformed to frequency domain with Fast Fourier Transform (FFT) and zero-padded of (S − 1) times to the middle of the curve: where W is the width of the F[w]. The output of zero-padding is again converted back by Inverse FFT (IFFT). The fine-grained orientation extractor with CS has a resolving power of 0.5625 degree."
+      },
+      "confidence": 0.95,
+      "name": "Curve Smoothing (CS)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3ce65a8816a46477_m3",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Feature extraction: The pre-processed satellite and street-view images are sent to Siamese feature extractors (in the middle of Figure 3), which are modified based on VGG16 [39]. Following [36], the extractors consist of the first 10 layers of VGG16 and 3 additional convolutional layers to further compress the feature maps on the vertical axis. The last three layers have an output feature depth of [256, 64, 16] and stride [(2, 1), (2, 1), (1, 1)] in the vertical and horizontal axes. For full 360° inputs with size [128, 512, 3], two feature maps Fs and Fg with a size of [4, 64, 16] in [H, W, C] are extracted respectively. The two branches have the same architecture without weight sharing."
+      },
+      "confidence": 0.95,
+      "name": "Siamese feature extractors based on VGG16",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3ce65a8816a46477_m4",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Pre-processing: Before passing the input images to the feature extractors, the following pre-processes are applied to street-view images and satellite images respectively: Satellite images are polar-transformed [36] to a similar viewing point and size as the street-view images to physically reduce the gap between street-view and satellite view images. Figure 3 left top shows the effect of polar transformation."
+      },
+      "confidence": 0.95,
+      "name": "polar transformation",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3ce65a8816a46477_m5",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Pre-processing: Before passing the input images to the feature extractors, the following pre-processes are applied to street-view images and satellite images respectively: In training, street-view images are randomly rotated to introduce orientation misalignments, following section 2.2.2. The ground truth shift in feature space wgt is recorded to calculate the angle loss and orientation estimation accuracy, where θgt = wgt/width(Fs) ∗ 360° and Fs is the extracted feature from satellite images."
+      },
+      "confidence": 0.95,
+      "name": "random rotation and cropping augmentation",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3ce65a8816a46477_m6",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Objective functions with angle loss: To have the direct supervision on angle estimation, we propose an angle loss based on the absolute angle error (section 2.2.3). Given the ground truth orientation in feature space wgt, the estimated orientation west and the width of the feature map space W, the angle loss is given as: For the geo-localization task, we utilize the commonly used weighted soft-margin triplet loss [17, 35, 36, 38]. Given a triplet consists of an anchor query image A in one view, the positive sample P (correct match) and a negative sample N in the other view, the feature (FA) extracted from A shall have a smaller distance to the shifted and cropped feature (FP′) from the P than the shifted and cropped feature (FN′) from N. We take the cosine distance between features in our implementation. The loss function is given as: where the α = 10, following [36]. For a batch size of B, each query can form (B − 1) triplets. In each matching direction (street → satellite or satellite → street), B(B − 1) triplets are constructed. We enforce the matching on both directions and have totally 2B(B − 1) triplets in each mini-batch. The overall objective function is: L = Lmatch(A, P, N) + βLangle(A, P). (5)"
+      },
+      "confidence": 0.95,
+      "name": "angle loss",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x1",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Table 2 shows the performance of our models on orientation estimation on 360° images along with previous studies [36, 56, 61]. As only a few works report their results on orientation estimation and use different metrics, we re-implement DSM [36] to conduct a full comparison using the newly proposed metrics. The re-implemented DSM [36]* is used as the baseline to calculate the improvement shown in the bracket. Both our models, FI and CS, show significant improvement in the mean error, r@2° and r@5° for all test cases. Both datasets have a similar mean error improvement of about 1.38° to 1.52° from their original mean error of 5.29° and 6.26°. However, CVUSA observed higher absolute improvement on r@2° (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1°, which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2° error region are still successfully reduced within 5°. We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.95,
+      "task": "orientation estimation and geo-localization evaluation",
+      "setup": "CVUSA and CVACT datasets, 360° FOV images"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x2",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Finding fine-grained orientation does not only provide additional orientation information but also improves the performance of geo-localization. We evaluate the geo-localization result of our models in known/unknown orientation tests. The r@1 of CVUSA and CVACT are shown in Table 3. Note that the performance of the best instance of our FI, CS and DSM [36]* are reported to have a fair comparison. Compared to DSM [36]* , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials. We achieves better r@1 than all existing methods; especially on CVACT obtaining absolute improvement of 1.66% and 2.66% on known and unknown orientation test, without implementing additional sampling strategy or computational expensive architecture."
+      },
+      "confidence": 0.95,
+      "task": "geo-localization performance evaluation",
+      "setup": "CVUSA and CVACT datasets, known/unknown orientation tests"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x3",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "DSM [36] analyze the orientation estimation on the test images that are corrected geo-localized, while [45, 56] evaluates the orientation estimation independently from geo-localization. Both methods have valid assumptions, hence we compare the results when only the location-matched images or all test images are evaluated. On top of testing the trained models on their own test set, Table 4 also includes the performance in across dataset tests, namely tests on the images from another domain, to demonstrate the difference in results by using the two approaches. In Table 4, the best instance of FI CVACT and CS CVUSA is shown, ‘all’ means the results of all test images; ‘matched’ means the results of only the matched images; ‘matched to all’ means the results of the matched cases divided by the number of images of the full test set (8,884 images). After removing unmatched cases, the mean error drops drastically, especially for across dataset tests. The r@2° also increases for all tests. Both indicate the images with good geo-localization results have a better orientation estimation in general. However, if consider orientation estimation as an individual problem, any missing estimation given the test images a 180° uncertainty, filtering results based on the location correctness can end up having a very low percentage of correctly estimated images in the full dataset. For across dataset tests, r@2° (matched to all) drops to 9.02% and 12.69%, although the models have the ability to give high-quality orientation to 57.09% and 55.94% of the full test images. Figure 5 shows the majority of the removed cases obtain a high to medium quality orientation estimation. Mislocated images are not necessarily having low-quality orientation estimation. Additionally, evaluating only on location-matched images can lead to an unfair comparison, e.g., a model can trick the evaluation by having only one correctly located image with a perfect estimated orientation. Hence, we believe the evaluation of orientation estimation shall be independent of geo-localization, unless it is for specific use cases."
+      },
+      "confidence": 0.95,
+      "task": "ablation study on location matched vs all test images",
+      "setup": "CVUSA and CVACT datasets, across dataset tests"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x4",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "The parameters in the first 10 layers of the baseline model DSM [36] are fixed. For a fair comparison, Table 5 shows the average performance for 5 different settings on both datasets. DSM [36]* indicate our re-implementation of DSM, DSM (all) refers to the model with all parameters unfixed. ‘AL’ refers to angle loss, FI and CS refer to the two methods we proposed for fine-grained orientation estimation. After releasing all parameters, the performance in all metrics improved compared to baseline. Adding angle loss to DSM (all) alone did not bring many additional benefits as the granularity of the prediction is still at a coarse level. After increasing the granularity, models with ‘AL’ +‘FI’/‘CS’ show substantial improvements in orientation estimation and perform better on geo-localization for both datasets. The full result of different training settings and angle loss weight is given in the supplementary materials."
+      },
+      "confidence": 0.95,
+      "task": "ablation study on fixed parameters, angle loss, fine-grained",
+      "setup": "CVUSA and CVACT datasets"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x5",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "We test on images with 180° (fish-eye camera) and 90° (wide-angle camera). The first test uses models trained on 360° images to simulate the situation when a model is trained on well collected 360° images, but the test images are crowdsourced with limited FOV. Table 6 shows the average performances of FI models on CVACT. The absolute improvements to our re-implemented baseline DSM [36]* are given in the brackets. For geo-localization unknown r@1, our result has a 9.60% and 6.83% improvement for 180° and 90° tests. Recent work SEH-VGG16 [16] reports r@1 of 45.99% and 14.06% on the same test. For the orientation estimation, we observe improvement on all metrics compared to DSM [36]* . However, the performance and the absolute improvements on most of metrics gradually reduced when the FOV is more restricted. The mean error for 90° FOV is nearly one fourth of its FOV and the r@2° declines to less than 50%. This observation is aligned with our intuition that the difficulty of precise geo-localization and orientation estimation increases drastically when the FOV decreases."
+      },
+      "confidence": 0.95,
+      "task": "limited FOV test (model trained on 360°, tested on 180°/90°)",
+      "setup": "CVACT dataset"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x6",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Secondly, we test on FI models trained with limited FOV to understand whether images with limited FOV still contain enough information for learning fine-grained orientation estimation. Table 7 present the results of models trained on 180° and 90° . Comparing to the baseline, our model FI gives improvement in most of the metrics, indicating our methods is applicable for limited FOV. The improvement to baselines and performance itself on 180° is much more significant than 90° . This reduction caused by decreased FOV is more drastic in models trained with limited FOV compared to what we observed in full FOV trained models (Table 6). Additionally, besides the unknown r@1 of 180° obtains a higher performance than the model trained with 360° , all other metrics in limited FOV training result in worse performance, especially on orientation extraction. It indicates that missing partial FOV has great influence on both orientation and location extraction. However, its impacts on finding precise image orientation might be more significant than location extraction."
+      },
+      "confidence": 0.95,
+      "task": "limited FOV test (model trained and tested on limited FOV)",
+      "setup": "CVACT dataset, 180° and 90° FOV"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3ce65a8816a46477_x7",
+      "evidence": {
+        "section": "3 EXPERIMENTAL SETTINGS",
+        "original_text": "All our models and our re-implementation of DSM [36]* are trained with unknown orientation. The first 10 layers of the VGG16 based feature extractors use the pre-trained weights on ImageNet [12] and the last three layers are initialized randomly. Note that in our model all parameters are learnable, while the first 10 layers of DSM are frozen. For fair comparison, batch size B is set to 32 as [35, 36, 48, 52, 57]. We use Adam [21] optimizer with an initial learning rate of 11e−5, learning rate decrease on plateau is applied with factor 0.5, patience 8. The maximum training time is set to 200 epochs and the early stopping threshold is 30 epochs. For unknown orientation, images can rotate up to 360°. The rotation unit is about 0.70°, corresponding to the shift in one pixel of the input image. The weight for angle loss β =0.3. The average results of three instances are reported in the following sections, if not otherwise specified."
+      },
+      "confidence": 0.95,
+      "task": "training implementation details",
+      "setup": "CVUSA and CVACT datasets, Adam optimizer, batch size 32"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 82.4,
+      "unit": "%",
+      "context": "CVUSA dataset, images with estimated angle errors below 2°",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 72.3,
+      "unit": "%",
+      "context": "CVACT dataset, images with estimated angle errors below 2°",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "absolute improvement",
+      "value": 34.9,
+      "unit": "%",
+      "context": "CVUSA dataset, accuracy for images with estimated angle errors below 2° compared to previous works",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "absolute improvement",
+      "value": 28.2,
+      "unit": "%",
+      "context": "CVACT dataset, accuracy for images with estimated angle errors below 2° compared to previous works",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr5",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "top 1 recall",
+      "value": 95.5,
+      "unit": "%",
+      "context": "CVUSA dataset, orientation known test",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr6",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "top 1 recall",
+      "value": 85.5,
+      "unit": "%",
+      "context": "CVUSA dataset, orientation unknown test",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr7",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "top 1 recall",
+      "value": 86.8,
+      "unit": "%",
+      "context": "CVACT dataset, orientation known test",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr8",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2[◦] for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.99,
+      "quantity": "top 1 recall",
+      "value": 80.4,
+      "unit": "%",
+      "context": "CVACT dataset, orientation unknown test",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr9",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Both datasets have a similar mean error improvement of about 1.38[◦] to 1.52[◦] from their original mean error of 5.29[◦] and 6.26[◦] . However, CVUSA observed higher absolute improvement on r@2[◦] (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1[◦] , which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2[◦] error region are still successfully reduced within 5[◦] . We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.98,
+      "quantity": "mean angle error",
+      "value": 5.29,
+      "unit": "°",
+      "context": "CVUSA dataset, baseline DSM [36]* model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr10",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Both datasets have a similar mean error improvement of about 1.38[◦] to 1.52[◦] from their original mean error of 5.29[◦] and 6.26[◦] . However, CVUSA observed higher absolute improvement on r@2[◦] (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1[◦] , which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2[◦] error region are still successfully reduced within 5[◦] . We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.98,
+      "quantity": "mean angle error",
+      "value": 6.26,
+      "unit": "°",
+      "context": "CVACT dataset, baseline DSM [36]* model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr11",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Both datasets have a similar mean error improvement of about 1.38[◦] to 1.52[◦] from their original mean error of 5.29[◦] and 6.26[◦] . However, CVUSA observed higher absolute improvement on r@2[◦] (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1[◦] , which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2[◦] error region are still successfully reduced within 5[◦] . We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.98,
+      "quantity": "mean angle error improvement",
+      "value": 1.38,
+      "unit": "°",
+      "context": "CVUSA dataset, from baseline DSM [36]* to proposed models",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr12",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Both datasets have a similar mean error improvement of about 1.38[◦] to 1.52[◦] from their original mean error of 5.29[◦] and 6.26[◦] . However, CVUSA observed higher absolute improvement on r@2[◦] (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1[◦] , which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2[◦] error region are still successfully reduced within 5[◦] . We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.98,
+      "quantity": "mean angle error improvement",
+      "value": 1.52,
+      "unit": "°",
+      "context": "CVACT dataset, from baseline DSM [36]* to proposed models",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr13",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Both datasets have a similar mean error improvement of about 1.38[◦] to 1.52[◦] from their original mean error of 5.29[◦] and 6.26[◦] . However, CVUSA observed higher absolute improvement on r@2[◦] (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1[◦] , which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2[◦] error region are still successfully reduced within 5[◦] . We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.98,
+      "quantity": "accuracy",
+      "value": 57,
+      "unit": "%",
+      "context": "CVUSA dataset, images with orientation estimation error below 1°",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr14",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Both datasets have a similar mean error improvement of about 1.38[◦] to 1.52[◦] from their original mean error of 5.29[◦] and 6.26[◦] . However, CVUSA observed higher absolute improvement on r@2[◦] (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1[◦] , which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2[◦] error region are still successfully reduced within 5[◦] . We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT."
+      },
+      "confidence": 0.98,
+      "quantity": "accuracy",
+      "value": 45,
+      "unit": "%",
+      "context": "CVACT dataset, images with orientation estimation error below 1°",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr15",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 1.93,
+      "unit": "%",
+      "context": "CVUSA dataset, orientation known test, FI model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr16",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 4.7,
+      "unit": "%",
+      "context": "CVUSA dataset, orientation unknown test, FI model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr17",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 1.8,
+      "unit": "%",
+      "context": "CVUSA dataset, orientation known test, CS model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr18",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 4.64,
+      "unit": "%",
+      "context": "CVUSA dataset, orientation unknown test, CS model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr19",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 2.91,
+      "unit": "%",
+      "context": "CVACT dataset, orientation known test, FI model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr20",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 5.17,
+      "unit": "%",
+      "context": "CVACT dataset, orientation unknown test, FI model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr21",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 2.34,
+      "unit": "%",
+      "context": "CVACT dataset, orientation known test, CS model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr22",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Compared to DSM [36][∗] , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 5.55,
+      "unit": "%",
+      "context": "CVACT dataset, orientation unknown test, CS model compared to DSM [36]*",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr23",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "We achieves better r@1 than all existing methods; especially on CVACT obtaining absolute improvement of 1.66% and 2.66% on known and unknown orientation test, without implementing additional sampling strategy or computational expensive architecture. Note that SEH [16] and our models have the same origin from DSM, its work on sampling strategies is in another disentangled research direction. The two methods do not contradict each other and can be applied together with proper adaptation."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 1.66,
+      "unit": "%",
+      "context": "CVACT dataset, orientation known test, compared to existing methods",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr24",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "We achieves better r@1 than all existing methods; especially on CVACT obtaining absolute improvement of 1.66% and 2.66% on known and unknown orientation test, without implementing additional sampling strategy or computational expensive architecture. Note that SEH [16] and our models have the same origin from DSM, its work on sampling strategies is in another disentangled research direction. The two methods do not contradict each other and can be applied together with proper adaptation."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 2.66,
+      "unit": "%",
+      "context": "CVACT dataset, orientation unknown test, compared to existing methods",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr25",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "For across dataset tests, r@2[◦] (matched to all) drops to 9.02% and 12.69%, although the models have the ability to give high-quality orientation to 57.09% and 55.94% of the full test images. Figure 5 shows the majority of the removed cases obtain a high to medium quality orientation estimation. Mislocated images are not necessarily having low-quality orientation estimation. Additionally, evaluating only on locationmatched images can lead to an unfair comparison, e.g., a model can trick the evaluation by having only one correctly located image with a perfect estimated orientation. Hence, we believe the evaluation of orientation estimation shall be independent of geo-localization, unless it is for specific use cases."
+      },
+      "confidence": 0.98,
+      "quantity": "accuracy",
+      "value": 57.09,
+      "unit": "%",
+      "context": "CVACT dataset, across dataset test, FI model, images with orientation estimation error below 2° (matched to all)",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr26",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "For across dataset tests, r@2[◦] (matched to all) drops to 9.02% and 12.69%, although the models have the ability to give high-quality orientation to 57.09% and 55.94% of the full test images. Figure 5 shows the majority of the removed cases obtain a high to medium quality orientation estimation. Mislocated images are not necessarily having low-quality orientation estimation. Additionally, evaluating only on locationmatched images can lead to an unfair comparison, e.g., a model can trick the evaluation by having only one correctly located image with a perfect estimated orientation. Hence, we believe the evaluation of orientation estimation shall be independent of geo-localization, unless it is for specific use cases."
+      },
+      "confidence": 0.98,
+      "quantity": "accuracy",
+      "value": 55.94,
+      "unit": "%",
+      "context": "CVUSA dataset, across dataset test, CS model, images with orientation estimation error below 2° (matched to all)",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr27",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "For across dataset tests, r@2[◦] (matched to all) drops to 9.02% and 12.69%, although the models have the ability to give high-quality orientation to 57.09% and 55.94% of the full test images. Figure 5 shows the majority of the removed cases obtain a high to medium quality orientation estimation. Mislocated images are not necessarily having low-quality orientation estimation. Additionally, evaluating only on locationmatched images can lead to an unfair comparison, e.g., a model can trick the evaluation by having only one correctly located image with a perfect estimated orientation. Hence, we believe the evaluation of orientation estimation shall be independent of geo-localization, unless it is for specific use cases."
+      },
+      "confidence": 0.98,
+      "quantity": "accuracy",
+      "value": 9.02,
+      "unit": "%",
+      "context": "CVACT dataset, across dataset test, FI model, images with orientation estimation error below 2° (matched to all)",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr28",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "For across dataset tests, r@2[◦] (matched to all) drops to 9.02% and 12.69%, although the models have the ability to give high-quality orientation to 57.09% and 55.94% of the full test images. Figure 5 shows the majority of the removed cases obtain a high to medium quality orientation estimation. Mislocated images are not necessarily having low-quality orientation estimation. Additionally, evaluating only on locationmatched images can lead to an unfair comparison, e.g., a model can trick the evaluation by having only one correctly located image with a perfect estimated orientation. Hence, we believe the evaluation of orientation estimation shall be independent of geo-localization, unless it is for specific use cases."
+      },
+      "confidence": 0.98,
+      "quantity": "accuracy",
+      "value": 12.69,
+      "unit": "%",
+      "context": "CVUSA dataset, across dataset test, CS model, images with orientation estimation error below 2° (matched to all)",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr29",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Table 6 shows the average performances of FI models on CVACT. The absolute improvements to our re-implemented baseline DSM [36][∗] are given in the brackets. For geo-localization unknown r@1, our result has a 9.60% and 6.83% improvement for 180[◦] and 90[◦] tests. Recent work SEH-VGG16 [16] reports r@1 of 45.99% and 14.06% on the same test. For the orientation estimation, we observe improvement on all metrics compared to DSM [36][∗] . However, the performance and the absolute improvements on most of metrics gradually reduced when the FOV is more restricted. The mean error for 90[◦] FOV is nearly one fourth of its FOV and the r@2[◦] declines to less than 50%. This observation is aligned with our intuition that the difficulty of precise geo-localization and orientation estimation increases drastically when the FOV decreases."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 9.6,
+      "unit": "%",
+      "context": "CVACT dataset, 180° FOV test, orientation unknown, FI model trained on 360° images compared to DSM [36]*",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3ce65a8816a46477_qr30",
+      "evidence": {
+        "section": "4 RESULTS",
+        "original_text": "Table 6 shows the average performances of FI models on CVACT. The absolute improvements to our re-implemented baseline DSM [36][∗] are given in the brackets. For geo-localization unknown r@1, our result has a 9.60% and 6.83% improvement for 180[◦] and 90[◦] tests. Recent work SEH-VGG16 [16] reports r@1 of 45.99% and 14.06% on the same test. For the orientation estimation, we observe improvement on all metrics compared to DSM [36][∗] . However, the performance and the absolute improvements on most of metrics gradually reduced when the FOV is more restricted. The mean error for 90[◦] FOV is nearly one fourth of its FOV and the r@2[◦] declines to less than 50%. This observation is aligned with our intuition that the difficulty of precise geo-localization and orientation estimation increases drastically when the FOV decreases."
+      },
+      "confidence": 0.98,
+      "quantity": "top 1 recall improvement",
+      "value": 6.83,
+      "unit": "%",
+      "context": "CVACT dataset, 90° FOV test, orientation unknown, FI model trained on 360° images compared to DSM [36]*",
+      "result_type": "ablation"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3ce65a8816a46477_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Street-view imagery provides us with novel experiences to explore different places remotely. Carefully calibrated street-view images (e.g., Google Street View) can be used for different downstream tasks, e.g., navigation, map features extraction. As personal highquality cameras have become much more affordable and portable, an enormous amount of crowdsourced street-view images are uploaded to the internet, but commonly with missing or noisy sensor information. To prepare this hidden treasure for “ready-to-use” status, determining missing location information and camera orientation angles are two equally important tasks. Recent methods have achieved high performance on geo-localization of street-view images by cross-view matching with a pool of geo-referenced satellite imagery. However, most of the existing works focus more on geo-localization than estimating the image orientation. In this work, we re-state the importance of finding fine-grained orientation for street-view images, formally define the problem and provide a set of evaluation metrics to assess the quality of the orientation estimation. We propose two methods to improve the granularity of the orientation estimation, achieving 82.4% and 72.3% accuracy for images with estimated angle errors below 2° for CVUSA and CVACT datasets, corresponding to 34.9% and 28.2% absolute improvement compared to previous works. Integrating fine-grained orientation estimation in training also improves the performance on geo-localization, giving top 1 recall 95.5%/85.5% and 86.8%/80.4% for orientation known/unknown tests on the two datasets."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3ce65a8816a46477_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Photos not only contain memories, but also provide us a brand new way to learn and perceive the world through others’ eyes, to find details that one may have overlooked earlier, and to share emotions and knowledge with the community. With advances in hardware, personal high-quality cameras have become much more affordable. Many creators are keen on sharing photos on the internet. The captured images may not be as carefully calibrated as if they were taken by a dedicated multi-sensor system (e.g., Google Street View vehicles), but the sheer volume of crowdsourced images surely provides rich information. If we can efficiently estimate the missing meta information (e.g., geo-location, camera orientation) of those images and calibrate them for “ready-to-use” status, this enormous hidden treasure can help on various downstream tasks, e.g., map information extraction [5, 28, 55], car navigation and tracking [2, 17, 22, 31, 33], UAV positioning [24, 27], hazard detection [1, 22, 29, 46], social studies [47]. To accomplish this goal, we must carry out three tasks: (a) adjusting the image upright [20], (b) finding the location, and (c) estimating the viewing angle of the camera. However, as a full decade has passed, finding only the location no longer satisfies the requirement to explore the full potential of street-view images. We encourage the community to embrace a more challenging task of estimating the fine-grained camera orientation of street-view images to extend the overall objectives for three reasons: 1) With the accurate camera orientation, information extracted from street-view images, especially from using single-image algorithms (e.g., depth estimation, object detection), enables a wider range of real-world applications, e.g., map creation, augmented reality, navigation. In practice, even a very small misalignment in orientation can propagate a large shift to the physical position of objects detected in images. For example, Figure 1 (c) shows that an orientation error of 15° is large enough to mislocate an exit to another lane; an error of 30° is sufficient to mistakenly assign attributes to the reverse direction of the road. 2) Nowadays, crowdsourced high-quality 360° or wide-angle images can be taken by semi-professional 360° cameras or even by phones. These images are usually not carefully calibrated. It is more likely that the orientation information is missing but a rough location is labeled, rather than vice versa. Hence, the problem of finding the location of street-view images assuming the orientation is known is no longer realistic. 3) After surveying recent studies, we found that the performance of cross-view geo-localization is slowly reaching saturation. Based on our experiments, we observe that by introducing a finer granularity to orientation estimation, the performance of geo-localization can be further improved. We hypothesize that the saturation of performance is reached not because of the representation power of the networks, but a lack of precision in orientation to align two images. Finding fine-grained orientation could also potentially improve the performance of geo-localization of crowdsourced images."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3ce65a8816a46477_ca3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Only a few studies have made progress or introduced new ideas on using the orientation characteristic [9, 25, 36, 45, 56, 61]. Even fewer evaluates the orientation estimation result along with the geo-localization task [36, 45, 56, 61]. To the best of our knowledge, Shi et al. [36] is the only work taking orientation prediction as the main problem to solve for large scale searching. However, we found the granularity of the estimation could be improved to better fit real-world use cases and the evaluation metrics do not give enough clarity. Hence, in this work, we formally define the problem and propose a set of metrics for evaluating the fine-grained estimation of camera orientation of street-view images. In summary, our contributions lie in the following aspects: - Define a south-aligned orientation alignment coordinate and a continuous absolute angle error coordinate for orientation estimation in cross-view matching with satellite imagery. - Propose two methods to enhance the granularity of orientation estimation of street-view images without introducing any additional learnable parameters. - Propose a set of metrics for orientation estimation, which is easier to understand and gives better clarity for real-world use-cases. - Demonstrate that by incorporating fine-grained orientation estimation, the performance of geo-localization can be improved."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_3ce65a8816a46477_cl1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Table 2 shows the performance of our models on orientation estimation on 360° images along with previous studies [36, 56, 61]. As only a few works report their results on orientation estimation and use different metrics, we re-implement DSM [36] to conduct a full comparison using the newly proposed metrics. The re-implemented DSM [36]* is used as the baseline to calculate the improvement shown in the bracket. Both our models, FI and CS, show significant improvement in the mean error, r@2° and r@5° for all test cases. Both datasets have a similar mean error improvement of about 1.38° to 1.52° from their original mean error of 5.29° and 6.26°. However, CVUSA observed higher absolute improvement on r@2° (about 35%) than CVACT (about 28%). Comparing the histogram visualized in Figure 4, the error distribution of CVUSA is further pushed to the lower angle error region than the distribution of the CVACT results. Around 57% of the test dataset of CVUSA obtained an orientation estimation with an error below 1°, which is around 45% for CVACT. For CVACT, some test cases that are not pushed below the 2° error region are still successfully reduced within 5°. We hypothesize that the CVUSA dataset contains a larger portion of suburban, rural areas than CVACT, which leads the images in CVUSA naturally to have less obvious features, such as buildings, to leverage. This makes the precise orientation estimation has more influence on CVUSA than CVACT. Between FI and CS, FI interpolates the coarse feature maps with a large scaling number to generate a fine-grained correlation curve with new values, while CS obtains sub-pixel correlation curve values by smoothing the original curve. From our experiment results in Table 2, CS obtains slightly better results than FI on orientation extraction. However, FI gives a more fundamental fine-grained orientation curve generation. It could be useful when prior knowledge of the rough orientation is available, which can be added to the street-view features before the orientation curve is generated."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_3ce65a8816a46477_cl2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Finding fine-grained orientation does not only provide additional orientation information but also improves the performance of geo-localization. We evaluate the geo-localization result of our models in known/unknown orientation tests. The r@1 of CVUSA and CVACT are shown in Table 3. Note that the performance of the best instance of our FI, CS and DSM [36]* are reported to have a fair comparison. Compared to DSM [36]* , r@1 for known/unknown orientation test on CVUSA improved by 1.93%, 4.70% for FI and 1.80%, 4.64% for CS; on CVACT are improved by 2.91%, 5.17% for FI and 2.34%, 5.55% for CS. Additional results on across dataset and mixed dataset tests and visualization of the top 5 best matched and worst mismatched cases are shown in the supplementary materials. We achieves better r@1 than all existing methods; especially on CVACT obtaining absolute improvement of 1.66% and 2.66% on known and unknown orientation test, without implementing additional sampling strategy or computational expensive architecture. Note that SEH [16] and our models have the same origin from DSM, its work on sampling strategies is in another disentangled research direction. The two methods do not contradict each other and can be applied together with proper adaptation."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_3ce65a8816a46477_cl3",
+      "evidence": {
+        "section": "Findings and Discussion",
+        "original_text": "(1) Orientation estimation: our methods improve the orientation estimation performance for both datasets. It has a higher influence on CVUSA, as images in CVUSA have less complex scenes and obvious features. In general, CS obtains slightly better results in our test cases, however, FI gives more fundamental fine-grained orientation curve generation, this could be useful when prior knowledge of the rough orientation is available. (2) Geo-localization: by integrating fine-grained orientation estimation, the trained models obtain higher performance, compared to baseline models. The r@1 for both datasets achieve better scores than existing methods. Note that our initiatives on integrating fine-grained orientation estimation are compatible with some recent works, e.g., [16] on sampling strategies. (3) Evaluation: When the street-view images are correctly geo-localized, the orientation estimation has higher precision. However, most of the location-incorrect images still obtain high to medium quality orientation estimation. It is also fairer to evaluate orientation estimation independently from geo-localization. (4) Limited FOV: When a model is trained on 360° images and is tested on limited FOV, the performance of geo-localization and orientation estimation both decrease. The more limited the FOV restricts, the worse the performance is. When a model is trained and tested on a limited FOV, the missing information has higher impacts on fine-grained orientation estimation than geo-localization."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_3ce65a8816a46477_lm1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Table 6 shows the average performances of FI models on CVACT. The absolute improvements to our re-implemented baseline DSM [36]* are given in the brackets. For geo-localization unknown r@1, our result has a 9.60% and 6.83% improvement for 180° and 90° tests. Recent work SEH-VGG16 [16] reports r@1 of 45.99% and 14.06% on the same test. For the orientation estimation, we observe improvement on all metrics compared to DSM [36]* . However, the performance and the absolute improvements on most of metrics gradually reduced when the FOV is more restricted. The mean error for 90° FOV is nearly one fourth of its FOV and the r@2° declines to less than 50%. This observation is aligned with our intuition that the difficulty of precise geo-localization and orientation estimation increases drastically when the FOV decreases. Secondly, we test on FI models trained with limited FOV to understand whether images with limited FOV still contain enough information for learning fine-grained orientation estimation. Table 7 present the results of models trained on 180° and 90° . Comparing to the baseline, our model FI gives improvement in most of the metrics, indicating our methods is applicable for limited FOV. The improvement to baselines and performance itself on 180° is much more significant than 90° . This reduction caused by decreased FOV is more drastic in models trained with limited FOV compared to what we observed in full FOV trained models (Table 6). Additionally, besides the unknown r@1 of 180° obtains a higher performance than the model trained with 360° , all other metrics in limited FOV training result in worse performance, especially on orientation extraction. It indicates that missing partial FOV has great influence on both orientation and location extraction. However, its impacts on finding precise image orientation might be more significant than location extraction."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_3ce65a8816a46477_lm2",
+      "evidence": {
+        "section": "Conclusion and Future Work",
+        "original_text": "Concurrent works also pursue new initiatives in different directions. We highlight the following potential aspects for future works: (1) Limited FOV. In this work, we have tested geo-localization and orientation estimation with different settings. Among all, finding geo-localization and fine-grained orientation from images with limited FOV is the most challenging problem but also the one with the highest societal impacts. (2) Combining with other data sources. Map rendered imagery can be an additional input or a replacement for satellite imagery. Compared to satellite imagery, map rendered images contain fewer details, but are easier to obtain and have less influence on seasonal/weather conditions. When prior knowledge of location/orientation is available, additional data sources, e.g., GPS, can be used to reduce the searching space for local scale search. (3) Use of metrics. In this work, we evaluate the performance of all test images. However, future works can further explore other extensions of the existing metrics to cater to different task-specific requirements. (4) Beyond image retrieval. Our work assumes satellite images can be densely cropped in the area of interest, hence the camera locations are not far away from the satellite image centers. However, fine-grained location extraction beyond image retrieval is definitely helpful to reduce the sampling density of the satellite images for large scale applications. The new challenge is to extract fine-grained location and orientation at the same time for off-center orientation unknown images without any prior knowledge."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3ce65a8816a46477_fw1",
+      "evidence": {
+        "section": "Conclusion and Future Work",
+        "original_text": "Concurrent works also pursue new initiatives in different directions. We highlight the following potential aspects for future works: (1) Limited FOV. In this work, we have tested geo-localization and orientation estimation with different settings. Among all, finding geo-localization and fine-grained orientation from images with limited FOV is the most challenging problem but also the one with the highest societal impacts. (2) Combining with other data sources. Map rendered imagery can be an additional input or a replacement for satellite imagery. Compared to satellite imagery, map rendered images contain fewer details, but are easier to obtain and have less influence on seasonal/weather conditions. When prior knowledge of location/orientation is available, additional data sources, e.g., GPS, can be used to reduce the searching space for local scale search. (3) Use of metrics. In this work, we evaluate the performance of all test images. However, future works can further explore other extensions of the existing metrics to cater to different task-specific requirements. (4) Beyond image retrieval. Our work assumes satellite images can be densely cropped in the area of interest, hence the camera locations are not far away from the satellite image centers. However, fine-grained location extraction beyond image retrieval is definitely helpful to reduce the sampling density of the satellite images for large scale applications. The new challenge is to extract fine-grained location and orientation at the same time for off-center orientation unknown images without any prior knowledge."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

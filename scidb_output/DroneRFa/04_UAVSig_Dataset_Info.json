@@ -1,0 +1,375 @@
+{
+  "metadata": {
+    "doc_id": "doc_26fa1f61f3245f78",
+    "source_file": "04_UAVSig_Dataset_Info.md",
+    "title": "UAVSig Dataset Information",
+    "year": 2024,
+    "doi": null,
+    "abstract": "~2.438<br>Channel 1 Channel 2 Channel 3 Channel 4<br>(DJI #15) (DJI #16) (DJI #17) (DJI #18)<br>(~10 MHz) (~10 MHz) (~10 MHz) (~10 MHz)<br>f (GHz)<br>2.4185 2.4435 2.4685<br>50 MHz Captured Bandwidth<br>**----- End of picture text -----**<br>",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "电子、通信与自动控制技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "UAV",
+      "dataset",
+      "signal",
+      "frequency",
+      "bandwidth"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:31:46.781999+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_26fa1f61f3245f78_c1",
+      "evidence": {
+        "section": "UAVSig Dataset Information",
+        "original_text": "UAVSig: UAV RF dataset with time-frequency labels. Wideband, multi-channel data. Multiple transmitters of the same models. Full dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/. Scenario = one combo of specific TX(s) and channel parameters. Two capture days (5/9/24 and 5/10/24)."
+      },
+      "confidence": 0.98,
+      "term": "UAVSig dataset",
+      "normalized": "无人机射频数据集",
+      "std_label": "UAVSig"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_26fa1f61f3245f78_c2",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Receiver: USRP B205mini SDR. 20 dBi panel antenna with an 18° beamwidth. 6 ft coax cable between Rx and antenna with no additional LNA. Captures: 6, 1s captures per scenario. 50 MHz bandwidth. 2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels. DJI controllers’ 1 MHz signals hop over 2.4-2.4835 GHz (ISM band)."
+      },
+      "confidence": 0.96,
+      "term": "USRP B205mini SDR",
+      "normalized": "软件无线电接收机",
+      "std_label": "SDR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_26fa1f61f3245f78_c3",
+      "evidence": {
+        "section": "Drones and Physical Setup",
+        "original_text": "4 DJI Matrice 100 drones and controllers. Campus building neighboring roofs. RX antenna angled upward on the upper roof to avoid interference."
+      },
+      "confidence": 0.97,
+      "term": "DJI Matrice 100 drones",
+      "normalized": "DJI Matrice 100无人机",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_26fa1f61f3245f78_c4",
+      "evidence": {
+        "section": "DSP Labeling Algorithm Overview",
+        "original_text": "Iterative signal detection algorithm. 1. Time-domain duration estimation. 2. Bandwidth estimation. 3. Filter out estimated signal. Repeat until all transmissions detected. Labels from known capture scenario. DSP labels used for training and test performance metrics."
+      },
+      "confidence": 0.95,
+      "term": "iterative signal detection algorithm",
+      "normalized": "迭代信号检测算法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_26fa1f61f3245f78_c5",
+      "evidence": {
+        "section": "Example Full 1s Capture – Drones",
+        "original_text": "Raw I/Q Labeled DSP Spectrogram. 1s 1s (512x512). Labeling Splitting Capture Capture Spectrograms. Unlabeled Test Spectrogram (512x512). Splitting Spectrograms."
+      },
+      "confidence": 0.94,
+      "term": "spectrogram",
+      "normalized": "频谱图",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_26fa1f61f3245f78_r1",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Receiver: USRP B205mini SDR. 20 dBi panel antenna with an 18° beamwidth. 6 ft coax cable between Rx and antenna with no additional LNA. Captures: 6, 1s captures per scenario. 50 MHz bandwidth. 2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels. DJI controllers’ 1 MHz signals hop over 2.4-2.4835 GHz (ISM band). UAVSig: UAV RF dataset with time-frequency labels. Wideband, multi-channel data. Multiple transmitters of the same models. Full dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/. Scenario = one combo of specific TX(s) and channel parameters. Two capture days (5/9/24 and 5/10/24)."
+      },
+      "confidence": 0.92,
+      "head": "doc_26fa1f61f3245f78_c1",
+      "relation_type": "uses",
+      "relation_surface": "available at",
+      "tail": "doc_26fa1f61f3245f78_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_26fa1f61f3245f78_r2",
+      "evidence": {
+        "section": "Drones and Physical Setup",
+        "original_text": "4 DJI Matrice 100 drones and controllers. Campus building neighboring roofs. RX antenna angled upward on the upper roof to avoid interference. UAVSig: UAV RF dataset with time-frequency labels. Wideband, multi-channel data. Multiple transmitters of the same models. Full dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/. Scenario = one combo of specific TX(s) and channel parameters. Two capture days (5/9/24 and 5/10/24)."
+      },
+      "confidence": 0.93,
+      "head": "doc_26fa1f61f3245f78_c1",
+      "relation_type": "contains",
+      "relation_surface": "with",
+      "tail": "doc_26fa1f61f3245f78_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_26fa1f61f3245f78_r3",
+      "evidence": {
+        "section": "DSP Labeling Algorithm Overview",
+        "original_text": "Iterative signal detection algorithm. 1. Time-domain duration estimation. 2. Bandwidth estimation. 3. Filter out estimated signal. Repeat until all transmissions detected. Labels from known capture scenario. DSP labels used for training and test performance metrics. Raw I/Q Labeled DSP Spectrogram. 1s 1s (512x512). Labeling Splitting Capture Capture Spectrograms. Unlabeled Test Spectrogram (512x512). Splitting Spectrograms."
+      },
+      "confidence": 0.91,
+      "head": "doc_26fa1f61f3245f78_c4",
+      "relation_type": "generates",
+      "relation_surface": "used for",
+      "tail": "doc_26fa1f61f3245f78_c5"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_26fa1f61f3245f78_d1",
+      "evidence": {
+        "section": "UAVSig Dataset Information",
+        "original_text": "UAVSig: UAV RF dataset with time-frequency labels. Wideband, multi-channel data. Multiple transmitters of the same models. Receiver: USRP B205mini SDR. 20 dBi panel antenna with an 18° beamwidth. 6 ft coax cable between Rx and antenna with no additional LNA. Captures: 6, 1s captures per scenario. 50 MHz bandwidth. 2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels. DJI controllers’ 1 MHz signals hop over 2.4-2.4835 GHz (ISM band). 4 DJI Matrice 100 drones and controllers. Campus building neighboring roofs. RX antenna angled upward on the upper roof to avoid interference. Scenario = one combo of specific TX(s) and channel parameters. Two capture days (5/9/24 and 5/10/24). Full dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/. DSP Labeling Algorithm Overview. Iterative signal detection algorithm. 1. Time-domain duration estimation. 2. Bandwidth estimation. 3. Filter out estimated signal. Repeat until all transmissions detected. Labels from known capture scenario. DSP labels used for training and test performance metrics. Example Full 1s Capture – Drones. Raw I/Q Labeled DSP Spectrogram. 1s Capture 1s Capture (512x512). Labeling Splitting Spectrograms. Unlabeled Test Spectrogram (512x512). Splitting Spectrograms. Example Full 1s Capture – Controllers. Raw I/Q Labeled DSP Spectrogram. 1s Capture 1s Capture (512x512). Labeling Splitting Spectrograms. Unlabeled Test Spectrogram (512x512). Splitting Spectrograms."
+      },
+      "confidence": 0.95,
+      "name": "UAVSig Dataset",
+      "modality": "time_series",
+      "domain": "radio frequency (RF) communications"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_26fa1f61f3245f78_ds1",
+      "evidence": {
+        "section": "Example Full 1s Capture – Drones / Controllers",
+        "original_text": "Example Full 1s Capture – Drones. Raw I/Q Labeled DSP Spectrogram. 1s Capture 1s Capture (512x512). Labeling Splitting Spectrograms. Unlabeled Test Spectrogram (512x512). Splitting Spectrograms. Example Full 1s Capture – Controllers. Raw I/Q Labeled DSP Spectrogram. 1s Capture 1s Capture (512x512). Labeling Splitting Spectrograms. Unlabeled Test Spectrogram (512x512). Splitting Spectrograms."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Raw I/Q data captures of 1 second duration, processed into labeled spectrograms of size 512x512"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_26fa1f61f3245f78_ds2",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Receiver: USRP B205mini SDR. 20 dBi panel antenna with an 18° beamwidth. 6 ft coax cable between Rx and antenna with no additional LNA. Captures: 6, 1s captures per scenario. 50 MHz bandwidth. 2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels. DJI controllers’ 1 MHz signals hop over 2.4-2.4835 GHz (ISM band)."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "RF capture setup using USRP B205mini SDR with specific antenna, cable, and bandwidth configuration"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_26fa1f61f3245f78_ds3",
+      "evidence": {
+        "section": "Overall UAVSig Dataset Information",
+        "original_text": "Scenario = one combo of specific TX(s) and channel parameters. Two capture days (5/9/24 and 5/10/24). Full dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Scenario defined as a combination of specific transmitter(s) and channel parameters, with data collected over two specific days"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_26fa1f61f3245f78_m1",
+      "evidence": {
+        "section": "DSP Labeling Algorithm Overview",
+        "original_text": "Iterative signal detection algorithm\n1. Time-domain duration estimation\n2. Bandwidth estimation\n3. Filter out estimated signal\n- Repeat until all transmissions detected\n- Labels from known capture scenario\n- DSP labels used for training and test performance metrics"
+      },
+      "confidence": 0.9,
+      "name": "Iterative signal detection algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_26fa1f61f3245f78_m2",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Receiver: USRP B205mini SDR\n- 20 dBi panel antenna with an 18° beamwidth\n- 6 ft coax cable between Rx and antenna with no additional LNA\n- Captures: 6, 1s captures per scenario\n- 50 MHz bandwidth\n- 2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels\nDJI controllers’ 1 MHz signals hop over 2.4-2.4835 GHz (ISM band)"
+      },
+      "confidence": 0.95,
+      "name": "USRP B205mini SDR",
+      "method_type": "instrument"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_26fa1f61f3245f78_x1",
+      "evidence": {
+        "section": "RF Receiver and Configuration and Drones and Physical Setup",
+        "original_text": "Receiver: USRP B205mini SDR\n- 20 dBi panel antenna with an 18° beamwidth\n- 6 ft coax cable between Rx and antenna with no additional LNA\n- Captures: 6, 1s captures per scenario\n- 50 MHz bandwidth\n- 2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels\nDJI controllers’ 1 MHz signals hop over 2.4-2.4835 GHz (ISM band)\n4 DJI Matrice 100 drones and controllers\nCampus building neighboring roofs\nRX antenna angled upward on the upper roof to avoid interference"
+      },
+      "confidence": 0.95,
+      "task": "UAV RF signal data collection",
+      "setup": "USRP B205mini SDR receiver with panel antenna, 50 MHz bandwidth, 2.4435 GHz center frequency, campus building roof setup"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_26fa1f61f3245f78_x2",
+      "evidence": {
+        "section": "Overall UAVSig Dataset Information",
+        "original_text": "Scenario = one combo of specific TX(s) and channel parameters\nTwo capture days (5/9/24 and 5/10/24)\nFull dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/"
+      },
+      "confidence": 0.9,
+      "task": "Dataset capture scenario",
+      "setup": "Two capture days (5/9/24 and 5/10/24), specific TX(s) and channel parameters"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr1",
+      "evidence": {
+        "section": "Overall UAVSig Dataset Information",
+        "original_text": "Full dataset (~222 GB) available at: https://cores.ee.ucla.edu/downloads/datasets/uavsig/"
+      },
+      "confidence": 0.99,
+      "quantity": "dataset size",
+      "value": 222,
+      "unit": "GB",
+      "context": "UAVSig dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr2",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Captures: 6, 1s captures per scenario"
+      },
+      "confidence": 0.99,
+      "quantity": "capture duration",
+      "value": 1,
+      "unit": "s",
+      "context": "RF receiver configuration, per scenario",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr3",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Captures: 6, 1s captures per scenario. 50 MHz bandwidth"
+      },
+      "confidence": 0.99,
+      "quantity": "capture bandwidth",
+      "value": 50,
+      "unit": "MHz",
+      "context": "RF receiver configuration",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr4",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "2.4435 GHz center frequency – slightly offset from the perfect center of the four, 10 MHz drone channels"
+      },
+      "confidence": 0.99,
+      "quantity": "center frequency",
+      "value": 2.4435,
+      "unit": "GHz",
+      "context": "RF receiver configuration",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr5",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Receiver: USRP B205mini SDR. 20 dBi panel antenna with an 18° beamwidth"
+      },
+      "confidence": 0.99,
+      "quantity": "antenna beamwidth",
+      "value": 18,
+      "unit": "°",
+      "context": "Receiver USRP B205mini SDR configuration",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr6",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "Receiver: USRP B205mini SDR. 20 dBi panel antenna with an 18° beamwidth"
+      },
+      "confidence": 0.99,
+      "quantity": "antenna gain",
+      "value": 20,
+      "unit": "dBi",
+      "context": "Receiver USRP B205mini SDR configuration",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr7",
+      "evidence": {
+        "section": "RF Receiver and Configuration",
+        "original_text": "6 ft coax cable between Rx and antenna with no additional LNA"
+      },
+      "confidence": 0.99,
+      "quantity": "cable length",
+      "value": 6,
+      "unit": "ft",
+      "context": "Receiver USRP B205mini SDR configuration",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr8",
+      "evidence": {
+        "section": "Drones and Physical Setup",
+        "original_text": "4 DJI Matrice 100 drones and controllers"
+      },
+      "confidence": 0.99,
+      "quantity": "number of drones",
+      "value": 4,
+      "unit": null,
+      "context": "Drones and Physical Setup",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr9",
+      "evidence": {
+        "section": "Overall UAVSig Dataset Information",
+        "original_text": "Two capture days (5/9/24 and 5/10/24)"
+      },
+      "confidence": 0.99,
+      "quantity": "capture days",
+      "value": 2,
+      "unit": null,
+      "context": "Overall UAVSig Dataset Information",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr10",
+      "evidence": {
+        "section": "Example Full 1s Capture – Drones",
+        "original_text": "Raw I/Q Labeled Training 5.2ms DSP Spectrogram 1s 1s (512x512) Labeling Splitting Capture Capture Spectrograms Unlabeled Test Spectrogram (512x512) Splitting Spectrograms"
+      },
+      "confidence": 0.99,
+      "quantity": "spectrogram size",
+      "value": 512,
+      "unit": "pixels",
+      "context": "Example Full 1s Capture – Drones",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_26fa1f61f3245f78_qr11",
+      "evidence": {
+        "section": "Example Full 1s Capture – Controllers",
+        "original_text": "Raw I/Q Labeled Training 5.2ms DSP Spectrogram 1s 1s (512x512) Labeling Splitting Capture Capture Spectrograms Unlabeled Test Spectrogram (512x512) Splitting Spectrograms"
+      },
+      "confidence": 0.99,
+      "quantity": "spectrogram size",
+      "value": 512,
+      "unit": "pixels",
+      "context": "Example Full 1s Capture – Controllers",
+      "result_type": "main_result"
+    }
+  ]
+}

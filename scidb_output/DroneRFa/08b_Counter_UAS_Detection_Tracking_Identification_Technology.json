@@ -1,0 +1,746 @@
+{
+  "metadata": {
+    "doc_id": "doc_74a2bbff8b9a8c7c",
+    "source_file": "08b_Counter_UAS_Detection_Tracking_Identification_Technology.md",
+    "title": "Detection, Tracking and Identification Technology for Counter Unmanned Aircraft Systems (C-UAS)",
+    "year": 2023,
+    "doi": null,
+    "abstract": "‑ A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. \n\nA shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS ‑ ‑ sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques ‑ for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. \n\nThe report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the ‑ latest developments in C UAS technology. \n\n3",
+    "introduction": "‑ Counter unmanned aircraft systems (C UAS) solutions are designed to counter the potential threat ‑ from unmanned aircraft systems (UAS). A C UAS solution integrates a broad range of interacting techniques. This report provides an introduction into some of these techniques and implementing ‑ technologies for C UAS detection, tracking, and identification. The intention is to provide the reader with: \n\n- clear definitions of detection, tracking and identification; \n\n- generic insight in the basic principles behind detection, localisation and tracking; \n\n- an overview of the different technologies available, with for each technology: \n\n   - insight in the basic working and the most relevant aspects; \n\n   - strengths and limitations of the technology. \n\n- basic insight in how the individual technologies can be combined into: \n\n   - a design for a C‑UAS solution; \n\n   - consolidated findings of the system as a whole (fusion). \n\n‑ The optimal usage of C UAS solutions requires thorough knowledge of its underlying technologies. After reading the report, the reader should have obtained a basic understanding of the most ‑ relevant aspects in C UAS detection, tracking and identification. \n\nUAS are regarded as a multi-faceted and multi-layered threat that is hard to address. Common understanding among experts is that there are significant improvements required before C‑UAS systems can provide a sufficient level of protection against the current - and rapidly evolving - threat. Due to the ever-evolving nature of the threat, C‑UAS will form a continuous cat and mouse game, and even if a “silver bullet” solution would materialise, it could become obsolete in several months (Muller et al., 2021). By addressing the technologies from the underlying principles, the reader should have solid starting point in understanding current and future developments in the technology.",
+    "primary_discipline": {
+      "level1": "军事学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "电子、通信与自动控制技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Counter Unmanned Aircraft Systems (C-UAS)",
+      "Detection, Tracking and Identification (DTI)",
+      "Sensor Fusion",
+      "Radar",
+      "Radio Frequency (RF)"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:49:22.160724+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.98,
+      "term": "counter unmanned aircraft systems",
+      "normalized": "反无人机系统",
+      "std_label": "C-UAS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.97,
+      "term": "detection, tracking and identification",
+      "normalized": "探测、跟踪与识别",
+      "std_label": "DTI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.96,
+      "term": "C-UAS sensor",
+      "normalized": "C-UAS传感器",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.96,
+      "term": "C-UAS system",
+      "normalized": "C-UAS系统",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.96,
+      "term": "C-UAS solution",
+      "normalized": "C-UAS解决方案",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c6",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "UAS detection is the declaration that a UAS is in the presence of a C‑UAS sensor. A detection can relate to the UA as the flying element of a UAS, but also to other UAS elements, such as a remote control (RC) or a video link receiver. Once a (suspected) UAS presence has been detected, the next step is to establish the location of the UAS and/or UAS related element(s) – this is referred to a localisation. Once an element has been localised, its movements should be monitored and stored in a compilation of locations over time, which is referred to as tracking. In parallel, immediately after detection, the activities for classification and/or identification can start. When a UAS has been detected by a C UAS system, a confirmation of the detection is strongly advisable. The purpose of confirmation is to verify if the detection truly relates to a UAS and not something else, like a bird or a spoofed UAS, the latter being e.g. the deliberate simulation of UAS radio signals without a UAS being present. The earlier a confirmation step takes place, the more efficient and effective the use of the C‑UAS resources will be. The different steps of detection, localisation, tracking, classification and identification, together with a suggested confirmation activity, are shown in Figure 4."
+      },
+      "confidence": 0.95,
+      "term": "detection",
+      "normalized": "探测",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c7",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "UAS detection is the declaration that a UAS is in the presence of a C‑UAS sensor. A detection can relate to the UA as the flying element of a UAS, but also to other UAS elements, such as a remote control (RC) or a video link receiver. Once a (suspected) UAS presence has been detected, the next step is to establish the location of the UAS and/or UAS related element(s) – this is referred to a localisation. Once an element has been localised, its movements should be monitored and stored in a compilation of locations over time, which is referred to as tracking. In parallel, immediately after detection, the activities for classification and/or identification can start. When a UAS has been detected by a C UAS system, a confirmation of the detection is strongly advisable. The purpose of confirmation is to verify if the detection truly relates to a UAS and not something else, like a bird or a spoofed UAS, the latter being e.g. the deliberate simulation of UAS radio signals without a UAS being present. The earlier a confirmation step takes place, the more efficient and effective the use of the C‑UAS resources will be. The different steps of detection, localisation, tracking, classification and identification, together with a suggested confirmation activity, are shown in Figure 4."
+      },
+      "confidence": 0.95,
+      "term": "localisation",
+      "normalized": "定位",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c8",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "UAS detection is the declaration that a UAS is in the presence of a C‑UAS sensor. A detection can relate to the UA as the flying element of a UAS, but also to other UAS elements, such as a remote control (RC) or a video link receiver. Once a (suspected) UAS presence has been detected, the next step is to establish the location of the UAS and/or UAS related element(s) – this is referred to a localisation. Once an element has been localised, its movements should be monitored and stored in a compilation of locations over time, which is referred to as tracking. In parallel, immediately after detection, the activities for classification and/or identification can start. When a UAS has been detected by a C UAS system, a confirmation of the detection is strongly advisable. The purpose of confirmation is to verify if the detection truly relates to a UAS and not something else, like a bird or a spoofed UAS, the latter being e.g. the deliberate simulation of UAS radio signals without a UAS being present. The earlier a confirmation step takes place, the more efficient and effective the use of the C‑UAS resources will be. The different steps of detection, localisation, tracking, classification and identification, together with a suggested confirmation activity, are shown in Figure 4."
+      },
+      "confidence": 0.95,
+      "term": "tracking",
+      "normalized": "跟踪",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c9",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "UAS detection is the declaration that a UAS is in the presence of a C‑UAS sensor. A detection can relate to the UA as the flying element of a UAS, but also to other UAS elements, such as a remote control (RC) or a video link receiver. Once a (suspected) UAS presence has been detected, the next step is to establish the location of the UAS and/or UAS related element(s) – this is referred to a localisation. Once an element has been localised, its movements should be monitored and stored in a compilation of locations over time, which is referred to as tracking. In parallel, immediately after detection, the activities for classification and/or identification can start. When a UAS has been detected by a C UAS system, a confirmation of the detection is strongly advisable. The purpose of confirmation is to verify if the detection truly relates to a UAS and not something else, like a bird or a spoofed UAS, the latter being e.g. the deliberate simulation of UAS radio signals without a UAS being present. The earlier a confirmation step takes place, the more efficient and effective the use of the C‑UAS resources will be. The different steps of detection, localisation, tracking, classification and identification, together with a suggested confirmation activity, are shown in Figure 4."
+      },
+      "confidence": 0.95,
+      "term": "classification",
+      "normalized": "分类",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c10",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "UAS detection is the declaration that a UAS is in the presence of a C‑UAS sensor. A detection can relate to the UA as the flying element of a UAS, but also to other UAS elements, such as a remote control (RC) or a video link receiver. Once a (suspected) UAS presence has been detected, the next step is to establish the location of the UAS and/or UAS related element(s) – this is referred to a localisation. Once an element has been localised, its movements should be monitored and stored in a compilation of locations over time, which is referred to as tracking. In parallel, immediately after detection, the activities for classification and/or identification can start. When a UAS has been detected by a C UAS system, a confirmation of the detection is strongly advisable. The purpose of confirmation is to verify if the detection truly relates to a UAS and not something else, like a bird or a spoofed UAS, the latter being e.g. the deliberate simulation of UAS radio signals without a UAS being present. The earlier a confirmation step takes place, the more efficient and effective the use of the C‑UAS resources will be. The different steps of detection, localisation, tracking, classification and identification, together with a suggested confirmation activity, are shown in Figure 4."
+      },
+      "confidence": 0.95,
+      "term": "identification",
+      "normalized": "识别",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c11",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "Acoustic UAS sensing systems often consist of one or more digital acoustic sensors (microphones) for registering acoustic signals (sound), with the resulting data then being processed by a signal processing system. Commercially available systems focus on passive detection, i.e. detecting the sound that the UAS generates. Active systems send out acoustic signals and listen to the reflections (echoes), like echolocation as used by flying bats. For detecting UAS, the signal processing system of the acoustic sensing system tries to recognize the acoustic signal characteristics of UA in the collection of registered acoustic signals. For doing so, it analyses the received acoustic signals: when e.g. spectral, timbral and/or temporal features of an acoustic signal match with that of a (known) UA, the system will indicate the presence of a UA. When the UA sound is sufficiently distinctly recognised as belonging to a specific type of UA, the system could also report the specific type. The acoustic detection process is illustrated in Figure 14."
+      },
+      "confidence": 0.94,
+      "term": "acoustic sensing",
+      "normalized": "声学传感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c12",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "Digital cameras, also referred to as electro optical systems, translate light into electronic data. As illustrated in the diagram of the electromagnetic spectrum in section 2.2, there are many different types of electromagnetic radiation that are referred to as light. There is visible light, infrared (IR) and ultraviolet (UV). Each type of light has its own type of electrical optical sensing system. An example of a combined visual range and IR camera is provided in Figure 18. The sun is a natural emitter of a broad spectrum of electromagnetic radiation that includes infrared, visible light and ultraviolet. Depending on various factors, such as the material and colour of the UA, these types of radiation are reflected by a UA. UAS often also emit light, e.g. if a UA is equipped with navigation lights. As all objects with a temperature above the absolute zero emit infrared light, this also holds for UAS. And when a UA is equipped with a rocket or jet engine, when engaged, the engine will also emit ultraviolet (UV) light. Cameras often consist of an (adaptable) lens and a filter that aims to filter out anything but the desired type of light, and projects it on a sensor that then translates the received infrared light into electronic data. This electronic data can then be transported via electronic networks and be used to create a visual representation of the image captured by the camera, e.g. on a monitor. The signal can also be used for further processing, e.g. for automated detection and tracking purposes. More general information on electro optical (EO) sensing systems can be found in Annex 5."
+      },
+      "confidence": 0.94,
+      "term": "electro optical sensing",
+      "normalized": "光电传感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c13",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "The term RADAR is an acronym that stands for “RAdio Detection And Ranging”. Both active and passive radar-based sensing systems exist. Active radar systems consist of an emitter that sends out radio frequency waves and one or more antenna(s) to receive reflected radio frequency waves. Based on the reflected waves, the radar detects, localises and tracks objects. Passive radar systems make use of radio frequency waves already present in the atmosphere to detect, localise and track objects. Both active and passive radar-based sensing systems use signal processing of the received radio frequency waves to create an image of their surroundings. Active radar systems emit radio frequency waves that travel through the atmosphere, and if these radio frequency waves hit an object (e.g. a bird, rain drops, UAS, civil airliners, …) they are reflected and scattered in various directions, the latter often including the direction of the radar system. A simplified example of this is depicted in Figure 21. The more reflective (related to the signal frequency) or the bigger the object is, the larger the energy of radio frequency waves that is returned. The returning radio frequency waves, like terminology used in sound, is referred to as an (radar) echo."
+      },
+      "confidence": 0.94,
+      "term": "radar-based sensing",
+      "normalized": "雷达传感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c14",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "Radio frequency (RF) waves are often used for transmitting information between a UA and the remote control (RC) of the UAS. The steering commands of the pilot to control the UA are an example of information sent from a remote control (RC) to a UA. The video feed of an on‑board camera is an example of information being sent from the UA to the RC or a video link device. For regular commercial UAS, the frequencies used for transmitting the information between UA and RC lie within the so‑called ISM bands, parts of the radio spectrum that are reserved for industrial, scientific, and medical (ISM) purposes. Pictures of several RF based systems are shown in Figure 25. RF sensing systems detect the presence of UAS by monitoring RF signals on the radio frequencies often used by UAS and their remote control (RC) means. Some systems therefore scan the common frequency bands used for UAS related communication. Based on a library of UA and RC signals, these systems try to recognize if UAS and RCs are actively communicating with each other. The performance of such systems, amongst others, relies heavily upon the processing power of the system, the frequency ranges covered, the overall bandwidth covered, and the collection of known signals being scanned for. Some systems may limit themselves to only the specific frequencies used by specific brand of UAS, to improve the performance of the system specifically for that type of UAS. When the characteristics of a received signals match with that of a (known) UA, RC and/or other related RF device, the detection system assumes the presence of a UAS."
+      },
+      "confidence": 0.94,
+      "term": "radio frequency based sensing",
+      "normalized": "射频传感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c15",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "In many C‑UAS operations the human element will also provide a sensing capacity, as C‑UAS operations often also include dedicated UAS spotters. The UA spotters can fill in blind spots of the C‑UAS system, and cover for when the C‑UAS system has a technical problem. Next to that, external persons on the street, e.g. police officers or security personnel, might detect, localise and/or track a UAS and report it to the C‑UAS solution. Human sensing goes back a long time, see e.g. Figure 27, and depends on many aspects. These include factors related to the observer, characteristics of the UAS, as the setting is also relevant and additional conditions, e.g. the weather, the time of day, etc. This section briefly touches upon some relevant aspects of human sensing."
+      },
+      "confidence": 0.93,
+      "term": "human sensing",
+      "normalized": "人工传感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_74a2bbff8b9a8c7c_c16",
+      "evidence": {
+        "section": "4 Combining the technologies",
+        "original_text": "Sensor data fusion receives data/information from multiple sensing systems, and aims to consolidate the data into more accurate, reliable and comprehensive information than what the sensing systems can provide individually., as illustrated in Figure 32. The data fusion process is far from straightforward and introduces many challenges. One of the challenging aspects is that the data from the different sensing systems is likely to be based on different moments in time, arrive at different times, with different update frequencies and different uncertainties. The sensor data fusion algorithm has to figure out how to piece all the data together into an accurate, reliable, and comprehensive overview."
+      },
+      "confidence": 0.92,
+      "term": "sensor data fusion",
+      "normalized": "传感器数据融合",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95,
+      "head": "doc_74a2bbff8b9a8c7c_c1",
+      "relation_type": "uses",
+      "relation_surface": "includes",
+      "tail": "doc_74a2bbff8b9a8c7c_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95,
+      "head": "doc_74a2bbff8b9a8c7c_c2",
+      "relation_type": "includes",
+      "relation_surface": "includes",
+      "tail": "doc_74a2bbff8b9a8c7c_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95,
+      "head": "doc_74a2bbff8b9a8c7c_c2",
+      "relation_type": "includes",
+      "relation_surface": "includes",
+      "tail": "doc_74a2bbff8b9a8c7c_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95,
+      "head": "doc_74a2bbff8b9a8c7c_c2",
+      "relation_type": "includes",
+      "relation_surface": "includes",
+      "tail": "doc_74a2bbff8b9a8c7c_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95,
+      "head": "doc_74a2bbff8b9a8c7c_c2",
+      "relation_type": "includes",
+      "relation_surface": "includes",
+      "tail": "doc_74a2bbff8b9a8c7c_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95,
+      "head": "doc_74a2bbff8b9a8c7c_c2",
+      "relation_type": "includes",
+      "relation_surface": "includes",
+      "tail": "doc_74a2bbff8b9a8c7c_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_74a2bbff8b9a8c7c_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.94,
+      "head": "doc_74a2bbff8b9a8c7c_c1",
+      "relation_type": "uses",
+      "relation_surface": "explored",
+      "tail": "doc_74a2bbff8b9a8c7c_c11"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_74a2bbff8b9a8c7c_d1",
+      "evidence": {
+        "section": "2.1 Simple example of human UAS detection and tracking",
+        "original_text": "Table 1 provides an overview of example factors that influence the performance of a human spotter. The table also provides an example indication of a lower bound (relatively easy situations) and an upper bound (relatively difficult situations) for these factors influencing the performance of a human spotter. Table 1 illustrates several factors that contribute to the performance of a spotter. Some have to do with the spotter, e.g. when spotting is the only task at hand, it is easier to spot a UA compared to when other tasks also must be attended. Some of the factors can be compensated for, often only to a certain extent, as e.g. the spotter might be able to compensate for nighttime darkness by using a flashlight to illuminate the UA. But many other factors cannot be influenced by the spotter. Figure 6 illustrates several of the many performance-influencing factors: A bigger UA (1) is easier to spot than a smaller one (2). A close by UA (1) is easier to spot than a faraway UA (3) A UA in dry weather (1) is easier to spot than a UA in heavy rain conditions (4) A UA in clear sight (1) is easier to spot than one (partially) behind a building (5). Annex 2 contains a more extensive example overview of performance influencing factors for a C-UAS solution."
+      },
+      "confidence": 0.95,
+      "name": "Human spotter performance influencing factors dataset",
+      "modality": "tabular",
+      "domain": "counter-unmanned aircraft systems (C-UAS)"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_74a2bbff8b9a8c7c_d2",
+      "evidence": {
+        "section": "2.3 Detection, localisation, tracking and confirmation",
+        "original_text": "The concept of false negatives and false positives is very important for C-UAS in general. These are defined as indicated in Table 3: green text cells indicate what is true, the red text cells indicate what is not true (false). The rate of false positives and false negatives is highly relevant for the overall performance of a C-UAS solution. From an operational perspective, false positives could lead to significantly reduced performance of a C-UAS solution: after a series of false positives, the human element (e.g. the C-UAS operator or follow-up officers on the street) might decide that an alert by the system does not have much value. False negatives only become obvious if through other means it becomes apparent that there is/was a UAS present, while it was not detected by the C-UAS system. This could also significantly reduce trust that the human element has in the C-UAS solution. There are many situations that could cause false positives and negatives, varying from an improperly functioning system, connectivity problems, incorrect data processing and human error. False positives are relatively easy to check for, as they merely require a reliable confirmation by a second means. A regular method for verification is through a human C-UAS system operator that uses a pan-tilt-zoom camera for a visual confirmation. False negatives are harder to address than false positives, as noting their occurrence requires knowledge of something that is mostly not known. Defining a structured process to learn from situations in which a UAS was not detected where it should have been, provides a way to address false negatives. Such an improvement process might however cost significant throughput time and will most likely need to be coupled to a research and innovation (R&I) process of the manufacturer(s) of the system."
+      },
+      "confidence": 0.9,
+      "name": "False positives and false negatives performance dataset",
+      "modality": "tabular",
+      "domain": "counter-unmanned aircraft systems (C-UAS)"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_74a2bbff8b9a8c7c_d3",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "Although it is clearly difficult to determine a maximal range for detectability by a human observer, Table 5 provides notional maximal detection ranges for “representative” types of UAS. Table 5 provides notional maximal visual detection ranges* * Based on a literature study, assessments and experience, for “representative” types of UAS under “normal” conditions."
+      },
+      "confidence": 0.85,
+      "name": "Notional maximal visual detection ranges dataset",
+      "modality": "tabular",
+      "domain": "counter-unmanned aircraft systems (C-UAS)"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_74a2bbff8b9a8c7c_d4",
+      "evidence": {
+        "section": "3.6 Summary of detection, localisation and tracking techniques",
+        "original_text": "This chapter has provided details on how the different types of sensing techniques function. The most important characteristics for the various detection, localisation and tracking techniques have been touched upon: these have been consolidated in Table 6. The table cells have been colour-coded to facilitate easier understanding of its contents: red means negative, orange means neutral, green means positive and yellow is an indication of comments. The next chapter discusses combining the different sensing techniques. Table 6 provides a summarizing generalised indicative overview of several main characteristics for the various detection, localisation and tracking modalities."
+      },
+      "confidence": 0.9,
+      "name": "Detection, localisation and tracking modalities characteristics summary dataset",
+      "modality": "tabular",
+      "domain": "counter-unmanned aircraft systems (C-UAS)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_74a2bbff8b9a8c7c_ds1",
+      "evidence": {
+        "section": "1.2 Definitions",
+        "original_text": "Different definitions have come into existence for the terminology used within the UAS and the C-UAS community. This report follows Commission Delegated Regulation (EU) 2019/945 (European Commission, 2019) and (EU) 2019/947 (European Commission, 2019a), which define a UAS as an unmanned aircraft system, consisting of an unmanned aircraft (UA) and the elements to operate it. A UA is any aircraft operating or designed to operate autonomously or to be piloted remotely without a pilot on board. Figure 2 illustrates elements of a UAS, together with support equipment and the human element. An overview of various UAS and C-UAS related definitions can be found in Annex 1. The definitions used within this report are also aligned with those of the Communication from the Commission on countering potential threats posed by drones, COM (2023) 659 final (European Commission, 2023) and the Handbook on UAS protection of Critical Infrastructure and Public Space: A five Phase approach for C-UAS stakeholders (Hansen, P., Pinto Faria, R., 2023). The main C-UAS related definitions are: — Counter UAS (C-UAS) Counter the potential threats from UAS. — C-UAS sensor A device or system that produces an output signal for the purpose of detecting physical phenomenon relevant for C-UAS. — C-UAS system A system to counter the potential threats from UAS. — C-UAS solution A collection of systems, stakeholders and processes for countering the potential threats from UAS. — C-UAS operation A complex and coordinated effort to counter potential threats from UAS."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized definitions for C-UAS terminology aligned with EU regulations and handbooks"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_74a2bbff8b9a8c7c_ds2",
+      "evidence": {
+        "section": "1.3 A C-UAS protection model",
+        "original_text": "In line with the continuous evolution of the UAS as a threat, a C-UAS protection model should display a cyclic process aiming at continuous improvement. The general principle of the C-UAS protection model is to start with preparations and prevention, then monitor for UAS, verify if a given situation is really a problem, and if so, decide what to do, act in line with the decision made, followed by analysis, which in turn could feed back into preparations and prevention, closing the loop. An example of such a cyclic C-UAS protection model is depicted in Figure 3. Elements of the cyclic C-UAS protection model are: — Preparation and prevention C-UAS operations start with preparation, defined as initiating activities for the implementation and/or improvement of a C-UAS solution. Examples are setting up a C-UAS solution (Hansen, P., Pinto Faria, R., 2023), allocating the human resources to operate the solution, making sure everybody is properly trained and verifying the proper functioning of the C-UAS solution. It is advisable to execute prevention activities for countering the potential threats from UAS in parallel. Prevention can involve physical hardening of buildings and sites, as described in the Handbook on UAS Risk Assessment and Principles for Physical Hardening of Buildings and Sites (Karlos, V. and Larcher, M., 2023). Other examples of prevention are organizing a media campaign and putting up signs for informing the public that it is not allowed to operate UAS within a specific area. — Detection Once a C-UAS solution has been put in place, detection activities can start. Detection is defined as a declaration that a UAS is in the presence of a C-UAS device or system. Detection can be done by various types of systems that make use of different emissions that UAS generate. — Tracking Once a UAS has been detected, the next step is to establish the location of a UAS or UAS related element, something that is referred to as localisation. The process of generating a compilation of the locations of the UAS over time is referred to as tracking. — Identification Identification may consist of both classification and identification. Classification is defined as assigning the UAS to a category. An example of a high-level classification is that a UAS is categorized as a fixed wing or as a multi-rotor. A more detailed type of classification could be based on manufacturer, make and model of a UAS. Identification is defined as assigning a unique identifier to a UAS or UAS component, such as the UA serial number and the operator registration. An example of identification information is the information that is broadcasted by a direct remote ID (DRI) system on board of the UAS. — Assisted decision process Assistance could consist of intent/behaviour analysis, that intents to predict the future behaviour of the UAS based on a holistic picture of available data, e.g. if the UAS is compliant with its assigned route or if it deviates from an assigned route or area. Decision making is defined as assessing whether the detected UAS could pose a threat and decide on the appropriate response. The decision might be that the UAS poses no danger, or it can also be to mitigate the risk posed by the UAS. — Neutralisation/mitigation Neutralisation/mitigation is defined as the actions taken to eliminate or reduce a threat posed by a UAS. Depending on the situation, neutralisation can make use of various modalities, e.g. jamming (disturbing the connection between the UAS and its remote control) or using kinetic means (e.g. shoot at the UAS with a net). An alternative mitigating option could be to move a presumed target to a safe area. — Forensics and analysis If neutralisation/mitigation results in capturing (parts of) the UAS, forensics collects and preserves data for subsequent analysis, including potential use as evidence in court. In addition, analysis activities involve the examination of data and events for the purpose of continuous improvement, e.g. by feeding findings into new preparedness activities."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Cyclic C-UAS protection model defining sequential steps for effective operations"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_74a2bbff8b9a8c7c_ds3",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "A commonly used term in the context of C-UAS is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification, which are discussed in more detail below. UAS detection is the declaration that a UAS is in the presence of a C-UAS sensor. A detection can relate to the UA as the flying element of a UAS, but also to other UAS elements, such as a remote control (RC) or a video link receiver. Once a (suspected) UAS presence has been detected, the next step is to establish the location of the UAS and/or UAS related element(s) – this is referred to a localisation. Once an element has been localised, its movements should be monitored and stored in a compilation of locations over time, which is referred to as tracking. In parallel, immediately after detection, the activities for classification and/or identification can start. When a UAS has been detected by a C-UAS system, a confirmation of the detection is strongly advisable. The purpose of confirmation is to verify if the detection truly relates to a UAS and not something else, like a bird or a spoofed UAS, the latter being e.g. the deliberate simulation of UAS radio signals without a UAS being present. The earlier a confirmation step takes place, the more efficient and effective the use of the C-UAS resources will be. The different steps of detection, localisation, tracking, classification and identification, together with a suggested confirmation activity, are shown in Figure 4."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized flow for detection, tracking and identification (DTI) with confirmation step"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_74a2bbff8b9a8c7c_ds4",
+      "evidence": {
+        "section": "2.5 Sensor limitations",
+        "original_text": "Some sensors require line-of-sight (LoS) to be able to detect, localise and track UAS or UAS-related elements. LoS refers to the absence of obstructions between the sensor and the UAS or UAS-related element. The implication of LoS is that objects that block (parts of) the sensor coverage shape create blind spots for the sensor, so called occlusion areas. Figure 11 provides an example of the coverage of a sensor being limited by an obstacle. In areas with many objects, like urban environments, obstacles create many challenges when trying to optimize coverage for a C-UAS system set-up. The 3D coverage map of LoS based sensors is relatively easy to determine, as it is relatively easy to determine their blind spots. Blind spots can be reduced or eliminated by adding sensors that (partially) cover the blind spot. The coverage area for some sensors is not necessarily determined by line-of-sight. These types of sensors function based on the propagation of emissions. They merely focus on the presence of an emission, without the need to receive the emission directly from the UAS. Radio frequency based sensors, for example, allow for emissions to be reflected and refracted by all sorts of objects before they reach the sensor, as long as the emission levels are still sufficiently clearly distinguishable from background noise. The propagation-based type of sensor allows for coverage of areas that not necessarily have line-of-sight and might allow for “looking around a corner”. Figure 12 provides an example of the propagation of RF signals not being limited to line of sight. Propagation-based sensors have a coverage area that is hard to determine, making it difficult to identify blind spots. Calculating the coverage area is complex, as it requires sophisticated propagation calculations that make use of detailed 3D models, including information on the materials at the building façade and their reflectiveness for the specific type of emissions. As an alternative to calculations, the coverage area can be sampled by running coverage tests at a 3D grid of test points."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Line-of-sight and propagation requirements for different C-UAS sensing modalities"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_74a2bbff8b9a8c7c_ds5",
+      "evidence": {
+        "section": "4.2 Sensor data fusion",
+        "original_text": "Sensor data fusion receives data/information from multiple sensing systems, and aims to consolidate the data into more accurate, reliable and comprehensive information than what the sensing systems can provide individually., as illustrated in Figure 32. The data fusion process is far from straightforward and introduces many challenges. One of the challenging aspects is that the data from the different sensing systems is likely to be based on different moments in time, arrive at different times, with different update frequencies and different uncertainties. The sensor data fusion algorithm has to figure out how to piece all the data together into an accurate, reliable, and comprehensive overview. The above example illustrates that data fusion can be of great help in consolidating the findings of different sensing systems, yet at the same time, there will also be situations in which data fusion will have a hard time in matching the data coming in from different sources."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Sensor data fusion principles for consolidating multi-source data into accurate information"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_74a2bbff8b9a8c7c_m1",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "Acoustic UAS sensing systems often consist of one or more digital acoustic sensors (microphones) for registering acoustic signals (sound), with the resulting data then being processed by a signal processing system. Commercially available systems focus on passive detection, i.e. detecting the sound that the UAS generates. Active systems send out acoustic signals and listen to the reflections (echoes), like echolocation as used by flying bats. For detecting UAS, the signal processing system of the acoustic sensing system tries to recognize the acoustic signal characteristics of UA in the collection of registered acoustic signals. For doing so, it analyses the received acoustic signals: when e.g. spectral, timbral and/or temporal features of an acoustic signal match with that of a (known) UA, the system will indicate the presence of a UA. When the UA sound is sufficiently distinctly recognised as belonging to a specific type of UA, the system could also report the specific type. The acoustic detection process is illustrated in Figure 14. When an acoustic sensing system is equipped with multiple acoustic sensors located at geographically different locations, it might be possible to localize the origin of an acoustic signal. Techniques for determining the direction/location of an emitter are described in Annex 4. If the microphones are organised in an array, as e.g. illustrated in Figure 16, it allows not only to localize sound sources, but also to use beamforming to focus on receiving emissions from a specific direction and cancelling out other directions. This could increase the range of an acoustic sensing system."
+      },
+      "confidence": 0.95,
+      "name": "Acoustic sensing systems",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_74a2bbff8b9a8c7c_m2",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "Digital cameras, also referred to as electro optical systems, translate light into electronic data. As illustrated in the diagram of the electromagnetic spectrum in section 2.2, there are many different types of electromagnetic radiation that are referred to as light. There is visible light, infrared (IR) and ultraviolet (UV). Each type of light has its own type of electrical optical sensing system. An example of a combined visual range and IR camera is provided in Figure 18. The sun is a natural emitter of a broad spectrum of electromagnetic radiation that includes infrared, visible light and ultraviolet. Depending on various factors, such as the material and colour of the UA, these types of radiation are reflected by a UA. UAS often also emit light, e.g. if a UA is equipped with navigation lights. As all objects with a temperature above the absolute zero emit infrared light, this also holds for UAS. And when a UA is equipped with a rocket or jet engine, when engaged, the engine will also emit ultraviolet (UV) light. Cameras often consist of an (adaptable) lens and a filter that aims to filter out anything but the desired type of light, and projects it on a sensor that then translates the received infrared light into electronic data. This electronic data can then be transported via electronic networks and be used to create a visual representation of the image captured by the camera, e.g. on a monitor. The signal can also be used for further processing, e.g. for automated detection and tracking purposes. More general information on electro optical (EO) sensing systems can be found in Annex 5. Different types of cameras focus on the use of different types of light: infrared range cameras focus on the infrared range, visual range camera’s focus on the visual range, ultraviolet on the UV range, and multispectral focus on a broad range of light. Sometimes different types of cameras are combined into a single system, which allows the user to switch between the images in different light spectra. The different types of cameras are discussed in more detail below."
+      },
+      "confidence": 0.95,
+      "name": "Electro optical (camera) sensing systems",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_74a2bbff8b9a8c7c_m3",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "The term RADAR is an acronym that stands for “RAdio Detection And Ranging”. Both active and passive radar-based sensing systems exist. Active radar systems consist of an emitter that sends out radio frequency waves and one or more antenna(s) to receive reflected radio frequency waves. Based on the reflected waves, the radar detects, localises and tracks objects. Passive radar systems make use of radio frequency waves already present in the atmosphere to detect, localise and track objects. Both active and passive radar-based sensing systems use signal processing of the received radio frequency waves to create an image of their surroundings. Active radar systems emit radio frequency waves that travel through the atmosphere, and if these radio frequency waves hit an object (e.g. a bird, rain drops, UAS, civil airliners, …) they are reflected and scattered in various directions, the latter often including the direction of the radar system. A simplified example of this is depicted in Figure 21. The more reflective (related to the signal frequency) or the bigger the object is, the larger the energy of radio frequency waves that is returned. The returning radio frequency waves, like terminology used in sound, is referred to as an (radar) echo. Processing of the returned radio frequency waves, depending on the functionality of the radar system as a whole, allows it to determine one or more aspects of the direction (azimuth/bearing), distance (also known as range) and elevation of the object(s) that caused the echo. Figure 23 illustates the most relevant localisation related terminology for a radar system. Based on the underlying technology, different types of radar can be distinguished. If the radar transmitter and receiver are collocated (located at the same place) on a static position, this is being referred to as mono-static. Multi-static radar systems make use of a single transmitter and multiple receivers that are placed at different locations. As a result, they have enhanced detection capabilities compared to mono-static. Based on the differences in the receipt of an echo at the different receivers of a multi-static radar system, a central system calculates the locations of detected objects. Multi-static radar systems are more accurate than mono-static radar systems, at the cost of higher complexity. Passive radar systems do not emit radio frequency waves at all, in contrast to active radar systems, but make use of radio frequency waves already present in the atmosphere for other purposes, such as digital television broadcasts and communication signals. Passive radar systems measure the time difference in the arrival of radio frequency waves that arrive directly from the transmitter and those arriving from the reflection of an object, to determine the location of an object and track the object over time."
+      },
+      "confidence": 0.95,
+      "name": "Radar-based sensing systems",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_74a2bbff8b9a8c7c_m4",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "Radio frequency (RF) waves are often used for transmitting information between a UA and the remote control (RC) of the UAS. The steering commands of the pilot to control the UA are an example of information sent from a remote control (RC) to a UA. The video feed of an on‑board camera is an example of information being sent from the UA to the RC or a video link device. For regular commercial UAS, the frequencies used for transmitting the information between UA and RC lie within the so‑called ISM bands, parts of the radio spectrum that are reserved for industrial, scientific, and medical (ISM) purposes. Pictures of several RF based systems are shown in Figure 25. RF sensing systems detect the presence of UAS by monitoring RF signals on the radio frequencies often used by UAS and their remote control (RC) means. Some systems therefore scan the common frequency bands used for UAS related communication. Based on a library of UA and RC signals, these systems try to recognize if UAS and RCs are actively communicating with each other. The performance of such systems, amongst others, relies heavily upon the processing power of the system, the frequency ranges covered, the overall bandwidth covered, and the collection of known signals being scanned for. Some systems may limit themselves to only the specific frequencies used by specific brand of UAS, to improve the performance of the system specifically for that type of UAS. When the characteristics of a received signals match with that of a (known) UA, RC and/or other related RF device, the detection system assumes the presence of a UAS. Next to being provided with a notification of the presence of a UAS, most situations require information about the location of the detected emitter. The location of the source of the signal can be determined in various ways. If the protocol used is known, and the data contained within the signal is either not encrypted or can be decrypted, the exchanged information can be inspected. When the UA and the RC exchange information on their GNSS location(s), this information can then be used to retrieve the location of UA and RC. However, the information is often exchanged using proprietary protocols and/or encryption. As a result, detailed knowledge of the protocol and/or encryption is often a prerequisite for this to be able to work. As a reference, the OSI model (OSI, 2024) can be used for establishing at which level in the protocol the information is extracted, as is illustrated in Annex 3. Alternatively, if the information exchanged between the UA and the RC is not accessible, signal source localisation techniques like time of arrival (ToA) or angle of arrival (AoA), as described in Annex 4, might be able to localize the origin of the signals. This however requires that the RF based sensing is done from multiple locations."
+      },
+      "confidence": 0.95,
+      "name": "Radio frequency based sensing systems",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_74a2bbff8b9a8c7c_m5",
+      "evidence": {
+        "section": "4 Combining the technologies",
+        "original_text": "Sensor data fusion receives data/information from multiple sensing systems, and aims to consolidate the data into more accurate, reliable and comprehensive information than what the sensing systems can provide individually., as illustrated in Figure 32. The data fusion process is far from straightforward and introduces many challenges. One of the challenging aspects is that the data from the different sensing systems is likely to be based on different moments in time, arrive at different times, with different update frequencies and different uncertainties. The sensor data fusion algorithm has to figure out how to piece all the data together into an accurate, reliable, and comprehensive overview."
+      },
+      "confidence": 0.95,
+      "name": "Sensor data fusion",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_74a2bbff8b9a8c7c_x1",
+      "evidence": {
+        "section": "2 Detection, tracking and identification",
+        "original_text": "The starting point of the example is formed by a spotter, a person that is positioned in an outdoor setting, tasked to scan the sky for UA. The spotter has normal eyesight and hearing, has a pair of binoculars to take a closer look, and is equipped with a flashlight. The setting is depicted in Figure 5. For a situation as depicted in Figure 5, it is assumed that while the spotter is active, a UA starts to manoeuvre at the verge of the detection range of the spotter. At a certain moment, the spotter notices the UA as a vague flying object. From the viewpoint of the spotter the object could be a UA, but could also be something else, like a bird or a small balloon. The spotter decides to use the pair of binoculars, zooms in on the object and concludes it is indeed a UA. As the spotter knows the area, the location of the UA is now also clear to the spotter. While the UA is manoeuvring around, the spotter tracks it by keeping the pair of binoculars focussed on the UA. The spotter has now detected a flying object, confirmed it is a UA, localised it and is actively tracking it. Many factors of different origins can influence the performance of the spotter in the above example. These spotter-performance influencing factors can be grouped in different categories, such as UA related factors, environmental factors and spotter related factors. Table 1 provides an overview of example factors that influence the performance of a human spotter. The table also provides an example indication of a lower bound (relatively easy situations) and an upper bound (relatively difficult situations) for these factors influencing the performance of a human spotter."
+      },
+      "confidence": 0.95,
+      "task": "human spotter performance evaluation",
+      "setup": "spotter equipped with binoculars and flashlight in outdoor setting, tasked to scan sky for UA"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_74a2bbff8b9a8c7c_x2",
+      "evidence": {
+        "section": "4 Combining the technologies",
+        "original_text": "To illustrate some of the challenges for the data fusion, a C UAS solution equipped with a radar, an RF sensing system and a combined visual light / IR camera, set-up around a large outdoor event, is used as an example. The radar and the RF sensing system are located close to each other, yet have different coverage areas. The coverage area of the radar is about 2 km for a small consumer UA, yet that of the RF sensing system is close to 3 km for the same type of UA. The camera is located close to both other sensing systems. Both the radar and the camera cannot see through/behind obstacles, yet due to multipath the RF sensing system’s coverage also includes some of the occluded areas. Blind C‑UAS tests are performed on the day before the event starts: unknown to the C‑UAS solution, different UA take off from various locations, to verify if the C UAS solution functions properly. During the test, the C UAS system appears to work fine: either the RF sensing system or both the RF and radar detect the UA within less 30 seconds after take-off of a UA and provide updates on the location within maximally 10 seconds in between. When both systems detect the UA, even though there are inherent uncertainties in their localisation of the UA, the sensor data fusion succeeds in matching the detections and provide a clear location of a single UA. The visual light / IR camera is used to confirm the detection and localisation of the UA. When the event starts, people start coming into the event area, and start to make use of the on-site Wi-Fi and mobile phone networks. As the frequency bands used for controlling UAS are the same as those used for Wi-Fi, the traffic on frequencies that are monitored by the C UAS RF sensing system increases significantly. This puts more and more load on the RF sensing system that tries to recognize all sorts of UAS related signals within the captured data. Due to interference the detection range for the RF sensing system starts to reduce. Then, in the evening of the event, after sundown, a UAS light show has been planned by the organisation. When the UAS of the light show start to take off, quite some people of the audience take out their mobile phone and start streaming. The C UAS system is expected to start detecting, localising and tracking the UAS of the light show shortly after take-off, yet the system turns out to require several minutes before reporting only some of the UAS, and provides infrequent updates of their locations, with sometimes more than a minute in between in which a UA potentially has travelled quite some distance. When looking into the data provided by the individual sensing systems, it turns out that the RF sensing system has a hard time detecting, localising and tracking the UAS due to the significant use of the frequency bands that it operates on. At the same time, the radar has difficulties in discriminating one UAS from another, and sometimes cannot see a UA, e.g. because another UA is flying in front of it. As a result, the data fusion algorithms get incomplete information from sometimes moments apart that are very difficult to fuse."
+      },
+      "confidence": 0.95,
+      "task": "blind C-UAS test",
+      "setup": "C-UAS solution equipped with radar, RF sensing system, and combined visual/IR camera around large outdoor event"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr1",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "For a relatively common small and silent UA like a DJI Mavic or Phantom, the sound level at 1 m distance is between 74-78 dB. As the sound level is reduced with 6 dB if this distance is doubled, which would mean that the sound level would be 62-66 dB if the UA would pass at 4 m distance. For a busy city with an ambient sound level of 68 dB, a distance of 4 m could already result in the UA not being noticeable for the human acoustic senses. In a quiet area, the distance could increase up to more than 100 m before the difference between the sound level of the UA and that of the environment would fall below the JND."
+      },
+      "confidence": 0.95,
+      "quantity": "sound pressure level",
+      "value": 74,
+      "unit": "dB",
+      "context": "DJI Mavic or Phantom drone at 1 m distance",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr2",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "For a busy city with an ambient sound level of 68 dB, a distance of 4 m could already result in the UA not being noticeable for the human acoustic senses. In a quiet area, the distance could increase up to more than 100 m before the difference between the sound level of the UA and that of the environment would fall below the JND."
+      },
+      "confidence": 0.95,
+      "quantity": "ambient sound level",
+      "value": 68,
+      "unit": "dB",
+      "context": "busy city environment",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr3",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "For the human ear, the just notable difference (JND) in sound levels is quite relevant for detection, localisation and tracking. The JND is typically considered to be 3-5 dB, meaning that the sound of a UA needs to be at least 3-5 dB higher than the ambient (background) sound level, for a person to be likely to hear the UA."
+      },
+      "confidence": 0.95,
+      "quantity": "just notable difference (JND)",
+      "value": 3,
+      "unit": "dB",
+      "context": "human ear for sound level detection",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr4",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "For a relatively common small and silent UA like a DJI Mavic or Phantom, the sound level at 1 m distance is between 74-78 dB. As the sound level is reduced with 6 dB if this distance is doubled, which would mean that the sound level would be 62-66 dB if the UA would pass at 4 m distance."
+      },
+      "confidence": 0.95,
+      "quantity": "sound level reduction",
+      "value": 6,
+      "unit": "dB",
+      "context": "when distance is doubled",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr5",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "Table 5. Notional maximal visual detection ranges* ... Large fixed-wing UA: 1000 m ... * Based on a literature study, assessments and experience, for 'representative' types of UAS under 'normal' conditions."
+      },
+      "confidence": 0.9,
+      "quantity": "visual detection range",
+      "value": 1000,
+      "unit": "m",
+      "context": "large fixed-wing UA under normal conditions",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr6",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "Table 5. Notional maximal visual detection ranges* ... Large multi-rotor UA: 500 m ... * Based on a literature study, assessments and experience, for 'representative' types of UAS under 'normal' conditions."
+      },
+      "confidence": 0.9,
+      "quantity": "visual detection range",
+      "value": 500,
+      "unit": "m",
+      "context": "large multi-rotor UA under normal conditions",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr7",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "Table 5. Notional maximal visual detection ranges* ... Medium multi-rotor UA: 300 m ... * Based on a literature study, assessments and experience, for 'representative' types of UAS under 'normal' conditions."
+      },
+      "confidence": 0.9,
+      "quantity": "visual detection range",
+      "value": 300,
+      "unit": "m",
+      "context": "medium multi-rotor UA under normal conditions",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_74a2bbff8b9a8c7c_qr8",
+      "evidence": {
+        "section": "3.5 Human sensing",
+        "original_text": "Table 5. Notional maximal visual detection ranges* ... Small multi-rotor UA: 200 m ... * Based on a literature study, assessments and experience, for 'representative' types of UAS under 'normal' conditions."
+      },
+      "confidence": 0.9,
+      "quantity": "visual detection range",
+      "value": 200,
+      "unit": "m",
+      "context": "small multi-rotor UA under normal conditions",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_74a2bbff8b9a8c7c_p1",
+      "evidence": {
+        "section": "3.6 Summary of detection, localisation and tracking techniques",
+        "original_text": "Table 6. Summarizing generalised indicative overview of several main characteristics for the various detection, localisation and tracking modalities. ... Acoustic sensing: Range: hundreds of meters ... Electro optical sensing: Range: up to one or more kilometres ... Radar sensing: Range: several kilometres ... RF sensing: Range: several kilometres to tens of kilometres ... Human sensing: Range: hundreds of meters ... The table cells have been colour‑coded to facilitate easier understanding of its contents: red means negative, orange means neutral, green means positive and yellow is an indication of comments."
+      },
+      "confidence": 0.95,
+      "metric": "detection range",
+      "compared_to": "acoustic sensing, electro optical sensing, radar sensing, RF sensing, human sensing"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_74a2bbff8b9a8c7c_p2",
+      "evidence": {
+        "section": "3.6 Summary of detection, localisation and tracking techniques",
+        "original_text": "Table 6. Summarizing generalised indicative overview of several main characteristics for the various detection, localisation and tracking modalities. ... Acoustic sensing: LoS: not necessarily ... Electro optical sensing: LoS: yes ... Radar sensing: LoS: yes ... RF sensing: LoS: not necessarily ... Human sensing: LoS: not necessarily ... The table cells have been colour‑coded to facilitate easier understanding of its contents: red means negative, orange means neutral, green means positive and yellow is an indication of comments."
+      },
+      "confidence": 0.95,
+      "metric": "line-of-sight requirement",
+      "compared_to": "acoustic sensing, electro optical sensing, radar sensing, RF sensing, human sensing"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_74a2bbff8b9a8c7c_p3",
+      "evidence": {
+        "section": "3.6 Summary of detection, localisation and tracking techniques",
+        "original_text": "Table 6. Summarizing generalised indicative overview of several main characteristics for the various detection, localisation and tracking modalities. ... Acoustic sensing: Cost: inexpensive ... Electro optical sensing: Cost: moderate ... Radar sensing: Cost: expensive ... RF sensing: Cost: moderate ... Human sensing: Cost: moderate ... The table cells have been colour‑coded to facilitate easier understanding of its contents: red means negative, orange means neutral, green means positive and yellow is an indication of comments."
+      },
+      "confidence": 0.95,
+      "metric": "cost",
+      "compared_to": "acoustic sensing, electro optical sensing, radar sensing, RF sensing, human sensing"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_74a2bbff8b9a8c7c_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A commonly used term in the context of counter unmanned aircraft systems (C UAS) is detection, tracking and identification (DTI). DTI includes detection, localisation, tracking, classification and identification. This report provides a comprehensive overview of detection, localisation and tracking technology, highlighting the complexities and challenges involved, and touches upon classification and identification. A shared context is established by defining key terminology and concepts, such as C-UAS, C‑UAS sensor, C UAS system, and C UAS solution. Sensing refers to the use of technologies and techniques for detecting physical phenomenon: various C UAS sensing modalities are explored, including acoustic, electro-optical, radar, and radio frequency (RF) sensors. Strengths and limitations of each modality are highlighted, as well as the importance of sensor data fusion in achieving more effective and robust C‑UAS detection, localisation and tracking. The report provides a technology overview and serves as practical guidance and operational support, for community-building and information sharing, among stakeholders involved in C‑UAS. It is aimed at readers who require a deeper understanding of the complexities and challenges involved in C‑UAS detection, tracking and identification, and who wish to stay up to date with the latest developments in C UAS technology."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_74a2bbff8b9a8c7c_ca2",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "UAS are regarded as a multi-faceted and multi-layered threat that is hard to address. Common understanding among experts is that there are significant improvements required before C‑UAS systems can provide a sufficient level of protection against the current - and rapidly evolving - threat. Due to the ever-evolving nature of the threat, C‑UAS will form a continuous cat and mouse game, and even if a “silver bullet” solution would materialise, it could become obsolete in several months (Muller et al., 2021). By addressing the technologies from the underlying principles, the reader should have solid starting point in understanding current and future developments in the technology."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_74a2bbff8b9a8c7c_ca3",
+      "evidence": {
+        "section": "2.2 General principles for detecting UAS",
+        "original_text": "The basic principles used for detection and tracking are similar for different sensing modalities. As UAS generate emissions or alter emissions from external sources, natural external emitters, artificially created emissions or emissions of UAS can be used for establishing the presence of UAS."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_74a2bbff8b9a8c7c_cl1",
+      "evidence": {
+        "section": "2.5 Sensor limitations",
+        "original_text": "The environment and characteristics of the UAS have an impact on the maximum range of a sensor. Some sensors require line‑of‑sight (LoS) to be able to detect, localise and track UAS or UAS-related elements. LoS refers to the absence of obstructions between the sensor and the UAS or UAS-related element. The implication of LoS is that objects that block (parts of) the sensor coverage shape create blind spots for the sensor, so called occlusion areas. The 3D coverage map of LoS based sensors is relatively easy to determine, as it is relatively easy to determine their blind spots. Blind spots can be reduced or eliminated by adding sensors that (partially) cover the blind spot. The coverage area for some sensors is not necessarily determined by line‑of‑sight. These types of sensors function based on the propagation of emissions. They merely focus on the presence of an emission, without the need to receive the emission directly from the UAS. Radio frequency based sensors, for example, allow for emissions to be reflected and refracted by all sorts of objects before they reach the sensor, as long as the emission levels are still sufficiently clearly distinguishable from background noise. The propagation-based type of sensor allows for coverage of areas that not necessarily have line‑of‑sight and might allow for “looking around a corner”. Propagation-based sensors have a coverage area that is hard to determine, making it difficult to identify blind spots. Calculating the coverage area is complex, as it requires sophisticated propagation calculations that make use of detailed 3D models, including information on the materials at the building façade and their reflectiveness for the specific type of emissions. As an alternative to calculations, the coverage area can be sampled by running coverage tests at a 3D grid of test points."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_74a2bbff8b9a8c7c_cl2",
+      "evidence": {
+        "section": "3 Detection, localisation and tracking techniques",
+        "original_text": "The performance depends on many (dynamic) factors, thereby rendering it impossible to guarantee a specific level of performance for C‑UAS technology in any situation. Table 4 provides an overview of the different types of sensing system and what type of emissions they focus on for UAS and UAS-related element detection and tracking. The different types of sensing techniques are presented in more detail below. For each type, the common main characteristics are highlighted as indicative features in an infographic illustration. These indicative features include the type of UAS elements that can be sensed, the coverage shape provided, an indication of the range of the technique, potential dependencies such as the need for line‑of‑sight or the use of a library of known systems, and additional aspects that influence the range of the sensing. Please realize that these main characteristics are generalisations, and that they are susceptible to the same basic principles and limitations as described in chapter 2. For example, the sensing range is merely an indication, as it depends on the scale of the feature of the UAS: e.g. a larger UA can be seen from a larger distance than a smaller UA."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_74a2bbff8b9a8c7c_cl3",
+      "evidence": {
+        "section": "4 Combining the technologies",
+        "original_text": "The overall detection and tracking performance of C UAS systems is often determined by the combined performance of its individual elements. The collection of C UAS elements, their individual strengths and weaknesses, the influencing factors like the environment, turn the performance optimization of a C UAS system into a complex challenge. This chapter touches upon optimizing a combination of sensing systems in terms of coverage, and on how data provided by that set-up is fused into meaningful information. Due to the nature of the type of emission of interest for the sensing system, or due the fact that a sensing system has to be selective for having acceptable performance, a single type of UAS features might often not allow to uniquely classify a specific UAS. In such situations, a combination of different sensing systems, that all try to solve different parts of a complex puzzle, might be required to obtain more detailed insights. Sensor data fusion receives data/information from multiple sensing systems, and aims to consolidate the data into more accurate, reliable and comprehensive information than what the sensing systems can provide individually. The data fusion process is far from straightforward and introduces many challenges. One of the challenging aspects is that the data from the different sensing systems is likely to be based on different moments in time, arrive at different times, with different update frequencies and different uncertainties. The sensor data fusion algorithm has to figure out how to piece all the data together into an accurate, reliable, and comprehensive overview."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_74a2bbff8b9a8c7c_lm1",
+      "evidence": {
+        "section": "2.3 Detection, localisation, tracking and confirmation",
+        "original_text": "Consequently, UAS detections should be confirmed as early as possible, as it will prevent from wasting resources. Confirmation can e.g. be done by the operator using a camera, or by closer scrutiny of the detection information, such as the data contained within the RF signals that were received. A camera could be used to visually check if a reported detection of e.g. a radar is really a UA and not an air-conditioning system that started up. Inspection of detailed RF detection data might show specific inconsistencies indicative of spoofing. The concept of false negatives and false positives is very important for C UAS in general. The rate of false positives and false negatives is highly relevant for the overall performance of a C‑UAS solution. From an operational perspective, false positives could lead to significantly reduced performance of a C UAS solution: after a series of false positives, the human element (e.g. the C‑UAS operator or follow-up officers on the street) might decide that an alert by the system does not have much value. False negatives only become obvious if through other means it becomes apparent that there is/was a UAS present, while it was not detected by the C UAS system. This could also significantly reduce trust that the human element has in the C‑UAS solution. There are many situations that could cause false positives and negatives, varying from an improperly functioning system, connectivity problems, incorrect data processing and human error. False positives are relatively easy to check for, as they merely require a reliable confirmation by a second means. A regular method for verification is through a human C UAS system operator that uses a pan-tilt-zoom camera for a visual confirmation. False negatives are harder to address than false positives, as noting their occurrence requires knowledge of something that is mostly not known. Defining a structured process to learn from situations in which a UAS was not detected where it should have been, provides a way to address false negatives. Such an improvement process might however cost significant throughput time and will most likely need to be coupled to a research and innovation (R&I) process of the manufacturer(s) of the system."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_74a2bbff8b9a8c7c_lm2",
+      "evidence": {
+        "section": "3.4 Radio frequency based sensing systems",
+        "original_text": "RF detection depends on a library of “known” signals of UAS elements, which makes its proper functioning susceptible to firmware updates of the UAS elements: when the UAS is updated and e.g. uses a new communication waveform, the RF sensing system might not recognize the communications anymore as relating to a UAS. RF sensing will not sense UAS flying without RF communication, e.g. a UA autonomously flying from one waypoint to another. Performance and range of the system are significantly influenced by the general use of the frequencies the system operates on. In case of major events with many visitors making use of the EMS, e.g. by streaming video from their phones, this increases the workload for the system and negatively affects both the performance and range of the system. Packet inspection-based systems have some potential downsides, as an increasing rate of encryption of UAS communication might slowly but surely eliminate the possibility to inspect/interpret the RF information received. Packet inspection-based systems can also easily be spoofed with false RF messages, e.g. with fake locations of UA and operators. Spoofing can create an additional and unnecessary workload, as it could result in follow-up being sent to the spoofed locations."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_74a2bbff8b9a8c7c_lm3",
+      "evidence": {
+        "section": "3.3 Radar-based sensing systems",
+        "original_text": "Radar systems are actively emitting RF signals, and as such require a license to operate. They are susceptible to indirect reflections, which could lead to “ghost” UA being reported. They may require adjustment time in an urban environment, especially when the doppler effect is used: distinguishing between a propeller of an air-conditioning system and that of a UA may be difficult for a system. As a result, fine-tuning the radar coverage areas to be ignored may require one or more days prior to an operation, to achieve an acceptable false positive level during the operation."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_74a2bbff8b9a8c7c_fw1",
+      "evidence": {
+        "section": "4.2 Sensor data fusion",
+        "original_text": "Sensor data fusion receives data/information from multiple sensing systems, and aims to consolidate the data into more accurate, reliable and comprehensive information than what the sensing systems can provide individually. The data fusion process is far from straightforward and introduces many challenges. One of the challenging aspects is that the data from the different sensing systems is likely to be based on different moments in time, arrive at different times, with different update frequencies and different uncertainties. The sensor data fusion algorithm has to figure out how to piece all the data together into an accurate, reliable, and comprehensive overview. There exist systems that try to prevent a C UAS system from proper functioning, the so-called counter C‑UAS systems. One approach taken by those systems is to generate fake emissions that are then detected by the sensing systems of the C UAS system, thereby further complicating the tasks of fusion. Yet at the same time, when properly set-up, sensing system fusion might prevent counter C‑UAS solutions from being successful with relatively simple measures, as the fusion might be able to quickly eliminate the fake emissions detected by one sensing system, as the accompanying emissions that should have been detected by another type of sensing system, might not be present where they should have been."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_74a2bbff8b9a8c7c_fw2",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "The optimal usage of C UAS solutions requires thorough knowledge of its underlying technologies. After reading the report, the reader should have obtained a basic understanding of the most relevant aspects in C UAS detection, tracking and identification. UAS are regarded as a multi-faceted and multi-layered threat that is hard to address. Common understanding among experts is that there are significant improvements required before C‑UAS systems can provide a sufficient level of protection against the current - and rapidly evolving - threat. Due to the ever-evolving nature of the threat, C‑UAS will form a continuous cat and mouse game, and even if a “silver bullet” solution would materialise, it could become obsolete in several months (Muller et al., 2021). By addressing the technologies from the underlying principles, the reader should have solid starting point in understanding current and future developments in the technology."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

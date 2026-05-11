@@ -1,0 +1,744 @@
+{
+  "metadata": {
+    "doc_id": "doc_eb0a596fa1ea51b6",
+    "source_file": "03b_ChinaRiceCalendar_seasonal_crop_calendars_for_rice_in_China.md",
+    "title": "ChinaRiceCalendar – seasonal crop calendars for early-, middle-, and late-season rice in China",
+    "year": 2024,
+    "doi": "10.5194/essd-16-1689-2024",
+    "abstract": "**Hui Li**[1] **, Xiaobo Wang**[2] **, Shaoqiang Wang**[1,2,3,4] **, Jinyuan Liu**[1] **, Yuanyuan Liu**[2] **, Zhenhai Liu**[2] **, Shiliang Chen**[1,2] **, Qinyi Wang**[1] **, Tongtong Zhu**[1] **, Lunche Wang**[1] **, and Lizhe Wang**[5]",
+    "introduction": "As one of the major food crops, rice feeds nearly half of the world’s population (Fahad et al., 2019). In the context of climate change, continued warming is projected to result in shorter crop growth periods, lower rice productivity, and food insecurity in the Asian monsoon region (Carleton, 2017; Zhao et al., 2017; IPCC, 2022). Revealing changes in rice phenology will facilitate timely adjustment of planting time, rice cultivars, and cropping systems under global warming \n\n(Waha et al., 2013; Wang et al., 2022, 2024). Moreover, a dynamic rice calendar with key phenological dates is integral to agricultural monitoring and farmer support systems (Laborte et al., 2017; Fritz et al., 2019; Mishra et al., 2021). Largescale rice calendars can contribute to more reliable simulations of crop growth and yield at regional and global scales (Franke et al., 2020). \n\nSatellite remote sensing is an effective tool for detecting long-term trends in crop phenology at the regional scale \n\nPublished by Copernicus Publications. \n\nH. Li et al.: ChinaRiceCalendar – seasonal crop calendars \n\n1690 \n\n(Xiao et al., 2006; Kotsuki and Tanaka, 2015; Luo et al., 2020; Gao and Zhang, 2021; Mishra et al., 2021). Crop phenology detection methods based on remote sensing vegetation indices (VIs) can be categorized as threshold, inflection point, and shape model approaches. The threshold approaches assume that a development stage begins when the VI value exceeds a predefined threshold (Jönsson and Eklundh, 2004; Boschetti et al., 2009; Pan et al., 2015; Guo et al., 2016). The inflection point approaches reconstruct the VI time series curve by filter smoothing or function fitting and then match the maxima, minima, and inflection points on the curve to the key phenological events (Zhang et al., 2003; Sakamoto et al., 2005; Sun et al., 2009; Wang et al., 2019). The shape model approaches fit observed VI time series curves by geometric scaling a robust standard VI time series curve for the specific crop to identify development stages (Sakamoto et al., 2010; More et al., 2016; Zeng et al., 2016; Sakamoto et al., 2018). In addition to the methods based on time series of VIs, there are also rule-based algorithms that integrate multiple approaches and indicators to detect crop phenology, such as the PhenoRice algorithm proposed by Boschetti et al. (2017). The PhenoRice algorithm, which combines the advantages of threshold and inflection point approaches, utilizes the Enhanced Vegetation Index (EVI), the Normalized Difference Flood Index (NDFI), and the land surface temperature (LST) to estimate rice planting dates. The PhenoRice algorithm excels at extracting rice phenology in multiple cropping systems and has been widely used in East Asia, South Asia, Southeast Asia, and Europe (Busetto et al., 2019; Liu et al., 2020; Mishra et al., 2021). However, the performance of the PhenoRice algorithm depends on the division of rice seasons, which requires expert knowledge about rice-based cropping systems in different regions (Mishra et al., 2021). \n\nIn China, there are at least three rice-growing seasons (early, middle, and late seasons) in diverse rice-based cropping systems (e.g., single-rice, double-rice, rice–wheat, rice– rapeseed, or rice–vegetable systems) (Frolking et al., 2002; Qiu et al., 2003; Cao et al., 2021; He et al., 2021). Generally, early-, middle-, and late-season rice in China is transplanted around days of the year (DOY) 80–130, DOY 130– 180, and DOY 180–230, respectively. Their typical maturity dates align with DOY 160–220, DOY 240–290, and DOY 270–330, respectively. Although field observations are important data sources for studying rice calendars in different growing seasons, they are usually limited by spatial and temporal discontinuities (Wang et al., 2017). Therefore, previous studies have typically utilized satellite remote sensing products to establish rice calendar datasets at the regional scale (Shihua et al., 2014; Liu et al., 2019; Bai and Xiao, 2020; Luo et al., 2020; Mishra et al., 2021). Nevertheless, these calendar datasets based on satellite remote sensing do not rationally classify rice growing seasons across China. For example, the dataset ChinaCropPhen1km only distinguishes between early and late rice in double-rice systems (Luo et al., \n\n2020); the assumptions of the dataset RICA about rice heading dates in different seasons do not correspond to the realities in China (Mishra et al., 2021). R. Shen et al. (2023) produced high-resolution distribution maps of single-season rice but did not explore multiple rice cropping systems. Early-, middle- and late-season rice in China is not only planted at different times, but also has distinguishing varietal characteristics, such as different temperature and photoperiod sensitivities (Zong et al., 2021). Thus, a crop calendar that accurately classifies rice seasons will provide reliable data for agricultural models to calibrate crop parameters at the variety level. Moreover, effective identification of different rice seasons will help analyze the response and adaptation of rice phenology to climate change. \n\nTherefore, to address the shortcomings of the existing rice calendar datasets in China, we attempted to improve the PhenoRice algorithm and use satellite remote sensing data to (1) establish crop calendars for the early, middle, and late seasons in China; (2) validate the extracted rice calendars in different growing seasons; and (3) explore the spatiotemporal changes in rice calendar dates in major agricultural zones across China from 2003 to 2022.",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": "作物学",
+      "level3": "作物栽培学"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": "遥感技术",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "rice phenology",
+      "crop calendar",
+      "remote sensing",
+      "PhenoRice algorithm",
+      "China"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:39:21.080162+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.99,
+      "term": "ChinaRiceCalendar",
+      "normalized": "中国水稻日历数据集",
+      "std_label": "ChinaRiceCalendar"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Long time series and large-scale rice calendar datasets provide valuable information for agricultural planning and field management in rice-based cropping systems. However, current regional-level rice calendar datasets do not accurately distinguish between rice seasons in China, causing uncertainty in crop model simulation and climate change impact analysis. Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.98,
+      "term": "rice phenology",
+      "normalized": "水稻物候",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.97,
+      "term": "satellite remote sensing",
+      "normalized": "卫星遥感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In addition to the methods based on time series of VIs, there are also rule-based algorithms that integrate multiple approaches and indicators to detect crop phenology, such as the PhenoRice algorithm proposed by Boschetti et al. (2017). The PhenoRice algorithm, which combines the advantages of threshold and inflection point approaches, utilizes the Enhanced Vegetation Index (EVI), the Normalized Difference Flood Index (NDFI), and the land surface temperature (LST) to estimate rice planting dates. The PhenoRice algorithm excels at extracting rice phenology in multiple cropping systems and has been widely used in East Asia, South Asia, Southeast Asia, and Europe (Busetto et al., 2019; Liu et al., 2020; Mishra et al., 2021). However, the performance of the PhenoRice algorithm depends on the division of rice seasons, which requires expert knowledge about rice-based cropping systems in different regions (Mishra et al., 2021)."
+      },
+      "confidence": 0.96,
+      "term": "PhenoRice algorithm",
+      "normalized": "PhenoRice算法",
+      "std_label": "PhenoRice"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In China, there are at least three rice-growing seasons (early, middle, and late seasons) in diverse rice-based cropping systems (e.g., single-rice, double-rice, rice–wheat, rice– rapeseed, or rice–vegetable systems) (Frolking et al., 2002; Qiu et al., 2003; Cao et al., 2021; He et al., 2021). Generally, early-, middle-, and late-season rice in China is transplanted around days of the year (DOY) 80–130, DOY 130– 180, and DOY 180–230, respectively. Their typical maturity dates align with DOY 160–220, DOY 240–290, and DOY 270–330, respectively. Although field observations are important data sources for studying rice calendars in different growing seasons, they are usually limited by spatial and temporal discontinuities (Wang et al., 2017). Therefore, previous studies have typically utilized satellite remote sensing products to establish rice calendar datasets at the regional scale (Shihua et al., 2014; Liu et al., 2019; Bai and Xiao, 2020; Luo et al., 2020; Mishra et al., 2021). Nevertheless, these calendar datasets based on satellite remote sensing do not rationally classify rice growing seasons across China. For example, the dataset ChinaCropPhen1km only distinguishes between early and late rice in double-rice systems (Luo et al., 2020); the assumptions of the dataset RICA about rice heading dates in different seasons do not correspond to the realities in China (Mishra et al., 2021). R. Shen et al. (2023) produced high-resolution distribution maps of single-season rice but did not explore multiple rice cropping systems. Early-, middle- and late-season rice in China is not only planted at different times, but also has distinguishing varietal characteristics, such as different temperature and photoperiod sensitivities (Zong et al., 2021). Thus, a crop calendar that accurately classifies rice seasons will provide reliable data for agricultural models to calibrate crop parameters at the variety level. Moreover, effective identification of different rice seasons will help analyze the response and adaptation of rice phenology to climate change."
+      },
+      "confidence": 0.98,
+      "term": "early-, middle-, and late-season rice",
+      "normalized": "早稻、中稻和晚稻",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c6",
+      "evidence": {
+        "section": "2.2.2 Validation data",
+        "original_text": "We collected field observations including the transplanting, heading, and maturity dates of early-, middle- (singleseason), and late-season rice between 2003 and 2013 from 338 agricultural meteorological stations (AMSs, https://data. cma.cn/, last access: March 2022) in China. Moreover, we compared ChinaRiceCalendar with other multi-season and regional-scale calendar datasets, including the RiceAtlas dataset based on the agricultural statistics (Laborte et al., 2017), the ChinaCropPhen1km dataset based on the Global Land Surface Satellite (GLASS) leaf area index (LAI) products (Luo et al., 2020), and the RICA dataset based on the MOD13Q1 and MYD13Q1 products (Mishra et al., 2021)."
+      },
+      "confidence": 0.97,
+      "term": "agricultural meteorological stations",
+      "normalized": "农业气象站",
+      "std_label": "AMSs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c7",
+      "evidence": {
+        "section": "2.2.1 Satellite imagery",
+        "original_text": "MODIS (Moderate Resolution Imaging Spectroradiometer) remote sensing data are widely used in crop phenology detection because of their excellent performance in temporal and spatial continuity (Reed et al., 1994; Zhang et al., 2003; Zhao et al., 2011; Son et al., 2013). We selected two MODIS EVI products for the study area during 2003– 2022: MOD13Q1 (TERRA data) and MYD13Q1 (AQUA data) (https://doi.org/10.5067/MODIS/MOD13Q1.061, Didan, 2021). Because the TERRA and AQUA data are based on the synthetic period of moving 8 d from each other, the time series of the two 16 d products of MOD13Q1 and MYD13Q1 have a temporal resolution of 8 d (Boschetti et al., 2017). The red ( _ρ_ RED) and near-red ( _ρ_ SWIR) bands of MOD13Q1 and MYD13Q1 were used to calculate the Normalized Flooding Index (NDFI) (Eq. 1). Pixel Reliability, the Usefulness Index, and Blue Band Reflectance from MOD13Q1 and MYD13Q1 were used to assess data quality. The Land Surface Temperature (LST) product from MOD11A2 (https://doi.org/10.5067/MODIS/MOD11A2.061, Wan et al., 2021) was employed to estimate land surface temperature during rice planting."
+      },
+      "confidence": 0.98,
+      "term": "MODIS",
+      "normalized": "中分辨率成像光谱仪",
+      "std_label": "MODIS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb0a596fa1ea51b6_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The PhenoRice algorithm, which combines the advantages of threshold and inflection point approaches, utilizes the Enhanced Vegetation Index (EVI), the Normalized Difference Flood Index (NDFI), and the land surface temperature (LST) to estimate rice planting dates. The PhenoRice algorithm excels at extracting rice phenology in multiple cropping systems and has been widely used in East Asia, South Asia, Southeast Asia, and Europe (Busetto et al., 2019; Liu et al., 2020; Mishra et al., 2021). However, the performance of the PhenoRice algorithm depends on the division of rice seasons, which requires expert knowledge about rice-based cropping systems in different regions (Mishra et al., 2021)."
+      },
+      "confidence": 0.96,
+      "term": "Enhanced Vegetation Index",
+      "normalized": "增强植被指数",
+      "std_label": "EVI"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb0a596fa1ea51b6_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.95,
+      "head": "doc_eb0a596fa1ea51b6_c1",
+      "relation_type": "measures",
+      "relation_surface": "extracted transplanting, heading, and maturity dates",
+      "tail": "doc_eb0a596fa1ea51b6_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb0a596fa1ea51b6_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.94,
+      "head": "doc_eb0a596fa1ea51b6_c3",
+      "relation_type": "uses",
+      "relation_surface": "based on satellite remote sensing data",
+      "tail": "doc_eb0a596fa1ea51b6_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb0a596fa1ea51b6_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.93,
+      "head": "doc_eb0a596fa1ea51b6_c1",
+      "relation_type": "compares",
+      "relation_surface": "shows good agreement with",
+      "tail": "doc_eb0a596fa1ea51b6_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb0a596fa1ea51b6_r4",
+      "evidence": {
+        "section": "6 Conclusions",
+        "original_text": "Utilizing MODIS time series data, we established a multiseason rice calendar dataset named ChinaRiceCalendar, encompassing transplanting, heading, and maturity dates of early-, middle-, and late-season rice in China from 2003 to 2022. The rice phenological dates within ChinaRiceCalendar, estimated through the enhanced PhenoRice algorithm, exhibit strong alignment with field observations collected by agricultural meteorological stations across China. The _R_[2] values between ChinaRiceCalendar and field data for early-, middle-, and late-season rice consistently surpass 0.90, with RMSE values below 15 d in the three rice seasons. According to the calendar data from 2003 to 2022, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; and the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. In summary, ChinaRiceCalendar stands as a reliable dataset for investigating and optimizing the spatiotemporal dynamics of rice cultivation in China, particularly in the context of climate and land use changes."
+      },
+      "confidence": 0.92,
+      "head": "doc_eb0a596fa1ea51b6_c1",
+      "relation_type": "derives",
+      "relation_surface": "established through the enhanced PhenoRice algorithm",
+      "tail": "doc_eb0a596fa1ea51b6_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb0a596fa1ea51b6_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The PhenoRice algorithm, which combines the advantages of threshold and inflection point approaches, utilizes the Enhanced Vegetation Index (EVI), the Normalized Difference Flood Index (NDFI), and the land surface temperature (LST) to estimate rice planting dates. The PhenoRice algorithm excels at extracting rice phenology in multiple cropping systems and has been widely used in East Asia, South Asia, Southeast Asia, and Europe (Busetto et al., 2019; Liu et al., 2020; Mishra et al., 2021). However, the performance of the PhenoRice algorithm depends on the division of rice seasons, which requires expert knowledge about rice-based cropping systems in different regions (Mishra et al., 2021)."
+      },
+      "confidence": 0.94,
+      "head": "doc_eb0a596fa1ea51b6_c4",
+      "relation_type": "uses",
+      "relation_surface": "utilizes the Enhanced Vegetation Index (EVI)",
+      "tail": "doc_eb0a596fa1ea51b6_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb0a596fa1ea51b6_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.9,
+      "head": "doc_eb0a596fa1ea51b6_c1",
+      "relation_type": "enhances",
+      "relation_surface": "can be utilized to investigate and optimize",
+      "tail": "doc_eb0a596fa1ea51b6_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.95,
+      "name": "ChinaRiceCalendar",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing, phenology"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d2",
+      "evidence": {
+        "section": "2.2.2 Validation data",
+        "original_text": "We collected field observations including the transplanting, heading, and maturity dates of early-, middle- (single-season), and late-season rice between 2003 and 2013 from 338 agricultural meteorological stations (AMSs, https://data.cma.cn/, last access: March 2022) in China."
+      },
+      "confidence": 0.9,
+      "name": "Agricultural meteorological stations (AMSs) field observations",
+      "modality": "tabular",
+      "domain": "agriculture, meteorology"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d3",
+      "evidence": {
+        "section": "2.2.2 Validation data",
+        "original_text": "Moreover, we compared ChinaRiceCalendar with other multi-season and regional-scale calendar datasets, including the RiceAtlas dataset based on the agricultural statistics (Laborte et al., 2017), the ChinaCropPhen1km dataset based on the Global Land Surface Satellite (GLASS) leaf area index (LAI) products (Luo et al., 2020), and the RICA dataset based on the MOD13Q1 and MYD13Q1 products (Mishra et al., 2021)."
+      },
+      "confidence": 0.85,
+      "name": "ChinaCropPhen1km dataset",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing, phenology"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d4",
+      "evidence": {
+        "section": "2.2.2 Validation data",
+        "original_text": "Moreover, we compared ChinaRiceCalendar with other multi-season and regional-scale calendar datasets, including the RiceAtlas dataset based on the agricultural statistics (Laborte et al., 2017), the ChinaCropPhen1km dataset based on the Global Land Surface Satellite (GLASS) leaf area index (LAI) products (Luo et al., 2020), and the RICA dataset based on the MOD13Q1 and MYD13Q1 products (Mishra et al., 2021)."
+      },
+      "confidence": 0.85,
+      "name": "RiceAtlas dataset",
+      "modality": "tabular",
+      "domain": "agriculture, statistics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d5",
+      "evidence": {
+        "section": "2.2.2 Validation data",
+        "original_text": "Moreover, we compared ChinaRiceCalendar with other multi-season and regional-scale calendar datasets, including the RiceAtlas dataset based on the agricultural statistics (Laborte et al., 2017), the ChinaCropPhen1km dataset based on the Global Land Surface Satellite (GLASS) leaf area index (LAI) products (Luo et al., 2020), and the RICA dataset based on the MOD13Q1 and MYD13Q1 products (Mishra et al., 2021)."
+      },
+      "confidence": 0.85,
+      "name": "RICA dataset",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d6",
+      "evidence": {
+        "section": "2.2.1 Satellite imagery",
+        "original_text": "We selected two MODIS EVI products for the study area during 2003–2022: MOD13Q1 (TERRA data) and MYD13Q1 (AQUA data) (https://doi.org/10.5067/MODIS/MOD13Q1.061, Didan, 2021). Because the TERRA and AQUA data are based on the synthetic period of moving 8 d from each other, the time series of the two 16 d products of MOD13Q1 and MYD13Q1 have a temporal resolution of 8 d (Boschetti et al., 2017). The red (ρ RED) and near-red (ρ SWIR) bands of MOD13Q1 and MYD13Q1 were used to calculate the Normalized Flooding Index (NDFI) (Eq. 1). Pixel Reliability, the Usefulness Index, and Blue Band Reflectance from MOD13Q1 and MYD13Q1 were used to assess data quality."
+      },
+      "confidence": 0.95,
+      "name": "MODIS EVI products (MOD13Q1 and MYD13Q1)",
+      "modality": "image",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d7",
+      "evidence": {
+        "section": "2.2.1 Satellite imagery",
+        "original_text": "The Land Surface Temperature (LST) product from MOD11A2 (https://doi.org/10.5067/MODIS/MOD11A2.061, Wan et al., 2021) was employed to estimate land surface temperature during rice planting."
+      },
+      "confidence": 0.9,
+      "name": "MODIS Land Surface Temperature (LST) product MOD11A2",
+      "modality": "image",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d8",
+      "evidence": {
+        "section": "2.2.3 Additional data",
+        "original_text": "Cropland data were obtained from the International Geosphere-Biosphere Program (IGBP) classification of the MODIS land cover product (MCD12Q1) from 2003 to 2022 (https://doi.org/10.5067/MODIS/MCD12Q1.006, Friedl and Sulla-Menashe, 2023)."
+      },
+      "confidence": 0.9,
+      "name": "MODIS land cover product (MCD12Q1)",
+      "modality": "image",
+      "domain": "remote sensing, land cover"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb0a596fa1ea51b6_d9",
+      "evidence": {
+        "section": "2.2.3 Additional data",
+        "original_text": "Digital elevation model (DEM) data used to create a terrain mask were obtained from the Shuttle Radar Topography Mission (SRTM, https://srtm.csi.cgiar.org, last access: December 2022)."
+      },
+      "confidence": 0.9,
+      "name": "Shuttle Radar Topography Mission (SRTM) Digital Elevation Model (DEM)",
+      "modality": "image",
+      "domain": "geography"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb0a596fa1ea51b6_ds1",
+      "evidence": {
+        "section": "2.3.1 Data pre-processing",
+        "original_text": "The data pre-processing in the study falls into three steps.\n1. The signal of agronomic flooding was used to help identify the rice transplanting period, but non-agricultural wetlands may have similar flooding signals to paddy fields (Dong and Xiao, 2016; Han et al., 2022). Thus, the annual cropland extent from 2003 to 2020 was used to establish a cropland mask to screen the cropland pixels of the MODIS EVI data.\n2. Given that too high an elevation or too great a slope is unsuitable for paddy rice cultivation (Gumma et al., 2011; Dong and Xiao, 2016), only the image pixels with an elevation below 2600 m and a slope less than 8° were selected to extract rice calendars (Han et al., 2022).\n3. To reduce the impacts of cloud contamination, we deleted the image pixels with reflectances greater than 0.2 in the blue band (Xiao et al., 2006)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Data pre-processing steps including cropland masking, terrain filtering, and cloud contamination removal"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb0a596fa1ea51b6_ds2",
+      "evidence": {
+        "section": "2.3.2 Estimation of the rice area and cropping calendar",
+        "original_text": "(1) The weighted Whittaker method in the phenofit R package was employed to smoothen the MODIS–EVI time series (Kong et al., 2022). The Whittaker smoothing function can robustly capture seasonal signals with little noise interference, and it is widely used to identify crop phenology (Atzberger and Eilers, 2011; Bush et al., 2017). The curve fitting mainly relies on information from good-quality points but also extracts the limited information available from the marginal- and bad-quality points. During the rough fitting to the EVI time series, we categorized the data quality of the observations according to their quality control (QC) information (SummaryQA of MOD13A1) and assigned weights of 1.0, 0.5, and 0.2 to the good, marginal-, and bad-quality VI observations, respectively."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Weighted Whittaker smoothing method for EVI time series reconstruction with quality control-based weighting"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb0a596fa1ea51b6_ds3",
+      "evidence": {
+        "section": "2.3.2 Estimation of the rice area and cropping calendar",
+        "original_text": "Whether the pixel belongs to a rice-cultivated area during the selected growing season is checked using the following procedure (Boschetti et al., 2017). (1) Compare the observed maximum and minimum EVI values with the corresponding thresholds for paddy fields (EVImax_th and EVImin_th) to reduce misclassification problems with evergreen forests and non-vegetative areas. (2) Check for the existence of a maximum inflection point on the EVI curve, which must show a consistent increasing trend before the maxima and a consistent decreasing trend after the maxima. The time interval between the inflection points of the minimum and maximum EVI values during the season must fall within the range of rice vegetative growing periods [vl1, vl2]. (3) Check whether the meteorological conditions on the day of the minimum are favourable for rice crop establishment based on a MODIS-LST value above a specified threshold (LSTth). (4) Detect a flood signal (NDFI ≥ minndfi) within a time window (winfl) centred on the minimum. (5) Check whether there is a consistent increase in EVI observed after the minimum. (6) Check whether EVI decreases by more than decrth % of the amplitude of the minimum–maximum range in a time window after the maxima (windecr). Only if all the above requirements are satisfied is the selected growing season in the pixel labelled as a rice season. The PhenoRice parameters used in the study were calibrated by the phenological observations from the AMSs in China (Table 1)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "PhenoRice algorithm parameters and criteria for rice pixel identification"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb0a596fa1ea51b6_ds4",
+      "evidence": {
+        "section": "5 Data availability",
+        "original_text": "ChinaRiceCalendar is a raster dataset with 1 km spatial resolution. The dataset has two parts: detected rice pixel data (*_rice_pixels.tif) and county-level rice calendar data (*_county_level.tif). The spatial reference system of the dataset is WGS_1984_UTM_Zone_49N. The dataset currently includes mean calendar dates during five periods: 2003–2007, 2008–2012, 2013–2017, 2018–2022, and 2003–2022. ChinaRiceCalendar is available at https://doi.org/10.7910/DVN/EUP8EY (Liu et al., 2023)."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "ChinaRiceCalendar dataset structure: raster data with 1 km resolution, WGS_1984_UTM_Zone_49N projection, includes pixel-level and county-level data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb0a596fa1ea51b6_ds5",
+      "evidence": {
+        "section": "2.3.3 Data validation",
+        "original_text": "Two criteria were used to evaluate the accuracy of the estimated rice areas and cropping dates in each season, i.e., root mean squared error (RMSE, Eq. 2) and R² (Eq. 3): RMSE = sqrt(Σ(true_i - est_i)^2 / N), R² = 1 - Σ(true_i - est_i)^2 / Σ(true_i - true)^2, where true_i is the true value in the i th province or AMS; est_i is the corresponding estimated value; est and true denote the mean of the estimated and true values, respectively; and N is the number of provinces or AMSs."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Validation metrics: root mean squared error (RMSE) and R²"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb0a596fa1ea51b6_m1",
+      "evidence": {
+        "section": "2.3 Methodology",
+        "original_text": "We combined the PhenoRice algorithm (Boschetti et al., 2017) with a growing season division method (Kong et al., 2022) to extract rice pixels and cropping calendars in different growing seasons. Firstly, we identified possible crop heading periods based on a weighted and smoothed EVI time series curve in each image pixel. Then we input the possible heading periods into the PhenoRice algorithm to divide potential growing seasons and check whether the corresponding EVI time series belongs to rice. Lastly, we estimated rice planting, heading, and maturity dates and categorized them into early-, middle-, and late-season calendars according to the respective transplanting and maturity times. Whether the pixel belongs to a rice-cultivated area during the selected growing season is checked using the following procedure (Boschetti et al., 2017). (1) Compare the observed maximum and minimum EVI values with the corresponding thresholds for paddy fields (EVImax_th and EVImin_th) to reduce misclassification problems with evergreen forests and non-vegetative areas. (2) Check for the existence of a maximum inflection point on the EVI curve, which must show a consistent increasing trend before the maxima and a consistent decreasing trend after the maxima. The time interval between the inflection points of the minimum and maximum EVI values during the season must fall within the range of rice vegetative growing periods [vl1, vl2]. (3) Check whether the meteorological conditions on the day of the minimum are favourable for rice crop establishment based on a MODIS-LST value above a specified threshold (LSTth). (4) Detect a flood signal (NDFI ≥ minndfi) within a time window (winfl) centred on the minimum. (5) Check whether there is a consistent increase in EVI observed after the minimum. (6) Check whether EVI decreases by more than decrth % of the amplitude of the minimum–maximum range in a time window after the maxima (windecr). Only if all the above requirements are satisfied is the selected growing season in the pixel labelled as a rice season. The PhenoRice parameters used in the study were calibrated by the phenological observations from the AMSs in China (Table 1)."
+      },
+      "confidence": 0.95,
+      "name": "PhenoRice algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb0a596fa1ea51b6_m2",
+      "evidence": {
+        "section": "2.3 Methodology",
+        "original_text": "The weighted Whittaker method in the phenofit R package was employed to smoothen the MODIS–EVI time series (Kong et al., 2022). The Whittaker smoothing function can robustly capture seasonal signals with little noise interference, and it is widely used to identify crop phenology (Atzberger and Eilers, 2011; Bush et al., 2017). The curve fitting mainly relies on information from good-quality points but also extracts the limited information available from the marginal- and bad-quality points. During the rough fitting to the EVI time series, we categorized the data quality of the observations according to their quality control (QC) information (SummaryQA of MOD13A1) and assigned weights of 1.0, 0.5, and 0.2 to the good, marginal-, and bad-quality VI observations, respectively."
+      },
+      "confidence": 0.95,
+      "name": "weighted Whittaker smoothing",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb0a596fa1ea51b6_m3",
+      "evidence": {
+        "section": "2.3 Methodology",
+        "original_text": "Additionally, in order to investigate the historical shifts of rice phenological dates in China, we analyzed the trends of rice planting, heading, and maturity dates at the county level by a Sen and Mann–Kendall trend analysis at a significance level of 0.05. The trend analysis method is detailed in Gocic and Trajkovic (2013)."
+      },
+      "confidence": 0.95,
+      "name": "Sen and Mann–Kendall trend analysis",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_eb0a596fa1ea51b6_x1",
+      "evidence": {
+        "section": "2.3 Methodology",
+        "original_text": "The data pre-processing in the study falls into three steps. 1. The signal of agronomic flooding was used to help identify the rice transplanting period, but non-agricultural wetlands may have similar flooding signals to paddy fields (Dong and Xiao, 2016; Han et al., 2022). Thus, the annual cropland extent from 2003 to 2020 was used to establish a cropland mask to screen the cropland pixels of the MODIS EVI data. 2. Given that too high an elevation or too great a slope is unsuitable for paddy rice cultivation (Gumma et al., 2011; Dong and Xiao, 2016), only the image pixels with an elevation below 2600 m and a slope less than 8° were selected to extract rice calendars (Han et al., 2022). 3. To reduce the impacts of cloud contamination, we deleted the image pixels with reflectances greater than 0.2 in the blue band (Xiao et al., 2006)."
+      },
+      "confidence": 0.95,
+      "task": "data pre-processing for rice calendar extraction",
+      "setup": "MODIS EVI data, cropland mask, elevation and slope filters, cloud contamination removal"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_eb0a596fa1ea51b6_x2",
+      "evidence": {
+        "section": "2.3 Methodology",
+        "original_text": "Taking AMS field observations as benchmarks, we evaluated the accuracy of rice calendar dates derived from four multi-season rice calendars: ChinaRiceCalendar, ChinaCropPhen1km, RiceAtlas, and RICA. These regional rice calendars can be divided into two categories: raster datasets (ChinaRiceCalendar and ChinaCropPhen1km) and district-level datasets (RiceAtlas and RICA). For ChinaRiceCalendar and ChinaCropPhen1km, we sought the nearest rice pixel around each AMS site for data pairing. In instances where there was no corresponding rice pixel within a 4 km radius around an AMS site, the site was excluded from the analysis. Also, we conducted a comparison between district-level rice calendars obtained from RiceAtlas and RICA, juxtaposed with AMS data distributed within the respective districts. Two criteria were used to evaluate the accuracy of the estimated rice areas and cropping dates in each season, i.e., root mean squared error (RMSE, Eq. 2) and R2 (Eq. 3): where true_i is the true value in the i th province or AMS; est_i is the corresponding estimated value; est and true denote the mean of the estimated and true values, respectively; and N is the number of provinces or AMSs."
+      },
+      "confidence": 0.95,
+      "task": "validation of ChinaRiceCalendar dataset",
+      "setup": "comparison with AMS field observations and other datasets (ChinaCropPhen1km, RiceAtlas, RICA)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The key phenological dates estimated in the study show high consistency with the data from AMSs (Fig. 3). The R² between rice phenological dates from ChinaRiceCalendar and AMSs is 0.95. The R² values between ChinaRiceCalendar and AMS data for transplanting, heading, and maturity dates in China are 0.91, 0.88, and 0.90, respectively. The RMSEs of transplanting, heading, and maturity dates in ChinaRiceCalendar are approximately 14 d. The R² values between rice phenological dates from ChinaRiceCalendar and AMS data for early-, middle-, and late-season rice are 0.91, 0.94, and 0.90, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "R²",
+      "value": 0.95,
+      "unit": null,
+      "context": "Overall agreement between rice phenological dates from ChinaRiceCalendar and Agricultural Meteorological Stations (AMSs) data",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The RMSEs of transplanting, heading, and maturity dates in ChinaRiceCalendar are approximately 14 d."
+      },
+      "confidence": 0.98,
+      "quantity": "RMSE",
+      "value": 14,
+      "unit": "d",
+      "context": "Transplanting, heading, and maturity dates in ChinaRiceCalendar compared to AMS data",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For early-season rice, the RMSE averages of the estimated cropping dates are 12.73, 12.43, and 14.53 d in the MLY, SC, and YGP, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 12.73,
+      "unit": "d",
+      "context": "Early-season rice cropping dates in MLY region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For early-season rice, the RMSE averages of the estimated cropping dates are 12.73, 12.43, and 14.53 d in the MLY, SC, and YGP, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 12.43,
+      "unit": "d",
+      "context": "Early-season rice cropping dates in SC region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For early-season rice, the RMSE averages of the estimated cropping dates are 12.73, 12.43, and 14.53 d in the MLY, SC, and YGP, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 14.53,
+      "unit": "d",
+      "context": "Early-season rice cropping dates in YGP region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For middle-season rice, the range of the RMSEs in the seven agricultural regions is from 4.74 d in the HP to 14.34 d in the YGP."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 4.74,
+      "unit": "d",
+      "context": "Middle-season rice cropping dates in HP region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For middle-season rice, the range of the RMSEs in the seven agricultural regions is from 4.74 d in the HP to 14.34 d in the YGP."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 14.34,
+      "unit": "d",
+      "context": "Middle-season rice cropping dates in YGP region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For late-season rice, the RMSE averages of the estimated cropping dates are 13.90, 17.54, and 14.25 d in the MLY, SC, and YGP, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 13.9,
+      "unit": "d",
+      "context": "Late-season rice cropping dates in MLY region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr9",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For late-season rice, the RMSE averages of the estimated cropping dates are 13.90, 17.54, and 14.25 d in the MLY, SC, and YGP, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 17.54,
+      "unit": "d",
+      "context": "Late-season rice cropping dates in SC region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr10",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For late-season rice, the RMSE averages of the estimated cropping dates are 13.90, 17.54, and, 14.25 d in the MLY, SC, and YGP, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "RMSE",
+      "value": 14.25,
+      "unit": "d",
+      "context": "Late-season rice cropping dates in YGP region",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr11",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Based on the trend analysis of rice phenological dates from 2003 to 2022 in China (Fig. 8), the mean transplanting dates for early-, middle-, and late-season rice shifted by +0.74, −0.68, and −5.12 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "transplanting date shift",
+      "value": 0.74,
+      "unit": "DOY per decade",
+      "context": "Early-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr12",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Based on the trend analysis of rice phenological dates from 2003 to 2022 in China (Fig. 8), the mean transplanting dates for early-, middle-, and late-season rice shifted by +0.74, −0.68, and −5.12 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "transplanting date shift",
+      "value": -0.68,
+      "unit": "DOY per decade",
+      "context": "Middle-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr13",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Based on the trend analysis of rice phenological dates from 2003 to 2022 in China (Fig. 8), the mean transplanting dates for early-, middle-, and late-season rice shifted by +0.74, −0.68, and −5.12 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "transplanting date shift",
+      "value": -5.12,
+      "unit": "DOY per decade",
+      "context": "Late-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr14",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The mean heading dates for early-, middle-, and late-season rice shifted by −0.51, +2.73, and −0.60 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "heading date shift",
+      "value": -0.51,
+      "unit": "DOY per decade",
+      "context": "Early-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr15",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The mean heading dates for early-, middle-, and late-season rice shifted by −0.51, +2.73, and −0.60 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "heading date shift",
+      "value": 2.73,
+      "unit": "DOY per decade",
+      "context": "Middle-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr16",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The mean heading dates for early-, middle-, and late-season rice shifted by −0.51, +2.73, and −0.60 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "heading date shift",
+      "value": -0.6,
+      "unit": "DOY per decade",
+      "context": "Late-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr17",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The mean maturity dates for early, middle, and late rice shifted by −0.67, +3.75, and −1.62 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "maturity date shift",
+      "value": -0.67,
+      "unit": "DOY per decade",
+      "context": "Early-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr18",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The mean maturity dates for early, middle, and late rice shifted by −0.67, +3.75, and −1.62 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "maturity date shift",
+      "value": 3.75,
+      "unit": "DOY per decade",
+      "context": "Middle-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb0a596fa1ea51b6_qr19",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The mean maturity dates for early, middle, and late rice shifted by −0.67, +3.75, and −1.62 DOY per decade, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "maturity date shift",
+      "value": -1.62,
+      "unit": "DOY per decade",
+      "context": "Late-season rice in China from 2003 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_eb0a596fa1ea51b6_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Using AMS field observations as benchmarks, the RMSEs of rice phenological dates obtained from ChinaRiceCalendar, ChinaCropPhen1km, RiceAtlas, and RICA are 13.8, 15.0, 17.9, and 22.6 d, respectively. According to the accuracy evaluation at the seasonal level (Fig. 5), ChinaRiceCalendar is the only dataset where the RMSE does not exceed 15 d across the three rice seasons. Compared with the ChinaRiceCalendar dataset, ChinaCropPhen1km exhibits sub-optimal performance in early-rice seasons (RMSE = 18 d), RiceAtlas underperforms in middle-rice seasons (RMSE = 22 d), and RICA falls short in both middle- and late-rice seasons (RMSE > 30 d). Overall, ChinaRiceCalendar demonstrates superior accuracy in the estimated rice calendars compared to ChinaCropPhen1km, RiceAtlas, and RICA at the annual and seasonal levels in China."
+      },
+      "confidence": 0.98,
+      "metric": "RMSE of rice phenological dates",
+      "compared_to": "ChinaCropPhen1km, RiceAtlas, RICA"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_eb0a596fa1ea51b6_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Long time series and large-scale rice calendar datasets provide valuable information for agricultural planning and field management in rice-based cropping systems. However, current regional-level rice calendar datasets do not accurately distinguish between rice seasons in China, causing uncertainty in crop model simulation and climate change impact analysis. Based on satellite remote sensing data, we extracted transplanting, heading, and maturity dates of early-, middle-, and late-season rice across China from 2003 to 2022 and established a multi-season rice calendar dataset named ChinaRiceCalendar (https://doi.org/10.7910/DVN/EUP8EY, Liu et al., 2023). Overall, the ChinaRiceCalendar dataset shows good agreement with field-observed phenological dates of early-, middle-, and late-season rice in Chinese agricultural meteorological stations (AMSs). According to the calendar data from 2003 to 2022 in China, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY (day of year) per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. ChinaRiceCalendar can be utilized to investigate and optimize the spatiotemporal structure of rice cultivation in China under climate and land use change."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_eb0a596fa1ea51b6_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Utilizing MODIS time series data, we established a multi-season rice calendar dataset named ChinaRiceCalendar, encompassing transplanting, heading, and maturity dates of early-, middle-, and late-season rice in China from 2003 to 2022. The rice phenological dates within ChinaRiceCalendar, estimated through the enhanced PhenoRice algorithm, exhibit strong alignment with field observations collected by agricultural meteorological stations across China. The R² values between ChinaRiceCalendar and field data for early-, middle-, and late-season rice consistently surpass 0.90, with RMSE values below 15 d in the three rice seasons. According to the calendar data from 2003 to 2022, the transplanting dates for early-, middle-, and late-season rice shifted by +0.7, −0.7, and −5.1 DOY per decade, respectively; the heading dates for early-, middle-, and late-season rice shifted by −0.5, +2.7, and −0.6 DOY per decade, respectively; and the maturity dates for early-, middle-, and late-season rice shifted by −0.7, +3.8, and −1.6 DOY per decade, respectively. In summary, ChinaRiceCalendar stands as a reliable dataset for investigating and optimizing the spatiotemporal dynamics of rice cultivation in China, particularly in the context of climate and land use changes."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_eb0a596fa1ea51b6_lm1",
+      "evidence": {
+        "section": "Uncertainties in ChinaRiceCalendar",
+        "original_text": "Nevertheless, discerning early- and late-rice pixels is more difficult than identifying middle-rice pixels in MODIS data, resulting in lower accuracy of the detected rice calendars in southern China (MLY, SC, SCS, YGP) than in northern China (NP, HP, LP). There are several factors leading to the incomplete identification of rice pixels in the early and late seasons in southern China. Firstly, the pixel-based detection of rice areas may be interfered with by the contamination of clouds, aerosols, and water vapor, especially during the monsoon season, when late rice is transplanted (Xiao et al., 2005; Clauss et al., 2016; Mishra et al., 2021). Secondly, diverse multi-cropping systems, complex topography, and the fragmentation of croplands in southern China make the pixel detection for early and late rice more challenging (Dong and Xiao, 2016). Additionally, the PhenoRice algorithm falls short in detecting rice pixels in rainfed or upland rice systems due to the absence of clear agronomic flooding signals. In China, rice is mainly planted in flooded paddy fields (Luo et al., 2022), which mitigates the problems of detecting rainfed or upland rice. Last but not least, precisely matching the image pixels from the MODIS dataset to the agricultural meteorological stations remains a challenge during data validation. In the future, it would be beneficial to conduct a quantitative assessment to determine the representativeness of the MODIS pixels surrounding the AMS site."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_eb0a596fa1ea51b6_fw1",
+      "evidence": {
+        "section": "Uncertainties in ChinaRiceCalendar",
+        "original_text": "Because synthetic aperture radar (SAR) can penetrate through clouds, subsequent studies could combine optical and SAR images to avoid the impacts of clouds (R. Shen et al., 2023). Utilizing geostationary satellite observations to increase the temporal frequency of remote sensing data may also be an effective way of improving the accuracy of rice calendars (Y. Shen et al., 2023). Producing satellite remote sensing data with higher spatial resolution and integrating multiple data sources from satellite–airborne–ground observations will facilitate real-time monitoring of rice cropping areas at the regional scale (Zheng et al., 2022; Sun et al., 2023). Subsequently, we will try to automate the generation and updating of ChinaRiceCalendar based on the rgee package (Aybar et al., 2023)."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

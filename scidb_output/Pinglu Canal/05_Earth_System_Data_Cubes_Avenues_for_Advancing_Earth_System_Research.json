@@ -1,0 +1,605 @@
+{
+  "metadata": {
+    "doc_id": "doc_635cdb82b87c6a49",
+    "source_file": "05_Earth_System_Data_Cubes_Avenues_for_Advancing_Earth_System_Research.md",
+    "title": "EARTH SYSTEM DATA CUBES: AVENUES FOR ADVANCING EARTH SYSTEM RESEARCH",
+    "year": 2024,
+    "doi": null,
+    "abstract": "Recent advancements in Earth system science have been marked by the exponential increase in the availability of diverse, multivariate datasets characterised by moderate to high spatiotemporal resolutions. Earth System Data Cubes (ESDCs) have emerged as one suitable solution for transforming this flood of data into a simple yet robust data structure. ESDCs achieve this by organising data into an analysis-ready format aligned with a spatio-temporal grid, facilitating user-friendly analysis and diminishing the need for extensive technical data processing knowledge. Despite these significant benefits, the completion of the entire ESDC life cycle remains a challenging task. Obstacles are not only of a technical nature but also relate to domain-specific problems in Earth system research. There exist barriers to realising the full potential of data collections in light of novel cloud-based technologies, particularly in curating data tailored for specific application domains. These include transforming data to conform to a spatio-temporal grid with minimum distortions and managing complexities such as spatio-temporal autocorrelation issues. Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress.",
+    "introduction": "Humanity possesses the capability to observe and model the majority of Earth’s subsystems, generating vast amounts of data with unprecedented resolution, quality, and coverage (Simmons et al., 2016; Peng et al., 2021; Bauer et al., 2021a). The co-interpretation of these diverse datasets represents an unprecedented opportunity for understanding the intricacies of the Earth system (Runge et al., 2019; Mahecha et al., 2020; Tuia et al., 2023). However, this wealth of heterogeneous data comes with substantial challenges. The sheer volume of data, characterised by variations in spatial and temporal resolution as well as data curation levels, coupled with the high complexity of processes encoded in these multi-dimensional datasets, renders conventional data processing and interpretation methods unsuitable (Boulton, 2018; Sudmanns et al., 2020). \n\nRecognising the need for a simple yet robust data infrastructure to facilitate Earth system data interoperability led to the emergence of various data cube concepts (Nativi et al., 2017; Baumann \n\net al., 2019; Giuliani et al., 2019; Kopp et al., 2019; Mahecha et al., 2020, and others). We refer to Earth System Data Cubes (ESDCs) as frameworks where diverse datasets are integrated into a unified, highly interoperable system, organised on a common spatio-temporal grid (a more formal definition is given in Section 2.1). The essence of ESDCs is to convert the vast array of Earth system data into readily accessible data streams, apt for a variety of Earth system research domains. Such frameworks are gaining widespread acceptance in Earth system research as a solution for managing complex Earth Observation (EO) data. \n\nGiven the simplicity of such structures, various initiatives have greatly enhanced the use of EO data derived from satellite remote sensing and other large-scale array data, such as climate model outputs. Initiatives building on an ESDC concept originally developed their data in hand-crafted ways (e.g. Mahecha et al., 2020; Estupinan Suarez et al.˜ , 2021; Walther et al., 2022) or created systems supporting on-demand generations of ESDCs (e.g. Appel and Pebesma, 2019; Killough, 2018; Schramm et al., 2021). Earth system data providers have invested tremendous efforts in compiling extensive data catalogues, which can be used for the development of further ESDCs. Notable examples of such catalogues are provided by Google Earth Engine (GEE, Gorelick et al., 2017)[1] , Microsoft Planetary Computer[2] , or the Open Geospatial Data Catalogue of Amazon Web Services (AWS)[3] . Additionally, there is a constant effort to increase the adoption of ESDCs (including generation and analysis) within cloud environments (Zellner et al., 2024). Therefore, ESDCs can be efficiently generated and used in virtual laboratories, such as the DeepESDL (Brandt et al., 2023; Sturm, 2023)[4] , or the agricultural virtual lab[5] . \n\nThis access to straightforward aligned Earth system data has facilitated numerous Earth system research questions. For instance, researchers have employed both linear and non-linear dimensionality reduction methods to generate global indicators for the terrestrial biosphere (Kraemer et al., 2020), uncover the main modes of Earth system variables (Bueso et al., 2020), quantified spatial dynamics of vegetation responses to ENSO in South America (Estupinan-Suarez et al., 2023), or gained major insights on Land Use and Cover Change (LUCC, Santos et al., 2019). Specifically, EO data cubes, or ESDCs comprising satellite remote sensing imagery, have been instrumental in applications such as learning the vegetation response to climate drivers using Recurrent Neural Network (RNN) architectures (Martinuzzi et al., 2023), quantifying drought legacy effects on gross primary production (Yu et al., 2022), and detecting spatio-temporal extreme events (Mahecha et al., 2017). \n\nHowever, if the goal is for ESDCs to evolve and become sustainable data infrastructures, it is essential to develop robust ESDC life cycles. Considering the unique characteristics of ESDCs, we cannot merely apply existing research data life-cycle concepts; instead, we must identify and address the peculiarities specific to ESDCs. It is necessary to create opportunities for continuous improvement and to address current challenges by leveraging contemporary technological advancements, specifications, and research paradigms. For instance, data formats and sharing protocols must evolve to align with the current status of cloud-based technologies and standards, in accordance with the adoption of FAIR Open Science principles (Wilkinson et al., 2016). Moreover, transforming heterogeneous data into an analysis-ready format aligned with a multidimensional spatio-temporal grid is often complex and subject to application-specific variations (Giuliani et al., 2019; Zuefle et al., 2021). \n\nThe resulting data format, though straightforward and relatively easy to analyse, encompasses inherent complexities (B´ejar et al., 2023). These intricacies necessitate careful consideration during data analysis, requiring a profound understanding of the nature of Earth system processes. Naive analyses based on ESDCs can potentially lead to misleading interpretations as pointed out, e.g. by Meyer et al. (2018); Rußwurm et al. (2023) or Sweet et al. (2023). Common pitfalls include model performance inflation caused by spatio-temporal auto-correlation, biased sampling, and inaccurate spatial aggregations. It’s only by adequately addressing these challenges that \n\n> 1 `https://developers` _._ `google` _._ `com/earth-engine/datasets/` \n\n> 2 `https://planetarycomputer` _._ `microsoft` _._ `com/catalog` \n\n> 3 `https://aws` _._ `amazon` _._ `com/earth/` \n\n> 4 `https://deepesdl` _._ `readthedocs` _._ `io/` \n\n> 5 `https://agriculturevlab` _._ `eu/` \n\nthe full potential of ESDCs can be realised, aligning with the perspectives of various authors (Reichstein et al., 2019; Irrgang et al., 2021; Hsieh, 2022; Sun et al., 2022; Persello et al., 2022; Tuia et al., 2023). Topics widely discussed today are generative processes in Artificial Intelligence (AI) that could enable researchers to reconstruct unseen data (Ruttgers¨ et al., 2019; Oyama et al., 2023). Another promising direction is the potential for making causal inferences solely from data (Runge et al., 2019; Krich et al., 2021; Christiansen et al., 2022; Camps-Valls et al., 2023). Also, integrating physical constraints and domain knowledge in the inference process can lead to more plausible semi-empirical predictions (Ilie et al., 2017; Karniadakis et al., 2021; Camps-Valls et al., 2021; Cort´es-Andr´es et al., 2022). Concurrently, advances in data processing and visualisation technologies not only enhance data exploration and analysis but also aid in disseminating research findings (S¨ochting et al., 2023). \n\nThis paper seeks to identify the challenges inherent in the complete ESDC life cycle while, at the same time, highlighting the potential to advance Earth system research through these data structures. The manuscript is organised as follows: Section 2 introduces the concept of ESDC and its relationship to information-preserving systems for Earth system data. In Section 3, we elaborate on the ESDC life cycle, displaying the obstacles encountered during data processing and proposing pathways toward creating analysis-ready ESDCs. Section 4 explores the transformative possibilities stemming from contemporary AI advancements in Earth system research while Section 5 cautions against the risks of uninformed ESDC analysis. Section 6 addresses the technical facets of manipulating ESDCs throughout their life cycle, offering insights into technologies that can streamline Earth system data processing. Lastly, in Section 7, we examine the challenges associated with data visualisation in the context of ESDCs. Through this paper, we aim to outline the complexities and opportunities associated with employing ESDCs, hopefully paving the way for advancements in Earth system research.",
+    "primary_discipline": {
+      "level1": "地球科学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "计算机科学技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Earth System Data Cubes",
+      "Earth Observation",
+      "Data Interoperability",
+      "Artificial Intelligence",
+      "Open Science"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:51:15.573971+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Earth System Data Cubes (ESDCs) have emerged as one suitable solution for transforming this flood of data into a simple yet robust data structure. ESDCs achieve this by organising data into an analysis-ready format aligned with a spatio-temporal grid, facilitating user-friendly analysis and diminishing the need for extensive technical data processing knowledge. Despite these significant benefits, the completion of the entire ESDC life cycle remains a challenging task. Obstacles are not only of a technical nature but also relate to domain-specific problems in Earth system research. There exist barriers to realising the full potential of data collections in light of novel cloud-based technologies, particularly in curating data tailored for specific application domains. These include transforming data to conform to a spatio-temporal grid with minimum distortions and managing complexities such as spatio-temporal autocorrelation issues. Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress."
+      },
+      "confidence": 0.99,
+      "term": "Earth System Data Cubes",
+      "normalized": "地球系统数据立方体",
+      "std_label": "ESDCs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress."
+      },
+      "confidence": 0.98,
+      "term": "Artificial Intelligence",
+      "normalized": "人工智能",
+      "std_label": "AI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c3",
+      "evidence": {
+        "section": "3.2 Curation",
+        "original_text": "Effective data curation stands as a critical anchor in the preparation of data for subsequent spatio-temporal processes and analysis via ESDCs (Marujo et al., 2022). The transformation of raw data into Analysis-Ready Data (ARD) has emerged as an essential prerequisite across multiple initiatives. ARD ensures that data are readily amenable to queries, analysis, and application development. Notable instances of these initiatives include DE Africa, DE Australia, and the Brazil Data Cube (Ferreira et al., 2020; Marujo et al., 2022), among others. The Committee on Earth Observation Satellites (CEOS) has precisely defined ARD as “satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets”. In this definition, ARD also exhibit interoperability both across time and with other datasets (refer to Siqueira et al., 2019 for an overview of the CEOS ARD for Land initiative, CARD4L). CEOS has established a comprehensive set of Product Family Specifications (PFS) tailored to various data groups, including Surface Reflectance, Surface Temperature, Polarimetric Radar, and more. These specifications undergo rigorous peer review processes across multiple satellite platforms, such as Landsat and Sentinel collections, to obtain CEOS ARD approval. It's worth noting that there are ongoing efforts to develop additional PFS, including Interferometric Radar and LiDAR Terrain and Canopy Height. It is also worth noting that the OGC has recently addressed the CEOS ARD concept by forming a new Standards Working Group (SWG) to define a generic multi-part standard specifying a set of minimum requirements for geospatial products to be considered ARD."
+      },
+      "confidence": 0.97,
+      "term": "Analysis-Ready Data",
+      "normalized": "分析就绪数据",
+      "std_label": "ARD"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c4",
+      "evidence": {
+        "section": "4.1 Adding factual knowledge via PIML",
+        "original_text": "A great addition to Machine Learning (ML) modelling is combining the pure data-driven approach with factual knowledge of the system under investigation (Karniadakis et al., 2021). PIML leverages domain knowledge (typically mechanistic models or differential equations) and flexible data-driven ML methods (typically neural networks). Consequently, PIML models respect physical boundaries more faithfully while being flexible enough to approximate arbitrarily complex nonlinear functions from data (cf. discussion and references in Reichstein et al., 2019). ESDCs provide a unique structure to access multiple Earth system data streams, and the equation-based model describes the underlying process. Thanks to this ready availability of data and equations, exploring PIML models using a wide array of baseline models would be far easier and faster. The equations detailing a given variable could be added to the cube as a sub-field of the variable of interest in the same way that space and time are. The eventual implementation should consider the multi-platform and multi-language nature of ESDCs. As illustrated above, this requires a unified and robust approach that suits multiple use cases."
+      },
+      "confidence": 0.96,
+      "term": "Physics-Informed Machine Learning",
+      "normalized": "物理信息机器学习",
+      "std_label": "PIML"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress."
+      },
+      "confidence": 0.95,
+      "term": "spatio-temporal autocorrelation",
+      "normalized": "时空自相关",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c6",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "The need to operate in cloud environments has driven the development of cloud-optimised geospatial data formats. Consequently, the GeoTIFF format has evolved to the Cloud-Optimised GeoTIFF (COG) format, enhanced to function efficiently in cloud environments through HTTP range requests. COGs offer several advantages over traditional GeoTIFFs, including reduced latency in data retrieval, faster visualization of large datasets, and a tiled structure that enables parallel processing. The significance of this format is underscored by its recent approval as an Open Geospatial Consortium (OGC) standard."
+      },
+      "confidence": 0.97,
+      "term": "Cloud-Optimised GeoTIFF",
+      "normalized": "云优化GeoTIFF",
+      "std_label": "COG"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c7",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "When the dimensionality of the data increases, formats such as NetCDF or HDF5 are typically used to encapsulate data and coordinate values. Tiling and chunking allow efficient access to big data arrays for both data formats. However, these formats are not inherently optimised for cloud environments.The Zarr specification addresses this limitation and can be used directly in cloud environments, offering several advantages over NetCDF and HDF5. Zarr enables more efficient chunk access for parallel processing, provides better support for distributed computing, and offers improved read and write speeds, particularly in cloud storage systems. Moreover, Zarr's flexible chunking scheme allows for optimised data access patterns, and its simpler metadata structure facilitates easier data discovery and management. Additionally, specifications such as geo-zarr and the xcube dataset convention have been introduced to further enhance data interoperability and compatibility within the context of Earth system data."
+      },
+      "confidence": 0.96,
+      "term": "Zarr specification",
+      "normalized": "Zarr规范",
+      "std_label": "Zarr"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c8",
+      "evidence": {
+        "section": "2.2 Relation of ESDCs to Image Collections and Data Cubes",
+        "original_text": "Standardising image collections and their access brings simplicity and promotes data usage across platforms. Currently, a widely recognised standard is the Spatio-Temporal Assets Catalog (STAC) specification. This specification empowers users to query data assets based on metadata and spatio-temporal criteria. Coupled with domain-specific API clients available for multiple programming languages (cf. Section 6.2) and GIS software (e.g. QGIS STAC Plugin), users can easily retrieve data. The flexibility of the STAC specification has prompted numerous data providers to adopt it for creating their own data catalogues, with notable examples including Microsoft Planetary Computer Catalogue and the United States Geological Survey (USGS) Landsat Archive Catalogue (stored in the Amazon Simple Storage Service, S3)."
+      },
+      "confidence": 0.98,
+      "term": "Spatio-Temporal Assets Catalog",
+      "normalized": "时空资产目录",
+      "std_label": "STAC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c9",
+      "evidence": {
+        "section": "2.2 Relation of ESDCs to Image Collections and Data Cubes",
+        "original_text": "The information-preserving data cube approach is exemplified by the Open Data Cube (ODC) initiative, a prominent model in this field (Killough, 2018; Killough et al., 2020). This approach has played a pivotal role in informing governmental actions and policies, as evidenced by their integration into national and regional data cube frameworks (Dhu et al., 2019; Sudmanns et al., 2022). Noteworthy instances of these initiatives include Digital Earth Africa (DE Africa, formerly known as Africa Regional Data Cube, Killough, 2019), Digital Earth Australia (DE Australia, previously Australian Geoscience Data Cube, Lewis et al., 2017; Dhu et al., 2017), the Colombian Data Cube (CDCol, Ariza-Porras et al., 2017; Bravo et al., 2017; Villamizar et al., 2018), and the Swiss Data Cube (SDC, Giuliani et al., 2017)."
+      },
+      "confidence": 0.97,
+      "term": "Open Data Cube",
+      "normalized": "开放数据立方体",
+      "std_label": "ODC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_635cdb82b87c6a49_c10",
+      "evidence": {
+        "section": "8 Conclusions and perspective",
+        "original_text": "This paper reviews and explores the challenges and opportunities of leveraging ESDCs for Earth system research. This becomes particularly important in developing Earth Digital Twins (i.e. “a digital replication of the state and temporal evolution of the Earth system”, Bauer et al., 2021b). In this sense, the topics discussed here are of significance in initiatives like Destination Earth (DestinE). The inherent simplicity and versatility of ESDCs enable a comprehensive exploration of the complex Earth system, facilitating a deeper understanding of intricate processes and phenomena."
+      },
+      "confidence": 0.96,
+      "term": "Earth Digital Twins",
+      "normalized": "地球数字孪生",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Earth System Data Cubes (ESDCs) have emerged as one suitable solution for transforming this flood of data into a simple yet robust data structure. ESDCs achieve this by organising data into an analysis-ready format aligned with a spatio-temporal grid, facilitating user-friendly analysis and diminishing the need for extensive technical data processing knowledge. Despite these significant benefits, the completion of the entire ESDC life cycle remains a challenging task. Obstacles are not only of a technical nature but also relate to domain-specific problems in Earth system research. There exist barriers to realising the full potential of data collections in light of novel cloud-based technologies, particularly in curating data tailored for specific application domains. These include transforming data to conform to a spatio-temporal grid with minimum distortions and managing complexities such as spatio-temporal autocorrelation issues. Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress."
+      },
+      "confidence": 0.94,
+      "head": "doc_635cdb82b87c6a49_c1",
+      "relation_type": "facilitates",
+      "relation_surface": "facilitating",
+      "tail": "doc_635cdb82b87c6a49_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r2",
+      "evidence": {
+        "section": "3.2 Curation",
+        "original_text": "Effective data curation stands as a critical anchor in the preparation of data for subsequent spatio-temporal processes and analysis via ESDCs (Marujo et al., 2022). The transformation of raw data into Analysis-Ready Data (ARD) has emerged as an essential prerequisite across multiple initiatives. ARD ensures that data are readily amenable to queries, analysis, and application development. Notable instances of these initiatives include DE Africa, DE Australia, and the Brazil Data Cube (Ferreira et al., 2020; Marujo et al., 2022), among others. The Committee on Earth Observation Satellites (CEOS) has precisely defined ARD as “satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets”. In this definition, ARD also exhibit interoperability both across time and with other datasets (refer to Siqueira et al., 2019 for an overview of the CEOS ARD for Land initiative, CARD4L). CEOS has established a comprehensive set of Product Family Specifications (PFS) tailored to various data groups, including Surface Reflectance, Surface Temperature, Polarimetric Radar, and more. These specifications undergo rigorous peer review processes across multiple satellite platforms, such as Landsat and Sentinel collections, to obtain CEOS ARD approval. It's worth noting that there are ongoing efforts to develop additional PFS, including Interferometric Radar and LiDAR Terrain and Canopy Height. It is also worth noting that the OGC has recently addressed the CEOS ARD concept by forming a new Standards Working Group (SWG) to define a generic multi-part standard specifying a set of minimum requirements for geospatial products to be considered ARD."
+      },
+      "confidence": 0.93,
+      "head": "doc_635cdb82b87c6a49_c3",
+      "relation_type": "is_processed_to",
+      "relation_surface": "transformation of raw data into",
+      "tail": "doc_635cdb82b87c6a49_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r3",
+      "evidence": {
+        "section": "4.1 Adding factual knowledge via PIML",
+        "original_text": "A great addition to Machine Learning (ML) modelling is combining the pure data-driven approach with factual knowledge of the system under investigation (Karniadakis et al., 2021). PIML leverages domain knowledge (typically mechanistic models or differential equations) and flexible data-driven ML methods (typically neural networks). Consequently, PIML models respect physical boundaries more faithfully while being flexible enough to approximate arbitrarily complex nonlinear functions from data (cf. discussion and references in Reichstein et al., 2019). ESDCs provide a unique structure to access multiple Earth system data streams, and the equation-based model describes the underlying process. Thanks to this ready availability of data and equations, exploring PIML models using a wide array of baseline models would be far easier and faster. The equations detailing a given variable could be added to the cube as a sub-field of the variable of interest in the same way that space and time are. The eventual implementation should consider the multi-platform and multi-language nature of ESDCs. As illustrated above, this requires a unified and robust approach that suits multiple use cases."
+      },
+      "confidence": 0.92,
+      "head": "doc_635cdb82b87c6a49_c1",
+      "relation_type": "supports",
+      "relation_surface": "provide a unique structure to access",
+      "tail": "doc_635cdb82b87c6a49_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Earth System Data Cubes (ESDCs) have emerged as one suitable solution for transforming this flood of data into a simple yet robust data structure. ESDCs achieve this by organising data into an analysis-ready format aligned with a spatio-temporal grid, facilitating user-friendly analysis and diminishing the need for extensive technical data processing knowledge. Despite these significant benefits, the completion of the entire ESDC life cycle remains a challenging task. Obstacles are not only of a technical nature but also relate to domain-specific problems in Earth system research. There exist barriers to realising the full potential of data collections in light of novel cloud-based technologies, particularly in curating data tailored for specific application domains. These include transforming data to conform to a spatio-temporal grid with minimum distortions and managing complexities such as spatio-temporal autocorrelation issues. Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress."
+      },
+      "confidence": 0.91,
+      "head": "doc_635cdb82b87c6a49_c5",
+      "relation_type": "poses_challenge_for",
+      "relation_surface": "managing complexities such as",
+      "tail": "doc_635cdb82b87c6a49_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r5",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "The need to operate in cloud environments has driven the development of cloud-optimised geospatial data formats. Consequently, the GeoTIFF format has evolved to the Cloud-Optimised GeoTIFF (COG) format, enhanced to function efficiently in cloud environments through HTTP range requests. COGs offer several advantages over traditional GeoTIFFs, including reduced latency in data retrieval, faster visualization of large datasets, and a tiled structure that enables parallel processing. The significance of this format is underscored by its recent approval as an Open Geospatial Consortium (OGC) standard."
+      },
+      "confidence": 0.9,
+      "head": "doc_635cdb82b87c6a49_c6",
+      "relation_type": "enhances",
+      "relation_surface": "enhanced to function efficiently",
+      "tail": "doc_635cdb82b87c6a49_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r6",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "When the dimensionality of the data increases, formats such as NetCDF or HDF5 are typically used to encapsulate data and coordinate values. Tiling and chunking allow efficient access to big data arrays for both data formats. However, these formats are not inherently optimised for cloud environments.The Zarr specification addresses this limitation and can be used directly in cloud environments, offering several advantages over NetCDF and HDF5. Zarr enables more efficient chunk access for parallel processing, provides better support for distributed computing, and offers improved read and write speeds, particularly in cloud storage systems. Moreover, Zarr's flexible chunking scheme allows for optimised data access patterns, and its simpler metadata structure facilitates easier data discovery and management. Additionally, specifications such as geo-zarr and the xcube dataset convention have been introduced to further enhance data interoperability and compatibility within the context of Earth system data."
+      },
+      "confidence": 0.89,
+      "head": "doc_635cdb82b87c6a49_c7",
+      "relation_type": "improves",
+      "relation_surface": "offering several advantages over",
+      "tail": "doc_635cdb82b87c6a49_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r7",
+      "evidence": {
+        "section": "2.2 Relation of ESDCs to Image Collections and Data Cubes",
+        "original_text": "Standardising image collections and their access brings simplicity and promotes data usage across platforms. Currently, a widely recognised standard is the Spatio-Temporal Assets Catalog (STAC) specification. This specification empowers users to query data assets based on metadata and spatio-temporal criteria. Coupled with domain-specific API clients available for multiple programming languages (cf. Section 6.2) and GIS software (e.g. QGIS STAC Plugin), users can easily retrieve data. The flexibility of the STAC specification has prompted numerous data providers to adopt it for creating their own data catalogues, with notable examples including Microsoft Planetary Computer Catalogue and the United States Geological Survey (USGS) Landsat Archive Catalogue (stored in the Amazon Simple Storage Service, S3)."
+      },
+      "confidence": 0.88,
+      "head": "doc_635cdb82b87c6a49_c8",
+      "relation_type": "facilitates",
+      "relation_surface": "empowers users to query",
+      "tail": "doc_635cdb82b87c6a49_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r8",
+      "evidence": {
+        "section": "2.2 Relation of ESDCs to Image Collections and Data Cubes",
+        "original_text": "The information-preserving data cube approach is exemplified by the Open Data Cube (ODC) initiative, a prominent model in this field (Killough, 2018; Killough et al., 2020). This approach has played a pivotal role in informing governmental actions and policies, as evidenced by their integration into national and regional data cube frameworks (Dhu et al., 2019; Sudmanns et al., 2022). Noteworthy instances of these initiatives include Digital Earth Africa (DE Africa, formerly known as Africa Regional Data Cube, Killough, 1999), Digital Earth Australia (DE Australia, previously Australian Geoscience Data Cube, Lewis et al., 2017; Dhu et al., 2017), the Colombian Data Cube (CDCol, Ariza-Porras et al., 2017; Bravo et al., 2017; Villamizar et al., 2018), and the Swiss Data Cube (SDC, Giuliani et al., 2017)."
+      },
+      "confidence": 0.87,
+      "head": "doc_635cdb82b87c6a49_c9",
+      "relation_type": "is_exemplified_by",
+      "relation_surface": "is exemplified by",
+      "tail": "doc_635cdb82b87c6a49_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_635cdb82b87c6a49_r9",
+      "evidence": {
+        "section": "8 Conclusions and perspective",
+        "original_text": "This paper reviews and explores the challenges and opportunities of leveraging ESDCs for Earth system research. This becomes particularly important in developing Earth Digital Twins (i.e. “a digital replication of the state and temporal evolution of the Earth system”, Bauer et al., 2021b). In this sense, the topics discussed here are of significance in initiatives like Destination Earth (DestinE). The inherent simplicity and versatility of ESDCs enable a comprehensive exploration of the complex Earth system, facilitating a deeper understanding of intricate processes and phenomena."
+      },
+      "confidence": 0.86,
+      "head": "doc_635cdb82b87c6a49_c1",
+      "relation_type": "are_critical_for",
+      "relation_surface": "becomes particularly important in developing",
+      "tail": "doc_635cdb82b87c6a49_c10"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_635cdb82b87c6a49_d1",
+      "evidence": {
+        "section": "2.1 What are Earth System Data Cubes (ESDCs)?",
+        "original_text": "ESDCs represent multidimensional data structures designed to facilitate streamlined access, analysis, and manipulation of Earth system data. ESDCs comprise labels as dimensions defining the cube’s axes, an array of grids with their associated coordinate values distributed along these dimensions, and univariate data associated with each grid cell. Furthermore, in this paper, we add a new component: a suite of attributes that characterise the data, the dimensions, and the complete ESDC entity. The dimensions are a set of labels describing the axes of the ESDC. Generally, these dimensions comprise space (e.g. “x” and “y”), time, and variables. Nevertheless, further dimensions can be added (e.g. “pressure levels”, “model ensembles” or “time series components”). It is crucial to emphasise that while ESDCs conventionally incorporate spatial and temporal dimensions (e.g. latitude, longitude, and time), they are not confined to this paradigm (cf. Table 1 of Mahecha et al., 2020). ESDCs can exhibit different dimensions, and the number of dimensions is called the order of the ESDC. Thus, an increment in the ESDC’s complexity according to its dimensions is given by their order (e.g. a spatio-temporal grid of a univariate ESDC has an order of 3, while the order of a multivariate ESDC is 4). The grouping of grids consists of discrete subsets derived from the domain of each dimension’s axis. The values of these subsets are referred to as coordinates, and, in the case of a regular grid, they determine the data’s resolution along that specific dimension. For instance, a grid determining a resolution of 0.5 degrees for the “latitude” dimension in a global ESDC may have a set of coordinates grid(latitude) = {−89.75, −89.25, ..., 89.25, 89.75}. While coordinates are often associated with numerical values (e.g. latitudes and longitudes), they can encompass a wide range of values. For instance, timestamps in a “time” dimension with a set of coordinates grid(time) = {“2022-01-01”, “2022-01-02”, ..., “2022-12-31”}, or components derived from a time series decomposition approach in a “component” dimension with a set of coordinates grid(component) = {“raw”, “trend”, “seasonal”, “residual”}. The grids within an ESDC exhibit the following characteristics: 1) In the case of spatial dimensions, they reference the same CRS, 2) the coordinates within a grid share identical units, and 3) they must consist of at least two coordinates; otherwise, the dimension (and consequently the grid) is omitted. It’s important to note that, given these properties, irregular grids are also possible, with the temporal dimension grid being a typical example in EO data due to the irregular revisit times of some satellite missions (e.g. Sentinel-2). The array of data represents scalar values corresponding to each grid cell. Typically, the data spans from observed measurements to modelled values. Nevertheless, one can also encounter higher-order features (i.e. data derived from operations performed on the original values), such as outcomes from time series decomposition or AI-generated products. Furthermore, flag values, which delineate data status, can be incorporated. Cells without data are denoted as “NA” (i.e. not available). The collection of attributes comprises a series of key-value objects that provide additional details about the data. These objects serve as metadata and can offer descriptions ranging from individual variables (including their associated dimensions) to the entire ESDC. The information contained within these attributes typically encompasses a wide range of elements, including, but not limited to, names, acronyms, units, flag definitions, versions, and source details."
+      },
+      "confidence": 0.95,
+      "name": "Earth System Data Cube (ESDC)",
+      "modality": "tabular",
+      "domain": "Earth system science"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_635cdb82b87c6a49_d2",
+      "evidence": {
+        "section": "3.3 Cubing",
+        "original_text": "The concept of ARD may exhibit some subjectivity depending on the specific application. This subjectivity pertains to the data that populates an ESDC. In contrast, ESDCs inherently represent straightforward yet robust analysis-ready integrated entities, capable of simplifying a broad spectrum of analytical tasks (Baumann et al., 2019). An ESDC filled with ARD is often called an Analysis-Ready Data Cube (ARDC), a concept widely employed in DeepESDL. To generate an ARDC, the critical step involves aligning data onto a unified grid. Domain experts predefine this grid, and all data sources must conform. Furthermore, the efficacy of the ARDC processing is significantly influenced by the implementation of an optimal chunking strategy for this grid. This strategy must be tailored to facilitate efficient data processing across diverse analytical scenarios. For instance, analyses focused on temporal dynamics benefit from chunking strategies that preserve the temporal dimension, whereas spatial analyses or cartographic visualisations are optimised by maintaining spatial dimensions within chunks. In scenarios requiring multitemporal spatial analysis, a hybrid approach combining both temporal and spatial preservation in chunking can be advantageous."
+      },
+      "confidence": 0.9,
+      "name": "Analysis-Ready Data Cube (ARDC)",
+      "modality": "tabular",
+      "domain": "Earth system science"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_635cdb82b87c6a49_d3",
+      "evidence": {
+        "section": "3.4 Harmonisation",
+        "original_text": "Additional post-processing of data variables may be necessary to address Earth system challenges. This entails further data curation to obtain a fully gap-filled, harmonised product with evenly spaced time steps. In alignment with the naming conventions established for EO data cubes by Frantz, 2019, we refer to a thoroughly harmonised ESDC as a highly ARDC (hARDC). Data harmonisation is crucial to ensure the consistency and compatibility of variables obtained or generated using different methodological or technical approaches (Wulder et al., 2015). When discrepancies exist between data measurement or production methods, it can introduce inconsistencies that hinder subsequent analyses involving the specific variables (Vogeler et al., 2018). To address this, one approach is to create separate variables that represent the same measured quantity, highlighting the differences between them. However, to enhance spatiotemporal resolution and coverage, harmonisation of variables is often necessary (e.g. harmonising reflectance values from Sentinel-2 and Landsat, Claverie et al., 2018; Marujo et al., 2023). This can be achieved through simple methods that involve sampling data from the same spatio-temporal index in both variables to establish a direct conversion model (e.g. using matched observations to match Landsat 8 and Sentinel-2, Shang and Zhu, 2019). Alternatively, more advanced AI models can harmonise data by incorporating one or more additional variables (e.g. creating a global product of OCO-2 Sun-Induced Fluorescence, SIF, Li and Xiao, 2019). This may require the development of an entire AI pipeline to extend a variable with newly available data or reconstruct it, especially in cases where the variable was not previously measured (e.g. reconstructing SIF from TROPOMI, Chen et al., 2022). In this sense, data harmonisation also encompasses projecting data in simulated future scenarios (e.g. projecting vegetation dynamics for the rest of the century, Mahowald et al., 2016). In addition, it is crucial to incorporate uncertainty metrics to facilitate accurate and reliable future analysis using the harmonised data variables (cf. Section 4.3). Additionally, to effectively use algorithms that incorporate temporal structures, such as Recurrent Neural Networks (RNNs, Sherstinsky, 2020), a regularly spaced and gapless time dimension is usually required. Hence, data from an irregular time dimension should be aggregated or interpolated to fit into a regular temporal grid (e.g. gap-filling Landsat reflectances on a monthly basis, Moreno-Mart´ınez et al., 2020). A suitable predefined temporal resolution must be selected, and data must be gap-filled. Various gap-filling techniques, ranging from simple linear interpolation to more complex AI-based modelling approaches, can be employed to address this (e.g. using Long Short-Term Memory networks, LSTMs, Ren et al., 2022). The choice of the gap-filling method depends on factors such as the data’s nature, the desired accuracy level, and the specific requirements of the analysis or application."
+      },
+      "confidence": 0.9,
+      "name": "Highly Analysis-Ready Data Cube (hARDC)",
+      "modality": "tabular",
+      "domain": "Earth system science"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_635cdb82b87c6a49_d4",
+      "evidence": {
+        "section": "3.5 Transformation",
+        "original_text": "Expertly crafted higher-order features often prove highly relevant for addressing Earth system challenges. These new features span a spectrum, encompassing operations that range from simple transformations of the original variables to the creation of entirely novel features derived from advanced AI models. Examples of such features include the computation of spectral indices derived from reflectance bands (Montero et al., 2023), the extraction of frequencies through time series decomposition (Mahecha et al., 2010), the creation of spatio-temporal compositions (e.g. Griffiths et al., 2013), summarising high dimensional dynamics (e.g. Kraemer et al., 2020), and outputs generated by AI models (e.g. Brown et al., 2022). To illustrate, consider a study focusing on climate extremes like heatwaves and droughts’ impact on the terrestrial biosphere. In such cases, calculating anomalies for critical variables (e.g. air temperature and soil moisture as proxies for heatwaves and droughts, with Gross Primary Production as the target biosphere variable) is pivotal (see Figure 3). Creating these novel features introduces a new dimension to distinguish between variable values corresponding to raw data and those representing anomalies. In line with the naming conventions introduced by Frantz, 2019, we designate an ESDC with higher-order features as a hARDC Plus (hARDC+)."
+      },
+      "confidence": 0.9,
+      "name": "Highly Analysis-Ready Data Cube Plus (hARDC+)",
+      "modality": "tabular",
+      "domain": "Earth system science"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_635cdb82b87c6a49_ds1",
+      "evidence": {
+        "section": "3.2 Curation",
+        "original_text": "Effective data curation stands as a critical anchor in the preparation of data for subsequent spatio-temporal processes and analysis via ESDCs (Marujo et al., 2022). The transformation of raw data into Analysis-Ready Data (ARD) has emerged as an essential prerequisite across multiple initiatives. ARD ensures that data are readily amenable to queries, analysis, and application development. Notable instances of these initiatives include DE Africa, DE Australia, and the Brazil Data Cube (Ferreira et al., 2020; Marujo et al., 2022), among others. The Committee on Earth Observation Satellites (CEOS) has precisely defined ARD as “satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets”. In this definition, ARD also exhibit interoperability both across time and with other datasets (refer to Siqueira et al., 2019 for an overview of the CEOS ARD for Land initiative, CARD4L). CEOS has established a comprehensive set of Product Family Specifications (PFS) tailored to various data groups, including Surface Reflectance, Surface Temperature, Polarimetric Radar, and more. These specifications undergo rigorous peer review processes across multiple satellite platforms, such as Landsat and Sentinel collections, to obtain CEOS ARD approval. It’s worth noting that there are ongoing efforts to develop additional PFS, including Interferometric Radar and LiDAR Terrain and Canopy Height. It is also worth noting that the OGC has recently addressed the CEOS ARD concept by forming a new Standards Working Group (SWG) to define a generic multi-part standard specifying a set of minimum requirements for geospatial products to be considered ARD."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Analysis-Ready Data (ARD) definition and specifications for satellite data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_635cdb82b87c6a49_ds2",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "Additionally, the efficiency of data access and collection is contingent upon data formats. GeoTIFF is arguably the most used and renowned data format for georeferenced raster data. This format adds a standard specification for the TIFF format that describes the spatial properties of the raster. It is widely used for EO products such as Landsat imagery. The need to operate in cloud environments has driven the development of cloud-optimised geospatial data formats. Consequently, the GeoTIFF format has evolved to the Cloud-Optimised GeoTIFF (COG) format, enhanced to function efficiently in cloud environments through HTTP range requests. COGs offer several advantages over traditional GeoTIFFs, including reduced latency in data retrieval, faster visualization of large datasets, and a tiled structure that enables parallel processing. The significance of this format is underscored by its recent approval as an Open Geospatial Consortium (OGC) standard."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Cloud-Optimised GeoTIFF (COG) format for georeferenced raster data in cloud environments"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_635cdb82b87c6a49_ds3",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "When the dimensionality of the data increases, formats such as NetCDF or HDF5 are typically used to encapsulate data and coordinate values. Tiling and chunking allow efficient access to big data arrays for both data formats. However, these formats are not inherently optimised for cloud environments.The Zarr specification addresses this limitation and can be used directly in cloud environments, offering several advantages over NetCDF and HDF5. Zarr enables more efficient chunk access for parallel processing, provides better support for distributed computing, and offers improved read and write speeds, particularly in cloud storage systems. Moreover, Zarr’s flexible chunking scheme allows for optimised data access patterns, and its simpler metadata structure facilitates easier data discovery and management. Additionally, specifications such as geo-zarr and the xcube dataset convention have been introduced to further enhance data interoperability and compatibility within the context of Earth system data."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Zarr specification for efficient chunk access and distributed computing in cloud environments"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_635cdb82b87c6a49_ds4",
+      "evidence": {
+        "section": "3.7 Metadata generation",
+        "original_text": "While flexibility exists in metadata management, conventions are crucial when dealing with Earth system data. The Climate and Forecast Metadata Conventions (CF Conventions, Hassell et al., 2017), for instance, represent a comprehensive set of standards specifically designed for Earth system data stored in formats such as NetCDF (although they can be readily applied to other formats like Zarr). These conventions facilitate the creation of clear and detailed descriptions of data variables and coordinate dimensions. Furthermore, software like xarray (Hoyer and Hamman, 2017) can parse CF Conventions and leverage them for different ESDC processes. Compliance with CF Conventions not only simplifies data sharing but also promotes interoperability among various data sources, ensuring that ESDCs adhere to established standards."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Climate and Forecast Metadata Conventions (CF Conventions) for Earth system data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_635cdb82b87c6a49_ds5",
+      "evidence": {
+        "section": "6.1 Computing resources",
+        "original_text": "The data size and available computing resources determine data processing feasibility throughout the ESDC life cycle. Computing resources vary from a single laptop to a local cluster with multithreaded or distributed processing capabilities and can extend to cloud computing environments composed of multiple clusters. Modern computers are equipped with high-speed Solid-State Drives (SSDs) featuring fast random access and the potential for multiple Gigabytes per second throughput. However, the challenge lies in their limited capacity. In data centres, this is solved by using arrays of disks, but this introduces additional challenges, including latency, throughput, reliability, and security. Computation on local systems typically involves singlethreaded or lightly multi-threaded computations with a higher level of interactivity. In HighPerformance Computing (HPC) environments, the software operates in a multi-threaded or multi-core manner and is usually installed by a local system administrator. HPC environments are well-suited for extensive processing tasks but offer reduced interactivity due to the involvement of job schedulers for managing computation resources. Cloud computing environments offer a promising solution for managing vast amounts of Earth system data. These environments can be further improved in terms of scalability by utilising technologies like Kubernetes and Argo, which allow for specialised workflows. Platforms such as GEE, the European Open Science Cloud (EOSC), Google Colaboratory, Amazon SageMaker, DeepESDL, and Kaggle provide opportunities for efficient data storage, processing, and collaboration in scientific research. However, it is essential to note that these platforms often impose certain limitations on the users. These limitations include storage capacity, computational resources, available tools for ESDC management, access permissions, and usage restrictions."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Computing resource requirements and scalability considerations for ESDC management"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m1",
+      "evidence": {
+        "section": "2.1 What are Earth System Data Cubes (ESDCs)?",
+        "original_text": "ESDCs represent multidimensional data structures designed to facilitate streamlined access, analysis, and manipulation of Earth system data. ESDCs comprise labels as dimensions defining the cube’s axes, an array of grids with their associated coordinate values distributed along these dimensions, and univariate data associated with each grid cell. Furthermore, in this paper, we add a new component: a suite of attributes that characterise the data, the dimensions, and the complete ESDC entity. The dimensions are a set of labels describing the axes of the ESDC. Generally, these dimensions comprise space (e.g. “x” and “y”), time, and variables. Nevertheless, further dimensions can be added (e.g. “pressure levels”, “model ensembles” or “time series components”). It is crucial to emphasise that while ESDCs conventionally incorporate spatial and temporal dimensions (e.g. latitude, longitude, and time), they are not confined to this paradigm (cf. Table 1 of Mahecha et al., 2020). ESDCs can exhibit different dimensions, and the number of dimensions is called the order of the ESDC. Thus, an increment in the ESDC’s complexity according to its dimensions is given by their order (e.g. a spatio-temporal grid of a univariate ESDC has an order of 3, while the order of a multivariate ESDC is 4). The grouping of grids consists of discrete subsets derived from the domain of each dimension’s axis. The values of these subsets are referred to as coordinates, and, in the case of a regular grid, they determine the data’s resolution along that specific dimension. For instance, a grid determining a resolution of 0.5 degrees for the “latitude” dimension in a global ESDC may have a set of coordinates grid(latitude) = {−89.75, −89.25, ..., 89.25, 89.75}. While coordinates are often associated with numerical values (e.g. latitudes and longitudes), they can encompass a wide range of values. For instance, timestamps in a “time” dimension with a set of coordinates grid(time) = {“2022-01-01”, “2022-01-02”, ..., “2022-12-31”}, or components derived from a time series decomposition approach in a “component” dimension with a set of coordinates grid(component) = {“raw”, “trend”, “seasonal”, “residual”}. The grids within an ESDC exhibit the following characteristics: 1) In the case of spatial dimensions, they reference the same CRS, 2) the coordinates within a grid share identical units, and 3) they must consist of at least two coordinates; otherwise, the dimension (and consequently the grid) is omitted. It’s important to note that, given these properties, irregular grids are also possible, with the temporal dimension grid being a typical example in EO data due to the irregular revisit times of some satellite missions (e.g. Sentinel-2). The array of data represents scalar values corresponding to each grid cell. Typically, the data spans from observed measurements to modelled values. Nevertheless, one can also encounter higher-order features (i.e. data derived from operations performed on the original values), such as outcomes from time series decomposition or AI-generated products. Furthermore, flag values, which delineate data status, can be incorporated. Cells without data are denoted as “NA” (i.e. not available). The collection of attributes comprises a series of key-value objects that provide additional details about the data. These objects serve as metadata and can offer descriptions ranging from individual variables (including their associated dimensions) to the entire ESDC. The information contained within these attributes typically encompasses a wide range of elements, including, but not limited to, names, acronyms, units, flag definitions, versions, and source details."
+      },
+      "confidence": 0.95,
+      "name": "Earth System Data Cubes (ESDCs)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m2",
+      "evidence": {
+        "section": "2.2 Relation of ESDCs to Image Collections and Data Cubes",
+        "original_text": "Earth system data often exhibits heterogeneity and irregularity, particularly within EO data. Variability can manifest in different spatial resolutions, time units, projections, formats, and more, sometimes even within the same data product. Consequently, two robust approaches to retaining data integrity without succumbing to information loss due to transformations (e.g. reprojection, reduction, and resampling) are to utilise image collections (refer to Appel and Pebesma, 2019 for a comprehensive distinction between image collections and conventional data cubes) or to adopt a process where original files are stored and indexed within a information-preserving data cube infrastructure based on their file metadata (Figure 1). In the latter approach, the original files can be stored locally or in the cloud while preserving the essential information intact. A successful example of image collections is the GEE Catalogue. This extensive, multi-petabyte catalogue stores data in tiled images, where each image may encompass multiple bands, thereby preserving essential information. Furthermore, these images can be organised into an image collection if they share relevancy. GEE also offers the computational resources necessary for accessing and analysing their catalogued data. Within GEE, data cube-like operations can be seamlessly executed through dynamic on-the-fly reprojection, resampling, and reduction for the tiles where a subset of pixels was explicitly requested. It is worth noting, however, that users are required to conform to the specific Application Programming Interfaces (API) provided by GEE for processing and analysing the data effectively. Standardising image collections and their access brings simplicity and promotes data usage across platforms. Currently, a widely recognised standard is the Spatio-Temporal Assets Catalog (STAC) specification. This specification empowers users to query data assets based on metadata and spatio-temporal criteria. Coupled with domain-specific API clients available for multiple programming languages (cf. Section 6.2) and GIS software (e.g. QGIS STAC Plugin), users can easily retrieve data. The flexibility of the STAC specification has prompted numerous data providers to adopt it for creating their own data catalogues, with notable examples including Microsoft Planetary Computer Catalogue and the United States Geological Survey (USGS) Landsat Archive Catalogue (stored in the Amazon Simple Storage Service, S3)."
+      },
+      "confidence": 0.95,
+      "name": "Image Collections",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m3",
+      "evidence": {
+        "section": "2.2 Relation of ESDCs to Image Collections and Data Cubes",
+        "original_text": "The information-preserving data cube approach is exemplified by the Open Data Cube (ODC) initiative, a prominent model in this field (Killough, 2018; Killough et al., 2020). This approach has played a pivotal role in informing governmental actions and policies, as evidenced by their integration into national and regional data cube frameworks (Dhu et al., 2019; Sudmanns et al., 2022). Noteworthy instances of these initiatives include Digital Earth Africa (DE Africa, formerly known as Africa Regional Data Cube, Killough, 2019), Digital Earth Australia (DE Australia, previously Australian Geoscience Data Cube, Lewis et al., 2017; Dhu et al., 2017), the Colombian Data Cube (CDCol, Ariza-Porras et al., 2017; Bravo et al., 2017; Villamizar et al., 2018), and the Swiss Data Cube (SDC, Giuliani et al., 2017). While both of these approaches excel in preserving data integrity and offering flexibility for various analyses, achieving Earth system data interoperability necessitates their integration into a unified structure through ESDCs. These ESDCs can be constructed from either approach. For instance, in the case of image collections, it is feasible to request pixels from GEE (Clinton, 2023), and data transformations can be executed within the GEE cloud-based environment before downloading the data. It’s important to note that limitations related to the size of the requested data can be a potential concern in this process. Alternatively, STAC simplifies the process, particularly when combined with cloud-ready formats. This lazily enables the creation of ESDCs. In the information-preserving data cube approach, platforms like ODC offer a comprehensive system for transforming original data into ESDCs and even provide mechanisms for storing the resulting ESDCs within the data cube infrastructure. Noteworthy is openEO (Schramm et al., 2021), an API striving to connect multiple backends, including image collection providers (e.g. GEE) and information-preserving data cubes (e.g. ODC), to generate ESDCs."
+      },
+      "confidence": 0.95,
+      "name": "Information-preserving data cube",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m4",
+      "evidence": {
+        "section": "3.2 Curation",
+        "original_text": "Effective data curation stands as a critical anchor in the preparation of data for subsequent spatio-temporal processes and analysis via ESDCs (Marujo et al., 2022). The transformation of raw data into Analysis-Ready Data (ARD) has emerged as an essential prerequisite across multiple initiatives. ARD ensures that data are readily amenable to queries, analysis, and application development. Notable instances of these initiatives include DE Africa, DE Australia, and the Brazil Data Cube (Ferreira et al., 2020; Marujo et al., 2022), among others. The Committee on Earth Observation Satellites (CEOS) has precisely defined ARD as “satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets”. In this definition, ARD also exhibit interoperability both across time and with other datasets (refer to Siqueira et al., 2019 for an overview of the CEOS ARD for Land initiative, CARD4L). CEOS has established a comprehensive set of Product Family Specifications (PFS) tailored to various data groups, including Surface Reflectance, Surface Temperature, Polarimetric Radar, and more. These specifications undergo rigorous peer review processes across multiple satellite platforms, such as Landsat and Sentinel collections, to obtain CEOS ARD approval. It’s worth noting that there are ongoing efforts to develop additional PFS, including Interferometric Radar and LiDAR Terrain and Canopy Height. It is also worth noting that the OGC has recently addressed the CEOS ARD concept by forming a new Standards Working Group (SWG) to define a generic multi-part standard specifying a set of minimum requirements for geospatial products to be considered ARD."
+      },
+      "confidence": 0.95,
+      "name": "Analysis-Ready Data (ARD)",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m5",
+      "evidence": {
+        "section": "3.3 Cubing",
+        "original_text": "The concept of ARD may exhibit some subjectivity depending on the specific application. This subjectivity pertains to the data that populates an ESDC. In contrast, ESDCs inherently represent straightforward yet robust analysis-ready integrated entities, capable of simplifying a broad spectrum of analytical tasks (Baumann et al., 2019). An ESDC filled with ARD is often called an Analysis-Ready Data Cube (ARDC), a concept widely employed in DeepESDL. To generate an ARDC, the critical step involves aligning data onto a unified grid. Domain experts predefine this grid, and all data sources must conform. Furthermore, the efficacy of the ARDC processing is significantly influenced by the implementation of an optimal chunking strategy for this grid. This strategy must be tailored to facilitate efficient data processing across diverse analytical scenarios. For instance, analyses focused on temporal dynamics benefit from chunking strategies that preserve the temporal dimension, whereas spatial analyses or cartographic visualisations are optimised by maintaining spatial dimensions within chunks. In scenarios requiring multitemporal spatial analysis, a hybrid approach combining both temporal and spatial preservation in chunking can be advantageous. When the grid moves in the spatio-temporal domain, the varying spatio-temporal resolutions and coverage among multiple data sources require selecting adequate methods to fit the data into the predefined grid. Datasets with varying spatial resolutions and coverage must be resampled onto a standard spatial grid. This process often requires modifying the data (Cracknell, 1998). While non-destructive algorithms such as nearest neighbours can preserve data values (at the cost of duplicating or ignoring values), significant differences in spatial resolution often require transformation through (non-) linear resampling methods, such as cubic convolution or advanced fusion techniques (Nikolakopoulos, 2008). Complex AI methods can be employed to perform spatial transformations while preserving the quality of the measured variable (e.g. multi-image super-resolution algorithms, Michel et al., 2022; Razzak et al., 2023). Another often overlooked issue arises when dealing with extensive variables. In such instances, it is crucial to ensure that, for example, mass balances are not distorted in the process of creating new products."
+      },
+      "confidence": 0.95,
+      "name": "Cubing",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m6",
+      "evidence": {
+        "section": "3.4 Harmonisation",
+        "original_text": "Additional post-processing of data variables may be necessary to address Earth system challenges. This entails further data curation to obtain a fully gap-filled, harmonised product with evenly spaced time steps. In alignment with the naming conventions established for EO data cubes by Frantz, 2019, we refer to a thoroughly harmonised ESDC as a highly ARDC (hARDC). Data harmonisation is crucial to ensure the consistency and compatibility of variables obtained or generated using different methodological or technical approaches (Wulder et al., 2015). When discrepancies exist between data measurement or production methods, it can introduce inconsistencies that hinder subsequent analyses involving the specific variables (Vogeler et al., 2018). To address this, one approach is to create separate variables that represent the same measured quantity, highlighting the differences between them. However, to enhance spatiotemporal resolution and coverage, harmonisation of variables is often necessary (e.g. harmonising reflectance values from Sentinel-2 and Landsat, Claverie et al., 2018; Marujo et al., 2023). This can be achieved through simple methods that involve sampling data from the same spatio-temporal index in both variables to establish a direct conversion model (e.g. using matched observations to match Landsat 8 and Sentinel-2, Shang and Zhu, 2019). Alternatively, more advanced AI models can harmonise data by incorporating one or more additional variables (e.g. creating a global product of OCO-2 Sun-Induced Fluorescence, SIF, Li and Xiao, 2019). This may require the development of an entire AI pipeline to extend a variable with newly available data or reconstruct it, especially in cases where the variable was not previously measured (e.g. reconstructing SIF from TROPOMI, Chen et al., 2022). In this sense, data harmonisation also encompasses projecting data in simulated future scenarios (e.g. projecting vegetation dynamics for the rest of the century, Mahowald et al., 2016). In addition, it is crucial to incorporate uncertainty metrics to facilitate accurate and reliable future analysis using the harmonised data variables (cf. Section 4.3). Additionally, to effectively use algorithms that incorporate temporal structures, such as Recurrent Neural Networks (RNNs, Sherstinsky, 2020), a regularly spaced and gapless time dimension is usually required. Hence, data from an irregular time dimension should be aggregated or interpolated to fit into a regular temporal grid (e.g. gap-filling Landsat reflectances on a monthly basis, Moreno-Mart´ınez et al., 2020). A suitable predefined temporal resolution must be selected, and data must be gap-filled. Various gap-filling techniques, ranging from simple linear interpolation to more complex AI-based modelling approaches, can be employed to address this (e.g. using Long Short-Term Memory networks, LSTMs, Ren et al., 2022). The choice of the gap-filling method depends on factors such as the data’s nature, the desired accuracy level, and the specific requirements of the analysis or application."
+      },
+      "confidence": 0.95,
+      "name": "Harmonisation",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m7",
+      "evidence": {
+        "section": "3.5 Transformation",
+        "original_text": "Expertly crafted higher-order features often prove highly relevant for addressing Earth system challenges. These new features span a spectrum, encompassing operations that range from simple transformations of the original variables to the creation of entirely novel features derived from advanced AI models. Examples of such features include the computation of spectral indices derived from reflectance bands (Montero et al., 2023), the extraction of frequencies through time series decomposition (Mahecha et al., 2010), the creation of spatio-temporal compositions (e.g. Griffiths et al., 2013), summarising high dimensional dynamics (e.g. Kraemer et al., 2020), and outputs generated by AI models (e.g. Brown et al., 2022). To illustrate, consider a study focusing on climate extremes like heatwaves and droughts’ impact on the terrestrial biosphere. In such cases, calculating anomalies for critical variables (e.g. air temperature and soil moisture as proxies for heatwaves and droughts, with Gross Primary Production as the target biosphere variable) is pivotal (see Figure 3). Creating these novel features introduces a new dimension to distinguish between variable values corresponding to raw data and those representing anomalies. In line with the naming conventions introduced by Frantz, 2019, we designate an ESDC with higher-order features as a hARDC Plus (hARDC+)."
+      },
+      "confidence": 0.95,
+      "name": "Transformation",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m8",
+      "evidence": {
+        "section": "4.1 Adding factual knowledge via PIML",
+        "original_text": "A great addition to Machine Learning (ML) modelling is combining the pure data-driven approach with factual knowledge of the system under investigation (Karniadakis et al., 2021). PIML leverages domain knowledge (typically mechanistic models or differential equations) and flexible data-driven ML methods (typically neural networks). Consequently, PIML models respect physical boundaries more faithfully while being flexible enough to approximate arbitrarily complex nonlinear functions from data (cf. discussion and references in Reichstein et al., 2019). ESDCs provide a unique structure to access multiple Earth system data streams, and the equation-based model describes the underlying process. Thanks to this ready availability of data and equations, exploring PIML models using a wide array of baseline models would be far easier and faster. The equations detailing a given variable could be added to the cube as a sub-field of the variable of interest in the same way that space and time are. The eventual implementation should consider the multi-platform and multi-language nature of ESDCs. As illustrated above, this requires a unified and robust approach that suits multiple use cases."
+      },
+      "confidence": 0.95,
+      "name": "Physics-Informed Machine Learning (PIML)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m9",
+      "evidence": {
+        "section": "4.2 Sampling for AI in a complex system",
+        "original_text": "Sampling on ESDCs is essential for learning the concrete interactions of drivers, spatial conditions, timing, and other determinants of specific processes and their implications. This involves strategically selecting a manageable subset from the ESDC. This selection process is particularly important for ML algorithms, as they rely on these subsets to establish a foundational understanding of the process to be analysed (Atkinson et al., 2022; Nikparvar and Thill, 2021). Pseudo-random sampling facilitates a broad and diverse data selection, while regionalised sampling uses specific patterns within the data for a more targeted analysis. The latter proves particularly advantageous when the research goal is to comprehend specific phenomena. Constructing representative samples in Earth system processes must ensure an unbiased representation of the target variable. The multidimensional nature of Earth system processes poses sampling challenges across multiple variables. Consider, for instance, a study that aims at understanding the effects of climate extremes on the terrestrial biosphere using AI (Sippel et al., 2018). We know that climate extremes such as heatwaves, droughts, extreme precipitation, flooding, etc., are typically associated with multiple variables (Flach et al., 2021). Additionally, such events can co-occur in unfavourable sequences, i.e., compounding heatwaves, droughts, or floods following droughts (Zscheischler et al., 2020). To understand such circumstances, one should consider the full spatio-temporal extended in all relevant dimensions, including derived meta-variables that describe the characteristics of these events, such as timing, duration, extent, and intensity (Flach et al., 2017). Often, additional factors gain significance. For example, ecosystem responses to extremes vary in space depending on ecosystem conditions (Mahecha et al., 2017), land-cover types (Flach et al., 2021), and associated impacts, e.g., on the carbon cycle (Sippel et al., 2018). Building suitable AI models that predict such impacts requires including static data (e.g. vegetation type). Yet, the critical question is then: how to obtain adequate and balanced training and validation data? Earth system processes often involve rare events of extreme conditions, which may occur sporadically over time and space. This rarity can lead to imbalanced datasets, where certain classes of the target variable or ranges of continuous values are underrepresented. This also applies to ranges of continuous values in an imbalanced distribution. Imbalanced datasets affect the performance and generalisation of models trained on these samples. Achieving spatio-temporal representativeness in this context can be challenging. To train ML algorithms for effective recognition and understanding of these events, it is crucial to include additional sampling within the specific domains where these events occur. For example, when constructing datasets for global flood (Li et al., 2023) or cloud detection (Aybar et al., 2022), the methodology involves initiating automatic sampling that covers a broad spectrum of ecosystem conditions. Simultaneously, manually selected events are introduced. This approach ensures a balanced representation of different classes in the dataset, thereby enhancing the algorithm’s capability to accurately predict such events. Figure 4 showcases a potential workflow where event detection is performed based on global ESDCs, and samples for high-resolution ML are extracted based on a systematic sampling strategy (e.g. Ji et al., 2024). Here, analysing land cover purity is an option (a relatively homogeneous land cover dominated by a single vegetation type allows for easier comparisons and subsequent analyses), as well as incorporating mixed land covers (which introduces heterogeneity and interactions among land cover types), providing more comprehensive information for model training."
+      },
+      "confidence": 0.95,
+      "name": "Sampling for AI",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m10",
+      "evidence": {
+        "section": "4.3 Quantifying uncertainties",
+        "original_text": "Uncertainty quantification is crucial to Earth science, providing a comprehensive assessment of the reliability and confidence associated with scientific predictions, model simulations, and observational data. Capturing and modelling uncertainty is a complex task as it arises from various sources such as data limitations, model approximations, and the inherent complexity of Earth system dynamics. Uncertainty can be broadly categorised into two types: epistemic uncertainty and aleatoric uncertainty (Kiureghian and Ditlevsen, 2009). Epistemic uncertainty refers to the model’s confidence in its predictions and is related to the choice of model parameters. Techniques such as Bayesian inference or Dropout can estimate epistemic uncertainty (Srivastava et al., 2014; Gal and Ghahramani, 2016). Bayesian methods assign probability distributions to model parameters, directly quantifying uncertainty. In DL, dropout-based methods create model ensembles by randomly dropping out units during training, providing a measure of uncertainty based on the variability among the ensemble members. While these techniques may not completely capture the underlying uncertainty due to assumptions made during modelling or training, they are practical and can be employed to estimate uncertainty. These methods can be computationally demanding and time-consuming, mainly when applied to real-time applications. However, advancements in cloud platforms and the Monte Carlo (MC)-Dropout technique have enabled reliable uncertainty estimates, even when working with massive amounts of data (Mart´ınez-Ferrer et al., 2022). On the other hand, aleatoric uncertainty is associated with the noise or variability present in the data (e.g. data affected by natural variability, measurement errors, or other sources of noise) and cannot be reduced. Instead, it can be identified and quantified as part of the uncertainty characterisation. ESDCs involving measurements or modelled data can be accompanied by associated uncertainty values. Data assimilation techniques are key in incorporating data into ESDCs while considering the associated uncertainties. Approaches such as Kalman filtering, variational data assimilation, or ensemble-based assimilation can effectively merge different data sources and quantify the resulting uncertainties (Mathieu and O’Neill, 2008)."
+      },
+      "confidence": 0.95,
+      "name": "Uncertainty quantification",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m11",
+      "evidence": {
+        "section": "6.3 Scalability obstacles",
+        "original_text": "Often, analyses can be performed independently on timesteps, maps, or any other discrete chunks of an ESDC (e.g. dimensions, periods, spatial slices). First, users split the data into those chunks, and then apply the transformation. In the end, users combine the elements back together into a new ESDC (see Figure 6). Many analyses can be expressed in terms of split-apply-combine (Wickham, 2011; Mahecha et al., 2020), such as calculating mean seasonal cycle maps from a time axis to a day-of-year axis, or a global mean temperature time series that collapses latitude and longitude into a scalar value per timestep. This method is also known as map-reduce in distributed data processing. Still, in contrast, it is made for array-like or tabular data (and the reduce step always consists in concatenating the results of the map step, cf. Wickham, 2011). Implementations of split-apply-combine can trade-off between memory consumption and performance by adjusting the amount of data being loaded into memory simultaneously. They may also take advantage of parallel reading, processing, and writing of data, which is especially important if the data is not stored on local storage but on object stores with high access latency."
+      },
+      "confidence": 0.95,
+      "name": "Split-apply-combine",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_635cdb82b87c6a49_m12",
+      "evidence": {
+        "section": "7 Visual interaction with ESDCs",
+        "original_text": "Much progress has been made in visualising ESDCs in Earth system research. Several viewers now have provided researchers with the means to explore and visualise multidimensional environmental datasets and generate scientific illustrations for publications. However, most approaches still rely on the classical geographical interpretation of georeferenced data and are restricted to displaying maps, extracting singular time series, or Hovmoller¨ diagrams. Little advances have been made to visualise ESDCs, particularly multivariate ESDCs, for a better data understanding (cf. static attempts, Mahecha et al., 2010; Mahecha, 2017; Mahecha et al., 2020). The long-standing challenge is the trade-off between data interactions not designed for ESDCs and reliance on standard libraries that generate only static visualisations. Recent developments like Lexcube (Sochting¨ et al., 2023, cf. Interactions in Figure 7) and xcubeviewer enable interactive and barrier-free visualisation, allowing users to inspect any ESDC dimension (especially space, time, and variable) interactively. Enabling interactions on large-scale spatio-temporal data on the web is key to democratising our science (Steed et al., 2014)."
+      },
+      "confidence": 0.95,
+      "name": "Lexcube",
+      "method_type": "software"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_635cdb82b87c6a49_x1",
+      "evidence": {
+        "section": "3 The ESDC Life cycle",
+        "original_text": "Creating an ESDC from multiple sources, including source files, data cubes, or image collections, is a multifaceted process. The ESDC life cycle, as illustrated in Figure 2, encompasses several crucial stages, each playing a vital role in the generation, analysis, and effective utilisation of these data structures. The ESDC life cycle comprises the following key phases: data collection, curation, cubing, harmonisation, transformation, analysis, and reuse. These phases are linked, reflecting the meticulous efforts involved in ESDCs’ development. In parallel to these stages, metadata generation occurs concurrently with data transformations, data exploration, visualisation, and dissemination. This section provides an overview of the ESDC life cycle, emphasising relevant considerations that contribute to the streamlined development and utilisation of ESDCs."
+      },
+      "confidence": 0.95,
+      "task": "ESDC life cycle",
+      "setup": "Data collection, curation, cubing, harmonisation, transformation, analysis, reuse"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_635cdb82b87c6a49_x2",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "Given that data providers frequently utilise diverse formats and protocols for data sharing, particularly in proportion to the multidimensional complexity of the data, the establishment of streamlined access mechanisms becomes imperative. Traditionally, File Transfer Protocol (FTP) servers have been used for data sharing. However, to enhance data discoverability and usability, data providers are increasingly adopting data stores that offer persistent and standardised data storage. Repositories play a vital role in this process by standardising metadata, enabling easy search and retrieval of assets through metadata queries. Recently, more and more data providers offer APIs to facilitate efficient querying of metadata and access to the data itself by adopting specifications such as STAC and enabling range requests for cloud-optimised data (e.g. Zenodo recently started to support HTTP range requests). The flexibility of these specifications enhances data interoperability by enabling the development of extensions that simplify data integration. For instance, the Electro-Optical STACextension has been created to facilitate the integration of multispectral remote sensing data by expanding the capabilities of STAC to accommodate specific requirements and metadata associated with this kind of data. Looking ahead, the advantages of data interoperability may potentially extend beyond the realm of raw source data, encompassing entire ESDCs. The datacube STAC-extension, currently in a candidate state, has been developed with the primary objective of advancing the integration and interoperability of structured data representations like ESDCs within the STAC ecosystem. This effort aims to broaden the scope of opportunities for reusing ESDCs in new data processing pipelines."
+      },
+      "confidence": 0.95,
+      "task": "Collection",
+      "setup": "Data providers using diverse formats and protocols, adoption of APIs and specifications like STAC"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_635cdb82b87c6a49_x3",
+      "evidence": {
+        "section": "3.6 Reuse",
+        "original_text": "ESDCs, after generation and analysis, can either evolve into dynamic versions through continuous updates or become static ESDCs, serving as input for the generation of new ESDCs. In the first scenario, establishing a Continuous Integration (CI) pipeline becomes essential for automating ESDC updates. This pipeline can be scheduled to align with the release of new dataset versions, ensuring the ESDC remains current. However, this approach may prove inefficient for EO products that are delivered regularly (e.g. Sentinel-2 or MODIS) and that may be constantly reprocessed by data providers, releasing new versions with updated processing pipelines. In this case, the update schedule should align with the specific needs of the ESDC (e.g. monthly, semi-annually, or annually). In the second scenario, an automatic update of dataset versions is also feasible, eliminating the necessity to extend the ESDC to the most recent date. In either scenario, it is crucial to implement clear reproducibility and traceability practices to ensure the data integrity of future ESDCs. As highlighted in Section 3.1, standardisation is pivotal in promoting fluid data interoperability within this context. OGC has recognised the growing significance of data cube approaches for geospatial data. OGC recently established the GeoDataCubes SWG to create an API that facilitates interoperability among various solutions. This standard covers a broad scope, explicitly including API functionalities for access and processing, exchange format recommendations, profiles, and a metadata model. Additionally, cloud technologies have ushered in the development of data cube services that abstract the underlying file structures and formats, replacing them with APIs offering diverse processing functionalities and promoting interoperability. For instance, platforms like Sentinel Hub serve as sources for ESDC generation through tools like xcube. Moreover, the openEO platform aims to provide an API that enables connections from multiple clients to various cloud backends using a unified API (Schramm et al., 2021). Approaches like these allow the tailored specification of ESDCs on-demand, with server-side processing relieving requesters of the complexities of the generation task. However, this convenience often comes with a trade-off, as the processing engine’s code basis, the processing environment, and the input data are not known to requesters. Any modifications to these specifications can result in different outcomes for identical requests to the data cube API, hindering a streamlined update of dynamic ESDCs and a transparent basis for reusing static ESDCs. In contrast, less convenient but more transparent approaches fully document the ESDC generation process through “recipes”. These recipes contain versioned source code used for input data processing. Examples include the Pangeo Forge (Stern et al., 2022) and DeepESDL recipes. Recipes, coupled with versioned input data and fully specified processing environments, enable practical reproducibility of resulting ESDCs. This approach supports the seamless updating of dynamic ESDCs when new data becomes available and provides transparency for incorporating static ESDCs into new datasets. Ongoing efforts to enhance data lineage and provenance transparency are integral to the Copernicus Data Space Ecosystem. The development of the “traceability” service, currently in progress, is designed to empower users to trace all modifications to the data from its origin to its delivery to the end user, ensuring greater transparency and accountability in the ESDC life cycle."
+      },
+      "confidence": 0.95,
+      "task": "Reuse",
+      "setup": "Dynamic or static ESDCs, Continuous Integration pipelines, recipes, traceability services"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_635cdb82b87c6a49_qr1",
+      "evidence": {
+        "section": "2.1 What are Earth System Data Cubes (ESDCs)?",
+        "original_text": "For instance, a grid determining a resolution of 0.5 degrees for the 'latitude' dimension in a global ESDC may have a set of coordinates grid(latitude) = {−89.75, −89.25, ..., 89.25, 89.75}. While coordinates are often associated with numerical values (e.g. latitudes and longitudes), they can encompass a wide range of values. For instance, timestamps in a 'time' dimension with a set of coordinates grid(time) = { '2022-01-01', '2022-01-02', ..., '2022-12-31' }, or components derived from a time series decomposition approach in a 'component' dimension with a set of coordinates grid(component) = { 'raw', 'trend', 'seasonal', 'residual' }. The grids within an ESDC exhibit the following characteristics: 1) In the case of spatial dimensions, they reference the same CRS, 2) the coordinates within a grid share identical units, and 3) they must consist of at least two coordinates; otherwise, the dimension (and consequently the grid) is omitted. It's important to note that, given these properties, irregular grids are also possible, with the temporal dimension grid being a typical example in EO data due to the irregular revisit times of some satellite missions (e.g. Sentinel-2)."
+      },
+      "confidence": 0.95,
+      "quantity": "spatial resolution",
+      "value": 0.5,
+      "unit": "degrees",
+      "context": "global ESDC latitude dimension grid",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_635cdb82b87c6a49_p1",
+      "evidence": {
+        "section": "3.1 Collection",
+        "original_text": "When the dimensionality of the data increases, formats such as NetCDF or HDF5 are typically used to encapsulate data and coordinate values. Tiling and chunking allow efficient access to big data arrays for both data formats. However, these formats are not inherently optimised for cloud environments.The Zarr specification addresses this limitation and can be used directly in cloud environments, offering several advantages over NetCDF and HDF5. Zarr enables more efficient chunk access for parallel processing, provides better support for distributed computing, and offers improved read and write speeds, particularly in cloud storage systems. Moreover, Zarr's flexible chunking scheme allows for optimised data access patterns, and its simpler metadata structure facilitates easier data discovery and management. Additionally, specifications such as geo-zarr and the xcube dataset convention have been introduced to further enhance data interoperability and compatibility within the context of Earth system data."
+      },
+      "confidence": 0.9,
+      "metric": "data format efficiency",
+      "compared_to": "NetCDF, HDF5"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_635cdb82b87c6a49_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Earth System Data Cubes (ESDCs) have emerged as one suitable solution for transforming this flood of data into a simple yet robust data structure. ESDCs achieve this by organising data into an analysis-ready format aligned with a spatio-temporal grid, facilitating user-friendly analysis and diminishing the need for extensive technical data processing knowledge. Despite these significant benefits, the completion of the entire ESDC life cycle remains a challenging task. Obstacles are not only of a technical nature but also relate to domain-specific problems in Earth system research. There exist barriers to realising the full potential of data collections in light of novel cloud-based technologies, particularly in curating data tailored for specific application domains. These include transforming data to conform to a spatio-temporal grid with minimum distortions and managing complexities such as spatio-temporal autocorrelation issues. Addressing these challenges is pivotal for the effective application of Artificial Intelligence (AI) approaches. Furthermore, adhering to open science principles for data dissemination, reproducibility, visualisation, and reuse is crucial for fostering sustainable research. Overcoming these challenges offers a substantial opportunity to advance data-driven Earth system research, unlocking the full potential of an integrated, multidimensional view of Earth system processes. This is particularly true when such research is coupled with innovative research paradigms and technological progress."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_635cdb82b87c6a49_cl1",
+      "evidence": {
+        "section": "8 Conclusions and perspective",
+        "original_text": "This paper reviews and explores the challenges and opportunities of leveraging ESDCs for Earth system research. This becomes particularly important in developing Earth Digital Twins (i.e. “a digital replication of the state and temporal evolution of the Earth system”, Bauer et al., 2021b). In this sense, the topics discussed here are of significance in initiatives like Destination Earth (DestinE). The inherent simplicity and versatility of ESDCs enable a comprehensive exploration of the complex Earth system, facilitating a deeper understanding of intricate processes and phenomena. For advancing our understanding of the Earth system, the following key considerations emerge and need to be addressed by the research community to tap into the full potential of ESDCs: 1. Artificial Intelligence on ESDCs: The abundance of large-scale Earth system data, coupled with recent advancements in AI methods, compels the application of the latest developments in deep learning to ESDCs. Capitalising on the tensor-like structure of ESDCs in DL and incorporating factual knowledge through Physics-Informed Machine Learning approaches promise great advances in modelling and understanding. Recent advancements in AI, particularly in attention mechanisms, have opened up new possibilities for Earth system research. Techniques such as LLMs, generative image models (e.g. Stable Diffusion, Rombach et al., 2021), as well as recent image and video segmentation models (e.g. Segment Anything Model, SAM and SAM 2, Kirillov et al., 2023; Ravi et al., 2024), may hold the potential to significantly advance our understanding of the Earth system (Wu and Osco, 2023; Osco et al., 2023). The ability to ‘communicate’ to ESDCs to extract valuable insights (e.g. Lobry et al., 2020) is within reach (e.g. using text prompts to extract variable anomalies from a specific land cover over a particular region). Furthermore, there is potential to generate ESDCs using text prompts, images, videos, or additional data inputs simultaneously by leveraging the power of multi-modal mechanisms (e.g. ImageBind, Girdhar et al., 2023), e.g., simulating the impact on vegetation due to an extreme event over a real ESDC using text prompts and geographical data. However, caution must be exercised when applying AI methods to ESDCs to avoid erroneous predictions and interpretations. Factors such as spatio-temporal auto-correlation, the spherical nature of the Earth, and biased sampling in the spatio-temporal and multivariate domains pose risks. Still, the abstract nature of ESDCs provides an opportunity to establish a de facto standard for AI in Earth system science, benefiting from optimised data access and technical enhancements. To ensure reliable outcomes, standardised methods are needed to address spatial dependency, the model’s area of applicability, and model uncertainty within ESDC structures. 2. Interacting with ESDCs: The heterogeneity, size, and multivariate nature of datasets also may imply that using ESDCs’ is unintuitive, which hampers interpretation. Effective communication opportunities with such data are crucial throughout the ESDC life cycle, both for scientists and a wider audience. Visualisation plays a key role in this regard. While visualisation tools are available to support the analysis process and scientific dissemination, there is still considerable potential for further exploration and development of visualisations. We believe that interactive visualisations are one key, as demonstrated by Lexcube. One promising avenue is the integration of visualisation directly into the analytics workflow (e.g. within Jupyter Notebooks or similar environments), and another is enabling visual analytics of ESDCs. In both cases, the challenge is making such interactions possible during the analysis process to enable the scientific exploitation of large ESDCs. 3. Technical challenges of large ESDCs: The multidimensional nature, varying spatiotemporal scales and resolutions, and applicability of ESDCs imply a series of technical challenges. These include interoperability issues, different geographical projections, interpolation and aggregation questions, and varying readiness levels for further analyses. Ensuring data integrity and interpretability while making Earth system data analysis-ready and interoperable requires tracing and encoding all data transformations and modifications in ESDC metadata. To address these challenges, developing guidelines and standards for geospatial datacubes is crucial for promoting FAIR and Open Earth System Science. The ever-increasing size and complexity of datasets demand scalable solutions to tackle associated challenges. The ongoing efforts of the open-source software community are commendable in this regard, as they contribute to the advancement of tools and frameworks tailored to handle big Earth system data. Furthermore, cloud environments present a possible solution to quickly scale workloads when processing data within the ESDC life cycle. They offer the advantages of on-demand resource allocation and scalability, allowing researchers to access the necessary computational power and storage capacity when needed. 4. Integrating (geospatial) data beyond cubes: ESDCs already offer the potential for advancing Earth system research and analysis in multiple domains. However, ESDCs can benefit from integrating different methodological approaches or data sources at different scales. One example is the integration of Unoccupied Aerial Vehicle (UAV)- and Light Detection and Ranging (LiDAR)-based data. This data provides a means to collect highly localised and high-resolution measurements, making them particularly suitable for localised studies and gaining valuable insights into fine-scale processes. Another example is the integration of vector data, which typically represents categorical information and carries great importance in multiple Earth system spheres (e.g. socioeconomic features). Additionally, in-situ collections of any process (e.g. via ecological monitoring data) are essential. Today, the quest is that users request the integration of any additional data sources while remaining fully valid. Yet, it poses a challenge as it raises important questions regarding interoperability and the encapsulation of multi-resolution cubes that incorporate multi-scale raster data and the combination of raster and vector data within a unified framework. 5. Towards flexible cube-based structures: To advance ESDCs’ benefits, it is essential to advance the standards of ESDC structures and start considering hierarchical data structures, including ESDCs as “leaves” (e.g. `xarray` ’s DataTree structure) or even unstructured grid systems (e.g. Project Raijin with `uxarray` ). Given the abundance of insightful (but heterogeneous) datasets, this would enhance Earth system research, regardless of their resolution or dimensionality. Nevertheless, this implies that we must ensure data traceability and interpretability as heterogeneity increases in the resolution or dimensionality domains. A prime example lies in integrating AI models’ predictions within ESDCs. In such instances, additional dimensions must be incorporated to capture uncertainties (or quality flag systems) associated with AI-based predictions. This provides valuable insights into the reliability and robustness of the data. Leveraging the power of ESDCs in diverse fields can drive innovation, advance scientific knowledge, and enable more informed decision-making in a wide range of domains."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_635cdb82b87c6a49_lm1",
+      "evidence": {
+        "section": "5 Challenges in ESDC analysis",
+        "original_text": "While ESDCs present significant opportunities, it’s crucial to approach them with a well-informed strategy to avoid naive applications of analytical methods. In this section, we describe challenges associated with ESDC analysis, focusing on two key issues: addressing geometric distortions (introduced during the cubing process) and spatio-temporal autocorrelation problems. Most ESDCs covering the whole globe use a simple longitude-latitude plate-carr´ee projection, which fits the ESDC model very well. The approach also allows for efficient storage and subsetting of cubes to user-generated subsets corresponding to a bounding box. However, for advanced data analysis, equirectangular projections have two main drawbacks: 1) grid cells differing in latitude do not have equal area, and 2) the distances to nearest neighbours are not constant. The first drawback introduces a sampling bias towards high latitudes in the data. This bias can affect the representativeness and accuracy of analyses (cf. Section 5.2), particularly for regions located closer to the equator. The most trivial cases are computations of scalars, like global means (e.g. Figure 5), which need to be weighted or approaches like principal component analyses that require area-weighed covariance matrices. Effects of this kind have been known for decades and are considered climate textbook knowledge (Storch et al., 2000). However, they remain a challenge, as we find them often ignored in ESDC analytics. Issues of this kind can be alleviated using area-weighted statistics, suitable for most linear algorithms, or by performing weighted sampling from grid cells. For advanced, often non-linear data science methods, considering the spherical geometry is much more challenging, and careful consideration is advised before naive applications are performed. Even when applying area-weighted statistics correctly, oversampled areas lead to unnecessary increases in storage requirements and computation time. The second drawback is particularly significant when applying spatial convolutions or moving window operations. To address this, several approaches can be employed. One option is to use Spherical Harmonics for simple convolutions, providing a transformation that respects the spherical nature of the data (Wieczorek and Meschede, 2018). Spherical Harmonics can also be used as coordinate embeddings for neural networks (Rußwurm et al., 2023). Another approach involves graph convolutions that consider varying distances to neighbours. Diagnostics on predictive modelling with ESDCs can be challenged by the representativeness and spatio-temporal structure of training data (Tobler, 1970; Meyer and Pebesma, 2021; Ploton et al., 2020; Kattenborn et al., 2022). Assessing the accuracy of a prediction is statistically straightforward as long as reference data is available for the entire population or if a respective sample represents the spatio-temporal structure of the population (Wadoux et al., 2021; Brus, 2021). However, many modelling tasks build on observations not representative of underlying temporal dynamics or an entire land surface variability (e.g. upscaling functional ecosystem properties from sparse and clustered FLUXNET sites). Such an imbalance in reference data may not necessarily lead to a bias in model coefficients (Pabon-Moreno et al., 2022). However, it may lead to inflated prediction accuracy estimates, given the commonly limited capacities of ML to extrapolate into the unknown, where the predictor-response relationship may depart (Ludwig et al., 2023). Thus, the accuracy assessment of a prediction estimated from clustered samples will not represent the factual accuracy of predictions beyond the reference data availability. This is critical for assessing the quality of a prediction itself and potential error propagation in subsequent analysis (Yates et al., 2018; Meyer and Pebesma, 2021; Mila et al., 2022). It is advised that predictions should inform on the area of applicability (Meyer and Pebesma, 2021), i.e., the area in which the predictor-space is covered by the reference data and obtained predictive accuracies thereof are assumed to hold. However, assessing the predictive performance of a model inside the area of applicability may be challenged by the spatio-temporal structure of the training and test data. Commonly, adjacent observations (both in time and space) are more similar (autocorrelated in space and time), and therefore accuracies determined from test observations near the training data will be more accurate (Roberts et al., 2017; Dormann et al., 2007). For instance, seasonal effects can inflate model performance when using test observations near training data in the temporal dimension. Dependence among training and reference data results in any case on optimistic estimates of model performance, meaning that such accuracies do not reflect the actual transferability of the model to unseen areas or time steps (Roberts et al., 2017). For instance, Ploton et al. (2020) showed that ML-based models found accurate in the presence of spatial dependent training and validation data may learn spatial data structures instead of transferable relationships between a response (biomass) and the predictors (environmental variables and optical reflectance). This may not only lead to erroneous model transferability and extrapolation to new spatial or temporal domains but also prevent an adequate interpretation of model functioning and attribution to variables and processes (Sweet et al., 2023). Therefore, model performance and interpretation should be performed by minimising spatio-temporal dependence of observations via cross-validation strategies (cf. Roberts et al., 2017; Meyer et al., 2018; Ploton et al., 2020; Kattenborn et al., 2022)."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_635cdb82b87c6a49_fw1",
+      "evidence": {
+        "section": "8 Conclusions and perspective",
+        "original_text": "For advancing our understanding of the Earth system, the following key considerations emerge and need to be addressed by the research community to tap into the full potential of ESDCs: 1. Artificial Intelligence on ESDCs: The abundance of large-scale Earth system data, coupled with recent advancements in AI methods, compels the application of the latest developments in deep learning to ESDCs. Capitalising on the tensor-like structure of ESDCs in DL and incorporating factual knowledge through Physics-Informed Machine Learning approaches promise great advances in modelling and understanding. Recent advancements in AI, particularly in attention mechanisms, have opened up new possibilities for Earth system research. Techniques such as LLMs, generative image models (e.g. Stable Diffusion, Rombach et al., 2021), as well as recent image and video segmentation models (e.g. Segment Anything Model, SAM and SAM 2, Kirillov et al., 2023; Ravi et al., 2024), may hold the potential to significantly advance our understanding of the Earth system (Wu and Osco, 2023; Osco et al., 2023). The ability to ‘communicate’ to ESDCs to extract valuable insights (e.g. Lobry et al., 2020) is within reach (e.g. using text prompts to extract variable anomalies from a specific land cover over a particular region). Furthermore, there is potential to generate ESDCs using text prompts, images, videos, or additional data inputs simultaneously by leveraging the power of multi-modal mechanisms (e.g. ImageBind, Girdhar et al., 2023), e.g., simulating the impact on vegetation due to an extreme event over a real ESDC using text prompts and geographical data. However, caution must be exercised when applying AI methods to ESDCs to avoid erroneous predictions and interpretations. Factors such as spatio-temporal auto-correlation, the spherical nature of the Earth, and biased sampling in the spatio-temporal and multivariate domains pose risks. Still, the abstract nature of ESDCs provides an opportunity to establish a de facto standard for AI in Earth system science, benefiting from optimised data access and technical enhancements. To ensure reliable outcomes, standardised methods are needed to address spatial dependency, the model’s area of applicability, and model uncertainty within ESDC structures. 2. Interacting with ESDCs: The heterogeneity, size, and multivariate nature of datasets also may imply that using ESDCs’ is unintuitive, which hampers interpretation. Effective communication opportunities with such data are crucial throughout the ESDC life cycle, both for scientists and a wider audience. Visualisation plays a key role in this regard. While visualisation tools are available to support the analysis process and scientific dissemination, there is still considerable potential for further exploration and development of visualisations. We believe that interactive visualisations are one key, as demonstrated by Lexcube. One promising avenue is the integration of visualisation directly into the analytics workflow (e.g. within Jupyter Notebooks or similar environments), and another is enabling visual analytics of ESDCs. In both cases, the challenge is making such interactions possible during the analysis process to enable the scientific exploitation of large ESDCs. 3. Technical challenges of large ESDCs: The multidimensional nature, varying spatiotemporal scales and resolutions, and applicability of ESDCs imply a series of technical challenges. These include interoperability issues, different geographical projections, interpolation and aggregation questions, and varying readiness levels for further analyses. Ensuring data integrity and interpretability while making Earth system data analysis-ready and interoperable requires tracing and encoding all data transformations and modifications in ESDC metadata. To address these challenges, developing guidelines and standards for geospatial datacubes is crucial for promoting FAIR and Open Earth System Science. The ever-increasing size and complexity of datasets demand scalable solutions to tackle associated challenges. The ongoing efforts of the open-source software community are commendable in this regard, as they contribute to the advancement of tools and frameworks tailored to handle big Earth system data. Furthermore, cloud environments present a possible solution to quickly scale workloads when processing data within the ESDC life cycle. They offer the advantages of on-demand resource allocation and scalability, allowing researchers to access the necessary computational power and storage capacity when needed. 4. Integrating (geospatial) data beyond cubes: ESDCs already offer the potential for advancing Earth system research and analysis in multiple domains. However, ESDCs can benefit from integrating different methodological approaches or data sources at different scales. One example is the integration of Unoccupied Aerial Vehicle (UAV)- and Light Detection and Ranging (LiDAR)-based data. This data provides a means to collect highly localised and high-resolution measurements, making them particularly suitable for localised studies and gaining valuable insights into fine-scale processes. Another example is the integration of vector data, which typically represents categorical information and carries great importance in multiple Earth system spheres (e.g. socioeconomic features). Additionally, in-situ collections of any process (e.g. via ecological monitoring data) are essential. Today, the quest is that users request the integration of any additional data sources while remaining fully valid. Yet, it poses a challenge as it raises important questions regarding interoperability and the encapsulation of multi-resolution cubes that incorporate multi-scale raster data and the combination of raster and vector data within a unified framework. 5. Towards flexible cube-based structures: To advance ESDCs’ benefits, it is essential to advance the standards of ESDC structures and start considering hierarchical data structures, including ESDCs as “leaves” (e.g. `xarray` ’s DataTree structure) or even unstructured grid systems (e.g. Project Raijin with `uxarray` ). Given the abundance of insightful (but heterogeneous) datasets, this would enhance Earth system research, regardless of their resolution or dimensionality. Nevertheless, this implies that we must ensure data traceability and interpretability as heterogeneity increases in the resolution or dimensionality domains. A prime example lies in integrating AI models’ predictions within ESDCs. In such instances, additional dimensions must be incorporated to capture uncertainties (or quality flag systems) associated with AI-based predictions. This provides valuable insights into the reliability and robustness of the data. Leveraging the power of ESDCs in diverse fields can drive innovation, advance scientific knowledge, and enable more informed decision-making in a wide range of domains."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

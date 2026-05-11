@@ -1,0 +1,594 @@
+{
+  "metadata": {
+    "doc_id": "doc_80f85fa1c007cbff",
+    "source_file": "01_High_resolution_distribution_maps_single_season_rice_China_2017_2022.md",
+    "title": "High-resolution distribution maps of single-season rice in China from 2017 to 2022",
+    "year": 2023,
+    "doi": "10.5194/essd-15-3203-2023",
+    "abstract": "**Ruoque Shen**[1,2,3] **, Baihong Pan**[4] **, Qiongyan Peng**[1,2,3] **, Jie Dong**[5] **, Xuebing Chen**[1,2,3] **, Xi Zhang**[1,2,3] **, Tao Ye**[6] **, Jianxi Huang**[7] **, and Wenping Yuan**[1,2,3]",
+    "introduction": "As the fourth-largest grain crop in the world, rice contributed 8 % to global food production in 2019 (FAO, 2021). Rice is a staple food for more than half of the world’s population and plays an important role in ensuring global food security (Elert, 2014; Kuenzer and Knauer, 2013). The flooding of rice paddy fields constitutes a major source of methane emissions (IPCC, 2023; Mohammadi et al., 2020). Therefore, quickly and accurately identifying the planting location of rice over a large area is very important. \n\nMost commonly, large-scale crop mapping takes advantage of satellite data (Dong et al., 2020; Huang et al., 2022; \n\nXiao et al., 2006, 2005). Popular crop-mapping methods are various machine learning methods, such as random forest (Boryan et al., 2011; Fiorillo et al., 2020; You et al., 2021), support vector machine (Zheng et al., 2015), and deep learning (Thorp and Drajat, 2021; Zhao et al., 2019; Zhong et al., 2019). Machine learning methods provide several advantages in crop mapping but require training samples (Belgiu and Csillik, 2018), commonly of the order of hundreds or even thousands to obtain a satisfactory accuracy (Millard and Richardson, 2015; Valero et al., 2016). For example, the Cropland Data Layer (CDL) products produced by the United States Department of Agriculture (USDA) use tens of \n\nPublished by Copernicus Publications. \n\nR. Shen et al.: High-resolution distribution maps of single-season rice in China \n\n3204 \n\nthousands of training samples to map the crops of a single state (Boryan et al., 2011). Therefore, such large-scale investigations are very time-consuming and labor-intensive. \n\nAnother crop-mapping approach is based on the detection of specific phenological signals. Xiao et al. (2005, 2006) produced a 500 m resolution rice map of southern China, Southeast Asia, and South Asia using MODIS (Moderate Resolution Imaging Spectroradiometer) data by comparing the normalized difference vegetation index (NDVI) and the enhanced vegetation index (EVI) with the land surface water index (LSWI). In addition, Dong et al. (2016) also used the flood-detection method, producing a rice map with a 30 m spatial resolution in Northeast Asia based on Landsat 8 data. Because of the short flooding period, the influence of clouds and rain in a few images will lead to missing the flooding signal and decreased accuracy; this results in high requirements with respect to the image quality and time resolution (Dong et al., 2016). \n\nAdditional crop-mapping approaches are the dynamic time warping (DTW) and the time-weighted dynamic time warping (TWDTW) methods, which do not consider the crop characteristics within a certain time period but compare the signals over an extended period (Belgiu and Csillik, 2018; Qiu et al., 2017; Skakun et al., 2017; Zheng et al., 2022a). Guan et al. (2016) mapped rice in Vietnam using the DTW method based on MODIS NDVI data, reaching an _R_[2] value of 0.809. The TWDTW method, which is an improvement of the DTW method, adds a penalty called the “time weight” to the calculation to characterize the temporal difference, thereby improving the identification accuracy (Maus et al., 2016). The TWDTW method has been used in several studies to produce high-resolution crop maps of many kinds of crops, including winter wheat, sugar cane, and maize (Dong et al., 2020; Huang et al., 2022; Zheng et al., 2022b; Shen et al., 2022). A previous study also used the TWDTW method to produce a map of double-season paddy rice in China using the vertical–horizontal (VH) band signal from the Sentinel-1 satellite (Pan et al., 2021). \n\nBecause of the flooding during rice planting, the traditional rice-mapping methods use water indexes derived from optical images, such as the LSWI (Xiao et al., 2002, 2005). However, optical images are greatly impacted by clouds, heavily limiting their availability in cloudy regions (Li and Chen, 2020; Sudmanns et al., 2020; Zhou et al., 2019). An alternative is the use of synthetic aperture radar (SAR) images. Compared with the optical signal, the SAR signal can penetrate through clouds, completely avoiding their influence (Oguro et al., 2001; Phan et al., 2018). Several studies have demonstrated the capability of SAR in rice identification and obtained good mapping results at the regional scale (Nguyen et al., 2016; Han et al., 2021; Pan et al., 2021). However, compared with optical data, SAR data also have more significant salt-and-pepper noise, which may affect the accuracy of distribution maps (Oliver and Quegan, 2004). \n\nChina is the world’s largest rice producer, and it produced 209 _._ 61 × 10[6] t of rice in 2019 (National Bureau of Statistics of China, 2020). Except for a few provinces in southeastern China, most of the rice-planting provinces are dominated by single-season rice. Although there are many previous studies on mapping rice in China, a high-resolution single-season rice map is still not available for the entire country. This study attempts to fill this gap and aims to (1) develop a new phenology-based method for rice mapping, (2) produce highresolution distribution maps of single-season rice in China from 2017 to 2022, and (3) evaluate the accuracy of the identified areas using county-level statistical data and survey samples.",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": "作物学",
+      "level3": "作物遥感与信息技术"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "计算机科学技术",
+        "level2": "人工智能",
+        "level3": "机器学习"
+      }
+    ],
+    "keywords": [
+      "rice mapping",
+      "remote sensing",
+      "time-weighted dynamic time warping",
+      "Sentinel-1",
+      "food security"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:24.673333+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Paddy rice is the second-largest grain crop in China and plays an important role in ensuring global food security. However, there is no high-resolution map of rice covering all of China. This study developed a new rice-mapping method by combining optical and synthetic aperture radar (SAR) images in cloudy areas based on the time-weighted dynamic time warping (TWDTW) method and produced distribution maps of single-season rice in 21 provincial administrative regions of China from 2017 to 2022 at a 10 or 20 m resolution. The accuracy was examined using 108 195 survey samples and county-level statistical data. On average, the user’s, producer’s, and overall accuracy values over all investigated provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively. Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average. The distribution maps can be obtained at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023)."
+      },
+      "confidence": 0.98,
+      "term": "single-season rice",
+      "normalized": "单季稻",
+      "std_label": "SSR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study developed a new rice-mapping method by combining optical and synthetic aperture radar (SAR) images in cloudy areas based on the time-weighted dynamic time warping (TWDTW) method and produced distribution maps of single-season rice in 21 provincial administrative regions of China from 2017 to 2022 at a 10 or 20 m resolution. The accuracy was examined using 108 195 survey samples and county-level statistical data. On average, the user’s, producer’s, and overall accuracy values over all investigated provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively. Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average. The distribution maps can be obtained at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023)."
+      },
+      "confidence": 0.97,
+      "term": "time-weighted dynamic time warping",
+      "normalized": "时间加权动态时间规整",
+      "std_label": "TWDTW"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c3",
+      "evidence": {
+        "section": "2.2 Data",
+        "original_text": "The satellite data used in this study were from the Sentinel series launched by the European Space Agency (ESA). The SAR data were obtained from the Ground Range Detected (GRD, Level-1) product of Sentinel-1A, and the optical data were obtained from the Level-1C product of Sentinel-2. The SAR data used in this study were the VH band (dual-band cross-polarization, vertical transmit–horizontal receive) at a spatial resolution of 10 m and were composited into a 12 d temporal resolution by median. Optical data included 10 bands: blue, green, red, and near-infrared (NIR) at a 10 m spatial resolution and red edge 1 (RE1), red edge 2 (RE2), red edge 3 (RE3), red edge 4 (RE4), shortwave infrared 1 (SWIR1), and shortwave infrared 2 (SWIR2) at a 20 m spatial resolution. Additionally, two indexes, the NDVI and LSWI at a 10 m spatial resolution, were calculated using the following equations: NDVI = (ρNIR - ρred) / (ρNIR + ρred), LSWI = (ρNIR - ρSWIR1) / (ρNIR + ρSWIR1). Here, ρNIR, ρred, and ρSWIR1 are the reflectances of the NIR, red, and SWIR1 bands of Sentinel-2, respectively."
+      },
+      "confidence": 0.96,
+      "term": "Sentinel-1",
+      "normalized": "哨兵-1",
+      "std_label": "Sentinel-1"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c4",
+      "evidence": {
+        "section": "2.2 Data",
+        "original_text": "The satellite data used in this study were from the Sentinel series launched by the European Space Agency (ESA). The SAR data were obtained from the Ground Range Detected (GRD, Level-1) product of Sentinel-1A, and the optical data were obtained from the Level-1C product of Sentinel-2. The SAR data used in this study were the VH band (dual-band cross-polarization, vertical transmit–horizontal receive) at a spatial resolution of 10 m and were composited into a 12 d temporal resolution by median. Optical data included 10 bands: blue, green, red, and near-infrared (NIR) at a 10 m spatial resolution and red edge 1 (RE1), red edge 2 (RE2), red edge 3 (RE3), red edge 4 (RE4), shortwave infrared 1 (SWIR1), and shortwave infrared 2 (SWIR2) at a 20 m spatial resolution. Additionally, two indexes, the NDVI and LSWI at a 10 m spatial resolution, were calculated using the following equations: NDVI = (ρNIR - ρred) / (ρNIR + ρred), LSWI = (ρNIR - ρSWIR1) / (ρNIR + ρSWIR1). Here, ρNIR, ρred, and ρSWIR1 are the reflectances of the NIR, red, and SWIR1 bands of Sentinel-2, respectively."
+      },
+      "confidence": 0.96,
+      "term": "Sentinel-2",
+      "normalized": "哨兵-2",
+      "std_label": "Sentinel-2"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c5",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Figure 4 shows the time series of all 10 optical bands or indexes of four main crops in Jilin Province in 2019. It can be seen that the time series of rice for three moisture-related bands or indexes, including the SWIR1, SWIR2, and LSWI, are significantly different from those of other crops during the transplantation period (day of the year, DOY, 133–181). The LSWI is designed to characterize land surface moisture, and its value positively correlates with land surface moisture, showing a high value during the transplantation period. In contrast, the two SWIR bands show the opposite: they first decrease and then increase during the transplantation period, following a “V” shape. As the aim of this study was to map the distribution of single-season rice, the time series did not necessarily need to be able to characterize a certain land surface parameter like the LSWI. The priority was whether a band or index could distinguish rice from other crops. As the LSWI is calculated as the normalized difference between the NIR and SWIR1 and the NIR of rice also decreases slightly during the transplantation period, offsetting the LSWI increase caused by the decrease in the SWIR1 erases some differences and information. The change in the SWIR2 was less pronounced than that in the SWIR1; therefore, the SWIR1 was selected to calculate the dissimilarity in this study."
+      },
+      "confidence": 0.95,
+      "term": "SWIR1",
+      "normalized": "短波红外1",
+      "std_label": "SWIR1"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c6",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Compared with northern China, southern China is more heavily affected by clouds and rain, resulting in worse-quality optical observations (Fig. 2). This study introduced SAR observations as auxiliary information in subregions II, III, and IV, as SAR can pass through clouds. Specifically, the VH band was used, as studies have shown that VH polarization is more sensitive than vertical–vertical (VV) polarization with respect to detecting field flooding (Nguyen et al., 2016; Wakabayashi et al., 2019). The VH time series of rice in the transplantation period also shows a V shape (Fig. 7). Although the shape of the rice curve differs from that of the other crops, their values partly overlap. As a coherent radar system, SAR images will inevitably carry salt-and-pepper noise (Veloso et al., 2017). Therefore, VH was only used when the quality of optical observations was extremely poor."
+      },
+      "confidence": 0.94,
+      "term": "VH band",
+      "normalized": "VH波段",
+      "std_label": "VH"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_80f85fa1c007cbff_c7",
+      "evidence": {
+        "section": "4 Discussion",
+        "original_text": "In recent years, due to the shortage of rural labor, direct-seeded rice (DSR) has been increasingly used in China (Chakraborty et al., 2017). Unlike transplantation, DSR does not require the raising and transplanting of seedlings. Instead, the seeds are sown directly in the main field. Depending on the field conditions, there are three types of DSR: wet direct seeding, water direct seeding, and dry direct seeding (Farooq et al., 2011). Wet direct seeding refers to a regime in which seeds are sown in a puddled soil surface, whereas water direct seeding refers to a practice in which seeds are sown in flooded fields. Most DSR belongs to these two aforementioned types. In contrast, when using dry direct seeding, seeds are sown in a dry field. Therefore, our method can be used to identify rice fields resulting from wet or water direct seeding by capturing the moisture or flood signal, whereas rice fields using a dry direct seeding regime cannot be identified using our method. Some studies have also pointed out that certain types of DSR may have a weak flooding signal compared with transplantation, making it difficult to distinguish them from other crops using traditional classification methods (Guo et al., 2019). At present, the proportion of dry direct seeding in China is small, and it has a limited impact on the accuracy of the distribution maps. However, as dry direct seeding continues to spread, its impact on rice mapping will become difficult to ignore. Therefore, new methods for rice mapping must be developed in the future."
+      },
+      "confidence": 0.93,
+      "term": "direct-seeded rice",
+      "normalized": "直播稻",
+      "std_label": "DSR"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_80f85fa1c007cbff_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study developed a new rice-mapping method by combining optical and synthetic aperture radar (SAR) images in cloudy areas based on the time-weighted dynamic time warping (TWDTW) method and produced distribution maps of single-season rice in 21 provincial administrative regions of China from 2017 to 2022 at a 10 or 20 m resolution. The accuracy was examined using 108 195 survey samples and county-level statistical data. On average, the user’s, producer’s, and overall accuracy values over all investigated provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively. Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average. The distribution maps can be obtained at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023)."
+      },
+      "confidence": 0.92,
+      "head": "doc_80f85fa1c007cbff_c2",
+      "relation_type": "uses",
+      "relation_surface": "based on",
+      "tail": "doc_80f85fa1c007cbff_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_80f85fa1c007cbff_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study developed a new rice-mapping method by combining optical and synthetic aperture radar (SAR) images in cloudy areas based on the time-weighted dynamic time warping (TWDTW) method and produced distribution maps of single-season rice in 21 provincial administrative regions of China from 2017 to 2022 at a 10 or 20 m resolution. The accuracy was examined using 108 195 survey samples and county-level statistical data. On average, the user’s, producer’s, and overall accuracy values over all investigated provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively. Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average. The distribution maps can be obtained at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023)."
+      },
+      "confidence": 0.92,
+      "head": "doc_80f85fa1c007cbff_c2",
+      "relation_type": "uses",
+      "relation_surface": "combining optical and synthetic aperture radar (SAR) images",
+      "tail": "doc_80f85fa1c007cbff_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_80f85fa1c007cbff_r3",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Figure 4 shows the time series of all 10 optical bands or indexes of four main crops in Jilin Province in 2019. It can be seen that the time series of rice for three moisture-related bands or indexes, including the SWIR1, SWIR2, and LSWI, are significantly different from those of other crops during the transplantation period (day of the year, DOY, 133–181). The LSWI is designed to characterize land surface moisture, and its value positively correlates with land surface moisture, showing a high value during the transplantation period. In contrast, the two SWIR bands show the opposite: they first decrease and then increase during the transplantation period, following a “V” shape. As the aim of this study was to map the distribution of single-season rice, the time series did not necessarily need to be able to characterize a certain land surface parameter like the LSWI. The priority was whether a band or index could distinguish rice from other crops. As the LSWI is calculated as the normalized difference between the NIR and SWIR1 and the NIR of rice also decreases slightly during the transplantation period, offsetting the LSWI increase caused by the decrease in the SWIR1 erases some differences and information. The change in the SWIR2 was less pronounced than that in the SWIR1; therefore, the SWIR1 was selected to calculate the dissimilarity in this study."
+      },
+      "confidence": 0.91,
+      "head": "doc_80f85fa1c007cbff_c5",
+      "relation_type": "measures",
+      "relation_surface": "selected to calculate the dissimilarity",
+      "tail": "doc_80f85fa1c007cbff_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_80f85fa1c007cbff_r4",
+      "evidence": {
+        "section": "2.3 Method",
+        "original_text": "Compared with northern China, southern China is more heavily affected by clouds and rain, resulting in worse-quality optical observations (Fig. 2). This study introduced SAR observations as auxiliary information in subregions II, III, and IV, as SAR can pass through clouds. Specifically, the VH band was used, as studies have shown that VH polarization is more sensitive than vertical–vertical (VV) polarization with respect to detecting field flooding (Nguyen et al., 2016; Wakabayashi et al., 2019). The VH time series of rice in the transplantation period also shows a V shape (Fig. 7). Although the shape of the rice curve differs from that of the other crops, their values partly overlap. As a coherent radar system, SAR images will inevitably carry salt-and-pepper noise (Veloso et al., 2017). Therefore, VH was only used when the quality of optical observations was extremely poor."
+      },
+      "confidence": 0.9,
+      "head": "doc_80f85fa1c007cbff_c6",
+      "relation_type": "measures",
+      "relation_surface": "used as auxiliary information",
+      "tail": "doc_80f85fa1c007cbff_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_80f85fa1c007cbff_r5",
+      "evidence": {
+        "section": "4 Discussion",
+        "original_text": "In recent years, due to the shortage of rural labor, direct-seeded rice (DSR) has been increasingly used in China (Chakraborty et al., 2017). Unlike transplantation, DSR does not require the raising and transplanting of seedlings. Instead, the seeds are sown directly in the main field. Depending on the field conditions, there are three types of DSR: wet direct seeding, water direct seeding, and dry direct seeding (Farooq et al., 2011). Wet direct seeding refers to a regime in which seeds are sown in a puddled soil surface, whereas water direct seeding refers to a practice in which seeds are sown in flooded fields. Most DSR belongs to these two aforementioned types. In contrast, when using dry direct seeding, seeds are sown in a dry field. Therefore, our method can be used to identify rice fields resulting from wet or water direct seeding by capturing the moisture or flood signal, whereas rice fields using a dry direct seeding regime cannot be identified using our method. Some studies have also pointed out that certain types of DSR may have a weak flooding signal compared with transplantation, making it difficult to distinguish them from other crops using traditional classification methods (Guo et al., 2019). At present, the proportion of dry direct seeding in China is small, and it has a limited impact on the accuracy of the distribution maps. However, as dry direct seeding continues to spread, its impact on rice mapping will become difficult to ignore. Therefore, new methods for rice mapping must be developed in the future."
+      },
+      "confidence": 0.89,
+      "head": "doc_80f85fa1c007cbff_c7",
+      "relation_type": "inhibits",
+      "relation_surface": "cannot be identified using our method",
+      "tail": "doc_80f85fa1c007cbff_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_80f85fa1c007cbff_d1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study developed a new rice-mapping method by combining optical and synthetic aperture radar (SAR) images in cloudy areas based on the time-weighted dynamic time warping (TWDTW) method and produced distribution maps of single-season rice in 21 provincial administrative regions of China from 2017 to 2022 at a 10 or 20 m resolution. The accuracy was examined using 108 195 survey samples and county-level statistical data. On average, the user’s, producer’s, and overall accuracy values over all investigated provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively. Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average. The distribution maps can be obtained at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023)."
+      },
+      "confidence": 0.95,
+      "name": "High-resolution distribution maps of single-season rice in China from 2017 to 2022",
+      "modality": "image",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_80f85fa1c007cbff_d2",
+      "evidence": {
+        "section": "2.2.2 Field data and agricultural statistical data",
+        "original_text": "The field data were obtained through several field surveys that we conducted across China during the 2017–2021 period, including 37 036 samples of single-season rice and 71 159 samples of other crops (e.g., double-season rice, maize, soybean, and peanuts), forests, built-up areas, waterbodies, etc. An unoccupied aerial vehicle (UAV; eBee, senseFly Ltd., Switzerland) was used in some of our surveys to take very high resolution images covering on average 0.1 km² . The images were visually interpreted to obtain sample points at a spatial resolution of 20 m. The provincelevel agricultural statistical data are published in the statistical yearbook of each province, and the county-level statistical data are published sporadically in the statistical yearbook of each province or city. As the release of data usually lagged by 2 years or more and the single-season rice-planting areas were not published in many counties, this study only collected a total of 2748 county-level statistical single-season rice-planting area data from 2017 to 2019 (Table 1). No available county-level statistical data were collected for Heilongjiang and Inner Mongolia due to the discrepancies between the administrative division and statistical caliber."
+      },
+      "confidence": 0.9,
+      "name": "Field survey samples for single-season rice mapping",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_80f85fa1c007cbff_d3",
+      "evidence": {
+        "section": "2.2.2 Field data and agricultural statistical data",
+        "original_text": "The provincelevel agricultural statistical data are published in the statistical yearbook of each province, and the county-level statistical data are published sporadically in the statistical yearbook of each province or city. As the release of data usually lagged by 2 years or more and the single-season rice-planting areas were not published in many counties, this study only collected a total of 2748 county-level statistical single-season rice-planting area data from 2017 to 2019 (Table 1). No available county-level statistical data were collected for Heilongjiang and Inner Mongolia due to the discrepancies between the administrative division and statistical caliber."
+      },
+      "confidence": 0.85,
+      "name": "County-level statistical planting area data",
+      "modality": "tabular",
+      "domain": "agriculture"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_80f85fa1c007cbff_ds1",
+      "evidence": {
+        "section": "5 Data availability",
+        "original_text": "The distribution maps of single-season rice of 21 provincial administrative regions in China from 2017 to 2022 are available at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023). The file format of the product is GeoTIFF with the spatial reference of WGS84 (EPSG:4326). The distribution maps of single-season rice will be updated annually at the end of each year."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "GeoTIFF raster format with WGS84 (EPSG:4326) spatial reference"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_80f85fa1c007cbff_ds2",
+      "evidence": {
+        "section": "2.3.5 Accuracy assessment",
+        "original_text": "The study assessed the accuracy of distribution maps using field data and county-level statistical areas. In this study, a confusion matrix was used to show the classification of the distribution map on the survey samples, and three accuracies were calculated, including the producer’s accuracy (PA), user’s accuracy, and overall accuracy (OA), which were calculated as follows: PA = TP/(TP+FN), UA = TP/(TP+FP), OA = (TP+TN)/(TP+TN+FP+FN). Here, TP is the number of correctly classified single-season rice samples, TN is the number of correctly classified nonsingle-season rice samples, FP is the number of non-singleseason rice samples classified as single-season rice, and FN is the number of single-season rice samples classified as nonsingle-season rice. The county-level statistical planting areas from statistical yearbooks were also used to verify the accuracy of distribution maps by comparing them with the identified planting area at the county level. The relationships between the identified areas and the statistical areas were evaluated by linear regression. The coefficient of determination ( R² ) and the relative mean absolute error (RMAE) are calculated. The calculation equation of the RMAE is as follows: RMAE = (∑|SA_i - IA_i|/SA_i)/n, where SA_i and IA_i are the statistical area and identified area of the i th county, respectively, and n indicates the number of counties."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Accuracy assessment using confusion matrix and county-level statistical comparison"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_80f85fa1c007cbff_ds3",
+      "evidence": {
+        "section": "2.2.1 Satellite data and land cover data",
+        "original_text": "The satellite data used in this study were from the Sentinel series launched by the European Space Agency (ESA). The SAR data were obtained from the Ground Range Detected (GRD, Level-1) product of Sentinel-1A, and the optical data were obtained from the Level-1C product of Sentinel-2. The SAR data used in this study were the VH band (dual-band cross-polarization, vertical transmit–horizontal receive) at a spatial resolution of 10 m and were composited into a 12 d temporal resolution by median. Optical data included 10 bands: blue, green, red, and near-infrared (NIR) at a 10 m spatial resolution and red edge 1 (RE1), red edge 2 (RE2), red edge 3 (RE3), red edge 4 (RE4), shortwave infrared 1 (SWIR1), and shortwave infrared 2 (SWIR2) at a 20 m spatial resolution. Additionally, two indexes, the NDVI and LSWI at a 10 m spatial resolution, were calculated using the following equations: NDVI = (ρ_NIR - ρ_red)/(ρ_NIR + ρ_red), LSWI = (ρ_NIR - ρ_SWIR1)/(ρ_NIR + ρ_SWIR1). Here, ρ_NIR, ρ_red, and ρ_SWIR1 are the reflectances of the NIR, red, and SWIR1 bands of Sentinel-2, respectively. The Sentinel-2 Cloud Probability (S2C) product was used to eliminate the influence of clouds. The product provides a cloud probability from 0 to 100 at a 10 m resolution, which has a higher resolution than the original QA60 band of the Sentinel-2 dataset and is more flexible and accurate. In this study, the threshold of cloud probability was set to 50; pixels with a higher probability were regarded as clouds and removed. Considering the length of the transplantation period and the number of cloud-free images of each subregion, the optical data were composited to a 12 d (Subregion I) or 6 d (subregions II, III, and IV) temporal resolution by median. A linear interpolation was applied to fill the gaps in the time series. To further eliminate the noise in the time series of Sentinel-1 and Sentinel-2 images, a Savitzky–Golay (SG) filter with the order set to two and the window size set to five was applied to smooth the time series (Chen et al., 2004). All of the preprocessing was completed on the Google Earth Engine (GEE) platform (Gorelick et al., 2017). This study also used the Finer Resolution Observation and Monitoring of Global Land Cover (FROM-GLC) product as a mask to exclude noncultivated areas (Gong et al., 2019)."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "Satellite data preprocessing on Google Earth Engine (GEE) platform"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_80f85fa1c007cbff_ds4",
+      "evidence": {
+        "section": "2.3.2 Optical band selection",
+        "original_text": "The standard time series were generated using survey samples. A total of 50 single-season rice survey samples were randomly selected from all single-season rice points in each province. The SWIR1 time series of these samples were extracted, aligned according to the time when the minimum value appears, and averaged to obtain the standard time series of each province. The standard time series of 21 provincial administrative regions in four subregions all showed a V shape (Fig. 5). The time period of the standard time series was limited to the transplantation period, and the length of the standard time series was five values in Subregion I and seven values in other subregions. Because the method is transferable between years, the standard time series retrieved from 1 year was used in all 6 years."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Standard time series generation from survey samples for TWDTW method"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_80f85fa1c007cbff_m1",
+      "evidence": {
+        "section": "2.3.1",
+        "original_text": "This study generated a single-season rice distribution map by comparing the dissimilarity of the time series of each pixel with the standard time series of rice. The TWDTW method was used to calculate the dissimilarity (Petitjean et al., 2012; Dong et al., 2020). In this method, the unknown time series is nonlinearly stretched or compressed to align with the standard single-season rice time series, and an accumulated distance is then calculated by cumulating the distance of the alignment path. The accumulated distance of all possible alignments is calculated, and the minimum accumulated distance is used to represent the dissimilarity of two time series. Considering the phenophases of crops, a penalty called the time weight is added to the calculation (Maus et al., 2016). When the time series is stretched or compressed, the difference caused by the dislocation of time axes is calculated, and a function (e.g., logistic function) is used to convert the time difference into a time weight. As a result, the TWDTW measures the difference between two time series by considering both shape and phenological information. Parameters of the TWDTW employed in this study were suggested by Belgiu and Csillik (2018), using a logistic function with α and β set to 0.1 and 50, respectively. Finally, the single-season rice was identified via a threshold of dissimilarity determined by the province-level statistical area. The total area of pixels with a dissimilarity lower than the threshold was equal to the statistical area."
+      },
+      "confidence": 0.95,
+      "name": "time-weighted dynamic time warping (TWDTW)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_80f85fa1c007cbff_m2",
+      "evidence": {
+        "section": "2.3.3",
+        "original_text": "Although the transplantation period of rice is short, farmers may transplant single-season rice over a longer period. Therefore, the V shape may appear earlier or later. In this study, the standard time series was translated and stretched along the time axis to match any possible period in which transplantation might have occurred. To reduce the computational effort as well as to prevent overstretching, the standard time series was allowed to stretch once at most. Taking Subregion I as an example, where rice is generally transplanted from late May to the middle of June, the study period was set to DOY 121–193, with a total of seven observations to take decreasing and increasing phases of the V curve into consideration. The length of the standard time series was five values, and time series within the study period with a length of five or six values were selected to calculate the distance with the standard time series using the TWDTW method (Fig. 6). The minimum of all distances was selected to represent the dissimilarity of the pixel. The study periods of subregions II, III, and IV were set to DOY 121–199, DOY 121–211, and DOY 97–163, respectively."
+      },
+      "confidence": 0.95,
+      "name": "TWDTW with translation and stretching",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_80f85fa1c007cbff_m3",
+      "evidence": {
+        "section": "2.2.1",
+        "original_text": "The satellite data used in this study were from the Sentinel series launched by the European Space Agency (ESA). The SAR data were obtained from the Ground Range Detected (GRD, Level-1) product of Sentinel-1A, and the optical data were obtained from the Level-1C product of Sentinel-2. The SAR data used in this study were the VH band (dual-band cross-polarization, vertical transmit–horizontal receive) at a spatial resolution of 10 m and were composited into a 12 d temporal resolution by median. Optical data included 10 bands: blue, green, red, and near-infrared (NIR) at a 10 m spatial resolution and red edge 1 (RE1), red edge 2 (RE2), red edge 3 (RE3), red edge 4 (RE4), shortwave infrared 1 (SWIR1), and shortwave infrared 2 (SWIR2) at a 20 m spatial resolution. Additionally, two indexes, the NDVI and LSWI at a 10 m spatial resolution, were calculated using the following equations: NDVI = (ρNIR - ρred) / (ρNIR + ρred) and LSWI = (ρNIR - ρSWIR1) / (ρNIR + ρSWIR1). Here, ρNIR, ρred, and ρSWIR1 are the reflectances of the NIR, red, and SWIR1 bands of Sentinel-2, respectively. The Sentinel-2 Cloud Probability (S2C) product was used to eliminate the influence of clouds. The product provides a cloud probability from 0 to 100 at a 10 m resolution, which has a higher resolution than the original QA60 band of the Sentinel-2 dataset and is more flexible and accurate. In this study, the threshold of cloud probability was set to 50; pixels with a higher probability were regarded as clouds and removed. Considering the length of the transplantation period and the number of cloud-free images of each subregion, the optical data were composited to a 12 d (Subregion I) or 6 d (subregions II, III, and IV) temporal resolution by median. Figure 2 shows the percentage of good optical observations during the study period of each pixel in the study area. A linear interpolation was applied to fill the gaps in the time series. To further eliminate the noise in the time series of Sentinel-1 and Sentinel-2 images, a Savitzky–Golay (SG) filter with the order set to two and the window size set to five was applied to smooth the time series (Chen et al., 2004). All of the preprocessing was completed on the Google Earth Engine (GEE) platform (Gorelick et al., 2017). This study also used the Finer Resolution Observation and Monitoring of Global Land Cover (FROM-GLC) product as a mask to exclude noncultivated areas (Gong et al., 2019)."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-1 and Sentinel-2 data preprocessing",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_80f85fa1c007cbff_m4",
+      "evidence": {
+        "section": "2.3.4",
+        "original_text": "First, the dissimilarity between an unknown VH time series and the standard VH time series was calculated at each pixel using the TWDTW method. The standard VH time series was generated using the same procedure as for SWIR1 (Sect. 2.3.2). The VH study periods of subregions II, III, and IV were set to DOY 121–193, DOY 121–205, and DOY 97–169, respectively (Fig. 8). Second, as the distances calculated from different bands (SWIR1 and VH) were related to their values, SWIR1 is the reflectance and has a value ranging from 0 to 1, whereas VH is the backscattering coefficient and has a value ranging from −50 to 1 dB. Therefore, the distances calculated from these two bands are not comparable. In order to combine the distances of the two bands, the distance was replaced by the ranking of the pixel by sorting the distance. Specifically, the distances calculated from the two bands were sorted separately, and the ranking of pixels ranged from one to the total number of cropland pixels. Notice that the area of a 20 m resolution SWIR1 pixel is equivalent to four 10 m resolution VH pixels. That means the total number of SWIR1 pixels is one-fourth of VH. Therefore, the ranking of SWIR1 needed to be multiplied by 4 on each pixel and resampled to a 10 m resolution. By following this process, the rankings of two bands would be comparable and the pixel sizes would correspond. Third, the combined dissimilarity of each pixel was calculated by a weighted sum of the rankings of two bands. As a weighted sum has been used, the sum of the two weights should be equal to 1. Therefore, only the weight of SWIR1 needs to be set here, and the weight of VH can be calculated accordingly. In this study, the weight of SWIR1 was determined based on the quality of the optical images. Specifically, the times of good observations of the optical images were used to calculate the weight of SWIR1. Because the TWDTW method with translation stretching was used, the times of good observations referred to the times of good observations during the period corresponding to the minimum TWDTW distance of SWIR1 (Sect. 2.3.3). As the weight w needs to be between zero and one, a function is required to map the number of good observations to a value between zero and one. The logistic function is commonly used to perform this type of mapping in various studies. This function was used to calculate the time weights mentioned previously, and its special form, the sigmoid function, has also been utilized as an activation function in some artificial neural networks (Maus et al., 2016; Han and Moraga, 1995). The formula of the logistic function is as follows: w = 1 / (1 + exp(-α * (x - β))), where x represents the times of good observations and α and β are parameters. Through a small range of tests, α and β were set to 2 and 2.5, respectively. By setting the parameters, w was close to 1 when x was greater than 3, and close to 0 when x was less than 2 (Fig. 9). A higher weight would only be given to VH in the case of very poor optical observations. The combined dissimilarity d was calculated as follows: d = w * rSWIR1 + (1 - w) * rVH, where rSWIR1 and rVH are the ranking of SWIR1 and VH, respectively. A distribution map was generated from the combined dissimilarity using the threshold mentioned in Sect. 2.3.1."
+      },
+      "confidence": 0.95,
+      "name": "combining SAR and optical distances via weighted sum",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_80f85fa1c007cbff_x1",
+      "evidence": {
+        "section": "2.1",
+        "original_text": "This study was conducted in 21 provincial administrative regions in mainland China, where the total planting area of single-season rice was 19.92 × 10^6 ha, accounting for approximately 99.01 % of the total planting area of single-season rice in mainland China according to the statistical data for 2018 (https://data.stats.gov.cn, last access: 25 July 2023). The total production of the single-season rice in the study area was 150.46 × 10^6 t, accounting for approximately 98.91 % of the total production in mainland China in 2018. As single-season rice is widely planted in China, this study further divided the study area into four subregions (Fig. 1). Subregion I is the northern rice-planting area, including Heilongjiang, Jilin, Liaoning, Inner Mongolia, and Ningxia. Because of temperature limitations, only single-season rice is planted in this subregion, with the transplantation period generally between late May and the middle of June. Subregion II is the southern central single-season rice-planting area, including provinces that only or mainly plant single-season rice (Jiangsu, Anhui, Hubei, Henan, Shandong, Shaanxi, and Shanghai) and provinces where single-season and double-season rice are both planted (Hunan and Jiangxi). The single-season rice in this subregion is generally transplanted between middle–late May and late June. Subregion III is the southeastern coastal single-season rice-planting area, including Zhejiang, Fujian, and Guangxi. Here, single-season rice may be transplanted later than in Subregion II, generally between middle–late May and early July. Subregion IV is the southwestern rice-planting area, including Sichuan, Yunnan, Guizhou, and Chongqing. Single-season rice in this subregion is transplanted much earlier than in other subregions, generally between late April and the middle of May."
+      },
+      "confidence": 0.95,
+      "task": "single-season rice mapping in China",
+      "setup": "21 provincial administrative regions in mainland China from 2017 to 2022 using Sentinel-1 SAR and Sentinel-2 optical data"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_80f85fa1c007cbff_x2",
+      "evidence": {
+        "section": "2.3.5",
+        "original_text": "The study assessed the accuracy of distribution maps using field data and county-level statistical areas. In this study, a confusion matrix was used to show the classification of the distribution map on the survey samples, and three accuracies were calculated, including the producer’s accuracy (PA), user’s accuracy, and overall accuracy (OA), which were calculated as follows: PA = TP / (TP + FN), UA = TP / (TP + FP), OA = (TP + TN) / (TP + TN + FP + FN). Here, TP is the number of correctly classified single-season rice samples, TN is the number of correctly classified non-single-season rice samples, FP is the number of non-single-season rice samples classified as single-season rice, and FN is the number of single-season rice samples classified as non-single-season rice. The county-level statistical planting areas from statistical yearbooks were also used to verify the accuracy of distribution maps by comparing them with the identified planting area at the county level. The relationships between the identified areas and the statistical areas were evaluated by linear regression. The coefficient of determination (R^2) and the relative mean absolute error (RMAE) are calculated. The calculation equation of the RMAE is as follows: RMAE = Σ|SA_i - IA_i| / ΣSA_i, where SA_i and IA_i are the statistical area and identified area of the i-th county, respectively, and n indicates the number of counties."
+      },
+      "confidence": 0.95,
+      "task": "accuracy assessment using field data and statistical data",
+      "setup": "108,195 survey samples and 2,748 county-level statistical data from 2017 to 2019"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_80f85fa1c007cbff_x3",
+      "evidence": {
+        "section": "2.2.2",
+        "original_text": "The field data were obtained through several field surveys that we conducted across China during the 2017–2021 period, including 37 036 samples of single-season rice and 71 159 samples of other crops (e.g., double-season rice, maize, soybean, and peanuts), forests, built-up areas, waterbodies, etc. An unoccupied aerial vehicle (UAV; eBee, senseFly Ltd., Switzerland) was used in some of our surveys to take very high resolution images covering on average 0.1 km^2. The images were visually interpreted to obtain sample points at a spatial resolution of 20 m. The province-level agricultural statistical data are published in the statistical yearbook of each province, and the county-level statistical data are published sporadically in the statistical yearbook of each province or city. As the release of data usually lagged by 2 years or more and the single-season rice-planting areas were not published in many counties, this study only collected a total of 2748 county-level statistical single-season rice-planting area data from 2017 to 2019 (Table 1). No available county-level statistical data were collected for Heilongjiang and Inner Mongolia due to the discrepancies between the administrative division and statistical caliber."
+      },
+      "confidence": 0.95,
+      "task": "field survey for sample collection",
+      "setup": "field surveys across China during 2017–2021 using UAV and visual interpretation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The distribution maps show good performance in most of the provincial administrative regions. On average, the user’s, producer’s, and overall accuracy over all 21 provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively (Table 2). The average overall accuracies in the four subregions were 95.69 %, 81.15 %, 86.75 %, and 80.18 %, respectively (Table 2). Subregion I (i.e., the northern provinces) had higher accuracy, whereas the southern provinces, especially the provinces in subregion IV (southwest), had poor accuracy. The user’s and producer’s accuracies varied more between provinces than overall accuracy. The best user’s and producer’s accuracy all appeared in the northern provinces. The best user’s accuracy was obtained for Inner Mongolia (97.67 %), whereas the best producer’s accuracy was found for Liaoning (99.75 %) (Table 2). The lowest user’s accuracy appeared in Guangxi (46.96 %), whereas the lowest producer’s accuracy appeared in Jiangxi (49.22 %) (Table 2)."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 85.23,
+      "unit": "%",
+      "context": "Overall accuracy of single-season rice distribution maps across 21 provincial administrative regions in China from 2017 to 2022, evaluated using 108,195 survey samples",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The distribution maps show good performance in most of the provincial administrative regions. On average, the user’s, producer’s, and overall accuracy over all 21 provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively (Table 2)."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 73.08,
+      "unit": "%",
+      "context": "Average user's accuracy of single-season rice distribution maps across 21 provincial administrative regions in China from 2017 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The distribution maps show good performance in most of the provincial administrative regions. On average, the user’s, producer’s, and overall accuracy over all 21 provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively (Table 2)."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 82.81,
+      "unit": "%",
+      "context": "Average producer's accuracy of single-season rice distribution maps across 21 provincial administrative regions in China from 2017 to 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.83,
+      "unit": null,
+      "context": "County-level comparison between identified planting areas from distribution maps and statistical planting areas from 2017 to 2019",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The county-level comparison with the statistical data showed good performance. The identified area and statistical area had a very strong correlation, and the regression line was very close to the 1 : 1 line over all 3 years (Fig. 12). The slope ranged from 0.86 to 0.90, and the R2 values ranged from 0.78 to 0.86."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.78,
+      "unit": null,
+      "context": "County-level comparison between identified and statistical planting areas in 2017",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The county-level comparison with the statistical data showed good performance. The identified area and statistical area had a very strong correlation, and the regression line was very close to the 1 : 1 line over all 3 years (Fig. 12). The slope ranged from 0.86 to 0.90, and the R2 values ranged from 0.78 to 0.86."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.86,
+      "unit": null,
+      "context": "County-level comparison between identified and statistical planting areas in 2019",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The county-level comparison with the statistical data showed good performance. The identified area and statistical area had a very strong correlation, and the regression line was very close to the 1 : 1 line over all 3 years (Fig. 12). The slope ranged from 0.86 to 0.90, and the R2 values ranged from 0.78 to 0.86."
+      },
+      "confidence": 0.99,
+      "quantity": "regression slope",
+      "value": 0.86,
+      "unit": null,
+      "context": "County-level comparison between identified and statistical planting areas from 2017 to 2019",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The county-level comparison with the statistical data showed good performance. The identified area and statistical area had a very strong correlation, and the regression line was very close to the 1 : 1 line over all 3 years (Fig. 12). The slope ranged from 0.86 to 0.90, and the R2 values ranged from 0.78 to 0.86."
+      },
+      "confidence": 0.99,
+      "quantity": "regression slope",
+      "value": 0.9,
+      "unit": null,
+      "context": "County-level comparison between identified and statistical planting areas from 2017 to 2019",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr9",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Comparing each province, the R2 values of the distribution maps compared with the statistical data ranged from 0.15 to 0.94, the slope ranged from 0.24 to 1.44, and the relative error ranged from 0.24 to 0.56 (Fig. 13). Subregion I had the highest accuracy with an average R2 value of 0.92, followed by Subregion II with an average R2 value of 0.70, and subregions III and IV had poorer precision (both with an average R2 value of 0.55)."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.92,
+      "unit": null,
+      "context": "Average R2 value for county-level comparison in Subregion I (northern provinces)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr10",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Comparing each province, the R2 values of the distribution maps compared with the statistical data ranged from 0.15 to 0.94, the slope ranged from 0.24 to 1.44, and the relative error ranged from 0.24 to 0.56 (Fig. 13). Subregion I had the highest accuracy with an average R2 value of 0.92, followed by Subregion II with an average R2 value of 0.70, and subregions III and IV had poorer precision (both with an average R2 value of 0.55)."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.7,
+      "unit": null,
+      "context": "Average R2 value for county-level comparison in Subregion II (southern central provinces)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr11",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Comparing each province, the R2 values of the distribution maps compared with the statistical data ranged from 0.15 to 0.94, the slope ranged from 0.24 to 1.44, and the relative error ranged from 0.24 to 0.56 (Fig. 13). Subregion I had the highest accuracy with an average R2 value of 0.92, followed by Subregion II with an average R2 value of 0.70, and subregions III and IV had poorer precision (both with an average R2 value of 0.55)."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.55,
+      "unit": null,
+      "context": "Average R2 value for county-level comparison in Subregion III (southeast coastal provinces)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr12",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Comparing each province, the R2 values of the distribution maps compared with the statistical data ranged from 0.15 to 0.94, the slope ranged from 0.24 to 1.44, and the relative error ranged from 0.24 to 0.56 (Fig. 13). Subregion I had the highest accuracy with an average R2 value of 0.92, followed by Subregion II with an average R2 value of 0.70, and subregions III and IV had poorer precision (both with an average R2 value of 0.55)."
+      },
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
+      "value": 0.55,
+      "unit": null,
+      "context": "Average R2 value for county-level comparison in Subregion IV (southwestern provinces)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_80f85fa1c007cbff_qr13",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The optical data for 2017 have the poorest observation quality: the number of observations corresponding to the minimum distance on each pixel averaged only 1.16 (Fig. 14). This number of observations determines the high weight of the distances calculated from the SAR images, which explains the lowest R2 value in 2017 (Fig. 12)."
+      },
+      "confidence": 0.99,
+      "quantity": "number of good observations",
+      "value": 1.16,
+      "unit": null,
+      "context": "Average number of good optical observations per pixel corresponding to the minimum TWDTW distance in 2017",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_80f85fa1c007cbff_p1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Compared with machine learning methods, the TWDTW method has the advantage of requiring fewer training samples. In this study, the number of samples used to obtain the standard time series was only 50. Many studies have reported that using machine learning methods to achieve high accuracy requires a large volume of training samples, and obtaining samples is both time-consuming and labor-intensive (Millard and Richardson, 2015; Valero et al., 2016). Therefore, the TWDTW method can be easily extended to regions or years with limited survey data compared with machine learning methods. For example, You et al. (2021) mapped three crops, including rice, in Northeast China from 2017 to 2020 using a machine learning method (random forest) and achieved a producer’s and user’s accuracy for rice of greater than 90 %, except for the user’s accuracy in 2017 (87 %). However, their study used more than 8000 training samples per year that needed to be updated every year. In contrast, this study achieved a similar accuracy with only 50 sample points per province in Northeast China."
+      },
+      "confidence": 0.95,
+      "metric": "accuracy",
+      "compared_to": "machine learning methods"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_80f85fa1c007cbff_p2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Compared with the flood-detection method developed by Xiao et al. (2005), the TWDTW method uses signals in a certain period before and after rice flooding, including more phenological information. Flood-detection methods are deeply affected by clouds and rain. Thus, the accuracy of a moderate-resolution rice map based on MODIS data can be relatively high due to the high temporal resolution and the lower number of cloudy pixels in the MODIS data (Xiao et al., 2006, 2005). However, when based on Landsat data, the accuracy of such a high-resolution product was not satisfactory due to the influence of cloudy images (Dong et al., 2016). Furthermore, good observations in the southern areas of China are extremely scarce, especially in Subregion IV (southwestern China), where the 6-year average of the frequency of good observations is only between 25 % and 40 % during the transplantation period, making it impossible to map rice in these provinces using only optical images (Fig. 2). Therefore, SAR images were introduced in cloudy areas in this study, making it possible to map rice in these areas."
+      },
+      "confidence": 0.95,
+      "metric": "accuracy",
+      "compared_to": "flood-detection method"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_80f85fa1c007cbff_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Paddy rice is the second-largest grain crop in China and plays an important role in ensuring global food security. However, there is no high-resolution map of rice covering all of China. This study developed a new rice-mapping method by combining optical and synthetic aperture radar (SAR) images in cloudy areas based on the time-weighted dynamic time warping (TWDTW) method and produced distribution maps of single-season rice in 21 provincial administrative regions of China from 2017 to 2022 at a 10 or 20 m resolution. The accuracy was examined using 108 195 survey samples and county-level statistical data. On average, the user’s, producer’s, and overall accuracy values over all investigated provincial administrative regions were 73.08 %, 82.81 %, and 85.23 %, respectively. Compared with the statistical data from 2017 to 2019, the distribution maps explained 83 % of the spatial variation of county-level planting areas on average. The distribution maps can be obtained at https://doi.org/10.57760/sciencedb.06963 (Shen et al., 2023)."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_80f85fa1c007cbff_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "This study proposed a new rice-mapping method based on the time-weighted dynamic time warping (TWDTW) method. The TWDTW distances of the shortwave infrared 1 (SWIR1) band from optical images and of the VH band from synthetic aperture radar (SAR) images were combined according to a weight, and the number of good optical observations was used to determine the weight. Using this method, this study produced distribution maps of single-season rice in China from 2017 to 2022 at a 10 or 20 m resolution. The overall accuracy over 21 provincial administrative regions averaged 85.23 % based on 108 195 samples; the average R2 value was 0.83 over 3 years compared with county-level statistical planting areas. However, the method did not fully resolve the limitations of optical and SAR images, as clouds and the fragmentation of the rice fields still affected the accuracy of the distribution maps. In general, this study produced high-resolution single-season rice maps of China. This method can be easily applied to other regions, and the maps can be updated annually."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_80f85fa1c007cbff_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The introduction of SAR images has made rice identification possible in these areas. However, the quality of SAR images is somewhat worse than that of optical images, which makes the accuracy of the distribution maps in these areas lower than the accuracy in less cloudy areas. The optical data for 2017 have the poorest observation quality: the number of observations corresponding to the minimum distance on each pixel averaged only 1.16. This number of observations determines the high weight of the distances calculated from the SAR images, which explains the lowest R2 value in 2017. Comparing the R2 value of the identification accuracies (county-level comparison with the statistical planting area) with the frequencies of optical observations during the study period shows a positive correlation, with an R2 value ranging from 0.35 to 0.57. That is, in areas where the optical observations are heavily affected by clouds, the accuracy remains low to some extent, even if SAR images are used as auxiliary information. Another important factor that affects identification accuracy is the fragmentation of planted areas. In mountainous provinces, such as Guizhou, Chongqing, and Yunnan, there are many terraced rice fields, which are very narrow and fragmented. In the aforementioned areas, rice fields may be less than 10 m wide, resulting in mixed pixels at a 10 m resolution. In addition, as a side-looking radar system, SAR has a terrain effect, which produces more errors in mountainous areas. To quantify the fragmentation of the distribution maps, we regarded adjacent single-season rice pixels as a patch and then counted the size of each patch. The fragmentation of the distribution maps in the same province varied little from year to year. Guangxi, Guizhou, Shaanxi, Yunnan, and Fujian were the most fragmented provinces, with more than half of the pixels belonging to patches smaller than 100 pixels (about 1 ha). The most fragmented province was Guangxi, where, each year, an average of 85.45 % of the pixels belonged to patches smaller than 100 pixels. Although there are plains in Guangxi, the plains are mostly planted with double-season rice, whereas single-season rice is mostly planted in mountainous areas, resulting in extremely fragmented single-season rice cultivation. Using the percentage of pixels belonging to patches smaller than 100 pixels as an indicator of fragmentation and comparing this value with the identification accuracy, a significant negative correlation can be found. The R2 value of the fragmentation and identification accuracy ranged from 0.51 to 0.72, confirming that the fragmentation of single-season rice fields has a strong negative effect on the identification accuracy and is an important source of identification error."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_80f85fa1c007cbff_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "In recent years, due to the shortage of rural labor, direct-seeded rice (DSR) has been increasingly used in China. Unlike transplantation, DSR does not require the raising and transplanting of seedlings. Instead, the seeds are sown directly in the main field. Depending on the field conditions, there are three types of DSR: wet direct seeding, water direct seeding, and dry direct seeding. Wet direct seeding refers to a regime in which seeds are sown in a puddled soil surface, whereas water direct seeding refers to a practice in which seeds are sown in flooded fields. Most DSR belongs to these two aforementioned types. In contrast, when using dry direct seeding, seeds are sown in a dry field. Therefore, our method can be used to identify rice fields resulting from wet or water direct seeding by capturing the moisture or flood signal, whereas rice fields using a dry direct seeding regime cannot be identified using our method. Some studies have also pointed out that certain types of DSR may have a weak flooding signal compared with transplantation, making it difficult to distinguish them from other crops using traditional classification methods. At present, the proportion of dry direct seeding in China is small, and it has a limited impact on the accuracy of the distribution maps. However, as dry direct seeding continues to spread, its impact on rice mapping will become difficult to ignore. Therefore, new methods for rice mapping must be developed in the future."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_80f85fa1c007cbff_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Rice mapping strongly depends on the distinctive spectral characteristics of the flooding period. The spectral characteristics of rice in the growing and harvesting periods are very similar to those of other summer crops. Therefore, previous studies have all chosen to capture the characteristics of the flooding period. However, optical and SAR images have their own limits during this short period. In this study, we combined two sources of satellite images in order to overcome the limitations of each source of satellite data. However, this combination was still relatively simple. Some recent data fusion studies use machine learning methods to reconstruct high-quality optical data with both high spatial and temporal resolutions. We hope that these kinds of reconstructed datasets will help solve the limitations of optical images and help to produce more accurate single-season rice maps."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

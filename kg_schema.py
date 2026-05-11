@@ -1,8 +1,9 @@
 """
 kg_schema.py — 知识抽取的 Pydantic 模型定义
 
-10 种知识类型: concept, relation, dataset, method, experiment,
-              performance_result, conclusion, claim, future_work, limitation
+12 种知识类型: concept, relation, dataset, method, experiment,
+              performance_result, quantitative_result, data_specification,
+              conclusion, claim, future_work, limitation
 """
 
 from typing import Optional, List, Literal
@@ -41,7 +42,7 @@ class Dataset(BaseModel):
     type: Literal["dataset"] = "dataset"
     dataset_id: str
     name: str
-    samples: Optional[int] = None
+    modality: Optional[Literal["text", "image", "tabular", "time_series", "multimodal", "other"]] = None
     domain: Optional[str] = None
     evidence: Evidence
     confidence: float = Field(..., ge=0.0, le=1.0)
@@ -60,6 +61,7 @@ class Experiment(BaseModel):
     type: Literal["experiment"] = "experiment"
     experiment_id: str
     task: str
+    setup: Optional[str] = None
     evidence: Evidence
     confidence: float = Field(..., ge=0.0, le=1.0)
 
@@ -67,6 +69,29 @@ class Experiment(BaseModel):
 class PerformanceResult(BaseModel):
     type: Literal["performance_result"] = "performance_result"
     perf_id: str
+    metric: Optional[str] = None
+    compared_to: Optional[str] = None
+    evidence: Evidence
+    confidence: float = Field(..., ge=0.0, le=1.0)
+
+
+class QuantitativeResult(BaseModel):
+    type: Literal["quantitative_result"] = "quantitative_result"
+    qr_id: str
+    quantity: str
+    value: Optional[float] = None
+    unit: Optional[str] = None
+    context: str
+    result_type: Literal["main_result", "baseline", "ablation", "measurement", "threshold"]
+    evidence: Evidence
+    confidence: float = Field(..., ge=0.0, le=1.0)
+
+
+class DataSpecification(BaseModel):
+    type: Literal["data_specification"] = "data_specification"
+    ds_id: str
+    spec_type: Literal["format_rule", "quality_standard", "env_requirement", "metadata_standard"]
+    description: Optional[str] = None
     evidence: Evidence
     confidence: float = Field(..., ge=0.0, le=1.0)
 
@@ -99,7 +124,7 @@ class Limitation(BaseModel):
     confidence: float = Field(..., ge=0.0, le=1.0)
 
 
-Entry = Concept | Relation | Dataset | Method | Experiment | PerformanceResult | Conclusion | Claim | FutureWork | Limitation
+Entry = Concept | Relation | Dataset | Method | Experiment | PerformanceResult | QuantitativeResult | DataSpecification | Conclusion | Claim | FutureWork | Limitation
 
 
 class DisciplineLevel(BaseModel):
@@ -139,6 +164,8 @@ class LLMExtractionResponse(BaseModel):
     methods: List[dict] = []
     experiments: List[dict] = []
     performances: List[dict] = []
+    quantitative_results: List[dict] = []
+    data_specifications: List[dict] = []
     conclusions: List[dict] = []
     claims: List[dict] = []
     future_works: List[dict] = []

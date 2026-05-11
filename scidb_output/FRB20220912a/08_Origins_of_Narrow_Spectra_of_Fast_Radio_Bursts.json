@@ -1,0 +1,573 @@
+{
+  "metadata": {
+    "doc_id": "doc_6210dd5b4f027914",
+    "source_file": "08_Origins_of_Narrow_Spectra_of_Fast_Radio_Bursts.md",
+    "title": "Modeling Performance of Data Collection Systems for High-Energy Physics",
+    "year": 2018,
+    "doi": null,
+    "abstract": "Abstract: Exponential increases in scientific experimental data are outstripping the rate of progress in silicon technology. As a result, heterogeneous combinations of architectures and process or device technologies are increasingly important to meet the computing demands of future scientific experiments. However, the complexity of heterogeneous computing systems requires systematic modeling to understand performance.",
+    "introduction": "Progress in many scientific disciplines is dependant upon the ability to collect and analyze increasingly large volumes of experimental data. Scientific experiments including X-ray microscopy, radio astronomy, characterizing neutrinos, and exploring high-energy physics (HEP) will produce more data than in previous decades [1–4]. HEP in particularly is data-intensive, where detectors currently produce over 80 TB/s, with future increases planned [5] This growth is a natural result of progress: refinement of extant knowledge requires higher precision, and discovery of new phenomena requires searching further and in greater detail than previously possible; achieving either goal is dependent on an increased ability to carry out experiments and process data. \n\nHistorically, increased demand for data processing in scientific experiments was accompanied by multiple improvements in computing technologies, particularly in the areas of processing and communication. Processors became faster, memory became less expensive, and communication links improved in capacity and efficiency [6]. These advances enabled processing and transmitting greater amounts of data without a corresponding increase in power and space requirements. However, shifts in trends of microelectronic development - such as the end of Dennard scaling and the slow-down in Moore scaling - have reduced the rate of improvement in computing [7]. \n\nThis has motivated new trends in computer architecture, where components and devices specialized at solving certain subsets of problems are becoming commonplace (such as graphics processors, network processors, neuromorphic systems, and more) [8]. The availability of these components provides new opportunities for the designers of computing systems. However, evaluating the application of these components - where and how they should be integrated into computing systems to provide advantages over conventional approaches - represents a novel challenge. \n\nWe provide an analytical, predictive model to evaluate the opportunities offered by novel hardware for computing systems. This \"SystemFlow\" model utilizes properties from individual hardware components to estimate the overall flow of information through a real-time computing system. Identifying these properties allows researchers from multiple disciplines, from devices to algorithms, to examine the impact their contributions can make towards improving system-level properties such as total power, effectiveness at retrieving relevant experimental data, number of computing devices required. This empowers researchers to systematically evaluate the role of emerging devices and architectures within large-scale computing systems. \n\nWe demonstrate the application of this model to examine the performance of HEP data acquisition systems at the Compact Muon Solenoid (CMS) experiment at the Large Hadron Collider (LHC) [9], and quantify the benefits of multiple component-level changes. These include introducing novel data reduction processors, improving the skill of classifiers, the integration of parallelized algorithms, and varying system-level parameters.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "物理学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "heterogeneous computing",
+      "performance modeling",
+      "data acquisition",
+      "high-energy physics",
+      "system architecture"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:38:31.178174+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a model which addresses this need by framing key aspects of data collection pipelines and constraints, and combines them with the important vectors of technology that shape alternatives, computing metrics that allow complex alternatives to be compared. For instance, a data collection pipeline may be characterized by parameters such as sensor sampling rates, amount of data collected, and the overall relevancy of retrieved samples. Alternatives to this pipeline are enabled by hardware development vectors including advancing CMOS, GPUs, neuromorphic computing, and edge computing. By calculating metrics for each alternative such as overall F1 score, power, hardware cost, and energy expended per relevant sample, this model allows alternate data collection systems to be rigorously compared. To demonstrate this model’s capability, we apply it to the CMS experiment (and planned HLLHC upgrade) to evaluate and compare the application of novel technologies in the data acquisition system (DAQ)."
+      },
+      "confidence": 0.98,
+      "term": "SystemFlow model",
+      "normalized": "系统流模型",
+      "std_label": "SystemFlow"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To demonstrate this model’s capability, we apply it to the CMS experiment (and planned HLLHC upgrade) to evaluate and compare the application of novel technologies in the data acquisition system (DAQ). We demonstrate that improvements to early stages in the DAQ are highly beneficial, greatly reducing the resources required at later stages of processing (such as a 60% power reduction) and increasing the amount of relevant data retrieved from the experiment per unit power (improving from 0.065 to 0.31 samples/ kJ) However, we predict further advances will be required in order to meet overall power and cost constraints for the DAQ."
+      },
+      "confidence": 0.97,
+      "term": "data acquisition system",
+      "normalized": "数据采集系统",
+      "std_label": "DAQ"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c3",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "Progress in many scientific disciplines is dependant upon the ability to collect and analyze increasingly large volumes of experimental data. Scientific experiments including X-ray microscopy, radio astronomy, characterizing neutrinos, and exploring high-energy physics (HEP) will produce more data than in previous decades [1–4]. HEP in particularly is data-intensive, where detectors currently produce over 80 TB/s, with future increases planned [5] This growth is a natural result of progress: refinement of extant knowledge requires higher precision, and discovery of new phenomena requires searching further and in greater detail than previously possible; achieving either goal is dependent on an increased ability to carry out experiments and process data."
+      },
+      "confidence": 0.96,
+      "term": "high-energy physics",
+      "normalized": "高能物理",
+      "std_label": "HEP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Exponential increases in scientific experimental data are outstripping the rate of progress in silicon technology. As a result, heterogeneous combinations of architectures and process or device technologies are increasingly important to meet the computing demands of future scientific experiments. However, the complexity of heterogeneous computing systems requires systematic modeling to understand performance."
+      },
+      "confidence": 0.95,
+      "term": "heterogeneous computing systems",
+      "normalized": "异构计算系统",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c5",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "We demonstrate the application of this model to examine the performance of HEP data acquisition systems at the Compact Muon Solenoid (CMS) experiment at the Large Hadron Collider (LHC) [9], and quantify the benefits of multiple component-level changes. These include introducing novel data reduction processors, improving the skill of classifiers, the integration of parallelized algorithms, and varying system-level parameters."
+      },
+      "confidence": 0.97,
+      "term": "Compact Muon Solenoid",
+      "normalized": "紧凑型μ子螺线管",
+      "std_label": "CMS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c6",
+      "evidence": {
+        "section": "4.1 Current (Phase-1) DAQ",
+        "original_text": "The CMS DAQ utilizes two major processing stages to achieve this high selectivity: the Level-1 Trigger (L1T) and High-Level Trigger (HLT). In its current, or \"Phase-1\" DAQ configuration, the L1T utilizes information from the CMS’s muon and calorimetry systems to infer the presence of particles with high momenta (such as muons, tau leptons, electrons, and photons), as well as groups of particles with high energy (such as hadronic jets). These markers indicate that a rare, high-energy interaction may have taken place. Algorithms to examine detector data for these features are implemented in FPGA hardware located near the detector but in a radiation-safe zone. These results are used to down-select samples produced by the detector, with algorithms calibrated to pass, on average, one in every 400 samples to the next stage of analysis."
+      },
+      "confidence": 0.98,
+      "term": "Level-1 Trigger",
+      "normalized": "一级触发器",
+      "std_label": "L1T"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c7",
+      "evidence": {
+        "section": "4.1 Current (Phase-1) DAQ",
+        "original_text": "The HLT utilizes more complex algorithms and all available data from CMS detector systems to “reconstruct” the event that led to the patterns recorded by the detector. This is a much more energy-intensive process than the simple feature detection used in the L1T; in the Phase-1 HLT, software implementing the reconstruction algorithms is run on commodity hardware (CPUs) in a conventional data center. This process further down-selects samples by a ratio of 1 to 100, leading to a final sample output rate of 1 kHz."
+      },
+      "confidence": 0.98,
+      "term": "High-Level Trigger",
+      "normalized": "高级触发器",
+      "std_label": "HLT"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c8",
+      "evidence": {
+        "section": "5.2.2 GPU HLT",
+        "original_text": "Many algorithms utilized within the event reconstruction carried out in the HLT can be effectively parallelized; this allows software to take advantage of hardware such as GPUs to increase throughput. Experiments using parallelized routines running on GPU hardware for CMS event analysis show an increase in the number of samples which can be processed per second by using a GPU (such as an approximate 50% increase using an NVIDIA A100) [5]. This change is captured in the SystemFlow model by adjusting the complexity function of the HLT processing node to match the throughput results of the parallelized algorithms. Simultaneously, the power for the node is modified to match the average dissipation of the NVIDIA SXM4 A100 accelerator (400 W). Incorporating this change into the DAQ system would roughly double system productivity to 0.13 1/kJ, as HLT consumes the vast majority of processing energy (Table 2)."
+      },
+      "confidence": 0.96,
+      "term": "GPU-based processing",
+      "normalized": "GPU处理",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c9",
+      "evidence": {
+        "section": "5.2.3 Smart Sensing",
+        "original_text": "Processing adapted to specific sensors has been proposed as a method to reduce the amount of data which must be transported from detector systems while simplifying subsequent processing. For instance, high-resolution pixel sensors with on-chip neural networks can be used to detect and reject data from low-momentum particles irrelevant to later analysis [39]. The impact of this change on the DAQ is modeled after this result by assuming neural network ASICs integrated into next-generation tracking modules (\"Smart Pixels\") could reduce the amount of data from an inner tracker pixel module by 54% or more, dissipating 300 μW to analyze 256 pixels. We assume this approach could scale effectively to the CMS Inner Tracker, which has two billion pixels and would require at least 2.3 kW to implement a classification algorithm co-located with detection elements."
+      },
+      "confidence": 0.95,
+      "term": "smart sensing",
+      "normalized": "智能传感",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6210dd5b4f027914_c10",
+      "evidence": {
+        "section": "5.1 Phase-1 System",
+        "original_text": "DAQ productivity is measured in the expected number of relevant samples produced per second normalized by the power taken to acquire them (1/J). This is produced from each SystemFlow model by multiplying the total output rate by its system-level F1 score (1/s), normalized by power used across the entire pipeline (J/s)."
+      },
+      "confidence": 0.94,
+      "term": "productivity",
+      "normalized": "生产率",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a model which addresses this need by framing key aspects of data collection pipelines and constraints, and combines them with the important vectors of technology that shape alternatives, computing metrics that allow complex alternatives to be compared. For instance, a data collection pipeline may be characterized by parameters such as sensor sampling rates, amount of data collected, and the overall relevancy of retrieved samples. Alternatives to this pipeline are enabled by hardware development vectors including advancing CMOS, GPUs, neuromorphic computing, and edge computing. By calculating metrics for each alternative such as overall F1 score, power, hardware cost, and energy expended per relevant sample, this model allows alternate data collection systems to be rigorously compared. To demonstrate this model’s capability, we apply it to the CMS experiment (and planned HLLHC upgrade) to evaluate and compare the application of novel technologies in the data acquisition system (DAQ). We demonstrate that improvements to early stages in the DAQ are highly beneficial, greatly reducing the resources required at later stages of processing (such as a 60% power reduction) and increasing the amount of relevant data retrieved from the experiment per unit power (improving from 0.065 to 0.31 samples/ kJ) However, we predict further advances will be required in order to meet overall power and cost constraints for the DAQ."
+      },
+      "confidence": 0.93,
+      "head": "doc_6210dd5b4f027914_c1",
+      "relation_type": "uses",
+      "relation_surface": "apply it to",
+      "tail": "doc_6210dd5b4f027914_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We present a model which addresses this need by framing key aspects of data collection pipelines and constraints, and combines them with the important vectors of technology that shape alternatives, computing metrics that allow complex alternatives to be compared. For instance, a data collection pipeline may be characterized by parameters such as sensor sampling rates, amount of data collected, and the overall relevancy of retrieved samples. Alternatives to this pipeline are enabled by hardware development vectors including advancing CMOS, GPUs, neuromorphic computing, and edge computing. By calculating metrics for each alternative such as overall F1 score, power, hardware cost, and energy expended per relevant sample, this model allows alternate data collection systems to be rigorously compared. To demonstrate this model’s capability, we apply it to the CMS experiment (and planned HLLHC upgrade) to evaluate and compare the application of novel technologies in the data acquisition system (DAQ). We demonstrate that improvements to early stages in the DAQ are highly beneficial, greatly reducing the resources required at later stages of processing (such as a 60% power reduction) and increasing the amount of relevant data retrieved from the experiment per unit power (improving from 0.065 to 0.31 samples/ kJ) However, we predict further advances will be required in order to meet overall power and cost constraints for the DAQ."
+      },
+      "confidence": 0.92,
+      "head": "doc_6210dd5b4f027914_c1",
+      "relation_type": "measures",
+      "relation_surface": "calculating metrics",
+      "tail": "doc_6210dd5b4f027914_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Exponential increases in scientific experimental data are outstripping the rate of progress in silicon technology. As a result, heterogeneous combinations of architectures and process or device technologies are increasingly important to meet the computing demands of future scientific experiments. However, the complexity of heterogeneous computing systems requires systematic modeling to understand performance. We present a model which addresses this need by framing key aspects of data collection pipelines and constraints, and combines them with the important vectors of technology that shape alternatives, computing metrics that allow complex alternatives to be compared."
+      },
+      "confidence": 0.94,
+      "head": "doc_6210dd5b4f027914_c4",
+      "relation_type": "requires",
+      "relation_surface": "requires systematic modeling",
+      "tail": "doc_6210dd5b4f027914_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r4",
+      "evidence": {
+        "section": "5.2.2 GPU HLT",
+        "original_text": "Many algorithms utilized within the event reconstruction carried out in the HLT can be effectively parallelized; this allows software to take advantage of hardware such as GPUs to increase throughput. Experiments using parallelized routines running on GPU hardware for CMS event analysis show an increase in the number of samples which can be processed per second by using a GPU (such as an approximate 50% increase using an NVIDIA A100) [5]. This change is captured in the SystemFlow model by adjusting the complexity function of the HLT processing node to match the throughput results of the parallelized algorithms. Simultaneously, the power for the node is modified to match the average dissipation of the NVIDIA SXM4 A100 accelerator (400 W). Incorporating this change into the DAQ system would roughly double system productivity to 0.13 1/kJ, as HLT consumes the vast majority of processing energy (Table 2)."
+      },
+      "confidence": 0.95,
+      "head": "doc_6210dd5b4f027914_c8",
+      "relation_type": "enhances",
+      "relation_surface": "increase throughput",
+      "tail": "doc_6210dd5b4f027914_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r5",
+      "evidence": {
+        "section": "5.2.3 Smart Sensing",
+        "original_text": "Processing adapted to specific sensors has been proposed as a method to reduce the amount of data which must be transported from detector systems while simplifying subsequent processing. For instance, high-resolution pixel sensors with on-chip neural networks can be used to detect and reject data from low-momentum particles irrelevant to later analysis [39]. The impact of this change on the DAQ is modeled after this result by assuming neural network ASICs integrated into next-generation tracking modules (\"Smart Pixels\") could reduce the amount of data from an inner tracker pixel module by 54% or more, dissipating 300 μW to analyze 256 pixels. We assume this approach could scale effectively to the CMS Inner Tracker, which has two billion pixels and would require at least 2.3 kW to implement a classification algorithm co-located with detection elements. We estimate that for the cost of dissipating several kilowatts of power in the detector, a “smart pixels” approach discarding low momentum particles constituting 54% of tracking data could ultimately lead to a net reduction of 6 MW over the next-best DAQ system, greatly increasing overall system performance (Table 2). This saving is enabled by leveraging a simple algorithm adapted to specialized hardware utilizing local information to avoid more complex analysis later in the pipeline."
+      },
+      "confidence": 0.94,
+      "head": "doc_6210dd5b4f027914_c9",
+      "relation_type": "enhances",
+      "relation_surface": "reduce the amount of data",
+      "tail": "doc_6210dd5b4f027914_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r6",
+      "evidence": {
+        "section": "4.1 Current (Phase-1) DAQ",
+        "original_text": "The CMS DAQ utilizes two major processing stages to achieve this high selectivity: the Level-1 Trigger (L1T) and High-Level Trigger (HLT). In its current, or \"Phase-1\" DAQ configuration, the L1T utilizes information from the CMS’s muon and calorimetry systems to infer the presence of particles with high momenta (such as muons, tau leptons, electrons, and photons), as well as groups of particles with high energy (such as hadronic jets). These markers indicate that a rare, high-energy interaction may have taken place. Algorithms to examine detector data for these features are implemented in FPGA hardware located near the detector but in a radiation-safe zone. These results are used to down-select samples produced by the detector, with algorithms calibrated to pass, on average, one in every 400 samples to the next stage of analysis. The HLT utilizes more complex algorithms and all available data from CMS detector systems to “reconstruct” the event that led to the patterns recorded by the detector. This is a much more energy-intensive process than the simple feature detection used in the L1T; in the Phase-1 HLT, software implementing the reconstruction algorithms is run on commodity hardware (CPUs) in a conventional data center. This process further down-selects samples by a ratio of 1 to 100, leading to a final sample output rate of 1 kHz."
+      },
+      "confidence": 0.98,
+      "head": "doc_6210dd5b4f027914_c6",
+      "relation_type": "precedes",
+      "relation_surface": "pass to the next stage",
+      "tail": "doc_6210dd5b4f027914_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r7",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "We demonstrate the application of this model to examine the performance of HEP data acquisition systems at the Compact Muon Solenoid (CMS) experiment at the Large Hadron Collider (LHC) [9], and quantify the benefits of multiple component-level changes. These include introducing novel data reduction processors, improving the skill of classifiers, the integration of parallelized algorithms, and varying system-level parameters."
+      },
+      "confidence": 0.96,
+      "head": "doc_6210dd5b4f027914_c5",
+      "relation_type": "uses",
+      "relation_surface": "data acquisition systems at",
+      "tail": "doc_6210dd5b4f027914_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6210dd5b4f027914_r8",
+      "evidence": {
+        "section": "2.2 Data & Computing in High-Energy Physics",
+        "original_text": "The design and integration of novel technologies into a processing system require significant engineering effort. To evaluate the benefits and trade-offs offered by novel technologies, it is crucial to measure their ultimate impact on system performance in comparison with employing standard technologies. High-energy physics (HEP) is one data-driven discipline which has applied computer-based analysis and experimental control for decades. To demonstrate the impacts which novel technologies may have on future experiments, we utilize HEP data acquisition systems (DAQs) as a case study."
+      },
+      "confidence": 0.95,
+      "head": "doc_6210dd5b4f027914_c3",
+      "relation_type": "uses",
+      "relation_surface": "data acquisition systems",
+      "tail": "doc_6210dd5b4f027914_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_6210dd5b4f027914_d1",
+      "evidence": {
+        "section": "5 Results",
+        "original_text": "Firstly, we examine characteristics of the current (Phase-1) CMS DAQ as if it were scaled to meet the desired experimental goals for Run-5: a collider pile-up of 200, and decreasing the rejection ratio of the L1T from 400:1 to 53:1 (increasing the effective Level-1 \"trigger rate\" from 100 to 750 kHz and overall output of the DAQ to 7.5 kHz). Hardware and algorithms within the system are held constant, but hardware during Run-5 (2032) is modeled as being 6.5 times more energy-efficient than today (2024) based on a corresponding increase in the areal density of integrated circuits operating at constant power (see Computing Trends). DAQ productivity is measured in the expected number of relevant samples produced per second normalized by the power taken to acquire them (1/J). This is produced from each SystemFlow model by multiplying the total output rate by its system-level F1 score (1/s), normalized by power used across the entire pipeline (J/s). Meeting the Run-5 experimental goals will have a large impact on the DAQ. Increasing pile-up from 60 to 200 greatly lengthens the amount of runtime needed to process a sample within the HLT, due to the increased complexity of the underlying data - in particular, processes such as reconstructing particle tracks scales poorly with increasing pile-up [35, 37]. Furthermore, to retain increased amounts of relevant information, 7.5 times more samples will be sent from the L1T to the HLT. Combining these changes causes overall DAQ power requirements to increase significantly, from 0.32 MW to 52 MW, with the increase almost entirely stemming from CPU-based HLT processing (Table SystemFlow Estimates of Phase-1 DAQ Productivity by Pile-Up and L1T Reduction Ratio). Productivity experiences a net drop from 0.80 to 0.065 1/kJ due to the greatly increased power requirements for a moderately increased rate of relevant samples retrieved by the system (Figure 5)."
+      },
+      "confidence": 0.95,
+      "name": "CMS DAQ performance metrics dataset",
+      "modality": "tabular",
+      "domain": "high-energy physics, computing systems"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_6210dd5b4f027914_d2",
+      "evidence": {
+        "section": "A.2 Level-1 Trigger",
+        "original_text": "Accurately capturing a distribution of scores produced by classifiers analyzing messages is key to implementing a model which can faithfully produce system-level performance. For this reason, the Level-1 Trigger (L1T)’s performance is captured in detail to produce these scores. The Phase-1 L1T centers on detecting the existence of certain features: electrons, photons, muons, tau leptons, and hadronic jets with momenta or energy sums above given thresholds (30 GeV for electrons and photons, 22 GeV for muons, 38 GeV for tau leptons, and a total of 320 GeV for hadronic jets). The L1T does not directly produce scores, but accepts any event with one or more of these signatures. To instead produce scores, we examine the efficiency curves of each of these object detections (\"trigger paths\") and interpret them as probability that a particle with a given momentum will be correctly detected. To produce a distribution of near-threshold events, an exponential distribution of particle momenta is fitted to reproduce the trigger rates produced by the L1T during the LHC Run-2 (2018): To generate a model of scores produced by classifying objects within the HLT, particles are randomly generated from the distribution of object momenta fit to the triggers. Objects which fall below the selection threshold represent the null distribution (samples to be discarded), and objects with momenta above the threshold represent the positive distribution (samples to be retained). By arbitrarily generating many samples (n = 50,000), the distribution of null and positive scores for each L1T object detection trigger is generated. These null and positive distributions are summed to calculate overall L1T scores for each sample and used to produce the confusion matrix of the L1T at a given selection threshold."
+      },
+      "confidence": 0.9,
+      "name": "CMS DAQ classifier performance dataset",
+      "modality": "tabular",
+      "domain": "high-energy physics, machine learning"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_6210dd5b4f027914_d3",
+      "evidence": {
+        "section": "A.3 High-Level Trigger",
+        "original_text": "The high-level trigger (HLT) contains hundreds of different features (the HLT \"menu\") which may lead to a sample being retained for offline storage and analysis. Modeling in full each segment of this menu is beyond the scope of this work, and the HLT is approximated utilizing results from the accepted Run-2 (2018) performance of the CMS HLT. Six representative triggering paths for different physics objects (B2G/Exotica, Higgs, SUSY, Muons, Tracking, and Tau) are selected, and the efficiency curves of each path fit to an exponential distribution of objects in the same manner as the L1T. However, each path is selected independently, and scores are not summed across each trigger but taken one-at-a-time to generate the distribution of null and positive scores applied to generate a confusion matrix for a given selection threshold."
+      },
+      "confidence": 0.9,
+      "name": "CMS HLT trigger path performance dataset",
+      "modality": "tabular",
+      "domain": "high-energy physics"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6210dd5b4f027914_ds1",
+      "evidence": {
+        "section": "3 The SystemFlow Model",
+        "original_text": "We utilize several key descriptors to capture both the needs of a scientific experiment and the attributes of technologies which may be deployed to meet them. These descriptors are summarized in Figure 3. A scientific experiment which produces digital data has several basic properties which predict the basic needs a computing system must meet. We predict these needs through the metrics of sensor occupancy (the proportion of sensing elements producing a non-zero result), the maximum number of experimental samples produced per second (Hz), and the proportion of samples which are relevant to scientific goals (%). A computing system’s components may be partitioned into four major categories: input, communication, processing, and output. Inputs collect information from the environment. Communication technologies enable the transport of information between different locations. Processing technologies utilize algorithms to transform information. Lastly, outputs present information to an external system or the environment. The arrangement of these components into a computing system may be represented as a directed graph, where inputs, outputs, and processing are represented by nodes and are connected via communication links (edges). In the case of data analysis systems for experiments, these graphs may take the form of trees, where information flows \"upwards\" from input sensors to intermediate processing stages, eventually coalescing at an output. The requirements and performance of the system depends on the interaction of each part as information flows up from the sensors towards storage, implementing a processing pipeline."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "SystemFlow model parameters for characterizing computing systems"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6210dd5b4f027914_ds2",
+      "evidence": {
+        "section": "A.1 Classifier Model",
+        "original_text": "Messages which represent data which should retained by the data acquisition system (DAQ) and messages which should be discarded represent two distinct populations. Each processing node in the system may implement a classifier which seeks to determine which population a message is a member of, either tagging it to be retained and sent to the next node in the workflow graph or discarded. Various strategies may be used to implement a classifier, seeking to trade-off accuracy for speed or processing requirements. To avoid the need to re-implement specific details of each system, each is interpreted as fundamentally being capable of producing a \"score\" for each incoming message. Ideally, messages to be discarded will produce a score of zero, producing a distribution of statistics which represent the \"false\" samples. Ideally, \"true\" messages to be retained produce score values which are high and easily distinguishable from scores in the false distribution. The cumulative distribution function (CDF) of each population’s scores may be calculated from parametric or empirical distributions: Where Z represents scores produced by the classifier on a given population and z represents an individual score. Each classifier must independently determine whether to pass or reject a message based on the score it produces, requiring a \"threshold\" to be set. Messages producing scores above this threshold will be accepted, and those falling below it, rejected. The value of this threshold will affect both the amount of data which is sent by one node in the workflow to the next node and the classifier’s performance. The independent variable, determined by the system-level requirements, is the amount of data which the classifier sends to the next processing node; classification performance responds to this parameter."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Classifier performance modeling methodology using score distributions and thresholds"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6210dd5b4f027914_ds3",
+      "evidence": {
+        "section": "2.2 Data & Computing in High-Energy Physics",
+        "original_text": "Under current conditions, the detector records approximately 2.0 MB of data each time two bunches of particles cross at the interaction point [5]. These samples, termed \"events\" in HEP, are produced at the bunch crossing rate of 40 MHz, producing a combined output rate of approximately 80 terabytes per second, producing a volume of data which cannot sustainably be stored over months of experimental runs. However, counterbalancing this torrent of data is the scarcity of results that are believed to contain novel data relevant to current physics experiments. In other words, evidence suggests that the majority of samples only provide measurements of particles and mechanisms that are already well characterized, yielding no novel scientific information. Therefore, in order to maintain a sustainable output, the CMS detector’s current (Phase-1) processing workflow (referred to as the Data Acquisition System or DAQ) is configured to ultimately save only 1 out of every 40,000 events, selecting for later analysis only those with specific signatures [4, 32]. Currently, most DAQ systems utilize multiple processing stages to carry out this selection process in real time (Figure 2)."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "CMS DAQ experimental conditions and data rates"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_6210dd5b4f027914_ds4",
+      "evidence": {
+        "section": "4.2 Future HL-LHC Experiments",
+        "original_text": "Under the HL-LHC configuration, the CMS detector will record more data per sample: an increase in pile-up leads to more particles yielded from each collision, causing the tracker to register more charged tracks and the calorimeter to record more energy deposits. This will lead to an increased size of 8.0 MB per sample and total detector data rate of 320 TB/s during Run-5 [5]. Furthermore, increasing the number of particles also leads to greater complexity in analysis. Simulations show that HLT analysis of Run-5 events will take approximately 16 times longer to analyze than Run-3 events with current algorithms and hardware [5]. Finally, the number of events passed from the L1T to HLT is planned to increase 7.5 times, increasing the L1T output rate from an average of 100 kHz to 750 kHz. This motivation behind this change is to utilize the higher selectivity of the HLT to retain events which might otherwise be rejected by the L1T and to provide more experimental data."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "HL-LHC future experimental conditions and data rates"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6210dd5b4f027914_m1",
+      "evidence": {
+        "section": "3 The SystemFlow Model",
+        "original_text": "We provide an analytical, predictive model to evaluate the opportunities offered by novel hardware for computing systems. This \"SystemFlow\" model utilizes properties from individual hardware components to estimate the overall flow of information through a real-time computing system. Identifying these properties allows researchers from multiple disciplines, from devices to algorithms, to examine the impact their contributions can make towards improving system-level properties such as total power, effectiveness at retrieving relevant experimental data, number of computing devices required. This empowers researchers to systematically evaluate the role of emerging devices and architectures within large-scale computing systems. We demonstrate the application of this model to examine the performance of HEP data acquisition systems at the Compact Muon Solenoid (CMS) experiment at the Large Hadron Collider (LHC) [9], and quantify the benefits of multiple component-level changes. These include introducing novel data reduction processors, improving the skill of classifiers, the integration of parallelized algorithms, and varying system-level parameters. Most modern scientific experiments produce digital data which must be analyzed and stored by a computing system. In order to avoid losing these valuable data, a computing system must be matched to meet the requirements of an experiment. We utilize several key descriptors to capture both the needs of a scientific experiment and the attributes of technologies which may be deployed to meet them. These descriptors are summarized in Figure 3. A scientific experiment which produces digital data has several basic properties which predict the basic needs a computing system must meet. We predict these needs through the metrics of sensor occupancy (the proportion of sensing elements producing a non-zero result), the maximum number of experimental samples produced per second (Hz), and the proportion of samples which are relevant to scientific goals (%). A computing system’s components may be partitioned into four major categories: input, communication, processing, and output. Inputs collect information from the environment. Communication technologies enable the transport of information between different locations. Processing technologies utilize algorithms to transform information. Lastly, outputs present information to an external system or the environment. The arrangement of these components into a computing system may be represented as a directed graph, where inputs, outputs, and processing are represented by nodes and are connected via communication links (edges). In the case of data analysis systems for experiments, these graphs may take the form of trees, where information flows \"upwards\" from input sensors to intermediate processing stages, eventually coalescing at an output. The requirements and performance of the system depends on the interaction of each part as information flows up from the sensors towards storage, implementing a processing pipeline. We model the propagation of information through a processing pipeline. This is accomplished by identifying the amount of information produced by each node and propagating it up the tree. Information is contained in discrete \"messages,\" which originate at input nodes with a given frequency. Communication links transport these messages to processing stages. These stages implement algorithms which can change the amount of information in the message - increasing it by providing new analyses, or reducing it by applying compression or removing irrelevant data. Additionally, information from analysis may be used to make a decision, such as to discard a message. The propagation and modification of messages is simulated until each one is either discarded or reaches the output node. As this model describes the flow of messages through a computing system, we term this approach the \"SystemFlow\" model."
+      },
+      "confidence": 0.95,
+      "name": "SystemFlow model",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_6210dd5b4f027914_m2",
+      "evidence": {
+        "section": "A.1 Classifier Model",
+        "original_text": "Messages which represent data which should retained by the data acquisition system (DAQ) and messages which should be discarded represent two distinct populations. Each processing node in the system may implement a classifier which seeks to determine which population a message is a member of, either tagging it to be retained and sent to the next node in the workflow graph or discarded. Various strategies may be used to implement a classifier, seeking to trade-off accuracy for speed or processing requirements. To avoid the need to re-implement specific details of each system, each is interpreted as fundamentally being capable of producing a \"score\" for each incoming message. Ideally, messages to be discarded will produce a score of zero, producing a distribution of statistics which represent the \"false\" samples. Ideally, \"true\" messages to be retained produce score values which are high and easily distinguishable from scores in the false distribution. The cumulative distribution function (CDF) of each population’s scores may be calculated from parametric or empirical distributions: Where Z represents scores produced by the classifier on a given population and z represents an individual score. Each classifier must independently determine whether to pass or reject a message based on the score it produces, requiring a \"threshold\" to be set. Messages producing scores above this threshold will be accepted, and those falling below it, rejected. The value of this threshold will affect both the amount of data which is sent by one node in the workflow to the next node and the classifier’s performance. The independent variable, determined by the system-level requirements, is the amount of data which the classifier sends to the next processing node; classification performance responds to this parameter. To determine the performance of each classifier, the distribution of scores for the false and true message populations are weighted by the number of incoming true and false messages: The threshold for classification (zT) will be set at a score which rejects the desired number of samples: This determines the proportion of samples from the underlying distribution which will be retained or rejected: The rate of true and false negatives and positives may be used to construct a contingency matrix for the classifier at a given threshold. Messages classified as false are discarded, and messages classified as true are passed to the next classifier. To obtain the contingency matrix for the system as a whole, true negatives and false negatives are summed across the entire system, and positives are only produced by the final output where messages are saved to disk."
+      },
+      "confidence": 0.95,
+      "name": "Classifier Model",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_6210dd5b4f027914_x1",
+      "evidence": {
+        "section": "4 Case Study: The CMS DAQ",
+        "original_text": "We demonstrate the application of this model to examine the performance of HEP data acquisition systems at the Compact Muon Solenoid (CMS) experiment at the Large Hadron Collider (LHC) [9], and quantify the benefits of multiple component-level changes. These include introducing novel data reduction processors, improving the skill of classifiers, the integration of parallelized algorithms, and varying system-level parameters. The CMS DAQ is adapted into a SystemFlow model by utilizing a breakdown of CMS detector sub-systems to identify all input nodes and the amount of data they produce. Processing nodes are created for each detector sub-system, the L1T, and HLT. The HLT provides the output of the system which is archived [5, 9, 34, 35]. This SystemFlow model of the CMS DAQ is shown in Figure 4. All detector subsystems within the CMS are included as input nodes in the SystemFlow model. The effect of pile-up on amount of incoming data is included by scaling the bits recorded by each sensor by pile-up according to CMS estimates [5]. A new detector system, the high-granularity calorimeter (HGCAL) will be installed in the CMS after Run-3 and incorporated into the detector for Runs 4 and 5. The significant amounts of data data produced by this subsystem are included in the estimates for Runs 4 and 5. Data is transported from sensors to the L1T by a custom radiation-hardened link, the low-power GigaBit Transceiver (LpGBT). Public data places the efficiency of this link at 22 pJ/bit [35]. Algorithms used within the L1T identify features such as high-energy particles and \"jets\" [4]. These relatively simple algorithms search for clusters and peaks, and we estimate that the resources required for these algorithms will scale approximately linearly with the amount of incoming data from sensors. The performance of these algorithms at classifying the incoming samples as \"relevant\" or \"irrelevant\" is modeled in detail on the performance of identifying each high-energy feature. For details, see Classifier Model. Power efficiency of the L1T is scaled to its current needs, approximately 120 kW [35]. Currently, the L1T only retrieves tracking data after identifying a feature of interest from other data, but this feedback behavior is not included in the current model. This produces no significant difference in the metrics predicted by the SystemFlow model, impacting only communication costs from the detector to the trigger which are less than 1% of overall system usage. Data accepted by the L1T is transmitted to the HLT datacenter by standard 100 gigabit ethernet over fiber; commercially available, medium-link transceivers require approximately 25 pJ/bit [36]. Complex algorithms are utilized within the HLT to identify particle tracks, associate them with calorimeter hits, identify intermediate particles produced by the collision, and more. The scaling of these algorithms with increased incoming data is modeled empirically by collating data from CMS and ATLAS experiments estimating the run-time of HLT reconstructions under increasing pile-up [5, 27]. Power efficiency of the HLT is scaled to its current consumption, approximately 1.6 MW [5]. The HLT is much more complex than the L1T, with hundreds of separate \"paths\" allowing an event to be selected for offline storage. The overall performance of the HLT as a classifier is modeled by utilizing public results detailing the performance of 6 different trigger paths used for different experiments within the CMS (e.g. Higgs, Supersymmetry, exotica - details in A.3)."
+      },
+      "confidence": 0.95,
+      "task": "CMS DAQ performance modeling and evaluation",
+      "setup": "SystemFlow model applied to CMS DAQ, simulating Phase-1 and HL-LHC configurations"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_6210dd5b4f027914_x2",
+      "evidence": {
+        "section": "5.2 Next-Generation Systems",
+        "original_text": "We quantify the impact of three major changes proposed to improve the CMS DAQ as it scales to meet Run-5 conditions: incorporating tracking information into the L1T, utilizing GPU-based hardware in the HLT, and utilizing detector-integrated data filtering in the CMS Inner Tracker (\"smart\" sensing). The impact of these individual changes on the overall DAQ system is modeled by introducing corresponding changes into the SystemFlow model. Future upgrades to the L1T system focus on incorporating tracking information and making other algorithms available to improve the selectivity and capabilities of the L1T system [35]. We explore the impact which improved L1T classification skill has on the DAQ by increasing the separation between scores produced by positive and negative samples in a model of the Phase-1 L1T classifier (see Classifier Model for details). Our model predicts that improving the performance of classification within the L1T can lead to significant improvements in overall system performance; improving the separation of scores between positive and negative samples within the L1T by 40% can lead to the same improvement in overall system classification performance as increasing the number of samples sent from L1T to the HLT by 750% (Figure 6). As the L1T is responsible for discarding the majority of samples collected from the detector, any improvement to it significantly improves the entire DAQ. Many algorithms utilized within the event reconstruction carried out in the HLT can be effectively parallelized; this allows software to take advantage of hardware such as GPUs to increase throughput. Experiments using parallelized routines running on GPU hardware for CMS event analysis show an increase in the number of samples which can be processed per second by using a GPU (such as an approximate 50% increase using an NVIDIA A100) [5]. This change is captured in the SystemFlow model by adjusting the complexity function of the HLT processing node to match the throughput results of the parallelized algorithms. Simultaneously, the power for the node is modified to match the average dissipation of the NVIDIA SXM4 A100 accelerator (400 W). Incorporating this change into the DAQ system would roughly double system productivity to 0.13 1/kJ, as HLT consumes the vast majority of processing energy (Table 2). Aggressive improvements to GPU hardware could further improve the energy efficiency of traditional HLT algorithms - however, this may be limited by development trends in GPUs focusing on limited-precision numerical representations adapted to AI systems’ needs [38]. Processing adapted to specific sensors has been proposed as a method to reduce the amount of data which must be transported from detector systems while simplifying subsequent processing. For instance, high-resolution pixel sensors with on-chip neural networks can be used to detect and reject data from low-momentum particles irrelevant to later analysis [39]. The impact of this change on the DAQ is modeled after this result by assuming neural network ASICs integrated into next-generation tracking modules (\"Smart Pixels\") could reduce the amount of data from an inner tracker pixel module by 54% or more, dissipating 300 μW to analyze 256 pixels. We assume this approach could scale effectively to the CMS Inner Tracker, which has two billion pixels and would require at least 2.3 kW to implement a classification algorithm co-located with detection elements. We estimate that for the cost of dissipating several kilowatts of power in the detector, a \"smart pixels\" approach discarding low momentum particles constituting 54% of tracking data could ultimately lead to a net reduction of 6 MW over the next-best DAQ system, greatly increasing overall system performance (Table 2). This saving is enabled by leveraging a simple algorithm adapted to specialized hardware utilizing local information to avoid more complex analysis later in the pipeline."
+      },
+      "confidence": 0.95,
+      "task": "evaluation of next-generation DAQ improvements",
+      "setup": "SystemFlow model simulating GPU HLT, L1 Tracks, and Smart Sensing"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6210dd5b4f027914_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Meeting the Run-5 experimental goals will have a large impact on the DAQ. Increasing pileup from 60 to 200 greatly lengthens the amount of runtime needed to process a sample within the HLT, due to the increased complexity of the underlying data - in particular, processes such as reconstructing particle tracks scales poorly with increasing pile-up [35, 37]. Furthermore, to retain increased amounts of relevant information, 7.5 times more samples will be sent from the L1T to the HLT. Combining these changes causes overall DAQ power requirements to increase significantly, from 0.32 MW to 52 MW, with the increase almost entirely stemming from CPU-based HLT processing (Table SystemFlow Estimates of Phase-1 DAQ Productivity by Pile-Up and L1T Reduction Ratio). Productivity experiences a net drop from 0.80 to 0.065 1/kJ due to the greatly increased power requirements for a moderately increased rate of relevant samples retrieved by the system (Figure 5)."
+      },
+      "confidence": 0.98,
+      "quantity": "power consumption",
+      "value": 52,
+      "unit": "MW",
+      "context": "Phase-1 CMS DAQ scaled to meet Run-5 experimental goals (pile-up of 200, L1T trigger rate increased to 750 kHz)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6210dd5b4f027914_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Meeting the Run-5 experimental goals will have a large impact on the DAQ. Increasing pileup from 60 to 200 greatly lengthens the amount of runtime needed to process a sample within the HLT, due to the increased complexity of the underlying data - in particular, processes such as reconstructing particle tracks scales poorly with increasing pile-up [35, 37]. Furthermore, to retain increased amounts of relevant information, 7.5 times more samples will be sent from the L1T to the HLT. Combining these changes causes overall DAQ power requirements to increase significantly, from 0.32 MW to 52 MW, with the increase almost entirely stemming from CPU-based HLT processing (Table SystemFlow Estimates of Phase-1 DAQ Productivity by Pile-Up and L1T Reduction Ratio). Productivity experiences a net drop from 0.80 to 0.065 1/kJ due to the greatly increased power requirements for a moderately increased rate of relevant samples retrieved by the system (Figure 5)."
+      },
+      "confidence": 0.98,
+      "quantity": "productivity",
+      "value": 0.065,
+      "unit": "1/kJ",
+      "context": "Phase-1 CMS DAQ scaled to meet Run-5 experimental goals (pile-up of 200, L1T trigger rate increased to 750 kHz)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6210dd5b4f027914_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Overall, including these three changes greatly boosts the overall productivity of the DAQ to 0.31 1/kJ (Table 2; this exceeds our estimate of the current productivity of the Phase-1 HLT, 0.13 1/kJ. However, given the objective of the DAQ to not only process more complex samples created under the conditions of increased pile-up, but to produce more samples of interest to experimenters, this productivity must be further improved. To reach the goal of producing 7.5 thousand relevant samples per second without significant increases to power, the DAQ must reach 0.98 1/kJ. Achieving this further 3 times improvement may require more aggressive changes to the DAQ such as adapting approximate or limited-precision computations, as well as utilizing machine-learning assisted triggers. We suggest that in particular, further improvement of the Level1 Trigger’s skill via ML-augmented methods could provide significant advantages over decreasing its rejection ratio. Even utilizing very small networks, ML methods can identify advanced features such as top quark jets [40]. This could allow for advanced triggering of objects of interest within the L1T while utilizing small amounts of power and enabling execution at low latencies suitable for the L1T, bringing HLT-like capabilities earlier in the pipeline."
+      },
+      "confidence": 0.98,
+      "quantity": "productivity",
+      "value": 0.31,
+      "unit": "1/kJ",
+      "context": "CMS DAQ incorporating GPU-based HLT processing, improved L1T classification skill, and smart sensing elements",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6210dd5b4f027914_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Incorporating this change into the DAQ system would roughly double system productivity to 0.13 1/kJ, as HLT consumes the vast majority of processing energy (Table 2). Aggressive improvements to GPU hardware could further improve the energy efficiency of traditional HLT algorithms - however, this may be limited by development trends in GPUs focusing on limited-precision numerical representations adapted to AI systems’ needs [38]."
+      },
+      "confidence": 0.98,
+      "quantity": "productivity",
+      "value": 0.13,
+      "unit": "1/kJ",
+      "context": "CMS DAQ utilizing GPU-based hardware in the HLT",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6210dd5b4f027914_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We estimate that for the cost of dissipating several kilowatts of power in the detector, a “smart pixels” approach discarding low momentum particles constituting 54% of tracking data could ultimately lead to a net reduction of 6 MW over the next-best DAQ system, greatly increasing overall system performance (Table 2). This saving is enabled by leveraging a simple algorithm adapted to specialized hardware utilizing local information to avoid more complex analysis later in the pipeline."
+      },
+      "confidence": 0.98,
+      "quantity": "power reduction",
+      "value": 6,
+      "unit": "MW",
+      "context": "CMS DAQ implementing smart sensing elements (smart pixels) in the inner tracker",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_6210dd5b4f027914_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Overall, including these three changes greatly boosts the overall productivity of the DAQ to 0.31 1/kJ (Table 2; this exceeds our estimate of the current productivity of the Phase-1 HLT, 0.13 1/kJ. However, given the objective of the DAQ to not only process more complex samples created under the conditions of increased pile-up, but to produce more samples of interest to experimenters, this productivity must be further improved. To reach the goal of producing 7.5 thousand relevant samples per second without significant increases to power, the DAQ must reach 0.98 1/kJ. Achieving this further 3 times improvement may require more aggressive changes to the DAQ such as adapting approximate or limited-precision computations, as well as utilizing machine-learning assisted triggers. We suggest that in particular, further improvement of the Level1 Trigger’s skill via ML-augmented methods could provide significant advantages over decreasing its rejection ratio. Even utilizing very small networks, ML methods can identify advanced features such as top quark jets [40]. This could allow for advanced triggering of objects of interest within the L1T while utilizing small amounts of power and enabling execution at low latencies suitable for the L1T, bringing HLT-like capabilities earlier in the pipeline."
+      },
+      "confidence": 0.95,
+      "metric": "productivity",
+      "compared_to": "Phase-1 DAQ scaled to Run-5 conditions"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_6210dd5b4f027914_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Overall, including these three changes greatly boosts the overall productivity of the DAQ to 0.31 1/kJ (Table 2; this exceeds our estimate of the current productivity of the Phase-1 HLT, 0.13 1/kJ. However, given the objective of the DAQ to not only process more complex samples created under the conditions of increased pile-up, but to produce more samples of interest to experimenters, this productivity must be further improved. To reach the goal of producing 7.5 thousand relevant samples per second without significant increases to power, the DAQ must reach 0.98 1/kJ. Achieving this further 3 times improvement may require more aggressive changes to the DAQ such as adapting approximate or limited-precision computations, as well as utilizing machine-learning assisted triggers. We suggest that in particular, further improvement of the Level1 Trigger’s skill via ML-augmented methods could provide significant advantages over decreasing its rejection ratio. Even utilizing very small networks, ML methods can identify advanced features such as top quark jets [40]. This could allow for advanced triggering of objects of interest within the L1T while utilizing small amounts of power and enabling execution at low latencies suitable for the L1T, bringing HLT-like capabilities earlier in the pipeline."
+      },
+      "confidence": 0.95,
+      "metric": "productivity",
+      "compared_to": "GPU-based HLT alone"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_6210dd5b4f027914_p3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We estimate that for the cost of dissipating several kilowatts of power in the detector, a “smart pixels” approach discarding low momentum particles constituting 54% of tracking data could ultimately lead to a net reduction of 6 MW over the next-best DAQ system, greatly increasing overall system performance (Table 2). This saving is enabled by leveraging a simple algorithm adapted to specialized hardware utilizing local information to avoid more complex analysis later in the pipeline."
+      },
+      "confidence": 0.95,
+      "metric": "power reduction",
+      "compared_to": "next-best DAQ system"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_6210dd5b4f027914_p4",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "We show that these integrations could provide major reductions in the power required for the system to operate (approximately 60%), but that more advances will be required in order for the system to match or surpass the productivity of earlier experiments running under less challenging experimental conditions."
+      },
+      "confidence": 0.95,
+      "metric": "system productivity",
+      "compared_to": "earlier experiments under less challenging conditions"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_6210dd5b4f027914_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Exponential increases in scientific experimental data are outstripping the rate of progress in silicon technology. As a result, heterogeneous combinations of architectures and process or device technologies are increasingly important to meet the computing demands of future scientific experiments. However, the complexity of heterogeneous computing systems requires systematic modeling to understand performance. We present a model which addresses this need by framing key aspects of data collection pipelines and constraints, and combines them with the important vectors of technology that shape alternatives, computing metrics that allow complex alternatives to be compared. For instance, a data collection pipeline may be characterized by parameters such as sensor sampling rates, amount of data collected, and the overall relevancy of retrieved samples. Alternatives to this pipeline are enabled by hardware development vectors including advancing CMOS, GPUs, neuromorphic computing, and edge computing. By calculating metrics for each alternative such as overall F1 score, power, hardware cost, and energy expended per relevant sample, this model allows alternate data collection systems to be rigorously compared."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_6210dd5b4f027914_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "We provide an analytical, predictive model to evaluate the opportunities offered by novel hardware for computing systems. This 'SystemFlow' model utilizes properties from individual hardware components to estimate the overall flow of information through a real-time computing system. Identifying these properties allows researchers from multiple disciplines, from devices to algorithms, to examine the impact their contributions can make towards improving system-level properties such as total power, effectiveness at retrieving relevant experimental data, number of computing devices required. This empowers researchers to systematically evaluate the role of emerging devices and architectures within large-scale computing systems."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6210dd5b4f027914_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "The amount of data collected by scientific experiments will continue to grow, as will the need to process these data. Simultaneously, the capabilities of computing workflows in the future will become increasingly dependent on the application and integration of specialized hardware, creating heterogeneous systems. However, the design and integration of specialized hardware can require significant investment. In order to justify the design of a heterogeneous system, the opportunities and trade-offs it offers over conventional approaches must be rigorously projected. To address this need, we describe the 'SystemFlow' framework, an approach which allows computational workflows to be modeled using high-level characteristics. This allows for rapid investigation of alternative system configurations using preliminary data and results. We apply this approach to characterize a high-energy physics experiment and project the impact of integrating GPU processing, improved early-stage classification, and front-end data reduction into this system. We show that these integrations could provide major reductions in the power required for the system to operate (approximately 60%), but that more advances will be required in order for the system to match or surpass the productivity of earlier experiments running under less challenging experimental conditions."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6210dd5b4f027914_cl2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Meeting the Run-5 experimental goals will have a large impact on the DAQ. Increasing pileup from 60 to 200 greatly lengthens the amount of runtime needed to process a sample within the HLT, due to the increased complexity of the underlying data - in particular, processes such as reconstructing particle tracks scales poorly with increasing pile-up. Furthermore, to retain increased amounts of relevant information, 7.5 times more samples will be sent from the L1T to the HLT. Combining these changes causes overall DAQ power requirements to increase significantly, from 0.32 MW to 52 MW, with the increase almost entirely stemming from CPU-based HLT processing. Productivity experiences a net drop from 0.80 to 0.065 1/kJ due to the greatly increased power requirements for a moderately increased rate of relevant samples retrieved by the system."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6210dd5b4f027914_cl3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Our model predicts that improving the performance of classification within the L1T can lead to significant improvements in overall system performance; improving the separation of scores between positive and negative samples within the L1T by 40% can lead to the same improvement in overall system classification performance as increasing the number of samples sent from L1T to the HLT by 750%. As the L1T is responsible for discarding the majority of samples collected from the detector, any improvement to it significantly improves the entire DAQ. Incorporating GPU-based processing into the HLT would roughly double system productivity to 0.13 1/kJ, as HLT consumes the vast majority of processing energy. Aggressive improvements to GPU hardware could further improve the energy efficiency of traditional HLT algorithms - however, this may be limited by development trends in GPUs focusing on limited-precision numerical representations adapted to AI systems' needs. We estimate that for the cost of dissipating several kilowatts of power in the detector, a 'smart pixels' approach discarding low momentum particles constituting 54% of tracking data could ultimately lead to a net reduction of 6 MW over the next-best DAQ system, greatly increasing overall system performance. This saving is enabled by leveraging a simple algorithm adapted to specialized hardware utilizing local information to avoid more complex analysis later in the pipeline."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_6210dd5b4f027914_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Through our case study, we have demonstrated that depending solely upon Moore's Law scaling to meet the future demands of HEP experiments would require greatly increased capital and operational expenditures if changes to the processing system (DAQ) are not implemented. As the cost of computing becomes a larger issue in society, simply accepting these increased expenditures is not an acceptable solution to meet these future demands. However, in anticipation of this challenge, several approaches are being developed. We modeled the impact of improving the DAQ's L1T, utilizing GPU-based processing in the HLT datacenter, and implementing 'smart' detector elements in the front-end of the system. Each of these changes carries unique consequences; improvements to the L1T greatly improve the quality of results sent to the next stage of processing, the HLT, sending fewer false positives and discarding fewer false negatives with minimal impacts to system power. The HLT's efficiency can be improved through the use of parallelized computation carried out on GPU, roughly halving the amount of power utilized by the DAQ. Net system power can be further reduced by eliminating unneeded data from samples by using 'smart' sensing strategies."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_6210dd5b4f027914_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Overall, including these three changes greatly boosts the overall productivity of the DAQ to 0.31 1/kJ; this exceeds our estimate of the current productivity of the Phase-1 HLT, 0.13 1/kJ. However, given the objective of the DAQ to not only process more complex samples created under the conditions of increased pile-up, but to produce more samples of interest to experimenters, this productivity must be further improved. To reach the goal of producing 7.5 thousand relevant samples per second without significant increases to power, the DAQ must reach 0.98 1/kJ. Achieving this further 3 times improvement may require more aggressive changes to the DAQ such as adapting approximate or limited-precision computations, as well as utilizing machine-learning assisted triggers. We suggest that in particular, further improvement of the Level-1 Trigger's skill via ML-augmented methods could provide significant advantages over decreasing its rejection ratio. Even utilizing very small networks, ML methods can identify advanced features such as top quark jets. This could allow for advanced triggering of objects of interest within the L1T while utilizing small amounts of power and enabling execution at low latencies suitable for the L1T, bringing HLT-like capabilities earlier in the pipeline."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_6210dd5b4f027914_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Overall, including these three changes greatly boosts the overall productivity of the DAQ to 0.31 1/kJ; this exceeds our estimate of the current productivity of the Phase-1 HLT, 0.13 1/kJ. However, given the objective of the DAQ to not only process more complex samples created under the conditions of increased pile-up, but to produce more samples of interest to experimenters, this productivity must be further improved. To reach the goal of producing 7.5 thousand relevant samples per second without significant increases to power, the DAQ must reach 0.98 1/kJ. Achieving this further 3 times improvement may require more aggressive changes to the DAQ such as adapting approximate or limited-precision computations, as well as utilizing machine-learning assisted triggers. We suggest that in particular, further improvement of the Level-1 Trigger's skill via ML-augmented methods could provide significant advantages over decreasing its rejection ratio. Even utilizing very small networks, ML methods can identify advanced features such as top quark jets. This could allow for advanced triggering of objects of interest within the L1T while utilizing small amounts of power and enabling execution at low latencies suitable for the L1T, bringing HLT-like capabilities earlier in the pipeline."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

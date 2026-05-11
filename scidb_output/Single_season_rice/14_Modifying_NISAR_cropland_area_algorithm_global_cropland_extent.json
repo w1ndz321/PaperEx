@@ -1,0 +1,879 @@
+{
+  "metadata": {
+    "doc_id": "doc_0c6d1f8f48b4b959",
+    "source_file": "14_Modifying_NISAR_cropland_area_algorithm_global_cropland_extent.md",
+    "title": "Modifying NISAR’s Cropland Area Algorithm to Map Cropland Extent Globally",
+    "year": 2025,
+    "doi": "10.3390/rs17061094",
+    "abstract": "**Citation:** Sharp, K.G.; Bell, J.R.; Pankratz, H.G.; Schultz, L.A.; Lucey, R.; Meyer, F.J.; Molthan, A.L. Modifying NISAR’s Cropland Area Algorithm to Map Cropland Extent Globally. _Remote Sens._ **2025** , _17_ , 1094. https://doi.org/10.3390/rs17061094",
+    "introduction": "Accurate and timely global agriculture datasets are essential tools in monitoring food security [1], economic development [2], global health [3], and environmental integrity [4]. Such global datasets rely heavily on satellite remote sensing data that routinely observe Earth’s land surface. Agricultural activity is frequently monitored using optical remote sensing instruments, typically observing the land surface in the visible through thermal infrared portions (400 nm–1 mm) of the electromagnetic spectrum frequently (~1–3 days). These instruments are used to monitor near-real-time crop conditions, develop crop classification models, and practice precision agriculture [5]. Optical remote sensing has also been used for early detection of crop stress from drought conditions [6–8] or other environmental factors (i.e., diseases) [9,10] and to assess the impacts of severe weather on mature crops [11,12]. Though optical remote sensing has long been proven successful in monitoring agriculture globally, it is dependent upon atmospheric conditions and solar illumination. \n\nIn recent years, the access to and availability of active remote sensing instruments, such as synthetic aperture radar (SAR), has increased. SAR can provide routine collections of the land surface regardless of atmospheric conditions or time of day [13]. SAR is advantageous for agricultural applications, especially in regions more susceptible to frequent cloud cover (i.e., tropical latitudes) during their primary growing seasons. SAR is also sensitive to changes in the land surface’s dielectric constant (e.g., soil moisture) and structural properties (e.g., crop volume or height) [14], making SAR useful in monitoring soil moisture, crop health, and crop type [15–18]. SAR has been proven useful in complementing optical remote sensing datasets in the identification of damaged crops after impacts from severe weather that bring damaging winds and hail [19,20]. \n\nSeveral methods utilizing SAR have been successful in identifying agriculture, such as using Interferometric SAR (InSAR) coherence pairs [21,22], polarimetric SAR [18,23], or SAR backscatter time series [24,25]. However, many of these methods rely on computationally expensive algorithms, such as machine learning, that require extensive training datasets, complex data pre-processing, or specialized software. Whelen and Siqueira introduced and tested a methodology for mapping active agricultural areas (i.e., fields in use) across the United States using the coefficient of variation (CV) to produce binary crop/non-crop classifications [26]. The CV method separates crop pixels from non-crop pixels using simple statistical measurements, requiring only a SAR time series and an agricultural reference or land use/land cover dataset. CV is a unitless measurement of the variability within a stack of data as it relates to the mean [27]. The CV is defined as \n\n\nwhere X refers to the input variable, in this case, the SAR backscatter values per pixel location. The CV values and ranges are dependent on the scale of the input variable. Although the CV is unbounded, the CV of the SAR backscatter has a typical range of 0–1. The CV of a pixel will be closer to 1 if there is greater variation in the backscatter across the time series and closer to 0 if there is less variation in the backscatter. Because SAR is sensitive to the structural properties of vegetation (e.g., crop volume or height), SAR backscatter values will change as the crops grow throughout the season. The highest backscatter values occur when the crops are near maturity and the lowest values after harvest (Figure 1). The wide distribution of backscatter values in agricultural areas across the growing season results in high CV values, while forested or urban areas have relatively low CV values as their backscatter values do not change much throughout the year. The binary crop/non-crop classifications can be created using a thresholding approach, where \n\n_Remote Sens._ **2025** , _17_ , 1094 \n\n3 of 23 \n\n~~pixels with CV values above or equal to the CV threshold are classifed as crop, and pixels~~ with CV values below the threshold are classified as non-crop. \n\n\n**Figure 1.** Sentinel-1 amplitude images displayed in power units over the Midwest United States ( **a** ) and Central Brazil ( **b** ), showing backscatter change throughout one year from each hemisphere. Backscatter is highest (white) when the crops reach maturity and lowest (black) after harvest. The coefficient of variation from one year is also displayed, where a value of 1 indicates high backscatter variation and a value of 0 indicates low backscatter variation. \n\nWhelen and Siqueira tested several thresholding approaches to create crop/noncrop classifications using L-band SAR data from the Japanese Aerospace Exploration Agency’s (JAXA) Phased Array L-band SAR (PALSAR) sensor onboard the Advanced Land Observing Satellite (ALOS-1), using images collected between 2007 and 2010 [26]. The CV of the SAR time series was calculated for 11 Areas of Interest (AOI) across the United States. Crop/non-crop classifications were conducted in two phases. In the first phase, two unique optimal thresholds were generated for each AOI using (1) the receiver operating characteristic (ROC) curve where the threshold was derived from the greatest distance of the line of no discrimination and (2) from the best separation of histograms between the crop/non-crop pixels. The ROC curve displays the performance of all tested thresholds, and the optimal threshold is determined by the point on the curve that is furthest from the line of no discrimination [28]. For the histogram method, the ranges of CV values for both crop and non-crop pixels were plotted in a histogram, and the point of least overlap was chosen as the optimal threshold. The ROC curve and histogram methods generated similar thresholds ranging from 0.35 to 0.60. In the second phase, a generic threshold of 0.5 was applied to every AOI. The first phase achieved accuracies between 66% and 81%, while the second phase achieved accuracies between 62% and 84% across the AOIs. The overall methodology outlined by Whelen and Siqueira demonstrated that using SAR and the CV method can classify agriculture with over 80% accuracy, proving to be a viable tool to monitor agricultural areas globally [26]. \n\nRose et al. expanded the use of the CV method outlined by Whelen and Siqueira [26] by using routinely collected 12-day C-band SAR data from the European Space Agency’s (ESA’s) Sentinel-1 [29]. Rose et al. used acquisitions collected during 2017 to evaluate 100 1 _[◦]_ by 1 _[◦]_ (~111 km by 111 km) tiles across the United States [29]. The CV was calculated for each tile, and unique CV thresholds were generated by optimizing the Youden’s J-statistic (YJS) [30]. The J-statistic is a summary measurement of the ROC curve that represents the distance from the line of no-discrimination to the curve [31]. This method is equivalent to the ROC curve method employed by Whelen and Siqueria but without the computational expense of generating curves for each tile. The J-statistic optimal thresholds demonstrated a geographic dependence with thresholds ranging from 0.2 on the coasts to 0.6 in the Midwest. These optimal thresholds achieved an average accuracy of 86.8%. In addition, \n\n_Remote Sens._ **2025** , _17_ , 1094 \n\n4 of 23 \n\na generic threshold of 0.5 was evaluated on every tile and achieved an average accuracy of 81.5%. The performance of the 0.5 threshold also varied by geographic region, with accuracy improving in the West from 73.5% using the optimal thresholds to 76.1%, while accuracy decreased from 90.2 and 90.0 using the optimal thresholds to 80.2 and 89.1 in the Midwest and South respectively. The observed relationship between geographic region, optimal thresholds, and performance suggests that while a threshold of 0.5 may be sufficient to achieve 80% accuracy across the U.S., region-specific thresholds may be more reliable. \n\nAlthough the CV method is less computationally expensive than many other existing algorithms, generating unique thresholds for specific areas can be time-consuming. To avoid generating unique thresholds, Kraatz et al. [32] used the thresholds already generated by Rose et al. [29]. Kraatz et al., calculated the CV using Sentinel-1 data from 2017 to 2021 covering a ~2670 ha agricultural area in Maryland and selected a CV threshold of 0.25 [32]. Rose et al., reported CV thresholds between 0.2 and 0.3 for nearby sites in North Carolina and Pennsylvania [29]. The resulting crop/non-crop CV classification was compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields. The USDA’s Cropland Data Layer (CDL) [33], which reports >80% accuracy across the U.S., was also compared to the ground truth data as a benchmark for the performance of the CV method. Compared to the ground truth information, the CV method crop/non-crop classification and the CDL achieved accuracies, respectively, of 96% and 77% for cropland alone and 94% and 86% for overall accuracy. Kraatz et al. demonstrates that using the CV method combined with a region-specific threshold can give accuracies close to or better than datasets derived from optical imagery, such as the CDL [32]. \n\nThe CV method combined with a thresholding approach has proven to be very useful in mapping cropland area extent in SAR and was chosen as the basis for the NASAIndian Space Research Organization (ISRO) SAR (NISAR) mission’s Level-2 Cropland Area algorithm. The NISAR mission (2025-) will collect 12-day, global, L-band imagery, and one of its Level-2 Science Requirements is to classify croplands with a minimum of 80% accuracy [34]. After one year of calibration, NISAR will produce crop area maps at 1 ha resolution every three months with four classes: active crop area, newly active crop area, inactive crop area, and not crop. Although the NISAR crop area maps are expected to be very useful, further development in mapping cropland area extent using SAR is necessary to ensure that global crop/non-crop classifications remain available regardless of NISAR’s duration [35]. \n\nThe NISAR Cropland Area algorithm, which was designed to identify active agricultural areas and is less computationally intensive than other proposed algorithms and classifying schemes [18,21–25], is the base algorithm used in the study. This study will further streamline the CV threshold optimization process or bypass optimization altogether by identifying general thresholds for areas with certain dominant crop types, which is not currently being addressed in the NISAR Cropland Area algorithm. Rose et al. [29] found that optimal CV thresholds in the United States were regionally dependent, where nearby tiles shared similar crop types, climate, and management practices. Kraatz et al. [32] demonstrated that an optimal CV threshold from one location can be applied to another nearby location within the same region of the United States with high accuracy. These studies suggest that regionally specific thresholds may provide an acceptable trade-off between accuracy and computational intensity. Such thresholds may be general enough to be applied to large areas without needing to derive optimal thresholds for each SAR time series and still provide greater overall accuracy than only one threshold for an entire country, such as 0.5 [29]. To extend the concept of general CV thresholds to a global scale, \n\n_Remote Sens._ **2025** , _17_ , 1094 \n\n5 of 23 \n\nwe propose shifting the focus from regions defined by geographic proximity to regions defined by shared crop types. \n\nThis study compares the optimal thresholds derived across several years in areas with the same dominant crop type (corn/soybean, wheat, or rice) in different geographic regions worldwide with likely varied agricultural practices (i.e., irrigation and tilling) and climates (i.e., precipitation and temperatures). This study demonstrates that areas that grow the same crops have similar optimal CV thresholds to identify active agriculture. A general crop type threshold is derived from these optimal thresholds and then evaluated on a new area with the same dominant crop type. These general thresholds are only intended to generate binary crop/non-crop classifications, not to classify crop types. The proper application of these thresholds requires the user to know what crop types are generally grown in the area. This technique is aimed at end-users and stakeholders, such as the USDA Foreign Agricultural Service (FAS), who have some awareness of the region’s agricultural variety but would benefit from a rapidly derived low computational cost, crop/non-crop classification. This binary classification can estimate the active cropland area from year to year to help identify changes due to conflict and environmental factors, especially in regions where on-the-ground information is limited.",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "SAR",
+      "coefficient of variation",
+      "cropland mapping",
+      "remote sensing",
+      "agriculture"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:55:42.846806+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Synthetic aperture radar (SAR) is emerging as a valuable dataset for monitoring crops globally. Unlike optical remote sensing, SAR can provide earth observations regardless of solar illumination or atmospheric conditions. Several methods that utilize SAR to identify agriculture rely on computationally expensive algorithms, such as machine learning, that require extensive training datasets, complex data pre-processing, or specialized software."
+      },
+      "confidence": 0.99,
+      "term": "synthetic aperture radar (SAR)",
+      "normalized": "合成孔径雷达",
+      "std_label": "SAR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The coefficient of variation (CV) method has been successful in identifying agricultural activity using several SAR sensors and is the basis of the Cropland Area algorithm for the upcoming NASA-Indian Space Research Organization (ISRO) SAR mission. The CV method derives a unique threshold for an AOI by optimizing Youden’s J-Statistic, where pixels above the threshold are classified as crop and pixels below are classified as noncrop, producing a binary crop/non-crop classification. Training this optimization process requires at least some existing cropland classification as an external reference dataset."
+      },
+      "confidence": 0.98,
+      "term": "coefficient of variation (CV) method",
+      "normalized": "变异系数方法",
+      "std_label": "CV method"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The coefficient of variation (CV) method has been successful in identifying agricultural activity using several SAR sensors and is the basis of the Cropland Area algorithm for the upcoming NASA-Indian Space Research Organization (ISRO) SAR mission."
+      },
+      "confidence": 0.97,
+      "term": "Cropland Area algorithm",
+      "normalized": "耕地面积算法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The CV method combined with a thresholding approach has proven to be very useful in mapping cropland area extent in SAR and was chosen as the basis for the NASAIndian Space Research Organization (ISRO) SAR (NISAR) mission’s Level-2 Cropland Area algorithm. The NISAR mission (2025-) will collect 12-day, global, L-band imagery, and one of its Level-2 Science Requirements is to classify croplands with a minimum of 80% accuracy."
+      },
+      "confidence": 0.98,
+      "term": "NISAR mission",
+      "normalized": "NISAR任务",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using data from the European Space Agency’s (ESA) Sentinel-1, a C-band SAR instrument, nine global AOIs, three for each crop type, were evaluated."
+      },
+      "confidence": 0.99,
+      "term": "Sentinel-1",
+      "normalized": "哨兵一号",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, general CV thresholds are derived that can discriminate active agriculture (i.e., fields in use) from other land cover types without requiring a cropland reference dataset. We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice."
+      },
+      "confidence": 0.98,
+      "term": "general CV thresholds",
+      "normalized": "通用CV阈值",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.99,
+      "term": "corn/soybean",
+      "normalized": "玉米/大豆",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.99,
+      "term": "wheat",
+      "normalized": "小麦",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.99,
+      "term": "rice",
+      "normalized": "水稻",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover."
+      },
+      "confidence": 0.98,
+      "term": "WorldCover",
+      "normalized": "WorldCover",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The CV method derives a unique threshold for an AOI by optimizing Youden’s J-Statistic, where pixels above the threshold are classified as crop and pixels below are classified as noncrop, producing a binary crop/non-crop classification."
+      },
+      "confidence": 0.98,
+      "term": "binary crop/non-crop classification",
+      "normalized": "二元耕地/非耕地分类",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c12",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Rose et al. expanded the use of the CV method outlined by Whelen and Siqueira [26] by using routinely collected 12-day C-band SAR data from the European Space Agency’s (ESA’s) Sentinel-1 [29]. Rose et al. used acquisitions collected during 2017 to evaluate 100 1° by 1° (~111 km by 111 km) tiles across the United States [29]. The CV was calculated for each tile, and unique CV thresholds were generated by optimizing the Youden’s J-statistic (YJS) [30]. The J-statistic is a summary measurement of the ROC curve that represents the distance from the line of no-discrimination to the curve [31]. This method is equivalent to the ROC curve method employed by Whelen and Siqueria but without the computational expense of generating curves for each tile."
+      },
+      "confidence": 0.97,
+      "term": "Youden’s J-statistic",
+      "normalized": "尤登J统计量",
+      "std_label": "YJS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0c6d1f8f48b4b959_c13",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, general CV thresholds are derived that can discriminate active agriculture (i.e., fields in use) from other land cover types without requiring a cropland reference dataset."
+      },
+      "confidence": 0.98,
+      "term": "active agriculture",
+      "normalized": "活跃农业",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The coefficient of variation (CV) method has been successful in identifying agricultural activity using several SAR sensors and is the basis of the Cropland Area algorithm for the upcoming NASA-Indian Space Research Organization (ISRO) SAR mission."
+      },
+      "confidence": 0.98,
+      "head": "doc_0c6d1f8f48b4b959_c2",
+      "relation_type": "is_basis_of",
+      "relation_surface": "is the basis of",
+      "tail": "doc_0c6d1f8f48b4b959_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The CV method combined with a thresholding approach has proven to be very useful in mapping cropland area extent in SAR and was chosen as the basis for the NASAIndian Space Research Organization (ISRO) SAR (NISAR) mission’s Level-2 Cropland Area algorithm."
+      },
+      "confidence": 0.97,
+      "head": "doc_0c6d1f8f48b4b959_c3",
+      "relation_type": "belongs_to",
+      "relation_surface": "was chosen as the basis for",
+      "tail": "doc_0c6d1f8f48b4b959_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Several methods that utilize SAR to identify agriculture rely on computationally expensive algorithms, such as machine learning, that require extensive training datasets, complex data pre-processing, or specialized software. The coefficient of variation (CV) method has been successful in identifying agricultural activity using several SAR sensors and is the basis of the Cropland Area algorithm for the upcoming NASA-Indian Space Research Organization (ISRO) SAR mission."
+      },
+      "confidence": 0.97,
+      "head": "doc_0c6d1f8f48b4b959_c1",
+      "relation_type": "uses",
+      "relation_surface": "utilize",
+      "tail": "doc_0c6d1f8f48b4b959_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The CV method derives a unique threshold for an AOI by optimizing Youden’s J-Statistic, where pixels above the threshold are classified as crop and pixels below are classified as noncrop, producing a binary crop/non-crop classification."
+      },
+      "confidence": 0.98,
+      "head": "doc_0c6d1f8f48b4b959_c2",
+      "relation_type": "produces",
+      "relation_surface": "producing",
+      "tail": "doc_0c6d1f8f48b4b959_c11"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, general CV thresholds are derived that can discriminate active agriculture (i.e., fields in use) from other land cover types without requiring a cropland reference dataset."
+      },
+      "confidence": 0.98,
+      "head": "doc_0c6d1f8f48b4b959_c6",
+      "relation_type": "discriminates",
+      "relation_surface": "can discriminate",
+      "tail": "doc_0c6d1f8f48b4b959_c13"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.98,
+      "head": "doc_0c6d1f8f48b4b959_c6",
+      "relation_type": "derived_for",
+      "relation_surface": "derived for",
+      "tail": "doc_0c6d1f8f48b4b959_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.98,
+      "head": "doc_0c6d1f8f48b4b959_c6",
+      "relation_type": "derived_for",
+      "relation_surface": "derived for",
+      "tail": "doc_0c6d1f8f48b4b959_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.98,
+      "head": "doc_0c6d1f8f48b4b959_c6",
+      "relation_type": "derived_for",
+      "relation_surface": "derived for",
+      "tail": "doc_0c6d1f8f48b4b959_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The CV method derives a unique threshold for an AOI by optimizing Youden’s J-Statistic, where pixels above the threshold are classified as crop and pixels below are classified as noncrop, producing a binary crop/non-crop classification."
+      },
+      "confidence": 0.97,
+      "head": "doc_0c6d1f8f48b4b959_c2",
+      "relation_type": "optimizes",
+      "relation_surface": "optimizing",
+      "tail": "doc_0c6d1f8f48b4b959_c12"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using data from the European Space Agency’s (ESA) Sentinel-1, a C-band SAR instrument, nine global AOIs, three for each crop type, were evaluated. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively."
+      },
+      "confidence": 0.97,
+      "head": "doc_0c6d1f8f48b4b959_c5",
+      "relation_type": "is_data_source_for",
+      "relation_surface": "Using data from",
+      "tail": "doc_0c6d1f8f48b4b959_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0c6d1f8f48b4b959_r11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover."
+      },
+      "confidence": 0.97,
+      "head": "doc_0c6d1f8f48b4b959_c6",
+      "relation_type": "evaluated_by",
+      "relation_surface": "compared to",
+      "tail": "doc_0c6d1f8f48b4b959_c10"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0c6d1f8f48b4b959_d1",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "ESA’s Sentinel-1 constellation was the primary data source for this study. Sentinel-1A and -1B host a C-band SAR instrument with a phase-preserving dual-polarization system. The current orbit allows each Sentinel-1 satellite to have a twelve-day global repeat cycle with the primary collection mode over land being Interferometric Wide (IW), 250 km by 250 km frame. Since Sentinel-1B was decommissioned in mid-2022, data from only Sentinel-1A was used for this research. Sentinel-1 acquisitions were obtained and processed through the Alaska Satellite Facility (ASF), one of NASA’s twelve Distributed Active Archive Centers (DAACs). Level-1 Ground Range Detected High-Resolution (GRD-HD) Sentinel-1 products were processed to 30 m resolution Radiometrically Terrain Corrected (RTC) products using ASF’s On-Demand HyP3 (Hybrid Pluggable Processing Pipeline) processing platform [36,37]. HyP3 uses the workflow in Small [38] and the Copernicus GLO-30 digital elevation model (DEM) to generate its RTC output. An output resolution of 30 m was chosen because it matches the native GLO-30 DEM resolution and has a smaller relative file size than the 10 or 20 m products, reducing processing time. RTC products were used as the geometric and radiometric distortions inherent with side-looking instruments have been removed. RTCs provide an analysis-ready data (ARD) product that is easy to incorporate into time-series workflows [39]. Each image was speckle filtered using an Enhanced Lee filter, coregistered to the Copernicus GLO-30 DEM, and delivered as a gamma0 image in power units. Gamma0 radiometry was selected as it is the backscatter coefficient normalized by the illuminated area in the look direction of the satellite where the local topography has been included [38]. Gamma0 is preferred due to its sensitivity over topography, and the power scale was used as this scale is optimal for statistical analysis. Only the cross-polarized (‘VH’) channel from each acquisition was used in the analysis, as cross-polarized data are more effective than co-polarized data for crop monitoring in both C-band SAR data [40,41] and L-band SAR data [42,43]."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-1 SAR time series data",
+      "modality": "image",
+      "domain": "remote sensing, agriculture"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0c6d1f8f48b4b959_d2",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "After masking the no data pixels, the CV was calculated on the SAR stack. The CV layers for the five frames in the AOI for a given year were then merged. Merging the SAR imagery by date first would invalidate the need for some of the above data preparation steps, but due to computing limitations within OSL, the CV layers of the five frames were merged instead (Figure 3). For each year in a base case, a random 0.01% sample (~20,000 pixels) of the valid, nonwater pixels in the CV layer was selected to determine the optimal threshold. In previous testing, a 0.01% sample generated the same thresholds as using all the pixels within an AOI while reducing computation time. Thresholds 0.00 through 0.99 with a step size of 0.01 were tested on each CV sample. For each tested threshold, pixels with a CV value greater than or equal to the threshold were classified as crop, and the remaining pixels were classified as non-crop. These crop/non-crop classifications were compared to the corresponding reference data, CGLS-LC for 2018–2019 and WorldCover for 2020–2022. The J-Statistic was calculated from the number of true positives, false positives, true negatives, and false negatives."
+      },
+      "confidence": 0.9,
+      "name": "Coefficient of Variation (CV) layers for agricultural classification",
+      "modality": "tabular",
+      "domain": "remote sensing, agriculture"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0c6d1f8f48b4b959_d3",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "Two globally derived land cover classification datasets were used as references: ESA’s Copernicus Global Land Service: Land Cover (CGLS-LC) [44,45] and ESA’s WorldCover [46,47]. These two datasets provide different land classes, but both include the same basic land cover classes of open water, urban, forests, and cropland. The CGLS-LC 100 m product was trained on high-resolution optical datasets from Google Maps and Bing and 100 m multi-spectral data from the vegetation instrument on ESA’s PROBA satellite (PROBA-V). PROBA was launched in 2013 as a precursor to Sentinel-3 and acquired an image of Earth’s surface every two days. The CGLS-LC achieved 80.6 ± 0.4% accuracy and was used as reference data for the 2018 and 2019 growing seasons, as it was only produced for 2015–2019. ESA produced a higher resolution (10 m) global land cover map, WorldCover, that uses a similar algorithm to the CGLS-LC but incorporates Sentinel-2 multi-spectral data and Sentinel-1 C-band SAR data instead of PROBA-V data. WorldCover was generated for only two years, 2020 and 2021. The 2021 WorldCover incorporated more training data than 2020 and used an improved classification algorithm to improve overall accuracy to 76.7% from 74.4% in 2020. CGLS-LC and WorldCover were not produced for 2022, so with the WorldCover of 2021 having the best overall accuracy, it was used as the reference data for 2022. These two products were chosen as reference datasets due to their comparable algorithms, high accuracy, and relatively high spatial resolution compared to other global land cover maps."
+      },
+      "confidence": 0.95,
+      "name": "Reference agricultural datasets (CGLS-LC and WorldCover)",
+      "modality": "image",
+      "domain": "remote sensing, land cover"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0c6d1f8f48b4b959_d4",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "Because the objective of this research is to produce crop/non-crop classifications, all the reference datasets were reclassified into binary crop/non-crop maps. The reference datasets were also reclassified into binary water/no-water maps to exclude water pixels in determining the optimal thresholds. Water is excluded because the surface roughness of water varies considerably across the year (e.g., smooth, calm water vs. rough, choppy water), resulting in high CV values and frequent misclassification of water as crop. For each tested threshold, pixels with a CV value greater than or equal to the threshold were classified as crop, and the remaining pixels were classified as non-crop. These crop/non-crop classifications were compared to the corresponding reference data, CGLS-LC for 2018–2019 and WorldCover for 2020–2022."
+      },
+      "confidence": 0.9,
+      "name": "Binary crop/non-crop classification maps",
+      "modality": "image",
+      "domain": "remote sensing, agriculture"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0c6d1f8f48b4b959_ds1",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "Level-1 Ground Range Detected High-Resolution (GRD-HD) Sentinel-1 products were processed to 30 m resolution Radiometrically Terrain Corrected (RTC) products using ASF’s On-Demand HyP3 (Hybrid Pluggable Processing Pipeline) processing platform [36,37]. HyP3 uses the workflow in Small [38] and the Copernicus GLO-30 digital elevation model (DEM) to generate its RTC output. An output resolution of 30 m was chosen because it matches the native GLO-30 DEM resolution and has a smaller relative file size than the 10 or 20 m products, reducing processing time. RTC products were used as the geometric and radiometric distortions inherent with side-looking instruments have been removed. RTCs provide an analysis-ready data (ARD) product that is easy to incorporate into time-series workflows [39]. Each image was speckle filtered using an Enhanced Lee filter, coregistered to the Copernicus GLO-30 DEM, and delivered as a gamma0 image in power units. Gamma0 radiometry was selected as it is the backscatter coefficient normalized by the illuminated area in the look direction of the satellite where the local topography has been included [38]. Gamma0 is preferred due to its sensitivity over topography, and the power scale was used as this scale is optimal for statistical analysis. Only the cross-polarized (‘VH’) channel from each acquisition was used in the analysis, as cross-polarized data are more effective than co-polarized data for crop monitoring in both C-band SAR data [40,41] and L-band SAR data [42,43]."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized SAR data processing protocol using ASF HyP3 for Radiometric Terrain Correction (RTC) to 30m resolution"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0c6d1f8f48b4b959_ds2",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "After masking the no data pixels, the CV was calculated on the SAR stack. The CV layers for the five frames in the AOI for a given year were then merged. For each year in a base case, a random 0.01% sample (~20,000 pixels) of the valid, nonwater pixels in the CV layer was selected to determine the optimal threshold. In previous testing, a 0.01% sample generated the same thresholds as using all the pixels within an AOI while reducing computation time. Thresholds 0.00 through 0.99 with a step size of 0.01 were tested on each CV sample. For each tested threshold, pixels with a CV value greater than or equal to the threshold were classified as crop, and the remaining pixels were classified as non-crop. These crop/non-crop classifications were compared to the corresponding reference data, CGLS-LC for 2018–2019 and WorldCover for 2020–2022. The J-Statistic was calculated from the number of true positives, false positives, true negatives, and false negatives. The J-Statistic is defined as J = Sensitivity + Specificity - 1. A positive classification is a pixel that is classified as crop after a threshold is applied to the CV layer. A negative classification is a pixel that is classified as non-crop after a threshold is applied to the CV layer. The true/false qualifier refers to the pixel’s comparison to the reference data. A pixel’s classification is true if it matches the reference data and false if it does not."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Protocol for calculating Coefficient of Variation (CV) from SAR time series and generating binary crop/non-crop classifications"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0c6d1f8f48b4b959_ds3",
+      "evidence": {
+        "section": "2. Materials and Methods",
+        "original_text": "Accuracy, sensitivity, and specificity were calculated to assess the base case optimal CV thresholds derived for 2018–2022, as well as each crop type threshold applied to the test case. Accuracy is the percentage of classifications that match the reference data (true positives and true negatives). Sensitivity (1—false negative rate) is the percentage of crop pixels in the reference data that were classified as crop. Specificity (1—false positive rate) is the percentage of non-crop pixels in the reference data classified as non-crop. Sensitivity and specificity are inversely related, meaning that as sensitivity increases, specificity will decrease. While accuracy can provide a general understanding of a classification’s performance, comparing sensitivity and specificity can reveal if there is an imbalance in the classification’s performance on crop (positive class) or non-crop (negative class). For example, two cases could both have an 80% accuracy, but one case could have a sensitivity of 90% and a specificity of 70%, while the other case could be 70% and 90%, respectively. The first case, with a sensitivity of 90%, would be better at classifying crops, while the second case, with a higher specificity, would be better at classifying non-crop. This imbalance is particularly applicable to cases where the ratio of crop to non-crop pixels in the reference data is weighted one way or the other because misclassified pixels will carry a greater weight in the underrepresented class. In cases where cropland accounts for less than one-third of the area, sensitivity and specificity should be considered when evaluating the performance."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Performance metrics (accuracy, sensitivity, specificity) for evaluating crop/non-crop classifications"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0c6d1f8f48b4b959_ds4",
+      "evidence": {
+        "section": "4. Discussion",
+        "original_text": "The recommended threshold ranges are intended to be applied to areas where crop diversity is generally low, and has been determined by an end-user who is familiar with the areas’ dominant crop types. Future work will investigate how much crop diversity is tolerable. This would require a crop type classification map and may be limited to the United States and a few other countries. The wheat threshold did seem to capture mainly wheat fields and not rice fields in the East China test case, but the recommended threshold ranges are not intended to delineate between corn/soybean, wheat, and rice in a given area. Classifying pixels by crop type would require additional data, such as optical imagery, and/or more advanced techniques such as machine learning [68,69]. Additional SAR wavelengths such as L-band from NISAR or optical imagery and derived products such as NDVI could be added to the algorithm without significant computational costs. L-band (~23.5 cm wavelength) SAR may increase accuracy in high-biomass crops such as corn [70]. L-band SAR may also provide better discrimination between irrigated and nonirrigated crops, as the longer wavelength is more sensitive to irrigation and soil moisture in well-developed Gramineae crops (which includes corn, wheat, and rice) [63,64,71,72]. NDVI products may help reduce the number of false positives triggered by land cover (e.g., roads and airports) that can have high CV values, but often low NDVI values."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Recommended CV threshold ranges for crop type classification (corn/soybean, wheat, rice)"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0c6d1f8f48b4b959_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Whelen and Siqueira introduced and tested a methodology for mapping active agricultural areas (i.e., fields in use) across the United States using the coefficient of variation (CV) to produce binary crop/non-crop classifications [26]. The CV method separates crop pixels from non-crop pixels using simple statistical measurements, requiring only a SAR time series and an agricultural reference or land use/land cover dataset. CV is a unitless measurement of the variability within a stack of data as it relates to the mean [27]. The CV is defined as where X refers to the input variable, in this case, the SAR backscatter values per pixel location. The CV values and ranges are dependent on the scale of the input variable. Although the CV is unbounded, the CV of the SAR backscatter has a typical range of 0–1. The CV of a pixel will be closer to 1 if there is greater variation in the backscatter across the time series and closer to 0 if there is less variation in the backscatter. Because SAR is sensitive to the structural properties of vegetation (e.g., crop volume or height), SAR backscatter values will change as the crops grow throughout the season. The highest backscatter values occur when the crops are near maturity and the lowest values after harvest (Figure 1). The wide distribution of backscatter values in agricultural areas across the growing season results in high CV values, while forested or urban areas have relatively low CV values as their backscatter values do not change much throughout the year. The binary crop/non-crop classifications can be created using a thresholding approach, where pixels with CV values above or equal to the CV threshold are classified as crop, and pixels with CV values below the threshold are classified as non-crop."
+      },
+      "confidence": 0.95,
+      "name": "Coefficient of Variation (CV) method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0c6d1f8f48b4b959_m2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Rose et al. expanded the use of the CV method outlined by Whelen and Siqueira [26] by using routinely collected 12-day C-band SAR data from the European Space Agency’s (ESA’s) Sentinel-1 [29]. Rose et al. used acquisitions collected during 2017 to evaluate 100 1° by 1° (~111 km by 111 km) tiles across the United States [29]. The CV was calculated for each tile, and unique CV thresholds were generated by optimizing the Youden’s J-statistic (YJS) [30]. The J-statistic is a summary measurement of the ROC curve that represents the distance from the line of no-discrimination to the curve [31]. This method is equivalent to the ROC curve method employed by Whelen and Siqueria but without the computational expense of generating curves for each tile."
+      },
+      "confidence": 0.95,
+      "name": "Youden's J-statistic (YJS) optimization",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0c6d1f8f48b4b959_m3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The CV method combined with a thresholding approach has proven to be very useful in mapping cropland area extent in SAR and was chosen as the basis for the NASAIndian Space Research Organization (ISRO) SAR (NISAR) mission’s Level-2 Cropland Area algorithm. The NISAR mission (2025-) will collect 12-day, global, L-band imagery, and one of its Level-2 Science Requirements is to classify croplands with a minimum of 80% accuracy [34]. After one year of calibration, NISAR will produce crop area maps at 1 ha resolution every three months with four classes: active crop area, newly active crop area, inactive crop area, and not crop. Although the NISAR crop area maps are expected to be very useful, further development in mapping cropland area extent using SAR is necessary to ensure that global crop/non-crop classifications remain available regardless of NISAR’s duration [35]. The NISAR Cropland Area algorithm, which was designed to identify active agricultural areas and is less computationally intensive than other proposed algorithms and classifying schemes [18,21–25], is the base algorithm used in the study."
+      },
+      "confidence": 0.95,
+      "name": "NISAR Cropland Area algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0c6d1f8f48b4b959_m4",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "Level-1 Ground Range Detected High-Resolution (GRD-HD) Sentinel-1 products were processed to 30 m resolution Radiometrically Terrain Corrected (RTC) products using ASF’s On-Demand HyP3 (Hybrid Pluggable Processing Pipeline) processing platform [36,37]. HyP3 uses the workflow in Small [38] and the Copernicus GLO-30 digital elevation model (DEM) to generate its RTC output. An output resolution of 30 m was chosen because it matches the native GLO-30 DEM resolution and has a smaller relative file size than the 10 or 20 m products, reducing processing time. RTC products were used as the geometric and radiometric distortions inherent with side-looking instruments have been removed. RTCs provide an analysis-ready data (ARD) product that is easy to incorporate into time-series workflows [39]. Each image was speckle filtered using an Enhanced Lee filter, coregistered to the Copernicus GLO-30 DEM, and delivered as a gamma0 image in power units."
+      },
+      "confidence": 0.95,
+      "name": "Radiometrically Terrain Corrected (RTC) processing",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0c6d1f8f48b4b959_m5",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "The crop type thresholds are the result of averaging the identified optimal CV thresholds that best discriminate crop pixels from non-crop pixels in each of the base cases. In this study, crop type refers to what the primary crop is grown in the base cases according to USDA FAS Crop Production Maps. To account for temporal and geographic variation in the CV, optimal thresholds for the two base cases associated with each crop type are generated for each calendar year from 2018 to 2022 (Figure 3). The optimal threshold for each base case is determined by the J-Statistic. For each year in a base case, a random 0.01% sample (~20,000 pixels) of the valid, nonwater pixels in the CV layer was selected to determine the optimal threshold. In previous testing, a 0.01% sample generated the same thresholds as using all the pixels within an AOI while reducing computation time. Thresholds 0.00 through 0.99 with a step size of 0.01 were tested on each CV sample. For each tested threshold, pixels with a CV value greater than or equal to the threshold were classified as crop, and the remaining pixels were classified as non-crop. These crop/non-crop classifications were compared to the corresponding reference data, CGLS-LC for 2018–2019 and WorldCover for 2020–2022. The J-Statistic was calculated from the number of true positives, false positives, true negatives, and false negatives. The J-Statistic is defined as A positive classification is a pixel that is classified as crop after a threshold is applied to the CV layer. A negative classification is a pixel that is classified as non-crop after a threshold is applied to the CV layer. The true/false qualifier refers to the pixel’s comparison to the reference data. A pixel’s classification is true if it matches the reference data and false if it does not (Table 1). The threshold with the highest J-Statistic was determined to be the optimal classification threshold for the given base case and year. Two base case AOIs per crop type across five years yielded ten optimal thresholds per crop type. These ten base case optimal thresholds were then averaged to generate the crop type threshold. This new crop type threshold was then applied to the test case’s CV layer for the corresponding crop type. As stated above, a CV pixel greater than or equal to the crop type threshold is classified as a crop. The resulting binary crop/non-crop classification identifies areas of active agriculture and does not classify pixels as a certain crop type. For each test case, the average crop type threshold was used, thereby removing the need to have a cropland extent reference dataset."
+      },
+      "confidence": 0.95,
+      "name": "Deriving crop type thresholds via averaging optimal thresholds",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_0c6d1f8f48b4b959_x1",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Using data from the European Space Agency’s (ESA) Sentinel-1, a C-band SAR instrument, nine global AOIs, three for each crop type, were evaluated. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively. The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover. The results of this study indicate that the use of the CV, along with the average crop type thresholds presented, is a fast, simple, and reliable technique to detect active agriculture in areas where either corn/soybean, wheat, or rice is the dominant crop type and where outdated or no reference datasets exist. The selected study areas were based on the global production of corn/soybean, wheat, or rice. These crop types were chosen because they represent the top three crops produced worldwide [48]. Corn and soybean are grouped because they are often grown in an annual rotation [49–52]. For the Midwest U.S. AOI, the cropland area was split between corn and soybean, with ~5% more corn than soybean. For the AOIs outside of the U.S., detailed crop type reference datasets can be difficult to find, especially those produced annually. The USDA FAS’s Commodity Explorer was used to select countries that are major producers of either corn/soybean, wheat, or rice, and specific AOIs within one country or across two neighboring countries were selected using USDA FAS’s Crop Production Maps [53]. These maps show the states/provinces where the cultivation of a certain crop is concentrated, but only for select commodity crops. AOIs were selected with minimal overlap between other major crop types, but some crop diversity is guaranteed. The AOIs were selected based on geographic diversity, percentage of world crop production, and variation in the percentage of the region dedicated to cropland (Figure 2). At least 25% of the land area was devoted to agriculture in each AOI. The corn/soybean AOIs selected were the Midwest United States, covering portions of several states (Nebraska, Iowa, Kansas, and Missouri); Ukraine, covering several provinces in Central Ukraine (Cherkasy, Poltava, and Kirovohrad) and Brazil, covering the central portion of one state (Mato Grosso). The wheat AOIs selected were France/Belgium, covering several regions of Eastern France (Champagne-Ardenne, Bourgogne, and Île-de-France) and most of Belgium; Morocco, covering most of the non-desert land; and East China, covering portions of multiple provinces (Henan, Shandong, Jiangsu, and Anhui). The rice AOIs were Myanmar, covering areas in Central Myanmar (Magway, Mandalay, and Bago); Thailand, covering several provinces in Central Thailand (Nakhon Ratchasima, Phetchabun, and Chaiyaphum); and East India/Bangladesh, covering portions of several states (West Bengal, Jharkhand, and Bihar) and most of Bangladesh. For each crop type, these AOIs are then split into two “base case” AOIs and one “test case “AOI. The base case AOIs are so called because they are used as the basis for deriving generic thresholds for identifying active agriculture in areas growing each crop type. The test case AOI was used to assess the generic threshold’s performance in a new area. Five years of data (2018–2022) was used for each base case, while data from only one year, 2021, was used for each test case. The year 2021 was selected because the 2021 WorldCover reference dataset had the overall highest accuracy for validation."
+      },
+      "confidence": 0.95,
+      "task": "evaluating CV method thresholds for global cropland mapping",
+      "setup": "Sentinel-1 C-band SAR data (2018-2022), nine global AOIs (three crop types), binary classification using CV thresholds compared to ESA WorldCover/CGLS-LC reference data"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_0c6d1f8f48b4b959_x2",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "Five adjacent Sentinel-1 frames were selected for each of the AOIs covering approximately 190,000 km2 (Figure 2). Sentinel-1’s 12-day repeat cycle resulted in approximately 30 images for each frame location per year, or approximately 150 images per year per AOI. ASF’s OpenSARLab (OSL) was used to download and analyze the Sentinel-1 RTC images for each AOI [54]. OSL is a cloud-based JupyterHub computing environment designed for SAR workflows using Jupyter Notebooks. All the images for each frame are stacked in chronological order from January to December for each year. Within the stack, no data values were often caused by misalignment between images (coregistration) or by SAR distortions over rugged terrain. If one or more no data value was present, the area was masked and not considered when calculating the CV. Removing pixels with no data values ensures that the CV is calculated uniformly across space and time. After masking the no data pixels, the CV was calculated on the SAR stack. The CV layers for the five frames in the AOI for a given year were then merged. Merging the SAR imagery by date first would invalidate the need for some of the above data preparation steps, but due to computing limitations within OSL, the CV layers of the five frames were merged instead (Figure 3). All agricultural reference datasets were reprojected, cropped, and resampled using the nearest neighbor method to match the coordinate reference system, extent, and 30 m resolution of the merged CV layer for each AOI. The CGLS-LC and WorldCover products provide several discrete land cover classes including one cropland class. Because the objective of this research is to produce crop/non-crop classifications, all the reference datasets were reclassified into binary crop/non-crop maps. The reference datasets were also reclassified into binary water/no-water maps to exclude water pixels in determining the optimal thresholds. Water is excluded because the surface roughness of water varies considerably across the year (e.g., smooth, calm water vs. rough, choppy water), resulting in high CV values and frequent misclassification of water as crop."
+      },
+      "confidence": 0.95,
+      "task": "data preparation and CV calculation workflow",
+      "setup": "ASF OpenSARLab cloud environment, Sentinel-1 RTC image stacking, masking no-data pixels, CV calculation, merging frames"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_0c6d1f8f48b4b959_x3",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "Accuracy, sensitivity, and specificity were calculated to assess the base case optimal CV thresholds derived for 2018–2022, as well as each crop type threshold applied to the test case. Accuracy is the percentage of classifications that match the reference data (true positives and true negatives). Sensitivity (1—false negative rate) is the percentage of crop pixels in the reference data that were classified as crop. Specificity (1—false positive rate) is the percentage of non-crop pixels in the reference data classified as non-crop. Sensitivity and specificity are inversely related, meaning that as sensitivity increases, specificity will decrease. While accuracy can provide a general understanding of a classification’s performance, comparing sensitivity and specificity can reveal if there is an imbalance in the classification’s performance on crop (positive class) or non-crop (negative class). For example, two cases could both have an 80% accuracy, but one case could have a sensitivity of 90% and a specificity of 70%, while the other case could be 70% and 90%, respectively. The first case, with a sensitivity of 90%, would be better at classifying crops, while the second case, with a higher specificity, would be better at classifying non-crop. This imbalance is particularly applicable to cases where the ratio of crop to non-crop pixels in the reference data is weighted one way or the other because misclassified pixels will carry a greater weight in the underrepresented class. In cases where cropland accounts for less than one-third of the area, sensitivity and specificity should be considered when evaluating the performance."
+      },
+      "confidence": 0.95,
+      "task": "performance evaluation using accuracy, sensitivity, and specificity metrics",
+      "setup": "comparison of CV-based binary classifications against reference datasets (CGLS-LC, WorldCover), calculation of accuracy, sensitivity, specificity"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The two base case AOIs for each of the three crop types produced similar CV threshold ranges, with an average threshold of 0.53, 0.31, and 0.26 for corn/soybean, wheat, and rice, respectively (Figure 4). The CV thresholds for wheat and rice overlapped between 0.28 and 0.3 for some years, but most wheat thresholds were above 0.3, while most rice thresholds were below 0.3. The corn/soybean CV thresholds were significantly higher than wheat or rice, with most thresholds above 0.5 and the lowest threshold being 0.48."
+      },
+      "confidence": 0.99,
+      "quantity": "optimal CV threshold",
+      "value": 0.53,
+      "unit": null,
+      "context": "corn/soybean regions, derived from averaging optimal thresholds for two base case AOIs over 2018–2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The two base case AOIs for each of the three crop types produced similar CV threshold ranges, with an average threshold of 0.53, 0.31, and 0.26 for corn/soybean, wheat, and rice, respectively (Figure 4). The CV thresholds for wheat and rice overlapped between 0.28 and 0.3 for some years, but most wheat thresholds were above 0.3, while most rice thresholds were below 0.3. The corn/soybean CV thresholds were significantly higher than wheat or rice, with most thresholds above 0.5 and the lowest threshold being 0.48."
+      },
+      "confidence": 0.99,
+      "quantity": "optimal CV threshold",
+      "value": 0.31,
+      "unit": null,
+      "context": "wheat regions, derived from averaging optimal thresholds for two base case AOIs over 2018–2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The two base case AOIs for each of the three crop types produced similar CV threshold ranges, with an average threshold of 0.53, 0.31, and 0.26 for corn/soybean, wheat, and rice, respectively (Figure 4). The CV thresholds for wheat and rice overlapped between 0.28 and 0.3 for some years, but most wheat thresholds were above 0.3, while most rice thresholds were below 0.3. The corn/soybean CV thresholds were significantly higher than wheat or rice, with most thresholds above 0.5 and the lowest threshold being 0.48."
+      },
+      "confidence": 0.99,
+      "quantity": "optimal CV threshold",
+      "value": 0.26,
+      "unit": null,
+      "context": "rice regions, derived from averaging optimal thresholds for two base case AOIs over 2018–2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 92,
+      "unit": "%",
+      "context": "Central Brazil test case (corn/soybean) using crop type threshold of 0.53, compared to ESA's 2021 WorldCover",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 84,
+      "unit": "%",
+      "context": "East China test case (wheat) using crop type threshold of 0.31, compared to ESA's 2021 WorldCover",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 83,
+      "unit": "%",
+      "context": "East India/Bangladesh test case (rice) using crop type threshold of 0.26, compared to ESA's 2021 WorldCover",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The Ukraine (corn/soybean) and France/Belgium (wheat) base cases performed the best overall with 90% accuracy, sensitivity, and specificity in 2021 and 2022."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 90,
+      "unit": "%",
+      "context": "Ukraine base case (corn/soybean) using optimal CV thresholds in 2021 and 2022",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The Ukraine (corn/soybean) and France/Belgium (wheat) base cases performed the best overall with 90% accuracy, sensitivity, and specificity in 2021 and 2022."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 90,
+      "unit": "%",
+      "context": "France/Belgium base case (wheat) using optimal CV thresholds in 2021 and 2022",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr9",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Rose et al. expanded the use of the CV method outlined by Whelen and Siqueira [26] by using routinely collected 12-day C-band SAR data from the European Space Agency’s (ESA’s) Sentinel-1 [29]. Rose et al. used acquisitions collected during 2017 to evaluate 100 1° by 1° (~111 km by 111 km) tiles across the United States [29]. The CV was calculated for each tile, and unique CV thresholds were generated by optimizing the Youden’s J-statistic (YJS) [30]. The J-statistic is a summary measurement of the ROC curve that represents the distance from the line of no-discrimination to the curve [31]. This method is equivalent to the ROC curve method employed by Whelen and Siqueria but without the computational expense of generating curves for each tile. The J-statistic optimal thresholds demonstrated a geographic dependence with thresholds ranging from 0.2 on the coasts to 0.6 in the Midwest. These optimal thresholds achieved an average accuracy of 86.8%."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 86.8,
+      "unit": "%",
+      "context": "average accuracy achieved using optimal CV thresholds derived by optimizing Youden's J-statistic for 100 tiles across the United States in 2017",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr10",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In addition, a generic threshold of 0.5 was evaluated on every tile and achieved an average accuracy of 81.5%. The performance of the 0.5 threshold also varied by geographic region, with accuracy improving in the West from 73.5% using the optimal thresholds to 76.1%, while accuracy decreased from 90.2 and 90.0 using the optimal thresholds to 80.2 and 89.1 in the Midwest and South respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 81.5,
+      "unit": "%",
+      "context": "average accuracy achieved using a generic CV threshold of 0.5 applied to every tile across the United States in 2017",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr11",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Kraatz et al., calculated the CV using Sentinel-1 data from 2017 to 2021 covering a ~2670 ha agricultural area in Maryland and selected a CV threshold of 0.25 [32]. Rose et al., reported CV thresholds between 0.2 and 0.3 for nearby sites in North Carolina and Pennsylvania [29]. The resulting crop/non-crop CV classification was compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields. The USDA’s Cropland Data Layer (CDL) [33], which reports >80% accuracy across the U.S., was also compared to the ground truth data as a benchmark for the performance of the CV method. Compared to the ground truth information, the CV method crop/non-crop classification and the CDL achieved accuracies, respectively, of 96% and 77% for cropland alone and 94% and 86% for overall accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 96,
+      "unit": "%",
+      "context": "CV method crop/non-crop classification compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields for cropland alone",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr12",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Kraatz et al., calculated the CV using Sentinel-1 data from 2017 to 2021 covering a ~2670 ha agricultural area in Maryland and selected a CV threshold of 0.25 [32]. Rose et al., reported CV thresholds between 0.2 and 0.3 for nearby sites in North Carolina and Pennsylvania [29]. The resulting crop/non-crop CV classification was compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields. The USDA’s Cropland Data Layer (CDL) [33], which reports >80% accuracy across the U.S., was also compared to the ground truth data as a benchmark for the performance of the CV method. Compared to the ground truth information, the CV method crop/non-crop classification and the CDL achieved accuracies, respectively, of 96% and 77% for cropland alone and 94% and 86% for overall accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 77,
+      "unit": "%",
+      "context": "USDA's Cropland Data Layer (CDL) compared to detailed ground truth information for cropland alone",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr13",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Kraatz et al., calculated the CV using Sentinel-1 data from 2017 to 2021 covering a ~2670 ha agricultural area in Maryland and selected a CV threshold of 0.25 [32]. Rose et al., reported CV thresholds between 0.2 and 0.3 for nearby sites in North Carolina and Pennsylvania [29]. The resulting crop/non-crop CV classification was compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields. The USDA’s Cropland Data Layer (CDL) [33], which reports >80% accuracy across the U.S., was also compared to the ground truth data as a benchmark for the performance of the CV method. Compared to the ground truth information, the CV method crop/non-crop classification and the CDL achieved accuracies, respectively, of 96% and 77% for cropland alone and 94% and 86% for overall accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 94,
+      "unit": "%",
+      "context": "CV method crop/non-crop classification compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields for overall accuracy",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr14",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Kraatz et al., calculated the CV using Sentinel-1 data from 2017 to 2021 covering a ~2670 ha agricultural area in Maryland and selected a CV threshold of 0.25 [32]. Rose et al., reported CV thresholds between 0.2 and 0.3 for nearby sites in North Carolina and Pennsylvania [29]. The resulting crop/non-crop CV classification was compared to detailed ground truth information from U.S. Department of Agriculture (USDA) research fields. The USDA’s Cropland Data Layer (CDL) [33], which reports >80% accuracy across the U.S., was also compared to the ground truth data as a benchmark for the performance of the CV method. Compared to the ground truth information, the CV method crop/non-crop classification and the CDL achieved accuracies, respectively, of 96% and 77% for cropland alone and 94% and 86% for overall accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 86,
+      "unit": "%",
+      "context": "USDA's Cropland Data Layer (CDL) compared to detailed ground truth information for overall accuracy",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr15",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "The CGLS-LC 100 m product was trained on high-resolution optical datasets from Google Maps and Bing and 100 m multi-spectral data from the vegetation instrument on ESA’s PROBA satellite (PROBA-V). PROBA was launched in 2013 as a precursor to Sentinel-3 and acquired an image of Earth’s surface every two days. The CGLS-LC achieved 80.6 ± 0.4% accuracy and was used as reference data for the 2018 and 2019 growing seasons, as it was only produced for 2015–2019."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 80.6,
+      "unit": "%",
+      "context": "ESA's Copernicus Global Land Service: Land Cover (CGLS-LC) 100 m product",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr16",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "ESA produced a higher resolution (10 m) global land cover map, WorldCover, that uses a similar algorithm to the CGLS-LC but incorporates Sentinel-2 multi-spectral data and Sentinel-1 C-band SAR data instead of PROBA-V data. WorldCover was generated for only two years, 2020 and 2021. The 2021 WorldCover incorporated more training data than 2020 and used an improved classification algorithm to improve overall accuracy to 76.7% from 74.4% in 2020."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 76.7,
+      "unit": "%",
+      "context": "ESA's 2021 WorldCover global land cover map",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr17",
+      "evidence": {
+        "section": "Materials and Methods",
+        "original_text": "ESA produced a higher resolution (10 m) global land cover map, WorldCover, that uses a similar algorithm to the CGLS-LC but incorporates Sentinel-2 multi-spectral data and Sentinel-1 C-band SAR data instead of PROBA-V data. WorldCover was generated for only two years, 2020 and 2021. The 2021 WorldCover incorporated more training data than 2020 and used an improved classification algorithm to improve overall accuracy to 76.7% from 74.4% in 2020."
+      },
+      "confidence": 0.99,
+      "quantity": "accuracy",
+      "value": 74.4,
+      "unit": "%",
+      "context": "ESA's 2020 WorldCover global land cover map",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0c6d1f8f48b4b959_qr18",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The USDA’s Cropland Data Layer (CDL) [33], which reports >80% accuracy across the U.S., was also compared to the ground truth data as a benchmark for the performance of the CV method."
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 82,
+      "unit": "%",
+      "context": "USDA's Cropland Data Layer (CDL) reports accuracy across the U.S.",
+      "result_type": "baseline"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0c6d1f8f48b4b959_p1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover."
+      },
+      "confidence": 0.99,
+      "metric": "accuracy",
+      "compared_to": "ESA's 2021 WorldCover"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0c6d1f8f48b4b959_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Applying the crop type threshold for corn/soybean (0.53), wheat (0.31), and rice (0.26) to the corresponding test cases performed as well as or better than the base cases with optimized thresholds. The three test cases all had above 80% accuracy, with Central Brazil (corn/soybean) surpassing 90% (Table 3). All test cases also achieved over 80% sensitivity."
+      },
+      "confidence": 0.99,
+      "metric": "accuracy",
+      "compared_to": "optimal thresholds derived via J-statistic optimization"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0c6d1f8f48b4b959_p3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In addition, a generic threshold of 0.5 was evaluated on every tile and achieved an average accuracy of 81.5%. The performance of the 0.5 threshold also varied by geographic region, with accuracy improving in the West from 73.5% using the optimal thresholds to 76.1%, while accuracy decreased from 90.2 and 90.0 using the optimal thresholds to 80.2 and 89.1 in the Midwest and South respectively."
+      },
+      "confidence": 0.99,
+      "metric": "accuracy",
+      "compared_to": "generic threshold of 0.5"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0c6d1f8f48b4b959_p4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Compared to the ground truth information, the CV method crop/non-crop classification and the CDL achieved accuracies, respectively, of 96% and 77% for cropland alone and 94% and 86% for overall accuracy. Kraatz et al. demonstrates that using the CV method combined with a region-specific threshold can give accuracies close to or better than datasets derived from optical imagery, such as the CDL [32]."
+      },
+      "confidence": 0.99,
+      "metric": "accuracy",
+      "compared_to": "USDA's Cropland Data Layer (CDL)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0c6d1f8f48b4b959_p5",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "To further investigate the impact that the reference data had on the overall accuracy, the Midwest U.S. base case for corn/soybean using the CDL was used to compare against the CGLS-LC and WorldCover performance. The CDL is a large-scale agriculture map produced by the USDA National Agricultural Statistics Service using satellite imagery and agricultural ground reference data. The CDL is generated annually over the entire continental U.S. and reports ~82% accuracy [33]. Using the CDL as the reference, the generated thresholds were within 0.03 of those generated by the CGLS-LC and WorldCover. When comparing the accuracy, the CDL resulted in an increase in accuracy of ~5% for 2018 and ~6% for 2019 compared to the CGLS-LC. For 2020–2022, WorldCover and the CDL achieved accuracies above 80% and within less than 1% of each other. The similarities in accuracy between WorldCover and the CDL suggest that WorldCover is comparable to the CDL, at least for one AOI in the U.S., while the CGLS-LC underperforms."
+      },
+      "confidence": 0.99,
+      "metric": "accuracy",
+      "compared_to": "CGLS-LC reference dataset"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_0c6d1f8f48b4b959_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, general CV thresholds are derived that can discriminate active agriculture (i.e., fields in use) from other land cover types without requiring a cropland reference dataset. We demonstrate the validity of our approach for three crop types: corn/soybean, wheat, and rice. Using data from the European Space Agency’s (ESA) Sentinel-1, a C-band SAR instrument, nine global AOIs, three for each crop type, were evaluated. Optimal thresholds were calculated and averaged for two AOIs per crop type for 2018–2022, resulting in 0.53, 0.31, and 0.26 thresholds for corn/soybean, wheat, and rice regions, respectively. The crop type average thresholds were then applied to an additional AOI of the same crop type, where they achieved 92%, 84%, and 83% accuracy for corn/soybean, wheat, and rice, respectively, when compared to ESA’s 2021 land cover product, WorldCover. The results of this study indicate that the use of the CV, along with the average crop type thresholds presented, is a fast, simple, and reliable technique to detect active agriculture in areas where either corn/soybean, wheat, or rice is the dominant crop type and where outdated or no reference datasets exist."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_0c6d1f8f48b4b959_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Three distinct CV thresholds for corn/soybean, wheat, and rice regions were identified to reduce the computational cost and the reliance of reference data needed for the CV method to classify cropland extent using SAR. These thresholds were derived by averaging the optimal CV thresholds for multiple base cases, with over 25% cropland present in each AOI, over five years for regions where either corn/soybean, wheat, or rice is the dominant crop type. When the averaged thresholds were applied to the corresponding test case, the crop type thresholds produced binary crop/non-crop classifications that all achieved an overall accuracy exceeding 80%. The total cropland areal extent from these classifications was within ± 3% of the total reference dataset cropland areal extent. The identified thresholds were also within ± 0.02 of the CV threshold that would produce the maximum accuracy for the corresponding AOI. The binary crop/non-crop classifications for each test case using the crop type thresholds achieved accuracies that were as good or better than the optimized thresholds for each base case. This was done with less computation cost and no cropland reference data. When using the methodology outlined in this paper, a margin of 0.02 is recommended for corn/soybean, wheat, and rice regions to allow for flexibility and slight differences between years and locations. The CV method used in conjunction with the recommended thresholds is a fast and simple technique for identifying active agriculture, in areas where corn/soybean, wheat, or rice is the dominant crop type and where up-to-date cropland reference data is unavailable."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_0c6d1f8f48b4b959_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "While the CV method can produce binary crop/non-crop classifications with >80% accuracy, it has some inherent limitations due to the properties of SAR. Because of the side-looking nature of SAR, geometric distortions can result in brighter (foreshortening) or darker (radar shadow) backscatter values than expected in areas with rugged terrain. While most of these distortions are removed during the RTC process, some no data values, DEM artifacts (i.e., mountainous areas), and geolocation errors can still be present in the processed RTC image, contributing to misclassification of pixels. This resulted in many false positive pixels in areas of mountainous terrain in Myanmar and Thailand, where the land cover was classified as tree cover, as well as in Morocco, where the land cover was classified as bare/sparse vegetation. Airports, multi-lane highways, and other large areas of smooth asphalt or concrete can also result in false positives. These features usually reflect the SAR signal away from the satellite, resulting in darker areas, but the orientation of the road in relation to the sensor, as well as the interference of buildings, may cause brightening. In addition, slight errors in geolocation between SAR images of the same area can result in the edges of fields being misclassified. If fields are bordered by windbreaker trees, slight geometric offsets of the SAR data can cause a pixel location to “shift” between cropland and forest. This shifting can cause false positives if a tree pixel shifts into a cropland area and false negatives if the opposite occurs. This was particularly an issue in Myanmar and Thailand, where small groupings of trees next to fields or bordering fields were most prevalent. These false positives, combined with the false positives in mountainous regions, led to tree cover contributing significantly to the false positive counts for Myanmar and Thailand. Water would result in false positives if not masked due to continuous changes in surface roughness from precipitation and wind. This study nullified the need for cropland reference data by providing crop type thresholds for corn/soybean, wheat, and rice regions. However, a permanent water reference dataset would still be needed to produce the most accurate crop/non-crop classification map. Water might still be captured if flooding occurred and was captured by one of the SAR images. The flooding could cause a high CV value and trigger false positives, as these flooded pixels would not be included in the permanent water mask."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_0c6d1f8f48b4b959_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The CV method is most applicable to crops that grow substantial foliage throughout the growing season and are harvested to bare ground. Land cover classes like grasslands and pastures mimic this growth and harvest cycle, but are difficult to classify using SAR. The grassland land cover classification consisted of the highest percentage of missed pixels and resulted in a majority of the false positives. Crops with foliage for most of the year (i.e., tree crops) are also very challenging to differentiate using the CV method and C-band SAR. C-band SAR (~5.6 cm wavelength), as it does not penetrate beyond the tree canopy. Fruit tree crops (e.g., almonds, apples, and olives) produce a similar backscatter signal to a tree without fruit. Agricultural practices such as tilling and irrigation can also trigger a change in backscatter and thereby increase the CV."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_0c6d1f8f48b4b959_lm3",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Each base case was impacted by the differences between the CGLS-LC (2018–2019) and WorldCover (2020–2022) reference layers. The coarser resolution of the CGLS-LC (100 m) appears to have led to an overestimation of cropland extent in the CGLS-LC as cropland area dropped by ~1.85 million hectares between 2019 and 2020 across all base cases. In addition, every base case had its highest accuracy when using the higher resolution WorldCover (10 m) dataset between 2020 and 2022. The overall accuracy increased by an average of 4% between 2019 and 2020 when transitioning from the CGLS-LC to WorldCover. Such differences in accuracy between the two reference datasets highlight the need for a yearly high resolution, accurate global land cover dataset, as the CGLS-LC and WorldCover were not produced after 2019 and 2021, respectively."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_0c6d1f8f48b4b959_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The recommended threshold ranges are intended to be applied to areas where crop diversity is generally low, and has been determined by an end-user who is familiar with the areas’ dominant crop types. Future work will investigate how much crop diversity is tolerable. This would require a crop type classification map and may be limited to the United States and a few other countries. The wheat threshold did seem to capture mainly wheat fields and not rice fields in the East China test case, but the recommended threshold ranges are not intended to delineate between corn/soybean, wheat, and rice in a given area. Classifying pixels by crop type would require additional data, such as optical imagery, and/or more advanced techniques such as machine learning. Additional SAR wavelengths such as L-band from NISAR or optical imagery and derived products such as NDVI could be added to the algorithm without significant computational costs. L-band (~23.5 cm wavelength) SAR may increase accuracy in high-biomass crops such as corn. L-band SAR may also provide better discrimination between irrigated and nonirrigated crops, as the longer wavelength is more sensitive to irrigation and soil moisture in well-developed Gramineae crops (which includes corn, wheat, and rice). NDVI products may help reduce the number of false positives triggered by land cover (e.g., roads and airports) that can have high CV values, but often low NDVI values."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

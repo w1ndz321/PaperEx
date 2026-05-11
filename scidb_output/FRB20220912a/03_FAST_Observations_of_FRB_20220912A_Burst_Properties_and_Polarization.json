@@ -1,0 +1,728 @@
+{
+  "metadata": {
+    "doc_id": "doc_60a8009ec404f44a",
+    "source_file": "03_FAST_Observations_of_FRB_20220912A_Burst_Properties_and_Polarization.md",
+    "title": "IMPORTANT-NET: INTEGRATED MRI MULTI-PARAMETER REINFORCEMENT FUSION GENERATOR WITH ATTENTION NETWORK FOR SYNTHESIZING ABSENT DATA",
+    "year": 2021,
+    "doi": null,
+    "abstract": "Magnetic resonance imaging (MRI) is highly sensitive for lesion detection in the breasts. Sequences obtained with different settings can capture the specific characteristics of lesions. Such multi-parameter MRI information has been shown to improve radiologist performance in lesion classification, as well as improving the performance of artificial intelligence models in various tasks. However, obtaining multi-parameter MRI makes the examination costly in both financial and time perspectives, and there may be safety concerns for special populations, thus making acquisition of the full spectrum of MRI sequences less durable. In this study, different than naive input fusion or feature concatenation from existing MRI parameters, a novel **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net) is developed to generate missing parameters. First, the parameter reconstruction module is used to encode and restore the existing MRI parameters to obtain the corresponding latent representation information at any scale level. Then the multi-parameter fusion with attention module enables the interaction of the encoded information from different parameters through a set of algorithmic strategies, and applies different weights to the information through the attention mechanism after information fusion to obtain refined representation information. Finally, a reinforcement fusion scheme embedded in a _V[−]_ -shape generation module is used to combine the hierarchical representations to generate the missing MRI parameter. Results showed that our IMPORTANT-Net is capable of generating missing MRI parameters and outperforms comparable state-of-the-art networks. Our code is available at `https://github.com/Netherlands-Cancer-Institute/MRI_IMPORTANT_NET` .",
+    "introduction": "Breast cancer is the most common cancer in women worldwide and the leading cause of cancer death in women [1]. Early screening, diagnosis and treatment of breast cancer are of great significance for increasing the survival period of breast cancer patients [2]. In breast imaging, breast magnetic resonance imaging (MRI) is a highly sensitive imaging modality for breast cancer detection, characterization and diagnosis. Different sequences/parameters of MRI can capture the specific features of breast lesions. For example, repeated T1-weighted imaging before and after contrast administration can delineate enhancement abnormalities, T2-weighted imaging with fat suppression can easily visualize cysts, T2-weighted imaging without fat suppression can better delineate lesion morphology, and diffusion-weighted imaging (DWI) can provide information on cell density and tissue microstructure based on the diffusion of tissue water [3, 4]. Some studies have shown that multiparametric MRI could improve the performance of radiologists’ diagnosis of lesions, as well as the performance of artificial intelligence models in certain tasks, including classification, diagnosis, and segmentation of breast lesions [5, 6, 7]. However, obtaining multi-parametric MRI makes the examination costly from financial and time considerations, thus making acquisition of an exhaustive multiparametric MRI protocol less optimal [8, 9]. Currently, MRI-based breast cancer screening is highly valued by \n\n> _∗Corresponding Author_ : Tao Tan (taotanjs@gmail.com) \n\nTianyu Zhang et al., IMPORTANT-Net \n\nclinicians and researchers [10, 11, 12, 13, 14]. Typically, only T1-weighted pre- and post- contrast MRI and DWI or T2 are included in the screening protocols, and while some abbreviated MRI protocols have also explored obtaining more MRI parameters, this is time-consuming and costly [3, 15, 16, 17, 18]. Unfortunately, this may lead to missing characteristic information of unscanned MRI sequences, such as T2-weighted MRI, that may sometimes be valuable for breast lesion characterization [19, 3, 20]. However, since there is an overlap in the physical properties of MRI sequences, a large part of the missing parameters might be deducted from the available sequences. Therefore, a technique that can synthesize missing/absent MRI parameters from existing ones would be of great value. \n\nWith the continuous development of computer technology, artificial intelligence-based methods have shown potential in data generation and image transfer, and generative adversarial networks (GAN) have received extensive attention due to their potential ability to generate data and enable image-to-image translation through an unsupervised game of generator and discriminator [21]. Subsequently, a large number of GAN-based works have emerged [22, 23, 24]. In medical imaging, rapid adoption of such networks, with many traditional and novel applications, such as image reconstruction, segmentation, detection, classification, and cross-modality synthesis [25] are being explored. Among them, cross-modality synthesis is considered as a potentially effective method to generate desired but absent modalities from the existing ones [25, 26, 27, 9, 28]. However, these methods can only perform mutual synthesis between two modalities and can not utilize all existing data, and even with advanced modelling [9, 28], the performance is still unsatisfactory.In addition, the existing methods do not effectively fuse multi-parameter/multi-modal information, and do not reflect the special contribution of different parameters/modalities to the synthesized target image. \n\nIn this study, we developed a novel model, called **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net). First, the existing parameters are encoded and reconstructed by the reconstruction module to obtain latent representation information, then the fusion module interacts and fuses the encoded multi-parameter features. An inter-parameter attention module is designed to obtain refined features, and finally the hierarchical refined representation information is used to synthesize missing/absent MRI sequences. Furthermore, we also validate the effectiveness of IMPORTANT-Net in synthesizing missing/absent data on another publicly available brain MRI dataset from Brain Tumor Segmentation 2021 (BraTS2021) [29, 30]. Our contributions are as follows: \n\n- i The multi-parameter fusion module is designed through a special set of algorithmic strategies to enable the interaction between different parameters from the parameter reconstruction module. \n\n- ii The multi-parameter representation attention module is designed to optimize the special contributions of different parameters. \n\n- iii The hierarchical reinforcement fusion in _V[−]_ -shape generation network achieves the synthesis of missing/absent data. \n\n- iv Our IMPORTANT-Net outperforms state-of-the-art methods, with an ablation study on the input level demonstrating the incremental value from multiple parameters in image synthesis.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": "人工智能",
+      "level3": "深度学习与神经网络"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "临床医学",
+        "level2": "影像医学",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "MRI synthesis",
+      "multi-parameter fusion",
+      "attention network",
+      "generative model",
+      "medical imaging"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:50:45.237120+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_60a8009ec404f44a_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, different than naive input fusion or feature concatenation from existing MRI parameters, a novel **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net) is developed to generate missing parameters. First, the parameter reconstruction module is used to encode and restore the existing MRI parameters to obtain the corresponding latent representation information at any scale level. Then the multi-parameter fusion with attention module enables the interaction of the encoded information from different parameters through a set of algorithmic strategies, and applies different weights to the information through the attention mechanism after information fusion to obtain refined representation information. Finally, a reinforcement fusion scheme embedded in a _V[−]_ -shape generation module is used to combine the hierarchical representations to generate the missing MRI parameter. Results showed that our IMPORTANT-Net is capable of generating missing MRI parameters and outperforms comparable state-of-the-art networks."
+      },
+      "confidence": 0.99,
+      "term": "IMPORTANT-Net",
+      "normalized": "IMPORTANT-Net",
+      "std_label": "IMPORTANT-Net"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_60a8009ec404f44a_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Magnetic resonance imaging (MRI) is highly sensitive for lesion detection in the breasts. Sequences obtained with different settings can capture the specific characteristics of lesions. Such multi-parameter MRI information has been shown to improve radiologist performance in lesion classification, as well as improving the performance of artificial intelligence models in various tasks. However, obtaining multi-parameter MRI makes the examination costly in both financial and time perspectives, and there may be safety concerns for special populations, thus making acquisition of the full spectrum of MRI sequences less durable."
+      },
+      "confidence": 0.98,
+      "term": "multi-parameter MRI",
+      "normalized": "多参数MRI",
+      "std_label": "multiparametric MRI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_60a8009ec404f44a_c3",
+      "evidence": {
+        "section": "3.1",
+        "original_text": "To fully exploit multi-parameter information and mine latent representations, we propose an **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net), which integrates different functional modules with respective missions. The first functional module is called \"parameter reconstruction module\" (as shown in Fig. 1), which is used to automatically encode and reconstruct the information of each input MRI parameter, and mine the latent representations of different MRI parameters at the multi-scale level for subsequent multi-parameter information fusion. The reconstruction loss function is set as follows: where _pi_ represents individual parameter of MRI, _Ri_ ( _pi_ )= _fθi[re]_[(] _[p][i]_[)][ represents the reconstructed image of] _[ p][i]_[, and] _[ θ] i[re]_ represents the corresponding network parameters of our parameter reconstructor _Ri_ ."
+      },
+      "confidence": 0.97,
+      "term": "parameter reconstruction module",
+      "normalized": "参数重建模块",
+      "std_label": "parameter reconstruction module"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_60a8009ec404f44a_c4",
+      "evidence": {
+        "section": "3.2",
+        "original_text": "The second functional module is called \"multi-parameter fusion with attention module (MPFA)\", which is used to fuse the representation information from different parametric MRIs and make deep interaction between the information of different parameters. In MPFA module, to enforce explicit interaction, the MAPS strategy (element-wise Maximization, element-wise Average, element-wise Product, and element-wise Subtract) is employed to enable the interaction of information from different parameters. As shown in Fig. 2, the output _Pi[dn]_ of the n-th down-sampling layer of the _i_ -th MRI parameter or the _Pi[um]_ of the _m_ -th up-sampling layer of the _i_ -th MRI parameter is obtained from the corresponding layer of the parameter reconstruction module, and then they are fed to the \"interaction room\" to achieve information fusion. Then, the features before and after the interaction are concatenated as _Pconcat ∈_ R _[C][×][H][×][W]_ . In particular, considering the different contributions of representations from different parametric MRIs, we design a parametric attention mechanism to impose different weights on features to obtain refined features."
+      },
+      "confidence": 0.97,
+      "term": "multi-parameter fusion with attention module",
+      "normalized": "多参数融合注意力模块",
+      "std_label": "MPFA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_60a8009ec404f44a_c5",
+      "evidence": {
+        "section": "3.3",
+        "original_text": "The third functional module is called the \"hierarchical _V[−]_ -shape reinforcement generation module\", which is used to synthesize the target image based on the hierarchical structure and skip connections according to the hierarchical representation information. As shown in Fig. 1, the \"parameter reconstruction module\" is responsible for mining the potential representations of each MRI parameter, and MPFA is responsible for fusing the representations of each MRI parameter. Finally, the hierarchical MPFA embedded in a _V[−]_ -shape generation module is responsible for global analysis and reinforcement fusion, and final synthesis of the target image. Fig. 3 shows the details of this module. MPFA1-4 is called the \"analysis path\", where the MPFA fuses the information of each MRI parameter ( _Pi[dn]_ ), and is then fed to the next MPFA after maximum pooling. In particular, the features after the \"analysis path\" are sequentially fed to two convolutional layers with 1024 and 512 filters of size 3 _×_ 3, respectively, and the output is then sent to the next path. MPFA5-8 is called the \"synthesis path\", where MPFA combines the corresponding feature information in the previous analysis path while fusing the multi-parameter MRI representation _Pi[um]_ , and then is fed to the next MPFA after up-sampling."
+      },
+      "confidence": 0.96,
+      "term": "hierarchical V-shape reinforcement generation module",
+      "normalized": "分层V形强化生成模块",
+      "std_label": "V-shape generation module"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_60a8009ec404f44a_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, different than naive input fusion or feature concatenation from existing MRI parameters, a novel **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net) is developed to generate missing parameters. First, the parameter reconstruction module is used to encode and restore the existing MRI parameters to obtain the corresponding latent representation information at any scale level. Then the multi-parameter fusion with attention module enables the interaction of the encoded information from different parameters through a set of algorithmic strategies, and applies different weights to the information through the attention mechanism after information fusion to obtain refined representation information. Finally, a reinforcement fusion scheme embedded in a _V[−]_ -shape generation module is used to combine the hierarchical representations to generate the missing MRI parameter. Results showed that our IMPORTANT-Net is capable of generating missing MRI parameters and outperforms comparable state-of-the-art networks."
+      },
+      "confidence": 0.98,
+      "term": "missing MRI parameters",
+      "normalized": "缺失MRI参数",
+      "std_label": "absent MRI sequences"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r1",
+      "evidence": {
+        "section": "3.1",
+        "original_text": "To fully exploit multi-parameter information and mine latent representations, we propose an **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net), which integrates different functional modules with respective missions. The first functional module is called \"parameter reconstruction module\" (as shown in Fig. 1), which is used to automatically encode and reconstruct the information of each input MRI parameter, and mine the latent representations of different MRI parameters at the multi-scale level for subsequent multi-parameter information fusion. The reconstruction loss function is set as follows: where _pi_ represents individual parameter of MRI, _Ri_ ( _pi_ )= _fθi[re]_[(] _[p][i]_[)][ represents the reconstructed image of] _[ p][i]_[, and] _[ θ] i[re]_ represents the corresponding network parameters of our parameter reconstructor _Ri_ ."
+      },
+      "confidence": 0.95,
+      "head": "doc_60a8009ec404f44a_c1",
+      "relation_type": "uses",
+      "relation_surface": "integrates",
+      "tail": "doc_60a8009ec404f44a_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r2",
+      "evidence": {
+        "section": "3.2",
+        "original_text": "The second functional module is called \"multi-parameter fusion with attention module (MPFA)\", which is used to fuse the representation information from different parametric MRIs and make deep interaction between the information of different parameters. In MPFA module, to enforce explicit interaction, the MAPS strategy (element-wise Maximization, element-wise Average, element-wise Product, and element-wise Subtract) is employed to enable the interaction of information from different parameters. As shown in Fig. 2, the output _Pi[dn]_ of the n-th down-sampling layer of the _i_ -th MRI parameter or the _Pi[um]_ of the _m_ -th up-sampling layer of the _i_ -th MRI parameter is obtained from the corresponding layer of the parameter reconstruction module, and then they are fed to the \"interaction room\" to achieve information fusion. Then, the features before and after the interaction are concatenated as _Pconcat ∈_ R _[C][×][H][×][W]_ . In particular, considering the different contributions of representations from different parametric MRIs, we design a parametric attention mechanism to impose different weights on features to obtain refined features."
+      },
+      "confidence": 0.95,
+      "head": "doc_60a8009ec404f44a_c1",
+      "relation_type": "uses",
+      "relation_surface": "integrates",
+      "tail": "doc_60a8009ec404f44a_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r3",
+      "evidence": {
+        "section": "3.3",
+        "original_text": "The third functional module is called the \"hierarchical _V[−]_ -shape reinforcement generation module\", which is used to synthesize the target image based on the hierarchical structure and skip connections according to the hierarchical representation information. As shown in Fig. 1, the \"parameter reconstruction module\" is responsible for mining the potential representations of each MRI parameter, and MPFA is responsible for fusing the representations of each MRI parameter. Finally, the hierarchical MPFA embedded in a _V[−]_ -shape generation module is responsible for global analysis and reinforcement fusion, and final synthesis of the target image. Fig. 3 shows the details of this module. MPFA1-4 is called the \"analysis path\", where the MPFA fuses the information of each MRI parameter ( _Pi[dn]_ ), and is then fed to the next MPFA after maximum pooling. In particular, the features after the \"analysis path\" are sequentially fed to two convolutional layers with 1024 and 512 filters of size 3 _×_ 3, respectively, and the output is then sent to the next path. MPFA5-8 is called the \"synthesis path\", where MPFA combines the corresponding feature information in the previous analysis path while fusing the multi-parameter MRI representation _Pi[um]_ , and then is fed to the next MPFA after up-sampling."
+      },
+      "confidence": 0.95,
+      "head": "doc_60a8009ec404f44a_c1",
+      "relation_type": "uses",
+      "relation_surface": "integrates",
+      "tail": "doc_60a8009ec404f44a_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, different than naive input fusion or feature concatenation from existing MRI parameters, a novel **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net) is developed to generate missing parameters. First, the parameter reconstruction module is used to encode and restore the existing MRI parameters to obtain the corresponding latent representation information at any scale level. Then the multi-parameter fusion with attention module enables the interaction of the encoded information from different parameters through a set of algorithmic strategies, and applies different weights to the information through the attention mechanism after information fusion to obtain refined representation information. Finally, a reinforcement fusion scheme embedded in a _V[−]_ -shape generation module is used to combine the hierarchical representations to generate the missing MRI parameter. Results showed that our IMPORTANT-Net is capable of generating missing MRI parameters and outperforms comparable state-of-the-art networks."
+      },
+      "confidence": 0.96,
+      "head": "doc_60a8009ec404f44a_c1",
+      "relation_type": "enhances",
+      "relation_surface": "is capable of generating",
+      "tail": "doc_60a8009ec404f44a_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r5",
+      "evidence": {
+        "section": "3.1",
+        "original_text": "To fully exploit multi-parameter information and mine latent representations, we propose an **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net), which integrates different functional modules with respective missions. The first functional module is called \"parameter reconstruction module\" (as shown in Fig. 1), which is used to automatically encode and reconstruct the information of each input MRI parameter, and mine the latent representations of different MRI parameters at the multi-scale level for subsequent multi-parameter information fusion. The reconstruction loss function is set as follows: where _pi_ represents individual parameter of MRI, _Ri_ ( _pi_ )= _fθi[re]_[(] _[p][i]_[)][ represents the reconstructed image of] _[ p][i]_[, and] _[ θ] i[re]_ represents the corresponding network parameters of our parameter reconstructor _Ri_ ."
+      },
+      "confidence": 0.94,
+      "head": "doc_60a8009ec404f44a_c3",
+      "relation_type": "derives",
+      "relation_surface": "mines the latent representations",
+      "tail": "doc_60a8009ec404f44a_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r6",
+      "evidence": {
+        "section": "3.2",
+        "original_text": "The second functional module is called \"multi-parameter fusion with attention module (MPFA)\", which is used to fuse the representation information from different parametric MRIs and make deep interaction between the information of different parameters. In MPFA module, to enforce explicit interaction, the MAPS strategy (element-wise Maximization, element-wise Average, element-wise Product, and element-wise Subtract) is employed to enable the interaction of information from different parameters. As shown in Fig. 2, the output _Pi[dn]_ of the n-th down-sampling layer of the _i_ -th MRI parameter or the _Pi[um]_ of the _m_ -th up-sampling layer of the _i_ -th MRI parameter is obtained from the corresponding layer of the parameter reconstruction module, and then they are fed to the \"interaction room\" to achieve information fusion. Then, the features before and after the interaction are concatenated as _Pconcat ∈_ R _[C][×][H][×][W]_ . In particular, considering the different contributions of representations from different parametric MRIs, we design a parametric attention mechanism to impose different weights on features to obtain refined features."
+      },
+      "confidence": 0.94,
+      "head": "doc_60a8009ec404f44a_c4",
+      "relation_type": "enhances",
+      "relation_surface": "fuses the representation information",
+      "tail": "doc_60a8009ec404f44a_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_60a8009ec404f44a_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, different than naive input fusion or feature concatenation from existing MRI parameters, a novel **I** ntegrated MRI **M** ulti- **P** arameter reinf **O** rcement fusion generato **R** wi **T** h **A** tte **NT** ion Network (IMPORTANT-Net) is developed to generate missing parameters. First, the parameter reconstruction module is used to encode and restore the existing MRI parameters to obtain the corresponding latent representation information at any scale level. Then the multi-parameter fusion with attention module enables the interaction of the encoded information from different parameters through a set of algorithmic strategies, and applies different weights to the information through the attention mechanism after information fusion to obtain refined representation information. Finally, a reinforcement fusion scheme embedded in a _V[−]_ -shape generation module is used to combine the hierarchical representations to generate the missing MRI parameter. Results showed that our IMPORTANT-Net is capable of generating missing MRI parameters and outperforms comparable state-of-the-art networks."
+      },
+      "confidence": 0.93,
+      "head": "doc_60a8009ec404f44a_c5",
+      "relation_type": "uses",
+      "relation_surface": "combines the hierarchical representations",
+      "tail": "doc_60a8009ec404f44a_c6"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_60a8009ec404f44a_d1",
+      "evidence": {
+        "section": "4.1 Data collection and Pre-processing",
+        "original_text": "In this study, an in-house dataset of 375 cases of T1-weighted, Dynamic Contrast-Enhanced (DCE), DWI and corresponding T2-weighted MRI were retrospectively collected from breast patients scanned at the Cancer Institute was created. First, all MRIs were resampled to 1 mm isotropic voxels and uniformly sized, resulting in volumes of 224 × 224 pixel images with 150 slices per MRI. Then, the registration was performed based on Advanced Normalization Tools (ANTs) [42]. We focus on Symmetric Normalization methods because of their proven reliability, speed and flexibility, which combines affine and deformable transformations, and uses mutual information as its optimization metric. During the registration process, the T1-weighted MRI of each case was considered as fixed volume, and all other parameters including DCE, DWI and T2-weighted MRI were considered as moving volumes. And then, after the corresponding deformation fields are obtained, the registered volumes are obtained by spatial transformation."
+      },
+      "confidence": 0.95,
+      "name": "in-house breast MRI dataset",
+      "modality": "image",
+      "domain": "medical imaging"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_60a8009ec404f44a_d2",
+      "evidence": {
+        "section": "4.1 Data collection and Pre-processing",
+        "original_text": "In addition, the BraTS2021 dataset [30, 29] was used for the extension study. This includes brain MRI of 1251 cases with four parameters for each case, including T1, T1-contrast-enhanced (T1ce), T2 and T2-fluid-attenuated inversion recovery (Flair). Images of size 180 × 180 were cropped out from 2D slices, and then all MRIs were uniformly sized to volumes of 224 × 224 pixel images with 155 slices."
+      },
+      "confidence": 0.95,
+      "name": "Brain Tumor Segmentation 2021 (BraTS2021) dataset",
+      "modality": "image",
+      "domain": "medical imaging"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_60a8009ec404f44a_ds1",
+      "evidence": {
+        "section": "4.1 Data collection and Pre-processing",
+        "original_text": "First, all MRIs were resampled to 1 mm isotropic voxels and uniformly sized, resulting in volumes of 224 × 224 pixel images with 150 slices per MRI."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "MRI volumes resampled to 1 mm isotropic voxels and uniformly sized to 224 × 224 pixel images with 150 slices per MRI"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_60a8009ec404f44a_ds2",
+      "evidence": {
+        "section": "4.1 Data collection and Pre-processing",
+        "original_text": "Images of size 180 × 180 were cropped out from 2D slices, and then all MRIs were uniformly sized to volumes of 224 × 224 pixel images with 155 slices."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Brain MRI images cropped to 180 × 180 from 2D slices and uniformly sized to 224 × 224 pixel images with 155 slices"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_60a8009ec404f44a_ds3",
+      "evidence": {
+        "section": "4.1 Data collection and Pre-processing",
+        "original_text": "Then, the registration was performed based on Advanced Normalization Tools (ANTs) [42]. We focus on Symmetric Normalization methods because of their proven reliability, speed and flexibility, which combines affine and deformable transformations, and uses mutual information as its optimization metric. During the registration process, the T1-weighted MRI of each case was considered as fixed volume, and all other parameters including DCE, DWI and T2-weighted MRI were considered as moving volumes. And then, after the corresponding deformation fields are obtained, the registered volumes are obtained by spatial transformation."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Registration performed using Advanced Normalization Tools (ANTs) with Symmetric Normalization methods, using T1-weighted MRI as fixed volume and other parameters as moving volumes"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_60a8009ec404f44a_ds4",
+      "evidence": {
+        "section": "4.2 Experiment settings",
+        "original_text": "Based on the ratio of 8:2, the training set and independent test set of the in-house dataset have 300 and 75 cases, respectively, and the training set and independent test set of the BraST2021 dataset have 1001 and 250 cases, respectively."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Dataset split ratio of 8:2 for training and independent test sets"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_60a8009ec404f44a_m1",
+      "evidence": {
+        "section": "3 Approach",
+        "original_text": "To fully exploit multi-parameter information and mine latent representations, we propose an Integrated MRI Multi-Parameter reinfOrcement fusion generatoR wiTh A tteNTion Network (IMPORTANT-Net), which integrates different functional modules with respective missions. The first functional module is called \"parameter reconstruction module\" (as shown in Fig. 1), which is used to automatically encode and reconstruct the information of each input MRI parameter, and mine the latent representations of different MRI parameters at the multi-scale level for subsequent multi-parameter information fusion. The reconstruction loss function is set as follows: where pi represents individual parameter of MRI, Ri(pi)=fθire(pi) represents the reconstructed image of pi, and θire represents the corresponding network parameters of our parameter reconstructor Ri. The second functional module is called \"multi-parameter fusion with attention module (MPFA)\", which is used to fuse the representation information from different parametric MRIs and make deep interaction between the information of different parameters. In MPFA module, to enforce explicit interaction, the MAPS strategy (element-wise Maximization, element-wise Average, element-wise Product, and element-wise Subtract) is employed to enable the interaction of information from different parameters. As shown in Fig. 2, the output Pidn of the n-th down-sampling layer of the i-th MRI parameter or the Pium of the m-th up-sampling layer of the i-th MRI parameter is obtained from the corresponding layer of the parameter reconstruction module, and then they are fed to the \"interaction room\" to achieve information fusion. Then, the features before and after the interaction are concatenated as Pconcat ∈ RC×H×W. In particular, considering the different contributions of representations from different parametric MRIs, we design a parametric attention mechanism to impose different weights on features to obtain refined features. First, average pooling and max pooling are applied to Pconcat to obtain the corresponding Poolave ∈ RC×1×1 and Poolmax ∈ RC×1×1, respectively. Then, Poolave and Poolave are added element-wise after passing through a shared fully-connected (fθfc) neural network to obtain Madd ∈ RC×1×1. Then, the parameter-level attention map Apara ∈ RC×1×1 is obtained by nonlinear transformation of Madd. Finally, the refined feature Pconcat′∈RC×H×W is obtained through the element-wise multiplication of Pconcat and Apara. The corresponding formula is as follows: where ⊗ represents element-wise multiplication, ⊕ represents element-wise summation, σ represents the sigmoid function, θfc represents the corresponding network parameters of the shared fully-connected neural network, and AvePool and MaxPool represent average pooling and maximum pooling operations, respectively. Subsequently, Pconcat and Pconcat′ are added element-wise and fed to the convolutional layer Conv1, whose output is concatenated with Fk′−1 (features after down-sampling/up-sampling of the output Fk−1 of the (k−1)-th MPFA module), and then fed to Conv2, and finally the output Fk of the k-th MPFA module is obtained. The third functional module is called the \"hierarchical V−-shape reinforcement generation module\", which is used to synthesize the target image based on the hierarchical structure and skip connections according to the hierarchical representation information. As shown in Fig. 1, the \"parameter reconstruction module\" is responsible for mining the potential representations of each MRI parameter, and MPFA is responsible for fusing the representations of each MRI parameter. Finally, the hierarchical MPFA embedded in a V−-shape generation module is responsible for global analysis and reinforcement fusion, and final synthesis of the target image. Fig. 3 shows the details of this module. MPFA1-4 is called the \"analysis path\", where the MPFA fuses the information of each MRI parameter (Pidn), and is then fed to the next MPFA after maximum pooling. In particular, the features after the \"analysis path\" are sequentially fed to two convolutional layers with 1024 and 512 filters of size 3×3, respectively, and the output is then sent to the next path. MPFA5-8 is called the \"synthesis path\", where MPFA combines the corresponding feature information in the previous analysis path while fusing the multi-parameter MRI representation Pium, and then is fed to the next MPFA after up-sampling."
+      },
+      "confidence": 0.95,
+      "name": "IMPORTANT-Net",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_60a8009ec404f44a_m2",
+      "evidence": {
+        "section": "3.2 Multi-parameter fusion with attention module",
+        "original_text": "In MPFA module, to enforce explicit interaction, the MAPS strategy (element-wise Maximization, element-wise Average, element-wise Product, and element-wise Subtract) is employed to enable the interaction of information from different parameters. As shown in Fig. 2, the output Pidn of the n-th down-sampling layer of the i-th MRI parameter or the Pium of the m-th up-sampling layer of the i-th MRI parameter is obtained from the corresponding layer of the parameter reconstruction module, and then they are fed to the \"interaction room\" to achieve information fusion. Then, the features before and after the interaction are concatenated as Pconcat ∈ RC×H×W."
+      },
+      "confidence": 0.95,
+      "name": "MAPS fusion strategy",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_60a8009ec404f44a_m3",
+      "evidence": {
+        "section": "3.4 Loss function",
+        "original_text": "In particular, the perceptual loss is introduced into our model as one of the objective functions to constrain the original and generated images at the depth feature level [40, 41]. The deep features extracted by the neural network usually obtain deeper semantic information of the image with the deepening of the network layers. Therefore, the deep semantic information of the target image can be generated by penalizing the deep feature difference model. The objective function is as follows: where φ represents the pre-trained network (VGG19 here), j represents the j-th layer of the pre-trained network, CjHjWj represents the shape of the feature map of the j-th layer, N represents the total number of selected layers, l1-norm is used to measure the difference between the deep features of the generated image and the corresponding ground truth, and αlayer represents the weight of the corresponding selected layer. Here, all 5 max pooling layers of the VGG19 pre-trained model were selected to calculate the perceptual loss, so the corresponding formula is as follows: Therefore, the IMPORTANT-Net can be formulated with the following objective function: where λ2 and λ3 are trade-off parameters. We aim to solve:"
+      },
+      "confidence": 0.95,
+      "name": "perceptual loss",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_60a8009ec404f44a_x1",
+      "evidence": {
+        "section": "4 Experimental Results",
+        "original_text": "In this study, an in-house dataset of 375 cases of T1-weighted, Dynamic Contrast-Enhanced (DCE), DWI and corresponding T2-weighted MRI were retrospectively collected from breast patients scanned at the Cancer Institute was created. First, all MRIs were resampled to 1 mm isotropic voxels and uniformly sized, resulting in volumes of 224×224 pixel images with 150 slices per MRI. Then, the registration was performed based on Advanced Normalization Tools (ANTs) [42]. We focus on Symmetric Normalization methods because of their proven reliability, speed and flexibility, which combines affine and deformable transformations, and uses mutual information as its optimization metric. During the registration process, the T1-weighted MRI of each case was considered as fixed volume, and all other parameters including DCE, DWI and T2-weighted MRI were considered as moving volumes. And then, after the corresponding deformation fields are obtained, the registered volumes are obtained by spatial transformation. Based on the ratio of 8:2, the training set and independent test set of the in-house dataset have 300 and 75 cases, respectively, and the training set and independent test set of the BraST2021 dataset have 1001 and 250 cases, respectively. During training, the weights α1, α2, α3, α4, and α5 of the corresponding selected layers in the perceptual loss are set to 1/16, 1/8, 1/4, 1/2 and 1, respectively, and the trade-off parameters λ3, λ1 and λ2 were set to 200, 100 and 25, respectively. For IMPORTANT-Net, the batch was set to 16 for 200 epochs, the initial learning rate was 1e-3 with a decay factor of 0.9 every 5 epochs. Adam optimizer was applied to update the model parameters. All models were trained on NVIDIA RTX A6000 graphics processing unit (GPU), 48 Gigabytes of GPU memory. Cycle-GAN [26], pix2pix (P2P)-GAN [27], Hi-Net [9] and MMgSN-Net [28] were used as cohort models for synthesizing missing/absent data. To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71±4.02 and 85.36±2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64±2.90 and 89.70±2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23±3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images. Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82±3.15 demonstrating the incremental value from multiple parameters in image synthesis."
+      },
+      "confidence": 0.95,
+      "task": "synthesizing T2-weighted breast MRI",
+      "setup": "in-house dataset of 375 breast MRI cases, T1-weighted, DCE, DWI as inputs, T2-weighted as target"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_60a8009ec404f44a_x2",
+      "evidence": {
+        "section": "4.6 Extension study and discussion",
+        "original_text": "To verify the model’s versatility for coping with various inputs, we also evaluated the model’s performance on synthetic T1-weighted images. As shown in Table 3, the IMPORTANT-Net model performed the best with a SSIM of 90.15±2.92, a PSNR of 28.51±1.83, a NMSE of 0.0602±0.032, and a LP of 1.393±0.470, outperforming other cohort models including Cycle-GAN, P2P-GAN, Hi-Net and MMgSN-Net. This further demonstrates the excellent ability of our proposed IMPORTANT-Net in synthesizing missing/absent MRI data. In addition, as shown in Table 3, we specifically compare the performance of IMPORTANT-Net and Hi-Net in synthesizing T1-weighted MRI based on two MRI parameters, and the results show that our IMPORTANT-Net also outperforms Hi-Net."
+      },
+      "confidence": 0.95,
+      "task": "synthesizing T1-weighted breast MRI",
+      "setup": "in-house dataset of 375 breast MRI cases, T2-weighted, DCE, DWI as inputs, T1-weighted as target"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_60a8009ec404f44a_x3",
+      "evidence": {
+        "section": "4.6 Extension study and discussion",
+        "original_text": "Furthermore, we also validate the effectiveness of IMPORTANT-Net in synthesizing missing/absent data on another publicly available brain MRI dataset from Brain Tumor Segmentation 2021 (BraTS2021) [29, 30]. As shown in Table 4, our IMPORTANT-Net outperforms state-of-the-art methods. Some visualization examples are shown in Fig. 5. The red and yellow regions of the error maps of the images synthesized by IMPORTANT-Net are significantly reduced, indicating that our model outperforms the cohort models in qualitative results. See Supplementary Materials for visualizations from different views and other results. In addition, the BraTS2021 dataset [30, 29] was used for the extension study. This includes brain MRI of 1251 cases with four parameters for each case, including T1, T1-contrast-enhanced (T1ce), T2 and T2-fluid-attenuated inversion recovery (Flair). Images of size 180×180 were cropped out from 2D slices, and then all MRIs were uniformly sized to volumes of 224×224 pixel images with 155 slices."
+      },
+      "confidence": 0.95,
+      "task": "synthesizing T2-weighted brain MRI",
+      "setup": "BraTS2021 dataset of 1251 brain MRI cases, T1, T1ce, Flair as inputs, T2 as target"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_60a8009ec404f44a_x4",
+      "evidence": {
+        "section": "4.5 Ablation study",
+        "original_text": "As described in Methods, the proposed model IMPORTANT-Net consists of several key components, including a parameter reconstruction module, MAPS fusion strategy, multi-parameter attention module, hierarchical V−-shape generation module, etc. Therefore, ablation studies were performed to demonstrate the importance and effectiveness of our three key components. Several network structures were selected for comparison, as follows: (1) Multi-parameter synthesis network without parameter reconstruction module, MAPS fusion strategy and V−-shape synthesis module (called MP-net), (2) Multi-parameter synthesis network with parameter reconstruction module and MAPS fusion strategy (called MPF-net), (3) MPF combined with parameter attention module (MPFA-net), and (4) IMPORTANT-Net reinforcement with V−-shape generation module. As shown in Table 2, MPF-net performed significantly better than MP-net, SSIM improved from 85.65 ± 2.95 to 89.95±3.06, and PSNR improved from 25.57±1.12 to 27.86±1.39. This indicates that the parameter reconstruction module can effectively extract the latent representation information of the multi-parameter MRI images, and the fusion process of the MAPS strategy enables the information between the multi-parameter MRIs to interact through the \"interaction room\" to effectively synthesize the target image. In addition, the introduction of the parameter attention module has further improved the performance of the model, with SSIM of 91.55±3.11, PSNR of 29.51±1.43, NMSE of 0.0606±0.033, and LP of 1.263±0.390. This may be because the parameter attention module gives different weights to the representation information of different MRI parameters, enhancing valuable information and weakening useless information, further improving the model performance. Finally, the hierarchical V−-shape reinforcement generation module was constructed by skip-connecting the MPFA module to form the final IMPORTANT-Net. Compared with the queue model, IMPORTANT-Net achieved the best performance, with SSIM of 91.82±3.15, PSNR of 30.75±1.51, NMSE of 0.0531±0.028, and LP of 0.978±0.397. This is likely due to the representation information in the \"analysis path\" that was obtained by the parameter reconstruction module, and these representation information was greatly compressed during the encoding process, which would cause difficulties in the \"synthesis path\" (such as the up-sampling process needs to fill in lots of blank content). In contrast, the hierarchical V−-shape reinforcement generation module here introduces the feature information at the corresponding scale into up-sampling through skip connections, providing multi-scale and multi-level information for the \"synthesis path\", thereby improving the performance of the model."
+      },
+      "confidence": 0.95,
+      "task": "ablation study",
+      "setup": "in-house dataset, comparing variants of IMPORTANT-Net with different components"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr1",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models. In particular, to evaluate the model’s performance on the synthesis of deep features, we compare the perceptual losses of different models. The synthetic image and the real image were used as inputs, respectively, and the outputs of the pre-trained VGG19 were obtained to calculate the perceptual loss (Equation 5). As shown in Table 1, IMPORTANT-Net has the lowest LP of 0.978 ± 0.397, which indicates that our proposed model can not only achieve higher overall performance, but also efficiently synthesize deep features of images."
+      },
+      "confidence": 0.98,
+      "quantity": "SSIM",
+      "value": 91.82,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T2-weighted breast MRI based on T1-weighted MRI, DWI, and DCE on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr2",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models. In particular, to evaluate the model’s performance on the synthesis of deep features, we compare the perceptual losses of different models. The synthetic image and the real image were used as inputs, respectively, and the outputs of the pre-trained VGG19 were obtained to calculate the perceptual loss (Equation 5). As shown in Table 1, IMPORTANT-Net has the lowest LP of 0.978 ± 0.397, which indicates that our proposed model can not only achieve higher overall performance, but also efficiently synthesize deep features of images."
+      },
+      "confidence": 0.98,
+      "quantity": "PSNR",
+      "value": 30.75,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T2-weighted breast MRI based on T1-weighted MRI, DWI, and DCE on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr3",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models. In particular, to evaluate the model’s performance on the synthesis of deep features, we compare the perceptual losses of different models. The synthetic image and the real image were used as inputs, respectively, and the outputs of the pre-trained VGG19 were obtained to calculate the perceptual loss (Equation 5). As shown in Table 1, IMPORTANT-Net has the lowest LP of 0.978 ± 0.397, which indicates that our proposed model can not only achieve higher overall performance, but also efficiently synthesize deep features of images."
+      },
+      "confidence": 0.98,
+      "quantity": "NMSE",
+      "value": 0.0531,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T2-weighted breast MRI based on T1-weighted MRI, DWI, and DCE on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr4",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models. In particular, to evaluate the model’s performance on the synthesis of deep features, we compare the perceptual losses of different models. The synthetic image and the real image were used as inputs, respectively, and the outputs of the pre-trained VGG19 were obtained to calculate the perceptual loss (Equation 5). As shown in Table 1, IMPORTANT-Net has the lowest LP of 0.978 ± 0.397, which indicates that our proposed model can not only achieve higher overall performance, but also efficiently synthesize deep features of images."
+      },
+      "confidence": 0.98,
+      "quantity": "LP",
+      "value": 0.978,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T2-weighted breast MRI based on T1-weighted MRI, DWI, and DCE on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_60a8009ec404f44a_p1",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71 ± 4.02 and 85.36 ± 2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64 ± 2.90 and 89.70 ± 2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23 ± 3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images. Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis."
+      },
+      "confidence": 0.95,
+      "metric": "SSIM",
+      "compared_to": "Cycle-GAN, P2P-GAN, Hi-Net, MMgSN-Net"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_60a8009ec404f44a_p2",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71 ± 4.02 and 85.36 ± 2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64 ± 2.90 and 89.70 ± 2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23 ± 3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images. Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality."
+      },
+      "confidence": 0.95,
+      "metric": "PSNR",
+      "compared_to": "Cycle-GAN, P2P-GAN, Hi-Net, MMgSN-Net"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_60a8009ec404f44a_p3",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71 ± 4.02 and 85.36 ± 2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64 ± 2.90 and 89.70 ± 2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23 ± 3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images. Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models."
+      },
+      "confidence": 0.95,
+      "metric": "NMSE",
+      "compared_to": "Cycle-GAN, P2P-GAN, Hi-Net, MMgSN-Net"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_60a8009ec404f44a_p4",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71 ± 4.02 and 85.36 ± 2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64 ± 2.90 and 89.70 ± 2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23 ± 3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images. Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis. In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models. In particular, to evaluate the model’s performance on the synthesis of deep features, we compare the perceptual losses of different models. The synthetic image and the real image were used as inputs, respectively, and the outputs of the pre-trained VGG19 were obtained to calculate the perceptual loss (Equation 5). As shown in Table 1, IMPORTANT-Net has the lowest LP of 0.978 ± 0.397, which indicates that our proposed model can not only achieve higher overall performance, but also efficiently synthesize deep features of images."
+      },
+      "confidence": 0.95,
+      "metric": "LP",
+      "compared_to": "Cycle-GAN, P2P-GAN, Hi-Net, MMgSN-Net"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr5",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71 ± 4.02 and 85.36 ± 2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64 ± 2.90 and 89.70 ± 2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23 ± 3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images."
+      },
+      "confidence": 0.98,
+      "quantity": "SSIM",
+      "value": 91.23,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T2-weighted breast MRI based on T1-weighted MRI and DWI on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr6",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To verify the model’s versatility for coping with various inputs, we also evaluated the model’s performance on synthetic T1-weighted images. As shown in Table 3, the IMPORTANT-Net model performed the best with a SSIM of 90.15 ± 2.92, a PSNR of 28.51 ± 1.83, a NMSE of 0.0602 ± 0.032, and a LP of 1.393 ± 0.470, outperforming other cohort models including Cycle-GAN, P2P-GAN, Hi-Net and MMgSN-Net. This further demonstrates the excellent ability of our proposed IMPORTANT-Net in synthesizing missing/absent MRI data."
+      },
+      "confidence": 0.98,
+      "quantity": "SSIM",
+      "value": 90.15,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T1-weighted breast MRI on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr7",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To verify the model’s versatility for coping with various inputs, we also evaluated the model’s performance on synthetic T1-weighted images. As shown in Table 3, the IMPORTANT-Net model performed the best with a SSIM of 90.15 ± 2.92, a PSNR of 28.51 ± 1.83, a NMSE of 0.0602 ± 0.032, and a LP of 1.393 ± 0.470, outperforming other cohort models including Cycle-GAN, P2P-GAN, Hi-Net and MMgSN-Net. This further demonstrates the excellent ability of our proposed IMPORTANT-Net in synthesizing missing/absent MRI data."
+      },
+      "confidence": 0.98,
+      "quantity": "PSNR",
+      "value": 28.51,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T1-weighted breast MRI on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr8",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To verify the model’s versatility for coping with various inputs, we also evaluated the model’s performance on synthetic T1-weighted images. As shown in Table 3, the IMPORTANT-Net model performed the best with a SSIM of 90.15 ± 2.92, a PSNR of 28.51 ± 1.83, a NMSE of 0.0602 ± 0.032, and a LP of 1.393 ± 0.470, outperforming other cohort models including Cycle-GAN, P2P-GAN, Hi-Net and MMgSN-Net. This further demonstrates the excellent ability of our proposed IMPORTANT-Net in synthesizing missing/absent MRI data."
+      },
+      "confidence": 0.98,
+      "quantity": "NMSE",
+      "value": 0.0602,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T1-weighted breast MRI on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr9",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To verify the model’s versatility for coping with various inputs, we also evaluated the model’s performance on synthetic T1-weighted images. As shown in Table 3, the IMPORTANT-Net model performed the best with a SSIM of 90.15 ± 2.92, a PSNR of 28.51 ± 1.83, a NMSE of 0.0602 ± 0.032, and a LP of 1.393 ± 0.470, outperforming other cohort models including Cycle-GAN, P2P-GAN, Hi-Net and MMgSN-Net. This further demonstrates the excellent ability of our proposed IMPORTANT-Net in synthesizing missing/absent MRI data."
+      },
+      "confidence": 0.98,
+      "quantity": "LP",
+      "value": 1.393,
+      "unit": null,
+      "context": "IMPORTANT-Net synthesizing T1-weighted breast MRI on in-house dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr10",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "As described in Methods, the proposed model IMPORTANT-Net consists of several key components, including a parameter reconstruction module, MAPS fusion strategy, multi-parameter attention module, hierarchical V−-shape generation module, etc. Therefore, ablation studies were performed to demonstrate the importance and effectiveness of our three key components. Several network structures were selected for comparison, as follows: (1) Multi-parameter synthesis network without parameter reconstruction module, MAPS fusion strategy and V−-shape synthesis module (called MP-net), (2) Multi-parameter synthesis network with parameter reconstruction module and MAPS fusion strategy (called MPF-net), (3) MPF combined with parameter attention module (MPFA-net), and (4) IMPORTANT-Net reinforcement with V−-shape generation module. As shown in Table 2, MPF-net performed significantly better than MP-net, SSIM improved from 85.65 ± 2.95 to 89.95 ± 3.06, and PSNR improved from 25.57 ± 1.12 to 27.86 ± 1.39."
+      },
+      "confidence": 0.98,
+      "quantity": "SSIM",
+      "value": 85.65,
+      "unit": null,
+      "context": "MP-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr11",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "As described in Methods, the proposed model IMPORTANT-Net consists of several key components, including a parameter reconstruction module, MAPS fusion strategy, multi-parameter attention module, hierarchical V−-shape generation module, etc. Therefore, ablation studies were performed to demonstrate the importance and effectiveness of our three key components. Several network structures were selected for comparison, as follows: (1) Multi-parameter synthesis network without parameter reconstruction module, MAPS fusion strategy and V−-shape synthesis module (called MP-net), (2) Multi-parameter synthesis network with parameter reconstruction module and MAPS fusion strategy (called MPF-net), (3) MPF combined with parameter attention module (MPFA-net), and (4) IMPORTANT-Net reinforcement with V−-shape generation module. As shown in Table 2, MPF-net performed significantly better than MP-net, SSIM improved from 85.65 ± 2.95 to 89.95 ± 3.06, and PSNR improved from 25.57 ± 1.12 to 27.86 ± 1.39."
+      },
+      "confidence": 0.98,
+      "quantity": "PSNR",
+      "value": 25.57,
+      "unit": null,
+      "context": "MP-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr12",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "As described in Methods, the proposed model IMPORTANT-Net consists of several key components, including a parameter reconstruction module, MAPS fusion strategy, multi-parameter attention module, hierarchical V−-shape generation module, etc. Therefore, ablation studies were performed to demonstrate the importance and effectiveness of our three key components. Several network structures were selected for comparison, as follows: (1) Multi-parameter synthesis network without parameter reconstruction module, MAPS fusion strategy and V−-shape synthesis module (called MP-net), (2) Multi-parameter synthesis network with parameter reconstruction module and MAPS fusion strategy (called MPF-net), (3) MPF combined with parameter attention module (MPFA-net), and (4) IMPORTANT-Net reinforcement with V−-shape generation module. As shown in Table 2, MPF-net performed significantly better than MP-net, SSIM improved from 85.65 ± 2.95 to 89.95 ± 3.06, and PSNR improved from 25.57 ± 1.12 to 27.86 ± 1.39."
+      },
+      "confidence": 0.98,
+      "quantity": "SSIM",
+      "value": 89.95,
+      "unit": null,
+      "context": "MPF-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr13",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "As described in Methods, the proposed model IMPORTANT-Net consists of several key components, including a parameter reconstruction module, MAPS fusion strategy, multi-parameter attention module, hierarchical V−-shape generation module, etc. Therefore, ablation studies were performed to demonstrate the importance and effectiveness of our three key components. Several network structures were selected for comparison, as follows: (1) Multi-parameter synthesis network without parameter reconstruction module, MAPS fusion strategy and V−-shape synthesis module (called MP-net), (2) Multi-parameter synthesis network with parameter reconstruction module and MAPS fusion strategy (called MPF-net), (3) MPF combined with parameter attention module (MPFA-net), and (4) IMPORTANT-Net reinforcement with V−-shape generation module. As shown in Table 2, MPF-net performed significantly better than MP-net, SSIM improved from 85.65 ± 2.95 to 89.95 ± 3.06, and PSNR improved from 25.57 ± 1.12 to 27.86 ± 1.39."
+      },
+      "confidence": 0.98,
+      "quantity": "PSNR",
+      "value": 27.86,
+      "unit": null,
+      "context": "MPF-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr14",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "In addition, the introduction of the parameter attention module has further improved the performance of the model, with SSIM of 91.55 ± 3.11, PSNR of 29.51 ± 1.43, NMSE of 0.0606 ± 0.033, and LP of 1.263 ± 0.390. This may be because the parameter attention module gives different weights to the representation information of different MRI parameters, enhancing valuable information and weakening useless information, further improving the model performance."
+      },
+      "confidence": 0.98,
+      "quantity": "SSIM",
+      "value": 91.55,
+      "unit": null,
+      "context": "MPFA-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr15",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "In addition, the introduction of the parameter attention module has further improved the performance of the model, with SSIM of 91.55 ± 3.11, PSNR of 29.51 ± 1.43, NMSE of 0.0606 ± 0.033, and LP of 1.263 ± 0.390. This may be because the parameter attention module gives different weights to the representation information of different MRI parameters, enhancing valuable information and weakening useless information, further improving the model performance."
+      },
+      "confidence": 0.98,
+      "quantity": "PSNR",
+      "value": 29.51,
+      "unit": null,
+      "context": "MPFA-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr16",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "In addition, the introduction of the parameter attention module has further improved the performance of the model, with SSIM of 91.55 ± 3.11, PSNR of 29.51 ± 1.43, NMSE of 0.0606 ± 0.033, and LP of 1.263 ± 0.390. This may be because the parameter attention module gives different weights to the representation information of different MRI parameters, enhancing valuable information and weakening useless information, further improving the model performance."
+      },
+      "confidence": 0.98,
+      "quantity": "NMSE",
+      "value": 0.0606,
+      "unit": null,
+      "context": "MPFA-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_60a8009ec404f44a_qr17",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "In addition, the introduction of the parameter attention module has further improved the performance of the model, with SSIM of 91.55 ± 3.11, PSNR of 29.51 ± 1.43, NMSE of 0.0606 ± 0.033, and LP of 1.263 ± 0.390. This may be because the parameter attention module gives different weights to the representation information of different MRI parameters, enhancing valuable information and weakening useless information, further improving the model performance."
+      },
+      "confidence": 0.98,
+      "quantity": "LP",
+      "value": 1.263,
+      "unit": null,
+      "context": "MPFA-net synthesizing T2-weighted breast MRI on in-house dataset",
+      "result_type": "ablation"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_60a8009ec404f44a_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Magnetic resonance imaging (MRI) is highly sensitive for lesion detection in the breasts. Sequences obtained with different settings can capture the specific characteristics of lesions. Such multi-parameter MRI information has been shown to improve radiologist performance in lesion classification, as well as improving the performance of artificial intelligence models in various tasks. However, obtaining multi-parameter MRI makes the examination costly in both financial and time perspectives, and there may be safety concerns for special populations, thus making acquisition of the full spectrum of MRI sequences less durable. In this study, different than naive input fusion or feature concatenation from existing MRI parameters, a novel Integrated MRI Multi-Parameter reinforcement fusion generator with Attention Network (IMPORTANT-Net) is developed to generate missing parameters. First, the parameter reconstruction module is used to encode and restore the existing MRI parameters to obtain the corresponding latent representation information at any scale level. Then the multi-parameter fusion with attention module enables the interaction of the encoded information from different parameters through a set of algorithmic strategies, and applies different weights to the information through the attention mechanism after information fusion to obtain refined representation information. Finally, a reinforcement fusion scheme embedded in a V-shape generation module is used to combine the hierarchical representations to generate the missing MRI parameter. Results showed that our IMPORTANT-Net is capable of generating missing MRI parameters and outperforms comparable state-of-the-art networks."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_60a8009ec404f44a_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Breast cancer is the most common cancer in women worldwide and the leading cause of cancer death in women. Early screening, diagnosis and treatment of breast cancer are of great significance for increasing the survival period of breast cancer patients. In breast imaging, breast magnetic resonance imaging (MRI) is a highly sensitive imaging modality for breast cancer detection, characterization and diagnosis. Different sequences/parameters of MRI can capture the specific features of breast lesions. For example, repeated T1-weighted imaging before and after contrast administration can delineate enhancement abnormalities, T2-weighted imaging with fat suppression can easily visualize cysts, T2-weighted imaging without fat suppression can better delineate lesion morphology, and diffusion-weighted imaging (DWI) can provide information on cell density and tissue microstructure based on the diffusion of tissue water. Some studies have shown that multiparametric MRI could improve the performance of radiologists’ diagnosis of lesions, as well as the performance of artificial intelligence models in certain tasks, including classification, diagnosis, and segmentation of breast lesions. However, obtaining multi-parametric MRI makes the examination costly from financial and time considerations, thus making acquisition of an exhaustive multiparametric MRI protocol less optimal. Currently, MRI-based breast cancer screening is highly valued by clinicians and researchers. Typically, only T1-weighted pre- and post- contrast MRI and DWI or T2 are included in the screening protocols, and while some abbreviated MRI protocols have also explored obtaining more MRI parameters, this is time-consuming and costly. Unfortunately, this may lead to missing characteristic information of unscanned MRI sequences, such as T2-weighted MRI, that may sometimes be valuable for breast lesion characterization. However, since there is an overlap in the physical properties of MRI sequences, a large part of the missing parameters might be deducted from the available sequences. Therefore, a technique that can synthesize missing/absent MRI parameters from existing ones would be of great value."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_60a8009ec404f44a_ca3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "With the continuous development of computer technology, artificial intelligence-based methods have shown potential in data generation and image transfer, and generative adversarial networks (GAN) have received extensive attention due to their potential ability to generate data and enable image-to-image translation through an unsupervised game of generator and discriminator. Subsequently, a large number of GAN-based works have emerged. In medical imaging, rapid adoption of such networks, with many traditional and novel applications, such as image reconstruction, segmentation, detection, classification, and cross-modality synthesis are being explored. Among them, cross-modality synthesis is considered as a potentially effective method to generate desired but absent modalities from the existing ones. However, these methods can only perform mutual synthesis between two modalities and can not utilize all existing data, and even with advanced modelling, the performance is still unsatisfactory. In addition, the existing methods do not effectively fuse multi-parameter/multi-modal information, and do not reflect the special contribution of different parameters/modalities to the synthesized target image."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_60a8009ec404f44a_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "In this paper, we have developed the IMPORTANT-Net to fully exploit multi-parameter information and fuse latent representations reinforced at different scale level for synthesizing missing/absent data on our in-house dataset (breast MRIs) and the public BraTS2021 dataset (brain MRIs). The method outperformed state-of-arts. Parametric reconstruction module, multi-parameter fusion with attention module and hierarchical V-shape reinforcement generation module are all proven to lead to cumulative improvement for synthesizing target images. The provided technical innovations for medical image synthesis can potentially benefit healthcare in the use scenarios when certain MRI sequences are absent and it may also be applied for other modality-image synthesis."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_60a8009ec404f44a_cl2",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "To evaluate our proposed model, we first calculated the results of synthetic T2-weighted breast MRI to obtain quantitative metrics and compared them with cohort models, including the now popular models such as Cycle-GAN, P2P-GAN, and Hi-Net. The quantitative indicators used include PSNR, SSIM, NMSE and LP. As shown in Table 1, the SSIM of cycle-GAN and P2P-GAN models based on T1-weighted MRI to synthesize T2-weighted MRI is 83.71 ± 4.02 and 85.36 ± 2.84, respectively, and the results are worse than other models. This is due to the model limitation of cycle-GAN and P2P-GAN, they can only perform image synthesis from one MRI parameter to another MRI parameter (here based on T1-weighted MRI to synthesize T2-weighted MRI), but cannot combine multiple parameter MRI, and thus have to disregard important information from other parameters, resulting in poor results. Hi-Net and MMgSN-Net can combine MRI with two different parameters to synthesize missing image data. As shown in Table 1, the SSIM of Hi-Net and MMgSN-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 87.64 ± 2.90 and 89.70 ± 2.95, respectively, which outperform cycle-GAN and P2P-GAN models. This indicates that combining multi-parameter MRI can improve the synthetic performance. However, the structure of the existing models still needs to be improved, and model innovation is needed to improve the synthesis performance. In contrast, the SSIM of IMPORTANT-Net based on T1-weighted MRI and DWI to synthesize T2-weighted MRI is 91.23 ± 3.09, outperforming all cohort models, which indicates that the images synthesized by IMPORTANT-Net have higher structural similarity to real images. Furthermore, the quantitative results are further improved after combining the three modalities using IMPORTANT-Net, with an SSIM of 91.82 ± 3.15 demonstrating the incremental value from multiple parameters in image synthesis."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_60a8009ec404f44a_cl3",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "In addition, the PSNR of IMPORTANT-Net (T1+DWI+DCE) is 30.75 ± 1.51, which is higher than all other cohort models, which indicates that the images synthesized by IMPORTANT-Net are of higher quality. At the same time, IMPORTANT-Net has the lowest NMSE of 0.0531 ± 0.028, which indicates that the error between the synthetic image and real image of IMPORTANT-Net is lower than that of other cohort models. In particular, to evaluate the model’s performance on the synthesis of deep features, we compare the perceptual losses of different models. The synthetic image and the real image were used as inputs, respectively, and the outputs of the pre-trained VGG19 were obtained to calculate the perceptual loss (Equation 5). As shown in Table 1, IMPORTANT-Net has the lowest LP of 0.978 ± 0.397, which indicates that our proposed model can not only achieve higher overall performance, but also efficiently synthesize deep features of images."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_60a8009ec404f44a_cl4",
+      "evidence": {
+        "section": "Experimental Results",
+        "original_text": "As described in Methods, the proposed model IMPORTANT-Net consists of several key components, including a parameter reconstruction module, MAPS fusion strategy, multi-parameter attention module, hierarchical V-shape generation module, etc. Therefore, ablation studies were performed to demonstrate the importance and effectiveness of our three key components. Several network structures were selected for comparison, as follows: (1) Multi-parameter synthesis network without parameter reconstruction module, MAPS fusion strategy and V-shape synthesis module (called MP-net), (2) Multi-parameter synthesis network with parameter reconstruction module and MAPS fusion strategy (called MPF-net), (3) MPF combined with parameter attention module (MPFA-net), and (4) IMPORTANT-Net reinforcement with V-shape generation module. As shown in Table 2, MPF-net performed significantly better than MP-net, SSIM improved from 85.65 ± 2.95 to 89.95 ± 3.06, and PSNR improved from 25.57 ± 1.12 to 27.86 ± 1.39. This indicates that the parameter reconstruction module can effectively extract the latent representation information of the multi-parameter MRI images, and the fusion process of the MAPS strategy enables the information between the multi-parameter MRIs to interact through the 'interaction room' to effectively synthesize the target image. In addition, the introduction of the parameter attention module has further improved the performance of the model, with SSIM of 91.55 ± 3.11, PSNR of 29.51 ± 1.43, NMSE of 0.0606 ± 0.033, and LP of 1.263 ± 0.390. This may be because the parameter attention module gives different weights to the representation information of different MRI parameters, enhancing valuable information and weakening useless information, further improving the model performance. Finally, the hierarchical V-shape reinforcement generation module was constructed by skip-connecting the MPFA module to form the final IMPORTANT-Net. Compared with the queue model, IMPORTANT-Net achieved the best performance, with SSIM of 91.82 ± 3.15, PSNR of 30.75 ± 1.51, NMSE of 0.0531 ± 0.028, and LP of 0.978 ± 0.397. This is likely due to the representation information in the 'analysis path' that was obtained by the parameter reconstruction module, and these representation information was greatly compressed during the encoding process, which would cause difficulties in the 'synthesis path' (such as the up-sampling process needs to fill in lots of blank content). In contrast, the hierarchical V-shape reinforcement generation module here introduces the feature information at the corresponding scale into up-sampling through skip connections, providing multi-scale and multi-level information for the 'synthesis path', thereby improving the performance of the model."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_60a8009ec404f44a_lm1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, obtaining multi-parameter MRI makes the examination costly in both financial and time perspectives, and there may be safety concerns for special populations, thus making acquisition of the full spectrum of MRI sequences less durable. Currently, MRI-based breast cancer screening is highly valued by clinicians and researchers. Typically, only T1-weighted pre- and post- contrast MRI and DWI or T2 are included in the screening protocols, and while some abbreviated MRI protocols have also explored obtaining more MRI parameters, this is time-consuming and costly. Unfortunately, this may lead to missing characteristic information of unscanned MRI sequences, such as T2-weighted MRI, that may sometimes be valuable for breast lesion characterization. However, since there is an overlap in the physical properties of MRI sequences, a large part of the missing parameters might be deducted from the available sequences. Therefore, a technique that can synthesize missing/absent MRI parameters from existing ones would be of great value."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_60a8009ec404f44a_lm2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "With the continuous development of computer technology, artificial intelligence-based methods have shown potential in data generation and image transfer, and generative adversarial networks (GAN) have received extensive attention due to their potential ability to generate data and enable image-to-image translation through an unsupervised game of generator and discriminator. Subsequently, a large number of GAN-based works have emerged. In medical imaging, rapid adoption of such networks, with many traditional and novel applications, such as image reconstruction, segmentation, detection, classification, and cross-modality synthesis are being explored. Among them, cross-modality synthesis is considered as a potentially effective method to generate desired but absent modalities from the existing ones. However, these methods can only perform mutual synthesis between two modalities and can not utilize all existing data, and even with advanced modelling, the performance is still unsatisfactory. In addition, the existing methods do not effectively fuse multi-parameter/multi-modal information, and do not reflect the special contribution of different parameters/modalities to the synthesized target image."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_60a8009ec404f44a_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "The provided technical innovations for medical image synthesis can potentially benefit healthcare in the use scenarios when certain MRI sequences are absent and it may also be applied for other modality-image synthesis."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_60a8009ec404f44a_fw2",
+      "evidence": {
+        "section": "Extension study and discussion",
+        "original_text": "Furthermore, we also validate the effectiveness of IMPORTANT-Net in synthesizing missing/absent data on another publicly available brain MRI dataset from Brain Tumor Segmentation 2021 (BraTS2021). As shown in Table 4, our IMPORTANT-Net outperforms state-of-the-art methods. Some visualization examples are shown in Fig. 5. The red and yellow regions of the error maps of the images synthesized by IMPORTANT-Net are significantly reduced, indicating that our model outperforms the cohort models in qualitative results. See Supplementary Materials for visualizations from different views and other results. Currently, existing methods, such as Cycle-GAN and P2P-GAN, mostly only focus on generating another image from one type of image, i.e. a single input and output, such as from MRI to CT, from CT to MRI, from T1 to T2, from T2 to T1, etc. However, these methods do not contribute to synthesizing target images by combination of different parameters from multiple images. Although some recent studies combine multiple images, the effect is still unsatisfactory. In contrast, as shown Fig. 1, our model can combine any number of existing parameters/modalities to synthesize missing/absent data, which will benefit the full utilization and mining of existing data. Furthermore, the simple concatenation of existing models for multi-modality/multi-parameter data in the input phase cannot effectively learn the underlying relationships of different information. In this study, in response to existing problems, the parameter reconstruction module is designed to extract the representation information from different parameters, and the multiparameter fusion module is specially designed to enable the representation information from multiple parameters to be interactively fused through the MAPS strategic interaction room. In particular, the parameter attention module is designed to optimize the weights of different information, which further enhances the performance of the model. Regarding deep learning, it is well known that large amounts of data are critical to the success of training, and multiparameter multi-modal data have also been shown to improve model performance in medical imaging-related tasks, such as tumor segmentation tasks and lesion classification tasks. In addition, multi-parameter data can also provide more reference for clinicians. Therefore, IMPORTANT-Net has great potential and application value to contribute to these tasks and scenarios, to enrich data types, and to provide additional reference for clinicians. In clinical practice this could be used to benefit abbreviated MRI protocols. The demonstrated generalizability and versatility of our model in synthesizing missing/absent data implies that our method can be used on diverse input from various MRI protocols."
+      },
+      "confidence": 0.92
+    }
+  ]
+}

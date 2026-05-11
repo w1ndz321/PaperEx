@@ -1,0 +1,517 @@
+{
+  "metadata": {
+    "doc_id": "doc_7680c2c23037afca",
+    "source_file": "04_FAST_Observations_FRB_20201124A_Burst_Morphology.md",
+    "title": "An Accurate Comprehensive Approach to Substructure: III. Masses and Formation Times of the Host Haloes",
+    "year": 2021,
+    "doi": null,
+    "abstract": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time. \n\n**Key words:** methods: analytic — galaxies: haloes, substructure — cosmology: theory, dark matter — dark matter: haloes — haloes: substructure",
+    "introduction": "In the last decade, the subject of halo assembly history has attracted much attention in connection with the so-called “missing satellite problem”, namely that the abundance of satellite galaxies in the Milky Way (MW) (and Andromeda; Tollerud, Boylan-Kolchin, & Bullock 2014) does not seem to conform with the expected one in the favourite ΛCDM cosmology (Moore et al. 1999; Klypin et al. 1999; Bullock & Boylan-Kolchin 2017). Indeed, one possible explanation for that problem is that the MW halo may not have had the typical assembly history of haloes of its mass. Some aspects of the MW suggest, indeed, that it has had a particularly quiescent history (e.g. Wyse 2001; Deason et al. 2013; Ruchti et al. 2015; Lancaster, Belokurov, & Evans 2019). \n\nSubstructure in dark matter haloes is believed to harbour important information on their assembly history as it is the direct consequence of the way they have grown. Indeed, haloes undergo long periods of frequent _minor_ mergers (generically called accretion), separated by sporadic _major_ mergers. The difference between these two kinds of mergers is that the largest halo in minor mergers (the accreting object) is much more massive than its partners (the accreted objects), so it remains essentially in equilibrium during that process and the accreted haloes survive within their host as \n\nsubhaloes. On the contrary, all haloes (usually two) partaking of a major merger are similarly massive so that the event causes them to go out of equilibrium and to form a new virialised halo after the system relaxes again. In this case the progenitor haloes are thus destroyed, but their subhaloes are transferred to the newborn halo. Subhaloes thus accumulate within haloes, where they are more or less stripped and shock-heated depending on the characteristics of each transient host. Consequently, their final properties are the result of their past history. \n\nUnfortunately, we do not know yet what are the typical properties of substructure in haloes of different masses and formation times. None of the analytic models of halo substructure so far developed (Taylor & Babul 2001; Zentner & Bullock 2003; Sheth 2003; Lee 2004; Oguri & Lee 2004; Taylor & Babul 2004; Pe˜narrubia & Benson 2005; van den Bosch et al. 2005; Zentner et al. 2005; Kampakoglou & Benson 2007; Giocoli et al. 2008; Benson et al. 2013; Pullen et al. 2014; Jiang & van den Bosch 2016; Griffen et al. 2016; van den Bosch & Jiang 2016; van den Bosch et al. 2018; Green & van den Bosch 2019; Font et al. 2020) have been able to provide definite answers to these questions. Nor have high-resolution simulations, which have only been able to draw the properties of substructure in a handful of haloes of the MW-mass (Diemand et al. 2007; Springel et al. 2008; Boylan-Kolchin et al. 2010; Wang et al. 2011) or of other masses (e.g. Angulo et al. 2009; Elahi et al. 2009; Giocoli et al. 2010; Klypin et al. \n\n> _⋆_ E-mail: e.salvador@ub.edu \n\n© 0000 The Authors \n\n2 _Salvador-Sol´e, Manrique, Canales & Botella_ \n\n2011; Gao et al. 2011, 2012; Onions et al. 2012; Lovell et al. 2014; Cautun et al. 2014; Ishiyama et al. 2020; Lovell et al. 2021). \n\nBut things are rapidly changing. The incoming new data gathered by means of the _Gaia_ satellite (Gaia Collaboration et al. 2018) will allow to accurately determine the MW’s substructure and it has now become feasible to observe satellites in neighbouring MW analogues (Danieli et al. 2017; Geha et al. 2017; Smercina et al. 2018; Bennet et al. 2019, 2020; Crnojevi´c et al. 2019; Carlsten et al. 2020; Mao et al. 2020; Carlsten et al. 2021). In parallel, simulations have also greatly improved. The _Copernicus Complexio N_ -body simulations together with a semi-analytic galaxy formation model (Hellwing et al. 2016; Bose et al. 2016, 2020) or the _Apostle_ and _Auriga_ (Richings et al. 2020), _FIRE-2_ (Samuel et al. 2020), and _Artemis_ (Font et al. 2020; Font, McCarthy, & Belokurov 2021; Engler et al. 2021) hydrodynamic simulations have gathered a considerable number of simulated MW (and Andromeda) analogs. On the other hand, it is now possible to reach very high stellar mass resolutions (Grand et al. 2021) which significantly improves the statistics of substructure at the level of faint and ultra-faint satellites (10[2] M _⊙ < M⋆ <_ 10[6] M _⊙_ ). \n\nIn addition, great progress has also been made on analytic grounds. A very complete model of substructure formation has been built (Jiang et al. 2021) that allows one to study the effects of different initial conditions in the accretion and evolution of satellite galaxies. Likewise, the powerful _ConflUent System of Peak trajectories_ (CUSP) formalism (Manrique & Salvador-Sol´e 1995, 1996; Manrique et al. 1998; Salvador-Sol´e et al. 2012a,b; Juan et al. 2014a,b), making the link between the properties of haloes and their seeds (peaks) in the random Gaussian field of density perturbations (see Salvador-Sol´e & Manrique 2021 for an overview) has been successfully applied to the study of halo substructure (Salvador-Sol´e et al. 2021a and Salvador-Sol´e et al. 2021b, hereafter Papers I and II, respectively). \n\nIn Paper I we determined the properties of accreted subhaloes, which act as initial conditions in their evolution through stripping inside their host haloes. To do this we took profit of the fact that, as shown in Salvador-Sol´e et al. (2021c), all halo properties arising from their gravitational clustering process do not depend on their particular assembly history so that one has the right to focus on the simplest case of _purely accreting haloes_ evolving inside-out (see below for a brief explanation of this important result). However, subhalo stripping as well as dynamical friction are two (coupled) mechanisms acting on the dynamical evolution of subhaloes that are not directly connected to gravitational clustering. Consequently, the properties of stripped subhaloes do depend on the halo assembly history. In Paper II we built a detailed model of tidal stripping and shock heating of subhaloes as they orbit inside haloes which allowed us to derive their final properties. However, this was done in the simplest case of purely accreting haloes only and neglecting dynamical friction. \n\nIn the present Paper, we complete this study and extend the characterisation of substructure to ordinary haloes, i.e. haloes having suffered major mergers, paying special attention to the role of halo mass and formation time and analysing the possible use of those properties as a probe for halo assembly history. Our treatment does not include dynamical \n\nfriction. However, the predictions for low-mass subhaloes ( _M_ s ≲ 10 _[−]_[4] _M_ h, where _M_ h is the mass of the host halo) should not be affected by that omission. On the other hand, it does not include baryons either. However, by comparing our predictions to the results of simulations including them, it is still possible to unravel to some extent the influence of baryons physics in the properties of substructure. \n\nThe layout of the Paper is as follows. In Section 2 we remind the main results of Papers I and II for purely accreting haloes of different masses. In Section 3 we extend those results to haloes having suffered major mergers. And in Section 4 we analyse the properties of substructure in haloes of a fixed mass and different formation times. Our results are summarised and discussed in Section 5. \n\nSome comments on the notation used in this Paper are in order. Unless otherwise stated, when we refer to subhaloes without specifying their kind, we mean stripped (or truncated) subhaloes. The halo formation time used is defined as the time they suffered their last major merger. It thus differs from the most usual definition: the time haloes reach 50% of their final mass. We prefer the former not only because it is less arbitrary (why 50% and not, say, 75%?), but also because it is physically better motivated. Indeed, as mentioned, virialised haloes interrupt their identity in major mergers where they are destroyed and a new virialised object appears (Salvador-Sol´e & Manrique 2021). Lastly, the notation we use for the cumulative or differential abundances of subhaloes, dependent in general on subhalo mass, _M_ s, and radial location inside the host halo, _r_ , is the same as in Papers I and II. The cumulative number of stripped or accreted haloes out to _r_ and down to _M_ s are denoted as _N_[stp] ( _< r, > M_ s) and _N_[acc] ( _< r, > M_ s), respectively. When one of the arguments takes its maximum value, i.e. when the integrals over _r_ or _M_ s are complete, we drop the corresponding argument. For instance, _N_[stp] ( _> M_ s) stands for _N_[stp] ( _< R_ h _, > M_ s), where _R_ h is the total halo radius, and _N_[stp] ( _< r_ ) stands for _N_[stp] ( _< r, >_ 0) (or for _N_[stp] ( _< r, < M_ h), where _M_ h is the total halo mass). Lastly, the differential form with respect to any argument, _r_ or _M_ s, of any of the previous functions is denoted without the corresponding preceding inequality symbol. For example, _N_[stp] ( _r, M_ s) stands for the double derivative with respect to _r_ and _M_ s and _N_[stp] ( _M_ s) stands for the differential subhalo mass function. This greatly simplifies the notation as it avoids writing the dumb arguments _R_ h or _M_ h (or 0) as well as the symbols of single and multiple derivatives in most expressions. \n\nAlso like in Papers I and II, _M_ h is defined as the mass encompassed by the virial radius _R_ h within which the inner mean density is equal to the virial overdensity (Bryan & Norman 1998; Henry 2000) times the current mean cosmic density. In particular, we assume the MW mass equal to _M_ h = 2 _._ 2 _×_ 10[12] M _⊙_ . The cosmology adopted is that given by the best _WMAP7_ parameters (Komatsu et al. 2011), with CDM spectrum according to the prescription given by Bardeen et al. (1986) with the Sugiyama (1995) shape parameter. The reader is referred to Papers I and II for the role of diffuse dark matter (dDM) in the properties of substructure, just briefly referred to in this Paper. \n\nMNRAS **000** , 000–000 (0000) \n\n_The Mass and Formation Time of the Host Haloes_ 3",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "dark matter haloes",
+      "substructure",
+      "halo formation time",
+      "mass function",
+      "ΛCDM cosmology"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:36:59.751267+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.98,
+      "term": "substructure",
+      "normalized": "子结构",
+      "std_label": "substructure"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Substructure in dark matter haloes is believed to harbour important information on their assembly history as it is the direct consequence of the way they have grown. Indeed, haloes undergo long periods of frequent minor mergers (generically called accretion), separated by sporadic major mergers. The difference between these two kinds of mergers is that the largest halo in minor mergers (the accreting object) is much more massive than its partners (the accreted objects), so it remains essentially in equilibrium during that process and the accreted haloes survive within their host as subhaloes. On the contrary, all haloes (usually two) partaking of a major merger are similarly massive so that the event causes them to go out of equilibrium and to form a new virialised halo after the system relaxes again. In this case the progenitor haloes are thus destroyed, but their subhaloes are transferred to the newborn halo. Subhaloes thus accumulate within haloes, where they are more or less stripped and shock-heated depending on the characteristics of each transient host. Consequently, their final properties are the result of their past history."
+      },
+      "confidence": 0.97,
+      "term": "dark matter halo",
+      "normalized": "暗物质晕",
+      "std_label": "halo"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.96,
+      "term": "accreted subhalo",
+      "normalized": "吸积子晕",
+      "std_label": "accreted subhalo"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.96,
+      "term": "stripped subhalo",
+      "normalized": "剥离子晕",
+      "std_label": "stripped subhalo"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Substructure in dark matter haloes is believed to harbour important information on their assembly history as it is the direct consequence of the way they have grown. Indeed, haloes undergo long periods of frequent minor mergers (generically called accretion), separated by sporadic major mergers. The difference between these two kinds of mergers is that the largest halo in minor mergers (the accreting object) is much more massive than its partners (the accreted objects), so it remains essentially in equilibrium during that process and the accreted haloes survive within their host as subhaloes. On the contrary, all haloes (usually two) partaking of a major merger are similarly massive so that the event causes them to go out of equilibrium and to form a new virialised halo after the system relaxes again. In this case the progenitor haloes are thus destroyed, but their subhaloes are transferred to the newborn halo. Subhaloes thus accumulate within haloes, where they are more or less stripped and shock-heated depending on the characteristics of each transient host. Consequently, their final properties are the result of their past history."
+      },
+      "confidence": 0.97,
+      "term": "major merger",
+      "normalized": "主合并",
+      "std_label": "major merger"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.98,
+      "term": "halo formation time",
+      "normalized": "晕形成时间",
+      "std_label": "formation time"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.95,
+      "term": "mean truncated-to-original subhalo mass ratio profile",
+      "normalized": "平均截断与原质量比剖面",
+      "std_label": "µ profile"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c8",
+      "evidence": {
+        "section": "2 PURELY ACCRETING HALOES",
+        "original_text": "In fact, since gravitation is scale-free, such halo properties would be strictly universal (i.e. independent of halo mass and formation time), except for the length scale introduced by the power-spectrum of density fluctuations in the CDM cosmology, at the base of the typical mass-concentration M–c relation (see SalvadorSol´e et al. 2021c in progress). However, subhalo stripping is not related to gravitational clustering and its effects on subhaloes are not erased by violent relaxation. Consequently, stripped subhaloes do retain the memory of the halo assembly history. This is why substructure is expected to depend on halo formation time and, since haloes with different masses have different typical formation times, on halo mass as well. In this sense, the properties of substructure derived in Paper II for purely accreting haloes might substantially differ from the properties of ordinary haloes having suffered major mergers. Nevertheless, to understand the latter we need first to comprehend the former from which they follow (see Sec. 3). It is thus worthwhile reminding the results of Paper II."
+      },
+      "confidence": 0.96,
+      "term": "mass-concentration relation",
+      "normalized": "质量-浓度关系",
+      "std_label": "M–c relation"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c9",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Likewise, the powerful ConflUent System of Peak trajectories (CUSP) formalism (Manrique & Salvador-Sol´e 1995, 1996; Manrique et al. 1998; Salvador-Sol´e et al. 2012a,b; Juan et al. 2014a,b), making the link between the properties of haloes and their seeds (peaks) in the random Gaussian field of density perturbations (see Salvador-Sol´e & Manrique 2021 for an overview) has been successfully applied to the study of halo substructure (Salvador-Sol´e et al. 2021a and Salvador-Sol´e et al. 2021b, hereafter Papers I and II, respectively). In Paper I we determined the properties of accreted subhaloes, which act as initial conditions in their evolution through stripping inside their host haloes. To do this we took profit of the fact that, as shown in Salvador-Sol´e et al. (2021c), all halo properties arising from their gravitational clustering process do not depend on their particular assembly history so that one has the right to focus on the simplest case of purely accreting haloes evolving inside-out (see below for a brief explanation of this important result). However, subhalo stripping as well as dynamical friction are two (coupled) mechanisms acting on the dynamical evolution of subhaloes that are not directly connected to gravitational clustering. Consequently, the properties of stripped subhaloes do depend on the halo assembly history. In Paper II we built a detailed model of tidal stripping and shock heating of subhaloes as they orbit inside haloes which allowed us to derive their final properties. However, this was done in the simplest case of purely accreting haloes only and neglecting dynamical friction."
+      },
+      "confidence": 0.97,
+      "term": "CUSP formalism",
+      "normalized": "CUSP形式体系",
+      "std_label": "CUSP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7680c2c23037afca_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.96,
+      "term": "satellite",
+      "normalized": "卫星星系",
+      "std_label": "satellite"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7680c2c23037afca_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.94,
+      "head": "doc_7680c2c23037afca_c4",
+      "relation_type": "depends_on",
+      "relation_surface": "depend on",
+      "tail": "doc_7680c2c23037afca_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7680c2c23037afca_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.93,
+      "head": "doc_7680c2c23037afca_c1",
+      "relation_type": "encoded_in",
+      "relation_surface": "encoded in",
+      "tail": "doc_7680c2c23037afca_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7680c2c23037afca_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.94,
+      "head": "doc_7680c2c23037afca_c3",
+      "relation_type": "independent_of",
+      "relation_surface": "independent of",
+      "tail": "doc_7680c2c23037afca_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7680c2c23037afca_r8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Likewise, the powerful ConflUent System of Peak trajectories (CUSP) formalism (Manrique & Salvador-Sol´e 1995, 1996; Manrique et al. 1998; Salvador-Sol´e et al. 2012a,b; Juan et al. 2014a,b), making the link between the properties of haloes and their seeds (peaks) in the random Gaussian field of density perturbations (see Salvador-Sol´e & Manrique 2021 for an overview) has been successfully applied to the study of halo substructure (Salvador-Sol´e et al. 2021a and Salvador-Sol´e et al. 2021b, hereafter Papers I and II, respectively). In Paper I we determined the properties of accreted subhaloes, which act as initial conditions in their evolution through stripping inside their host haloes. To do this we took profit of the fact that, as shown in Salvador-Sol´e et al. (2021c), all halo properties arising from their gravitational clustering process do not depend on their particular assembly history so that one has the right to focus on the simplest case of purely accreting haloes evolving inside-out (see below for a brief explanation of this important result). However, subhalo stripping as well as dynamical friction are two (coupled) mechanisms acting on the dynamical evolution of subhaloes that are not directly connected to gravitational clustering. Consequently, the properties of stripped subhaloes do depend on the halo assembly history. In Paper II we built a detailed model of tidal stripping and shock heating of subhaloes as they orbit inside haloes which allowed us to derive their final properties. However, this was done in the simplest case of purely accreting haloes only and neglecting dynamical friction."
+      },
+      "confidence": 0.95,
+      "head": "doc_7680c2c23037afca_c9",
+      "relation_type": "used_for",
+      "relation_surface": "successfully applied to",
+      "tail": "doc_7680c2c23037afca_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7680c2c23037afca_r10",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Substructure in dark matter haloes is believed to harbour important information on their assembly history as it is the direct consequence of the way they have grown. Indeed, haloes undergo long periods of frequent minor mergers (generically called accretion), separated by sporadic major mergers. The difference between these two kinds of mergers is that the largest halo in minor mergers (the accreting object) is much more massive than its partners (the accreted objects), so it remains essentially in equilibrium during that process and the accreted haloes survive within their host as subhaloes. On the contrary, all haloes (usually two) partaking of a major merger are similarly massive so that the event causes them to go out of equilibrium and to form a new virialised halo after the system relaxes again. In this case the progenitor haloes are thus destroyed, but their subhaloes are transferred to the newborn halo. Subhaloes thus accumulate within haloes, where they are more or less stripped and shock-heated depending on the characteristics of each transient host. Consequently, their final properties are the result of their past history."
+      },
+      "confidence": 0.96,
+      "head": "doc_7680c2c23037afca_c5",
+      "relation_type": "transfers",
+      "relation_surface": "transferred",
+      "tail": "doc_7680c2c23037afca_c3"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7680c2c23037afca_d1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "In Figure 2 we show the scaled number density profiles of subhaloes of two masses (10⁻² M_h and 10⁻⁴ M_h) found for the two above mentioned M–c relations. For comparison we plot the profile found by Han et al. (2016) in the MW-mass halo A of the Level 1 Aquarius simulation (Springel et al. 2008), also found to be roughly independent of subhalo mass (except for the effects of dynamical friction; Han et al. 2018). This halo is particularly well suited to the comparison with our predictions for purely accreting haloes because it suffered the last major merger at z ∼ 6 (r ∼ 0.08 R_h) and has been evolving by accretion (and growing inside-out) since then. Note that, given its formation time, the concentration r/r_s cannot be traced down to radii smaller than r = 0.08 R_h. This is the reason that its µ profile is not seen to increase at smaller radii. In fact, as we will see in Section 3, it should be flat there, though the µ profile of the simulated halo is not well determined at those radii because it is dominated by orphan objects."
+      },
+      "confidence": 0.95,
+      "name": "Aquarius simulation halo A subhalo radial distribution",
+      "modality": "tabular",
+      "domain": "astrophysics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7680c2c23037afca_d2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "In Figure 11 we compare the theoretical radial distributions of luminous subhaloes to those of satellites found by Bose et al. (2020) in the 20% earliest- and latest-forming MW-mass haloes (M_200 ∼ 1–1.3 × 10¹² M_⊙). In principle, to calculate such theoretical profiles we should find the upper and lower mass limits of stripped subhaloes that correspond to the upper and lower stellar mass limits of 3.2 × 10⁶ M_⊙ and zero M_⊙, respectively, used by Bose et al. But this correspondence depends on the radius in an unknown way, so that calculation is hard to achieve. Fortunately, there is an alternative way to calculate the desired radial distributions. The vast majority of satellites with stellar masses below ∼ 3.2 × 10⁶ M_⊙ necessarily formed in haloes with masses between the minimum mass for star formation, M_s ∼ 1.4 × 10⁸ M_⊙ (Bose et al. 2020), and the maximum mass of haloes having formed 3.2 × 10⁶ M_⊙ of stars, ∼ 5 × 10⁸ M_⊙. Certainly, a small fraction of satellites with a final stellar mass slightly below 3.2 × 10⁶ M_⊙ may have suffered very strong tidal stripping affecting not only dark matter but also stars so that the initial mass of their subhaloes may be slightly larger than 5 × 10⁸ M_⊙. Consequently, the upper mass limit is actually somewhat fuzzy. Nonetheless, since the radius of the stellar component is typically 1% of the radius of their host haloes (Kravtsov 2013), the fraction of satellites with initial stellar mass larger than µM_s able to lose stars is very small. In addition, any small variation in the upper mass limit has an insignificant effect on the total number of haloes within the bracketed mass range. (Only do variations in the lower mass limit substantially affect that number due to the much higher abundance of objects at the low mass end.) Therefore, the number of accreted subhaloes within that mass range is a very robust estimate for the number of satellites with final masses below 3.2 × 10⁶ M_⊙. And, since low mass subhaloes, unaffected by dynamical friction, stay at the same apocentric radius as when they were accreted, the integrated radial distribution of satellites with masses in the included sample should essentially coincide with that of accreted subhaloes in the corresponding mass range independent of radius. We have confirmed the robustness of this counting against small changes in the upper subhalo mass limit."
+      },
+      "confidence": 0.9,
+      "name": "Copernicus Complexio (COCO) and COLOR simulation satellite radial distributions",
+      "modality": "tabular",
+      "domain": "astrophysics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7680c2c23037afca_d3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "In Figure 3 we plot the cumulative MFs of accreted and stripped subhaloes predicted for purely accreting haloes. As can be seen, the MF of accreted subhaloes is universal, i.e. independent of halo mass, in agreement with the results of simulations (Han et al. 2018 and references therein). This is equivalent to say that the differential scaled subhalo abundance N_acc(M_s/M_h) per infinitesimal M_s/M_h is also universal or that the subhalo abundance N_acc(M_s/M_h) per infinitesimal M_s varies with halo mass as M_h⁻¹ (not to mix up with the differential subhalo abundance N_acc(M_s) per infinitesimal M_s, which is roughly proportional to M_h; e.g. Fakhouri, Ma, & Boylan-Kolchin 2010). The subhalo abundance N_acc(M_s/M_h) per infinitesinal M_s which will have important consequences in Section 4. In Figure 3 we also see that the scaled MF of stripped subhaloes is also universal provided it is multiplied by M_h⁻⁰·⁰⁸. Such a dependence on halo mass of the MF of stripped subhaloes following from the above mentioned dependence of the integral over r of their µ profile as a consequence of the mass dependence of halo concentration fully agrees with that observed in simulations (the factor rendering the MF of simulated haloes universal is M_h^η with η = −0.1; Han et al. 2018; Rodríguez-Puebla et al. 2016; see also Zentner et al. 2005; Giocoli et al. 2008; Gao et al. 2011). Strictly speaking, the subhalo MF found in simulations is influenced at the high-mass end by the effects of dynamical friction, ignored in our model. But this effect is insignificant for subhaloes less massive than 10⁻⁴ M_h as represented here (see Fig. 10 in Paper II). There is one caveat, however, in this agreement: while our predictions are for purely accreting haloes, the results of simulations refer to ordinary haloes having suffered major mergers. In other words, it is not clear whether the agreement is accidental or it will persist when dealing with ordinary haloes."
+      },
+      "confidence": 0.9,
+      "name": "CUSP formalism predictions for subhalo mass functions and radial distributions",
+      "modality": "tabular",
+      "domain": "astrophysics"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7680c2c23037afca_ds1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Some comments on the notation used in this Paper are in order. Unless otherwise stated, when we refer to subhaloes without specifying their kind, we mean stripped (or truncated) subhaloes. The halo formation time used is defined as the time they suffered their last major merger. It thus differs from the most usual definition: the time haloes reach 50% of their final mass. We prefer the former not only because it is less arbitrary (why 50% and not, say, 75%?), but also because it is physically better motivated. Indeed, as mentioned, virialised haloes interrupt their identity in major mergers where they are destroyed and a new virialised object appears (Salvador-Sol´e & Manrique 2021)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Definition of halo formation time as the time of the last major merger"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7680c2c23037afca_ds2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Lastly, the notation we use for the cumulative or differential abundances of subhaloes, dependent in general on subhalo mass, M_s, and radial location inside the host halo, r, is the same as in Papers I and II. The cumulative number of stripped or accreted haloes out to r and down to M_s are denoted as N_stp(< r, > M_s) and N_acc(< r, > M_s), respectively. When one of the arguments takes its maximum value, i.e. when the integrals over r or M_s are complete, we drop the corresponding argument. For instance, N_stp(> M_s) stands for N_stp(< R_h, > M_s), where R_h is the total halo radius, and N_stp(< r) stands for N_stp(< r, > 0) (or for N_stp(< r, < M_h), where M_h is the total halo mass). Lastly, the differential form with respect to any argument, r or M_s, of any of the previous functions is denoted without the corresponding preceding inequality symbol. For example, N_stp(r, M_s) stands for the double derivative with respect to r and M_s and N_stp(M_s) stands for the differential subhalo mass function. This greatly simplifies the notation as it avoids writing the dumb arguments R_h or M_h (or 0) as well as the symbols of single and multiple derivatives in most expressions."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized notation for cumulative and differential subhalo abundances"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7680c2c23037afca_ds3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Also like in Papers I and II, M_h is defined as the mass encompassed by the virial radius R_h within which the inner mean density is equal to the virial overdensity (Bryan & Norman 1998; Henry 2000) times the current mean cosmic density. In particular, we assume the MW mass equal to M_h = 2.2 × 10¹² M_⊙. The cosmology adopted is that given by the best WMAP7 parameters (Komatsu et al. 2011), with CDM spectrum according to the prescription given by Bardeen et al. (1986) with the Sugiyama (1995) shape parameter. The reader is referred to Papers I and II for the role of diffuse dark matter (dDM) in the properties of substructure, just briefly referred to in this Paper."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Definition of halo mass M_h and virial radius R_h based on virial overdensity"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7680c2c23037afca_ds4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "A more subtle issue is that, for the above mentioned reasons, the shape of the µ profile will depend on the M–c relation. Of course, the real µ profile predicted by CUSP implicitly follows from the M–c relation that can be derived within that framework (Salvador-Sol´e et al. 2021c). However, if we want to reproduce the results of simulations, we must use the M–c relation found in numerical studies by e.g. Gao et al. (2008) with a limited mass resolution similar to that affecting those empirical results. The effect of the limited mass resolution of simulations, which affects all (sub)haloes at early times when they are little massive, is apparent in Figure 1. While the µ profile derived from the CUSP M–c relation with no limited mass resolution is ever decreasing inwards, that found with the Gao et al. (2008) M–c relation stops decreasing at r ∼ 0.08 R_h and then begins to increase again. The reason for this strange result is the following. In a purely accreting halo evolving inside-out as considered here, its concentration at earlier times decreases with decreasing r as r/r_s, because of the fixed value of r_s. Since the concentration of accreted subhaloes also decreases with increasing z (this is so in all empirical as well as theoretical M–c relations), stripping keeps on being effective at small radii populated by subhaloes accreted at higher redshifts. However, due to the limited mass resolution, the concentration of (sub)haloes in the Gao et al. (2008) M–c relation is bounded to a minimum value independent of mass reached at z ∼ 3 (r ∼ 0.3 R_h). As a consequence, at radii smaller than 0.3 R_h, the concentration of the inside-out evolving host halo continues to decrease, while that of subhaloes does not, and subhalo stripping becomes (artificially) ineffective."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Mass-concentration (M–c) relation used for predictions, including empirical Gao et al. (2008) relation"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7680c2c23037afca_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Likewise, the powerful ConflUent System of Peak trajectories (CUSP) formalism (Manrique & Salvador-Sol´e 1995, 1996; Manrique et al. 1998; Salvador-Sol´e et al. 2012a,b; Juan et al. 2014a,b), making the link between the properties of haloes and their seeds (peaks) in the random Gaussian field of density perturbations (see Salvador-Sol´e & Manrique 2021 for an overview) has been successfully applied to the study of halo substructure (Salvador-Sol´e et al. 2021a and Salvador-Sol´e et al. 2021b, hereafter Papers I and II, respectively)."
+      },
+      "confidence": 0.95,
+      "name": "CUSP formalism",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7680c2c23037afca_m2",
+      "evidence": {
+        "section": "PURELY ACCRETING HALOES",
+        "original_text": "As explained in Papers I and II, we distinguish between “the time of accretion of a subhalo” onto the halo and “the time of its first crossing”. The latter corresponds to the first time the subhalo orbits within the (virialised and nonvirialised parts of) the halo after reaching turnaround. During the first few crossings of the system, subhalo orbits shrink due to their energy exchange with the shells they cross, which causes the non-virialised part of the subhalo to contract adiabatically. But, after these few initial crossings and neglecting the effects of dynamical friction, subhalo orbits stabilise, with the apocentre at the instantaneous virial radius of the (newly virialised part of the) halo, which thus grows inside-out. The time at which subhalo orbits become stable is what we adopt as the time of their accretion onto the virialised halo. In what follows we concentrate in monitoring the stripping of subhaloes after their accretion onto the host halo, i.e. once their orbits are fixed (neglecting dynamical friction). The stripped subhalo abundance per infinitesimal truncated mass and radius at M_s^tr and r within a purely accreting halo with M_h at t_h is given by equation (1). The first term on the right of equation (1), equal to equation (2), gives the contribution directly arising from the stripping of accreted subhaloes of suited mass M_s, which have their apocentre at r (see Paper I) and whose abundance is equation (3). In equation (2), µ(r, M_s^tr) is the mean (averaged over v) truncated-to-original mass ratio of subhaloes with M_s^tr at r, calculated in Paper II by monitoring the mass loss through repetitive stripping and shock heating of subhaloes accreted at t(r) when the host halo had radius r and mass M(r). And the second term on the right of equation (1) gives the contribution arising from subsubhaloes that were lying in accreted subhaloes with mass M and tangential velocities v at r and have been released into the intra-halo medium when their hosts, with initial radius R(r, M), have been truncated at R^tr(v, r, M). See Paper II for the expression of the truncation radius in objects with the NFW (Navarro et al. 1997) density profile."
+      },
+      "confidence": 0.95,
+      "name": "mean truncated-to-original subhalo mass ratio profile",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7680c2c23037afca_m3",
+      "evidence": {
+        "section": "ORDINARY HALOES OF DIFFERENT MASSES",
+        "original_text": "Be F[M_h, t_h](x, m) the fraction of accreted subhaloes per infinitesimal mass and radius that satisfy some condition in haloes of M_h at t_h averaged over their formation time (i.e. the time of their last major merger) and F[M_h^PA, t_h](x, m) its counterpart in purely accreting haloes. Taking into account the inside-out growth of haloes after their last major merger, we have the following relation between the two quantities equation (8) where f[M_h, t_h](t) is the formation time probability distribution function (PDF) of haloes with M_h at t_h, calculated within the CUSP formalism in Manrique et al. (1998) (see also Raig et al. 2001 for a practical approximate expression in the extended Press-Schechter (EPS) formalism; Press & Schechter 1974; Bower 1991; Bond et al. 1991; Lacey & Cole 1994)."
+      },
+      "confidence": 0.95,
+      "name": "formation time probability distribution function (PDF)",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7680c2c23037afca_x1",
+      "evidence": {
+        "section": "PURELY ACCRETING HALOES",
+        "original_text": "In Figure 2 we show the scaled number density profiles of subhaloes of two masses (10^{-2} M_h and 10^{-4} M_h) found for the two above mentioned M–c relations. For comparison we plot the profile found by Han et al. (2016) in the MW-mass halo A of the Level 1 Aquarius simulation (Springel et al. 2008), also found to be roughly independent of subhalo mass (except for the effects of dynamical friction; Han et al. 2018). This halo is particularly well suited to the comparison with our predictions for purely accreting haloes because it suffered the last major merger at z ∼ 6 (r ∼ 0.08 R_h) and has been evolving by accretion (and growing inside-out) since then."
+      },
+      "confidence": 0.95,
+      "task": "comparison with Aquarius simulation",
+      "setup": "MW-mass halo A of Level 1 Aquarius simulation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7680c2c23037afca_x2",
+      "evidence": {
+        "section": "ORDINARY HALOES OF A FIXED MASS AND DIFFERENT FORMATION TIMES",
+        "original_text": "In Figure 11 the integrated radial distributions of luminous subhaloes or, more exactly, the corresponding accreted subhaloes predicted by CUSP for haloes with the two extreme masses are compared to the integrated radial distributions of satellites (including orphan objects) found by Bose et al. (2020) for the 20 % earliest- and 20 % latest-forming haloes with M_200 ∼ 1−1.3 × 10^{12} M_⊙. These authors provide the results obtained from the Copernicus Complexio Low Resolution (COLOR) simulation and the Copernicus Complexio (COCO) suite of simulations, with substantially higher resolution but much poorer statistics (COLOR has ∼ 20 times more haloes than COCO). In any case, the mass resolution in both simulations is sufficient to detect star formation in all haloes with masses larger than 1.4 × 10^{8} M_⊙, so including orphan satellites in stripped subhaloes with ending masses below the resolution mass should be sufficient to count all satellites. Yet, the higher resolution of the COCO simulations yields twice more satellites of the relevant masses than in the COLOR simulations (see Fig. 1 of Bose et al. 2020). Since all-level subhaloes are also twice more abundant than first-level ones (Paper I), that result suggests that many satellites in the COCO simulations lie in high-level subhaloes. This would explain why including one orphan satellite per disrupted (first-level) subhalo in the COLOR simulation is not enough to recover the satellite abundance found in the COCO simulations. This conclusion is also supported by the fact that the satellite abundance in the COCO simulations agrees with the (all-level) subhalo abundance found in merger tree Monte Carlo simulations according to the EPS formalism (Bose et al. 2020)."
+      },
+      "confidence": 0.95,
+      "task": "comparison with Copernicus Complexio simulations",
+      "setup": "COLOR and COCO simulations, MW-mass haloes"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7680c2c23037afca_qr1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In particular, we assume the MW mass equal to M_h = 2.2 × 10^12 M⊙. The cosmology adopted is that given by the best WMAP7 parameters (Komatsu et al. 2011), with CDM spectrum according to the prescription given by Bardeen et al. (1986) with the Sugiyama (1995) shape parameter. The reader is referred to Papers I and II for the role of diffuse dark matter (dDM) in the properties of substructure, just briefly referred to in this Paper."
+      },
+      "confidence": 0.99,
+      "quantity": "MW halo mass",
+      "value": 2.2,
+      "unit": "×10^12 M⊙",
+      "context": "MW halo mass definition in the adopted cosmology",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7680c2c23037afca_qr2",
+      "evidence": {
+        "section": "Section 4",
+        "original_text": "The vast majority of satellites with stellar masses below ∼ 3.2 × 10^6 M⊙ necessarily formed in haloes with masses between the minimum mass for star formation, M_s ∼ 1.4 × 10^8 M⊙ (Bose et al. 2020), and the maximum mass of haloes having formed 3.2 × 10^6 M⊙ of stars, ∼ 5 × 10^8 M⊙."
+      },
+      "confidence": 0.95,
+      "quantity": "minimum mass for star formation",
+      "value": 1.4,
+      "unit": "×10^8 M⊙",
+      "context": "Minimum halo mass for star formation in the context of satellite galaxies",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7680c2c23037afca_qr3",
+      "evidence": {
+        "section": "Section 4",
+        "original_text": "The vast majority of satellites with stellar masses below ∼ 3.2 × 10^6 M⊙ necessarily formed in haloes with masses between the minimum mass for star formation, M_s ∼ 1.4 × 10^8 M⊙ (Bose et al. 2020), and the maximum mass of haloes having formed 3.2 × 10^6 M⊙ of stars, ∼ 5 × 10^8 M⊙."
+      },
+      "confidence": 0.95,
+      "quantity": "maximum halo mass for satellites with stellar mass below 3.2 × 10^6 M⊙",
+      "value": 5,
+      "unit": "×10^8 M⊙",
+      "context": "Maximum halo mass corresponding to satellites with stellar masses below 3.2 × 10^6 M⊙",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7680c2c23037afca_qr4",
+      "evidence": {
+        "section": "Section 4",
+        "original_text": "And in Figure 11 we compare the theoretical radial distributions of luminous subhaloes to those of satellites found by Bose et al. (2020) in the 20% earliest- and latest-forming MW-mass haloes (M_200 ∼ 1−1.3 × 10^12 M⊙). In principle, to calculate such theoretical profiles we should find the upper and lower mass limits of stripped subhaloes that correspond to the upper and lower stellar mass limits of 3.2 × 10^6 M⊙ and zero M⊙, respectively, used by Bose et al."
+      },
+      "confidence": 0.95,
+      "quantity": "stellar mass upper limit for faint and ultra-faint satellites",
+      "value": 3.2,
+      "unit": "×10^6 M⊙",
+      "context": "Upper stellar mass limit for faint and ultra-faint satellites considered in the study",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7680c2c23037afca_qr5",
+      "evidence": {
+        "section": "Section 2",
+        "original_text": "As a result, the mass integral of µ varies with halo mass as ∝ M_h^0.08. Regarding the dependence of µ on subhalo mass, it turns out that µ(r, M_s^tr) is separable. The reason for this is that subhaloes are truncated by tidal stripping at the radius (dependent on their own concentration) where the inner mean density equals that of the halo at the pericentre, which is the same for subhaloes of all masses with identical v at r (see Paper II). The factor dependent on subhalo mass is essentially proportional to (M_s^tr)^−0.03."
+      },
+      "confidence": 0.95,
+      "quantity": "mass integral of µ variation with halo mass",
+      "value": 0.08,
+      "unit": "power index",
+      "context": "Dependence of the mass integral of the mean truncated-to-original subhalo mass ratio profile (µ) on halo mass",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7680c2c23037afca_qr6",
+      "evidence": {
+        "section": "Section 2",
+        "original_text": "In Figure 3 we also see that the scaled MF of stripped subhaloes is also universal provided it is multiplied by M_h^−0.08. Such a dependence on halo mass of the MF of stripped subhaloes following from the above mentioned dependence of the integral over r of their µ profile as a consequence of the mass dependence of halo concentration fully agrees with that observed in simulations (the factor rendering the MF of simulated haloes universal is M_h^η with η = −0.1; Han et al. 2018; Rodríguez-Puebla et al. 2016; see also Zentner et al. 2005; Giocoli et al. 2008; Gao et al. 2011)."
+      },
+      "confidence": 0.95,
+      "quantity": "subhalo MF mass dependence power index",
+      "value": -0.08,
+      "unit": "power index",
+      "context": "Dependence of the stripped subhalo mass function (MF) on halo mass for purely accreting haloes",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7680c2c23037afca_p1",
+      "evidence": {
+        "section": "Section 2",
+        "original_text": "In Figure 3 we also see that the scaled MF of stripped subhaloes is also universal provided it is multiplied by M_h^−0.08. Such a dependence on halo mass of the MF of stripped subhaloes following from the above mentioned dependence of the integral over r of their µ profile as a consequence of the mass dependence of halo concentration fully agrees with that observed in simulations (the factor rendering the MF of simulated haloes universal is M_h^η with η = −0.1; Han et al. 2018; Rodríguez-Puebla et al. 2016; see also Zentner et al. 2005; Giocoli et al. 2008; Gao et al. 2011)."
+      },
+      "confidence": 0.95,
+      "metric": "scaled subhalo mass function (MF)",
+      "compared_to": "simulations (Han et al. 2018; Rodríguez-Puebla et al. 2016)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7680c2c23037afca_p2",
+      "evidence": {
+        "section": "Section 2",
+        "original_text": "In Figure 2 we show the scaled number density profiles of subhaloes of two masses (10^−2 M_h and 10^−4 M_h) found for the two above mentioned M–c relations. For comparison we plot the profile found by Han et al. (2016) in the MW-mass halo A of the Level 1 Aquarius simulation (Springel et al. 2008), also found to be roughly independent of subhalo mass (except for the effects of dynamical friction; Han et al. 2018)."
+      },
+      "confidence": 0.95,
+      "metric": "scaled subhalo number density profile",
+      "compared_to": "Aquarius simulation (Han et al. 2016)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7680c2c23037afca_p3",
+      "evidence": {
+        "section": "Section 4",
+        "original_text": "In Figure 11 we compare the theoretical radial distributions of luminous subhaloes to those of satellites found by Bose et al. (2020) in the 20% earliest- and latest-forming MW-mass haloes (M_200 ∼ 1−1.3 × 10^12 M⊙). These authors provide the results obtained from the Copernicus Complexio Low Resolution (COLOR) simulation and the Copernicus Complexio (COCO) suite of simulations, with substantially higher resolution but much poorer statistics (COLOR has ∼ 20 times more haloes than COCO). As can be seen in Figure 11 the predicted profiles almost fully agree, indeed, with those found by Bose et al. (2020)."
+      },
+      "confidence": 0.95,
+      "metric": "integrated radial distribution of luminous subhaloes (satellites)",
+      "compared_to": "Bose et al. (2020) COLOR simulation"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7680c2c23037afca_p4",
+      "evidence": {
+        "section": "Section 3",
+        "original_text": "In addition, the MF of ordinary haloes averaged over their formation times is somewhat smaller than that of purely accreting haloes, as expected from the discussion on the values of µ near R_h. On the contrary, the MF of individual ordinary haloes fully overlap with the MF of purely accreting haloes of the same mass, which explains the result in Figure 3. Only the MF of extreme late-forming haloes is substantially lower because of the rapid decrease of their µ profile when going away from R_h."
+      },
+      "confidence": 0.95,
+      "metric": "cumulative subhalo mass function (MF) for ordinary haloes",
+      "compared_to": "purely accreting haloes"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_7680c2c23037afca_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With this Paper we complete a comprehensive study of substructure in dark matter haloes. In Paper I we derived the radial distribution and mass function (MF) of accreted subhaloes (scaled to the radius and mass of the host halo) and showed they are essentially universal. This is not the case, however, for those of stripped subhaloes, which depend on halo mass and assembly history. In Paper II we derived these latter properties in the simplest case of purely accreting haloes. Here we extend the study to ordinary haloes having suffered major mergers. After showing that all the properties of substructure are encoded in the mean truncated-to-original subhalo mass ratio profile, we demonstrate that the dependence of the subhalo MF on halo mass arises from their mass-dependent concentration, while the shape of the subhalo radial distribution depends on the time of the last major merger of the host halo. In this sense, the latter property is a better probe of halo formation time than the former. Unfortunately, this is not the case for the radial distribution of satellites as this profile is essentially disconnected from subhalo stripping and the properties of accreted subhaloes are independent of the halo formation time."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_7680c2c23037afca_cl1",
+      "evidence": {
+        "section": "Summary and Discussion",
+        "original_text": "The present Paper is the last one of a series of three devoted to provide a comprehensive insight on halo substructure. Making use of the CUSP formalism we derived, in Paper I, the properties of accreted subhaloes from the statistics of their seeds (nested peaks) in the primordial Gaussian random density field. In Paper II, we developed a detailed stripping model and used the properties of accreted subhaloes to derive those of stripped ones taking into account the repetitive tidal truncation and shock heating they suffer as they orbit within their hosts. As argued in Paper II, the properties of stripped subhaloes depend on the particular assembly history of their host halo. Nevertheless, their derivation was carried in the simplest, little realistic case of purely accreting haloes. Here we have extended those results to ordinary haloes, i.e. having undergone major mergers, with the aim to: 1) see how the properties of substructure determined in Paper II are modified by the action of major mergers, 2) determine their dependence on substructure on halo mass and formation time (i.e. the time of the last major merger) and 3) find the capabilities of substructure as a probe of halo assembly history. In a formal plane, it has been shown that all the properties of substructure in haloes of any mass and formation time are encoded in the mean truncated-to-original subhalo mass ratio profile, µ(r, Ms_tr), weakly dependent, actually, on Ms_tr. This profile is flat inside the radius reached by the object at its last major merger (inside which the system was completely scrambled) and rapidly approaches, at larger radii, the µ profile of the purely accreting halo of the same mass, setting the correspondence between r and t which can be used to determine the time of the merger. This profile is at the base of all the remaining more practical results. Regarding our first goal, we have demonstrated that the agreement found in Paper II between our predictions for purely accreting haloes and the results of simulations dealing with ordinary ones was not casual. Even though major mergers affect the properties of substructure in ordinary haloes with respect to purely accreting ones, their subhalo MF remains essentially unaltered. Major mergers only leave a substantial imprint in the radial distribution of subhaloes. These results have important repercussions on our second goal. On the one hand, the dependence on halo mass of the subhalo MF is the same in ordinary haloes as in purely accreting ones. Since in the latter the formation time plays no role, that dependence can only arise from the mass dependence on mass of halo concentration, as found in Paper II. This dependence on halo mass is already seen, of course, in the (non-scaled) radial distribution of subhaloes whose integral over the radius leads to the MF. But the radial distribution of subhaloes in haloes of any given mass has the added interest that it also harbours information on the formation time of the host halo. Indeed, the scaled subhalo number density profiles in ordinary haloes, independent of subhalo mass, is steeper than in purely accreting haloes, being proportional to the density profile of the halo inside the scrambling radius reached at its formation. This scaled version of the radial distribution of subhaloes does not inform on the subhalo richness, but another non-scaled version of it, the integrated subhalo number density profile, does. We have shown that this latter profile is higher at large radii contributing the most to the total subhalo abundance in early-forming haloes than in late-forming ones. Moreover, the profiles in the two kinds of haloes are also very different as they cross each other at some intermediate radii. Of course, the different richness of haloes of a given mass is also reflected in their subhalo MF, which in extremely late-forming haloes is found to be substantially lower than in all the rest. All these results lead to the following conclusion regarding the third goal: the radial distribution of subhaloes is very useful to probe the halo formation time, much better than the subhalo MF. Unfortunately, this conclusion only holds for plain subhaloes, not for satellites. Indeed, the properties of satellites do not depend on how their host halo stripped subhaloes. They only depend on the masses of accreted subhaloes where they formed, whose properties are independent of the halo formation time. Thus, the properties of ultrafaint satellites do not inform on the formation time of the host halo. The good news is that, by simply comparing their radial distribution to that of very low mass subhaloes they should unambiguously tell whether or not there really is a 'missing satellite problem', without depending on the particular formation history of the host halo."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_7680c2c23037afca_lm1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Our treatment does not include dynamical friction. However, the predictions for low-mass subhaloes (Ms ≲ 10^-4 Mh, where Mh is the mass of the host halo) should not be affected by that omission. On the other hand, it does not include baryons either. However, by comparing our predictions to the results of simulations including them, it is still possible to unravel to some extent the influence of baryons physics in the properties of substructure."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_7680c2c23037afca_fw1",
+      "evidence": {
+        "section": "Summary and Discussion",
+        "original_text": "In its current form, our analytic treatment does not account for dynamical friction. Of course, this is not a drawback when dealing with low enough mass subhaloes (faint enough satellites). But, if we want to deal with more massive subhaloes (more luminous satellites), we should account for that process. That possibility would be very welcome because, even though the radial distribution of satellites does not depend on subhalo stripping, it is sensitive to dynamical friction. Thus, the properties of satellites could still inform on the halo assembly history through the effect of dynamical friction. Work in this line is currently in progress (SalvadorSol´e et al. 2021d)."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

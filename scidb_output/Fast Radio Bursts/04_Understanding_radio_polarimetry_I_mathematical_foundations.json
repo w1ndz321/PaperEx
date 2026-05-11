@@ -1,0 +1,609 @@
+{
+  "metadata": {
+    "doc_id": "doc_8e3d80bff554099e",
+    "source_file": "04_Understanding_radio_polarimetry_I_mathematical_foundations.md",
+    "title": "Understanding radio polarimetry. I. Mathematical foundations",
+    "year": 1996,
+    "doi": null,
+    "abstract": "Abstract. — The measurement of polarized radiation uses entirely different methods at optical and radio wavelengths. As a result, the algebraic analysis of polarimeter performance differs and, in the case of radio interferometry, is unnecessarily complicated. We demonstrate that the mathematical operation of outer matrix multiplication provides the missing link between the two approaches. Within one coherent framework, we then unite the concepts of Stokes parameters and Wolf coherency matrix, the Jones and Mueller calculi from optics, and the techniques of radio interferometry based on multiplying correlators. We relate the polarization performance of a complete radio interferometer to the (matrix) polarization properties of its successive signal processing stages, providing a clear view of how a radio polarimeter works. Our treatment also clarifies the nature of and the relations between the various types of transformations used in optical polarimetry. We develop the analysis from the radio interferometrist’s point of view, but include enough background for a wider audience. In a companion paper, we discuss in more detail the application to the calibration of radio interferometer systems; in a third paper we investigate the IAU (1973) radio definition of the Stokes parameters and its precise translation into mathematical form.",
+    "introduction": "The study of polarized electromagnetic radiation belongs traditionally to the realm of optics. A century and a half ago, the representation of polarization in terms of what are now known as the four Stokes parameters was discovered (Stokes 1852; modern treatments are to be found in most advanced optics and radio-astronomy textbooks, such as Born & Wolf 1964; Hecht & Zajac 1982; Thompson et al. 1986). In modern optical-instrument design, these parameters are treated as the components of the Stokes vector, whose transmission through an optical element may be described by multiplication with a 4 × 4 Mueller matrix (Mueller 1948). Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957). \n\nUnlike optical detectors, radio antennas are inherently fully polarized. Observers were therefore forced to consider polarization from the very beginning. The instrumental techniques at radio wavelengths are too different for the theories from optics to be directly applicable, so radio observers had to develop a theory of their own. The foundation was laid by Morris et al. (1964). They consider two antennas, each with a single receptor, connected to the two inputs of a device that correlates the input signals, i.e. multiplies them and time-averages the product. They derive a lengthy formula showing the output in terms of the Stokes visibilities (Appendix C) with the orientations and ellipticities of the dipoles (Born & Wolf 1964; Thompson et al. 1986) as parameters in an otherwize error-free system. We shall call this the black-box formula because it treats the entire interferometer as a black box that converts input Stokes visibilities into an output correlation coefficient. All observational work since the appearance of this formula has been based, directly or indirectly, upon it. Later theoretical work uses it as a starting point for considering the impact of various instrumental errors (e.g. Weiler 1973; Weiler & Raimond 1976; Thompson et al. 1986). \n\nSend offprint requests to: J.P. Hamaker, jph@nfra.nl \n\nJ.P. Hamaker et al.: Understanding radio polarimetry. I. \n\n138 \n\nAs a result of these efforts, radio polarimetrists now understand quite well what they are doing. Yet a comprehensive framework in which all elements of the theory find their natural place is lacking: The basic problem remains that the black-box formula describes only the interferometer in its entirety without providing an insight into its inner workings. \n\nThis paper has several purposes. First and foremost, it presents a theory that unifies the concepts of Stokes parameters, Jones and Mueller matrices and of radio interferometry in a single coherent framework. The key to this unification is the observation (made earlier by opticists but never brought to bear on radio polarimetry) that the coherency matrix (Born & Wolf 1964) can be reformatted as a coherency vector that is the outer matrix product of two vector amplitudes ´a la Jones. The elegant properties of the outer product then lead the way to a simple and elegant theory. \n\nIn developing this theory, we emphasize some basic concepts from the theory of linear algebra which are well known in theory but appear to be often overlooked in practice. Our second aim, then, is to present the theory in a semi-tutorial style that emphasizes the precise interpretation of the mathematics. We start from the conceptual framework of radio interferometry, but we try to explain enough of the basics from that field to make the material accessible to non-specialists. \n\nIn the third place, we indicate how previous work on radio interferometry fits into the new framework. \n\nOur theory is based on the theory of linear transformations. Like practically all previous work on radio polarimetry, it excludes one important aspect of practical radio polarimetry, viz. the variation of instrumental polarization over the primary beam of the element antennas which is induced by the feed/reflector geometry. \n\nIn a companion paper (Paper II, Sault et al. 1996) of a more specialist nature, we consider the application of our theory to calibration problems of practical radio interferometer arrays. That paper relies both on results from the optical-polarimetry literature and on the material in this paper. One important difference may be worth noting from the outset: Here we treat the processing of the signal and coherency vectors in a single two-element interferometer. Paper II provides a broader view by investigating the properties of a multi-element interferometer array as an imaging device. \n\nIn a third paper (Paper III, Hamaker & Bregman 1996) we consider the interpretation of the IAU (1973) radio definitions of the Stokes parameters for radio astronomy and seek to definitively clear up the confusion that seems to beset their application. In the conventions it adopts, the present paper anticipates the results of Paper III, which are also in accord with the conventions used by Thompson et al. (1986).",
+    "primary_discipline": {
+      "level1": "物理学",
+      "level2": "光学",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": "信息处理技术",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "radio polarimetry",
+      "Stokes parameters",
+      "Jones matrix",
+      "Mueller matrix",
+      "interferometry"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:49.063576+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The measurement of polarized radiation uses entirely different methods at optical and radio wavelengths. As a result, the algebraic analysis of polarimeter performance differs and, in the case of radio interferometry, is unnecessarily complicated. We demonstrate that the mathematical operation of outer matrix multiplication provides the missing link between the two approaches. Within one coherent framework, we then unite the concepts of Stokes parameters and Wolf coherency matrix, the Jones and Mueller calculi from optics, and the techniques of radio interferometry based on multiplying correlators. We relate the polarization performance of a complete radio interferometer to the (matrix) polarization properties of its successive signal processing stages, providing a clear view of how a radio polarimeter works. Our treatment also clarifies the nature of and the relations between the various types of transformations used in optical polarimetry. We develop the analysis from the radio interferometrist’s point of view, but include enough background for a wider audience."
+      },
+      "confidence": 0.98,
+      "term": "radio polarimetry",
+      "normalized": "射电偏振测量",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate that the mathematical operation of outer matrix multiplication provides the missing link between the two approaches. Within one coherent framework, we then unite the concepts of Stokes parameters and Wolf coherency matrix, the Jones and Mueller calculi from optics, and the techniques of radio interferometry based on multiplying correlators. We relate the polarization performance of a complete radio interferometer to the (matrix) polarization properties of its successive signal processing stages, providing a clear view of how a radio polarimeter works. Our treatment also clarifies the nature of and the relations between the various types of transformations used in optical polarimetry. We develop the analysis from the radio interferometrist’s point of view, but include enough background for a wider audience."
+      },
+      "confidence": 0.97,
+      "term": "outer matrix multiplication",
+      "normalized": "外矩阵乘法",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A century and a half ago, the representation of polarization in terms of what are now known as the four Stokes parameters was discovered (Stokes 1852; modern treatments are to be found in most advanced optics and radio-astronomy textbooks, such as Born & Wolf 1964; Hecht & Zajac 1982; Thompson et al. 1986). In modern optical-instrument design, these parameters are treated as the components of the Stokes vector, whose transmission through an optical element may be described by multiplication with a 4 × 4 Mueller matrix (Mueller 1948). Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957)."
+      },
+      "confidence": 0.99,
+      "term": "Stokes parameters",
+      "normalized": "斯托克斯参数",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957)."
+      },
+      "confidence": 0.98,
+      "term": "Jones matrix",
+      "normalized": "琼斯矩阵",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In modern optical-instrument design, these parameters are treated as the components of the Stokes vector, whose transmission through an optical element may be described by multiplication with a 4 × 4 Mueller matrix (Mueller 1948). Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957)."
+      },
+      "confidence": 0.98,
+      "term": "Mueller matrix",
+      "normalized": "米勒矩阵",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c6",
+      "evidence": {
+        "section": "3.2. The coherency vector",
+        "original_text": "The coherency properties of the electric field are described by the coherency matrix (Born & Wolf 1964). An equivalent form that is more convenient for our purposes is the coherency vector ; in xy coordinates it is defined as e+ = (exex∗, exey∗, eyex∗, eyey∗). This vector form enables us to make the crucial step of recognizing the coherency vector as the time-averaged outer product of the two input signal vectors: e+ = ⟨eA ⊗ eB∗⟩. Note that in Eq. (4) we are introducing a new notational convention to distinguish quantities in the 2-dimensional signal domain from those in the 4-dimensional coherency domain: The former refer to a single antenna and must therefore be subscripted with either A or B; the latter refer to the interferometer as a whole and need no such subscripts."
+      },
+      "confidence": 0.96,
+      "term": "coherency vector",
+      "normalized": "相干矢量",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Unlike optical detectors, radio antennas are inherently fully polarized. Observers were therefore forced to consider polarization from the very beginning. The instrumental techniques at radio wavelengths are too different for the theories from optics to be directly applicable, so radio observers had to develop a theory of their own. The foundation was laid by Morris et al. (1964). They consider two antennas, each with a single receptor, connected to the two inputs of a device that correlates the input signals, i.e. multiplies them and time-averages the product. They derive a lengthy formula showing the output in terms of the Stokes visibilities (Appendix C) with the orientations and ellipticities of the dipoles (Born & Wolf 1964; Thompson et al. 1986) as parameters in an otherwize error-free system. We shall call this the black-box formula because it treats the entire interferometer as a black box that converts input Stokes visibilities into an output correlation coefficient. All observational work since the appearance of this formula has been based, directly or indirectly, upon it. Later theoretical work uses it as a starting point for considering the impact of various instrumental errors (e.g. Weiler 1973; Weiler & Raimond 1976; Thompson et al. 1986)."
+      },
+      "confidence": 0.97,
+      "term": "radio interferometry",
+      "normalized": "射电干涉测量",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "They derive a lengthy formula showing the output in terms of the Stokes visibilities (Appendix C) with the orientations and ellipticities of the dipoles (Born & Wolf 1964; Thompson et al. 1986) as parameters in an otherwize error-free system. We shall call this the black-box formula because it treats the entire interferometer as a black box that converts input Stokes visibilities into an output correlation coefficient. All observational work since the appearance of this formula has been based, directly or indirectly, upon it. Later theoretical work uses it as a starting point for considering the impact of various instrumental errors (e.g. Weiler 1973; Weiler & Raimond 1976; Thompson et al. 1986)."
+      },
+      "confidence": 0.95,
+      "term": "black-box formula",
+      "normalized": "黑箱公式",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c9",
+      "evidence": {
+        "section": "6. Limitations of the Jones formalism: Decorrelation and depolarization",
+        "original_text": "In Sect. 3.1 we postulated our signals to be quasi-monochromatic without stating what this means. We now want to examine the foundations of the Jones formalism more precisely. An electromagnetic signal propagating in space may be represented at some fixed point as an integral of monochromatic components over its bandwidth ∆ω: e(t) = ∫ a(ω) exp(iωt) dω. We may rewrite this equation in the form e(t) = a(ω0) exp(iω0t) ∫ b(ω) exp(i(ω − ω0)t) dω, i.e. we represent it as a monochromatic signal with a varying amplitude. In principle, any signal can be represented in this way. According to the Nyquist sampling theorem, e is essentially constant over time intervals ≪ π/∆ω. Thus, e(t) will vary slowly with respect to the oscillation period if the relative bandwidth 2∆ω/ω ≪ 1; this is the common definition of a quasi-monochromatic signal (see e.g. Born & Wolf 1964)."
+      },
+      "confidence": 0.96,
+      "term": "quasi-monochromatic signal",
+      "normalized": "准单色信号",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_8e3d80bff554099e_c10",
+      "evidence": {
+        "section": "6. Limitations of the Jones formalism: Decorrelation and depolarization",
+        "original_text": "Depolarization is the more general appearance that bandwidth decorrelation assumes in a vector theory of interferometry and image formation. It may result not only from the integration over frequency that we just discussed, but also from other integrations, e.g. over the cross-section of a beam of radiation or over a source of finite extent. Faraday depolarization due to finite spatial resolution is a familiar effect in radio astronomy, and in optics depolarizing optical elements are well known. Such elements cannot be described by a Jones matrix, but do have a 4 × 4 Mueller matrix which describes the transmission of the Stokes vector."
+      },
+      "confidence": 0.95,
+      "term": "depolarization",
+      "normalized": "退偏振",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We demonstrate that the mathematical operation of outer matrix multiplication provides the missing link between the two approaches. Within one coherent framework, we then unite the concepts of Stokes parameters and Wolf coherency matrix, the Jones and Mueller calculi from optics, and the techniques of radio interferometry based on multiplying correlators. We relate the polarization performance of a complete radio interferometer to the (matrix) polarization properties of its successive signal processing stages, providing a clear view of how a radio polarimeter works. Our treatment also clarifies the nature of and the relations between the various types of transformations used in optical polarimetry. We develop the analysis from the radio interferometrist’s point of view, but include enough background for a wider audience."
+      },
+      "confidence": 0.94,
+      "head": "doc_8e3d80bff554099e_c2",
+      "relation_type": "unites",
+      "relation_surface": "provides the missing link",
+      "tail": "doc_8e3d80bff554099e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In modern optical-instrument design, these parameters are treated as the components of the Stokes vector, whose transmission through an optical element may be described by multiplication with a 4 × 4 Mueller matrix (Mueller 1948). Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957)."
+      },
+      "confidence": 0.92,
+      "head": "doc_8e3d80bff554099e_c4",
+      "relation_type": "describes",
+      "relation_surface": "describes an optical element by multiplication",
+      "tail": "doc_8e3d80bff554099e_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In modern optical-instrument design, these parameters are treated as the components of the Stokes vector, whose transmission through an optical element may be described by multiplication with a 4 × 4 Mueller matrix (Mueller 1948). Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957)."
+      },
+      "confidence": 0.92,
+      "head": "doc_8e3d80bff554099e_c5",
+      "relation_type": "describes",
+      "relation_surface": "described by multiplication with",
+      "tail": "doc_8e3d80bff554099e_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r4",
+      "evidence": {
+        "section": "3.2. The coherency vector",
+        "original_text": "The coherency properties of the electric field are described by the coherency matrix (Born & Wolf 1964). An equivalent form that is more convenient for our purposes is the coherency vector ; in xy coordinates it is defined as e+ = (exex∗, exey∗, eyex∗, eyey∗). This vector form enables us to make the crucial step of recognizing the coherency vector as the time-averaged outer product of the two input signal vectors: e+ = ⟨eA ⊗ eB∗⟩. Note that in Eq. (4) we are introducing a new notational convention to distinguish quantities in the 2-dimensional signal domain from those in the 4-dimensional coherency domain: The former refer to a single antenna and must therefore be subscripted with either A or B; the latter refer to the interferometer as a whole and need no such subscripts."
+      },
+      "confidence": 0.93,
+      "head": "doc_8e3d80bff554099e_c6",
+      "relation_type": "derives",
+      "relation_surface": "recognizing the coherency vector as the time-averaged outer product",
+      "tail": "doc_8e3d80bff554099e_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Another approach is to consider the transmission of the instantaneous (complex) optical vector amplitude; this formulation describes an optical element by multiplication with a 2 × 2 Jones matrix (Jones 1941). The Jones formalism assumes the quasi-monochromatic case (cf. Sect. 6) and is, in its simplest form, less generally applicable than the Mueller formalism. Several authors indicate a connection between the Jones and Mueller matrices which seems to be due originally to van de Hulst (1957)."
+      },
+      "confidence": 0.91,
+      "head": "doc_8e3d80bff554099e_c4",
+      "relation_type": "assumes",
+      "relation_surface": "assumes the quasi-monochromatic case",
+      "tail": "doc_8e3d80bff554099e_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r6",
+      "evidence": {
+        "section": "6. Limitations of the Jones formalism: Decorrelation and depolarization",
+        "original_text": "Depolarization is the more general appearance that bandwidth decorrelation assumes in a vector theory of interferometry and image formation. It may result not only from the integration over frequency that we just discussed, but also from other integrations, e.g. over the cross-section of a beam of radiation or over a source of finite extent. Faraday depolarization due to finite spatial resolution is a familiar effect in radio astronomy, and in optics depolarizing optical elements are well known. Such elements cannot be described by a Jones matrix, but do have a 4 × 4 Mueller matrix which describes the transmission of the Stokes vector."
+      },
+      "confidence": 0.94,
+      "head": "doc_8e3d80bff554099e_c4",
+      "relation_type": "cannot describe",
+      "relation_surface": "cannot be described by a Jones matrix",
+      "tail": "doc_8e3d80bff554099e_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r7",
+      "evidence": {
+        "section": "6. Limitations of the Jones formalism: Decorrelation and depolarization",
+        "original_text": "Depolarization is the more general appearance that bandwidth decorrelation assumes in a vector theory of interferometry and image formation. It may result not only from the integration over frequency that we just discussed, but also from other integrations, e.g. over the cross-section of a beam of radiation or over a source of finite extent. Faraday depolarization due to finite spatial resolution is a familiar effect in radio astronomy, and in optics depolarizing optical elements are well known. Such elements cannot be described by a Jones matrix, but do have a 4 × 4 Mueller matrix which describes the transmission of the Stokes vector."
+      },
+      "confidence": 0.94,
+      "head": "doc_8e3d80bff554099e_c5",
+      "relation_type": "describes",
+      "relation_surface": "do have a 4 × 4 Mueller matrix which describes the transmission",
+      "tail": "doc_8e3d80bff554099e_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_8e3d80bff554099e_r8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "They derive a lengthy formula showing the output in terms of the Stokes visibilities (Appendix C) with the orientations and ellipticities of the dipoles (Born & Wolf 1964; Thompson et al. 1986) as parameters in an otherwize error-free system. We shall call this the black-box formula because it treats the entire interferometer as a black box that converts input Stokes visibilities into an output correlation coefficient. All observational work since the appearance of this formula has been based, directly or indirectly, upon it. Later theoretical work uses it as a starting point for considering the impact of various instrumental errors (e.g. Weiler 1973; Weiler & Raimond 1976; Thompson et al. 1986)."
+      },
+      "confidence": 0.93,
+      "head": "doc_8e3d80bff554099e_c8",
+      "relation_type": "based on",
+      "relation_surface": "All observational work since the appearance of this formula has been based, directly or indirectly, upon it",
+      "tail": "doc_8e3d80bff554099e_c7"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8e3d80bff554099e_d1",
+      "evidence": {
+        "section": "4.3",
+        "original_text": "A spectacular example where the observed visibilities are much more strongly polarised than the source brightness is to be found in the recent observations of galactic foreground Faraday rotation by Wieringa et al. (1993). In these observations, brightness polarizations well above 100% are seen; this may happen because the distribution of Stokes I is so smooth that only a small fraction of it is picked up by the interferometers."
+      },
+      "confidence": 0.85,
+      "name": "Galactic foreground Faraday rotation observations",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_8e3d80bff554099e_d2",
+      "evidence": {
+        "section": "Appendix C",
+        "original_text": "Classical interferometry considering brightness alone is based on the van Cittert-Zernike theorem, which states that the spatial autocorrelation function of the electromagnetic field is the Fourier transform of the brightness distribution. This function is known as the visibility V (r); its argument is the vector separation between the two sampling points. Extending this concept to include polarization, one recognizes that the visibility function is now a vector entity whose four components coincide with those of the coherency vector in our paper. In other words, we identify the coherency vector e⁺ measured in geometric xy coordinates with the value of the vector visibility function when we take for its argument the vector separation between antennas A and B. The classical definition of the Stokes parameters refers to the electric field at a single point in the radiation field, i.e. r = 0. The generalization to include the dependence on r is obvious and leads to the concept of the Stokes visibility functions: Unlike the classical parameters which are real, the Stokes visibilities are complex functions. It is readily apparent that they are Hermitian, i.e. Fourier-transforming this function back to sky brightnesses, we get the real brightness distributions in each of the four Stokes parameters. Since both the Stokes and Fourier transformations are linear, one could also first Fourier transform the vector visibility function and apply the Stokes transformation afterwards for each point on the sky."
+      },
+      "confidence": 0.9,
+      "name": "Stokes visibility functions",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8e3d80bff554099e_ds1",
+      "evidence": {
+        "section": "2",
+        "original_text": "Figure 1 gives a schematic diagram of a polarization interferometer, demonstrating the terminology we will use. The incident electric field is described in terms of two components (e.g. horizontal and vertical as shown in the diagram, or right- and left-circular), each of which is converted to an electric voltage by a receptor. In a typical feed, the centres of the two receptors coincide geometrically. The receptors are usually labeled according to the polarization component to which they are sensitive, i.e. X and Y for linearly polarized receptors, R and L for circularly polarized ones; to avoid such specific connotations, we label them p and q. The interferometer consists of two antennas which we label A and B, connected to a correlator that measures the four crosscorrelations between a voltage from antenna A and one from antenna B (cf. Eq. (10) below); this correlator is the full-polarization equivalent of the multiplier mentioned in Sect. 1. The complete signal chain from the atmosphere down to the correlator inputs is called an interferometer arm."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized interferometer measurement protocol with four cross-correlations"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8e3d80bff554099e_ds2",
+      "evidence": {
+        "section": "6",
+        "original_text": "In Sect. 3.1 we postulated our signals to be quasi-monochromatic without stating what this means. We now want to examine the foundations of the Jones formalism more precisely. An electromagnetic signal propagating in space may be represented at some fixed point as an integral of monochromatic components over its bandwidth Δω: where a(ω) is a vector with complex components. We may rewrite this equation in the form i.e. we represent it as a monochromatic signal with a varying amplitude. In principle, any signal can be represented in this way. According to the Nyquist sampling theorem, e is essentially constant over time intervals ≪ π/Δω. Thus, e(t) will vary slowly with respect to the oscillation period if the relative bandwidth 2Δω/ω ≪ 1; this is the common definition of a quasi-monochromatic signal (see e.g. Born & Wolf 1964). Consider a linear optical element in the signal path represented by an operator J(ω), converting the signal ϵ(t) of Eq. (19) into If J is independent of ω (except for delays which we ignore), then and consequently We conclude that the Jones formalism is valid for arbitrarily large relative bandwidths, as long as the operators J are frequency-independent."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Quasi-monochromatic signal assumption for Jones formalism validity"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8e3d80bff554099e_ds3",
+      "evidence": {
+        "section": "4.1",
+        "original_text": "We consider a more detailed model of one interferometer arm (antenna A) with the various elements that transform the signal. A schematic is given in Fig. 2. The incident electromagnetic signal is subject to the following transformations: Faraday rotation in the Earth’s ionosphere, F. A possible rotation P over a parallactic angle of the feed system with respect to the incident field. This is a transformation from the coordinate system of the rotating sky to the system of the rotating antenna mount on which the feed rides. For an equatorial mount the parallactic angle is zero. If one were to consider the primary-beam polarization caused by diffraction on the feed/reflector geometry of our antennas, the appropriate transformation would be placed here. The transformation would be a different one for each different source position in the primary beam, so for a distributed source we cannot represent it in the simple form of Eq. (1). This is a fundamental problem in radio interferometery that is only beginning to be addressed by some observatories; here we simply declare it to be outside the scope of this paper. Another effect in the reflector geometry that we omit from our equations is the sign reversal of Stokes V that occurs in each reflection (Simmons & Guttman 1970)."
+      },
+      "confidence": 0.85,
+      "spec_type": "env_requirement",
+      "description": "Three-electrode measurement protocol with iR compensation and RHE calibration"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8e3d80bff554099e_ds4",
+      "evidence": {
+        "section": "3.2",
+        "original_text": "The coherency properties of the electric field are described by the coherency matrix (Born & Wolf 1964). An equivalent form that is more convenient for our purposes is the coherency vector ; in xy coordinates it is defined as This vector form enables us to make the crucial step of recognizing the coherency vector as the time-averaged outer product of the two input signal vectors: Note that in Eq. (4) we are introducing a new notational convention to distinguish quantities in the 2-dimensional signal domain from those in the 4-dimensional coherency domain: The former refer to a single antenna and must therefore be subscripted with either A or B; the latter refer to the interferometer as a whole and need no such subscripts. The outer product is also known under other names, e.g. direct, tensor or Kronecker product. A brief description is given in Appendix A. Its most important property for our purposes is that for any four matrices A, B, A′, B′ of appropriate dimensions the following identity holds: The outer product provides us the missing link between the transformations of signals in the individual interferometer arms and those of the coherency vector in the interferometer as a whole. Indeed, consider some transforming element J in each of the individual antenna paths: Then For simplicity, we henceforth drop the <> averaging signs. The assumption that we make in doing so will be investigated in Sect. 6. We emphasize that the coherency vector, too, exists independently of the specific coordinate system that we used to define it (cf. Appendix A). The Cartesian form Eq. (3) is just a specific representation; we call it the geometric xy representation."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Coherency vector representation in geometric xy coordinates"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_8e3d80bff554099e_ds5",
+      "evidence": {
+        "section": "3.4",
+        "original_text": "It is customary to analyse the source in terms of Stokes visibilities I, Q, U, V, which in combination form a vector, the Stokes vector; the connection with the more familiar Stokes parameters from optics is outlined in Appendix C. In terms of the xy representation of the coherency vector, e⁺, the Stokes vector is defined by From the viewpoint developed above, the Stokes vector is not really a vector in its own right. It is just the representation of the coherency vector in an abstract frame, that of Stokes coordinates, linked to the geometric xy frame through the coordinate transformation T. The notation e^S introduced in Eq. (8) for the Stokes vector emphasizes this view. T is unitary except for a missing normalizing factor. In this paper and its companions we will only use the inverse of T, S = T⁻¹, which we show here for future reference:"
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Stokes vector representation of the coherency vector"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8e3d80bff554099e_m1",
+      "evidence": {
+        "section": "3. The mathematical model of an interferometer",
+        "original_text": "A quasi-monochromatic signal propagating in space may be characterized at some fixed point by its instantaneous complex vector amplitude e(t). Along its path, the vector undergoes transformations, each of which we represent by an operator J: e' = J e. The limits of validity of this representation are discussed in Sect. 6. We assume all operators of interest to be linear; we also henceforth drop the explicit dependence on time t and refer to e as the signal vector. It is common practice to represent the vectors e as columns of numbers, the coordinates; in this representation, Eq. (1) becomes a matrix multiplication. Note, however, that such a representation implicitly assumes a coordinate system in which the coordinates are measured. The distinction between a vector per se and its many possible representations becomes important when we want to deal with more than one coordinate system, - as is the case here. In an xyz coordinate system with the z axis along the direction of propagation e = (ex, ey). The matrices J describe the optical elements in the path. They are known in optics as Jones matrices after their inventor (Jones 1941; Azzam & Bashara 1987)."
+      },
+      "confidence": 0.95,
+      "name": "Jones matrix formalism",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8e3d80bff554099e_m2",
+      "evidence": {
+        "section": "3.2. The coherency vector",
+        "original_text": "The coherency properties of the electric field are described by the coherency matrix (Born & Wolf 1964). An equivalent form that is more convenient for our purposes is the coherency vector ; in xy coordinates it is defined as e+ = (eAx eBx*, eAx eBy*, eAy eBx*, eAy eBy*). This vector form enables us to make the crucial step of recognizing the coherency vector as the time-averaged outer product of the two input signal vectors: e+ = <vA ⊗ vB*>. Note that in Eq. (4) we are introducing a new notational convention to distinguish quantities in the 2-dimensional signal domain from those in the 4-dimensional coherency domain: The former refer to a single antenna and must therefore be subscripted with either A or B; the latter refer to the interferometer as a whole and need no such subscripts. The outer product is also known under other names, e.g. direct, tensor or Kronecker product. A brief description is given in Appendix A. Its most important property for our purposes is that for any four matrices A, B, A', B' of appropriate dimensions the following identity holds: (A ⊗ B)(A' ⊗ B') = (AA') ⊗ (BB'). The outer product provides us the missing link between the transformations of signals in the individual interferometer arms and those of the coherency vector in the interferometer as a whole."
+      },
+      "confidence": 0.95,
+      "name": "outer matrix product (Kronecker product)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8e3d80bff554099e_m3",
+      "evidence": {
+        "section": "3.4. The Stokes representation of the coherency vector",
+        "original_text": "It is customary to analyse the source in terms of Stokes visibilities I, Q, U, V , which in combination form a vector, the Stokes vector; the connection with the more familiar Stokes parameters from optics is outlined in Appendix C. In terms of the xy representation of the coherency vector, e+, the Stokes vector is defined by eS = T e+ where T = (1 0 0 1; 1 0 0 -1; 0 1 1 0; 0 i -i 0). From the viewpoint developed above, the Stokes vector is not really a vector in its own right. It is just the representation of the coherency vector in an abstract frame, that of Stokes coordinates, linked to the geometric xy frame through the coordinate transformation T . The notation eS introduced in Eq. (8) for the Stokes vector emphasizes this view. T is unitary except for a missing normalizing factor. In this paper and its companions we will only use the inverse of T , S = T-1, which we show here for future reference: S = (1 1 0 0; 0 0 1 -i; 0 0 1 i; 1 -1 0 0)/2."
+      },
+      "confidence": 0.95,
+      "name": "Stokes vector transformation",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8e3d80bff554099e_m4",
+      "evidence": {
+        "section": "4.1. The interferometer equation",
+        "original_text": "We consider a more detailed model of one interferometer arm (antenna A) with the various elements that transform the signal. A schematic is given in Fig. 2. The incident electromagnetic signal is subject to the following transformations: Faraday rotation in the Earth's ionosphere, F. A possible rotation P over a parallactic angle of the feed system with respect to the incident field. This is a transformation from the coordinate system of the rotating sky to the system of the rotating antenna mount on which the feed rides. For an equatorial mount the parallactic angle is zero. The feed, Q of Eq. (2), may be quite complex to model in detail. One may reduce it, however, to a product of two matrices: An idealised nominal feed configuration, C: A coordinate transformation from the frame of the rotating antenna mount to the electronic-voltage frame. The deviations of the actual feed from the ideal, D. For an error-free feed, D = I, the identity matrix. The complex receiver gains, G. Where a permanent connection exists between the feed and the receiver system, the feed and gain matrices always appear in the combination GD. We may therefore represent them together as a single component, the receiver matrix R = GD. For describing the system, it is the effect of R that matters; the fact that it is the product of two other matrices is irrelevant. The equation describing the signal path in antenna A is then vA = RA PA FA eA. From the identity established in Eqs. (5) and (6), it follows that for the interferometer we have a corresponding equation in the coherency domain; we add the Stokes transformation to get: v = K eS where K = S (RA ⊗ RB*) (PA ⊗ PB*) (FA ⊗ FB*) and eS = S e+. K gives the overall system response as observed with a radio interferometer; we call it the system matrix. J represents the part of K that can be factored; this factoring is the basis of the self-calibration methods to be discussed in Paper II."
+      },
+      "confidence": 0.95,
+      "name": "system matrix formalism for interferometer response",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8e3d80bff554099e_m5",
+      "evidence": {
+        "section": "4.2. The individual Jones matrices",
+        "original_text": "The feed-error matrix D ('D' for 'dipole') represents the deviations of the true feed from its design. The general form we shall use is D = (1 dAp; dAq 1). where dAp represents the spurious sensitivity of the p receptor to the q polarization and vice versa. The justification of Eq. (14) is given in Appendix D. The feed consists of two receptors. Each is designed to be sensitive to only one of two mutually opposite polarizations. Defining the coordinate axes in which we represent the incident radiation to coincide with these two polarizations, the feed would ideally be represented by a unit matrix. In practice, there is some leakage of the opposite polarization into either receptor, so the actual feed matrix for antenna A is D' = (D'Ap d'Ap; d'Aq D'Aq). The two rows of this matrix represent the p and q receptors, respectively. For a well-designed feed, the off-diagonal leakage terms are small and the diagonal terms are close to unity. We decompose this matrix, writing dAp for d'Ap/D'Ap, to get D' = (D'Ap 0; 0 D'Aq) (1 dAp; dAq 1). Of these two matrices, G' represents a gain factor that we may absorb in the gain matrix G. The feed characteristics are then adequately represented by D, cf. Eq. (14)."
+      },
+      "confidence": 0.95,
+      "name": "feed-error matrix model",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_8e3d80bff554099e_m6",
+      "evidence": {
+        "section": "B. A decomposition of matrix S",
+        "original_text": "In computing the system matrix, it is advantageous to work in the signal domain as much as possible, because the matrices to be multiplied are only 2 × 2 there. Even the multiplication by S can be circumvented by writing S as the sum of two outer products, multiplied with a trivial 4 × 4 matrix S = (I ⊗ I + Z ⊗ Z) S' where S' = (1 0 0 0; 0 0 1 0; 0 1 0 0; 0 0 0 1)/2 and Z = (1 0; 0 -1). This allows us to cast the multiplication by S' of an outer product WA⊗WB* into a form that is both easier for hand calculations and more economic in computer evaluation: S' (WA ⊗ WB*) = (WA WB* + Z WA Z WB*)/2. Another merit of this expression is that it puts into evidence certain symmetries to be expected in a system matrix."
+      },
+      "confidence": 0.95,
+      "name": "decomposition of matrix S",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8e3d80bff554099e_x1",
+      "evidence": {
+        "section": "2. Interferometer block diagram",
+        "original_text": "Figure 1 gives a schematic diagram of a polarization interferometer, demonstrating the terminology we will use. The incident electric field is described in terms of two components (e.g. horizontal and vertical as shown in the diagram, or right- and left-circular), each of which is converted to an electric voltage by a receptor. In a typical feed, the centres of the two receptors coincide geometrically. The receptors are usually labeled according to the polarization component to which they are sensitive, i.e. X and Y for linearly polarized receptors, R and L for circularly polarized ones; to avoid such specific connotations, we label them p and q. The interferometer consists of two antennas which we label A and B, connected to a correlator that measures the four crosscorrelations between a voltage from antenna A and one from antenna B (cf. Eq. (10) below); this correlator is the full-polarization equivalent of the multiplier mentioned in Sect. 1. The complete signal chain from the atmosphere down to the correlator inputs is called an interferometer arm. We note in passing that this model includes the singledish polarimeter as a special case, viz. where the two telescopes A and B coalesce into one."
+      },
+      "confidence": 0.95,
+      "task": "radio interferometric polarimetry measurement",
+      "setup": "two-element interferometer with dual-polarization feeds, correlator measuring four cross-correlations"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8e3d80bff554099e_x2",
+      "evidence": {
+        "section": "5.2. The output of an interferometer with parallel linear feeds",
+        "original_text": "Several radio telescopes consist of interferometers with parallel linear feeds. With the above approximations it is a simple exercise to work out the matrix product K++ = G(DA ⊗ DB*)S, assuming no rotation effects. Dropping products of small terms, one obtains K++ = (gpp gBp* gpp gBq* gpq gBp* gpq gBq*; gpp gBq* gpp gBp* gpq gBq* gpq gBp*; gqp gBp* gqp gBq* gqq gBp* gqq gBq*; gqp gBq* gqp gBp* gqq gBq* gqq gBp*) where gpp = gAp(1 + dAp), gpq = gAp dAq, gqp = gAq dAp, gqq = gAq(1 + dAq). This result is equivalent to that given for the Westerbork telescope by Weiler & Raimond (1976). Note that the number of relevant complex parameters to be determined has been reduced from 7 to 6."
+      },
+      "confidence": 0.95,
+      "task": "analysis of interferometer with parallel linear feeds",
+      "setup": "radio interferometer with parallel linear feeds, assuming small feed errors and weak polarization"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_8e3d80bff554099e_x3",
+      "evidence": {
+        "section": "5.3. The output of an interferometer with 'crossed' linear feeds",
+        "original_text": "The Westerbork Telescope has also been operated in a so-called 'crossed-dipole' mode (Weiler 1973). The salient feature of this mode is that each interferometer combines linear feeds differing by π/4 in position angle (Weiler 1973; Thompson et al. 1986). It is not difficult to work out the complete system matrix for this case, but we may take a shortcut: We first derive K for the error-free case; we then introduce the errors as perturbations and show that we can absorb them in the gain factors G. We assume the feed of antenna B to be rotated: CB = (cos π/4 sin π/4; -sin π/4 cos π/4) and K++ = (gpp gBp* gpp gBq* gpq gBp* gpq gBq*; -gpp gBq* gpp gBp* -gpq gBq* gpq gBp*; gqp gBp* gqp gBq* gqq gBp* gqq gBq*; -gqp gBq* gqp gBp* -gqq gBq* gqq gBp*). The errors enter as small increments to the elements of D; it is readily verified that consequently each element kij is multiplied by some factor (1 + εij): K++ = (gpp gBp*(1+ε11) gpp gBq*(1+ε12) gpq gBp*(1+ε13) gpq gBq*(1+ε14); -gpp gBq*(1+ε21) gpp gBp*(1+ε22) -gpq gBq*(1+ε23) gpq gBp*(1+ε24); gqp gBp*(1+ε31) gqp gBq*(1+ε32) gqq gBp*(1+ε33) gqq gBq*(1+ε34); -gqp gBq*(1+ε41) gqp gBp*(1+ε42) -gqq gBq*(1+ε43) gqq gBp*(1+ε44)). Following Weiler (1973), we now introduce the approximation (1+εij) ≈ 1. The first-order small errors that we so introduce are reduced to a negligible level in the multiplication with Q, U, and V which we assume to be small as before. We may then absorb the factors ε1j in the gain factors, gpp etc., which brings us back to Eq. (16). This equation, however, now represents the system matrix including feed errors to first order. In this approximation, the number of relevant complex parameters for this configuration is only 4."
+      },
+      "confidence": 0.95,
+      "task": "analysis of interferometer with crossed linear feeds",
+      "setup": "interferometer with linear feeds differing by π/4 in position angle (crossed-dipole mode)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8e3d80bff554099e_qr1",
+      "evidence": {
+        "section": "5.1",
+        "original_text": "The first point to note is that Eq. (12) contains the two matrices J_A and J_B that contain unknown errors. These two matrices between them contain 8 complex elements, so the number of complex parameters to be determined by calibration is at most 7; indeed the number is one less than 8 because we may arbitrarily define one element and scale the remaining ones accordingly. This result is analogous to a theorem on Mueller matrices in optics (Azzam & Bashara 1987; O’Neill 1963)."
+      },
+      "confidence": 0.95,
+      "quantity": "number of complex parameters",
+      "value": 8,
+      "unit": null,
+      "context": "in matrices J_A and J_B containing unknown errors in interferometer calibration",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8e3d80bff554099e_qr2",
+      "evidence": {
+        "section": "5.2",
+        "original_text": "Several radio telescopes consist of interferometers with parallel linear feeds. With the above approximations it is a simple exercise to work out the matrix product K^{++} = G(D_A ⊗ D_B^*)S, assuming no rotation effects. Dropping products of small terms, one obtains [...] Note that the number of relevant complex parameters to be determined has been reduced from 7 to 6."
+      },
+      "confidence": 0.9,
+      "quantity": "number of relevant complex parameters",
+      "value": 6,
+      "unit": null,
+      "context": "for interferometers with parallel linear feeds, assuming feed errors are small (off-diagonal elements ≪ 1) and Stokes visibilities are weakly polarized",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8e3d80bff554099e_qr3",
+      "evidence": {
+        "section": "5.3",
+        "original_text": "Weiler’s result differs from ours in the signs of most of the matrix elements. This is because he assumes feed A to be in position angle π/2 rather than 0. In this approximation, the number of relevant complex parameters for this configuration is only 4."
+      },
+      "confidence": 0.9,
+      "quantity": "number of relevant complex parameters",
+      "value": 4,
+      "unit": null,
+      "context": "for interferometers with 'crossed' linear feeds (differing by π/4 in position angle), assuming feed errors are small and Stokes visibilities are weakly polarized",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8e3d80bff554099e_p1",
+      "evidence": {
+        "section": "5.4",
+        "original_text": "There is a well-known similarity between the parallel-linear interferometer of Sect. 5.2 and one having two circularly polarized feeds: Their behaviour with respect to the Stokes visibilities is identical except for a permutation of Q, U and V."
+      },
+      "confidence": 0.85,
+      "metric": "similarity in behavior",
+      "compared_to": "parallel-linear interferometer and circular-feed interferometer"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_8e3d80bff554099e_qr4",
+      "evidence": {
+        "section": "6",
+        "original_text": "Thus, e(t) will vary slowly with respect to the oscillation period if the relative bandwidth 2∆ω/ω ≪ 1; this is the common definition of a quasi-monochromatic signal (see e.g. Born & Wolf 1964)."
+      },
+      "confidence": 0.95,
+      "quantity": "relative bandwidth",
+      "value": null,
+      "unit": null,
+      "context": "definition of quasi-monochromatic signal",
+      "result_type": "threshold"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_8e3d80bff554099e_p2",
+      "evidence": {
+        "section": "6",
+        "original_text": "We conclude that the Jones formalism is valid for arbitrarily large relative bandwidths, as long as the operators J are frequency-independent."
+      },
+      "confidence": 0.9,
+      "metric": "validity of Jones formalism",
+      "compared_to": "frequency-independent operators"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_8e3d80bff554099e_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The measurement of polarized radiation uses entirely different methods at optical and radio wavelengths. As a result, the algebraic analysis of polarimeter performance differs and, in the case of radio interferometry, is unnecessarily complicated. We demonstrate that the mathematical operation of outer matrix multiplication provides the missing link between the two approaches. Within one coherent framework, we then unite the concepts of Stokes parameters and Wolf coherency matrix, the Jones and Mueller calculi from optics, and the techniques of radio interferometry based on multiplying correlators. We relate the polarization performance of a complete radio interferometer to the (matrix) polarization properties of its successive signal processing stages, providing a clear view of how a radio polarimeter works. Our treatment also clarifies the nature of and the relations between the various types of transformations used in optical polarimetry. We develop the analysis from the radio interferometrist’s point of view, but include enough background for a wider audience."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_8e3d80bff554099e_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The key to this unification is the observation (made earlier by opticists but never brought to bear on radio polarimetry) that the coherency matrix (Born & Wolf 1964) can be reformatted as a coherency vector that is the outer matrix product of two vector amplitudes ´a la Jones. The elegant properties of the outer product then lead the way to a simple and elegant theory. In developing this theory, we emphasize some basic concepts from the theory of linear algebra which are well known in theory but appear to be often overlooked in practice. Our second aim, then, is to present the theory in a semi-tutorial style that emphasizes the precise interpretation of the mathematics. We start from the conceptual framework of radio interferometry, but we try to explain enough of the basics from that field to make the material accessible to non-specialists. In the third place, we indicate how previous work on radio interferometry fits into the new framework."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_8e3d80bff554099e_cl1",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "The formalism developed in this paper puts radio-interferometric polarimetry on a solid theoretical footing. It provides a coherent picture of what happens polarization-wise in a radio interferometer and allows inclusion of the various instrumental effects in a straightforward way. It bridges an existing gap between the theoretical methods of optical and radio polarimetry in a very satisfactory way. Crossing this bridge, one may borrow well-established results from the optical theories and bring then to bear on radio interferometry. Rather than looking at the mechanisms inside an interferometer as we have done here, one may consider an aperture-synthesis instrument as a whole and consider its properties as an imaging instrument. The insights that this viewpoint provides into the fundamental limitations on calibration schemes for synthesis arrays will be the subject of our Paper II (Sault et al. 1996)."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_8e3d80bff554099e_cl2",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "An important point noted in this paper is that weak polarization in the brightness of a source does not necessarily imply the same for its observed visibilities. This point seems to have been overlooked heretofore, and its impact on the data reduction procedures that are routinely used in aperture synthesis should be investigated."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8e3d80bff554099e_lm1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Our theory is based on the theory of linear transformations. Like practically all previous work on radio polarimetry, it excludes one important aspect of practical radio polarimetry, viz. the variation of instrumental polarization over the primary beam of the element antennas which is induced by the feed/reflector geometry."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8e3d80bff554099e_lm2",
+      "evidence": {
+        "section": "4.1",
+        "original_text": "If one were to consider the primary-beam polarization caused by diffraction on the feed/reflector geometry of our antennas, the appropriate transformation would be placed here. The transformation would be a different one for each different source position in the primary beam, so for a distributed source we cannot represent it in the simple form of Eq. (1). This is a fundamental problem in radio interferometery that is only beginning to be addressed by some observatories; here we simply declare it to be outside the scope of this paper. Another effect in the reflector geometry that we omit from our equations is the sign reversal of Stokes V that occurs in each reflection (Simmons & Guttman 1970)."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_8e3d80bff554099e_lm3",
+      "evidence": {
+        "section": "6",
+        "original_text": "Many real systems do not conform to this restriction. It is, however, possible, to conceptually subdivide the frequency band of interest into a number of subbands that each individually satisfy the requirement; this is in fact what Eq. (20) does. To obtain the correlator output, we must then sum over these subbands; substituting Eqs. (6) from Sect. 3 and (20) above in Eq. (10), we get v = ... Without investigating this sum in detail, we may qualitatively understand an essential property by pretending for a moment that the vector variables in it are scalars. It is then clear that v will be maximal if all subband products JAJB∗aAaB∗ add in phase. Failure to meet this results in a loss of signal which in scalar interferometer theory is known as bandwidth decorrelation. In radio interferometers this effect is preempted by, firstly, eliminating differential delays between the signals eA and e∗B and, secondly, matching the frequency dependencies of JA and JB as closely as possible. Where this is not possible (for fundamental reasons beyond the scope of this paper), the division into subbands is performed litterally: The wide-band input signal is distributed over a number of parallel narrower-band channels, each with its own correlator."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_8e3d80bff554099e_fw1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In a companion paper, we discuss in more detail the application to the calibration of radio interferometer systems; in a third paper we investigate the IAU (1973) radio definition of the Stokes parameters and its precise translation into mathematical form."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_8e3d80bff554099e_fw2",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "Crossing this bridge, one may borrow well-established results from the optical theories and bring then to bear on radio interferometry. Rather than looking at the mechanisms inside an interferometer as we have done here, one may consider an aperture-synthesis instrument as a whole and consider its properties as an imaging instrument. The insights that this viewpoint provides into the fundamental limitations on calibration schemes for synthesis arrays will be the subject of our Paper II (Sault et al. 1996). In this paper we have assumed definitions for several relevant entities in the theory. Selecting the correct signs in these definitions appears to be a problem that has not been addressed in a systematic and complete way so far. As a complement to the present work, we have studied the problem in depth; the results and a critical review of earlier writings on the problem will be presented in Paper III (Hamaker & Bregman 1996)."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_8e3d80bff554099e_fw3",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "An important point noted in this paper is that weak polarization in the brightness of a source does not necessarily imply the same for its observed visibilities. This point seems to have been overlooked heretofore, and its impact on the data reduction procedures that are routinely used in aperture synthesis should be investigated."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

@@ -1,0 +1,547 @@
+{
+  "metadata": {
+    "doc_id": "doc_c92427336d384fa1",
+    "source_file": "13_Origin_of_circular_polarisation_in_FRB_20180301A.md",
+    "title": "Towards solving the origin of circular polarisation in FRB 20180301A",
+    "year": 2023,
+    "doi": null,
+    "abstract": "Fast Radio Bursts (FRBs) are short-timescale transients of extragalactic origin. The number of detected FRBs has grown dramatically since their serendipitous discovery from archival data. Some FRBs have also been seen to repeat. The polarimetric properties of repeating FRBs show diverse behaviour and, at times, extreme polarimetric morphology, suggesting a complex magneto-ionic circumburst environment for this class of FRB. The polarimetric properties such as circular polarisation behaviour of FRBs are crucial for understanding their surrounding magnetic-ionic environment. The circular polarisation previously observed in some of the repeating FRB sources has been attributed to propagation effects such as generalised Faraday rotation (GFR), where conversion from linear to circular polarisation occurs due to the non-circular modes of transmission in relativistic plasma. The discovery burst from the repeating FRB 20180301A showed significant frequency-dependent circular polarisation behaviour, which was initially speculated to be instrumental due to a sidelobe detection. Here we revisit the properties given the subsequent interferometric localisation of the burst, which indicates that the burst was detected in the primary beam of the Parkes/Murriyang 20-cm multibeam receiver. We develop a Bayesian Stokes-Q, U, and V fit method to model the GFR effect, which is independent of the total polarised flux parameter. Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value. We interpret the implication of the circular polarisation on its local magnetic environment and reinterpret its long-term temporal evolution in RM. \n\n**Key words:** polarisation – fast radio bursts – statistics – methods:signal processing",
+    "introduction": "Fast radio bursts (FRBs) are microsecond to millisecond duration dispersed bursts of radio emission of extragalactic origin. The first FRB was reported by Lorimer et al. (2007) in a 20-cm multibeam receiver archival dataset from the Parkes/Murriyang radio telescope. Since the first reported burst, the number of FRBs discovered has grown to _>_ 2000 FRBs to date (Xu et al. 2023). A large fraction of the new bursts detected have been reported by instruments commissioned during the last decade, such as the Australian Square Kilometer Array Pathfinder (ASKAP; Bannister et al. 2017), Canadian Hydrogen Intensity Mapping Experiment (CHIME; CHIME/FRB Collaboration et al. 2021), Deep Synoptic Array (DSA; Sherman et al. 2024). Even with a rapid increase in the number of detected FRBs, the progenitor of FRBs remains elusive, with much of the physics (e.g., emission mechanism, energy distribution, surrounding magnetic field) yet to be fully explained. \n\nAmong the sample set of FRBs discovered, ∼65 FRBs (∼2% of \n\nthe population; CHIME/FRB Collaboration et al. 2021) have been observed to repeat. Whether all FRBs repeat (eventually) is unclear. Soon after the discovery of a population of repeating FRBs, it became evident that there were differences in the spectro-temporal properties (e.g., pulse morphology, spectral extent) of repeaters and (apparent) non-repeaters (CHIME/FRB Collaboration et al. 2021), with the linear frequency drift, or \"sad trombone\" being a distinct spectral behaviour seen in some of the repeating FRB sources (e.g., Hessels et al. 2019; Luo et al. 2020; CHIME/FRB Collaboration et al. 2021). Additionally, smaller spectral extents are observed in repeating FRB sources compared to non-repeaters, with the spectral and temporal widths in repeating FRB sources found to be a function of frequency (Bethapudi et al. 2022). Further, some repeaters such as FRB 20180916B, have been shown to have burst activity windows that are frequency-dependent. (e.g., Pleunis et al. 2021; Bethapudi et al. 2022). \n\nIn addition to the spectro-temporal characteristics, the polarisation properties of FRBs provide crucial inferences on the FRB emission mechanism, circumburst media, and potential progenitor. A linearly polarised radio wave when travelling through a dispersive, cold mag- \n\n∗E-mail: puttarkar@swin.edu.au \n\n© 2015 The Authors \n\n2 _P. Uttarkar et al._ \n\nnetised plasma such as interstellar medium (ISM), or intergalactic medium (IGM) can induce typical nanosecond scale delay between the left and right handed circular polarisation modes, resulting in Faraday rotation (FR). The effect of FR can be quantitatively described using the Rotation Measure (RM), a measure of the quadratic variation in linear polarisation position angle (PPA) with the frequency. In general, FRBs have been observed to display a plethora of additional polarisation properties, such as the PPA swing seen in FRB 20180301A (Luo et al. 2020) relative to a flat PPA seen in most other FRBs (e.g., Bannister et al. 2019; Day et al. 2020; Kumar et al. 2021). Further, a significantly large variation in linear polarisation fraction has been observed between different one-off bursts, and also from an active repeating source (e.g., Day et al. 2020; Kumar et al. 2022). In addition to the conventional FR effect, which is caused by the circularly polarised natural transmission modes, some repeaters such as FRB 20201124A have shown to have significant frequency-dependent circular polarisation fraction (Kumar et al. 2022). The frequency-dependent circular polarisation has been attributed to Faraday conversion or generalised Faraday rotation (GFR) effect (Kumar et al. 2023a). GFR can induce circular polarisation by the conversion of the linear Stokes components to circular polarisation. The propagation of polarised radiation through a medium having an elliptical or linear transmission mode results in such conversion (Kennett & Melrose 1998). Like conventional Faraday rotation, GFR is a chromatic process. Hence, it will result in strong frequency dependence for the circular polarisation fraction. \n\nPrevious investigations of pulsars (e.g., Melrose 2003; Melrose & Luo 2004) point to three main causes of circular polarisation: (a) a process intrinsic to the emission; (b) a favorable natural transmission mode; (c) propagation effects (e.g., in relativistic plasma). Additionally, some studies such as Gruzinov & Levin (2019) have also proposed the generation of circular polarisation through conventional cold plasma - without relativistic electrons - due to the magnetic field reversals along the line of sight. \n\nThere has also been a rapid increase in repeating FRBs showing extreme polarisation behaviour (e.g., 20121102A, 20190520B, and 20201124A). Two FRBs, 20190520B and 20180301A have been observed to undergo a change in the sign of the RM, suggesting a reversal in the parallel magnetic field component (Anna-Thomas et al. 2023; Kumar et al. 2023b). Additionally, some repeaters have been seen to have spectral depolarisation towards lower frequencies, suggesting a multipath propagation effect (Feng et al. 2022b). In general, the magnitude of circular polarisation observed in repeating FRBs is relatively smaller than in non-repeating FRB sources. Some subcomponents of (apparent) non-repeaters, such as FRB 20190611B, have been seen to have a high circular polarisation fraction (∼57%; Day et al. 2020). The circular polarisation in FRBs can be used as a unique probe to understand the progenitor environment and its local complex magneto-ionic environment if the Faraday conversion occurs in its circumburst medium. \n\nThe circular polarisation observed in several repeating FRB sources (e.g., FRB 20201124A, 20220808A) has been interpreted as being caused by GFR. FRB 20201124A was one of the first repeaters to have been observed to have significant and notable frequency dependent circular polarisation (∼57%; Kumar et al. 2022). While FRB 20180301A was the first repeater to have been seen to have a significant frequency-dependent circular polarisation; it was initially speculated that the circular polarisation was induced due to instrumental leakage due to a sidelobe detection (Price et al. 2019). However, the milli-arcsecond localisation by Bhandari et al. (2022) has provided precise localisation information which can now \n\nbe leveraged to study the Parkes/Murriyang discovery burst spectropolarimetric characteristics. \n\nIn this paper, we revisit the spectro-polarimetric properties of FRB 20180301A using GFR modelling. We summarise the data used in this analysis, and the GFR modelling used to explain the circular polarisation behaviour in Section 2. We discuss the results and their implications from the GFR modelling in Sections 3 and 4, respectively. We conclude our analysis in Section 5.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "物理学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "polarisation",
+      "fast radio bursts",
+      "statistics",
+      "signal processing",
+      "Faraday rotation"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:36:08.229219+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast Radio Bursts (FRBs) are short-timescale transients of extragalactic origin. The number of detected FRBs has grown dramatically since their serendipitous discovery from archival data. Some FRBs have also been seen to repeat. The polarimetric properties of repeating FRBs show diverse behaviour and, at times, extreme polarimetric morphology, suggesting a complex magneto-ionic circumburst environment for this class of FRB. The polarimetric properties such as circular polarisation behaviour of FRBs are crucial for understanding their surrounding magnetic-ionic environment."
+      },
+      "confidence": 0.98,
+      "term": "Fast Radio Bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The circular polarisation previously observed in some of the repeating FRB sources has been attributed to propagation effects such as generalised Faraday rotation (GFR), where conversion from linear to circular polarisation occurs due to the non-circular modes of transmission in relativistic plasma. The discovery burst from the repeating FRB 20180301A showed significant frequency-dependent circular polarisation behaviour, which was initially speculated to be instrumental due to a sidelobe detection. Here we revisit the properties given the subsequent interferometric localisation of the burst, which indicates that the burst was detected in the primary beam of the Parkes/Murriyang 20-cm multibeam receiver."
+      },
+      "confidence": 0.97,
+      "term": "circular polarisation",
+      "normalized": "圆偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We develop a Bayesian Stokes-Q, U, and V fit method to model the GFR effect, which is independent of the total polarised flux parameter. Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value. We interpret the implication of the circular polarisation on its local magnetic environment and reinterpret its long-term temporal evolution in RM."
+      },
+      "confidence": 0.96,
+      "term": "generalised Faraday rotation",
+      "normalized": "广义法拉第旋转",
+      "std_label": "GFR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value. We interpret the implication of the circular polarisation on its local magnetic environment and reinterpret its long-term temporal evolution in RM."
+      },
+      "confidence": 0.98,
+      "term": "rotation measure",
+      "normalized": "旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The discovery burst from the repeating FRB 20180301A showed significant frequency-dependent circular polarisation behaviour, which was initially speculated to be instrumental due to a sidelobe detection. Here we revisit the properties given the subsequent interferometric localisation of the burst, which indicates that the burst was detected in the primary beam of the Parkes/Murriyang 20-cm multibeam receiver."
+      },
+      "confidence": 0.99,
+      "term": "FRB 20180301A",
+      "normalized": "FRB 20180301A",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Among the sample set of FRBs discovered, ∼65 FRBs (∼2% of the population; CHIME/FRB Collaboration et al. 2021) have been observed to repeat. Whether all FRBs repeat (eventually) is unclear. Soon after the discovery of a population of repeating FRBs, it became evident that there were differences in the spectro-temporal properties (e.g., pulse morphology, spectral extent) of repeaters and (apparent) non-repeaters (CHIME/FRB Collaboration et al. 2021), with the linear frequency drift, or \"sad trombone\" being a distinct spectral behaviour seen in some of the repeating FRB sources (e.g., Hessels et al. 2019; Luo et al. 2020; CHIME/FRB Collaboration et al. 2021). Additionally, smaller spectral extents are observed in repeating FRB sources compared to non-repeaters, with the spectral and temporal widths in repeating FRB sources found to be a function of frequency (Bethapudi et al. 2022)."
+      },
+      "confidence": 0.97,
+      "term": "repeating FRBs",
+      "normalized": "重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A linearly polarised radio wave when travelling through a dispersive, cold magnetised plasma such as interstellar medium (ISM), or intergalactic medium (IGM) can induce typical nanosecond scale delay between the left and right handed circular polarisation modes, resulting in Faraday rotation (FR). The effect of FR can be quantitatively described using the Rotation Measure (RM), a measure of the quadratic variation in linear polarisation position angle (PPA) with the frequency."
+      },
+      "confidence": 0.98,
+      "term": "Faraday rotation",
+      "normalized": "法拉第旋转",
+      "std_label": "FR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The effect of FR can be quantitatively described using the Rotation Measure (RM), a measure of the quadratic variation in linear polarisation position angle (PPA) with the frequency. In general, FRBs have been observed to display a plethora of additional polarisation properties, such as the PPA swing seen in FRB 20180301A (Luo et al. 2020) relative to a flat PPA seen in most other FRBs (e.g., Bannister et al. 2019; Day et al. 2020; Kumar et al. 2021)."
+      },
+      "confidence": 0.96,
+      "term": "polarisation position angle",
+      "normalized": "偏振位置角",
+      "std_label": "PPA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c92427336d384fa1_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We develop a Bayesian Stokes-Q, U, and V fit method to model the GFR effect, which is independent of the total polarised flux parameter. Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value."
+      },
+      "confidence": 0.95,
+      "term": "Bayesian Stokes-Q, U, and V fit method",
+      "normalized": "贝叶斯斯托克斯Q、U、V拟合方法",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The circular polarisation previously observed in some of the repeating FRB sources has been attributed to propagation effects such as generalised Faraday rotation (GFR), where conversion from linear to circular polarisation occurs due to the non-circular modes of transmission in relativistic plasma."
+      },
+      "confidence": 0.94,
+      "head": "doc_c92427336d384fa1_c3",
+      "relation_type": "causes",
+      "relation_surface": "attributed to",
+      "tail": "doc_c92427336d384fa1_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The discovery burst from the repeating FRB 20180301A showed significant frequency-dependent circular polarisation behaviour, which was initially speculated to be instrumental due to a sidelobe detection."
+      },
+      "confidence": 0.95,
+      "head": "doc_c92427336d384fa1_c5",
+      "relation_type": "exhibits",
+      "relation_surface": "showed",
+      "tail": "doc_c92427336d384fa1_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We develop a Bayesian Stokes-Q, U, and V fit method to model the GFR effect, which is independent of the total polarised flux parameter. Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value."
+      },
+      "confidence": 0.93,
+      "head": "doc_c92427336d384fa1_c9",
+      "relation_type": "measures",
+      "relation_surface": "model",
+      "tail": "doc_c92427336d384fa1_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value. We interpret the implication of the circular polarisation on its local magnetic environment and reinterpret its long-term temporal evolution in RM."
+      },
+      "confidence": 0.92,
+      "head": "doc_c92427336d384fa1_c3",
+      "relation_type": "affects",
+      "relation_surface": "reinterpret",
+      "tail": "doc_c92427336d384fa1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The circular polarisation previously observed in some of the repeating FRB sources has been attributed to propagation effects such as generalised Faraday rotation (GFR), where conversion from linear to circular polarisation occurs due to the non-circular modes of transmission in relativistic plasma."
+      },
+      "confidence": 0.94,
+      "head": "doc_c92427336d384fa1_c6",
+      "relation_type": "exhibits",
+      "relation_surface": "show",
+      "tail": "doc_c92427336d384fa1_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The effect of FR can be quantitatively described using the Rotation Measure (RM), a measure of the quadratic variation in linear polarisation position angle (PPA) with the frequency."
+      },
+      "confidence": 0.96,
+      "head": "doc_c92427336d384fa1_c7",
+      "relation_type": "quantified_by",
+      "relation_surface": "described using",
+      "tail": "doc_c92427336d384fa1_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Among the sample set of FRBs discovered, ∼65 FRBs (∼2% of the population; CHIME/FRB Collaboration et al. 2021) have been observed to repeat. Whether all FRBs repeat (eventually) is unclear."
+      },
+      "confidence": 0.95,
+      "head": "doc_c92427336d384fa1_c1",
+      "relation_type": "includes",
+      "relation_surface": "are",
+      "tail": "doc_c92427336d384fa1_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The discovery burst from the repeating FRB 20180301A showed significant frequency-dependent circular polarisation behaviour, which was initially speculated to be instrumental due to a sidelobe detection."
+      },
+      "confidence": 0.97,
+      "head": "doc_c92427336d384fa1_c5",
+      "relation_type": "is_instance_of",
+      "relation_surface": "repeating FRB",
+      "tail": "doc_c92427336d384fa1_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c92427336d384fa1_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The polarimetric properties such as circular polarisation behaviour of FRBs are crucial for understanding their surrounding magnetic-ionic environment."
+      },
+      "confidence": 0.93,
+      "head": "doc_c92427336d384fa1_c2",
+      "relation_type": "probes",
+      "relation_surface": "crucial for understanding",
+      "tail": "doc_c92427336d384fa1_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c92427336d384fa1_d1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We use data presented in Price et al. (2019) for our analysis. Here we briefly summarise the properties of the data. FRB 20180301A was discovered using the 21-cm multibeam receiver on the Parkes/Murriyang radio telescope (Staveley-Smith et al. 1996), using the Berkeley–Parkes–Swinburne Recorder (BPSR) system in a Breakthrough Listen (BL) observation (Price et al. 2019). Repeat bursts from FRB 20180301A were reported using the Five Hundred Meter Aperture Radio Telescope (FAST) by Luo et al. (2020), confirming the source to be a repeating FRB. The initial burst was reported to have an RM of -3156 rad m[−][2] (Price et al. 2019) and a dispersion measure (DM) of 522 pc cm[−][3] . The dynamic Stokes spectrum from the multibeam receiver is shown in Figure 1. We use methods described in Price et al. (2019) to flux calibrate the data on the existing polarisation calibrated dataset between the frequencies 1359.8 MHz and 1513.7 MHz, for the 154 MHz bandwidth over which the the FRB emission is apparent. We do not include the lower 154 MHz in our analysis, where there is no detectable burst emission. Following Price et al. (2019), we use a Gaussian filter with a frequency width of 0.109 MHz and a time width of ∼60 µsec to smooth the spectra. The burst was discovered in beam 3 of the multibeam receiver. The lack of precise localisation after the initial discovery led to the speculation that the burst was detected in a sidelobe (Price et al. 2019). Hence, to explain frequency-dependent circular polarisation, polarisation leakage due to the beam 3 sidelobe detection was considered as one of the likely scenarios. However, the subsequent ∼milli-arcsec localisation by Bhandari et al. (2022), and the pointing position of the Parkes/Murriyang observation confirm a primary-lobe detection of the burst. Considering a full-width half-power (FWHP) beamwidth of ∼14.5’ (Staveley-Smith et al. 1996) for beam 3, the multibeam detection shows a radial offset of ∼7’. Figure 2 shows the FWHP of beam 3 in the blue-shaded region and the full-width (FW) of beam 1 in the grey-shaded region to show the general extent of the FW of individual beams. Additionally, the cross-polarisation leakage analysis by Carozzi & Woan (2011) shows that the leakage of linear polarisation into circular polarisation is smaller than 15-20 dB (a factor of 30-100), indicating low polarisation leakage in the multibeam receiver. Hence, the frequency-dependent circular polarisation structure in the burst is likely intrinsic to the source and not anthropogenic or an instrumental artifact, as speculated by Price et al. (2019)."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20180301A discovery burst dynamic Stokes spectra",
+      "modality": "tabular",
+      "domain": "astronomy, radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c92427336d384fa1_d2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To verify the model, we use data from the Parkes/Murriyang multibeam receiver observations of known pulsars J1644−4559 and J0835−4510, which have reported measurements of RM of -626.9[1] and 31.38[1] , respectively. The data for pulsars J0833−4559 and J0835−4510 were taken in 2018 and recorded using the Parkes Digital Filterbank Backend Mark-4. The centre frequency for both observations is 1369 MHz, with a bandwidth of 256 MHz, with a frequency resolution of 125 KHz. We calibrate the pulsar data for flux and polarisation using a standard Parkes flux calibrator and a noise diode source for polarisation calibration using `psrchive` ."
+      },
+      "confidence": 0.9,
+      "name": "Parkes pulsar calibration datasets (J1644-4559 and J0835-4510)",
+      "modality": "tabular",
+      "domain": "astronomy, pulsar astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c92427336d384fa1_d3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We further verify the FR-GFR model on magnetar XTE J1810-197 from Lower et al. (2024) to confirm the recovery of the expected GRM and _𝛼_ values by comparing the results to Lower et al. (2024). We show the GRM and _𝛼_ and values of our fits in Figure A4 in the appendix. The results are in broad agreement with those derived in Lower et al. (2024). We attribute the difference in the recovered GRM and _𝛼_ values to be due to the simultaneous RM measurement in our approach."
+      },
+      "confidence": 0.85,
+      "name": "Magnetar XTE J1810-197 data for GFR model verification",
+      "modality": "tabular",
+      "domain": "astronomy, magnetar astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c92427336d384fa1_ds1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We use methods described in Price et al. (2019) to flux calibrate the data on the existing polarisation calibrated dataset between the frequencies 1359.8 MHz and 1513.7 MHz, for the 154 MHz bandwidth over which the the FRB emission is apparent. We do not include the lower 154 MHz in our analysis, where there is no detectable burst emission. Following Price et al. (2019), we use a Gaussian filter with a frequency width of 0.109 MHz and a time width of ∼60 µsec to smooth the spectra. We calibrate the pulsar data for flux and polarisation using a standard Parkes flux calibrator and a noise diode source for polarisation calibration using `psrchive` ."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized flux and polarisation calibration procedure for Parkes/Murriyang radio telescope data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c92427336d384fa1_ds2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "FRB 20180301A was discovered using the 21-cm multibeam receiver on the Parkes/Murriyang radio telescope (Staveley-Smith et al. 1996), using the Berkeley–Parkes–Swinburne Recorder (BPSR) system in a Breakthrough Listen (BL) observation (Price et al. 2019). The dynamic Stokes spectrum from the multibeam receiver is shown in Figure 1. We use methods described in Price et al. (2019) to flux calibrate the data on the existing polarisation calibrated dataset between the frequencies 1359.8 MHz and 1513.7 MHz, for the 154 MHz bandwidth over which the the FRB emission is apparent. Following Price et al. (2019), we use a Gaussian filter with a frequency width of 0.109 MHz and a time width of ∼60 µsec to smooth the spectra. The data for pulsars J0833−4559 and J0835−4510 were taken in 2018 and recorded using the Parkes Digital Filterbank Backend Mark-4. The centre frequency for both observations is 1369 MHz, with a bandwidth of 256 MHz, with a frequency resolution of 125 KHz."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Data format and resolution specifications for Parkes multibeam receiver and Digital Filterbank Backend Mark-4 observations"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c92427336d384fa1_ds3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The burst was discovered in beam 3 of the multibeam receiver. The lack of precise localisation after the initial discovery led to the speculation that the burst was detected in a sidelobe (Price et al. 2019). Hence, to explain frequency-dependent circular polarisation, polarisation leakage due to the beam 3 sidelobe detection was considered as one of the likely scenarios. However, the subsequent ∼milli-arcsec localisation by Bhandari et al. (2022), and the pointing position of the Parkes/Murriyang observation confirm a primary-lobe detection of the burst. Considering a full-width half-power (FWHP) beamwidth of ∼14.5’ (Staveley-Smith et al. 1996) for beam 3, the multibeam detection shows a radial offset of ∼7’. Figure 2 shows the FWHP of beam 3 in the blue-shaded region and the full-width (FW) of beam 1 in the grey-shaded region to show the general extent of the FW of individual beams. Additionally, the cross-polarisation leakage analysis by Carozzi & Woan (2011) shows that the leakage of linear polarisation into circular polarisation is smaller than 15-20 dB (a factor of 30-100), indicating low polarisation leakage in the multibeam receiver. Hence, the frequency-dependent circular polarisation structure in the burst is likely intrinsic to the source and not anthropogenic or an instrumental artifact, as speculated by Price et al. (2019)."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Localisation and beam pointing metadata requirements for validating primary lobe detection and ruling out instrumental artifacts"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_c92427336d384fa1_m1",
+      "evidence": {
+        "section": "METHODS",
+        "original_text": "We develop a Bayesian Stokes-Q, U, and V fit method to model the GFR effect, which is independent of the total polarised flux parameter. We perform a Bayesian parameter inference using `bilby` (Ashton et al. 2019) with the `DYNESTY` nested sampler to infer the posterior probability distribution for our models. We expand the method described in Bannister et al. (2019) to infer Faraday Rotation to include GFR-induced circular polarisation. Assuming the noise in the data can be described by a Gaussian distribution (valid if the thermal noise dominates the data), we can infer the posterior probability distribution for the GFR to be where 𝑃(𝜆) is the polarisation vector of the data consisting of all the Stokes components, 𝑃𝑀(𝜆) is the modeled polarisation vector with all the Stokes parameters, 𝜎 is the standard deviation of the Stokes spectrum, and 𝜆 is the wavelength. The posterior in the basis is where Q, U, and V are the Stokes components from the data, and 𝑄𝑚, 𝑈𝑚, and 𝑉𝑚 the modelled Stokes components. Following Bannister et al. (2019), we marginalise the above Equation over the total polarisation fraction 𝑃 to make the estimation more robust to changes in the polarised flux in any of the frequency channels. We modify the integration intervals from 0 to ∞ from -∞ to ∞ used in Bannister et al. (2019). We modify the integration interval as the latter leads to a bi-model distribution in the likelihood function for PPA and EA. We consider two plausible scenarios: either the noise in all the Stokes components is identical, or they are all different, which we term, cases (a) and (b), respectively."
+      },
+      "confidence": 0.95,
+      "name": "Bayesian Stokes-Q, U, and V fit method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_c92427336d384fa1_m2",
+      "evidence": {
+        "section": "METHODS",
+        "original_text": "We model the spectral behaviour of the polarisation structure in the burst using a phenomenological GFR model described in Lower (2021). We extend this model to include the modelling of RM from the conventional FR effect. We use this FR-GFR model to investigate the polarised behaviour of the burst. To verify the model, we use data from the Parkes/Murriyang multibeam receiver observations of known pulsars J1644−4559 and J0835−4510, which have reported measurements of RM of -626.9 and 31.38, respectively. The data for pulsars J0833−4559 and J0835−4510 were taken in 2018 and recorded using the Parkes Digital Filterbank Backend Mark-4. The centre frequency for both observations is 1369 MHz, with a bandwidth of 256 MHz, with a frequency resolution of 125 KHz. We calibrate the pulsar data for flux and polarisation using a standard Parkes flux calibrator and a noise diode source for polarisation calibration using `psrchive`."
+      },
+      "confidence": 0.95,
+      "name": "FR-GFR model",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_c92427336d384fa1_x1",
+      "evidence": {
+        "section": "METHODS",
+        "original_text": "We use data presented in Price et al. (2019) for our analysis. Here we briefly summarise the properties of the data. FRB 20180301A was discovered using the 21-cm multibeam receiver on the Parkes/Murriyang radio telescope (Staveley-Smith et al. 1996), using the Berkeley–Parkes–Swinburne Recorder (BPSR) system in a Breakthrough Listen (BL) observation (Price et al. 2019). Repeat bursts from FRB 20180301A were reported using the Five Hundred Meter Aperture Radio Telescope (FAST) by Luo et al. (2020), confirming the source to be a repeating FRB. The initial burst was reported to have an RM of -3156 rad m−2 (Price et al. 2019) and a dispersion measure (DM) of 522 pc cm−3. The dynamic Stokes spectrum from the multibeam receiver is shown in Figure 1. We use methods described in Price et al. (2019) to flux calibrate the data on the existing polarisation calibrated dataset between the frequencies 1359.8 MHz and 1513.7 MHz, for the 154 MHz bandwidth over which the FRB emission is apparent. We do not include the lower 154 MHz in our analysis, where there is no detectable burst emission. Following Price et al. (2019), we use a Gaussian filter with a frequency width of 0.109 MHz and a time width of ∼60 µsec to smooth the spectra."
+      },
+      "confidence": 0.95,
+      "task": "polarimetric reanalysis of FRB 20180301A",
+      "setup": "Parkes/Murriyang radio telescope multibeam receiver data, flux and polarisation calibration"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_c92427336d384fa1_x2",
+      "evidence": {
+        "section": "RESULTS",
+        "original_text": "We verify the FR-GFR model on known pulsars from archival observations from the Parkes/Murriyang multibeam receiver using the model described by Equation 4 and the likelihood function described by Equation 12. The posterior probability distributions for J16444559 and J0835-4510 are shown in Figure A1. We show the model fit for Stokes Q, U, and V from the estimated parameters in Figure A3. The FR-GFR model estimates the RM for J1644-4559 and J0835-4510 to be -626.31+1.2 rad m−2 and 48.36+0.9 rad m−2, respectively. The estimated parameters for the FR-GFR model, `rmfit`, and FR model are listed in Table 1. The FR-GFR polarisation parameters were estimated by averaging 154 and 174 bins over the on-pulse region for J1644-4559 and J0835-4510, respectively. The RM for the pulsars J1644-4559 and J0835-4510 were computed by `psrchive` − `rmfit` using a resolution of 0.5 rad m−2 over the range -1000 to 0 rad m−2 and 0 to 50 rad m−2, respectively."
+      },
+      "confidence": 0.95,
+      "task": "verification of FR-GFR model on known pulsars",
+      "setup": "Parkes/Murriyang multibeam receiver observations of pulsars J1644−4559 and J0835−4510"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The RM and GRM value estimated using the FR-GFR model is 27.7^{+5.2}_{-5.1} rad m^{-2} and 4351.7^{+340.4}_{-313.6} rad m^{-α}, respectively. The RM derived from the FR-GFR model is significantly smaller in magnitude than the previous RM estimation of -3163 rad m^{-2} (Price et al. 2019). The RM derived by Price et al. (2019) relied on QU fit without considering the Stokes-V fit to the data. Moreover, the parameter θ, which described the modes of transmission converges to ∼104°, which indicates non-circular and nearly elliptical mode of transmission. The converged model parameters RM, GRM, ψ, χ, ϕ, α and θ for FRB 20180301A are listed in Table 2. The model fit to the data is shown in Figure 4. The index α converges to a 2.29 ± 0.07. The EA and PA angles calculated from the polarisation data across the frequency are shown in panels D and E in Figure 4. Additionally, the FR-GFR model has a log10 Bayes evidence of 1389.6 relative to the FR-only model, indicating a strong preference (Trotta 2008) to FR-GFR model."
+      },
+      "confidence": 0.98,
+      "quantity": "rotation measure",
+      "value": 27.7,
+      "unit": "rad m^{-2}",
+      "context": "FRB 20180301A discovery burst, estimated using FR-GFR model with QUV-fit",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_c92427336d384fa1_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The RM and GRM value estimated using the FR-GFR model is 27.7^{+5.2}_{-5.1} rad m^{-2} and 4351.7^{+340.4}_{-313.6} rad m^{-α}, respectively. The RM derived from the FR-GFR model is significantly smaller in magnitude than the previous RM estimation of -3163 rad m^{-2} (Price et al. 2019). The RM derived by Price et al. (2019) relied on QU fit without considering the Stokes-V fit to the data. Moreover, the parameter θ, which described the modes of transmission converges to ∼104°, which indicates non-circular and nearly elliptical mode of transmission. The converged model parameters RM, GRM, ψ, χ, ϕ, α and θ for FRB 20180301A are listed in Table 2. The model fit to the data is shown in Figure 4. The index α converges to a 2.29 ± 0.07. The EA and PA angles calculated from the polarisation data across the frequency are shown in panels D and E in Figure 4. Additionally, the FR-GFR model has a log10 Bayes evidence of 1389.6 relative to the FR-only model, indicating a strong preference (Trotta 2008) to FR-GFR model."
+      },
+      "confidence": 0.95,
+      "metric": "rotation measure estimation",
+      "compared_to": "previous QU-fit method"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The RM and GRM value estimated using the FR-GFR model is 27.7^{+5.2}_{-5.1} rad m^{-2} and 4351.7^{+340.4}_{-313.6} rad m^{-α}, respectively. The RM derived from the FR-GFR model is significantly smaller in magnitude than the previous RM estimation of -3163 rad m^{-2} (Price et al. 2019). The RM derived by Price et al. (2019) relied on QU fit without considering the Stokes-V fit to the data. Moreover, the parameter θ, which described the modes of transmission converges to ∼104°, which indicates non-circular and nearly elliptical mode of transmission. The converged model parameters RM, GRM, ψ, χ, ϕ, α and θ for FRB 20180301A are listed in Table 2. The model fit to the data is shown in Figure 4. The index α converges to a 2.29 ± 0.07. The EA and PA angles calculated from the polarisation data across the frequency are shown in panels D and E in Figure 4. Additionally, the FR-GFR model has a log10 Bayes evidence of 1389.6 relative to the FR-only model, indicating a strong preference (Trotta 2008) to FR-GFR model."
+      },
+      "confidence": 0.98,
+      "quantity": "generalised rotation measure",
+      "value": 4351.7,
+      "unit": "rad m^{-α}",
+      "context": "FRB 20180301A discovery burst, estimated using FR-GFR model with QUV-fit",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The RM and GRM value estimated using the FR-GFR model is 27.7^{+5.2}_{-5.1} rad m^{-2} and 4351.7^{+340.4}_{-313.6} rad m^{-α}, respectively. The RM derived from the FR-GFR model is significantly smaller in magnitude than the previous RM estimation of -3163 rad m^{-2} (Price et al. 2019). The RM derived by Price et al. (2019) relied on QU fit without considering the Stokes-V fit to the data. Moreover, the parameter θ, which described the modes of transmission converges to ∼104°, which indicates non-circular and nearly elliptical mode of transmission. The converged model parameters RM, GRM, ψ, χ, ϕ, α and θ for FRB 20180301A are listed in Table 2. The model fit to the data is shown in Figure 4. The index α converges to a 2.29 ± 0.07. The EA and PA angles calculated from the polarisation data across the frequency are shown in panels D and E in Figure 4. Additionally, the FR-GFR model has a log10 Bayes evidence of 1389.6 relative to the FR-only model, indicating a strong preference (Trotta 2008) to FR-GFR model."
+      },
+      "confidence": 0.98,
+      "quantity": "spectral scaling index α",
+      "value": 2.29,
+      "unit": "",
+      "context": "FRB 20180301A discovery burst, estimated using FR-GFR model",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The RM and GRM value estimated using the FR-GFR model is 27.7^{+5.2}_{-5.1} rad m^{-2} and 4351.7^{+340.4}_{-313.6} rad m^{-α}, respectively. The RM derived from the FR-GFR model is significantly smaller in magnitude than the previous RM estimation of -3163 rad m^{-2} (Price et al. 2019). The RM derived by Price et al. (2019) relied on QU fit without considering the Stokes-V fit to the data. Moreover, the parameter θ, which described the modes of transmission converges to ∼104°, which indicates non-circular and nearly elliptical mode of transmission. The converged model parameters RM, GRM, ψ, χ, ϕ, α and θ for FRB 20180301A are listed in Table 2. The model fit to the data is shown in Figure 4. The index α converges to a 2.29 ± 0.07. The EA and PA angles calculated from the polarisation data across the frequency are shown in panels D and E in Figure 4. Additionally, the FR-GFR model has a log10 Bayes evidence of 1389.6 relative to the FR-only model, indicating a strong preference (Trotta 2008) to FR-GFR model."
+      },
+      "confidence": 0.95,
+      "quantity": "log10 Bayes evidence",
+      "value": 1389.6,
+      "unit": "",
+      "context": "FR-GFR model compared to FR-only model for FRB 20180301A",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr5",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We verify the FR-GFR model on known pulsars from archival observations from the Parkes/Murriyang multibeam receiver using the model described by Equation 4 and the likelihood function described by Equation 12. The posterior probability distributions for J1644-4559 and J0835-4510 are shown in Figure A1. We show the model fit for Stokes Q, U, and V from the estimated parameters in Figure A3. The FR-GFR model estimates the RM for J1644-4559 and J0835-4510 to be -626.31^{+1.2}_{-1.2} rad m^{-2} and 48.36^{+0.9}_{-0.9} rad m^{-2}, respectively. The estimated parameters for the FR-GFR model, `rmfit`, and FR model are listed in Table 1. The FR-GFR polarisation parameters were estimated by averaging 154 and 174 bins over the on-pulse region for J1644-4559 and J0835-4510, respectively. The RM for the pulsars J1644-4559 and J0835-4510 were computed by `psrchive` − `rmfit` using a resolution of 0.5 rad m^{-2} over the range -1000 to 0 rad m^{-2} and 0 to 50 rad m^{-2}, respectively. The posterior probability distribution for parameters GRM and α return one of the prior boundaries for the case of J1644-4559, indicating a near constant Stokes-V across the observation frequency band. Similarly, the index α for J0835-4510 also returns one of the prior boundaries, indicating a constant Stokes-V across the frequency band for J0835-4510, even though the GRM is inferred to be 71^{+20}_{-15}. We further verify the FR-GFR model on magnetar XTE J1810-197 from Lower et al. (2024) to confirm the recovery of the expected GRM and α values by comparing the results to Lower et al. (2024). We show the GRM and α and values of our fits in Figure A4 in the appendix. The results are in broad agreement with those derived in Lower et al. (2024). We attribute the difference in the recovered GRM and α values to be due to the simultaneous RM measurement in our approach."
+      },
+      "confidence": 0.95,
+      "quantity": "rotation measure",
+      "value": -626.31,
+      "unit": "rad m^{-2}",
+      "context": "Pulsar J1644-4559, estimated using FR-GFR model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr6",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We verify the FR-GFR model on known pulsars from archival observations from the Parkes/Murriyang multibeam receiver using the model described by Equation 4 and the likelihood function described by Equation 12. The posterior probability distributions for J1644-4559 and J0835-4510 are shown in Figure A1. We show the model fit for Stokes Q, U, and V from the estimated parameters in Figure A3. The FR-GFR model estimates the RM for J1644-4559 and J0835-4510 to be -626.31^{+1.2}_{-1.2} rad m^{-2} and 48.36^{+0.9}_{-0.9} rad m^{-2}, respectively. The estimated parameters for the FR-GFR model, `rmfit`, and FR model are listed in Table 1. The FR-GFR polarisation parameters were estimated by averaging 154 and 174 bins over the on-pulse region for J1644-4559 and J0835-4510, respectively. The RM for the pulsars J1644-4559 and J0835-4510 were computed by `psrchive` − `rmfit` using a resolution of 0.5 rad m^{-2} over the range -1000 to 0 rad m^{-2} and 0 to 50 rad m^{-2}, respectively. The posterior probability distribution for parameters GRM and α return one of the prior boundaries for the case of J1644-4559, indicating a near constant Stokes-V across the observation frequency band. Similarly, the index α for J0835-4510 also returns one of the prior boundaries, indicating a constant Stokes-V across the frequency band for J0835-4510, even though the GRM is inferred to be 71^{+20}_{-15}. We further verify the FR-GFR model on magnetar XTE J1810-197 from Lower et al. (2024) to confirm the recovery of the expected GRM and α values by comparing the results to Lower et al. (2024). We show the GRM and α and values of our fits in Figure A4 in the appendix. The results are in broad agreement with those derived in Lower et al. (2024). We attribute the difference in the recovered GRM and α values to be due to the simultaneous RM measurement in our approach."
+      },
+      "confidence": 0.95,
+      "quantity": "rotation measure",
+      "value": 48.36,
+      "unit": "rad m^{-2}",
+      "context": "Pulsar J0835-4510, estimated using FR-GFR model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We verify the FR-GFR model on known pulsars from archival observations from the Parkes/Murriyang multibeam receiver using the model described by Equation 4 and the likelihood function described by Equation 12. The posterior probability distributions for J1644-4559 and J0835-4510 are shown in Figure A1. We show the model fit for Stokes Q, U, and V from the estimated parameters in Figure A3. The FR-GFR model estimates the RM for J1644-4559 and J0835-4510 to be -626.31^{+1.2}_{-1.2} rad m^{-2} and 48.36^{+0.9}_{-0.9} rad m^{-2}, respectively. The estimated parameters for the FR-GFR model, `rmfit`, and FR model are listed in Table 1. The FR-GFR polarisation parameters were estimated by averaging 154 and 174 bins over the on-pulse region for J1644-4559 and J0835-4510, respectively. The RM for the pulsars J1644-4559 and J0835-4510 were computed by `psrchive` − `rmfit` using a resolution of 0.5 rad m^{-2} over the range -1000 to 0 rad m^{-2} and 0 to 50 rad m^{-2}, respectively. The posterior probability distribution for parameters GRM and α return one of the prior boundaries for the case of J1644-4559, indicating a near constant Stokes-V across the observation frequency band. Similarly, the index α for J0835-4510 also returns one of the prior boundaries, indicating a constant Stokes-V across the frequency band for J0835-4510, even though the GRM is inferred to be 71^{+20}_{-15}. We further verify the FR-GFR model on magnetar XTE J1810-197 from Lower et al. (2024) to confirm the recovery of the expected GRM and α values by comparing the results to Lower et al. (2024). We show the GRM and α and values of our fits in Figure A4 in the appendix. The results are in broad agreement with those derived in Lower et al. (2024). We attribute the difference in the recovered GRM and α values to be due to the simultaneous RM measurement in our approach."
+      },
+      "confidence": 0.9,
+      "quantity": "generalised rotation measure",
+      "value": 71,
+      "unit": "",
+      "context": "Pulsar J0835-4510, estimated using FR-GFR model",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c92427336d384fa1_qr8",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Considering a full-width half-power (FWHP) beamwidth of ∼14.5’ (Staveley-Smith et al. 1996) for beam 3, the multibeam detection shows a radial offset of ∼7’. Figure 2 shows the FWHP of beam 3 in the blue-shaded region and the full-width (FW) of beam 1 in the grey-shaded region to show the general extent of the FW of individual beams. Additionally, the cross-polarisation leakage analysis by Carozzi & Woan (2011) shows that the leakage of linear polarisation into circular polarisation is smaller than 15-20 dB (a factor of 30-100), indicating low polarisation leakage in the multibeam receiver. Hence, the frequency-dependent circular polarisation structure in the burst is likely intrinsic to the source and not anthropogenic or an instrumental artifact, as speculated by Price et al. (2019)."
+      },
+      "confidence": 0.95,
+      "quantity": "radial offset",
+      "value": 7,
+      "unit": "'",
+      "context": "FRB 20180301A detection relative to beam 3 center of Parkes/Murriyang multibeam receiver",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_c92427336d384fa1_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "We verify the FR-GFR model on known pulsars from archival observations from the Parkes/Murriyang multibeam receiver using the model described by Equation 4 and the likelihood function described by Equation 12. The posterior probability distributions for J1644-4559 and J0835-4510 are shown in Figure A1. We show the model fit for Stokes Q, U, and V from the estimated parameters in Figure A3. The FR-GFR model estimates the RM for J1644-4559 and J0835-4510 to be -626.31^{+1.2}_{-1.2} rad m^{-2} and 48.36^{+0.9}_{-0.9} rad m^{-2}, respectively. The estimated parameters for the FR-GFR model, `rmfit`, and FR model are listed in Table 1. The FR-GFR polarisation parameters were estimated by averaging 154 and 174 bins over the on-pulse region for J1644-4559 and J0835-4510, respectively. The RM for the pulsars J1644-4559 and J0835-4510 were computed by `psrchive` − `rmfit` using a resolution of 0.5 rad m^{-2} over the range -1000 to 0 rad m^{-2} and 0 to 50 rad m^{-2}, respectively. The posterior probability distribution for parameters GRM and α return one of the prior boundaries for the case of J1644-4559, indicating a near constant Stokes-V across the observation frequency band. Similarly, the index α for J0835-4510 also returns one of the prior boundaries, indicating a constant Stokes-V across the frequency band for J0835-4510, even though the GRM is inferred to be 71^{+20}_{-15}. We further verify the FR-GFR model on magnetar XTE J1810-197 from Lower et al. (2024) to confirm the recovery of the expected GRM and α values by comparing the results to Lower et al. (2024). We show the GRM and α and values of our fits in Figure A4 in the appendix. The results are in broad agreement with those derived in Lower et al. (2024). We attribute the difference in the recovered GRM and α values to be due to the simultaneous RM measurement in our approach."
+      },
+      "confidence": 0.9,
+      "metric": "model verification",
+      "compared_to": "previous rmfit method"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_c92427336d384fa1_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The polarimetric properties of repeating FRBs show diverse behaviour and, at times, extreme polarimetric morphology, suggesting a complex magneto-ionic circumburst environment for this class of FRB. The polarimetric properties such as circular polarisation behaviour of FRBs are crucial for understanding their surrounding magnetic-ionic environment. The circular polarisation previously observed in some of the repeating FRB sources has been attributed to propagation effects such as generalised Faraday rotation (GFR), where conversion from linear to circular polarisation occurs due to the non-circular modes of transmission in relativistic plasma. The discovery burst from the repeating FRB 20180301A showed significant frequency-dependent circular polarisation behaviour, which was initially speculated to be instrumental due to a sidelobe detection. Here we revisit the properties given the subsequent interferometric localisation of the burst, which indicates that the burst was detected in the primary beam of the Parkes/Murriyang 20-cm multibeam receiver. We develop a Bayesian Stokes-Q, U, and V fit method to model the GFR effect, which is independent of the total polarised flux parameter. Using the GFR model we show that the rotation measure (RM) estimated is two orders of magnitude smaller and opposite sign (∼28 rad m[−][2] ) than the previously reported value. We interpret the implication of the circular polarisation on its local magnetic environment and reinterpret its long-term temporal evolution in RM."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_c92427336d384fa1_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "We use GFR to model the Stokes-V behaviour of FRB 20180301A. We extend the RM estimation method using QU-fit described in Bannister et al. (2019) and Lower (2021) to QUV-fit for GFR modelling and derive a combined RM-GFR estimation method. We verify this method using known pulsars J1644−4559 and J0835−4510. We use arcsec localisation from Bhandari et al. (2022) and the pointing information from the observation to conclude that the burst was detected within the FWHP of the multibeam receiver, with a radial offset of ∼7’ from the beam 3 centre. The precise localisation information suggests that the frequency-dependent Stokes-V burst behavior was likely non-instrumental. The combined estimation of the RM and GRM suggests a less extreme RM of ∼27 rad m[−][2] , relative to the previously reported RM of -3163 rad m[−][2] (Price et al. 2019). Our results provide another example in an ever-growing subset of FRBs showing signature of passage through relativistic plasma. This confirms another promising way to use FRBs as probes of fundamental physics."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_c92427336d384fa1_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "In the recent observation of FRB 20180301A from Parkes/Murriyang UWL (Kumar et al. 2023b), no burst was observed to have circular polarisation > 15%, and there was no evidence for frequency-dependent circular polarisation. This would indicate that the circular polarisation could be a transient characteristic due to changing circumburst environment of the FRB progenitor, similar to the behaviour seen in the FRB 20201124A, where significant frequency dependent circular polarisation was only seen in some of the bursts during its active phase in April 2021 (Kumar et al. 2022). Additionally, observational bias could lead to missing bursts showing significant circular polarisation fraction during this transient phase. The FRB 20180301A provides a unique window into studying the progenitor environment of FRBs using its complex polarimetric properties. Hence, a high cadence monitoring of this source is essential to confirm any periodic polarimetric behaviour in FRB 20180301A. Using the FR-GFR model, we find that the RM of the discovery burst is 27.7[+] −[5] 5 . .[2] 1[rad m][−][2], less extreme than the previously reported RM of −3163 rad m[−][2] (Price et al. 2019). The sign of the RM is opposite, suggesting there has only been one observed flip in the sign of the burst between the discovery of the burst from the Parkes/Murriyang multibeam receiver and additional follow-up from Parkes/Murriyang UWL; between May 2021 and June 2022. The QUV fit for the data shown in Figure 4 shows good agreement with the Stokes U and V. However, we see a relatively larger residual with Stokes Q. We attribute this to the differential gain in the two linearly polarisation feeds from the multibeam receiver. The StokesQ parameter with linear feeds is a differential parameter, compared to the Stokes U and V, which are cross correlation parameters. Hence, Stokes-Q is less immune to variations in differential gain."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_c92427336d384fa1_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Hence, a high cadence monitoring of this source is essential to confirm any periodic polarimetric behaviour in FRB 20180301A. Assuming the surrounding media to be dominated by relativistic gas plasma, we would expect the spectral index 𝛼 = 3. From Kennett & Melrose (1998), the GRM or relativistic rotation measure (RRM) for this case can be defined by GRM = 10[9] LB[4] rad m[−] 𝛼 , where B is the magnetic field in Gauss and L is the distance scale in parsec. If we set 𝛼 = 3, we estimate the GRM to be 5121.84[+] −[24] 25 . .[45] 59[rad m][−][3]. Assuming a length scale of ∼1 pc (the fiducial scale used in Kennett & Melrose (1998)), the magnetic field strength for the media is ∼2.2 mG. This is comparable to measurements reported by Johnston et al. (2005) for the 2004 periastron passage of B1259-63 system, albeit in a much more compact environment."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

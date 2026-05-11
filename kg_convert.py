@@ -43,8 +43,34 @@ def convert_pdf_to_md(pdf_path: Path, backend: str = "pymupdf4llm") -> tuple[str
 def _clean_md(md_text: str) -> str:
     md_text = re.sub(r"\*\*==> picture \[.*?\] intentionally omitted <==\*\*\n?", "", md_text)
     md_text = re.sub(r"(?m)^\|.*\n?", "", md_text)
-    # 截掉 References/Bibliography/参考文献 之后的内容
-    m = re.search(r"\n#{1,2}\s+\*?\*?(References|Bibliography|参考文献)\*?\*?\s*", md_text, re.IGNORECASE)
+
+    # ── 截掉参考文献及后续内容 ──
+    # 模式1: markdown 标题 ## References / # Bibliography
+    m = re.search(
+        r"\n#{1,2}\s+\*?\*?\s*(?:References?|Bibliography|REFERENCES?|BIBLIOGRAPHY|参考文献|引用文献)\s*\*?\*?\s*\n",
+        md_text, re.IGNORECASE)
+    # 模式2: 独立成行的 References / Bibliography（非标题，无 #）
+    if not m:
+        m = re.search(
+            r"\n\*?\*?\s*(?:References?|Bibliography|REFERENCES?|BIBLIOGRAPHY|参考文献)\s*\*?\*?\s*\n",
+            md_text, re.IGNORECASE)
+    # 模式3: Acknowledgements / Author contributions / Supplementary（论文后的尾部内容）
+    if not m:
+        m = re.search(
+            r"\n#{1,2}\s+\*?\*?\s*(?:Acknowledg(?:e?)ments?|Author\s+[Cc]ontributions?|Supplementary|Appendices|Data\s+[Aa]vailability)\s*\*?\*?\s*\n",
+            md_text, re.IGNORECASE)
+    # 模式4: 末尾密集引用行（如 [1] Author. Title... 连续出现），回退到第一个引用行
+    if not m:
+        ref_lines = list(re.finditer(r"^\s*[-–••*\[]\s*\[?\d{1,4}\]?\s", md_text, re.MULTILINE))
+        if len(ref_lines) >= 5:
+            # 从后往前找连续引用块的起始位置
+            for i in range(len(ref_lines) - 1, 0, -1):
+                if ref_lines[i].start() - ref_lines[i-1].end() > 500:
+                    m = ref_lines[i]
+                    break
+            if not m:
+                m = ref_lines[-5]  # 从倒数第5个引用开始切
+
     if m:
         md_text = md_text[:m.start()]
     return md_text
@@ -181,6 +207,7 @@ def main():
                     time_records.append((pdf.name, elapsed))
         except Exception as e:
             db.mark_failed(stem, "convert", str(e))
+            db.skip(stem, f"convert 失败: {str(e)[:150]}")
             print(f"  ✗ {pdf.name}: {e}")
 
     if workers == 1:

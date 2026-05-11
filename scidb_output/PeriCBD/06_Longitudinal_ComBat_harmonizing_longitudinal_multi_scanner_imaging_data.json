@@ -1,0 +1,589 @@
+{
+  "metadata": {
+    "doc_id": "doc_bb4d7944749ca31b",
+    "source_file": "06_Longitudinal_ComBat_harmonizing_longitudinal_multi_scanner_imaging_data.md",
+    "title": "Longitudinal ComBat: A method for harmonizing longitudinal multi-scanner imaging data",
+    "year": 2020,
+    "doi": "10.1016/j.neuroimage.2020.117129",
+    "abstract": "While aggregation of neuroimaging datasets from multiple sites and scanners can yield increased statistical power, it also presents challenges due to systematic scanner effects. This unwanted technical variability can introduce noise and bias into estimation of biological variability of interest. We propose a method for harmonizing longitudinal multi-scanner imaging data based on ComBat, a method originally developed for genomics and later adapted to cross-sectional neuroimaging data. Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of \n\n> ☆ Data used in preparation of this article were obtained from the Alzheimer’s Disease Neuroimaging Initiative (ADNI) database (adni.loni.usc.edu). As such, the investigators within the ADNI contributed to the design and implementation of ADNI and/or provided data but did not participate in analysis or writing of this report. A complete listing of ADNI investigators can be found at: http://adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_Acknowledgement_List.pdf. \n\nThis is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/). \n\n> * Corresponding author. joanne.beer@pennmedicine.upenn.edu (J.C. Beer). ** Corresponding author. klinn@pennmedicine.upenn.edu (K.A. Linn). \n\nCRediT authorship contribution statement \n\n**Joanne C. Beer:** Conceptualization, Methodology, Software, Validation, Formal analysis, Writing - original draft, Visualization, Project administration. **Nicholas J. Tustison:** Resources, Data curation, Writing - review & editing. **Philip A. Cook:** Resources, Data curation, Writing - review & editing. **Christos Davatzikos:** Writing - review & editing. **Yvette I. Sheline:** Writing - review & editing, Funding acquisition. **Russell T. Shinohara:** Conceptualization, Methodology, Writing - review & editing, Supervision, Funding acquisition. **Kristin A. Linn:** Conceptualization, Methodology, Writing - review & editing, Supervision, Funding acquisition. Appendix B. Supplementary data \n\nSupplementary data to this article can be found online at https://doi.org/10.1016/j.neuroimage.2020.117129. \n\nBeer et al. \n\nPage 2 \n\nadditive and multiplicative scanner effects in various brain regions. We compare estimates of the association between diagnosis and change in cortical thickness over time using three versions of the ADNI data: unharmonized data, data harmonized using cross-sectional ComBat, and data harmonized using longitudinal ComBat. In simulation studies, we show that longitudinal ComBat is more powerful for detecting longitudinal change than cross-sectional ComBat and controls the type I error rate better than unharmonized data with scanner included as a covariate. The proposed method would be useful for other types of longitudinal data requiring harmonization, such as genomic data, or neuroimaging studies of neurodevelopment, psychiatric disorders, or other neurological diseases.",
+    "introduction": "Aggregation of neuroimaging data across sites and scanners can potentially increase statistical power to detect biological variability of interest. However, the use of different scanner hardware, software, and acquisition protocols can introduce unwanted technical variability (Han et al., 2006; Jovicich et al., 2006; Takao et al., 2011). Harmonization methods seek to remove unwanted technical variability while preserving biological variability. \n\nComBat (named for “combating batch effects when combining batches”) is an empirical Bayesian method for data harmonization that was originally designed for genomics (Johnson et al., 2007). It has recently been adapted to neuroimaging studies and applied to diverse data types including diffusion tensor imaging (DTI) (Fortin et al., 2017), cortical thicknesses (Fortin et al., 2018), functional connectivity measurements (Yu et al., 2018), and radiomic features derived from positron emission tomography (PET) imaging (Orlhac et al., 2018). ComBat has also recently been extended to cross-sectional studies of structural brain changes across the lifespan using a generalized additive model framework (Pomponio et al., 2020). \n\nIn general, ComBat is applicable to situations where multiple features of the same type are measured for each participant, where features might be expression levels for different genes, or imaging-derived metrics from different voxels or anatomic regions. In this paper, we extend the ComBat methodology from a cross-sectional to a longitudinal setting, where participants are imaged repeatedly over the course of the study. \n\nIn contrast to a general linear model approach that includes site or scanner as a fixed effect covariate, there are several benefits to the empirical Bayes estimation method used in ComBat. Notably, ComBat is more robust to outliers in the case of small within-scanner sample sizes (Johnson et al., 2007). ComBat assumes that for a given scanner, the scanner effects across features derive from a common distribution, and thus borrows information across features to shrink estimates towards a common mean. Furthermore, in addition to removing additive scanner effects, ComBat also corrects multiplicative scanner effects by \n\nNeuroimage. Author manuscript; available in PMC 2020 November 02. \n\nBeer et al. \n\nPage 3 \n\nremoving heteroscedasticity of model errors across scanners. Prior studies have shown that the location (mean) and scale (variance) adjustment implemented in ComBat outperforms methods that merely include scanner as a covariate (Fortin et al., 2018). \n\nWhile longitudinal studies are important for measuring within-subject change, there has been little work on longitudinal data harmonization. Müller et al. (2016) examined a variety of batch correction methods in longitudinal gene expression data and found that a combination of quantile normalization and ComBat performed best. However, their batch effect estimation method relied on biological replicates collected at baseline, and processed at both baseline and follow-up. This does not translate well to longitudinal neuroimaging study designs, as there is no way to obtain analogous biological replicates. Venkatraman et al. (2015) estimated scanner fixed effects in cross-sectional and longitudinal DTI data using linear mixed effects models. They then used these estimates to apply a linear correction to new data. The authors found that accounting for within-subject variability led to better scanner effect estimates in longitudinal as compared with cross-sectional data. However, their method does not enjoy the benefits of empirical Bayes discussed above, nor does it adjust for multiplicative scanner effects. \n\nRather than explicitly estimating and removing scanner effects, other approaches have sought to address scanner effects at a more global level or further upstream in the processing pipeline. Erus et al. (2018) used a multi-atlas segmentation approach to harmonize structural MRI neuroimaging data, creating mutually consistent inter-scanner atlases derived from scans of the same participant on different scanners. Authors reported more similar crosssectional age trends across scanners, and increased within-subject consistency (i.e., intraclass correlation) after harmonization. However the method did not completely remove scanner effects, so scanner still needed to be included as a covariate. Dewey et al. (2019) applied a contrast harmonization approach, using a fully convolutional neural network to harmonize structural MRI brain images between two protocols. They showed that protocol change had substantially less effect on atrophy estimation after harmonization. Both of these methods require an overlap cohort, i.e., that each pair of scanners or protocols have some shared participants, and so would not be applicable to existing datasets without this design. \n\nIn this work, we aim to estimate and correct for additive and multiplicative scanner effects while explicitly accounting for the within-subject correlation inherent to longitudinal studies, such that the harmonization method may be flexibly applied to existing and future longitudinal multi-scanner neuroimaging datasets. We illustrate the longitudinal ComBat method using cortical thickness data from the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study (Weiner et al., 2015). Alzheimer’s disease (AD) is a neurodegenerative disease characterized by aggregation of amyloid β plaques and accumulation of neurofibrillary tangles. Brain atrophy is one of the earliest biomarkers of AD that is visible on structural magnetic resonance imaging (MRI), particularly in certain regions such as the hippocampus and entorhinal cortex (Dickerson et al., 2008; Bakkour et al., 2009). ADNI is a multi-site longitudinal study including cognitively normal, mild cognitive impairment (MCI), which is a prodromal stage of AD, and AD participants. \n\nNeuroimage. Author manuscript; available in PMC 2020 November 02. \n\nBeer et al. \n\nPage 4 \n\nIn Section 2 we describe the ADNI data and assess the presence of scanner effects; in Section 3 we outline the proposed longitudinal ComBat harmonization method; in Section 4 we use the ADNI dataset to compare model estimates and inference for longitudinal ComBat, cross-sectional ComBat, and unharmonized data; and in Section 5 we present a simulation study. We provide discussion and conclusions in Section 6. Code for implementing longitudinal ComBat is available at https://github.com/jcbeer/longCombat.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": "人工智能",
+      "level3": "机器学习"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "基础医学",
+        "level2": "神经科学",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "ADNI",
+      "Alzheimer’s",
+      "ComBat",
+      "Cortical thickness",
+      "Harmonization",
+      "MRI"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:01.372703+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose a method for harmonizing longitudinal multi-scanner imaging data based on ComBat, a method originally developed for genomics and later adapted to cross-sectional neuroimaging data. Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of additive and multiplicative scanner effects in various brain regions. We compare estimates of the association between diagnosis and change in cortical thickness over time using three versions of the ADNI data: unharmonized data, data harmonized using cross-sectional ComBat, and data harmonized using longitudinal ComBat. In simulation studies, we show that longitudinal ComBat is more powerful for detecting longitudinal change than cross-sectional ComBat and controls the type I error rate better than unharmonized data with scanner included as a covariate. The proposed method would be useful for other types of longitudinal data requiring harmonization, such as genomic data, or neuroimaging studies of neurodevelopment, psychiatric disorders, or other neurological diseases."
+      },
+      "confidence": 0.98,
+      "term": "Longitudinal ComBat",
+      "normalized": "纵向ComBat",
+      "std_label": "纵向ComBat"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "ComBat (named for “combating batch effects when combining batches”) is an empirical Bayesian method for data harmonization that was originally designed for genomics (Johnson et al., 2007). It has recently been adapted to neuroimaging studies and applied to diverse data types including diffusion tensor imaging (DTI) (Fortin et al., 2017), cortical thicknesses (Fortin et al., 2018), functional connectivity measurements (Yu et al., 2018), and radiomic features derived from positron emission tomography (PET) imaging (Orlhac et al., 2018). ComBat has also recently been extended to cross-sectional studies of structural brain changes across the lifespan using a generalized additive model framework (Pomponio et al., 2020). In contrast to a general linear model approach that includes site or scanner as a fixed effect covariate, there are several benefits to the empirical Bayes estimation method used in ComBat. Notably, ComBat is more robust to outliers in the case of small within-scanner sample sizes (Johnson et al., 2007). ComBat assumes that for a given scanner, the scanner effects across features derive from a common distribution, and thus borrows information across features to shrink estimates towards a common mean. Furthermore, in addition to removing additive scanner effects, ComBat also corrects multiplicative scanner effects by removing heteroscedasticity of model errors across scanners. Prior studies have shown that the location (mean) and scale (variance) adjustment implemented in ComBat outperforms methods that merely include scanner as a covariate (Fortin et al., 2018)."
+      },
+      "confidence": 0.97,
+      "term": "ComBat",
+      "normalized": "ComBat",
+      "std_label": "ComBat"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "While aggregation of neuroimaging datasets from multiple sites and scanners can yield increased statistical power, it also presents challenges due to systematic scanner effects. This unwanted technical variability can introduce noise and bias into estimation of biological variability of interest. We propose a method for harmonizing longitudinal multi-scanner imaging data based on ComBat, a method originally developed for genomics and later adapted to cross-sectional neuroimaging data. Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of additive and multiplicative scanner effects in various brain regions."
+      },
+      "confidence": 0.99,
+      "term": "scanner effects",
+      "normalized": "扫描仪效应",
+      "std_label": "扫描仪效应"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of additive and multiplicative scanner effects in various brain regions. We compare estimates of the association between diagnosis and change in cortical thickness over time using three versions of the ADNI data: unharmonized data, data harmonized using cross-sectional ComBat, and data harmonized using longitudinal ComBat."
+      },
+      "confidence": 0.98,
+      "term": "cortical thickness",
+      "normalized": "皮层厚度",
+      "std_label": "皮层厚度"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of additive and multiplicative scanner effects in various brain regions. We compare estimates of the association between diagnosis and change in cortical thickness over time using three versions of the ADNI data: unharmonized data, data harmonized using cross-sectional ComBat, and data harmonized using longitudinal ComBat."
+      },
+      "confidence": 0.99,
+      "term": "Alzheimer’s Disease Neuroimaging Initiative",
+      "normalized": "阿尔茨海默病神经影像学倡议",
+      "std_label": "ADNI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Aggregation of neuroimaging data across sites and scanners can potentially increase statistical power to detect biological variability of interest. However, the use of different scanner hardware, software, and acquisition protocols can introduce unwanted technical variability (Han et al., 2006; Jovicich et al., 2006; Takao et al., 2011). Harmonization methods seek to remove unwanted technical variability while preserving biological variability."
+      },
+      "confidence": 0.97,
+      "term": "data harmonization",
+      "normalized": "数据协调",
+      "std_label": "数据协调"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In contrast to a general linear model approach that includes site or scanner as a fixed effect covariate, there are several benefits to the empirical Bayes estimation method used in ComBat. Notably, ComBat is more robust to outliers in the case of small within-scanner sample sizes (Johnson et al., 2007). ComBat assumes that for a given scanner, the scanner effects across features derive from a common distribution, and thus borrows information across features to shrink estimates towards a common mean."
+      },
+      "confidence": 0.96,
+      "term": "empirical Bayes estimation",
+      "normalized": "经验贝叶斯估计",
+      "std_label": "经验贝叶斯估计"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb4d7944749ca31b_c8",
+      "evidence": {
+        "section": "Longitudinal ComBat",
+        "original_text": "For a longitudinal version of the ComBat harmonization method, we propose the model yijν(t) = αν + γiν + Xj[T] (t)βν + ηjν + δiνεijν(t), where i ∈ {1, …, m} is the scanner index, j ∈ {1, …, N} is the participant index, ν ∈ {1, …, V} is the feature index, t is time (continuous or categorical), yij ν (t) is the observed data for feature ν , participant j, scanner i, and time t, αν is overall mean for feature ν at baseline, γ i ν is the additive scanner i parameter for feature ν , X j(t) is a p × 1 vector of potentially time-varying covariates for participant j at time t (e.g., age, sex, the outcome that we ultimately intend to assess in association with the harmonized data such as diagnosis or cognitive test score, and time), β ν is a p × 1 vector of coefficients for feature ν , η j ν is a subject-specific random intercept for participant j and feature ν , δ i ν is the scanner i scaling factor for feature ν , and ε ij ν (t) is the error term. We assume ηjν N(0, ρν[2] ) and εijν(t) N(0, σν[2] ), and η j ν ’s and ε ij ν (t) ‘s are mutually independent."
+      },
+      "confidence": 0.95,
+      "term": "linear mixed effects model",
+      "normalized": "线性混合效应模型",
+      "std_label": "线性混合效应模型"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In simulation studies, we show that longitudinal ComBat is more powerful for detecting longitudinal change than cross-sectional ComBat and controls the type I error rate better than unharmonized data with scanner included as a covariate."
+      },
+      "confidence": 0.94,
+      "head": "doc_bb4d7944749ca31b_c1",
+      "relation_type": "enhances",
+      "relation_surface": "is more powerful for detecting longitudinal change than",
+      "tail": "doc_bb4d7944749ca31b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Furthermore, in addition to removing additive scanner effects, ComBat also corrects multiplicative scanner effects by removing heteroscedasticity of model errors across scanners."
+      },
+      "confidence": 0.95,
+      "head": "doc_bb4d7944749ca31b_c2",
+      "relation_type": "removes",
+      "relation_surface": "removes additive scanner effects",
+      "tail": "doc_bb4d7944749ca31b_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Furthermore, in addition to removing additive scanner effects, ComBat also corrects multiplicative scanner effects by removing heteroscedasticity of model errors across scanners."
+      },
+      "confidence": 0.95,
+      "head": "doc_bb4d7944749ca31b_c2",
+      "relation_type": "corrects",
+      "relation_surface": "corrects multiplicative scanner effects",
+      "tail": "doc_bb4d7944749ca31b_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose a method for harmonizing longitudinal multi-scanner imaging data based on ComBat, a method originally developed for genomics and later adapted to cross-sectional neuroimaging data."
+      },
+      "confidence": 0.98,
+      "head": "doc_bb4d7944749ca31b_c1",
+      "relation_type": "is_based_on",
+      "relation_surface": "based on ComBat",
+      "tail": "doc_bb4d7944749ca31b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r6",
+      "evidence": {
+        "section": "Longitudinal ComBat",
+        "original_text": "For a longitudinal version of the ComBat harmonization method, we propose the model yijν(t) = αν + γiν + Xj[T] (t)βν + ηjν + δiνεijν(t), where i ∈ {1, …, m} is the scanner index, j ∈ {1, …, N} is the participant index, ν ∈ {1, …, V} is the feature index, t is time (continuous or categorical), yij ν (t) is the observed data for feature ν , participant j, scanner i, and time t, αν is overall mean for feature ν at baseline, γ i ν is the additive scanner i parameter for feature ν , X j(t) is a p × 1 vector of potentially time-varying covariates for participant j at time t (e.g., age, sex, the outcome that we ultimately intend to assess in association with the harmonized data such as diagnosis or cognitive test score, and time), β ν is a p × 1 vector of coefficients for feature ν , η j ν is a subject-specific random intercept for participant j and feature ν , δ i ν is the scanner i scaling factor for feature ν , and ε ij ν (t) is the error term. We assume ηjν N(0, ρν[2] ) and εijν(t) N(0, σν[2] ), and η j ν ’s and ε ij ν (t) ‘s are mutually independent."
+      },
+      "confidence": 0.93,
+      "head": "doc_bb4d7944749ca31b_c1",
+      "relation_type": "uses",
+      "relation_surface": "propose the model",
+      "tail": "doc_bb4d7944749ca31b_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "We illustrate the longitudinal ComBat method using cortical thickness data from the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study (Weiner et al., 2015)."
+      },
+      "confidence": 0.94,
+      "head": "doc_bb4d7944749ca31b_c1",
+      "relation_type": "is_applied_to",
+      "relation_surface": "illustrate the longitudinal ComBat method using",
+      "tail": "doc_bb4d7944749ca31b_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of additive and multiplicative scanner effects in various brain regions."
+      },
+      "confidence": 0.96,
+      "head": "doc_bb4d7944749ca31b_c1",
+      "relation_type": "is_applied_to",
+      "relation_surface": "using cortical thickness measurements from",
+      "tail": "doc_bb4d7944749ca31b_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r9",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In contrast to a general linear model approach that includes site or scanner as a fixed effect covariate, there are several benefits to the empirical Bayes estimation method used in ComBat."
+      },
+      "confidence": 0.95,
+      "head": "doc_bb4d7944749ca31b_c2",
+      "relation_type": "uses",
+      "relation_surface": "benefits to the empirical Bayes estimation method used in ComBat",
+      "tail": "doc_bb4d7944749ca31b_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb4d7944749ca31b_r10",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Harmonization methods seek to remove unwanted technical variability while preserving biological variability."
+      },
+      "confidence": 0.94,
+      "head": "doc_bb4d7944749ca31b_c6",
+      "relation_type": "seeks_to_remove",
+      "relation_surface": "seek to remove unwanted technical variability",
+      "tail": "doc_bb4d7944749ca31b_c3"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_bb4d7944749ca31b_d1",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "We examined longitudinal cortical thickness data from participants enrolled in the first phase of the ADNI study. Data were obtained from the ADNI database (adni.loni.usc.edu). The ADNI was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD. The primary goal of ADNI has been to test whether serial MRI, PET, other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of MCI and early AD. For up-to-date information, see www.adni-info.org. All ADNI participants gave written informed consent at enrollment for data collection, storage, and use for research. Institutional Review Boards approved the study at each respective participating ADNI site. ADNI data was used in compliance with the ADNI Data Use Agreement and Data Sharing and Publication Policy. We included 663 ADNI-1 participants from 58 study sites (See Fig. 1A for distributions of participant age, sex, and diagnoses.). Structural MRI brain scans were done at 6 or 12 month intervals for up to 3 years from baseline. Many sites used multiple MRI scanners over the course of the study, and a given participant may have been scanned on different scanners across visits. The data was acquired on 142 total scanners, where scanners were identified as unique combinations of site, scanner vendor, model, head coil, and field strength variables. Since our proposed method required there be at least 2 scans per scanner in order to estimate scanner effects, we had to omit 16 scanners with only one scan. Thus, 126 scanners were included in our analyses, of which 35 were 3.0 T and the remainder were 1.5 T. Supplementary Figure S1 shows scans and scanner changes over time in the ADNI dataset. Participants were diagnosed at baseline as cognitively normal (CN, n = 197), late mild cognitive impairment (LMCI, n = 324), or Alzheimer’s disease (AD, n = 142). They were reassessed at each study visit, but no participants changed diagnostic category during the study. Cortical thicknesses for 62 brain regions defined using the Desikan-Killiany-Tourville atlas (Klein and Tourville, 2012) were obtained using the Advanced Normalization Tools (ANTs) longitudinal cortical thickness pipeline (Tustison et al., 2019). Specifically, we used data processed with the ANTs Longitudinal-SST pipeline, which involves first rigidly transforming each subject to a single subject template (SST) and then estimating cortical thickness in the SST space. In comparison to the well-known FreeSurfer longitudinal processing pipeline, ANTs Longitudinal-SST results in superior statistical power for differentiation of diagnostic groups in this dataset, with greater between-subject to residual variance ratios and tighter confidence and prediction intervals (Tustison et al., 2019). For further details on this dataset, please refer to Tustison et al. (2019) and references therein. Sample trajectories of the unharmonized cortical thickness data are depicted in Fig. 1B."
+      },
+      "confidence": 0.95,
+      "name": "ADNI cortical thickness dataset",
+      "modality": "tabular",
+      "domain": "neuroimaging"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_bb4d7944749ca31b_d2",
+      "evidence": {
+        "section": "5. Simulation study",
+        "original_text": "We performed a simulation study comparing the same approaches used above, longitudinal ComBat (REML and MSR methods), cross-sectional ComBat, and unharmonized data, each with and without including scanner fixed effects in the model. For each iteration of the simulation, we began with the cognitively normal (CN) subset (n = 197) of the ADNI cortical thickness dataset. We randomly assigned each participant to either a CN control group or an AD group. In the AD group, for 6 of the 62 features, we added both an intercept and a slope effect to their cortical thickness trajectories. The magnitudes of these effects were estimated from the full ADNI dataset. We chose 2 strong, 2 moderate, and 2 weak effects (see Supplementary Table S15 for exact magnitudes of these effects). We then performed longitudinal ComBat and cross-sectional ComBat and fit the linear mixed effects model in Equation (1) (omitting the LMCI terms) to both harmonized and unharmonized datasets, with and without the scanner fixed effects in the model. The simulation was repeated for 1000 iterations."
+      },
+      "confidence": 0.9,
+      "name": "Simulation dataset derived from ADNI CN subset",
+      "modality": "tabular",
+      "domain": "neuroimaging"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds1",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "The data was acquired on 142 total scanners, where scanners were identified as unique combinations of site, scanner vendor, model, head coil, and field strength variables. Since our proposed method required there be at least 2 scans per scanner in order to estimate scanner effects, we had to omit 16 scanners with only one scan. Thus, 126 scanners were included in our analyses, of which 35 were 3.0 T and the remainder were 1.5 T."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Scanner identification based on unique combination of site, vendor, model, head coil, and field strength"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds2",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "Cortical thicknesses for 62 brain regions defined using the Desikan-Killiany-Tourville atlas (Klein and Tourville, 2012) were obtained using the Advanced Normalization Tools (ANTs) longitudinal cortical thickness pipeline (Tustison et al., 2019). Specifically, we used data processed with the ANTs Longitudinal-SST pipeline, which involves first rigidly transforming each subject to a single subject template (SST) and then estimating cortical thickness in the SST space. In comparison to the well-known FreeSurfer longitudinal processing pipeline, ANTs Longitudinal-SST results in superior statistical power for differentiation of diagnostic groups in this dataset, with greater between-subject to residual variance ratios and tighter confidence and prediction intervals (Tustison et al., 2019)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Cortical thickness measurement using ANTs Longitudinal-SST pipeline"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds3",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "For both of these scenarios and for each of the V = 62 cortical regions, we fit the linear mixed effects model yijν(tk) = αν + βν1(baseline age) + βν2I(sex = male) + βν3I(diagnosis = LMCI) + βν4I(diagnosis = AD) + βν5 ⋅tk + βν6I(diagnosis = LMCI) ⋅tk + βν7I(diagnosis = AD) ⋅tk (1) + βν8I(scannerk = 2) + ⋯+ βν(m + 7)I(scannerk = m) + ηjν + εijν(tk), where i ∈ {1, …, m} is the site or scanner index, j ∈ {1, …, N} is the participant index, ν ∈ {1, … V} is the feature index (corresponding to the 62 regional cortical thickness measurements, in this case), k ∈ {0, …, Kj} is the visit index and Kj is total number of visits for participant j, tk ∈ℝ ≥0 is years from baseline visit for visit k, αν is an intercept term, I(·) is an indicator function equal to one if the argument condition is true and zero otherwise. Reference levels for factor variables are female sex, cognitively normal diagnosis, and scannerk = 1. All parameters represent fixed effects except for the subject-specific random intercept, η j ν , for which we assume the distribution N(0, ρν[2] ), and the error term, ε ij ν (tk), for which we assume the distribution N(0, σν[2] ). Furthermore, we assume the η j ν ’s and ε ij ν (tk)’s are mutually independent. Models were fit using the R package lme4 (Bates et al., 2015) and R version 3.5.3 (R Core Team, 2019)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Linear mixed effects model specification for assessing scanner effects"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds4",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "To test for additive site or scanner effects, we also fit models omitting the site or scanner fixed effects and used the package pbkrtest (Halekoh and Højsgaard, 2014) to carry out tests of their joint significance using the Kenward-Roger (KR) approach (Kenward and Roger, 1997). We also tested for a differential scaling effect by site or scanner. We fit the model represented in Equation (1) above, including the site or scanner fixed effects. Due to small within-site or within-scanner sample sizes in some cases, we used the non-parametric Fligner-Killeen (FK) test (Conover et al., 1981) to assess heteroscedasticity of the residuals (εijν[(t))][ across site or scanner. Additionally, we tested whether incorporating specific scanner ] information rather than site alone significantly improved the model. Since the two scenarios correspond to nested models, we used the KR test."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Statistical testing for additive and multiplicative scanner effects using KR and FK tests"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds5",
+      "evidence": {
+        "section": "3. Longitudinal ComBat",
+        "original_text": "For a longitudinal version of the ComBat harmonization method, we propose the model yijν(t) = αν + γiν + Xj[T] (t)βν + ηjν + δiνεijν(t), where i ∈ {1, …, m} is the scanner index, j ∈ {1, …, N} is the participant index, ν ∈ {1, …, V} is the feature index, t is time (continuous or categorical), yij ν (t) is the observed data for feature ν , participant j, scanner i, and time t, αν is overall mean for feature ν at baseline, γ i ν is the additive scanner i parameter for feature ν , **X** j(t) is a p × 1 vector of potentially time-varying covariates for participant j at time t (e.g., age, sex, the outcome that we ultimately intend to assess in association with the harmonized data such as diagnosis or cognitive test score, and time), β ν is a p × 1 vector of coefficients for feature ν , η j ν is a subject-specific random intercept for participant j and feature ν , δ i ν is the scanner i scaling factor for feature ν , and ε ij ν (t) is the error term. We assume ηjν N(0, ρν[2] ) and εijν(t) N(0, σν[2] ), and η j ν ’s and ε ij ν (t) ‘s are mutually independent. The ComBat-harmonized data is yijν(t) −αν[−γ] iν[−X][T(t)β] j ν[−η] jν yijνComBat(t) = δiν + αν[+ X][T(t)β] j ν[+ η] jν[,] where αν[, ][γ] iν[, ][β] ν[, ][η] jν[, and ][δ] iν[ are parameter estimates.]"
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Longitudinal ComBat harmonization model specification"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds6",
+      "evidence": {
+        "section": "3. Longitudinal ComBat",
+        "original_text": "Parameter estimation for longitudinal ComBat is similar to that for standard ComBat. Hyperparameters γ i, τi[2] , λ i, θ i are estimated from standardized data using the method of moments, and empirical Bayes estimates for scanner effect parameters γ i ν and δiν[2] are given by conditional posterior means. Please refer to Appendix A for derivations of these estimators. Finally, we use the empirical Bayes estimates γ ∗iν and δ 2 ∗iν and the linear mixed effects model estimates to adjust the data: yijνComBat(t) = δ∗iν (yijν(t) −αν[−γ] ∗iν[−X][T(t)β] j ν[−η] jν )σν + αν[+ X][T(t)β] j ν[+ η] jν . The first term performs the location and scale adjustment, thereby removing additive and multiplicative scanner effects, and remultiplies by the error variance estimate to put features back on their original scale; the remaining terms add back estimates of biological effects of interest."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Parameter estimation for longitudinal ComBat using standardization and empirical Bayes"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb4d7944749ca31b_ds7",
+      "evidence": {
+        "section": "4. Comparison of data harmonization approaches in ADNI data",
+        "original_text": "We used the ADNI cortical thickness data to compare three data harmonization approaches: (1) data harmonized across scanners using longitudinal ComBat (REML and MSR methods), (2) data harmonized across scanners using a cross-sectional version of ComBat, which does not account for the within-subject repeated measures (i.e., we omit the subjectspecific random intercept from the ComBat steps, but include it in the final model), and (3) unharmonized cortical thickness data. Since our method is specifically designed for longitudinal data, we focused on the diagnosis by time interaction coefficients. Parameters of interest are βν 6 and βν 7 in Equation (1); these quantify differential rates of cortical thickness loss over time for LMCI and AD groups, respectively, relative to CN. For each of the three harmonization approaches, we fit the model given in Equation (1) for each feature, using the corresponding harmonized or unharmonized outcomes, and either included or omitted the scanner fixed effects."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Comparison framework for harmonization methods using ADNI data"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb4d7944749ca31b_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "ComBat (named for “combating batch effects when combining batches”) is an empirical Bayesian method for data harmonization that was originally designed for genomics (Johnson et al., 2007). It has recently been adapted to neuroimaging studies and applied to diverse data types including diffusion tensor imaging (DTI) (Fortin et al., 2017), cortical thicknesses (Fortin et al., 2018), functional connectivity measurements (Yu et al., 2018), and radiomic features derived from positron emission tomography (PET) imaging (Orlhac et al., 2018). ComBat has also recently been extended to cross-sectional studies of structural brain changes across the lifespan using a generalized additive model framework (Pomponio et al., 2020). In general, ComBat is applicable to situations where multiple features of the same type are measured for each participant, where features might be expression levels for different genes, or imaging-derived metrics from different voxels or anatomic regions. In this paper, we extend the ComBat methodology from a cross-sectional to a longitudinal setting, where participants are imaged repeatedly over the course of the study."
+      },
+      "confidence": 0.95,
+      "name": "ComBat",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb4d7944749ca31b_m2",
+      "evidence": {
+        "section": "3. Longitudinal ComBat",
+        "original_text": "For a longitudinal version of the ComBat harmonization method, we propose the model yijν(t) = αν + γiν + Xj[T] (t)βν + ηjν + δiνεijν(t), where i ∈ {1, …, m} is the scanner index, j ∈ {1, …, N} is the participant index, ν ∈ {1, …, V} is the feature index, t is time (continuous or categorical), yij ν (t) is the observed data for feature ν , participant j, scanner i, and time t, αν is overall mean for feature ν at baseline, γ i ν is the additive scanner i parameter for feature ν , **X** j(t) is a p × 1 vector of potentially time-varying covariates for participant j at time t (e.g., age, sex, the outcome that we ultimately intend to assess in association with the harmonized data such as diagnosis or cognitive test score, and time), β ν is a p × 1 vector of coefficients for feature ν , η j ν is a subject-specific random intercept for participant j and feature ν , δ i ν is the scanner i scaling factor for feature ν , and ε ij ν (t) is the error term. We assume ηjν N(0, ρν[2] ) and εijν(t) N(0, σν[2] ), and η j ν ’s and ε ij ν (t) ‘s are mutually independent. The ComBat-harmonized data is yijν(t) −αν[−γ] iν[−X][T(t)β] j ν[−η] jν yijνComBat(t) = δiν + αν[+ X][T(t)β] j ν[+ η] jν[,] where αν[, ][γ] iν[, ][β] ν[, ][η] jν[, and ][δ] iν[ are parameter estimates.]"
+      },
+      "confidence": 0.95,
+      "name": "longitudinal ComBat",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb4d7944749ca31b_m3",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "We first assessed via statistical testing whether site or scanner additive (i.e., shift in mean) and multiplicative effects (i.e., heteroscedasticity) were present in the data, while also controlling for known differences in biological variability (i.e., age, sex, diagnosis) across site or scanner. We considered two sources of potential technical variability (encoded as the ‘scanner’ variable in the model below): (1) site effect only (m = 58), and (2) scanner effect (m = 126). For both of these scenarios and for each of the V = 62 cortical regions, we fit the linear mixed effects model yijν(tk) = αν + βν1(baseline age) + βν2I(sex = male) + βν3I(diagnosis = LMCI) + βν4I(diagnosis = AD) + βν5 ⋅tk + βν6I(diagnosis = LMCI) ⋅tk + βν7I(diagnosis = AD) ⋅tk (1) + βν8I(scannerk = 2) + ⋯+ βν(m + 7)I(scannerk = m) + ηjν + εijν(tk), where i ∈ {1, …, m} is the site or scanner index, j ∈ {1, …, N} is the participant index, ν ∈ {1, … V} is the feature index (corresponding to the 62 regional cortical thickness measurements, in this case), k ∈ {0, …, Kj} is the visit index and Kj is total number of visits for participant j, tk ∈ℝ ≥0 is years from baseline visit for visit k, αν is an intercept term, I(·) is an indicator function equal to one if the argument condition is true and zero otherwise. Reference levels for factor variables are female sex, cognitively normal diagnosis, and scannerk = 1. All parameters represent fixed effects except for the subject-specific random intercept, η j ν , for which we assume the distribution N(0, ρν[2] ), and the error term, ε ij ν (tk), for which we assume the distribution N(0, σν[2] ). Furthermore, we assume the η j ν ’s and ε ij ν (tk)’s are mutually independent. Models were fit using the R package lme4 (Bates et al., 2015) and R version 3.5.3 (R Core Team, 2019)."
+      },
+      "confidence": 0.95,
+      "name": "linear mixed effects model",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_bb4d7944749ca31b_x1",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "We examined longitudinal cortical thickness data from participants enrolled in the first phase of the ADNI study. Data were obtained from the ADNI database (adni.loni.usc.edu). The ADNI was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD. The primary goal of ADNI has been to test whether serial MRI, PET, other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of MCI and early AD. For up-to-date information, see www.adni-info.org. All ADNI participants gave written informed consent at enrollment for data collection, storage, and use for research. Institutional Review Boards approved the study at each respective participating ADNI site. ADNI data was used in compliance with the ADNI Data Use Agreement and Data Sharing and Publication Policy. We included 663 ADNI-1 participants from 58 study sites (See Fig. 1A for distributions of participant age, sex, and diagnoses.). Structural MRI brain scans were done at 6 or 12 month intervals for up to 3 years from baseline. Many sites used multiple MRI scanners over the course of the study, and a given participant may have been scanned on different scanners across visits. The data was acquired on 142 total scanners, where scanners were identified as unique combinations of site, scanner vendor, model, head coil, and field strength variables. Since our proposed method required there be at least 2 scans per scanner in order to estimate scanner effects, we had to omit 16 scanners with only one scan. Thus, 126 scanners were included in our analyses, of which 35 were 3.0 T and the remainder were 1.5 T. Supplementary Figure S1 shows scans and scanner changes over time in the ADNI dataset. Participants were diagnosed at baseline as cognitively normal (CN, n = 197), late mild cognitive impairment (LMCI, n = 324), or Alzheimer’s disease (AD, n = 142). They were reassessed at each study visit, but no participants changed diagnostic category during the study. Cortical thicknesses for 62 brain regions defined using the Desikan-Killiany-Tourville atlas (Klein and Tourville, 2012) were obtained using the Advanced Normalization Tools (ANTs) longitudinal cortical thickness pipeline (Tustison et al., 2019). Specifically, we used data processed with the ANTs Longitudinal-SST pipeline, which involves first rigidly transforming each subject to a single subject template (SST) and then estimating cortical thickness in the SST space. In comparison to the well-known FreeSurfer longitudinal processing pipeline, ANTs Longitudinal-SST results in superior statistical power for differentiation of diagnostic groups in this dataset, with greater between-subject to residual variance ratios and tighter confidence and prediction intervals (Tustison et al., 2019). For further details on this dataset, please refer to Tustison et al. (2019) and references therein. Sample trajectories of the unharmonized cortical thickness data are depicted in Fig. 1B."
+      },
+      "confidence": 0.95,
+      "task": "assessment of scanner effects in ADNI cortical thickness data",
+      "setup": "663 ADNI-1 participants, 126 scanners, cortical thickness from 62 brain regions, linear mixed effects model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_bb4d7944749ca31b_x2",
+      "evidence": {
+        "section": "4. Comparison of data harmonization approaches in ADNI data",
+        "original_text": "We used the ADNI cortical thickness data to compare three data harmonization approaches: (1) data harmonized across scanners using longitudinal ComBat (REML and MSR methods), (2) data harmonized across scanners using a cross-sectional version of ComBat, which does not account for the within-subject repeated measures (i.e., we omit the subjectspecific random intercept from the ComBat steps, but include it in the final model), and (3) unharmonized cortical thickness data. Since our method is specifically designed for longitudinal data, we focused on the diagnosis by time interaction coefficients. Parameters of interest are βν 6 and βν 7 in Equation (1); these quantify differential rates of cortical thickness loss over time for LMCI and AD groups, respectively, relative to CN. For each of the three harmonization approaches, we fit the model given in Equation (1) for each feature, using the corresponding harmonized or unharmonized outcomes, and either included or omitted the scanner fixed effects. We evaluated the results using the following criteria. First, we visually examined standardized data distributions across features for both longitudinal and cross-sectional ComBat, to assess whether they were approximately normal. We also visualized additive and multiplicative scanner effect prior distributions for longitudinal ComBat, to assess whether they were approximately normal and inverse gamma-distributed across features, respectively. Then, as in Section 2 for the unharmonized data, we tested whether any residual additive or multiplicative scanner effects remained after applying longitudinal and cross-sectional versions of ComBat. (We did the above assessments for the REML version of longitudinal ComBat only, but expect similar results for MSR as the data only differ slightly in scale.) Cross-sectional ComBat and unharmonized data both showed residual scanner effects while longitudinal ComBat harmonized data did not. Thus, for cross-sectional ComBat and unharmonized data, we only considered results for models with scanner fixed effects included. For each coefficient of interest, we compared the numbers of significant features, i.e., features with p < 0.05/62 (Bonferroni-corrected across features), across methods. Then, to avoid biasing our analyses to favor any particular method, we considered only features which were significant for all cases. A good data harmonization method will ideally preserve the biological signal of interest while removing unwanted technical variability. Therefore, we might expect to see greater biological signal for the proposed method, in the form of greater magnitudes or smaller p-values for the longitudinal diagnosis-specific effects. Thus, for the statistically significant feature subsets, we compared coefficient magnitudes and p- values across the three methods. We also created exploratory visualizations to assess relationships between the magnitudes of additive and multiplicative scanner effects in unharmonized data, and magnitudes of changes in coefficient and p-values between models fit on longitudinal ComBat (REML method) harmonized data with no scanner covariate and unharmonized data with a scanner covariate. We expected that brain regions with larger scanner effects would show greater differences in coefficients and p-values after harmonization."
+      },
+      "confidence": 0.95,
+      "task": "comparison of data harmonization approaches in ADNI data",
+      "setup": "ADNI cortical thickness data, three harmonization approaches (longitudinal ComBat REML/MSR, cross-sectional ComBat, unharmonized), linear mixed effects model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_bb4d7944749ca31b_x3",
+      "evidence": {
+        "section": "5. Simulation study",
+        "original_text": "We performed a simulation study comparing the same approaches used above, longitudinal ComBat (REML and MSR methods), cross-sectional ComBat, and unharmonized data, each with and without including scanner fixed effects in the model. For each iteration of the simulation, we began with the cognitively normal (CN) subset (n = 197) of the ADNI cortical thickness dataset. We randomly assigned each participant to either a CN control group or an AD group. In the AD group, for 6 of the 62 features, we added both an intercept and a slope effect to their cortical thickness trajectories. The magnitudes of these effects were estimated from the full ADNI dataset. We chose 2 strong, 2 moderate, and 2 weak effects (see Supplementary Table S15 for exact magnitudes of these effects). We then performed longitudinal ComBat and cross-sectional ComBat and fit the linear mixed effects model in Equation (1) (omitting the LMCI terms) to both harmonized and unharmonized datasets, with and without the scanner fixed effects in the model. The simulation was repeated for 1000 iterations. We focused our primary analyses on estimation and inference for the AD × time coefficient. For the 56 null features, we compared across methods the distributions of the coefficient estimate means and standard errors over the 1000 simulations. We also assessed distributions of type I error by calculating the percent of p < 0.05 from the KR test for each null feature. For the 6 features with nonzero effects, we compared distributions of the coefficient estimates and their standard errors, and calculated mean squared error and bias. We assessed statistical power by calculating the proportion of p < 0.05 from the KR test. Finally, we 2 2 2 looked at the distributions of intra-class correlation coefficients (ICC; ρ ∕(ρ + σ )) for the nonzero features across each of the 8 methods. The ICC is a ratio of between-subject variation to total variation. Larger ICC is desirable because it allows for more clearly discernible between-subject differences."
+      },
+      "confidence": 0.95,
+      "task": "simulation study comparing harmonization approaches",
+      "setup": "CN subset of ADNI data, simulated AD group with added intercept and slope effects, comparison of longitudinal ComBat (REML/MSR), cross-sectional ComBat, unharmonized data"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb4d7944749ca31b_qr1",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "We included 663 ADNI-1 participants from 58 study sites (See Fig. 1A for distributions of participant age, sex, and diagnoses.). Structural MRI brain scans were done at 6 or 12 month intervals for up to 3 years from baseline. Many sites used multiple MRI scanners over the course of the study, and a given participant may have been scanned on different scanners across visits. The data was acquired on 142 total scanners, where scanners were identified as unique combinations of site, scanner vendor, model, head coil, and field strength variables. Since our proposed method required there be at least 2 scans per scanner in order to estimate scanner effects, we had to omit 16 scanners with only one scan. Thus, 126 scanners were included in our analyses, of which 35 were 3.0 T and the remainder were 1.5 T. Supplementary Figure S1 shows scans and scanner changes over time in the ADNI dataset. Participants were diagnosed at baseline as cognitively normal (CN, n = 197), late mild cognitive impairment (LMCI, n = 324), or Alzheimer’s disease (AD, n = 142). They were reassessed at each study visit, but no participants changed diagnostic category during the study."
+      },
+      "confidence": 0.99,
+      "quantity": "number of participants",
+      "value": 663,
+      "unit": null,
+      "context": "ADNI-1 study, longitudinal cortical thickness measurements",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb4d7944749ca31b_qr2",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "The data was acquired on 142 total scanners, where scanners were identified as unique combinations of site, scanner vendor, model, head coil, and field strength variables. Since our proposed method required there be at least 2 scans per scanner in order to estimate scanner effects, we had to omit 16 scanners with only one scan. Thus, 126 scanners were included in our analyses, of which 35 were 3.0 T and the remainder were 1.5 T."
+      },
+      "confidence": 0.99,
+      "quantity": "number of scanners",
+      "value": 126,
+      "unit": null,
+      "context": "ADNI-1 cortical thickness data analysis, after omitting scanners with only one scan",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb4d7944749ca31b_qr3",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "Cortical thicknesses for 62 brain regions defined using the Desikan-Killiany-Tourville atlas (Klein and Tourville, 2012) were obtained using the Advanced Normalization Tools (ANTs) longitudinal cortical thickness pipeline (Tustison et al., 2019). Specifically, we used data processed with the ANTs Longitudinal-SST pipeline, which involves first rigidly transforming each subject to a single subject template (SST) and then estimating cortical thickness in the SST space. In comparison to the well-known FreeSurfer longitudinal processing pipeline, ANTs Longitudinal-SST results in superior statistical power for differentiation of diagnostic groups in this dataset, with greater between-subject to residual variance ratios and tighter confidence and prediction intervals (Tustison et al., 2019)."
+      },
+      "confidence": 0.99,
+      "quantity": "number of cortical thickness features",
+      "value": 62,
+      "unit": null,
+      "context": "Desikan-Killiany-Tourville atlas, ADNI data",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p1",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "The KR test for additive scanner effects was significant for all features (Supplementary Figure S3 and Table S2). Fig. 2A illustrates the additive scanner effects for the feature with the largest KR test F-statistic and shows – log10 p-values across brain regions. Additive scanner effects were particularly large in medial occipital and medial temporal regions. Visualizations showed that 3.0 T scanners tended to result in larger cortical thickness measurements (Supplementary Figures S6-S11)."
+      },
+      "confidence": 0.95,
+      "metric": "presence of additive scanner effects",
+      "compared_to": null
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p2",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "Across both site and scanner, all features had significantly different residual variances (Supplementary Figures S4-S5; Supplementary Tables S3-S4). Fig. 2B illustrates the multiplicative scanner effects for the feature with the largest FK test χ[2] -statistic and shows – log10 p-values across brain regions. Multiplicative scanner effects were particularly prominent in superior frontal and superior parietal regions. Visualizations indicated that vendor 1 scanners generally tended to have larger, while vendor 3 scanners had smaller, residual variability, with vendor 2 scanners falling in between (Supplementary Figures S12S17)."
+      },
+      "confidence": 0.95,
+      "metric": "presence of multiplicative scanner effects",
+      "compared_to": null
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p3",
+      "evidence": {
+        "section": "2. Quantifying site and scanner effects in ADNI data",
+        "original_text": "Scanner significantly improved the model for all 62 features (Supplementary Table S5). Hence, we use scanner instead of site in all subsequent analyses."
+      },
+      "confidence": 0.95,
+      "metric": "model improvement by using scanner vs. site information",
+      "compared_to": null
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p4",
+      "evidence": {
+        "section": "4. Comparison of data harmonization approaches in ADNI data",
+        "original_text": "We found no significant additive or multiplicative scanner effects after applying longitudinal ComBat (Supplementary Tables S6-S7). However, after cross-sectional ComBat, additive and multiplicative scanner effects were still significant for all features (Supplementary Tables S8-S9). Fig. 3 shows residual boxplots by scanner before and after harmonization for left superior frontal cortical thickness data. Fig. 4 shows left fusiform cortical thickness trajectories before and after applying longitudinal ComBat. Examples of unharmonized and harmonized trajectories are shown in Supplementary Figure S26."
+      },
+      "confidence": 0.95,
+      "metric": "removal of additive and multiplicative scanner effects",
+      "compared_to": "cross-sectional ComBat"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb4d7944749ca31b_qr4",
+      "evidence": {
+        "section": "5. Simulation study",
+        "original_text": "Longitudinal ComBat REML method resulted in type I error closer to the nominal rate than the other methods, ranging from 1.8 to 8.6% (below 5% for 22 features) and 0.6–6.5% (below 5% for 49 features) when scanner was omitted or included in the final model, respectively. In contrast, type I error for unharmonized data was 4.3–14.5% (below 5% for 1 feature) and 4.5–13.1% (below 5% for 2 features) when scanner was omitted or included in the final model, respectively. Longitudinal ComBat MSR did worst at controlling type I error, which ranged from 6.0 to 15.1% (below 5% for 0 features) and 3.7–12.5% (below 5% for 5 features) when scanner was omitted or included in the final model, respectively. Simulation study null results are summarized in Supplementary Table S16."
+      },
+      "confidence": 0.95,
+      "quantity": "type I error rate",
+      "value": null,
+      "unit": null,
+      "context": "null features in simulation study, longitudinal ComBat REML method with scanner omitted",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p5",
+      "evidence": {
+        "section": "5. Simulation study",
+        "original_text": "Longitudinal ComBat MSR was the most powerful for weak effect sizes, correctly rejecting the null (uncorrected p < 0.05) in more than 80% of cases. Longitudinal ComBat REML method was more powerful in detecting a weak effect size than cross-sectional ComBat and about as powerful as unharmonized methods, rejecting the null in 80.1 and 75.0% of cases when scanner was omitted or included, respectively, versus 55.0 and 51.6% for cross-sectional ComBat, and 78.3% and 77.9% for unharmonized data."
+      },
+      "confidence": 0.95,
+      "metric": "statistical power for detecting weak effect sizes",
+      "compared_to": "cross-sectional ComBat, unharmonized data"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p6",
+      "evidence": {
+        "section": "5. Simulation study",
+        "original_text": "Again, the longitudinal ComBat methods resulted in the smallest standard errors in most cases, while cross-sectional ComBat tended to show the largest standard errors."
+      },
+      "confidence": 0.95,
+      "metric": "standard error of coefficient estimates",
+      "compared_to": "cross-sectional ComBat, unharmonized data"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb4d7944749ca31b_p7",
+      "evidence": {
+        "section": "5. Simulation study",
+        "original_text": "For all six features, the ICC tended to be largest for longitudinal ComBat MSR method, followed by unharmonized data, indicating more between-subject and less within-subject variability for these methods. Cross-sectional ComBat had the lowest ICC (Supplementary Figure S36)."
+      },
+      "confidence": 0.95,
+      "metric": "intra-class correlation coefficient (ICC)",
+      "compared_to": "cross-sectional ComBat, unharmonized data"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_bb4d7944749ca31b_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "While aggregation of neuroimaging datasets from multiple sites and scanners can yield increased statistical power, it also presents challenges due to systematic scanner effects. This unwanted technical variability can introduce noise and bias into estimation of biological variability of interest. We propose a method for harmonizing longitudinal multi-scanner imaging data based on ComBat, a method originally developed for genomics and later adapted to cross-sectional neuroimaging data. Using longitudinal cortical thickness measurements from 663 participants in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) study, we demonstrate the presence of additive and multiplicative scanner effects in various brain regions. We compare estimates of the association between diagnosis and change in cortical thickness over time using three versions of the ADNI data: unharmonized data, data harmonized using cross-sectional ComBat, and data harmonized using longitudinal ComBat. In simulation studies, we show that longitudinal ComBat is more powerful for detecting longitudinal change than cross-sectional ComBat and controls the type I error rate better than unharmonized data with scanner included as a covariate. The proposed method would be useful for other types of longitudinal data requiring harmonization, such as genomic data, or neuroimaging studies of neurodevelopment, psychiatric disorders, or other neurological diseases."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_bb4d7944749ca31b_cl1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Thus, in the present study, we proposed and validated longitudinal ComBat, a novel method for harmonizing longitudinal data across different scanners. This constitutes a natural extension of the widely-used ComBat methodology (Johnson et al., 2007; Fortin et al., 2017, 2018) to a linear mixed effects model context. We assessed two slightly different versions of longitudinal ComBat — REML and MSR methods — that differed in statistical properties. Our simulation study revealed that both longitudinal ComBat methods produced estimates with smaller standard errors than cross-sectional ComBat and unharmonized data methods. The longitudinal ComBat MSR method and unharmonized data demonstrated greatest statistical power and had the highest ICC. However, both methods also showed inflated type I error rate under the null hypothesis, even when scanner was included as a fixed effect covariate in the final models. Meanwhile, the longitudinal ComBat REML method controlled the type I error closer to the nominal rate, and was particularly conservative when scanner was included in the final models. This illustrates the trade-off that occurs between type I and type II error. The right balance to strike may depend on the context of particular research questions. In the real ADNI data, longitudinal ComBat REML and MSR methods produced similar estimated coefficient magnitudes. But, consistent with the simulation study result, the longitudinal ComBat MSR method and unharmonized data tended to yield smaller p-values for brain regions with AD-related cortical atrophy. We note that statistical power should be considered within the context of proper type I error control, and the simulation study showed inflated type I error for longitudinal ComBat MSR method and unharmonized data. Further research may explore optimal methods for estimating the residual variance in the standardization step so as to achieve the desired type I and type II error control."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_bb4d7944749ca31b_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "However, a limitation of our methods is that our definition of scanner, as a unique combination of study site, scanner vendor, head coil, and field strength, may have missed hardware changes of the same model. Additionally, we were unable to account for changes in acquisition protocol such as the autoshim status, as Gunter et al. (2009) report that this was not recorded in DICOM headers. This highlights the importance of carefully tracking any hardware, software, or protocol changes in longitudinal imaging studies. The longitudinal ComBat harmonization method presents advantages and disadvantages with respect to existing methods discussed in the Introduction. We showed that longitudinal ComBat removes additive and multiplicative scanner effects to a sufficient extent such that no scanner covariates are needed in final models, in contrast to the approaches in Erus et al. (2018) and Dewey et al. (2019). Furthermore, unlike these approaches, longitudinal ComBat does not require an overlap cohort of participants scanned on each pair of scanners to train the harmonization model, and thus can potentially be used to harmonize existing datasets without an overlap cohort design. However, the method requires at least 2 scans per scanner to estimate scanner effects, and it is also important that sample size and covariates be sufficiently balanced and controlled for across scanners to enable unbiased estimation of scanner effects (e.g., see Supplementary Section 5). Also, since the harmonization is applied to model residuals, the longitudinal ComBat model should ideally match the linear mixed effects model used in the final analysis. If researchers want to investigate different models (e.g., inclusion of quadratic effects of time or different covariates), we recommend harmonizing the data multiple times to match these models. Another consideration is the spatial resolution of features included in the harmonization model. Ideally, features will be similar enough in scale such that scanner effects on these features can be assumed to derive from a common distribution. Even though feature scaling is included in the standardization step of ComBat, in our experience including features of dramatically different scales (e.g., including total hemispheric volume with smaller regional volumes) can bias results. We also note that features harmonized together should be of the same type, e.g., cortical volumes and cortical thicknesses should be harmonized separately. While there should be sufficient numbers of features such that prior distribution parameters can be reliably estimated, it is also desirable to have reasonable correspondence between features within and across subjects. For example, harmonization at the level of individual voxels could potentially be too noisy due to registration errors between individuals or time points, and harmonization of total hemispheric brain volumes may not provide sufficient data to reliably estimate distribution parameters."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_bb4d7944749ca31b_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Additional avenues for future work include further assessment of the method in other datasets, including comparisons with previously discussed existing methods using studies with an overlap cohort. We considered including a subject-specific random slope in our linear mixed effects model, in addition to the subject-specific random intercept, but this accounted for relatively little variation in the data (only up to 0.7%). Thus, for the sake of parsimony, we chose to omit random slopes. However, it would be worthwhile to consider random slopes, along with more hierarchical versions of ComBat in the future. For example, it may be useful to incorporate information about site, field strength, or scanner vendor, in addition to scanner, so as to borrow information across scanners of similar type. Furthermore, as mentioned above, additional research into methods for estimating the residual variance in the standardization step could be explored in relation to type I and type II error control. The proposed longitudinal version of ComBat would be useful for other types of longitudinal data requiring harmonization, such as genomic data, or neuroimaging studies of neurodevelopment, psychiatric disorders, or neurological diseases other than AD. The method is flexible and may be applied to many existing and future longitudinal datasets."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

@@ -110,7 +110,9 @@ def collect_md_files(args: list[str]) -> list[Path]:
             if not p.is_absolute():
                 if (MARKDOWN_DIR / p).exists():
                     p = MARKDOWN_DIR / p
-                elif not p.exists():
+                elif p.exists():
+                    p = p.resolve()
+                else:
                     print(f"不存在: {name}")
                     continue
             files.extend(sorted(p.glob("**/*.md")) if p.is_dir() else [p] if p.is_file() else [])

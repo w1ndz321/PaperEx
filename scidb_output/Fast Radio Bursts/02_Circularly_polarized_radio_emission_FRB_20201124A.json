@@ -1,0 +1,664 @@
+{
+  "metadata": {
+    "doc_id": "doc_0fafe62e4097477e",
+    "source_file": "02_Circularly_polarized_radio_emission_FRB_20201124A.md",
+    "title": "Circularly polarized radio emission from the repeating fast radio burst source FRB 20201124A",
+    "year": 2022,
+    "doi": null,
+    "abstract": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope ( _Murriyang_ ). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m[−][2] for this FRB source with a standard deviation of 16 rad m[−][2] in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties. \n\n**Key words:** methods: data analysis – methods: observational – fast radio bursts.",
+    "introduction": "Fast radio bursts (FRBs) are energetic µs–ms-duration radio transients (Cordes & Chatterjee 2019; Petroff et al. 2022) that originate at up to cosmological distances, with spectroscopic redshifts confirmed up to _𝑧_ = 0 _._ 66 (Chatterjee et al. 2017; Bannister et al. 2019b; Ravi et al. 2019). The dispersion measures of these bursts lead to inferred redshifts of as high as _𝑧_ = 3 in the currently known sample (Bhandari et al. 2018; CHIME/FRB Collaboration et al. 2021). More than 600 distinct FRB sources are catalogued on the Transient Name Server (TNS[1] ), but only a small proportion (≈ 4 per cent) of these have been found to emit repeat bursts (Spitler et al. 2016; CHIME/FRB Collaboration et al. 2019a,b; Kumar et al. 2019; Fonseca et al. 2020; Luo et al. 2020; Kumar et al. 2021a; Bhardwaj et al. 2021). While several mechanisms have been proposed to explain the observed properties of these repeat bursts (Platts et al. 2019), the true underlying physics behind these bursts remains an unsolved question. \n\nObserving campaigns on repeating sources with interferometers enable localization and host-environment studies (Chatterjee et al. 2017). However, out of 15 known host galaxies (HGs) of FRBs, only \n\n> _★_ E-mail: pravirkumar@swin.edu.au \n\n> 1 `https://www.wis-tns.org/` ; visited 2021 September 1. \n\nfive of the associations are with repeating sources. A preliminary analysis of the two classes of source HGs indicated that the HGs of repeating FRB sources are less massive (Bhandari et al. 2020). Furthermore, this small sample of localized repeating sources itself shows evidence for a diversity of progenitor environments (Heintz et al. 2020). Studies comparing the hosts to determine whether progenitors of FRBs are consistent with a population of magnetars have resulted in contradiction (Safarzadeh et al. 2020; Bochenek et al. 2021). FRB 20121102A originates from a highly star-forming dwarf galaxy with a coincident compact radio source consistent with a young magnetar progenitor scenario (Chatterjee et al. 2017; Metzger et al. 2017). Other repeating FRB HGs are less readily interpreted in this formalism – the source of FRB 20180916B is in a nearby spiral galaxy but offset from a star-forming knot (Marcote et al. 2020; Tendulkar et al. 2021), while the low-luminosity source FRB 20200120E is associated with a globular cluster in the nearby galaxy M81 (Bhardwaj et al. 2021; Kirsten et al. 2022). There is also observational evidence against FRBs being produced by isolated magnetars. The discovery of modulation in the activity windows of repeating FRBs, such as the 16 _._ 35-d periodicity observed in the case of FRB 20180916B (CHIME/FRB Collaboration et al. 2020), is also more readily interpreted in other progenitor models, such as high-mass X-ray binary systems (Sridhar et al. 2021; Tendulkar et al. \n\n© 2022 The Authors \n\n2 _Kumar et al._ \n\n2021). Thus, a conclusive understanding of the progenitor location and its association with the HGs is not clear and cannot at this stage be used to argue for or against a given origin of the repeating FRBs. \n\nThere is emerging evidence for differences in the emission of repeating sources and the general FRB population. The repeating FRBs have long been suspected of having larger intrinsic pulse widths (Keane et al. 2016). Using a well-controlled catalogue with a large sample of 535 bursts published by the Canadian Hydrogen Intensity Mapping Experiment (CHIME/FRB) with frequency coverage between 400–800 MHz (CHIME/FRB Collaboration et al. 2021), Pleunis et al. (2021b) showed that the bursts from repeating FRB sources have not only larger temporal widths but also narrower fractional bandwidths than those from apparent non-repeaters. However, it is unclear if these morphological differences correspond to a different class of progenitors, given there is no such observed distinction in the dispersion measure (DM) or scattering time distributions of these bursts (Pleunis et al. 2021b). Assuming the local environments of the burst sources are comparable, the lack of difference in the DM distribution suggests a similar luminosity function since the bursts are arising at the same distances. \n\nFRBs have been observed to have a diversity of polarimetric properties and with tentative evidence for differences in the properties between the repeating and the apparently non-repeating bursts. Some of these bursts have linear polarization fractions up to 100 per cent (Masui et al. 2015; Michilli et al. 2018; Gajjar et al. 2018; Day et al. 2020). Some have significant circular polarization (Petroff et al. 2015; Caleb et al. 2018; Cho et al. 2020; Day et al. 2020). Others appear unpolarized, possibly due to propagation effects and limited frequency resolution of the observing instrument (a higher rotation measure than can be detected; Michilli et al. 2018). Some sources exhibit a flat linear polarization position angle (PA) across their burst profiles (CHIME/FRB Collaboration et al. 2019b; Fonseca et al. 2020). In contrast, others have shown PA swings across pulses, indicative of rotation, similar to what is seen in Galactic pulsars (Cho et al. 2020; Luo et al. 2020). Three repeating sources with reported polarimetry, FRBs 20121102A (Gajjar et al. 2018), 20190711A (Kumar et al. 2021a) and 20180916B (Nimmo et al. 2021) show no significant circular polarization and exhibit flat PAs across the burst profiles suggesting these differences as a key discriminant between the two populations. In contrast, another repeating source, FRB 20180301A, revealed bursts with PA swings varying across the burst profile (Luo et al. 2020). A key distinction emerging from these studies is the non-detection of circularly polarized radio emission in bursts from repeating sources (Dai et al. 2021). \n\nFRB 20201124A is an extraordinarily bright and active repeating source. This CHIME-discovered source (CHIME/FRB Collaboration 2021) showed an episode of high activity in 2021 April–May, with more than 200 bursts reported in that month with a variety of radio telescopes (Kumar et al. 2021b,c; Xu et al. 2021; Law et al. 2021; Herrmann 2021; Kirsten et al. 2021; Farah et al. 2021; Hilmarsson et al. 2021a; Marthi et al. 2022; Lanman et al. 2022). Reported bursts have been detected at frequencies from 400 MHz to 1 _._ 5 GHz. Like many repeating FRB sources, the emission appears to be band-limited. For example, while two bursts were detected with the 25-m telescope at Onsala Space Observatory at 1.4 GHz, no emission was detected at 330 MHz with the 25-m Westerbork RT1 antenna observing simultaneously (Kirsten et al. 2021). Additionally, no prompt emission was detected at optical (Zhirkov et al. 2021) and X-ray (Campana 2021; O’Connor et al. 2021) wavelengths during this highly active state. \n\nMultiple independent efforts using radio interferometers (Day et al. 2021a,b; Law et al. 2021; Marcote et al. 2021; Wharton et al. 2021b) pinpointed the burst source to a massive (∼ 2 × 10[10] _𝑀_ ⊙) and dusty \n\nstar-forming galaxy SDSS J050803.48+260338.0 at _𝑧_ = 0 _._ 1 (Fong et al. 2021; Ravi et al. 2021). Continuum radio emission coinciding with this position was detected at 650 MHz with the upgraded Giant Metrewave Radio Telescope (uGMRT; Wharton et al. 2021a) and at 3 and 9 GHz with the Karl G. Jansky Very Large Array (VLA; Ricci et al. 2021). However, the non-detection in high-resolution VLBI observations (Marcote et al. 2021) implies the source is 0 _._ 4 − 6 kpc in size (Fong et al. 2021). Accordingly, this continuum radio emission is not powered by a compact pulsar wind nebula or an active galactic nucleus (AGN) core associated with the FRB progenitor as has been seen for the “persistent radio source” associated with FRB 20121102A (Chatterjee et al. 2017). \n\nHere we report on a campaign monitoring the repeating source FRB 20201124A using the Australian Square Kilometre Array Pathfinder (ASKAP) and the 64-m Parkes radio telescope (also known as _Murriyang_ ) during its high-activity state. In Section 2, we describe the follow-up observations and search methods used to find repeat bursts. In Section 3, we present the properties of the detected repeat bursts. We report the discovery of circular polarization from the source along with several repeat bursts. In Section 4, we discuss the inferred burst properties and implications on the emission mechanism of fast radio bursts.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": "射电天文学"
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "fast radio bursts",
+      "polarization",
+      "radio astronomy",
+      "circular polarization",
+      "FRB 20201124A"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:38:53.574043+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.99,
+      "term": "fast radio burst",
+      "normalized": "快速射电暴",
+      "std_label": "FRB"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.98,
+      "term": "repeating FRB source",
+      "normalized": "重复快速射电暴源",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.99,
+      "term": "FRB 20201124A",
+      "normalized": "快速射电暴 20201124A",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.97,
+      "term": "circular polarization",
+      "normalized": "圆偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.98,
+      "term": "Faraday rotation measure",
+      "normalized": "法拉第旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.96,
+      "term": "Australian Square Kilometre Array Pathfinder",
+      "normalized": "澳大利亚平方公里阵列探路者",
+      "std_label": "ASKAP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.96,
+      "term": "Parkes 64-m radio telescope",
+      "normalized": "帕克斯64米射电望远镜",
+      "std_label": "Murriyang"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.96,
+      "term": "ultra-wideband low receiver",
+      "normalized": "超宽带低频接收机",
+      "std_label": "UWL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c9",
+      "evidence": {
+        "section": "3.1",
+        "original_text": "One of the fundamental properties of emission from the FRB sources is the dispersion, with its strength parametrized by the dispersion measure (DM), a measure of the electron column density along the line of sight. The difficulty in making an accurate determination of an FRB DM is compounded by the spectro-temporal evolution seen in the burst emission (Platts et al. 2021), which can be degenerate with DM and lead to ambiguities (Hassall et al. 2012). Here we outline how we measured the DM of these repeat bursts. We use the PSRCHIVE tool pdmp to determine the DM that maximizes the S/N of all the repeat bursts. pdmp computes the S/N using boxcar matched filtering of the pulse profile. We identify by eye the frequency sub-band where the bursts are bright and use only those channels for DM determination. We also take a broader sub-band to include all the burst signals and confirm the obtained results. We find that the S/N-maximized DM covers a wide range from 409 to 423 pc cm−3 in our sample. These large deviations can be attributed to the low S/N, narrow fractional bandwidth, and the presence of sub-structure in some of the bursts. We also see evidence for sub-components present in the dynamic spectrum of A01 and P05 (see Figure 2). To consider these and align the burst structure properly in time, we use the DM_phase package (Seymour et al. 2019). This method uses the coherent power across the dynamic spectrum to maximize the burst structure instead of S/N. To estimate the DM uncertainties for both methods, we follow the approach prescribed in DM_phase (Seymour et al. 2019). We fitted the obtained S/N-DM curve (Cordes & McLaughlin 2003) with a higher degree (10) polynomial and used the peak to establish the DM for each burst. The uncertainty in DM is calculated by propagating the uncertainty given by the residuals of the polynomial fitting (Platts et al. 2021). We report the measured DM with uncertainties for all repeat bursts in Table 1. The low S/N and time resolution of ASKAP bursts A03–A11 resulted in poor fitting when optimizing the burst structure with the DM_phase. For these bursts, we do not provide DMStruct in Table 1. We define a global DM for this FRB source as the weighted mean of DMStruct measured for repeat bursts in our sample. Doing this, we obtain the global DM to be 413 ± 1 pc cm−3. Our determined value of DM is in agreement and within 1-σ of the value measured for a sample of bright and multi-component bursts detected using the 100-m Effelsberg radio telescope (Hilmarsson et al. 2021a) and within 2-σ for the brightest burst detected using the uGMRT (Marthi et al. 2022). We use the determined global DM for this source to measure the burst properties reported in Table 1 and throughout this paper. We find that the optimized DM of the brightest UWL burst P05 significantly deviates from the global DM (see Figure 3), so in Section 3.7, we analyse the P05 sub-structure considering different DM scenarios."
+      },
+      "confidence": 0.97,
+      "term": "dispersion measure",
+      "normalized": "色散量",
+      "std_label": "DM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.96,
+      "term": "polarization position angle",
+      "normalized": "偏振位置角",
+      "std_label": "PA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c11",
+      "evidence": {
+        "section": "4.1",
+        "original_text": "FRB models involving relativistic shocks far from the progenitor, such as the synchrotron maser model (Metzger et al. 2019; Beloborodov 2020) predict high linear polarization and non-varying PA. These models successfully explain the bursts from FRB 121102, and many other repeating sources. Nevertheless, the drawback of these models is that they cannot, in their current form, explain the 100 per cent linear polarization (Lyubarsky 2021) observed in some FRBs (Gajjar et al. 2018; Osłowski et al. 2019) or large variations in PA observed in FRB 20180301A (Luo et al. 2020). A near-field magnetic re-connection emission model (Lyubarsky 2020) on the other hand, can explain the observed linear polarization up to 100 per cent and variable PA swings between bursts but cannot explain the wide range of luminosities observed in repeating FRBs (Lyubarsky 2021). Here in our case as well, these prevailing models cannot explain the significant circular polarization fraction and evolving PA observed in burst P05. However, we see such effects in Galactic radio pulsars and magnetars (Noutsos et al. 2009; Dai et al. 2019) and thus, the polarization properties of bursts from FRB20201124A are at least phenomenologically consistent with a magnetospheric origin."
+      },
+      "confidence": 0.95,
+      "term": "magnetospheric origin",
+      "normalized": "磁层起源",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c12",
+      "evidence": {
+        "section": "3.2",
+        "original_text": "All five UWL and at least 9 out of the 11 ASKAP bursts are observed to be band-limited with emission bandwidths ≲ 350 MHz. To characterize their properties, we extract the portion of the dynamic spectrum where the signal is present. In most cases, we estimate the spectral envelope by fitting the on-pulse average spectrum with a Gaussian function and extracting a band twice the measured full width at half-maximum (FWHM) around the peak signal. However, in other cases where the signal spectrum is flat, weak or contaminated with RFI, the baseline variations prohibit fitting a model, so we estimate the envelope by eye such that all signals are contained. The spectral envelope (ν low and ν high) we used to measure the properties is in Table 1 and also shown as a shaded region in Figure 2. In some of the ASKAP bursts, the signal either is across the whole band or extends beyond the edges; the lower or upper extent of the spectral envelope cannot be determined. For these bursts, the value of ν low or ν high is not given in Table 1."
+      },
+      "confidence": 0.96,
+      "term": "band-limited emission",
+      "normalized": "带限发射",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_0fafe62e4097477e_c13",
+      "evidence": {
+        "section": "4.2",
+        "original_text": "Bursts from repeating FRB sources exhibit a common feature of downward drift in frequency, where sub-bursts arrival get delayed at lower frequencies (CHIME/FRB Collaboration et al. 2019b; Hessels et al. 2019). Significant evidence of upward drifting with frequency has not yet been observed in repeating FRBs. There have been few instances of visible upward drifting in the burst spectra (Chawla et al. 2020; Day et al. 2020); however, the burst envelope is found to be relatively large and therefore too complicated to determine if the sub-bursts are part of the same envelope. Some bursts have also displayed complex sub-structures drifting both upwards and downwards in the same envelope (Hilmarsson et al. 2021b; Pleunis et al. 2021a). The second component in the UWL burst P05 (see Fig. 3) has a higher central frequency of the spectral envelope than the main pulse suggesting an upward drift. However, there is an ambiguity whether these two sub-bursts are separate and individually drifting downward or are part of the same envelope, suggesting subbursts can also drift upward."
+      },
+      "confidence": 0.95,
+      "term": "downward frequency drift",
+      "normalized": "向下频率漂移",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0fafe62e4097477e_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.99,
+      "head": "doc_0fafe62e4097477e_c3",
+      "relation_type": "belongs_to",
+      "relation_surface": "source of",
+      "tail": "doc_0fafe62e4097477e_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0fafe62e4097477e_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.98,
+      "head": "doc_0fafe62e4097477e_c3",
+      "relation_type": "measures",
+      "relation_surface": "average RM of",
+      "tail": "doc_0fafe62e4097477e_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0fafe62e4097477e_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.97,
+      "head": "doc_0fafe62e4097477e_c3",
+      "relation_type": "enhances",
+      "relation_surface": "evidence of significant circularly polarized emission",
+      "tail": "doc_0fafe62e4097477e_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0fafe62e4097477e_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.98,
+      "head": "doc_0fafe62e4097477e_c3",
+      "relation_type": "uses",
+      "relation_surface": "observations with",
+      "tail": "doc_0fafe62e4097477e_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0fafe62e4097477e_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.98,
+      "head": "doc_0fafe62e4097477e_c3",
+      "relation_type": "uses",
+      "relation_surface": "observations with",
+      "tail": "doc_0fafe62e4097477e_c7"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0fafe62e4097477e_d1",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "We identified 11 repeat bursts above an S/N of 9 in a total of 16.5 h of follow-up observations. The online voltage download system was triggered for five of these bursts, which enabled the capture of high-resolution baseband data. Details of the detection system and the trigger criteria used to download voltages can be found in the supplementary material of Bannister et al. (2019b). These baseband data were used to interferometrically localize the source (Day et al. 2021a,b) to its host galaxy, SDSS J050803.48+260338.0 that has a redshift of z = 0.098(2) (Kilpatrick et al. 2021). Fong et al. (2021) reported a detailed study of the host galaxy and initial analysis of burst parameters for three of these ASKAP repeat bursts (A02, A03, and A07). Here, we analyse the properties of all 11 repeat bursts using the available incoherently summed data. The data were saved to disc in sigproc filterbank format (Lorimer 2011) with 336 frequency channels at a time resolution of 1.2 ms, and 1-MHz spectral resolution. Initial observations for 1.5 h (on April 1) were conducted at a central frequency of 863.5 MHz (low-band), whereas the rest of the observations were centred at 1271.5 MHz (mid-band). We recorded data with 22–24 antennas for all the ASKAP observations, except for the observations of burst A08 when only seven antennas were used."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20201124A burst observations",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0fafe62e4097477e_d2",
+      "evidence": {
+        "section": "2.2 Parkes UWL searches",
+        "original_text": "We used the ultra-wideband low (UWL) receiver at Parkes, covering a continuous frequency range from 704 to 4032 MHz. The data were sampled with a time resolution of 64 µs in 6656 frequency channels (500-kHz resolution) with each channel coherently dedispersed (Hobbs et al. 2020) for a DM of 412 pc cm−3. The data were stored in an eight-bit sampled psrfits searchmode file (Hotan et al. 2004) with four polarization products. We performed single-pulse searches, by sub-banding the data into bandwidths of size 1×3328 MHz, 2×1664 MHz, 4×832 MHz, 8×416 MHz, 13×256 MHz, 26×128 MHz and 52×64 MHz. Additionally, we formed sub-bands by joining the bottom and top half portions of the adjacent sub-bands to be sensitive to overlapping signals. We searched the sub-banded data independently using the GPU based single-pulse search software heimdall (Barsdell 2012). The search method and parameters is described in Kumar et al. (2021a). We visually inspected all ∼ 1500 candidates in the DM range 350–500 pc cm−3 in a total of 13 sub-band searches and found five repeat bursts in the hour-duration observation above an S/N of 9. A 2-min observation of a pulsed linearly polarized noise diode was performed for polarization calibration at the beginning of the observing session on April 5. We used earlier observations of radio source PKS 0407−658 for flux calibration. We corrected for polarimetric leakage using an instrumental response model provided by the observatory, based on observations of the millisecond pulsar PSR J0437−4715 (van Straten 2004)."
+      },
+      "confidence": 0.95,
+      "name": "Parkes UWL burst observations",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0fafe62e4097477e_d3",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "In order to measure the burst properties, we extracted the data around the repeat bursts (total-intensity Stokes I for ASKAP bursts and all Stokes parameters for Parkes/UWL) in a psrfits-format file using the dspsr package (van Straten & Bailes 2011). Hereafter, we refer to the ASKAP detected bursts chronologically as A01–A11 and the Parkes bursts as P01–P05. The dynamic spectra of all repeat bursts are presented in Figure 2. All of the UWL bursts are detected in the lower part (≤ 1.1 GHz) of the band, which is predominantly contaminated by radio frequency interference (RFI). We mask channels whose statistical moments (variance, skewness, and kurtosis) deviate excessively from the median values across the whole band. This results in up to 50 per cent of the channels being flagged below 1.1 GHz. We take a more extended cut out of the data around the bursts to measure these average statistical moments. One of the fundamental properties of emission from the FRB sources is the dispersion, with its strength parametrized by the dispersion measure (DM), a measure of the electron column density along the line of sight. The difficulty in making an accurate determination of an FRB DM is compounded by the spectro-temporal evolution seen in the burst emission (Platts et al. 2021), which can be degenerate with DM and lead to ambiguities (Hassall et al. 2012). Here we outline how we measured the DM of these repeat bursts. We use the PSRCHIVE tool pdmp to determine the DM that maximizes the S/N of all the repeat bursts. pdmp computes the S/N using boxcar matched filtering of the pulse profile. We identify by eye the frequency sub-band where the bursts are bright and use only those channels for DM determination. We also take a broader sub-band to include all the burst signals and confirm the obtained results. We find that the S/N-maximized DM covers a wide range from 409 to 423 pc cm−3 in our sample. These large deviations can be attributed to the low S/N, narrow fractional bandwidth, and the presence of sub-structure in some of the bursts. We also see evidence for sub-components present in the dynamic spectrum of A01 and P05 (see Figure 2). To consider these and align the burst structure properly in time, we use the DM_phase package (Seymour et al. 2019). This method uses the coherent power across the dynamic spectrum to maximize the burst structure instead of S/N. To estimate the DM uncertainties for both methods, we follow the approach prescribed in DM_phase (Seymour et al. 2019). We fitted the obtained S/N-DM curve (Cordes & McLaughlin 2003) with a higher degree (10) polynomial and used the peak to establish the DM for each burst. The uncertainty in DM is calculated by propagating the uncertainty given by the residuals of the polynomial fitting (Platts et al. 2021). We report the measured DM with uncertainties for all repeat bursts in Table 1. The low S/N and time resolution of ASKAP bursts A03–A11 resulted in poor fitting when optimizing the burst structure with the DM_phase. For these bursts, we do not provide DMStruct in Table 1."
+      },
+      "confidence": 0.9,
+      "name": "FRB 20201124A burst properties table",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_0fafe62e4097477e_d4",
+      "evidence": {
+        "section": "3.6 Burst rates",
+        "original_text": "We can combine our observations of the FRB 20201124A source with those reported by others (Xu et al. 2021; Law et al. 2021; Wharton et al. 2021b) around our observation span (2021 April 1–7) to constrain the chromatic burst activity rate. More than 200 bursts from this source have been reported during 2021 April (Hilmarsson et al. 2021a; Marthi et al. 2022; Piro et al. 2021; Xu et al. 2021), so we assume that the source was active across the whole span and our observations are entirely within a single active window. Several prolific repeating FRBs show strong clustering in their emission activity. Nevertheless, it has been well established for one of the most extensively studied sources, FRB 20121102A, that the burst rate distribution roughly follows Poissonian statistics during its active phase (Cruces et al. 2021; Zhang et al. 2021) after excluding events with separation ≲ 1 min. Since this is the case here in our observations, we assume a Poissonian rate distribution for the rate analysis. Given the wide bandwidth of the Parkes/UWL, we divide it into a composite of three independent telescope sub-bands, similar to the RF bands described in Hobbs et al. (2020) at a central frequency of 1.024, 1.856, and 3.2 GHz with a bandwidth of 640, 1024, and 1664 MHz, respectively. We also include all reported detections of repeat bursts and exposure times on the FRB 20201124A source. The sensitivity limits and on-source follow-up time for each instrument with references are in Table 3. We follow the formalism used in Kumar et al. (2019) to estimate the cumulative burst rate for a survey using the parameters R0 (rate of bursts above fluence S0), β (power-law spectral index) and γ (cumulative power-law index for fluence). Using a Poissonian likelihood for the rate, we sample the posterior distribution with the nested sampling algorithm multinest (Feroz et al. 2009) implemented in bilby (Ashton et al. 2019). We assume uniform priors on β and γ (−10 < β, γ < 10), and log-uniform priors on R0 between 10−6 and 100 h−1, where we use ASKAP mid-band search parameters for reference (frequency ν0 = 1.3 GHz and sensitivity S0 = 4.5 Jy ms). The obtained posterior distributions are shown in Figure 6. We thus constrain the burst rate of FRB 20201124A to 0.24 h−1 at 1.3 GHz for a fluence limit of 4.5 Jy ms during its activity window. We find the spectral dependence of the burst rate to be very steep, β ∼−6. A separate analysis using a power law with an exponential cut-off in frequency for fluence did not return well-constrained results."
+      },
+      "confidence": 0.9,
+      "name": "FRB 20201124A burst rate analysis dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0fafe62e4097477e_ds1",
+      "evidence": {
+        "section": "2.1 ASKAP searches",
+        "original_text": "The data were saved to disc in sigproc filterbank format (Lorimer 2011) with 336 frequency channels at a time resolution of 1.2 ms, and 1-MHz spectral resolution. Initial observations for 1.5 h (on April 1) were conducted at a central frequency of 863.5 MHz (low-band), whereas the rest of the observations were centred at 1271.5 MHz (mid-band). We recorded data with 22–24 antennas for all the ASKAP observations, except for the observations of burst A08 when only seven antennas were used."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "ASKAP data saved in sigproc filterbank format with 336 channels, 1.2 ms resolution, 1 MHz spectral resolution"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0fafe62e4097477e_ds2",
+      "evidence": {
+        "section": "2.2 Parkes UWL searches",
+        "original_text": "We used the ultra-wideband low (UWL) receiver at Parkes, covering a continuous frequency range from 704 to 4032 MHz. The data were sampled with a time resolution of 64 µs in 6656 frequency channels (500-kHz resolution) with each channel coherently dedispersed (Hobbs et al. 2020) for a DM of 412 pc cm−3. The data were stored in an eight-bit sampled psrfits searchmode file (Hotan et al. 2004) with four polarization products."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Parkes UWL data stored in psrfits searchmode file with 64 µs resolution, 6656 channels, 500 kHz resolution"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0fafe62e4097477e_ds3",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "All of the UWL bursts are detected in the lower part (≤ 1.1 GHz) of the band, which is predominantly contaminated by radio frequency interference (RFI). We mask channels whose statistical moments (variance, skewness, and kurtosis) deviate excessively from the median values across the whole band. This results in up to 50 per cent of the channels being flagged below 1.1 GHz. We take a more extended cut out of the data around the bursts to measure these average statistical moments."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "RFI mitigation by masking channels with deviant statistical moments (variance, skewness, kurtosis)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0fafe62e4097477e_ds4",
+      "evidence": {
+        "section": "3.1 Dispersion Measure",
+        "original_text": "We use the PSRCHIVE tool pdmp to determine the DM that maximizes the S/N of all the repeat bursts. pdmp computes the S/N using boxcar matched filtering of the pulse profile. We identify by eye the frequency sub-band where the bursts are bright and use only those channels for DM determination. We also take a broader sub-band to include all the burst signals and confirm the obtained results. We find that the S/N-maximized DM covers a wide range from 409 to 423 pc cm−3 in our sample. These large deviations can be attributed to the low S/N, narrow fractional bandwidth, and the presence of sub-structure in some of the bursts. We also see evidence for sub-components present in the dynamic spectrum of A01 and P05 (see Figure 2). To consider these and align the burst structure properly in time, we use the DM_phase package (Seymour et al. 2019). This method uses the coherent power across the dynamic spectrum to maximize the burst structure instead of S/N. To estimate the DM uncertainties for both methods, we follow the approach prescribed in DM_phase (Seymour et al. 2019). We fitted the obtained S/N-DM curve (Cordes & McLaughlin 2003) with a higher degree (10) polynomial and used the peak to establish the DM for each burst. The uncertainty in DM is calculated by propagating the uncertainty given by the residuals of the polynomial fitting (Platts et al. 2021). We report the measured DM with uncertainties for all repeat bursts in Table 1. The low S/N and time resolution of ASKAP bursts A03–A11 resulted in poor fitting when optimizing the burst structure with the DM_phase. For these bursts, we do not provide DMStruct in Table 1."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "DM determination using pdmp (S/N maximization) and DM_phase (coherent power maximization)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0fafe62e4097477e_ds5",
+      "evidence": {
+        "section": "2.2 Parkes UWL searches",
+        "original_text": "A 2-min observation of a pulsed linearly polarized noise diode was performed for polarization calibration at the beginning of the observing session on April 5. We used earlier observations of radio source PKS 0407−658 for flux calibration. We corrected for polarimetric leakage using an instrumental response model provided by the observatory, based on observations of the millisecond pulsar PSR J0437−4715 (van Straten 2004)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Polarization calibration using noise diode, flux calibration with PKS 0407−658, leakage correction with PSR J0437−4715 model"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_0fafe62e4097477e_ds6",
+      "evidence": {
+        "section": "3.3 Polarization analysis",
+        "original_text": "We used two methods to search for Faraday rotation and ascertain its strength in the data. We first used the rmfit programme from psrchive to perform a brute-force search for a range of rotation measure (RM) values, ±104 rad m−2 with a step size of 1 rad m−2. We then used the Quadratic fitting algorithm (Noutsos et al. 2008) implemented in rmfit to obtain the best-fitting RM on a zoomed-in grid around the peak value of the brute-force search. Figure 3 shows the polarization intensity as a function of rotation measure obtained from the rmfit brute-force search for the burst P05. Additionally, we used rmnest (Lower et al. 2020), which utilizes Bayesian parameter estimation to obtain the RM for the UWL bursts by directly fitting the Stokes Q and U spectra of the calibrated data (Bannister et al. 2019b). The resulting RM measurements with 1-σ uncertainties using both methods are presented in Table 2."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "RM measurement using rmfit brute-force search and rmnest Bayesian parameter estimation"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m1",
+      "evidence": {
+        "section": "2 OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The data were searched in near real time using the GPU-based detection system `fredda` (Bannister et al. 2019a). We identified 11 repeat bursts above an S/N of 9 in a total of 16 . 5 h of follow-up observations. The online voltage download system was triggered for five of these bursts, which enabled the capture of high-resolution baseband data. Details of the detection system and the trigger criteria used to download voltages can be found in the supplementary material of Bannister et al. (2019b)."
+      },
+      "confidence": 0.95,
+      "name": "fredda",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m2",
+      "evidence": {
+        "section": "2 OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "We performed single-pulse searches, by sub-banding the data into bandwidths of size 1×3328 MHz, 2×1664 MHz, 4×832 MHz, 8×416 MHz, 13×256 MHz, 26×128 MHz and 52×64 MHz. Additionally, we formed sub-bands by joining the bottom and top half portions of the adjacent sub-bands to be sensitive to overlapping signals. We searched the sub-banded data independently using the GPU based single-pulse search software `heimdall`[3] (Barsdell 2012). The search method and parameters is described in Kumar et al. (2021a). We visually inspected all ∼ 1500 candidates in the DM range 350– 500 pc cm[−][3] in a total of 13 sub-band searches and found five repeat bursts in the hour-duration observation above an S/N of 9."
+      },
+      "confidence": 0.95,
+      "name": "heimdall",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m3",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "In order to measure the burst properties, we extracted the data around the repeat bursts (total-intensity Stokes I for ASKAP bursts and all Stokes parameters for Parkes/UWL) in a `psrfits` -format file using the `dspsr` package (van Straten & Bailes 2011). Hereafter, we refer to the ASKAP detected bursts chronologically as A01– A11 and the Parkes bursts as P01–P05. The dynamic spectra of all repeat bursts are presented in Figure 2."
+      },
+      "confidence": 0.95,
+      "name": "dspsr",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m4",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "We use the `PSRCHIVE` tool `pdmp` to determine the DM that maximizes the S/N of all the repeat bursts. `pdmp` computes the S/N using boxcar matched filtering of the pulse profile. We identify by eye the frequency sub-band where the bursts are bright and use only those channels for DM determination. We also take a broader sub-band to include all the burst signals and confirm the obtained results. We find that the S/N-maximized DM covers a wide range from 409 to 423 pc cm[−][3] in our sample. These large deviations can be attributed to the low S/N, narrow fractional bandwidth, and the presence of sub-structure in some of the bursts."
+      },
+      "confidence": 0.95,
+      "name": "PSRCHIVE pdmp",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m5",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "To consider these and align the burst structure properly in time, we use the `DM_phase` package (Seymour et al. 2019). This method uses the coherent power across the dynamic spectrum to maximize the burst structure instead of S/N. To estimate the DM uncertainties for both methods, we follow the approach prescribed in `DM_phase` (Seymour et al. 2019). We fitted the obtained S/N-DM curve (Cordes & McLaughlin 2003) with a higher degree (10) polynomial and used the peak to establish the DM for each burst. The uncertainty in DM is calculated by propagating the uncertainty given by the residuals of the polynomial fitting (Platts et al. 2021). We report the measured DM with uncertainties for all repeat bursts in Table 1."
+      },
+      "confidence": 0.95,
+      "name": "DM_phase",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m6",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "To measure the integrated S/N, we convolve the pulse profile with a set of square-normalised Gaussian templates for a range of widths using the package `spyden`[4] and report the best-fitting template S/N. To determine fluence, we use twice the measured FWHM duration of the burst as the on-pulse region to include all of the burst power. For ASKAP detections, we obtain the flux density values using the radiometer equation for single pulses, assuming a system equivalent flux density of 1800 Jy for each antenna as described in Bannister et al. (2017)."
+      },
+      "confidence": 0.95,
+      "name": "spyden",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m7",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "We used two methods to search for Faraday rotation and ascertain its strength in the data. We first used the `rmfit` programme from `psrchive` to perform a brute-force search for a range of rotation measure (RM) values, ±10[4] rad m[−][2] with a step size of 1 rad m[−][2] . We then used the Quadratic fitting algorithm (Noutsos et al. 2008) implemented in `rmfit` to obtain the best-fitting RM on a zoomed-in grid around the peak value of the brute-force search. Figure 3 shows the polarization intensity as a function of rotation measure obtained from the `rmfit` brute-force search for the burst P05."
+      },
+      "confidence": 0.95,
+      "name": "rmfit",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m8",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "Additionally, we used `rmnest`[5] (Lower et al. 2020), which utilizes Bayesian parameter estimation to obtain the RM for the UWL bursts by directly fitting the Stokes _𝑄_ and _𝑈_ spectra of the calibrated data (Bannister et al. 2019b). The resulting RM measurements with 1- _𝜎_ uncertainties using both methods are presented in Table 2. For further analysis, we now consider the best-fitting RM ( _𝑄_ – _𝑈_ ) value of each burst and correct the UWL data for Faraday rotation."
+      },
+      "confidence": 0.95,
+      "name": "rmnest",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_0fafe62e4097477e_m9",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "We follow the formalism used in Kumar et al. (2019) to estimate the cumulative burst rate for a survey using the parameters _𝑅_ 0 (rate of bursts above fluence _𝑆_ 0), _𝛽_ (power-law spectral index) and _𝛾_ (cumulative power-law index for fluence). Using a Poissonian likelihood for the rate, we sample the posterior distribution with the nested sampling algorithm `multinest` (Feroz et al. 2009) implemented in `bilby` (Ashton et al. 2019). We assume uniform priors on _𝛽_ and _𝛾_ (−10 _< 𝛽, 𝛾<_ 10), and log-uniform priors on _𝑅_ 0 between 10[−][6] and 100 h[−][1] , where we use ASKAP mid-band search parameters for reference (frequency _𝜈_ 0 = 1 _._ 3 GHz and sensitivity _𝑆_ 0 = 4 _._ 5 Jy ms). The obtained posterior distributions are shown in Figure 6."
+      },
+      "confidence": 0.95,
+      "name": "multinest bilby",
+      "method_type": "software"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_0fafe62e4097477e_x1",
+      "evidence": {
+        "section": "2 OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "Targeted monitoring of the FRB 20201124A source with ASKAP was conducted as part of the Commensal Real-time ASKAP Fast Transients (CRAFT[2] ; Macquart et al. 2010) project. Observations were carried out by incoherently summing the total intensities from each antenna for each of the 36 beams produced by the phased-array feed receivers. In this mode, the detection system is sensitive to a fluence of 3 . 7 Jy ms for a burst width of 1 ms and a threshold signal-tonoise ratio (S/N) of 10 for an array observing with 36 antennas; often smaller sub-arrays are used, and the sensitivity scales by ~~[√]~~ _𝑁_ antennas for the incoherently summed array. The data were searched in near real time using the GPU-based detection system `fredda` (Bannister et al. 2019a). We identified 11 repeat bursts above an S/N of 9 in a total of 16 . 5 h of follow-up observations. The online voltage download system was triggered for five of these bursts, which enabled the capture of high-resolution baseband data. Details of the detection system and the trigger criteria used to download voltages can be found in the supplementary material of Bannister et al. (2019b). These baseband data were used to interferometrically localize the source (Day et al. 2021a,b) to its host galaxy, SDSS J050803.48+260338.0 that has a redshift of _𝑧_ = 0 . 098(2) (Kilpatrick et al. 2021). Fong et al. (2021) reported a detailed study of the host galaxy and initial analysis of burst parameters for three of these ASKAP repeat bursts (A02, A03, and A07). Here, we analyse the properties of all 11 repeat bursts using the available incoherently summed data. The data were saved to disc in `sigproc` filterbank format (Lorimer 2011) with 336 frequency channels at a time resolution of 1 . 2 ms, and 1-MHz spectral resolution. Initial observations for 1 . 5 h (on April 1) were conducted at a central frequency of 863 . 5 MHz (low-band), whereas the rest of the observations were centred at 1271.5 MHz (mid-band). We recorded data with 22–24 antennas for all the ASKAP observations, except for the observations of burst A08 when only seven antennas were used."
+      },
+      "confidence": 0.95,
+      "task": "ASKAP follow-up observations of FRB 20201124A",
+      "setup": "ASKAP antennas, incoherent beam summing, central frequencies 863.5 MHz (low-band) and 1271.5 MHz (mid-band), 336 frequency channels, 1.2 ms time resolution, 1 MHz spectral resolution"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_0fafe62e4097477e_x2",
+      "evidence": {
+        "section": "2 OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "We used the ultra-wideband low (UWL) receiver at Parkes, covering a continuous frequency range from 704 to 4032 MHz. The data were sampled with a time resolution of 64 µs in 6656 frequency channels (500-kHz resolution) with each channel coherently dedispersed (Hobbs et al. 2020) for a DM of 412 pc cm[−][3] . The data were stored in an eight-bit sampled `psrfits` searchmode file (Hotan et al. 2004) with four polarization products. We performed single-pulse searches, by sub-banding the data into bandwidths of size 1×3328 MHz, 2×1664 MHz, 4×832 MHz, 8×416 MHz, 13×256 MHz, 26×128 MHz and 52×64 MHz. Additionally, we formed sub-bands by joining the bottom and top half portions of the adjacent sub-bands to be sensitive to overlapping signals. We searched the sub-banded data independently using the GPU based single-pulse search software `heimdall`[3] (Barsdell 2012). The search method and parameters is described in Kumar et al. (2021a). We visually inspected all ∼ 1500 candidates in the DM range 350– 500 pc cm[−][3] in a total of 13 sub-band searches and found five repeat bursts in the hour-duration observation above an S/N of 9. A 2-min observation of a pulsed linearly polarized noise diode was performed for polarization calibration at the beginning of the observing session on April 5. We used earlier observations of radio source PKS 0407−658 for flux calibration. We corrected for polarimetric leakage using an instrumental response model provided by the observatory, based on observations of the millisecond pulsar PSR J0437−4715 (van Straten 2004)."
+      },
+      "confidence": 0.95,
+      "task": "Parkes UWL follow-up observations of FRB 20201124A",
+      "setup": "Parkes 64-m telescope with ultra-wideband low (UWL) receiver, frequency range 704-4032 MHz, 64 µs time resolution, 6656 frequency channels (500 kHz resolution), coherent dedispersion at DM 412 pc cm⁻³"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_0fafe62e4097477e_x3",
+      "evidence": {
+        "section": "3 RESULTS",
+        "original_text": "We can combine our observations of the FRB 20201124A source with those reported by others (Xu et al. 2021; Law et al. 2021; Wharton et al. 2021b) around our observation span (2021 April 1–7) to constrain the chromatic burst activity rate. More than 200 bursts from this source have been reported during 2021 April (Hilmarsson et al. 2021a; Marthi et al. 2022; Piro et al. 2021; Xu et al. 2021), so we assume that the source was active across the whole span and our observations are entirely within a single active window. Several prolific repeating FRBs show strong clustering in their emission activity. Nevertheless, it has been well established for one of the most extensively studied sources, FRB 20121102A, that the burst rate distribution roughly follows Poissonian statistics during its active phase (Cruces et al. 2021; Zhang et al. 2021) after excluding events with separation ≲ 1 min. Since this is the case here in our observations, we assume a Poissonian rate distribution for the rate analysis. Given the wide bandwidth of the Parkes/UWL, we divide it into a composite of three independent telescope sub-bands, similar to the RF bands described in Hobbs et al. (2020) at a central frequency of 1.024, 1.856, and 3.2 GHz with a bandwidth of 640, 1024, and 1664 MHz, respectively. We also include all reported detections of repeat bursts and exposure times on the FRB 20201124A source. The sensitivity limits and on-source follow-up time for each instrument with references are in Table 3. We follow the formalism used in Kumar et al. (2019) to estimate the cumulative burst rate for a survey using the parameters _𝑅_ 0 (rate of bursts above fluence _𝑆_ 0), _𝛽_ (power-law spectral index) and _𝛾_ (cumulative power-law index for fluence). Using a Poissonian likelihood for the rate, we sample the posterior distribution with the nested sampling algorithm `multinest` (Feroz et al. 2009) implemented in `bilby` (Ashton et al. 2019). We assume uniform priors on _𝛽_ and _𝛾_ (−10 _< 𝛽, 𝛾<_ 10), and log-uniform priors on _𝑅_ 0 between 10[−][6] and 100 h[−][1] , where we use ASKAP mid-band search parameters for reference (frequency _𝜈_ 0 = 1 . 3 GHz and sensitivity _𝑆_ 0 = 4 . 5 Jy ms). The obtained posterior distributions are shown in Figure 6. We thus constrain the burst rate of FRB 20201124A to 0.24 h[−][1] at 1.3 GHz for a fluence limit of 4.5 Jy ms during its activity window. We find the spectral dependence of the burst rate to be very steep, _𝛽_ ∼−6. A separate analysis using a power law with an exponential cut-off in frequency for fluence did not return well-constrained results."
+      },
+      "confidence": 0.95,
+      "task": "burst rate analysis",
+      "setup": "combined observations from multiple instruments (ASKAP, Parkes/UWL, CHIME, VLA, uGMRT, Effelsberg, GBT, FAST) with varying sensitivities and frequency bands"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0fafe62e4097477e_qr1",
+      "evidence": {
+        "section": "3.5",
+        "original_text": "The second ASKAP-detected burst, A02, is the brightest repeat burst ever detected from an FRB source. The burst was sufficiently bright that it was detected with high significance (S/N > 10) in 20 of the total 36 ASKAP beams with strong detections in the side-lobes of the antenna response, as shown in Figure 5. We obtain almost comparable S/N ∼84 in two of the centred beams (0.8 deg offset from the FRB position), whereas the S/N in the beam closest to the burst (0.4deg offset) is 68. The side-lobe beam detections (4 deg offset) were only a factor of 5 lower in S/N than the central beam detections. The similarity of the S/N in the central beam detections and the strong side-lobe detections (relative to the central beams) suggests that the primary beam detection had saturated a component of the ASKAP detection system, and the fluence calculated from the central beams was underestimated. Considering the possibility of saturation, we estimate the fluence from the neighbouring beam 5 (1.4-deg offset from the FRB position). We use ASKAP low-band holographic observations (Hotan et al. 2021) at the burst central frequency of 753 MHz to estimate the beam shape and the attenuation at the burst position. We measure the uncorrected fluence and attenuation factor for beam 5 to be 180 ± 4 Jy ms and 0 . 28 ± 0 . 03 respectively; thus, we estimate the true burst fluence to be 640 ± 70 Jy ms."
+      },
+      "confidence": 0.98,
+      "quantity": "fluence",
+      "value": 640,
+      "unit": "Jy ms",
+      "context": "ASKAP burst A02, brightest repeat burst ever observed from a repeating FRB source",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0fafe62e4097477e_qr2",
+      "evidence": {
+        "section": "3.3",
+        "original_text": "We observe a large discrepancy in the measured RM values for the first two Parkes/UWL bursts (P01–P02), which are only 8 min apart. These bursts are heavily contaminated with RFI, and the paucity of unflagged frequency channels might have introduced additional systematic errors in the RM measurement. On the other hand, we find the RM of the other three bursts (P03–P05) consistent within 1-σ uncertainties. The standard deviation of the burst RMs is 16 rad m⁻² . We obtain a global source RM of −614 rad m⁻² by taking the weighted mean of the best-fitting RM (Q–U) of all UWL bursts (P01–P05). We use this mean value as the FRB source RM throughout the paper unless otherwise mentioned. Assuming the RM values for P01–P02 correctly reflect the amount of Faraday rotation, we see a fractional variation of ∼3 per cent around the obtained global RM in the UWL bursts, all of which are detected merely within an hour. Hilmarsson et al. (2021a) measured a fractional variation of ∼2 per cent in the RM around a mean value of −601 rad m⁻² in the Effelsberg repeat bursts detected on 2021 April 9. Thus, we find the RM determined for UWL bursts in agreement, given a similar significant RM variation in bursts from this FRB source around our observing span."
+      },
+      "confidence": 0.95,
+      "quantity": "rotation measure",
+      "value": -614,
+      "unit": "rad m⁻²",
+      "context": "Average RM for FRB 20201124A source from UWL bursts",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0fafe62e4097477e_qr3",
+      "evidence": {
+        "section": "3.7",
+        "original_text": "In this interpretation of burst structure, we see no significant presence of circular polarization in the sub-pulse C2. The sub-pulse C1 is highly circular polarized (| V |/ I ∼ 47 per cent), while C2 is ∼ 93 per cent linearly polarized. We also find an apparent discrepancy between the best-fitting RM of both sub-pulses, with the difference ΔRM = 6 ± 3 rad m⁻² . To confirm this interpretation, we consider the dynamic spectrum for the Stokes V component. We obtain the structure-optimized DM for Stokes V to 418 ± 1 pc cm⁻³ . The absence of a second sub-pulse in the circularly polarized emission also suggests that the Stokes intensity data components are distinct and separate in time."
+      },
+      "confidence": 0.95,
+      "quantity": "circular polarization fraction",
+      "value": 47,
+      "unit": "%",
+      "context": "Parkes/UWL burst P05, sub-pulse C1",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0fafe62e4097477e_qr4",
+      "evidence": {
+        "section": "3.1",
+        "original_text": "We define a global DM for this FRB source as the weighted mean of DMStruct measured for repeat bursts in our sample. Doing this, we obtain the global DM to be 413 ± 1 pc cm⁻³ . Our determined value of DM is in agreement and within 1-σ of the value measured for a sample of bright and multi-component bursts detected using the 100-m Effelsberg radio telescope (Hilmarsson et al. 2021a) and within 2-σ for the brightest burst detected using the uGMRT (Marthi et al. 2022). We use the determined global DM for this source to measure the burst properties reported in Table 1 and throughout this paper."
+      },
+      "confidence": 0.95,
+      "quantity": "dispersion measure",
+      "value": 413,
+      "unit": "pc cm⁻³",
+      "context": "Global DM for FRB 20201124A source, weighted mean from sample",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0fafe62e4097477e_qr5",
+      "evidence": {
+        "section": "3.6",
+        "original_text": "We thus constrain the burst rate of FRB 20201124A to 0.24 h⁻¹ at 1.3 GHz for a fluence limit of 4.5 Jy ms during its activity window. We find the spectral dependence of the burst rate to be very steep, β ∼−6. A separate analysis using a power law with an exponential cut-off in frequency for fluence did not return well-constrained results."
+      },
+      "confidence": 0.9,
+      "quantity": "burst rate",
+      "value": 0.24,
+      "unit": "h⁻¹",
+      "context": "At 1.3 GHz for a fluence limit of 4.5 Jy ms during activity window",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_0fafe62e4097477e_qr6",
+      "evidence": {
+        "section": "4.2",
+        "original_text": "The inferred value of cumulative power-law index γ = −0 . 8±0 . 1 using all reported observations from this repeating source is in agreement with previous such measurements for FRB20121102A (James et al. 2019; Cruces et al. 2021). Using the inferred value of β = −5 . 8 ± 0 . 8 for the spectral dependence, we compare the burst rate from this FRB source with the two most prolific repeaters."
+      },
+      "confidence": 0.9,
+      "quantity": "cumulative power-law index",
+      "value": -0.8,
+      "unit": "",
+      "context": "For fluence distribution of FRB 20201124A bursts",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0fafe62e4097477e_p1",
+      "evidence": {
+        "section": "Abstract & 3.5",
+        "original_text": "One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. The second ASKAP-detected burst, A02, is the brightest repeat burst ever detected from an FRB source. Burst A02 is one of the most energetic repeat burst from an FRB source detected to date (second only to FRB 20190711A), with an isotropic energy of 1 . 2 × 10⁴¹ erg. This is comparable to those of the localized (cosmological) ASKAP FRBs and inferred of the non-localized ASKAP fly’s eye FRBs (Shannon et al. 2018)."
+      },
+      "confidence": 0.95,
+      "metric": "brightness (fluence)",
+      "compared_to": "other repeating FRB sources"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0fafe62e4097477e_p2",
+      "evidence": {
+        "section": "Abstract & 4.1",
+        "original_text": "In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. This source is also the first case of a repeating FRB source to exhibit circularly polarized emission in its bursts (Hilmarsson et al. 2021a). While several nonrepeating FRBs displayed significant circular components, few have circular polarization fractions as large as the UWL burst P05 [e.g., FRB 20181112A with a maximum | V |/ I = 0 . 34 (Cho et al. 2020) and FRB 20190611B with 0.57 (Day et al. 2020)]."
+      },
+      "confidence": 0.95,
+      "metric": "circular polarization fraction",
+      "compared_to": "other repeating FRB sources and non-repeating FRBs"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0fafe62e4097477e_p3",
+      "evidence": {
+        "section": "4.2",
+        "original_text": "Pleunis et al. (2021a) measure the CHIME detection rate of ∼ 1 . 5 bursts h⁻¹ above 5.1 Jy ms for FRB20180916B in the best active window around each activity cycle. Similarly, the peak burst rate determined for FRB 20121102A with FAST detections is ∼ 122 h⁻¹ above 0.015 Jy ms (Li et al. 2021). We find the burst rate of FRB 20201124A to be ∼ 9 and ∼ 28 h⁻¹ after scaling to the CHIME and FAST sensitivities, respectively. Clearly, FRB 20201124A is one of the most active sources of repeating FRBs."
+      },
+      "confidence": 0.9,
+      "metric": "burst rate",
+      "compared_to": "FRB 20180916B and FRB 20121102A"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_0fafe62e4097477e_p4",
+      "evidence": {
+        "section": "4.3",
+        "original_text": "The inferred magnitude of the rotation measure (|RM| = 614 rad m⁻² ) for FRB 20201124A bursts is the second-largest observed in the FRB population. The Milky Way Faraday rotation along the line of sight of this source is estimated to be −57 rad m⁻² (Oppermann et al. 2015) indicating a significant extraGalactic component. Yang et al. (2020) argues for a relation between RM and the luminosity of the PRS associated with an FRB source to explain the high |RM| ∼ 10⁵ rad m⁻² measured for FRB20121102A. The non-association of FRB 20201124A source with a PRS (Marcote et al. 2021) and a smaller absolute RM is consistent with their relation."
+      },
+      "confidence": 0.9,
+      "metric": "rotation measure magnitude",
+      "compared_to": "FRB population and Milky Way contribution"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_0fafe62e4097477e_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The mechanism that produces fast radio burst (FRB) emission is poorly understood. Targeted monitoring of repeating FRB sources provides the opportunity to fully characterize the emission properties in a manner impossible with one-off bursts. Here, we report observations of the source of FRB 20201124A, with the Australian Square Kilometre Array Pathfinder (ASKAP) and the ultra-wideband low (UWL) receiver at the Parkes 64-m radio telescope (Murriyang). The source entered a period of emitting bright bursts during early 2021 April. We have detected 16 bursts from this source. One of the bursts detected with ASKAP is the brightest burst ever observed from a repeating FRB source with an inferred fluence of 640 ± 70 Jy ms. Of the five bursts detected with the Parkes UWL, none display any emission in the range 1.1–4 GHz. All UWL bursts are highly polarized, with their Faraday rotation measures (RMs) showing apparent variations. We obtain an average RM of −614 rad m−2 for this FRB source with a standard deviation of 16 rad m−2 in the UWL bursts. In one of the UWL bursts, we see evidence of significant circularly polarized emission with a fractional extent of 47 ± 1 per cent. Such a high degree of circular polarization has never been seen before in bursts from repeating FRB sources. We also see evidence for significant variation in the linear polarization position angle in the pulse profile of this UWL repeat burst. Models for repeat burst emission will need to account for the increasing diversity in the burst polarization properties."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_0fafe62e4097477e_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "We have presented a set of 16 repeat bursts from the source of CHIME-discovered FRB 20201124A using ASKAP and Parkes. We found that all the Parkes/UWL bursts are band-limited and spectrally confined in the instrument’s frequency range. They show no evidence of emission in more than 3 GHz of bandwidth. ASKAP bursts also appear to be narrow-band, with most of them extending beyond one of the band edges. Here, we showed the detection of a band-limited burst with ∼47 per cent circular polarization, a first such case in a repeating FRB source. We suggest that the complex burst structure in this burst can be interpreted using a DM excess from the average DM of the source for spectral studies. The contrasting polarimetric properties in the two sub-pulses of this burst indicate that multiple mechanisms (intrinsic and propagation-induced) might be responsible for the burst emission. The variety of observed pulse profiles of the Parkes/UWL repeat bursts along with varying polarization features within an hour of observation suggests a dynamic and evolving magnetic environment around the FRB progenitor. The observed diversity in polarimetric properties, either the stability of PA (Luo et al. 2020) or the presence of a circular component (Dai et al. 2021) clearly disapprove its use in discriminating against the different sub-classes (repeaters and non-repeaters) of FRBs. Additionally, we found that the preferred frequency of burst emission evolves on a time-scale of a few hours. These detections further highlight the importance of sub-band searches for FRBs with wideband instruments. Thorough coverage of repeating FRBs with more such multi-observatory campaigns will allow us to study the spectral evolution in detail."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_0fafe62e4097477e_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The dilemma in deciding the best-DM or the correct alignment of the burst structure creates difficulty in studying the spectrum and its dependence on the observed frequency. To form the spectrum, one needs to determine the burst extent in time and then accumulate the signal contained in those time bins. In the case of drifted bursts, we must trace the signal in the time bins following the drift curve to form the correct spectrum. For the spectral study, we can simply utilize this 'extra dispersion' due to drifting and align the structure in time as much as possible to form the correct spectrum for each drifting component. Thus, in the case of UWL burst P05, a DM of 418 pc cm−3 is more appropriate to study the spectrum of the whole burst structure. The complicated structure of burst P05 with drifting in frequency limits our ability to determine the amount of dispersion with certainty. Whether this apparent 'DM excess' of 5 pc cm−3 in burst P05 is real is subject to further modelling using the burst spectro-polarimetric properties. We are limited in any further analysis of the burst structure due to the resolution of available data and the impact of radio frequency interference."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_0fafe62e4097477e_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Further development of magnetospheric models is necessary, taking the production of both linearly and circularly polarized components into account. It is also possible that multiple such processes – intrinsic to the emission and extrinsic propagation effects are responsible to explain the diverse polarization properties of bursts from FRB sources. Determination of a periodic modulation in this FRB source, if any, will enable us to study the frequency-phase correlation, which will decide if this 'band-switching' is intrinsic to the burst emission or propagation effects like plasma lensing are at play. Thorough coverage of repeating FRBs with more such multi-observatory campaigns will allow us to study the spectral evolution in detail."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

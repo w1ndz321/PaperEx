@@ -1,0 +1,626 @@
+{
+  "metadata": {
+    "doc_id": "doc_7993f882c9c27769",
+    "source_file": "11c_Gridded_population_and_GDP_scenarios_spatial_downscaling.md",
+    "title": "Downscaling Population and GDP Scenarios under Shared Socioeconomic Pathways (SSPs) into 0.5-Degree Grids",
+    "year": 2019,
+    "doi": "10.3390/su11072106",
+    "abstract": "**Abstract:** This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html.",
+    "introduction": "Socioeconomic scenarios are needed to project carbon dioxide (CO2) emissions, disaster risks, and other factors affecting sustainability from a long-term perspective. The Intergovernmental Panel on Climate Change (IPCC) published Shared Socioeconomic Pathways (SSPs) [1,2] that describe future socioeconomic conditions under various scenarios, including SSP1-3. SSP1 makes relatively good progress toward sustainability under an open and globalized world. SSP2 is a middle-of-the-road scenario assuming that the typical trends in the last decades will continue, and in SSP3, the world is closed and fragmented into regions, but it fails to achieve sustainability. \n\nWhile the SSPs are devised in terms of country scenarios, finer scenarios (e.g., scenarios in terms of 0.5-degree grids) are required to analyze regional/city-level sustainability and resiliency. A number of studies have downscaled country-level socioeconomic scenarios into finer spatial units. Gaffin et al. (2004) [3] is an initial work which estimated the gridded population and GDP of the world. Unfortunately, based on [4], the authors’ approach has the following shortcomings: implausibly high growth rates, discontinuity of the projection algorithm before and after 2050, and assumption of independence between population and GDP. Studies [4,5] developed new algorithms to downscale population and GDP to address these limitations. Bengtsson et al. (2006) [6] estimated the gridded urban and nonurban population projection for 1990 to 2100. While the above-mentioned studies rely on trend extrapolation (e.g., GDP extrapolation assuming a constant growth rate), Hachadoorian et al. (2011) [7] \n\n_Sustainability_ **2019** , _11_ , 2106; doi:10.3390/su11072106 \n\nwww.mdpi.com/journal/sustainability \n\n_Sustainability_ **2019** , _11_ , 2106 \n\n2 of 18 \n\ncompared the trend extrapolation methods with the cohort method, which is more sophisticated but requires population by age groups. The authors suggest that the trend extrapolation is more suitable for small area projections. Beyond simple extrapolation, Asadoorian (2007) [8] simulated future population distributions by imposing an assumption that population distribution in each country obeys a beta distribution. Nam and Reilly (2013) [9] downscaled populations by estimating city-size distributions using a rank-size rule-based approach. After global SSP scenarios were created by [1] in 2014, Jones and O’Neill (2013) [10] downscaled the population scenarios using a gravity model-based approach to consider urban and nonurban population changes that were consistent with the SSP narratives. Fujimori et al. (2017) [11] downscaled the SSP GDP scenarios to investigate their impact on climate modeling. Regionalized spatially fine scenarios have also been developed in the USA by [12–14], in Japan by [15], and in the Mediterranean costal area by [16]. \n\nYet, these studies have several limitations. First, they do not consider interactions among cities. It is likely that spatial interactions, that is, interactions depending on geographical distance, are significant locally, while economic interactions are significant globally. These local and global interactions among cities must be considered in addition to spill over from cities to their neighbors. Second, many of previous studies do not utilize auxiliary variables (e.g., land use, road network, location of airports), which seem useful for the consideration of urban form and functions, but rather, simply extrapolate past trends using a logistic growth model (e.g., [3]), share-of-growth model (e.g., [15]), gravity-type model (e.g., [5,10]), and so on. McKee et al.’s study of [13] is an exception, as it considers land use data, road network data, and so on. Nevertheless, their target area is limited to the USA. Also, they determine weights exogenously for each auxiliary variable. It is desirable to estimate the importance of each auxiliary variable endogenously. \n\nThe objective of this study is downscaling the country-level SSP1-3 scenarios into 0.5-degree grids while overcoming the two above limitations. Specifically, our downscale approach estimates the (i) intensity of interactions among cities and (ii) importance of auxiliary variables, from data. Although [10] already published gridded SSP population scenarios, they apply a simple approach ignoring auxiliary variables. Our study considering (i) and (ii) would be beneficial to develop more sophisticated gridded scenarios.",
+    "primary_discipline": {
+      "level1": "统计学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "downscaling",
+      "Shared Socioeconomic Pathways",
+      "population",
+      "GDP",
+      "gridded scenarios"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:39:43.305756+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.98,
+      "term": "Shared Socioeconomic Pathways",
+      "normalized": "共享社会经济路径",
+      "std_label": "SSPs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.97,
+      "term": "downscaling",
+      "normalized": "降尺度",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.96,
+      "term": "gridded population",
+      "normalized": "网格化人口",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.96,
+      "term": "gridded GDP",
+      "normalized": "网格化GDP",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.95,
+      "term": "spatial econometrics",
+      "normalized": "空间计量经济学",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.95,
+      "term": "ensemble learning",
+      "normalized": "集成学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c7",
+      "evidence": {
+        "section": "2.2. City Growth Model: Estimation with Current Data",
+        "original_text": "This section estimates the impacts of local spatial interactions, global economic interactions, and auxiliary variables { Road dense , Airport dist , Ocean dist } on city population change between 1995 and 2000 (source: GRUMP Settlement Point dataset version 1; see Table 1) by fitting a city growth model. A distance-decay function is used to describe the spatial interactions, whereas the trade amount among cities, which is estimated from Trade amount (see Table 1), is used to describe the global economic interactions. The results suggest that population increases rapidly in cities with dense road network and good access to airports. These results are intuitively consistent. Also, city growth in inland areas tends to be faster than that in coastal cities. This might be because coastal cities are already matured, and their populations are more stable than those of inland cities. It is estimated that both (local) spatial interaction and (global) economic interaction accelerate population increases (or mitigates population decrease). See Appendix A for further details about the city growth model and the estimation results."
+      },
+      "confidence": 0.94,
+      "term": "city growth model",
+      "normalized": "城市增长模型",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c8",
+      "evidence": {
+        "section": "2.4. Projection of Urban Area",
+        "original_text": "Projected city populations are used to project urban expansion/shrinkage. The influence of projected city populations on urban area in 2000 is modeled by Equations (1) and (2): where εg ,2000 denotes disturbance. Urban areag ,2000 is the urban area in the g -th grid in 2000 (see Table 1). qg ,2000(r) represents the urbanization potential, where pc ,2000 is the population in the c -th city in 2000, dc , g is the arc distance between the c -th city and the center of the g -th grid. a , b , and r are parameters. This model describes urbanization due to city population increase, and urban shrinkage due to city population decrease. The a , b , and r parameters are estimated by maximizing the adjusted R[2] of Equation (1). The estimate of r is 16.4, which implies that the distance at which 95% of the influence from city population change disappears is 49.2 (= 16.4 × 3) km. r = 16.4 is assumed for SSP2. On the other hand, r = 8.2 (= 0.5 × 16.4) is assumed for SSP1 to model compact urban growth, while r = 32.8 (= 2.0 × 16.4) is assumed in SSP3 to model dispersed growth. Figure 2 displays urbanization potentials estimated using Equation (2) in Europe in 2080. Because of the r values, potentials in SSP1 are the most compactly distributed while those in SSP3 are the most dispersed."
+      },
+      "confidence": 0.93,
+      "term": "urban expansion/shrinkage model",
+      "normalized": "城市扩张/收缩模型",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c9",
+      "evidence": {
+        "section": "2.5. Downscale Approach",
+        "original_text": "Following Shiogama et al. (2011) [21], which suggest the robustness of an ensemble learning-based downscaling, sub-downscaling models are integrated by an ensemble learning technique. Each submodel distributes population or GDP in accordance with distribution weights, which are defined by (baseline variable) × (control variable). Baseline variables capture the difference in urban expansion/shrinkage assumed in each scenario whereas control variables capture the influence from auxiliary variables. These variables are given in Table 2. Our urban population downscaling applies three baseline variables and four control variables. Thus, 12 submodels distribute urban populations proportionally to (baseline variable) × (control variable). Likewise, the nonurban population downscaling has 12 submodels, while the GDP downscaling has 16 submodels. In each case, downscaling is done by a weighted average of the submodels, where the weights are estimated by applying the gradient boosting (Freidman, 2002), which is an ensemble learning method."
+      },
+      "confidence": 0.94,
+      "term": "gradient boosting",
+      "normalized": "梯度提升",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7993f882c9c27769_c10",
+      "evidence": {
+        "section": "1. Introduction",
+        "original_text": "Yet, these studies have several limitations. First, they do not consider interactions among cities. It is likely that spatial interactions, that is, interactions depending on geographical distance, are significant locally, while economic interactions are significant globally. These local and global interactions among cities must be considered in addition to spill over from cities to their neighbors. Second, many of previous studies do not utilize auxiliary variables (e.g., land use, road network, location of airports), which seem useful for the consideration of urban form and functions, but rather, simply extrapolate past trends using a logistic growth model (e.g., [3]), share-of-growth model (e.g., [15]), gravity-type model (e.g., [5,10]), and so on. McKee et al.'s study of [13] is an exception, as it considers land use data, road network data, and so on. Nevertheless, their target area is limited to the USA. Also, they determine weights exogenously for each auxiliary variable. It is desirable to estimate the importance of each auxiliary variable endogenously."
+      },
+      "confidence": 0.95,
+      "term": "auxiliary variables",
+      "normalized": "辅助变量",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.92,
+      "head": "doc_7993f882c9c27769_c2",
+      "relation_type": "uses",
+      "relation_surface": "utilizes",
+      "tail": "doc_7993f882c9c27769_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.92,
+      "head": "doc_7993f882c9c27769_c2",
+      "relation_type": "uses",
+      "relation_surface": "applies",
+      "tail": "doc_7993f882c9c27769_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r3",
+      "evidence": {
+        "section": "2.2. City Growth Model: Estimation with Current Data",
+        "original_text": "This section estimates the impacts of local spatial interactions, global economic interactions, and auxiliary variables { Road dense , Airport dist , Ocean dist } on city population change between 1995 and 2000 (source: GRUMP Settlement Point dataset version 1; see Table 1) by fitting a city growth model. A distance-decay function is used to describe the spatial interactions, whereas the trade amount among cities, which is estimated from Trade amount (see Table 1), is used to describe the global economic interactions. The results suggest that population increases rapidly in cities with dense road network and good access to airports. These results are intuitively consistent. Also, city growth in inland areas tends to be faster than that in coastal cities. This might be because coastal cities are already matured, and their populations are more stable than those of inland cities. It is estimated that both (local) spatial interaction and (global) economic interaction accelerate population increases (or mitigates population decrease). See Appendix A for further details about the city growth model and the estimation results."
+      },
+      "confidence": 0.91,
+      "head": "doc_7993f882c9c27769_c7",
+      "relation_type": "uses",
+      "relation_surface": "estimates the impacts of",
+      "tail": "doc_7993f882c9c27769_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r4",
+      "evidence": {
+        "section": "2.1. Overview",
+        "original_text": "This study downscales the urban population, nonurban population, and gross domestic productivity (GDP) (Purchasing power parity (PPP), Billion USD in 2005 year rate) by country under SSP1-3 (Source: SSP Database [17]) into 0.5-degree grids. The urban and nonurban populations are obtained by dividing the SSP country population scenarios using share of urban populations projected by [18]. The target years are from 2010 to 2100 by five years. We assume the following; (a) city population changes over time; (b) urban area expands or shrinks according to the city population change; and (c) city population, urban expansion/shrinkage, and other auxiliary variables determine gridded populations and gross productivities. Differences in SSPs are considered in steps (a) and (b) as we will explain later. Under these assumptions, populations and GDPs are downscaled as summarized in Figure 1. Urban populations by country are downscaled into cities based on a city growth model, which considers (a). The estimated city populations are used to project (b) urban expansion/shrinkage. The city populations are further downscaled into 0.5-degree grids considering projected urban expansion and auxiliary variables summarized in Table 1. On the other hand, nonurban populations by country are downscaled into 0.5-degree grids considering projected urban expansion and the auxiliary variables. GDP is also downscaled considering urban expansion, the auxiliary variables, and downscaled urban and nonurban populations."
+      },
+      "confidence": 0.9,
+      "head": "doc_7993f882c9c27769_c8",
+      "relation_type": "derives",
+      "relation_surface": "projects",
+      "tail": "doc_7993f882c9c27769_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r5",
+      "evidence": {
+        "section": "2.5. Downscale Approach",
+        "original_text": "Following Shiogama et al. (2011) [21], which suggest the robustness of an ensemble learning-based downscaling, sub-downscaling models are integrated by an ensemble learning technique. Each submodel distributes population or GDP in accordance with distribution weights, which are defined by (baseline variable) × (control variable). Baseline variables capture the difference in urban expansion/shrinkage assumed in each scenario whereas control variables capture the influence from auxiliary variables. These variables are given in Table 2. Our urban population downscaling applies three baseline variables and four control variables. Thus, 12 submodels distribute urban populations proportionally to (baseline variable) × (control variable). Likewise, the nonurban population downscaling has 12 submodels, while the GDP downscaling has 16 submodels. In each case, downscaling is done by a weighted average of the submodels, where the weights are estimated by applying the gradient boosting (Freidman, 2002), which is an ensemble learning method."
+      },
+      "confidence": 0.93,
+      "head": "doc_7993f882c9c27769_c9",
+      "relation_type": "enhances",
+      "relation_surface": "integrates",
+      "tail": "doc_7993f882c9c27769_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.92,
+      "head": "doc_7993f882c9c27769_c1",
+      "relation_type": "provides",
+      "relation_surface": "given under",
+      "tail": "doc_7993f882c9c27769_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7993f882c9c27769_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.92,
+      "head": "doc_7993f882c9c27769_c1",
+      "relation_type": "provides",
+      "relation_surface": "given under",
+      "tail": "doc_7993f882c9c27769_c4"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7993f882c9c27769_d1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.95,
+      "name": "Global dataset of gridded population and GDP scenarios",
+      "modality": "tabular",
+      "domain": "socioeconomic modeling, climate change, sustainability"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7993f882c9c27769_d2",
+      "evidence": {
+        "section": "2. Downscale Approach",
+        "original_text": "This study downscales the urban population, nonurban population, and gross domestic productivity (GDP) (Purchasing power parity (PPP), Billion USD in 2005 year rate) by country under SSP1-3 (Source: SSP Database [17]) into 0.5-degree grids. The urban and nonurban populations are obtained by dividing the SSP country population scenarios using share of urban populations projected by [18]. The target years are from 2010 to 2100 by five years."
+      },
+      "confidence": 0.9,
+      "name": "SSP Database country-level scenarios",
+      "modality": "tabular",
+      "domain": "socioeconomic modeling, climate change"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7993f882c9c27769_d3",
+      "evidence": {
+        "section": "2. Downscale Approach",
+        "original_text": "Urban populations by country are downscaled into cities based on a city growth model, which considers (a). The estimated city populations are used to project (b) urban expansion/shrinkage. The city populations are further downscaled into 0.5-degree grids considering projected urban expansion and auxiliary variables summarized in Table 1."
+      },
+      "confidence": 0.0,
+      "name": "GRUMP Settlement Point dataset",
+      "modality": "tabular",
+      "domain": "geospatial, population"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7993f882c9c27769_d4",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Finally, we evaluate the validity of our downscaling by comparing our population estimates using Gridded Population of the World in 2000 (GPW Version3; source: SEDAC), which is another gridded population database created by aggregating/proportionally distributing administrative data. Figure 8 compares our estimates and the GPW estimates in the (a) USA, (b) France, Spain, Portugal, and (c) Japan. This figure shows that our estimates are close to GPW. The R-squared values (R2) between these two estimates are (a) 0.89, (b) 0.82, (c) 0.82, respectively, while the R2 value across the world is 0.84."
+      },
+      "confidence": 0.9,
+      "name": "Gridded Population of the World (GPW Version3)",
+      "modality": "tabular",
+      "domain": "geospatial, population"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7993f882c9c27769_d5",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Figure 9 compares our estimates in 2010 with the population count estimates provided by History Database of the Global Environment (HYDE; [22]). The results again confirm that our estimates also have a similar tendency to the HYDE data. The local R2 values in countries (a), (b), and (c) are 0.84, 0.82, and 0.77, respectively, whereas the global R2 value equals 0.81. It is verified that our estimate, which replicates more than 80 percent of the variation in the GPW and HYDE estimates, is at least likely."
+      },
+      "confidence": 0.9,
+      "name": "History Database of the Global Environment (HYDE)",
+      "modality": "tabular",
+      "domain": "historical socioeconomic data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7993f882c9c27769_ds1",
+      "evidence": {
+        "section": "4. Concluding Remarks",
+        "original_text": "Our downscaling results are available from “Global dataset of gridded population and GDP scenarios”, which is provided by the Global Carbon Project, National Institute of Environmental Studies (http://www.cger.nies.go.jp/gcp/population-and-gdp.html). This dataset summarizes population and GDP scenarios in 0.5 × 0.5 degree grids between 1980 and 2100 by 10 years. The gridded data between 2020 and 2100 are estimated by downscaling country-level SSP1-3 scenarios (SSP database: https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about) as explained in this manuscript, whereas those in 1980–2010 are estimated by applying the same downscaling method to actual populations and GDPs by country (source: IMF data; http://www.imf.org/data)."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Gridded population and GDP data at 0.5-degree resolution with 10-year intervals from 1980 to 2100"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7993f882c9c27769_ds2",
+      "evidence": {
+        "section": "2. Downscale Approach",
+        "original_text": "Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Auxiliary variables include road network, land cover, settlement points, urban extent, airport distance, ocean distance, and trade data"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7993f882c9c27769_ds3",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Finally, we evaluate the validity of our downscaling by comparing our population estimates using Gridded Population of the World in 2000 (GPW Version3; source: SEDAC), which is another gridded population database created by aggregating/proportionally distributing administrative data. Figure 8 compares our estimates and the GPW estimates in the (a) USA, (b) France, Spain, Portugal, and (c) Japan. This figure shows that our estimates are close to GPW. The R-squared values (R2) between these two estimates are (a) 0.89, (b) 0.82, (c) 0.82, respectively, while the R2 value across the world is 0.84. Figure 9 compares our estimates in 2010 with the population count estimates provided by History Database of the Global Environment (HYDE; [22]). The results again confirm that our estimates also have a similar tendency to the HYDE data. The local R2 values in countries (a), (b), and (c) are 0.84, 0.82, and 0.77, respectively, whereas the global R2 value equals 0.81. It is verified that our estimate, which replicates more than 80 percent of the variation in the GPW and HYDE estimates, is at least likely."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Validation against GPW and HYDE datasets with R-squared values exceeding 0.8"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7993f882c9c27769_m1",
+      "evidence": {
+        "section": "Appendix A. Details of the Downscaling Approach",
+        "original_text": "The 5-year population changes of 67,934 cities (source; SEDAC Settlement Point dataset; see Table 1 and Figure A1) are estimated using the following spatial econometric model. p_c,t is the population of city c in year t. p_t^{(log)} and Δp_t^{(log)} are N × 1 vectors whose c-th elements are log(p_c,t) and log(p_c,t / p_c,t-5), respectively. X_t is an N × K matrix of explanatory variables, ε_t is an N × 1 vector of disturbance with variance σ^2, 0 is an N × 1 vector of zeros, I is an N × N identity matrix, α is a coefficient (scalar), and β is a K × 1 coefficient vector. Following the literature on spatial econometrics, W_geo, W_e1, and W_e2 are given by row-standardizing (i.e., row sums are scaled to one) W_geo^0, W_e1^0, and W_e2^0, which describe connectivity among cities. W_geo^0 is a spatial connectivity matrix whose (c, c')-th element is exp(-d_c,c' / h), where d_c,c' is the arc distance between cities c and c', and r is a range parameter. For instance, if h = 100 km, 95% of the spill over effects disappear within 300 km (=3 × 100 km; [25]). In other words, a large h implies global spill over from cities whereas a small h implies local spill over. W_e1^0 and W_e2^0 describe economic connectivity. Since we could not find any data on economic connectivity among cities, we approximated it with Equation (A2), which represents an estimate of trade amount between cities c and c': t_c,c' = (p_c,t * p_c',t) / (PC * PC') * TC,C' where PC is the population of the country, including the c-th city, and TC,C' is the amount of trade between countries C and C' (source: CoW data set; see Table 1). Equation (A2) simply distributes the amount of trade, TC,C', in proportion to city populations. The (c, c')-th element of W_e1^0 is given by t_c,c' if cities c and c' are in different countries (i.e., C ≠ C'), and 0 otherwise. By contrast, the (c, c')-th elements of W_e2^0 are given by t_c,c' if these cities are in the same country (i.e., C = C'), and 0 otherwise. Finally, W_e1 and W_e2 describe international and national economic connectivity, respectively. If ρ_geo is positive, population growth in a city increases the populations in its neighboring cities. When ρ_e1 and/or ρ_e2 is positive, population growth in a city increases the populations in foreign cities with strong economic connectivity. Intuitively speaking, ρ_geo and ρ_e2 capture local interactions, and ρ_e1 captures global interactions. In short, our city growth model projects 5-year-population-change considering attributes of the cities, local spatial interactions among neighboring cities, and global interactions among cities with strong economic connectivity."
+      },
+      "confidence": 0.95,
+      "name": "city growth model",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7993f882c9c27769_m2",
+      "evidence": {
+        "section": "Appendix A. Details of the Downscaling Approach",
+        "original_text": "Increase/decrease of city population encourages/discourages urbanization in the neighboring areas. Thus, this study evaluates urbanization potential using Equation (A2), which equals Equation (2) when t = 2000: q_g,t(r) = Σ_c p_c,t * exp(-d_c,g / r) where p_c,t is the city population in year t, which is projected as explained just above, and d_c,g is the arc distance between the c-th city and the center of the g-th grid. The potential q_g,t(r) increases nearby cities with large population. Although r is a range parameter just like h in W_geo^0, r represents the range of spill over around each city, whereas h (= 209 km; see Table A1) represents the range of spill over across cities. Thus, r must be smaller than h. Considering the consistency with the subsequent urban area projection in Section 2.4, r is given by a value maximizing the explanatory power of urban potential, q_g,t(r'), on urban expansion. In other words, r is estimated by maximizing the adjusted R-squares (adj-R^2) of the following model, Equation (2), which is estimated using the GRUMPS city population data in 2000. The estimated parameters in 2000 are r = 16.4, b_0 = 21.89, and b_q = 0.126. r = 16.4 is assumed for SSP2. On the other hand, r = 8.2 (= 0.5 × 16.4) is assumed for SSP1 to model compact urban growth, while r = 32.8 (= 2.0 × 16.4) is assumed in SSP3 to model dispersed growth."
+      },
+      "confidence": 0.95,
+      "name": "urbanization potential model",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7993f882c9c27769_m3",
+      "evidence": {
+        "section": "Appendix A. Details of the Downscaling Approach",
+        "original_text": "We downscale the urban and nonurban populations and GDPs utilizing projected city populations, urbanization potentials, urban areas, and other auxiliary variables summarized in Table 1. To date, numerous downscale methods have been proposed in quantitative geography, geostatistics, and other fields. The accurateness of the dasymetric mapping, which simply distributes populations in proportion to auxiliary variables, has been remarked upon in many comparative studies (e.g., [28,29]). We use Equation (A6), which modifies the dasymetric mapping model to consider differences in scenarios (Square root is used because distribution weights are defined by the product of two weight variables.): y_g,t = sqrt(a_g^{ssp} * a_g,t,k) * Y_C,t where Y_C,t is population or GDP in country C including the g-th grid in year t. a_g^{ssp} is a baseline variable to control urban expansion/shrinkage assumed in each scenario. Urban area_g,t, Agri area_g,t, and UAgri area_g,t (= Urban area_g,t + Agri area_g,t; see Table 2), which are projected under each SSP, are used to downscale urban population, nonurban population, and GDP, respectively. a_g,t,k is a control variable capturing influence from auxiliary variables, where k is the index of control variables. We are not sure which auxiliary variables are appropriate for a_g,t,k. Hence, this study downscales population/gross productivity in g-th grid at year t, y_g,t, using a weighted average of dasymetric mapping models, which is formulated as follows y_g,t = Σ_k ω_k,t * sqrt(a_g^{ssp} * a_g,t,k) * Y_C,t where ω_k,t measures the importance of the k-th submodel, f(a_g,t,k). The following country level model is obtained by aggregating the grid-level model presented by Equation (A8). ω_k,t in the downscale model Equation (A7) is estimated by gradient boosting, which is an ensemble learning technique, for Equation (A8). As explained in Section 2.5, the gradient boosting takes a weighted ensemble mean of 12 submodels in the urban and nonurban population downscaling, while 16 submodels exist in the GDP downscaling. Meanwhile, our ensemble learning means averaging of the submodels based on the weights optimized by the gradient boosting. Roughly speaking, the gradient boosting optimizes the weights, ω_k,t: (i) the weights for the submodels are equally set by ω_k,t = 1/K; (ii) residuals are evaluated using Equation (A8); (iii) samples (e.g., Y_C(g),t values) are weighted according to the size of the residuals; (iv) the ω_k,t values are updated so that model accuracy is improved for samples with larger weights (i.e., larger residuals in step (ii)); and (v) steps (ii), (iii), and (iv) are iterated until convergence. The gradient boosting procedure is known to be robust even if the submodels are collinear."
+      },
+      "confidence": 0.95,
+      "name": "ensemble learning-based downscaling model",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7993f882c9c27769_x1",
+      "evidence": {
+        "section": "Appendix A. Details of the Downscaling Approach",
+        "original_text": "We used the data of city populations (1990, 1995, and 2000) provided by GRUMP, and estimated Equation (A1) while assuming t = 1995. In other words, (population in 2005)/(population in 2000) is projected from (population in 2000)/(population in 1995). The spatial 2-step least squares (2SLS; [26]) is used for the estimation. Specifically, to estimate r in W_geo, 2SLS is iterated while varying r values, and the optimal r value, which maximizes the adjusted R2, is identified.) The explanatory variables are road density (Road dens), distance to the nearest airport (Airport dist), and distance to the nearest ocean (Ocean dist; see Table 1), whose coefficients are denoted by β_road, β_ocean, and β_airport, respectively. Table A1 summarizes the estimated parameters. The table suggests that population increases rapidly in areas with dense road network and good access to airports, although the latter is statistically insignificant. These results are intuitively consistent. The positive sign of β_ocean suggests that city growth in inland areas is faster than that in coastal cities. This might be because coastal cities are already matured, and their populations are more stable than those of inland cities. Regarding parameters describing interactions, β_geo has a statistically significant positive effect, whereas β_e2 does not. Thus, geographic proximity is a significant factor determining local-scale city interactions. On the other hand, β_e1, which quantifies global-scale interactions, is statistically significant. It is suggested that consideration of both local and global-scale interactions is important in city growth modeling. The quasi-adjusted R^2 for the population change in 5 years, Δp_t+5, is 0.401, which is not very accurate. However, the value of R^2 for the population after 5 years, p_t+5, is 0.998. Since we focus on the latter, the accuracy of the model is sufficient."
+      },
+      "confidence": 0.95,
+      "task": "city growth model parameter estimation",
+      "setup": "spatial 2-step least squares (2SLS) estimation using GRUMP city population data (1990, 1995, 2000)"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7993f882c9c27769_x2",
+      "evidence": {
+        "section": "Appendix A. Details of the Downscaling Approach",
+        "original_text": "Although r is a range parameter just like h in W_geo^0, r represents the range of spill over around each city, whereas h (= 209 km; see Table A1) represents the range of spill over across cities. Thus, r must be smaller than h. Considering the consistency with the subsequent urban area projection in Section 2.4, r is given by a value maximizing the explanatory power of urban potential, q_g,t(r'), on urban expansion. In other words, r is estimated by maximizing the adjusted R-squares (adj-R^2) of the following model, Equation (2), which is estimated using the GRUMPS city population data in 2000. The estimated parameters in 2000 are r = 16.4, b_0 = 21.89, and b_q = 0.126. r = 16.4 is assumed for SSP2. On the other hand, r = 8.2 (= 0.5 × 16.4) is assumed for SSP1 to model compact urban growth, while r = 32.8 (= 2.0 × 16.4) is assumed in SSP3 to model dispersed growth."
+      },
+      "confidence": 0.95,
+      "task": "urbanization potential model parameter estimation",
+      "setup": "adjusted R-squared maximization using GRUMP city population data in 2000"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7993f882c9c27769_x3",
+      "evidence": {
+        "section": "Appendix A. Details of the Downscaling Approach",
+        "original_text": "ω_k,t in the downscale model Equation (A7) is estimated by gradient boosting, which is an ensemble learning technique, for Equation (A8). As explained in Section 2.5, the gradient boosting takes a weighted ensemble mean of 12 submodels in the urban and nonurban population downscaling, while 16 submodels exist in the GDP downscaling. Meanwhile, our ensemble learning means averaging of the submodels based on the weights optimized by the gradient boosting. Roughly speaking, the gradient boosting optimizes the weights, ω_k,t: (i) the weights for the submodels are equally set by ω_k,t = 1/K; (ii) residuals are evaluated using Equation (A8); (iii) samples (e.g., Y_C(g),t values) are weighted according to the size of the residuals; (iv) the ω_k,t values are updated so that model accuracy is improved for samples with larger weights (i.e., larger residuals in step (ii)); and (v) steps (ii), (iii), and (iv) are iterated until convergence. The gradient boosting procedure is known to be robust even if the submodels are collinear. The gradient boosting is performed for every target year. To assure the gradual change of the weights across years, the ω_k,t value is replaced with ω_k,t = (ω_k,t-1 + ω_k,t + ω_k,t+1)/3, which is their temporal moving average. Finally, the submodels in year t is averaged by the gradient boosting first, and the resulting models at time t-1, t, and t+1 are temporally averaged subsequently. Table A2 summarizes estimated ω_k,t parameters in 2080. Section 3.1 discusses the parameter estimates."
+      },
+      "confidence": 0.95,
+      "task": "downscaling model parameter estimation",
+      "setup": "gradient boosting ensemble learning applied for each target year independently"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr1",
+      "evidence": {
+        "section": "Appendix A",
+        "original_text": "The potential qg,t(r) increases nearby cities with large population. Although r is a range parameter just like h in W0geo, r represents the range of spill over around each city, whereas h (= 209 km; see Table A1) represents the range of spill over across cities. Thus, r must be smaller than h. Considering the consistency with the subsequent urban area projection in Section 2.4, r is given by a value maximizing the explanatory power of urban potential, qg,t(r'), on urban expansion. In other words, r is estimated by maximizing the adjusted R-squares (adj-R2) of the following model, Equation (2), which is estimated using the GRUMPS city population data in 2000. The estimated ˆ parameters in 2000 are r = 16.4, bˆ0 = 21.89, and bˆq = 0.126. r = 16.4 is assumed for SSP2. On the other hand, r = 8.2 (= 0.5 × 16.4) is assumed for SSP1 to model compact urban growth, while r = 32.8 (= 2.0 × 16.4) is assumed in SSP3 to model dispersed growth."
+      },
+      "confidence": 0.98,
+      "quantity": "parameter r (urbanization potential range)",
+      "value": 16.4,
+      "unit": "km",
+      "context": "Estimated by maximizing adjusted R-squared of Equation (1) using GRUMP city population data in 2000, assumed for SSP2 scenario",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr2",
+      "evidence": {
+        "section": "Appendix A",
+        "original_text": "W0geo is a spatial connectivity matrix whose (c, c')-th element is exp(-dc,c'/h), where dc,c' is the arc distance between cities c and c', and r is a range parameter. For instance, if h = 100 km, 95% of the spill over effects disappear within 300 km (=3 × 100 km; [25]). In other words, a large h implies global spill over from cities whereas a small h implies local spill over. The spatial 2-step least squares (2SLS; [26]) is used for the estimation. Specifically, to estimate r in Wgeo, 2SLS is iterated while varying r values, and the optimal r value, which maximizes the adjusted R2, is identified.) Table A1 summarizes the estimated parameters. The table suggests that population increases rapidly in areas with dense road network and good access to airports, although the latter is statistically insignificant. These results are intuitively consistent. The positive sign of β ocean suggests that city growth in inland areas is faster than that in coastal cities. This might be because coastal cities are already matured, and their populations are more stable than those of inland cities. Regarding parameters describing interactions, βgeo has a statistically significant positive effect, whereas βe2 does not. Thus, geographic proximity is a significant factor determining local-scale city interactions. On the other hand, βe1, which quantifies global-scale interactions, is statistically significant. It is suggested that consideration of both local and global-scale interactions is important in city growth modeling."
+      },
+      "confidence": 0.95,
+      "quantity": "parameter h (spatial spillover range across cities)",
+      "value": 209,
+      "unit": "km",
+      "context": "Estimated from spatial econometric city growth model using GRUMP city population data (1990, 1995, 2000)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr3",
+      "evidence": {
+        "section": "Appendix A",
+        "original_text": "We also project the expansion of nonurban residential areas due to the potentials. This study assumes that nonurban residential areas are proportional to Agri area (see Table 1), and the 5-year change is estimated by the following model: The parameters in Equation (A4) for 2000 are estimated by the adjusted-R2 maximization of Equation (1) whose Urban Areag,2000 is replaced with Agri Areag,2000 (Equation (A5) is obtained ˆ from Equation (4) after the replacement). The estimated values are rA = 12.1 and bˆqA = 0.129. While bqA = 0.129 is assumed across scenarios, rA values in SSP1-3 are given by 6.05, 12.1, and 24.2, respectively, just like r."
+      },
+      "confidence": 0.98,
+      "quantity": "parameter rA (agricultural area expansion range)",
+      "value": 12.1,
+      "unit": "km",
+      "context": "Estimated by adjusted-R2 maximization of Equation (1) with Agri Areag,2000 replacing Urban Areag,2000, using GRUMP data in 2000, assumed for SSP2 scenario",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr4",
+      "evidence": {
+        "section": "Appendix A",
+        "original_text": "The quasi-adjusted R2 for the population change in 5 years, ∆ pt+5, is 0.401, which is not very accurate. However, the value of R2 for the population after 5 years, pt+5, is 0.998. Since we focus on the latter, the accuracy of the model is sufficient."
+      },
+      "confidence": 0.95,
+      "quantity": "quasi-adjusted R-squared for population change",
+      "value": 0.401,
+      "unit": null,
+      "context": "City growth model (Equation A1) estimation using GRUMP city population data (1990, 1995, 2000) for projecting 5-year population change",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr5",
+      "evidence": {
+        "section": "Appendix A",
+        "original_text": "The quasi-adjusted R2 for the population change in 5 years, ∆ pt+5, is 0.401, which is not very accurate. However, the value of R2 for the population after 5 years, pt+5, is 0.998. Since we focus on the latter, the accuracy of the model is sufficient."
+      },
+      "confidence": 0.95,
+      "quantity": "R-squared for population after 5 years",
+      "value": 0.998,
+      "unit": null,
+      "context": "City growth model (Equation A1) estimation using GRUMP city population data (1990, 1995, 2000)",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr6",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Finally, we evaluate the validity of our downscaling by comparing our population estimates using Gridded Population of the World in 2000 (GPW Version3; source: SEDAC), which is another gridded population database created by aggregating/proportionally distributing administrative data. Figure 8 compares our estimates and the GPW estimates in the (a) USA, (b) France, Spain, Portugal, and (c) Japan. This figure shows that our estimates are close to GPW. The R-squared values (R2) between these two estimates are (a) 0.89, (b) 0.82, (c) 0.82, respectively, while the R2 value across the world is 0.84."
+      },
+      "confidence": 0.95,
+      "quantity": "R-squared between our population estimates and GPW estimates",
+      "value": 0.84,
+      "unit": null,
+      "context": "Comparison of our downscaled population estimates with Gridded Population of the World (GPW Version3) estimates across the world in 2000",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_7993f882c9c27769_qr7",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Figure 9 compares our estimates in 2010 with the population count estimates provided by History Database of the Global Environment (HYDE; [22]). The results again confirm that our estimates also have a similar tendency to the HYDE data. The local R2 values in countries (a), (b), and (c) are 0.84, 0.82, and 0.77, respectively, whereas the global R2 value equals 0.81. It is verified that our estimate, which replicates more than 80 percent of the variation in the GPW and HYDE estimates, is at least likely."
+      },
+      "confidence": 0.0,
+      "quantity": "R-squared between our population estimates and HYDE estimates",
+      "value": 0.81,
+      "unit": null,
+      "context": "Comparison of our downscaled population estimates with History Database of the Global Environment (HYDE) population count estimates across the world in 2010",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7993f882c9c27769_p1",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "The results suggest that urban potential explains 55% (SSP1), 54%, (SSP2), and 48% (SSP3) of urban population distributions and 69%, 68%, and 64% of nonurban populations. Regarding urban population downscaling, distance to the ocean has the biggest contribution (SSP1: 38%, SSP2: 47%, SSP3: 46%). Because many of megacities are near the ocean, the result is intuitively reasonable. Concerning nonurban population, distance to principal road has the largest contribution. It is suggested that nonurban population grows along principal roads. The contribution of principal roads is 48 % that is significant in SSP1. The percentage is calculated by aggregating shares of ag, t, k = (baseline variables) × (control variables) whose control variables equal Road (i.e., 48% = 3% + 3% + 41%; see Table A2). It might be because cities strongly interact in SSP1, and small cities emerge in between these cities. On the other hand, ocean is more important than principal road in SSP3."
+      },
+      "confidence": 0.95,
+      "metric": "urban population distribution explanation by urban potential",
+      "compared_to": "SSP1, SSP2, SSP3 scenarios"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7993f882c9c27769_p2",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Distribution of gross productivity, which is estimated by the GDP downscaling, depends on a wider variety of auxiliary variables than population distributions. In SSP1, (Urban pop × Constant) is estimated the most influential (18%), while (Urban pop × Airport dist) is the second most influential (14%). Based on the result, city growth and its interaction with airport encourage economic growth in SSP1. By contrast, (Urban potential × Road) and (Urban pot × Airport dist) have a strong impact in SSP3 with contributions of about 17%. The result is interpretable that dispersed urbanization in SSP3 yields dispersed economic growth along road network and nearby airports. In short, SSP1 and SSP3 result in compact and dispersed economic growth, respectively, and SSP2 lies in between them. See Table A2 in Appendix A for the full estimation results."
+      },
+      "confidence": 0.95,
+      "metric": "GDP distribution explanation by auxiliary variables",
+      "compared_to": "SSP1, SSP2, SSP3 scenarios"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7993f882c9c27769_p3",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "To compare compactness/dispersion quantitatively, population densities in the grids, whose distances to the nearest city are between 0 and 10 km, 10 and 20 km, . . . 190 and 200 km are averaged respectively, and plotted in Figure 5 (left). For comparison, the evaluated values are standardized so that the sum becomes 1. This figure confirms that populations are concentrated in SSP1, moderate in SSP2, and dispersed in SSP3. The same is true for gridded gross productivities (see Figure 5 (right)). This figure also suggests that gross productivities are more concentrated in nearby cities than populations."
+      },
+      "confidence": 0.95,
+      "metric": "population and gross productivity concentration/dispersion patterns",
+      "compared_to": "SSP1, SSP2, SSP3 scenarios"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7993f882c9c27769_p4",
+      "evidence": {
+        "section": "3. Result",
+        "original_text": "Figure 7 compares our population estimates in 2080 in SSP2 with those of Jones and O'Neill (2015) [10]. Estimates of [10] tend to be overly smoothed (e.g., populations are uniformly distributed in desert areas in Saudi Arabia). It might be because the authors apply a gravity-based approach, which ignores auxiliary variables. In our results, such over smoothing is not conceivable. It is verified that consideration of auxiliary variables is also needed to avoid oversmoothing."
+      },
+      "confidence": 0.95,
+      "metric": "population distribution realism",
+      "compared_to": "Jones and O'Neill (2015) gravity-based approach"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_7993f882c9c27769_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This study downscales the population and gross domestic product (GDP) scenarios given under Shared Socioeconomic Pathways (SSPs) into 0.5-degree grids. Our downscale approach has the following features. (i) It explicitly considers spatial and socioeconomic interactions among cities, (ii) it utilizes auxiliary variables, including road network and land cover, (iii) it endogenously estimates the influence from each factor by a model ensemble approach, and (iv) it allows us to control urban shrinkage/dispersion depending on SSPs. It is confirmed that our downscaling results are consistent with scenario assumptions (e.g., concentration in SSP1 and dispersion in SSP3). Besides, while existing grid-level scenarios tend to have overly-smoothed population distributions in nonurban areas, ours does not suffer from the problem, and captures the difference in urban and nonurban areas in a more reasonable manner. Our gridded dataset, including population counts and gross productivities by 0.5 degree grids by 10 years, are available from http://www.cger.nies.go.jp/gcp/population-and-gdp.html."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_7993f882c9c27769_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The objective of this study is downscaling the country-level SSP1-3 scenarios into 0.5-degree grids while overcoming the two above limitations. Specifically, our downscale approach estimates the (i) intensity of interactions among cities and (ii) importance of auxiliary variables, from data. Although [10] already published gridded SSP population scenarios, they apply a simple approach ignoring auxiliary variables. Our study considering (i) and (ii) would be beneficial to develop more sophisticated gridded scenarios."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_7993f882c9c27769_ca3",
+      "evidence": {
+        "section": "2.2. City Growth Model: Estimation with Current Data",
+        "original_text": "The results suggest that population increases rapidly in cities with dense road network and good access to airports. These results are intuitively consistent. Also, city growth in inland areas tends to be faster than that in coastal cities. This might be because coastal cities are already matured, and their populations are more stable than those of inland cities. It is estimated that both (local) spatial interaction and (global) economic interaction accelerate population increases (or mitigates population decrease). See Appendix A for further details about the city growth model and the estimation results."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_7993f882c9c27769_cl1",
+      "evidence": {
+        "section": "3.2. Downscaling Result",
+        "original_text": "Figure 3 plots the estimated population distributions in 2080 under SSP1-3. Compared with SSP3, SSP1, and SSP2 show higher population density around megacities, including London, Paris, and New York (NY). By contrast, SSP3 has higher and dispersed population density in Africa and West-Middle Asia. Thus, the populations in SSP1 are concentrated while those in SSP3 are dispersed. The concentration and dispersed patterns are thought to be due to the spatial range parameter r that is set in Section 2.4 following scenario assumptions. It is verified that these parameters are useful to control urban expansion/shrinkage following scenario assumptions. Figure 4 displays the distributions of gross productivity in 2080. The results in SSP1 and SSP2 are relatively similar; both show considerable economic productivity around mega cities (e.g., London and NY). By contrast, economic productivity is small and dispersed in SSP3. To compare compactness/dispersion quantitatively, population densities in the grids, whose distances to the nearest city are between 0 and 10 km, 10 and 20 km, . . . 190 and 200 km are averaged respectively, and plotted in Figure 5 (left). For comparison, the evaluated values are standardized so that the sum becomes 1. This figure confirms that populations are concentrated in SSP1, moderate in SSP2, and dispersed in SSP3. The same is true for gridded gross productivities (see Figure 5 (right)). This figure also suggests that gross productivities are more concentrated in nearby cities than populations."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_7993f882c9c27769_cl2",
+      "evidence": {
+        "section": "3.2. Downscaling Result",
+        "original_text": "Figure 7 compares our population estimates in 2080 in SSP2 with those of Jones and O’Neill (2015) [10]. Estimates of [10] tend to be overly smoothed (e.g., populations are uniformly distributed in desert areas in Saudi Arabia). It might be because the authors apply a gravity-based approach, which ignores auxiliary variables. In our results, such over smoothing is not conceivable. It is verified that consideration of auxiliary variables is also needed to avoid oversmoothing. Finally, we evaluate the validity of our downscaling by comparing our population estimates using Gridded Population of the World in 2000 (GPW Version3; source: SEDAC), which is another gridded population database created by aggregating/proportionally distributing administrative data. Figure 8 compares our estimates and the GPW estimates in the (a) USA, (b) France, Spain, Portugal, and (c) Japan. This figure shows that our estimates are close to GPW. The R-squared values (R2) between these two estimates are (a) 0.89, (b) 0.82, (c) 0.82, respectively, while the R2 value across the world is 0.84. Figure 9 compares our estimates in 2010 with the population count estimates provided by History Database of the Global Environment (HYDE; [22]). The results again confirm that our estimates also have a similar tendency to the HYDE data. The local R2 values in countries (a), (b), and (c) are 0.84, 0.82, and 0.77, respectively, whereas the global R2 value equals 0.81. It is verified that our estimate, which replicates more than 80 percent of the variation in the GPW and HYDE estimates, is at least likely."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_7993f882c9c27769_cl3",
+      "evidence": {
+        "section": "4. Concluding Remarks",
+        "original_text": "This study downscales SSP scenarios into 0.5-degree grids, using a model to consider spatial and economic interactions among cities and an ensemble learning technique to utilize multiple auxiliary variables accurately. The downscaling result suggests that SSP1, which refers to the sustainable scenario, yields a compact population distribution relative to SSP3, which denotes the fragmentation scenario. The results also show that GDP growth in major metropolitan areas changes significantly depending on the scenarios. These results are intuitively consistent. The consideration of such differences is critical to the estimation of grid level CO2 emissions, disaster risks, energy demand, and other variables determining future sustainability and resiliency."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_7993f882c9c27769_lm1",
+      "evidence": {
+        "section": "4. Concluding Remarks",
+        "original_text": "Nonetheless, various other important issues require further study. First, spatially finer auxiliary data is needed to sophisticate our downscaling approach. For example, microscale urban data, such as industrial structure, detailed road network, and traffic volume, are required to describe urban phenomena such as industrial agglomeration, growth of transportation networks, and birth of new cities, which we could not consider. Since consideration of these factors can increase the uncertainty of downscaling, it is crucial to employ a robust estimation approach, such as ensemble learning (applied in this paper) or Bayesian estimation (as done by [23] for population projection). Second, downscaling to finer grids is required. Although 0.5-degree grids are sufficient to evaluate socioeconomic activities in each region, these grids are not sufficient to quantify urban form, i.e., compact and disperse. Finer grids, such as 1-km grids, are required to analyze the impact of urban form on climate change mitigation and adaption. High-resolution auxiliary variables would be needed to achieve it."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_7993f882c9c27769_lm2",
+      "evidence": {
+        "section": "Appendix A.1. City Growth Model: Estimation",
+        "original_text": "The quasi-adjusted R2 for the population change in 5 years, ∆ pt+5, is 0.401, which is not very accurate. However, the value of R2 for the population after 5 years, pt+5, is 0.998. Since we focus on the latter, the accuracy of the model is sufficient. While we used the 2SLS method, which is computationally efficient because of large samples, a Bayesian approach is also available to estimate the model Equation (A1) (see e.g., [27]). The Bayesian estimation, which explicitly considers uncertainty in model parameters, would be an important future task, to quantify uncertainty in our socioeconomic scenarios."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_7993f882c9c27769_fw1",
+      "evidence": {
+        "section": "4. Concluding Remarks",
+        "original_text": "Third, consideration of longer-term trend of urban expansion, population and economic growth is needed. Fortunately, historical data of gridded population, production, and so on, are now available at the HYDE database [22] Use of this database would especially be valuable to improve the accuracy of long-term projections. Forth, it is important to discuss how to use our estimates for city-level economic policy-making. For example, our estimates, which reveal local emission intensity, are potentially useful to optimize carbon taxation, green bonding, and other mitigation policies for individual cities. Our estimates will also be useful to estimate local exposure to flood, heat, and other disasters; the estimated exposures will be useful to consider local adaptation policy, for example, through subsidy for encouraging people to move from high risk areas to safer areas. Related to policy-making, the project titled World Urban Database and Access Portal Tools (WUDAPT: http://www.wudapt.org/) is an interesting activity. The project aims to (i) collect data describing urban forms and functions (e.g., land cover, building structure, and building allocations), (ii) utilize the data to classify urban areas into 17 Local Climate Zones (LCZs) [24], and (iii) design universal policies for each of the LCZs toward improving climate resilience. While LCZs classify urban areas based on their influence on the ambient local climate and distributions of population and gross productivity are key factors determining CO2 emissions and amount of wasted heat. To combine our downscaled populations and GDPs with LCZs might be an interesting topic to devise appropriate policies."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

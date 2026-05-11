@@ -90,7 +90,8 @@ class StateDB:
                         "content_hash TEXT", "convert_at TEXT", "preprocess_at TEXT",
                         "extract_at TEXT",
                         "preprocess_prompt_tokens INTEGER", "preprocess_completion_tokens INTEGER",
-                        "extract_prompt_tokens INTEGER", "extract_completion_tokens INTEGER"):
+                        "extract_prompt_tokens INTEGER", "extract_completion_tokens INTEGER",
+                        "extract_failed_groups TEXT"):
                 try:
                     conn.execute(f"ALTER TABLE papers ADD COLUMN {col}")
                 except Exception:
@@ -125,9 +126,28 @@ class StateDB:
                 WHERE {col}='running' AND claimed_at < ?
             """, (_now(), now_ts - TASK_TIMEOUT))
 
-            # 原子领取一个 pending 任务（跳过已标记 skip 的）
-            # extract 阶段额外要求 preprocess 已完成
-            extra = "AND preprocess_status='done'" if stage == "extract" else ""
+            # 原子领取一个待处理任务（跳过已标记 skip 的）
+            # preprocess 要求 convert 已完成；extract 要求 preprocess 已完成
+            if stage == "preprocess":
+                extra = "AND convert_status='done'"
+            elif stage == "extract":
+                extra = "AND preprocess_status='done'"
+                # extract 支持增量重试：pending 和 partial 都领取
+                row = conn.execute(f"""
+                    SELECT stem FROM papers
+                    WHERE ({col}='pending' OR {col}='partial') AND skip_reason IS NULL {extra}
+                    LIMIT 1
+                """).fetchone()
+                if not row:
+                    return None
+                stem = row["stem"]
+                conn.execute(f"""
+                    UPDATE papers SET {col}='running', claimed_at=?, updated_at=?
+                    WHERE stem=?
+                """, (now_ts, _now(), stem))
+                return stem
+            else:
+                extra = ""
             row = conn.execute(f"""
                 SELECT stem FROM papers
                 WHERE {col}='pending' AND skip_reason IS NULL {extra}
@@ -149,8 +169,9 @@ class StateDB:
         col = f"{stage}_status"
         at_col = f"{stage}_at"
         with self._conn() as conn:
+            # 重新处理时清除旧的 skip_reason（用户可能改了 MIN_MD_CHARS 等阈值）
             conn.execute(f"""
-                UPDATE papers SET {col}='done', {at_col}=?, error_msg=NULL, updated_at=?
+                UPDATE papers SET {col}='done', {at_col}=?, error_msg=NULL, skip_reason=NULL, updated_at=?
                 WHERE stem=?
             """, (_now(), _now(), stem))
 
@@ -213,6 +234,24 @@ class StateDB:
                     return row["stem"]
         return None
 
+    def get_failed_groups(self, stem: str) -> list[str] | None:
+        """获取 extract 阶段待重试的失败组列表，无则返回 None。"""
+        with self._conn() as conn:
+            row = conn.execute(
+                "SELECT extract_failed_groups FROM papers WHERE stem=?", (stem,)
+            ).fetchone()
+            if row and row["extract_failed_groups"]:
+                return [g.strip() for g in row["extract_failed_groups"].split(",") if g.strip()]
+        return None
+
+    def set_extract_failed_groups(self, stem: str, failed_groups: list[str]):
+        """记录 extract 阶段失败的组名，设 extract_status='partial'。"""
+        with self._conn() as conn:
+            conn.execute(
+                "UPDATE papers SET extract_failed_groups=?, extract_status='partial', updated_at=? WHERE stem=?",
+                (",".join(failed_groups), _now(), stem)
+            )
+
     def set_extract_model(self, stem: str, model: str, prompt_tokens: int = 0, completion_tokens: int = 0):
         """记录 extract 阶段使用的模型和 token 消耗。"""
         with self._conn() as conn:
@@ -247,6 +286,33 @@ class StateDB:
                 WHERE {col}='failed'
             """, (_now(),)).rowcount
         print(f"重置 {n} 个 {stage} 失败任务")
+
+    def get_processed(self, stage: str) -> list[str]:
+        """返回某阶段所有已完成或部分的 stem 列表。"""
+        col = f"{stage}_status"
+        with self._conn() as conn:
+            rows = conn.execute(f"SELECT stem FROM papers WHERE {col} IN ('done','partial')").fetchall()
+            return [r["stem"] for r in rows]
+
+    def was_success(self, stem: str, stage: str) -> bool:
+        """检查某阶段是否完全成功（done 不含 partial）。"""
+        col = f"{stage}_status"
+        with self._conn() as conn:
+            row = conn.execute(f"SELECT {col} FROM papers WHERE stem=?", (stem,)).fetchone()
+            return row is not None and row[col] == 'done'
+
+    def reset_skipped(self):
+        """清除所有 skip_reason，把 convert/preprocess/extract 状态重置为 pending。"""
+        with self._conn() as conn:
+            n = conn.execute("""
+                UPDATE papers SET skip_reason=NULL,
+                    convert_status=CASE WHEN convert_status='done' THEN 'pending' ELSE convert_status END,
+                    preprocess_status=CASE WHEN preprocess_status='skipped' THEN 'pending' ELSE preprocess_status END,
+                    extract_status=CASE WHEN extract_status='skipped' THEN 'pending' ELSE extract_status END,
+                    updated_at=?
+                WHERE skip_reason IS NOT NULL
+            """, (_now(),)).rowcount
+        print(f"重置 {n} 个跳过记录 → 待处理")
 
     def get_stats(self) -> dict:
         with self._conn() as conn:

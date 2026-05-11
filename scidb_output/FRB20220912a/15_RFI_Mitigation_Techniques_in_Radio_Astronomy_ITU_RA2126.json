@@ -1,0 +1,676 @@
+{
+  "metadata": {
+    "doc_id": "doc_796c817c2c23f93e",
+    "source_file": "15_RFI_Mitigation_Techniques_in_Radio_Astronomy_ITU_RA2126.md",
+    "title": "Techniques for the mitigation of radio frequency interference (RFI) in radio astronomy",
+    "year": 2005,
+    "doi": null,
+    "abstract": "This Report aims to provide a concise technical summary of the current state-of-the-art in techniques for the mitigation of radio frequency interference (RFI) in radio astronomy. Specifically, this report considers techniques for the mitigation of man-made interference that originates from outside the instrument and is therefore beyond the control of the instrument operator. For the purposes of this report, the criterion for classification of a signal as RFI is simply that it is an unwanted but detectable portion of a desired observation that has the potential to either degrade or inhibit the successful conduct of the observation. Some interference is not easily detectable but can still degrade the observations. Its mitigation is much more difficult.",
+    "introduction": "This Report aims to provide a concise technical summary of the current state-of-the-art in techniques for the mitigation of radio frequency interference (RFI) in radio astronomy. Specifically, this report considers techniques for the mitigation of man-made interference that originates from outside the instrument and is therefore beyond the control of the instrument operator. For the purposes of this report, the criterion for classification of a signal as RFI is simply that it is an unwanted but detectable portion of a desired observation that has the potential to either degrade or inhibit the successful conduct of the observation. Some interference is not easily detectable but can still degrade the observations. Its mitigation is much more difficult. \n\nThe aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies. Mitigation methods other than simple excision of RFI-contaminated data are not widely used in radio astronomy, mainly because they are not easy to devise or perform and may require the development of extensive special software. \n\nUntil recently, the standard observing modes and signal processing techniques used in the course of making observations provided an inherent degree of interference mitigation that proved adequate to provide useful astronomical data in the presence of some interference. \n\nFor example, “fringe stopping” in aperture synthesis imaging has the tendency to decorrelate the RFI received at widely-separated antennas, which tends to suppress the RFI in the associated correlation products [Thompson, 1982]. In the case of some synthesis radio telescopes, such interference may result in a spurious bright source appearing in the maps at the celestial pole, making high declination observations difficult or impossible. Pulsars produce pulses of broadband noise, so a significant receiver bandwidth is needed to achieve a useful signal-to-noise ratio. The noise making up the pulses is subject to frequency-dependent dispersion as it propagates through the rarefied plasmas in the interstellar medium. When observing a pulsar with a radio telescope, the pulse is deliberately de-dispersed using a combination of hardware and software, to recover an accurate (non-dispersed) representation of the intrinsic pulse profile. This process tends to reduce RFI, because the process of de-dispersing the pulsar signal consequently disperses the RFI. Only limited mitigation is provided by these processes. \n\nData are always degraded when interference is present. Increasingly astronomers find that the strength and temporal/spectral density of RFI is such that observations are “saturated” by RFI and made useless. Perhaps the most vulnerable observations are those made with single-dish radio telescopes  (continuum or spectroscopy), because the improvement in sensitivity to astronomical signals afforded by increasing integration time leads to a proportional increase in sensitivity to RFI signals. While certain observing modes offer some intrinsic robustness to low levels of RFI, the low \n\n**Rep.  ITU-R  RA.2126** \n\n**2** \n\nreceived signal strengths of cosmic radio emissions make radio astronomy highly vulnerable to interference. \n\nThe impact of RFI extends beyond simply preventing or degrading certain observations or types of observation. It also limits the overall productivity of the radio astronomy station, making desirable observations prohibitively difficult or expensive in terms of observing time requirements, processing complexity and operational overheads. An example is the increasing need for manual post-observation editing of data to remove RFI, as is sometimes practiced in aperture synthesis imaging [Lane _et al._ , 2005]. While quite effective, it is difficult to automate and therefore becomes extraordinarily tedious as the observation length and observed bandwidth increase. The presence of RFI sometimes translates into dramatically increased requirements for both labour and telescope time, which is as limiting to science as is RFI that irretrievably obliterates the emission being observed. \n\nThese issues have motivated research into techniques for mitigation of RFI that might be considered “automatic” or “real time” in the sense that any given technique is nominally an integral part of the instrument, and operates without human intervention. This is the context in which the techniques described in the following section are presented.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": "射电天文学"
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "radio astronomy",
+      "radio frequency interference",
+      "RFI mitigation",
+      "signal processing",
+      "aperture synthesis"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:37:14.799712+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c1",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "This Report aims to provide a concise technical summary of the current state-of-the-art in techniques for the mitigation of radio frequency interference (RFI) in radio astronomy. Specifically, this report considers techniques for the mitigation of man-made interference that originates from outside the instrument and is therefore beyond the control of the instrument operator. For the purposes of this report, the criterion for classification of a signal as RFI is simply that it is an unwanted but detectable portion of a desired observation that has the potential to either degrade or inhibit the successful conduct of the observation. Some interference is not easily detectable but can still degrade the observations. Its mitigation is much more difficult. The aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies. Mitigation methods other than simple excision of RFI-contaminated data are not widely used in radio astronomy, mainly because they are not easy to devise or perform and may require the development of extensive special software."
+      },
+      "confidence": 0.98,
+      "term": "radio frequency interference",
+      "normalized": "射频干扰",
+      "std_label": "RFI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c2",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "This Report aims to provide a concise technical summary of the current state-of-the-art in techniques for the mitigation of radio frequency interference (RFI) in radio astronomy. Specifically, this report considers techniques for the mitigation of man-made interference that originates from outside the instrument and is therefore beyond the control of the instrument operator. For the purposes of this report, the criterion for classification of a signal as RFI is simply that it is an unwanted but detectable portion of a desired observation that has the potential to either degrade or inhibit the successful conduct of the observation. Some interference is not easily detectable but can still degrade the observations. Its mitigation is much more difficult. The aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies. Mitigation methods other than simple excision of RFI-contaminated data are not widely used in radio astronomy, mainly because they are not easy to devise or perform and may require the development of extensive special software."
+      },
+      "confidence": 0.98,
+      "term": "radio astronomy",
+      "normalized": "射电天文学",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c3",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "1. Excision, in the sense of “cutting out” RFI. For example, RFI consisting of brief pulses might be mitigated by blanking the data when the pulse is present; this is temporal excision. Alternately, persistent RFI might be mitigated using array beam-forming techniques to orient pattern nulls in the directions from which the RFI is incident; this is spatial excision. A common property of all excision techniques is some loss of astronomy data, the possible distortion of the remaining data due to artefacts introduced by the excision process. Since blanking is essentially a loss in observing time, there is a concomitant increase in the observing time required to reach the required sensitivity or measurement accuracy."
+      },
+      "confidence": 0.95,
+      "term": "temporal excision",
+      "normalized": "时间切除",
+      "std_label": "blanking"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c4",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "1. Excision, in the sense of “cutting out” RFI. For example, RFI consisting of brief pulses might be mitigated by blanking the data when the pulse is present; this is temporal excision. Alternately, persistent RFI might be mitigated using array beam-forming techniques to orient pattern nulls in the directions from which the RFI is incident; this is spatial excision. A common property of all excision techniques is some loss of astronomy data, the possible distortion of the remaining data due to artefacts introduced by the excision process. Since blanking is essentially a loss in observing time, there is a concomitant increase in the observing time required to reach the required sensitivity or measurement accuracy."
+      },
+      "confidence": 0.95,
+      "term": "spatial excision",
+      "normalized": "空间切除",
+      "std_label": "nulling"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c5",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "2. Cancellation, in the sense of “subtracting” RFI from the telescope output. Cancellation is potentially superior to excision in the sense that the RFI is removed with no impact on the astronomy, nominally providing a “look through” capability that is nominally free of the artefacts associated with the simple “cutting out” of data. However, as discussed below, the tradeoff with respect to excision is usually that suppression is limited by the estimate of the interference received by the radio telescope."
+      },
+      "confidence": 0.95,
+      "term": "cancellation",
+      "normalized": "抵消",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c6",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "3. Anti-coincidence, broadly meaning discrimination of RFI by exploiting the fact that widelyseparated antennas should perceive astronomical signals identically, but RFI differently. In such instances the RFI makes a contribution to the background noise level at each antenna rather than to the correlated signals. This degrades the correlated signal received, which may require an increase in the observing time to achieve the signal to noise ratio needed."
+      },
+      "confidence": 0.95,
+      "term": "anti-coincidence",
+      "normalized": "反符合",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c7",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "Perhaps the most vulnerable observations are those made with single-dish radio telescopes (continuum or spectroscopy), because the improvement in sensitivity to astronomical signals afforded by increasing integration time leads to a proportional increase in sensitivity to RFI signals. While certain observing modes offer some intrinsic robustness to low levels of RFI, the low received signal strengths of cosmic radio emissions make radio astronomy highly vulnerable to interference."
+      },
+      "confidence": 0.94,
+      "term": "single-dish radio telescope",
+      "normalized": "单碟射电望远镜",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c8",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "Until recently, the standard observing modes and signal processing techniques used in the course of making observations provided an inherent degree of interference mitigation that proved adequate to provide useful astronomical data in the presence of some interference. For example, “fringe stopping” in aperture synthesis imaging has the tendency to decorrelate the RFI received at widely-separated antennas, which tends to suppress the RFI in the associated correlation products [Thompson, 1982]. In the case of some synthesis radio telescopes, such interference may result in a spurious bright source appearing in the maps at the celestial pole, making high declination observations difficult or impossible."
+      },
+      "confidence": 0.94,
+      "term": "aperture synthesis imaging",
+      "normalized": "孔径合成成像",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c9",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "Pulsars produce pulses of broadband noise, so a significant receiver bandwidth is needed to achieve a useful signal-to-noise ratio. The noise making up the pulses is subject to frequency-dependent dispersion as it propagates through the rarefied plasmas in the interstellar medium. When observing a pulsar with a radio telescope, the pulse is deliberately de-dispersed using a combination of hardware and software, to recover an accurate (non-dispersed) representation of the intrinsic pulse profile. This process tends to reduce RFI, because the process of de-dispersing the pulsar signal consequently disperses the RFI. Only limited mitigation is provided by these processes."
+      },
+      "confidence": 0.94,
+      "term": "pulsar",
+      "normalized": "脉冲星",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c10",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "For this reason, most null-forming algorithms developed in the context of military and commercial applications are based on the Wiener filter strategy (which includes so-called “power minimization” and “minimum variance” algorithms), which perform poorly for INR < 1 [Ellingson and Hampson, 2002]. It is known that techniques based on Wiener filtering are limited to reducing the INR in proportion to the INR; i.e., it is straightforward to suppress RFI to a level of INR-1, and relatively difficult to reduce it further. Thus, to make such techniques effective for radio astronomy, additional measures are typically required to increase the apparent INR delivered to the mitigation algorithm; a few are discussed below."
+      },
+      "confidence": 0.93,
+      "term": "Wiener filter",
+      "normalized": "维纳滤波器",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c11",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "An alternative to traditional Wiener filtering-based null-forming techniques is the class of techniques based on “subspace projections”. The basic idea in subspace projection is that interference can be identified in terms of correlations between the array elements, which in turn can be used to determine beam forming coefficients that result in patterns which reject the interference with little or no effect on the main lobe characteristics. In mathematical terms, subspace projection is a two-step process of: identifying the eigenvectors of the spatial covariance matrix (the set of pair-wise correlations between elements) followed by making the vector of beam forming coefficients orthogonal (the “projection” operation) to the eigenvector associated with the interference (the interference “subspace”). Normally, it is assumed that the interference dominates the power received by the array, so that the interference subspace is always the one associated with largest eigenvalue of the spatial covariance. This leads to problems when the interference is relatively weak, especially if the interference-to-noise ratio is less than 1 [Ellingson and Hampson, 2002]. Nevertheless, subspace projection has been shown to have significant advantages for radio astronomy when properly employed [Raza et al., 2002]."
+      },
+      "confidence": 0.93,
+      "term": "subspace projection",
+      "normalized": "子空间投影",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c12",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "This strategy was investigated first in the context of radio astronomy by [Barnbaum and Bradley, 1998], who used the popular “least mean squares” (LMS) algorithm – a technique based on Wiener filter principles. As a result, this technology is limited in its application to radio astronomy due to the need for an input INR > 1 in order to achieve significant benefit. To achieve an output INR << 1 using this method, it is usually necessary to implement some means to receive the RFI with INR greater than the INR perceived by the primary instrument."
+      },
+      "confidence": 0.93,
+      "term": "least mean squares algorithm",
+      "normalized": "最小均方算法",
+      "std_label": "LMS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_796c817c2c23f93e_c13",
+      "evidence": {
+        "section": "2.4 Post-correlation cancellation",
+        "original_text": "An elegant alternative to the implementation of cancellation in the time domain is to implement “post-correlation” cancellation. “Correlation” in this sense refers to the multiplication of independent antenna outputs (e.g., polarizations, or separate antennas in an array), followed by averaging of the spectrum of the products. It is common for single dish radio telescopes to correlate to obtain Stokes parameters and for arrays of dishes to cross-correlate dishes as a step in synthesizing images. In a similar manner, auxiliary reference antennas can be cross-correlated with the primary antennas. As long as the auxiliary antennas receive the desired astronomical signals with very low SNR, it is a simple matter to correct the RFI-corrupted correlation products using the hybrid (telescope output correlated with auxiliary antenna) correlation products. The technique was first described by [Briggs, Bell and Kesteven, 2000], and was later shown to be essentially equivalent to time-domain (“pre-correlation”) cancellation, with the exception that additional INR is obtained with no special effort through the integration of the correlation products."
+      },
+      "confidence": 0.93,
+      "term": "post-correlation cancellation",
+      "normalized": "后相关抵消",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r1",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "This Report aims to provide a concise technical summary of the current state-of-the-art in techniques for the mitigation of radio frequency interference (RFI) in radio astronomy. Specifically, this report considers techniques for the mitigation of man-made interference that originates from outside the instrument and is therefore beyond the control of the instrument operator. For the purposes of this report, the criterion for classification of a signal as RFI is simply that it is an unwanted but detectable portion of a desired observation that has the potential to either degrade or inhibit the successful conduct of the observation. Some interference is not easily detectable but can still degrade the observations. Its mitigation is much more difficult. The aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies. Mitigation methods other than simple excision of RFI-contaminated data are not widely used in radio astronomy, mainly because they are not easy to devise or perform and may require the development of extensive special software."
+      },
+      "confidence": 0.96,
+      "head": "doc_796c817c2c23f93e_c1",
+      "relation_type": "degrades",
+      "relation_surface": "has the potential to either degrade or inhibit",
+      "tail": "doc_796c817c2c23f93e_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r2",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "This is perhaps the oldest and best-known strategy for real-time mitigation of pulsed RFI. Interest in blanking seems to have emerged first in response to the problems encountered in observing in the 1 215-1 400 MHz band due to ground-based aviation radars. These radars typically transmit pulsed fixed-frequency or chirped sinusoidal waveforms with pulse lengths of 2-400 ms, 1-27 ms between transmitted pulses, and bandwidths on the order of 1 MHz. These pulses are often detectable through the sidelobe of radio telescopes hundreds of kilometres away. Although the transmission duty cycle is relatively low (typically less than 0.1%), accurate blanking is made difficult by the short period between pulses. A second factor which makes blanking of radar pulses difficult is that reflections from terrain features and aircraft generate additional copies of the pulse which arrive long after the “direct path” pulse (see, e.g. appendix of [Ellingson and Hampson, 2003]. It is common for these multi-path pulses to be strong enough to corrupt the astronomical observation and yet too weak to be detected reliably. Thus, a blanking interval triggered by a detected pulse must typically be many times longer than the detected pulse, in order to ensure that all of the multipath copies of a detected pulse are also blanked. Blanking intervals having lengths up to 100’s of microseconds (i.e. 10-100 times the pulse duration) are typically required [Ellingson and Hampson, 2003]."
+      },
+      "confidence": 0.94,
+      "head": "doc_796c817c2c23f93e_c3",
+      "relation_type": "uses",
+      "relation_surface": "is perhaps the oldest and best-known strategy for real-time mitigation",
+      "tail": "doc_796c817c2c23f93e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r3",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "1. Excision, in the sense of “cutting out” RFI. For example, RFI consisting of brief pulses might be mitigated by blanking the data when the pulse is present; this is temporal excision. Alternately, persistent RFI might be mitigated using array beam-forming techniques to orient pattern nulls in the directions from which the RFI is incident; this is spatial excision. A common property of all excision techniques is some loss of astronomy data, the possible distortion of the remaining data due to artefacts introduced by the excision process. Since blanking is essentially a loss in observing time, there is a concomitant increase in the observing time required to reach the required sensitivity or measurement accuracy."
+      },
+      "confidence": 0.94,
+      "head": "doc_796c817c2c23f93e_c4",
+      "relation_type": "uses",
+      "relation_surface": "might be mitigated using array beam-forming techniques to orient pattern nulls",
+      "tail": "doc_796c817c2c23f93e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r4",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "2. Cancellation, in the sense of “subtracting” RFI from the telescope output. Cancellation is potentially superior to excision in the sense that the RFI is removed with no impact on the astronomy, nominally providing a “look through” capability that is nominally free of the artefacts associated with the simple “cutting out” of data. However, as discussed below, the tradeoff with respect to excision is usually that suppression is limited by the estimate of the interference received by the radio telescope."
+      },
+      "confidence": 0.94,
+      "head": "doc_796c817c2c23f93e_c5",
+      "relation_type": "uses",
+      "relation_surface": "in the sense of “subtracting” RFI from the telescope output",
+      "tail": "doc_796c817c2c23f93e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r5",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "3. Anti-coincidence, broadly meaning discrimination of RFI by exploiting the fact that widelyseparated antennas should perceive astronomical signals identically, but RFI differently. In such instances the RFI makes a contribution to the background noise level at each antenna rather than to the correlated signals. This degrades the correlated signal received, which may require an increase in the observing time to achieve the signal to noise ratio needed."
+      },
+      "confidence": 0.94,
+      "head": "doc_796c817c2c23f93e_c6",
+      "relation_type": "uses",
+      "relation_surface": "discrimination of RFI by exploiting the fact that widelyseparated antennas should perceive astronomical signals identically, but RFI differently",
+      "tail": "doc_796c817c2c23f93e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r6",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "Perhaps the most vulnerable observations are those made with single-dish radio telescopes (continuum or spectroscopy), because the improvement in sensitivity to astronomical signals afforded by increasing integration time leads to a proportional increase in sensitivity to RFI signals. While certain observing modes offer some intrinsic robustness to low levels of RFI, the low received signal strengths of cosmic radio emissions make radio astronomy highly vulnerable to interference."
+      },
+      "confidence": 0.94,
+      "head": "doc_796c817c2c23f93e_c7",
+      "relation_type": "is_vulnerable_to",
+      "relation_surface": "Perhaps the most vulnerable observations are those made with single-dish radio telescopes",
+      "tail": "doc_796c817c2c23f93e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r7",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "For this reason, most null-forming algorithms developed in the context of military and commercial applications are based on the Wiener filter strategy (which includes so-called “power minimization” and “minimum variance” algorithms), which perform poorly for INR < 1 [Ellingson and Hampson, 2002]. It is known that techniques based on Wiener filtering are limited to reducing the INR in proportion to the INR; i.e., it is straightforward to suppress RFI to a level of INR-1, and relatively difficult to reduce it further. Thus, to make such techniques effective for radio astronomy, additional measures are typically required to increase the apparent INR delivered to the mitigation algorithm; a few are discussed below."
+      },
+      "confidence": 0.93,
+      "head": "doc_796c817c2c23f93e_c10",
+      "relation_type": "belongs_to",
+      "relation_surface": "most null-forming algorithms developed in the context of military and commercial applications are based on the Wiener filter strategy",
+      "tail": "doc_796c817c2c23f93e_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r8",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "This strategy was investigated first in the context of radio astronomy by [Barnbaum and Bradley, 1998], who used the popular “least mean squares” (LMS) algorithm – a technique based on Wiener filter principles. As a result, this technology is limited in its application to radio astronomy due to the need for an input INR > 1 in order to achieve significant benefit. To achieve an output INR << 1 using this method, it is usually necessary to implement some means to receive the RFI with INR greater than the INR perceived by the primary instrument."
+      },
+      "confidence": 0.93,
+      "head": "doc_796c817c2c23f93e_c12",
+      "relation_type": "belongs_to",
+      "relation_surface": "used the popular “least mean squares” (LMS) algorithm – a technique based on Wiener filter principles",
+      "tail": "doc_796c817c2c23f93e_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_796c817c2c23f93e_r9",
+      "evidence": {
+        "section": "2.4 Post-correlation cancellation",
+        "original_text": "An elegant alternative to the implementation of cancellation in the time domain is to implement “post-correlation” cancellation. “Correlation” in this sense refers to the multiplication of independent antenna outputs (e.g., polarizations, or separate antennas in an array), followed by averaging of the spectrum of the products. It is common for single dish radio telescopes to correlate to obtain Stokes parameters and for arrays of dishes to cross-correlate dishes as a step in synthesizing images. In a similar manner, auxiliary reference antennas can be cross-correlated with the primary antennas. As long as the auxiliary antennas receive the desired astronomical signals with very low SNR, it is a simple matter to correct the RFI-corrupted correlation products using the hybrid (telescope output correlated with auxiliary antenna) correlation products. The technique was first described by [Briggs, Bell and Kesteven, 2000], and was later shown to be essentially equivalent to time-domain (“pre-correlation”) cancellation, with the exception that additional INR is obtained with no special effort through the integration of the correlation products."
+      },
+      "confidence": 0.93,
+      "head": "doc_796c817c2c23f93e_c13",
+      "relation_type": "is_alternative_to",
+      "relation_surface": "An elegant alternative to the implementation of cancellation in the time domain is to implement “post-correlation” cancellation",
+      "tail": "doc_796c817c2c23f93e_c5"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_796c817c2c23f93e_d1",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "Interest in blanking seems to have emerged first in response to the problems encountered in observing in the 1 215-1 400 MHz band due to ground-based aviation radars. These radars typically transmit pulsed fixed-frequency or chirped sinusoidal waveforms with pulse lengths of 2-400 ms, 1-27 ms between transmitted pulses, and bandwidths on the order of 1 MHz. These pulses are often detectable through the sidelobe of radio telescopes hundreds of kilometres away. Although the transmission duty cycle is relatively low (typically less than 0.1%), accurate blanking is made difficult by the short period between pulses. A second factor which makes blanking of radar pulses difficult is that reflections from terrain features and aircraft generate additional copies of the pulse which arrive long after the “direct path” pulse (see, e.g. appendix of [Ellingson and Hampson, 2003]. It is common for these multi-path pulses to be strong enough to corrupt the astronomical observation and yet too weak to be detected reliably. Thus, a blanking interval triggered by a detected pulse must typically be many times longer than the detected pulse, in order to ensure that all of the multipath copies of a detected pulse are also blanked. Blanking intervals having lengths up to 100’s of microseconds (i.e. 10-100 times the pulse duration) are typically required [Ellingson and Hampson, 2003]. A number of real-time techniques for temporal excision have been proposed and developed to various degrees. Friedman [1996], Weber et al. [1997], and Leshem et al. [2000], each describe methods for detecting impulsive interference and blanking the output accordingly. The National Astronomy and Ionosphere Center (NAIC) has developed a device for real-time mitigation of strong local radar pulses at the Arecibo Observatory (Puerto Rico). This device works by tracking the known pattern of the timing between pulses for this particular radar, and then blanking the output of the receiver in a time window around the expected pulse arrival times. More recent work in this area, including experimental results, is described in [Ellingson and Hampson, 2003; Fisher et al., 2005 and Zheng et al., 2005], with the latter two references addressing the similar problem of pulsed interference from aviation distance measuring equipment (DME)."
+      },
+      "confidence": 0.85,
+      "name": "RFI mitigation benchmark dataset",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_796c817c2c23f93e_d2",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "An optimal single-dish temporal cancellation algorithm involves the following steps: Step 1: Detection and estimation of the RFI waveform. Step 2: Synthesis of a noise-free version of the RFI waveform. Step 3: Subtraction of the synthesized RFI waveform from the afflicted data. As discussed below, an equivalent process can also be implemented in the frequency domain. Like excision, there is a considerable body of experience in the use of cancellation algorithms in commercial and military applications [Haykin, 2001]. This strategy was investigated first in the context of radio astronomy by [Barnbaum and Bradley, 1998], who used the popular “least mean squares” (LMS) algorithm – a technique based on Wiener filter principles. As a result, this technology is limited in its application to radio astronomy due to the need for an input INR > 1 in order to achieve significant benefit. To achieve an output INR << 1 using this method, it is usually necessary to implement some means to receive the RFI with INR greater than the INR perceived by the primary instrument. One way to achieve this (and in fact the approach advocated by [Barnbaum and Bradley] is to use a separate directional antenna to receive the RFI. Since most large dishes have sidelobe gain that is approximately isotropic in the far sidelobe, the INR can be improved approximately in proportion to the gain of the auxiliary antenna used to receive the RFI. Thus, for example, a yagi with 20 dB gain could improve the INR available to the cancellation algorithm by about 20 dB, which could then reduce INR at the telescope output by a comparable factor. Subsequent work [Jeffs et al., 2005] describes the extension of this “reference signal” approach to achieve better performance against RFI from satellites by using multiple auxiliary signals from dishes with gains on the order of 30 dB."
+      },
+      "confidence": 0.8,
+      "name": "RFI waveform characteristics dataset",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_796c817c2c23f93e_d3",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "The primary limitation of blanking is detection performance. This is because once an RFI pulse is detected, it can be completely removed by blanking. However, it is inevitable that some fraction of weak but potentially damaging pulses will not be detected. Over the time-scale of a single pulse, however, astronomical signals routinely have a signal-to-noise ratio (SNR) <<1; thus RFI must be reliably detected at these levels in order to be effectively suppressed in the integrated output. This is quite difficult, and the recent successes using blanking cited above are attributable to having detailed advanced knowledge of the RFI waveform, which can then be used to offset an inadequate SNR to some extent. Further improvements in detection performance appear feasible using aspects of the RFI waveform that can be exploited without specific knowledge of the waveform, as, for example, cyclostationarity [Britteil and Weber, 2005] who applied it to the HIBLEO2 (Iridium) Satellite signals) and Kalman tracking [Dong et al., 2005] who applied it to aviation radar). Another challenging problem is how to set detection thresholds and blanking window length so as to achieve an acceptable tradeoff between robust RFI mitigation (suggesting low thresholds and long windows) and limiting degradation of sensitivity and the introduction of blanking artefacts (suggesting high thresholds and short windows), which was studied by [Niamsuwan, Johnson and Ellingson, 2005]. In addition, “blanked” time is lost observing time and may require an increase in observation time to achieve the required sensitivity."
+      },
+      "confidence": 0.85,
+      "name": "RFI detection performance dataset",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_796c817c2c23f93e_ds1",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "For the purposes of this report, the criterion for classification of a signal as RFI is simply that it is an unwanted but detectable portion of a desired observation that has the potential to either degrade or inhibit the successful conduct of the observation. Some interference is not easily detectable but can still degrade the observations. Its mitigation is much more difficult. The aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "RFI classification criterion: unwanted detectable portion of observation that degrades or inhibits successful observation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_796c817c2c23f93e_ds2",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "The aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized observing conditions for radio astronomy based on ITU-R RA.769 sensitivity levels and ITU-R RA.1513 data loss limits"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_796c817c2c23f93e_ds3",
+      "evidence": {
+        "section": "3 Conclusions",
+        "original_text": "Inevitably, the effectiveness of any given technique depends on: - the architecture of the instrument or its configuration for a particular observation; - the observing mode (e.g. spectroscopy, continuum aperture synthesis imaging, pulsar dispersion searching); - the nature of the RFI itself (e.g. persistent or intermittent, spatially coherent or scattered by multi-path, etc.). Mitigation merely reduces the degree to which data are degraded or obliterated by interference, and increases operational costs. In addition, it should be noted there is no single technique that can address all possible scenarios for radio astronomy."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Radio astronomy instrument architecture, observing mode, and RFI nature dependencies for mitigation effectiveness"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_796c817c2c23f93e_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "For example, “fringe stopping” in aperture synthesis imaging has the tendency to decorrelate the RFI received at widely-separated antennas, which tends to suppress the RFI in the associated correlation products [Thompson, 1982]. In the case of some synthesis radio telescopes, such interference may result in a spurious bright source appearing in the maps at the celestial pole, making high declination observations difficult or impossible."
+      },
+      "confidence": 0.9,
+      "name": "fringe stopping",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_796c817c2c23f93e_m2",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "This strategy was investigated first in the context of radio astronomy by [Barnbaum and Bradley, 1998], who used the popular “least mean squares” (LMS) algorithm – a technique based on Wiener filter principles. As a result, this technology is limited in its application to radio astronomy due to the need for an input INR > 1 in order to achieve significant benefit."
+      },
+      "confidence": 0.95,
+      "name": "least mean squares (LMS) algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_796c817c2c23f93e_m3",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "For this reason, most null-forming algorithms developed in the context of military and commercial applications are based on the Wiener filter strategy (which includes so-called “power minimization” and “minimum variance” algorithms), which perform poorly for INR < 1 [Ellingson and Hampson, 2002]. It is known that techniques based on Wiener filtering are limited to reducing the INR in proportion to the INR; i.e., it is straightforward to suppress RFI to a level of INR-1, and relatively difficult to reduce it further."
+      },
+      "confidence": 0.95,
+      "name": "Wiener filter strategy",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_796c817c2c23f93e_m4",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "An alternative to traditional Wiener filtering-based null-forming techniques is the class of techniques based on “subspace projections”. The basic idea in subspace projection is that interference can be identified in terms of correlations between the array elements, which in turn can be used to determine beam forming coefficients that result in patterns which reject the interference with little or no effect on the main lobe characteristics. In mathematical terms, subspace projection is a two-step process of: identifying the eigenvectors of the spatial covariance matrix (the set of pair-wise correlations between elements) followed by making the vector of beam forming coefficients orthogonal (the “projection” operation) to the eigenvector associated with the interference (the interference “subspace”). Normally, it is assumed that the interference dominates the power received by the array, so that the interference subspace is always the one associated with largest eigenvalue of the spatial covariance. This leads to problems when the interference is relatively weak, especially if the interference-to-noise ratio is less than 1 [Ellingson and Hampson, 2002]. Nevertheless, subspace projection has been shown to have significant advantages for radio astronomy when properly employed [Raza et al., 2002]. Such techniques are not a panacea for the problem of poor detection and localization performance, but do offer reduced distortion of the antenna pattern and, to some extent, behavior that is easier to anticipate and modify. Distortion introduced by this class of techniques can even be corrected in aperture synthesis imaging as a post-processing operation [Leshem et al., 2000]."
+      },
+      "confidence": 0.95,
+      "name": "subspace projection",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_796c817c2c23f93e_m5",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "Further improvements in detection performance appear feasible using aspects of the RFI waveform that can be exploited without specific knowledge of the waveform, as, for example, cyclostationarity [Britteil and Weber, 2005] who applied it to the HIBLEO2 (Iridium) Satellite signals) and Kalman tracking [Dong et al., 2005] who applied it to aviation radar)."
+      },
+      "confidence": 0.9,
+      "name": "Kalman tracking",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_796c817c2c23f93e_x1",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "The National Astronomy and Ionosphere Center (NAIC) has developed a device for real-time mitigation of strong local radar pulses at the Arecibo Observatory (Puerto Rico). This device works by tracking the known pattern of the timing between pulses for this particular radar, and then blanking the output of the receiver in a time window around the expected pulse arrival times. More recent work in this area, including experimental results, is described in [Ellingson and Hampson, 2003; Fisher et al., 2005 and Zheng et al., 2005], with the latter two references addressing the similar problem of pulsed interference from aviation distance measuring equipment (DME)."
+      },
+      "confidence": 0.95,
+      "task": "real-time mitigation of pulsed RFI",
+      "setup": "Arecibo Observatory, device tracking radar pulse timing pattern"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_796c817c2c23f93e_x2",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "An alternative temporal cancellation approach that avoids these difficulties is to synthesize distinct reference signals directly from the telescope output itself, by exploiting a priori knowledge of the modulation characteristics. For example [Ellingson et al., 2001] demonstrated a technique for mitigation of RFI from a GLONASS satellite by partially demodulating the signal and then remodulating the result to obtain a noise-free estimate of the RFI. They demonstrated reduction of INR by more than 20 dB despite the fact that the RFI was received with INR on the order of -20 dB. In this case, the INR “deficit’” was overcome by the effective increase in INR associated with the process of demodulation."
+      },
+      "confidence": 0.95,
+      "task": "temporal cancellation of GLONASS satellite RFI",
+      "setup": "single-dish radio telescope, partial demodulation and remodulation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_796c817c2c23f93e_x3",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "Yet, innovative and useful work continues in this area: for example [Kesteven, 2005] recently demonstrated the productive use of adaptive cancellation in pulsar astronomy, and [Poulsen, 2003], demonstrates real-time hardware for implementing adaptive cancellation."
+      },
+      "confidence": 0.9,
+      "task": "adaptive cancellation in pulsar astronomy",
+      "setup": "pulsar observations, adaptive cancellation hardware/software"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_796c817c2c23f93e_x4",
+      "evidence": {
+        "section": "2.4 Post-correlation cancellation",
+        "original_text": "In a similar manner, auxiliary reference antennas can be cross-correlated with the primary antennas. As long as the auxiliary antennas receive the desired astronomical signals with very low SNR, it is a simple matter to correct the RFI-corrupted correlation products using the hybrid (telescope output correlated with auxiliary antenna) correlation products. The technique was first described by [Briggs, Bell and Kesteven, 2000], and was later shown to be essentially equivalent to time-domain (“pre-correlation”) cancellation, with the exception that additional INR is obtained with no special effort through the integration of the correlation products. This technique shows great promise for the emerging generation of radio telescope arrays, for which it should be possible to synthesize high-gain auxiliary beams from the same antennas, as opposed to requiring additional “physical” antenna elements."
+      },
+      "confidence": 0.95,
+      "task": "post-correlation cancellation",
+      "setup": "radio telescope arrays, correlator with auxiliary antenna cross-correlation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_796c817c2c23f93e_x5",
+      "evidence": {
+        "section": "2.5 Anti-coincidence",
+        "original_text": "Depending on the range of the interfering signals, separations on the order of hundreds of kilometres may be required; this of course makes this strategy awkward to use except in the rare cases where similar telescopes are separated by the necessary distance and share the same field of view. Cancellation cannot be perfect, and the residual random fluctuations will result in data degradation. Nevertheless, this technique has been successfully applied in all-sky transient searches [Katz, 2003] and in searches for one-time “giant” pulses from pulsars [Bhat et al., 2005]."
+      },
+      "confidence": 0.95,
+      "task": "anti-coincidence in transient searches",
+      "setup": "widely-separated antennas (hundreds of kilometres), all-sky transient searches"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_796c817c2c23f93e_qr1",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "These radars typically transmit pulsed fixed-frequency or chirped sinusoidal waveforms with pulse lengths of 2-400 ms, 1-27 ms between transmitted pulses, and bandwidths on the order of 1 MHz. These pulses are often detectable through the sidelobe of radio telescopes hundreds of kilometres away. Although the transmission duty cycle is relatively low (typically less than 0.1%), accurate blanking is made difficult by the short period between pulses. A second factor which makes blanking of radar pulses difficult is that reflections from terrain features and aircraft generate additional copies of the pulse which arrive long after the \"direct path\" pulse (see, e.g. appendix of [Ellingson and Hampson, 2003]. It is common for these multi-path pulses to be strong enough to corrupt the astronomical observation and yet too weak to be detected reliably. Thus, a blanking interval triggered by a detected pulse must typically be many times longer than the detected pulse, in order to ensure that all of the multipath copies of a detected pulse are also blanked. Blanking intervals having lengths up to 100's of microseconds (i.e. 10-100 times the pulse duration) are typically required [Ellingson and Hampson, 2003]."
+      },
+      "confidence": 0.95,
+      "quantity": "pulse length",
+      "value": "2-400",
+      "unit": "ms",
+      "context": "ground-based aviation radars transmitting pulsed waveforms in the 1 215-1 400 MHz band",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_796c817c2c23f93e_qr2",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "Thus, a blanking interval triggered by a detected pulse must typically be many times longer than the detected pulse, in order to ensure that all of the multipath copies of a detected pulse are also blanked. Blanking intervals having lengths up to 100's of microseconds (i.e. 10-100 times the pulse duration) are typically required [Ellingson and Hampson, 2003]."
+      },
+      "confidence": 0.95,
+      "quantity": "blanking interval length",
+      "value": "100's",
+      "unit": "microseconds",
+      "context": "required to blank multipath copies of detected radar pulses",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_796c817c2c23f93e_p1",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "In principle, the same techniques are applicable to radio astronomy. In practice, however, there are complicating factors. First is the fact that in radio astronomy, unlike traditional commercial and military applications, RFI is damaging even when the INR << 1. Thus, to be effective, null-forming algorithms must successfully detect and localize RFI at these levels. In contrast, RFI in commercial and military applications is typically not problematic until INR is on the order of 1. For this reason, most null-forming algorithms developed in the context of military and commercial applications are based on the Wiener filter strategy (which includes so-called \"power minimization\" and \"minimum variance\" algorithms), which perform poorly for INR < 1 [Ellingson and Hampson, 2002]. It is known that techniques based on Wiener filtering are limited to reducing the INR in proportion to the INR; i.e., it is straightforward to suppress RFI to a level of INR-1, and relatively difficult to reduce it further. Thus, to make such techniques effective for radio astronomy, additional measures are typically required to increase the apparent INR delivered to the mitigation algorithm; a few are discussed below."
+      },
+      "confidence": 0.9,
+      "metric": "RFI suppression capability",
+      "compared_to": "Wiener filter-based null-forming algorithms"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_796c817c2c23f93e_qr3",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "Since most large dishes have sidelobe gain that is approximately isotropic in the far sidelobe, the INR can be improved approximately in proportion to the gain of the auxiliary antenna used to receive the RFI. Thus, for example, a yagi with 20 dB gain could improve the INR available to the cancellation algorithm by about 20 dB, which could then reduce INR at the telescope output by a comparable factor. Subsequent work [Jeffs et al., 2005] describes the extension of this \"reference signal\" approach to achieve better performance against RFI from satellites by using multiple auxiliary signals from dishes with gains on the order of 30 dB."
+      },
+      "confidence": 0.95,
+      "quantity": "suppression achieved",
+      "value": 20,
+      "unit": "dB",
+      "context": "using auxiliary antenna with 20 dB gain to improve INR for cancellation algorithm",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_796c817c2c23f93e_qr4",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "For example [Ellingson et al., 2001] demonstrated a technique for mitigation of RFI from a GLONASS satellite by partially demodulating the signal and then remodulating the result to obtain a noise-free estimate of the RFI. They demonstrated reduction of INR by more than 20 dB despite the fact that the RFI was received with INR on the order of -20 dB. In this case, the INR \"deficit'\" was overcome by the effective increase in INR associated with the process of demodulation. It should be noted that this same technique could also be used to further improve the INR by using auxiliary antennas. Unfortunately, signal modulations of the type used by GLONASS (i.e. direct sequence spread spectrum) represent only the \"low hanging fruit\" with respect to one's ability to obtain large INR improvements through partial demodulation. Most other signals do not exhibit such large improvements with similar processing, and less can be done if the modulation is analog or has unknown structure. For example, work by [Roshi, 2002] on a similar strategy for analog TV signals achieved only about 12 dB suppression despite beginning with an initially large INR, and work by [Ellingson and Hampson, 2002] demonstrated suppression on the order of 16 dB against radar pulses using the estimate-synthesize-subtract strategy."
+      },
+      "confidence": 0.95,
+      "quantity": "suppression achieved",
+      "value": 20,
+      "unit": "dB",
+      "context": "using partial demodulation and remodulation technique for GLONASS satellite RFI with initial INR on the order of -20 dB",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_796c817c2c23f93e_p2",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "For example [Ellingson et al., 2001] demonstrated a technique for mitigation of RFI from a GLONASS satellite by partially demodulating the signal and then remodulating the result to obtain a noise-free estimate of the RFI. They demonstrated reduction of INR by more than 20 dB despite the fact that the RFI was received with INR on the order of -20 dB. In this case, the INR \"deficit'\" was overcome by the effective increase in INR associated with the process of demodulation. It should be noted that this same technique could also be used to further improve the INR by using auxiliary antennas. Unfortunately, signal modulations of the type used by GLONASS (i.e. direct sequence spread spectrum) represent only the \"low hanging fruit\" with respect to one's ability to obtain large INR improvements through partial demodulation. Most other signals do not exhibit such large improvements with similar processing, and less can be done if the modulation is analog or has unknown structure. For example, work by [Roshi, 2002] on a similar strategy for analog TV signals achieved only about 12 dB suppression despite beginning with an initially large INR, and work by [Ellingson and Hampson, 2002] demonstrated suppression on the order of 16 dB against radar pulses using the estimate-synthesize-subtract strategy."
+      },
+      "confidence": 0.95,
+      "metric": "suppression achieved",
+      "compared_to": "GLONASS satellite RFI, analog TV signals, radar pulses"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_796c817c2c23f93e_qr5",
+      "evidence": {
+        "section": "2.4 Post-correlation cancellation",
+        "original_text": "Furthermore, the dynamic nature of most RFI signals limits the amount of integration that can be applied for effective use of this technique: \"dump times\" on the order of 10 s of ms may be required to mitigate satellite signals or signals which experience multi-path fading. The necessary increase in the capacity of correlators combined with reduced dump times may increase cost and complexity beyond practical limits, and the increased degree of data processing will result in some degree of data degradation."
+      },
+      "confidence": 0.95,
+      "quantity": "dump times",
+      "value": "10 s of",
+      "unit": "ms",
+      "context": "required for effective use of post-correlation cancellation technique to mitigate satellite signals or signals experiencing multi-path fading",
+      "result_type": "measurement"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_796c817c2c23f93e_ca1",
+      "evidence": {
+        "section": "1 Introduction",
+        "original_text": "The aim of mitigation techniques is to permit observation at the levels of sensitivity specified in Recommendation ITU-R RA.769, with percentage of data loss within the limits specified in Recommendation ITU-R RA.1513. These Recommendations provide the conditions for efficient observing in radio astronomy, and provide the numerical basis for calculation of tolerable RFI conditions in sharing and compatibility studies. Mitigation methods other than simple excision of RFI-contaminated data are not widely used in radio astronomy, mainly because they are not easy to devise or perform and may require the development of extensive special software. Until recently, the standard observing modes and signal processing techniques used in the course of making observations provided an inherent degree of interference mitigation that proved adequate to provide useful astronomical data in the presence of some interference. For example, “fringe stopping” in aperture synthesis imaging has the tendency to decorrelate the RFI received at widely-separated antennas, which tends to suppress the RFI in the associated correlation products [Thompson, 1982]. In the case of some synthesis radio telescopes, such interference may result in a spurious bright source appearing in the maps at the celestial pole, making high declination observations difficult or impossible. Pulsars produce pulses of broadband noise, so a significant receiver bandwidth is needed to achieve a useful signal-to-noise ratio. The noise making up the pulses is subject to frequency-dependent dispersion as it propagates through the rarefied plasmas in the interstellar medium. When observing a pulsar with a radio telescope, the pulse is deliberately de-dispersed using a combination of hardware and software, to recover an accurate (non-dispersed) representation of the intrinsic pulse profile. This process tends to reduce RFI, because the process of de-dispersing the pulsar signal consequently disperses the RFI. Only limited mitigation is provided by these processes."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_796c817c2c23f93e_ca2",
+      "evidence": {
+        "section": "2 Techniques for mitigating RFI",
+        "original_text": "The study of techniques for mitigating RFI contaminating the analog output of radio telescope receivers has been a topic of heightened interest in recent years, spurred on by technological advances that enable real-time signal processing approaches to RFI mitigation. A helpful introduction to this area is provided in summaries of recent conferences addressing the issue; see for example [Bell et al., 2000 and Ellingson, 2005]. For the purposes of this Report, a concise taxonomy of mitigation techniques might be organized as follows: 1. Excision, in the sense of “cutting out” RFI. For example, RFI consisting of brief pulses might be mitigated by blanking the data when the pulse is present; this is temporal excision. Alternately, persistent RFI might be mitigated using array beam-forming techniques to orient pattern nulls in the directions from which the RFI is incident; this is spatial excision. A common property of all excision techniques is some loss of astronomy data, the possible distortion of the remaining data due to artefacts introduced by the excision process. Since blanking is essentially a loss in observing time, there is a concomitant increase in the observing time required to reach the required sensitivity or measurement accuracy. 2. Cancellation, in the sense of “subtracting” RFI from the telescope output. Cancellation is potentially superior to excision in the sense that the RFI is removed with no impact on the astronomy, nominally providing a “look through” capability that is nominally free of the artefacts associated with the simple “cutting out” of data. However, as discussed below, the tradeoff with respect to excision is usually that suppression is limited by the estimate of the interference received by the radio telescope. 3. Anti-coincidence, broadly meaning discrimination of RFI by exploiting the fact that widelyseparated antennas should perceive astronomical signals identically, but RFI differently. In such instances the RFI makes a contribution to the background noise level at each antenna rather than to the correlated signals. This degrades the correlated signal received, which may require an increase in the observing time to achieve the signal to noise ratio needed."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_796c817c2c23f93e_cl1",
+      "evidence": {
+        "section": "3 Conclusions",
+        "original_text": "RFI mitigation technology appears to offer significant benefits to radio astronomy, but much work remains to develop technology that is practical and applicable in routine operations. It also seems clear that RFI mitigation technology cannot be regarded as a standalone fix for the external RFI problems experienced by present day and future radio telescopes. Inevitably, the effectiveness of any given technique depends on: - the architecture of the instrument or its configuration for a particular observation; - the observing mode (e.g. spectroscopy, continuum aperture synthesis imaging, pulsar dispersion searching); - the nature of the RFI itself (e.g. persistent or intermittent, spatially coherent or scattered by multi-path, etc.). Mitigation merely reduces the degree to which data are degraded or obliterated by interference, and increases operational costs. In addition, it should be noted there is no single technique that can address all possible scenarios for radio astronomy."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_796c817c2c23f93e_lm1",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "The primary limitation of blanking is detection performance. This is because once an RFI pulse is detected, it can be completely removed by blanking. However, it is inevitable that some fraction of weak but potentially damaging pulses will not be detected. Over the time-scale of a single pulse, however, astronomical signals routinely have a signal-to-noise ratio (SNR) <<1; thus RFI must be reliably detected at these levels in order to be effectively suppressed in the integrated output. This is quite difficult, and the recent successes using blanking cited above are attributable to having detailed advanced knowledge of the RFI waveform, which can then be used to offset an inadequate SNR to some extent. Further improvements in detection performance appear feasible using aspects of the RFI waveform that can be exploited without specific knowledge of the waveform, as, for example, cyclostationarity [Britteil and Weber, 2005] who applied it to the HIBLEO2 (Iridium) Satellite signals) and Kalman tracking [Dong et al., 2005] who applied it to aviation radar). Another challenging problem is how to set detection thresholds and blanking window length so as to achieve an acceptable tradeoff between robust RFI mitigation (suggesting low thresholds and long windows) and limiting degradation of sensitivity and the introduction of blanking artefacts (suggesting high thresholds and short windows), which was studied by [Niamsuwan, Johnson and Ellingson, 2005]. In addition, “blanked” time is lost observing time and may require an increase in observation time to achieve the required sensitivity."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_796c817c2c23f93e_lm2",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "In practice, however, there are complicating factors. First is the fact that in radio astronomy, unlike traditional commercial and military applications, RFI is damaging even when the INR << 1. Thus, to be effective, null-forming algorithms must successfully detect and localize RFI at these levels. In contrast, RFI in commercial and military applications is typically not problematic until INR is on the order of 1. For this reason, most null-forming algorithms developed in the context of military and commercial applications are based on the Wiener filter strategy (which includes so-called “power minimization” and “minimum variance” algorithms), which perform poorly for INR < 1 [Ellingson and Hampson, 2002]. It is known that techniques based on Wiener filtering are limited to reducing the INR in proportion to the INR; i.e., it is straightforward to suppress RFI to a level of INR-1, and relatively difficult to reduce it further. Thus, to make such techniques effective for radio astronomy, additional measures are typically required to increase the apparent INR delivered to the mitigation algorithm; a few are discussed below. Radio astronomical observations depend upon the antenna performance (e.g. gain, beam profile, side-lobe distribution). Traditionally, this has been achieved by precise measurement and attention to ensuring parameters do not change with time. Variations in the sidelobe pattern may confound the self-calibration algorithms used to produce high-dynamic range images in aperture synthesis interferometry. Maintaining or at least knowing the variation in these parameters as the antenna beam and sidelobe pattern are modulated in order to mitigate interference is a challenge for signal processing and antenna control systems now in widespread use."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_796c817c2c23f93e_lm3",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "Like excision, there is a considerable body of experience in the use of cancellation algorithms in commercial and military applications [Haykin, 2001]. This strategy was investigated first in the context of radio astronomy by [Barnbaum and Bradley, 1998], who used the popular “least mean squares” (LMS) algorithm – a technique based on Wiener filter principles. As a result, this technology is limited in its application to radio astronomy due to the need for an input INR > 1 in order to achieve significant benefit. To achieve an output INR << 1 using this method, it is usually necessary to implement some means to receive the RFI with INR greater than the INR perceived by the primary instrument. One way to achieve this (and in fact the approach advocated by [Barnbaum and Bradley] is to use a separate directional antenna to receive the RFI. Since most large dishes have sidelobe gain that is approximately isotropic in the far sidelobe, the INR can be improved approximately in proportion to the gain of the auxiliary antenna used to receive the RFI. Thus, for example, a yagi with 20 dB gain could improve the INR available to the cancellation algorithm by about 20 dB, which could then reduce INR at the telescope output by a comparable factor. Subsequent work [Jeffs et al., 2005] describes the extension of this “reference signal” approach to achieve better performance against RFI from satellites by using multiple auxiliary signals from dishes with gains on the order of 30 dB."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_796c817c2c23f93e_lm4",
+      "evidence": {
+        "section": "2.4 Post-correlation cancellation",
+        "original_text": "On the other hand, correlators for modern radio telescopes are extraordinarily complex and expensive systems, and this approach requires a significant increase in the capacity of the correlator in order to compute the required additional correlation products and apply them to achieve RFI cancellation. Furthermore, the dynamic nature of most RFI signals limits the amount of integration that can be applied for effective use of this technique: “dump times” on the order of 10 s of ms may be required to mitigate satellite signals or signals which experience multi-path fading. The necessary increase in the capacity of correlators combined with reduced dump times may increase cost and complexity beyond practical limits, and the increased degree of data processing will result in some degree of data degradation."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_796c817c2c23f93e_fw1",
+      "evidence": {
+        "section": "2.1 Temporal excision (blanking)",
+        "original_text": "Further improvements in detection performance appear feasible using aspects of the RFI waveform that can be exploited without specific knowledge of the waveform, as, for example, cyclostationarity [Britteil and Weber, 2005] who applied it to the HIBLEO2 (Iridium) Satellite signals) and Kalman tracking [Dong et al., 2005] who applied it to aviation radar). Another challenging problem is how to set detection thresholds and blanking window length so as to achieve an acceptable tradeoff between robust RFI mitigation (suggesting low thresholds and long windows) and limiting degradation of sensitivity and the introduction of blanking artefacts (suggesting high thresholds and short windows), which was studied by [Niamsuwan, Johnson and Ellingson, 2005]. In addition, “blanked” time is lost observing time and may require an increase in observation time to achieve the required sensitivity."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_796c817c2c23f93e_fw2",
+      "evidence": {
+        "section": "2.2 Spatial excision (nulling)",
+        "original_text": "Overall, spatial excision techniques remain largely untested due to their high complexity and the large engineering costs associated with development and implementation. However, incremental progress continues to be made as demonstrated in recent work [Boonstra and Van der Tol, 2005; Hansen et al., 2005]. Even in the most favourable situations, the data obtained will not be of the quality that would have been the case in the absence of interference."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_796c817c2c23f93e_fw3",
+      "evidence": {
+        "section": "2.3 Temporal cancellation",
+        "original_text": "Yet, innovative and useful work continues in this area: for example [Kesteven, 2005] recently demonstrated the productive use of adaptive cancellation in pulsar astronomy, and [Poulsen, 2003], demonstrates real-time hardware for implementing adaptive cancellation. In this technique, the ability to cancel interference is set by the quality of the cancellation waveform as an estimate of the interference waveform received by the radio telescope. Any shortcoming in this estimation process results in some degree of data degradation."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_796c817c2c23f93e_fw4",
+      "evidence": {
+        "section": "2.4 Post-correlation cancellation",
+        "original_text": "This technique shows great promise for the emerging generation of radio telescope arrays, for which it should be possible to synthesize high-gain auxiliary beams from the same antennas, as opposed to requiring additional “physical” antenna elements. On the other hand, correlators for modern radio telescopes are extraordinarily complex and expensive systems, and this approach requires a significant increase in the capacity of the correlator in order to compute the required additional correlation products and apply them to achieve RFI cancellation. Furthermore, the dynamic nature of most RFI signals limits the amount of integration that can be applied for effective use of this technique: “dump times” on the order of 10 s of ms may be required to mitigate satellite signals or signals which experience multi-path fading. The necessary increase in the capacity of correlators combined with reduced dump times may increase cost and complexity beyond practical limits, and the increased degree of data processing will result in some degree of data degradation."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

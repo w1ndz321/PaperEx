@@ -1,0 +1,509 @@
+{
+  "metadata": {
+    "doc_id": "doc_90283b7f5984f4d4",
+    "source_file": "06_DroneRF_Dataset_RF_based_Detection_Classification_Identification.md",
+    "title": "DroneRF dataset: A dataset of drones for RF-based detection, classification and identification",
+    "year": 2019,
+    "doi": "10.1016/j.future.2019.05.007",
+    "abstract": "Modern technology has pushed us into the information age, making it easier to generate and record vast quantities of new data. Datasets can help in analyzing the situation to give a better understanding, and more importantly, decision making. Consequently, datasets, and uses to which they can be put, have become increasingly valuable commodities. This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "电子、通信与自动控制技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Drone",
+      "Radio Frequency",
+      "Dataset",
+      "Detection",
+      "Deep Learning"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:35:20.575469+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.98,
+      "term": "DroneRF dataset",
+      "normalized": "无人机射频数据集",
+      "std_label": "DroneRF"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.97,
+      "term": "radio frequency (RF) signal",
+      "normalized": "射频信号",
+      "std_label": "RF"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c3",
+      "evidence": {
+        "section": "Keywords",
+        "original_text": "Keywords: UAV detection Drone identification Classification Anti-drone systems"
+      },
+      "confidence": 0.95,
+      "term": "drone detection",
+      "normalized": "无人机检测",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c4",
+      "evidence": {
+        "section": "Keywords",
+        "original_text": "Keywords: UAV detection Drone identification Classification Anti-drone systems"
+      },
+      "confidence": 0.95,
+      "term": "drone identification",
+      "normalized": "无人机识别",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c5",
+      "evidence": {
+        "section": "Keywords",
+        "original_text": "Keywords: UAV detection Drone identification Classification Anti-drone systems"
+      },
+      "confidence": 0.95,
+      "term": "anti-drone system",
+      "normalized": "反无人机系统",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c6",
+      "evidence": {
+        "section": "Experimental design, materials, and methods",
+        "original_text": "RF sensing and capturing process required RF receivers, to intercept the drone communication with its flight controller, connected to laptops that are responsible for fetching, processing and storing the recorded RF signals in the database. The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning. First, raw RF samples are acquired using two National Instruments USRP-2943 (NI-USRP) software defined radio reconfigurable devices, shown in Fig. 2: NI USRP-2943R RF receiver. Table 2 lists the NI-USRP RF receivers’ specifications. Since each RF receiver has a maximum instantaneous bandwidth of 40 MHz, both receivers must be operated simultaneously to at least capture a technology spectrum such as WiFi (i.e. 80 MHz) where the first receiver captures the lower half of the frequency band, and the second, records the upper half (see Fig. 4). After that, captured RF data is transferred from the NIUSRP receivers to two standard laptops via Peripheral Component Interconnect Express (PCIe) interface kits. Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data."
+      },
+      "confidence": 0.96,
+      "term": "NI USRP-2943R RF receiver",
+      "normalized": "NI USRP-2943R射频接收器",
+      "std_label": "NI-USRP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c7",
+      "evidence": {
+        "section": "Experimental design, materials, and methods",
+        "original_text": "RF sensing and capturing process required RF receivers, to intercept the drone communication with its flight controller, connected to laptops that are responsible for fetching, processing and storing the recorded RF signals in the database. The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning. First, raw RF samples are acquired using two National Instruments USRP-2943 (NI-USRP) software defined radio reconfigurable devices, shown in Fig. 2: NI USRP-2943R RF receiver. Table 2 lists the NI-USRP RF receivers’ specifications. Since each RF receiver has a maximum instantaneous bandwidth of 40 MHz, both receivers must be operated simultaneously to at least capture a technology spectrum such as WiFi (i.e. 80 MHz) where the first receiver captures the lower half of the frequency band, and the second, records the upper half (see Fig. 4). After that, captured RF data is transferred from the NIUSRP receivers to two standard laptops via Peripheral Component Interconnect Express (PCIe) interface kits. Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data."
+      },
+      "confidence": 0.94,
+      "term": "LabVIEW Communications System Design Suite",
+      "normalized": "LabVIEW通信系统设计套件",
+      "std_label": "LabVIEW"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c8",
+      "evidence": {
+        "section": "RF database labeling",
+        "original_text": "The BUI is used to label the RF database entries according to the conducted experiment, drone type, and its specific flight mode, see Fig. 7: Experiments to record drones RF signatures organized in a tree manner consisting of three levels. The horizontal dashed red lines define the levels. BUI is a Binary Unique Identifier for each component to be used in labelling. The BUI is comprised of two binary numbers concatenated such that: BUI ¼ [msBUI, lsBUI], msBUI is the most significant part of the BUI representing the experiment and drone type, levels one and two, while lsBUI is the least significant part of the BUI representing the drone flight mode, third level. The BUI length L is determined using the total number of experiments E, the total number of drones D, and the total number of flight modes F, as follows: L ¼ log2ðEÞ þ log2ðDÞ þ log2ðFÞ where in this work, E ¼ 2; D ¼ 3 and F ¼ 4; therefore, L ¼ 5. Extending the developed database using other experiments, drones, or flight modes can be easily done by increasing E; Dor F, respectively."
+      },
+      "confidence": 0.93,
+      "term": "Binary Unique Identifier (BUI)",
+      "normalized": "二进制唯一标识符",
+      "std_label": "BUI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_90283b7f5984f4d4_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.96,
+      "term": "drone flight mode",
+      "normalized": "无人机飞行模式",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.95,
+      "head": "doc_90283b7f5984f4d4_c1",
+      "relation_type": "uses",
+      "relation_surface": "contains recordings of",
+      "tail": "doc_90283b7f5984f4d4_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r2",
+      "evidence": {
+        "section": "Value of the data",
+        "original_text": "The droneRF dataset can be used to develop new techniques for drones' detection and identification, or as a critical building block in a large-scale anti-drone system that includes other functions such as drones' intrusion detection, tracking, jamming, and activity logging. DroneRF helps in understanding the signatures of different drones operating in different modes (see section 1.6 for details about the drones' flight modes) based on their radio frequency signal characteristics. DroneRF can inspire new methods for detecting the drones' existence, and possibly identifying the drones' make, type, etc."
+      },
+      "confidence": 0.94,
+      "head": "doc_90283b7f5984f4d4_c1",
+      "relation_type": "enhances",
+      "relation_surface": "can be used to develop new techniques for",
+      "tail": "doc_90283b7f5984f4d4_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r3",
+      "evidence": {
+        "section": "Value of the data",
+        "original_text": "The droneRF dataset can be used to develop new techniques for drones' detection and identification, or as a critical building block in a large-scale anti-drone system that includes other functions such as drones' intrusion detection, tracking, jamming, and activity logging. DroneRF helps in understanding the signatures of different drones operating in different modes (see section 1.6 for details about the drones' flight modes) based on their radio frequency signal characteristics. DroneRF can inspire new methods for detecting the drones' existence, and possibly identifying the drones' make, type, etc."
+      },
+      "confidence": 0.94,
+      "head": "doc_90283b7f5984f4d4_c1",
+      "relation_type": "enhances",
+      "relation_surface": "can be used to develop new techniques for",
+      "tail": "doc_90283b7f5984f4d4_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r4",
+      "evidence": {
+        "section": "Value of the data",
+        "original_text": "The droneRF dataset can be used to develop new techniques for drones' detection and identification, or as a critical building block in a large-scale anti-drone system that includes other functions such as drones' intrusion detection, tracking, jamming, and activity logging. DroneRF helps in understanding the signatures of different drones operating in different modes (see section 1.6 for details about the drones' flight modes) based on their radio frequency signal characteristics. DroneRF can inspire new methods for detecting the drones' existence, and possibly identifying the drones' make, type, etc."
+      },
+      "confidence": 0.93,
+      "head": "doc_90283b7f5984f4d4_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "can be used as a critical building block in",
+      "tail": "doc_90283b7f5984f4d4_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r5",
+      "evidence": {
+        "section": "Experimental design, materials, and methods",
+        "original_text": "RF sensing and capturing process required RF receivers, to intercept the drone communication with its flight controller, connected to laptops that are responsible for fetching, processing and storing the recorded RF signals in the database. The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning. First, raw RF samples are acquired using two National Instruments USRP-2943 (NI-USRP) software defined radio reconfigurable devices, shown in Fig. 2: NI USRP-2943R RF receiver. Table 2 lists the NI-USRP RF receivers’ specifications. Since each RF receiver has a maximum instantaneous bandwidth of 40 MHz, both receivers must be operated simultaneously to at least capture a technology spectrum such as WiFi (i.e. 80 MHz) where the first receiver captures the lower half of the frequency band, and the second, records the upper half (see Fig. 4). After that, captured RF data is transferred from the NIUSRP receivers to two standard laptops via Peripheral Component Interconnect Express (PCIe) interface kits. Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data."
+      },
+      "confidence": 0.92,
+      "head": "doc_90283b7f5984f4d4_c6",
+      "relation_type": "measures",
+      "relation_surface": "acquired using",
+      "tail": "doc_90283b7f5984f4d4_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r6",
+      "evidence": {
+        "section": "Experimental design, materials, and methods",
+        "original_text": "RF sensing and capturing process required RF receivers, to intercept the drone communication with its flight controller, connected to laptops that are responsible for fetching, processing and storing the recorded RF signals in the database. The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning. First, raw RF samples are acquired using two National Instruments USRP-2943 (NI-USRP) software defined radio reconfigurable devices, shown in Fig. 2: NI USRP-2943R RF receiver. Table 2 lists the NI-USRP RF receivers’ specifications. Since each RF receiver has a maximum instantaneous bandwidth of 40 MHz, both receivers must be operated simultaneously to at least capture a technology spectrum such as WiFi (i.e. 80 MHz) where the first receiver captures the lower half of the frequency band, and the second, records the upper half (see Fig. 4). After that, captured RF data is transferred from the NIUSRP receivers to two standard laptops via Peripheral Component Interconnect Express (PCIe) interface kits. Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data."
+      },
+      "confidence": 0.91,
+      "head": "doc_90283b7f5984f4d4_c7",
+      "relation_type": "uses",
+      "relation_surface": "data fetching, processing and storing are performed by programs we designed in",
+      "tail": "doc_90283b7f5984f4d4_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_90283b7f5984f4d4_r7",
+      "evidence": {
+        "section": "RF database labeling",
+        "original_text": "The BUI is used to label the RF database entries according to the conducted experiment, drone type, and its specific flight mode, see Fig. 7: Experiments to record drones RF signatures organized in a tree manner consisting of three levels. The horizontal dashed red lines define the levels. BUI is a Binary Unique Identifier for each component to be used in labelling. The BUI is comprised of two binary numbers concatenated such that: BUI ¼ [msBUI, lsBUI], msBUI is the most significant part of the BUI representing the experiment and drone type, levels one and two, while lsBUI is the least significant part of the BUI representing the drone flight mode, third level. The BUI length L is determined using the total number of experiments E, the total number of drones D, and the total number of flight modes F, as follows: L ¼ log2ðEÞ þ log2ðDÞ þ log2ðFÞ where in this work, E ¼ 2; D ¼ 3 and F ¼ 4; therefore, L ¼ 5. Extending the developed database using other experiments, drones, or flight modes can be easily done by increasing E; Dor F, respectively."
+      },
+      "confidence": 0.92,
+      "head": "doc_90283b7f5984f4d4_c8",
+      "relation_type": "measures",
+      "relation_surface": "is used to label the RF database entries according to",
+      "tail": "doc_90283b7f5984f4d4_c9"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_90283b7f5984f4d4_d1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.95,
+      "name": "DroneRF dataset",
+      "modality": "tabular",
+      "domain": "radio frequency (RF) signal processing, drone detection"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_90283b7f5984f4d4_d2",
+      "evidence": {
+        "section": "1. Data",
+        "original_text": "In this article, we present an RF based dataset of drones functioning in different modes. The dataset consists of recorded segments of RF background activities with no drones, and segments of drones operating in different modes such as: off, on and connected, hovering, flying, and video recording (see Figs. 4e6). The records are 10.25 seconds of RF background activities and approximately 5.25 seconds of RF drone communications for each flight mode. This has produced a drone RF database with over 40 GB of data encompassing various RF signatures. There are in total 227 segments (see Table 1), each segment consists of two equally sized parts with each part containing 1 million samples, making in total 454 record files. The samples in the segments represent the amplitude of the acquired row RF signals in the time domain. The segments in the database [2] are stored as comma-separated values (csv) files, this makes the drone RF database easy to load and interpret on any preferred software. Metadata for each segment in the database is included within its filename. It contains the segment Binary Unique Identifier (BUI) to differentiate between the drone's mode (see Fig. 7), followed by a character to determine if it is the first or second half of the segment, and its segment number. For instance, the third segment of the second half of the RF spectrum with BUI ¼ 11010, Phantom drone with flight mode number 3, will have the following filename: “11010H3.csv”."
+      },
+      "confidence": 0.95,
+      "name": "Drone RF database",
+      "modality": "tabular",
+      "domain": "radio frequency (RF) signal processing, drone detection"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_90283b7f5984f4d4_ds1",
+      "evidence": {
+        "section": "1. Data",
+        "original_text": "The segments in the database [2] are stored as comma-separated values (csv) files, this makes the drone RF database easy to load and interpret on any preferred software. Metadata for each segment in the database is included within its filename. It contains the segment Binary Unique Identifier (BUI) to differentiate between the drone's mode (see Fig. 7), followed by a character to determine if it is the first or second half of the segment, and its segment number. For instance, the third segment of the second half of the RF spectrum with BUI ¼ 11010, Phantom drone with flight mode number 3, will have the following filename: “11010H3.csv”."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Data segments stored as CSV files with metadata encoded in filenames using Binary Unique Identifier (BUI)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_90283b7f5984f4d4_ds2",
+      "evidence": {
+        "section": "2. Experimental design, materials, and methods",
+        "original_text": "RF sensing and capturing process required RF receivers, to intercept the drone communication with its flight controller, connected to laptops that are responsible for fetching, processing and storing the recorded RF signals in the database. The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning. First, raw RF samples are acquired using two National Instruments USRP-2943 (NI-USRP) software defined radio reconfigurable devices, shown in Fig. 2: NI USRP-2943R RF receiver. Table 2 lists the NI-USRP RF receivers’ specifications. Since each RF receiver has a maximum instantaneous bandwidth of 40 MHz, both receivers must be operated simultaneously to at least capture a technology spectrum such as WiFi (i.e. 80 MHz) where the first receiver captures the lower half of the frequency band, and the second, records the upper half (see Fig. 4). After that, captured RF data is transferred from the NI-USRP receivers to two standard laptops via Peripheral Component Interconnect Express (PCIe) interface kits. Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "RF data collection setup using NI-USRP receivers, PCIe connections, and LabVIEW programs"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_90283b7f5984f4d4_ds3",
+      "evidence": {
+        "section": "2.3. Experimental setup",
+        "original_text": "The setup is shown in Fig. 1. To conduct any experiment using this setup, one must perform the following tasks carefully and sequentially. If you are recording RF background activities, perform tasks 4e7: 1. Turn on the drone under analysis and connect to it using a mobile phone or a flight controller. 2. In case the utility of a mobile phone as a controller, start the mobile application to control the drone and to change its flight mode. 3. Check the drone connectivity and operation by performing simple takeoff, hovering, and landing tests. 4. Turn on the RF receivers to intercept all RF activities and to transfer those to the laptops via the PCIe connectors. 5. Open the LabVIEW programs, installed on the laptops, and select appropriate parameters depending on your experiment and requirements. 6. Start the LabVIEW programs to fetch, process and store RF data segments. 7. Stop the LabVIEW programs when you are done with the experiment. 8. For a different flight mode, go back to step 6, and for different drones go back to step 1."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized experimental procedure for recording RF activities with drones in different flight modes"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_90283b7f5984f4d4_ds4",
+      "evidence": {
+        "section": "2.5. RF database labeling",
+        "original_text": "The BUI is used to label the RF database entries according to the conducted experiment, drone type, and its specific flight mode, see Fig. 7: Experiments to record drones RF signatures organized in a tree manner consisting of three levels. The horizontal dashed red lines define the levels. BUI is a Binary Unique Identifier for each component to be used in labelling. The BUI is comprised of two binary numbers concatenated such that: BUI ¼ [msBUI, lsBUI], msBUI is the most significant part of the BUI representing the experiment and drone type, levels one and two, while lsBUI is the least significant part of the BUI representing the drone flight mode, third level. The BUI length L is determined using the total number of experiments E, the total number of drones D, and the total number of flight modes F, as follows: L ¼ log2ðEÞ þ log2ðDÞ þ log2ðFÞ where in this work, E ¼ 2; D ¼ 3 and F ¼ 4; therefore, L ¼ 5. Extending the developed database using other experiments, drones, or flight modes can be easily done by increasing E; Dor F, respectively."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Binary Unique Identifier (BUI) labeling system for RF database entries based on experiment, drone type, and flight mode"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_90283b7f5984f4d4_m1",
+      "evidence": {
+        "section": "2.2. Sensing and capturing RF signals",
+        "original_text": "RF sensing and capturing process required RF receivers, to intercept the drone communication with its flight controller, connected to laptops that are responsible for fetching, processing and storing the recorded RF signals in the database. The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning. First, raw RF samples are acquired using two National Instruments USRP-2943 (NI-USRP) software defined radio reconfigurable devices, shown in Fig. 2: NI USRP-2943R RF receiver. Table 2 lists the NI-USRP RF receivers’ specifications. Since each RF receiver has a maximum instantaneous bandwidth of 40 MHz, both receivers must be operated simultaneously to at least capture a technology spectrum such as WiFi (i.e. 80 MHz) where the first receiver captures the lower half of the frequency band, and the second, records the upper half (see Fig. 4). After that, captured RF data is transferred from the NI-USRP receivers to two standard laptops via Peripheral Component Interconnect Express (PCIe) interface kits. Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data. As demonstrated in Fig. 3a, by using the front panel, one can alter the captured band; lower half or upper half of the RF spectrum, carrier frequency, IQ rate, number of samples per segment, gain, and activate a specific channel of the NI-USRP receiver. In addition, one can select different flight modes and experiments to build a comprehensive database."
+      },
+      "confidence": 0.95,
+      "name": "RF sensing and capturing using NI USRP-2943R",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_90283b7f5984f4d4_m2",
+      "evidence": {
+        "section": "2.2. Sensing and capturing RF signals",
+        "original_text": "Finally, data fetching, processing and storing are performed by programs we designed in LabVIEW Communications System Design Suite. The programs are designed in a standard LabVIEW manner using front panel and block diagram environments. Fig. 3b shows the block diagram that demonstrates all the functions and operations used to fetch process and store the RF data. As demonstrated in Fig. 3a, by using the front panel, one can alter the captured band; lower half or upper half of the RF spectrum, carrier frequency, IQ rate, number of samples per segment, gain, and activate a specific channel of the NI-USRP receiver. In addition, one can select different flight modes and experiments to build a comprehensive database."
+      },
+      "confidence": 0.95,
+      "name": "LabVIEW program for data acquisition",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_90283b7f5984f4d4_m3",
+      "evidence": {
+        "section": "2.5. RF database labeling",
+        "original_text": "The BUI is used to label the RF database entries according to the conducted experiment, drone type, and its specific flight mode, see Fig. 7: Experiments to record drones RF signatures organized in a tree manner consisting of three levels. The horizontal dashed red lines define the levels. BUI is a Binary Unique Identifier for each component to be used in labelling. The BUI is comprised of two binary numbers concatenated such that: BUI ¼ [msBUI, lsBUI], msBUI is the most significant part of the BUI representing the experiment and drone type, levels one and two, while lsBUI is the least significant part of the BUI representing the drone flight mode, third level. The BUI length L is determined using the total number of experiments E, the total number of drones D, and the total number of flight modes F, as follows: L ¼ log2ðEÞ þ log2ðDÞ þ log2ðFÞ where in this work, E ¼ 2; D ¼ 3 and F ¼ 4; therefore, L ¼ 5. Extending the developed database using other experiments, drones, or flight modes can be easily done by increasing E; Dor F, respectively."
+      },
+      "confidence": 0.0,
+      "name": "RF database labeling using Binary Unique Identifier (BUI)",
+      "method_type": "protocol"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_90283b7f5984f4d4_x1",
+      "evidence": {
+        "section": "2.3. Experimental setup",
+        "original_text": "The setup is shown in Fig. 1. To conduct any experiment using this setup, one must perform the following tasks carefully and sequentially. If you are recording RF background activities, perform tasks 4e7: 1. Turn on the drone under analysis and connect to it using a mobile phone or a flight controller. 2. In case the utility of a mobile phone as a controller, start the mobile application to control the drone and to change its flight mode. 3. Check the drone connectivity and operation by performing simple takeoff, hovering, and landing tests. 4. Turn on the RF receivers to intercept all RF activities and to transfer those to the laptops via the PCIe connectors. 5. Open the LabVIEW programs, installed on the laptops, and select appropriate parameters depending on your experiment and requirements. 6. Start the LabVIEW programs to fetch, process and store RF data segments. 7. Stop the LabVIEW programs when you are done with the experiment. 8. For a different flight mode, go back to step 6, and for different drones go back to step 1."
+      },
+      "confidence": 0.95,
+      "task": "RF data collection for drone detection and identification",
+      "setup": "Two NI USRP-2943R RF receivers connected to laptops via PCIe, LabVIEW programs for data acquisition, three drones (Bebop, AR, Phantom) operating in different modes"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_90283b7f5984f4d4_x2",
+      "evidence": {
+        "section": "2.4. Experiments",
+        "original_text": "The RF drone database is populated with the required signatures by conducting experiments organized in a tree manner with three levels as demonstrated in Fig. 7. The first level consists of the following branches to train and assess the drone detection system: - Drones are off; RF background activities are recorded (see Fig. 4a). - Drones are on; drones RF activities are recorded (see Fig. 4b). The second level includes experiments that are conducted on the three drones under analysis: Bebop, AR, and the Phantom drones, to train and assess the drone identification system. Finally, the third level expands its predecessor by explicitly controlling the flight mode of each drone under analysis to assess the identification system ability in determining the flight mode of intruding drones. - On and connected to the controller (Mode 1, see Fig. 5a). - Hovering automatically with no physical intervention nor control commands from the controller. Hovering altitude is determined by the drone manufacturer (approximately 1 m) (Mode 2, see Fig. 5b). - Flying without video recording. Note that the drone must not hit any obstacles in this experiment to avoid warning signals (Mode 3, see Fig. 5c). - Flying with video recording (Mode 4, see Fig. 5d). Note that the drone must not hit any obstacles in this experiment to avoid warning signals. The former experiments are conducted by following the steps summarized in the previous section."
+      },
+      "confidence": 0.95,
+      "task": "Recording RF signatures for different drone flight modes",
+      "setup": "Experiments organized in a three-level tree structure to capture RF activities for drones off, on, and specific flight modes (hovering, flying, video recording)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr1",
+      "evidence": {
+        "section": "Data",
+        "original_text": "The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.99,
+      "quantity": "recorded segments",
+      "value": 227,
+      "unit": null,
+      "context": "DroneRF dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr2",
+      "evidence": {
+        "section": "Data",
+        "original_text": "The records are 10.25 seconds of RF background activities and approximately 5.25 seconds of RF drone communications for each flight mode. This has produced a drone RF database with over 40 GB of data encompassing various RF signatures. There are in total 227 segments (see Table 1), each segment consists of two equally sized parts with each part containing 1 million samples, making in total 454 record files. The samples in the segments represent the amplitude of the acquired row RF signals in the time domain. The segments in the database [2] are stored as comma-separated values (csv) files, this makes the drone RF database easy to load and interpret on any preferred software."
+      },
+      "confidence": 0.99,
+      "quantity": "database size",
+      "value": 40,
+      "unit": "GB",
+      "context": "Drone RF database encompassing various RF signatures",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr3",
+      "evidence": {
+        "section": "Data",
+        "original_text": "The records are 10.25 seconds of RF background activities and approximately 5.25 seconds of RF drone communications for each flight mode. This has produced a drone RF database with over 40 GB of data encompassing various RF signatures. There are in total 227 segments (see Table 1), each segment consists of two equally sized parts with each part containing 1 million samples, making in total 454 record files. The samples in the segments represent the amplitude of the acquired row RF signals in the time domain."
+      },
+      "confidence": 0.99,
+      "quantity": "segment duration",
+      "value": 10.25,
+      "unit": "seconds",
+      "context": "RF background activities",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr4",
+      "evidence": {
+        "section": "Data",
+        "original_text": "The records are 10.25 seconds of RF background activities and approximately 5.25 seconds of RF drone communications for each flight mode. This has produced a drone RF database with over 40 GB of data encompassing various RF signatures. There are in total 227 segments (see Table 1), each segment consists of two equally sized parts with each part containing 1 million samples, making in total 454 record files. The samples in the segments represent the amplitude of the acquired row RF signals in the time domain."
+      },
+      "confidence": 0.99,
+      "quantity": "segment duration",
+      "value": 5.25,
+      "unit": "seconds",
+      "context": "RF drone communications for each flight mode",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr5",
+      "evidence": {
+        "section": "Data",
+        "original_text": "There are in total 227 segments (see Table 1), each segment consists of two equally sized parts with each part containing 1 million samples, making in total 454 record files. The samples in the segments represent the amplitude of the acquired row RF signals in the time domain. The segments in the database [2] are stored as comma-separated values (csv) files, this makes the drone RF database easy to load and interpret on any preferred software. Metadata for each segment in the database is included within its filename."
+      },
+      "confidence": 0.99,
+      "quantity": "samples per part",
+      "value": 1000000,
+      "unit": null,
+      "context": "Each part of a segment in the drone RF database",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr6",
+      "evidence": {
+        "section": "Data",
+        "original_text": "There are in total 227 segments (see Table 1), each segment consists of two equally sized parts with each part containing 1 million samples, making in total 454 record files. The samples in the segments represent the amplitude of the acquired row RF signals in the time domain. The segments in the database [2] are stored as comma-separated values (csv) files, this makes the drone RF database easy to load and interpret on any preferred software."
+      },
+      "confidence": 0.99,
+      "quantity": "total record files",
+      "value": 454,
+      "unit": null,
+      "context": "Drone RF database",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr7",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "Hovering automatically with no physical intervention nor control commands from the controller. Hovering altitude is determined by the drone manufacturer (approximately 1 m) (Mode 2, see Fig. 5b). Flying without video recording. Note that the drone must not hit any obstacles in this experiment to avoid warning signals (Mode 3, see Fig. 5c). Flying with video recording (Mode 4, see Fig. 5d). Note that the drone must not hit any obstacles in this experiment to avoid warning signals. The former experiments are conducted by following the steps summarized in the previous section."
+      },
+      "confidence": 0.95,
+      "quantity": "hovering altitude",
+      "value": 1,
+      "unit": "m",
+      "context": "Hovering altitude determined by the drone manufacturer for hovering flight mode",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_90283b7f5984f4d4_qr8",
+      "evidence": {
+        "section": "RF database labeling",
+        "original_text": "The BUI length L is determined using the total number of experiments E, the total number of drones D, and the total number of flight modes F, as follows: L ¼ log2ðEÞ þ log2ðDÞ þ log2ðFÞ where in this work, E ¼ 2; D ¼ 3 and F ¼ 4; therefore, L ¼ 5. Extending the developed database using other experiments, drones, or flight modes can be easily done by increasing E; Dor F, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "BUI length",
+      "value": 5,
+      "unit": null,
+      "context": "RF database labeling determined by total number of experiments E=2, drones D=3, and flight modes F=4",
+      "result_type": "main_result"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_90283b7f5984f4d4_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article describes the DroneRF dataset: a radio frequency (RF) based dataset of drones functioning in different modes, including off, on and connected, hovering, flying, and video recording. The dataset contains recordings of RF activities, composed of 227 recorded segments collected from 3 different drones, as well as recordings of background RF activities with no drones. The data has been collected by RF receivers that intercepts the drone's communications with the flight control module. The receivers are connected to two laptops, via PCIe cables, that runs a program responsible for fetching, processing and storing the sensed RF data in a database. An example of how this dataset can be interpreted and used can be found in the related research article “RF-based drone detection and identification using deep learning approaches: an initiative towards a large open source drone database” (Al-Sa'd et al., 2019)."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_90283b7f5984f4d4_cl1",
+      "evidence": {
+        "section": "Value of the data",
+        "original_text": "The droneRF dataset can be used to develop new techniques for drones' detection and identification, or as a critical building block in a large-scale anti-drone system that includes other functions such as drones' intrusion detection, tracking, jamming, and activity logging. DroneRF helps in understanding the signatures of different drones operating in different modes (see section 1.6 for details about the drones' flight modes) based on their radio frequency signal characteristics. DroneRF can inspire new methods for detecting the drones' existence, and possibly identifying the drones' make, type, etc."
+      },
+      "confidence": 0.97
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_90283b7f5984f4d4_lm1",
+      "evidence": {
+        "section": "2.2. Sensing and capturing RF signals",
+        "original_text": "The drones that have been used in the experiment operates differently in terms of connectivity, (e.g. Bebop and Phantom use WiFi 2.4 GHz and 5 GHz with different bandwidths). For more details, one can read the full specification in [5e7]. In this work, it is assumed that all drones use WiFi operated at 2.4 GHz. Hence, there are some minimal assumptions. However, the drone operating frequency can be detected using various methods such as passive frequency scanning."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_90283b7f5984f4d4_fw1",
+      "evidence": {
+        "section": "2.5. RF database labeling",
+        "original_text": "Extending the developed database using other experiments, drones, or flight modes can be easily done by increasing E; Dor F, respectively."
+      },
+      "confidence": 0.85
+    }
+  ]
+}

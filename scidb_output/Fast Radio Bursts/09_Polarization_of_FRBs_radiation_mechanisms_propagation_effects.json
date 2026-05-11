@@ -1,0 +1,815 @@
+{
+  "metadata": {
+    "doc_id": "doc_55a7bf5f3ad12520",
+    "source_file": "09_Polarization_of_FRBs_radiation_mechanisms_propagation_effects.md",
+    "title": "Polarization of Fast Radio Bursts: radiation mechanisms and propagation",
+    "year": 2023,
+    "doi": null,
+    "abstract": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants. \n\n**Key words:** polarization – fast radio bursts – radiation mechanisms: non-thermal – plasma",
+    "introduction": "Fast Radio Bursts are bright radio bursts with extremely high brightness temperatures ∼ 10[36] K (Lorimer et al. 2007; Petroff et al. 2016), implying the intrinsic emission mechanisms must be coherent. Coherent emission mechanisms can be generally divided into maser (including both vacuum maser and plasma instabilities or plasma maser) and the antenna mechanisms (Ginzburg et al. 1969). Within the FRB context, both types of models can operate either within or outside the magnetosphere of a the FRB source (e.g. a magnetar, see Lu & Kumar (2018) and Zhang (2022a) for an analysis of various coherent mechanisms). The breakthrough discovery of a bright radio burst (FRB 200428) (Bochenek et al. 2020; CHIME/FRB Collaboration et al. 2020) in association with a hard X-ray burst (Mereghetti et al. 2020; Li et al. 2021a; Ridnaia et al. 2021; Tavani et al. 2021) from the Galactic magnetar SGR 1935+2154 suggests that at least some FRBs are produced by magnetars born from the core collapse of massive stars. However, it is still unknown whether all FRBs, especially the active repeaters from cosmological distances, are powered by magnetars. \n\nPolarization properties carry important information about radiation mechanism and environment properties of FRB sources. Ob- \n\n> _★_ E-mail: yuanhong.qu@unlv.edu \n\n> † E-mail: bing.zhang@unlv.edu \n\nservationally, many non-repeaters and 9 repeaters with polarization properties have been reported, which show diverse polarization patterns. These include ∼ 100% linearly polarized emission in most sources (Petroff et al. 2019) and most bursts for individual repeating sources (Xu et al. 2022; Jiang et al. 2022), both constant (Michilli et al. 2018) and varying (Luo et al. 2020) polarization angles, and both secular (Michilli et al. 2018) and short-term (Xu et al. 2022; Anna-Thomas et al. 2022) variations of the Faraday rotation measure (RM) for repeating sources. \n\nThe dominant feature of FRB emission is its high linear polarization. This can be generally generated in ordered magnetic fields in the emission region. Circular polarization, on the other hand, is usually not straightforwardly expected and it carries useful information about the intrinsic radiation mechanisms and propagation effects. Interestingly, current data show interesting but puzzling features regarding circular polarization, which we summarize below: \n\n• Strong circular polarization has been detected in a good fraction of non-repeating FRBs (Masui et al. 2015; Petroff et al. 2015; Cho et al. 2020; Day et al. 2020). \n\n• It was suspected that circular polarization may be the characteristics of non-repeating FRBs that differentiate them from repeaters (Dai et al. 2021). Indeed early observations of repeating FRBs did not show significant circular polarization. Rather, they are mostly nearly 100% linearly polarized. Some reported repeating FRB sources have \n\n© 2023 The Authors \n\n2 _Y. Qu and B. Zhang_ \n\nnot shown circular polarization yet. These include FRB 20180301A (Price et al. 2019; Luo et al. 2020), FRB 20180916B (Nimmo et al. 2021), FRB 20190417A (Feng et al. 2022b), FRB 20190604A (Feng et al. 2022b), FRB 20190711A (Day et al. 2020; Kumar et al. 2022a), and a few other CHIME repeaters (Fonseca et al. 2020). \n\n• The situation changed after the intense observations of an active repeater FRB 20201124A. The source was detected to enter a period of increased activity in March 2021 by CHIME (Chime/Frb Collabortion 2021) and has been extensively studied by FAST (Xu et al. 2022; Zhou et al. 2022; Zhang et al. 2022; Jiang et al. 2022; Niu et al. 2022a) and other telescopes. Kumar et al. (2022a) reported a burst with significant circular polarized emission with circular polarization degree of Π _𝑉_ ∼ 47% using the Ultra-wideband Low receiver at the Parkes radio telescope. Later, FAST detected many more cases of circularly polarized bursts. In an active episode 2021 April 1 to June 11, Xu et al. (2022) detected 1863 polarized bursts from FRB 20201124A in 54 days. In particular, some bursts (e.g. Bursts 779 and 926) show clear oscillating features as a function of wavelength, in linear and circular polarization degrees as well as the total intensity, showing evidence of possible Faraday conversion and/or synchrotron absorption (Xu et al. 2022). Later, in another 4- day active episode, more than 90% bursts were detected with a total degree of polarization greater than 90% (Jiang et al. 2022). Some bursts have Π _𝑉 >_ 50% and even reaching Π _𝑉_ = 75%. Interestingly, those bursts with high Π _𝑉_ values usually have reduced Π _𝐿_ so that the total polarization degree remains close to ∼ 100% (Jiang et al. 2022). \n\n• A further scrutiny of archival data revealed circular polarization in two more active repeaters (Feng et al. 2022a). The first case is FRB 20121102A, the first repeater discovered by Arecibo Telescope (Spitler et al. 2014, 2016). Most of its bursts are ∼ 100% linearly polarized as measured in the C-band with a very large RM in the source frame (Michilli et al. 2018). However, the linear polarization degree decreases in the L-band and is not detectable with the Fivehundred-meter Aperture Spherical radio Telescope (FAST) (Li et al. 2021b). This was interpreted as the large RM scatter due to the multipath effect (Feng et al. 2022b; Yang et al. 2022a). Recently, circular polarization was detected in a dozen of bursts out of nearly 2000 bursts (Feng et al. 2022a). \n\n• Another case is FRB 20190520B, a FAST-discovered repeater as a close analogy of FRB 20121102A (Niu et al. 2022b). Most bursts are linear polarized, but a few bursts with circular polarization (as high as Π _𝑉_ ∼ 42%) have been detected (Anna-Thomas et al. 2022; Feng et al. 2022a). \n\nIn general, linear and circular polarization can be generated both intrinsically via direct radiation mechanisms or extrinsically via propagation effects. These can happen both inside and outside the magnetospheres of the FRB sources (likely magnetars). The relevant processes that are discussed in this paper are summarized in Figure 1. \n\nFor intrinsic radiation mechanism models, one can generally classify them to two classes based on the location of the coherent emission (Zhang 2020): pulsar-like models that invoke emission processes inside or slightly outside the magnetospheres (e.g. Kumar et al. 2017; Yang & Zhang 2018, 2021; Wadiasingh & Timokhin 2019; Kumar & Bošnjak 2020; Lu et al. 2020; Zhang 2022b; Qu et al. 2023) and GRBlike models that invoke emission processes in relativistic shocks far from the magnetospheres (e.g. Lyubarsky 2014; Beloborodov 2017, 2020; Plotnikov & Sironi 2019; Metzger et al. 2019; Margalit et al. 2020). The direct radiation mechanisms that may generate circular polarization include the three mechanisms as listed below. \n\n\n**Figure 1.** The physical processes to generate linear and circular polarization discussed in this paper. Two emission sites (inside and outside the magnetospheres) are considered. For each case, both intrinsic radiation mechanisms and propagation effects are discussed. \n\n• Curvature radiation: bunched net charges moving in curved magnetic field lines have been discussed by many authors as the radiation mechanism for FRBs, with the requirement that a parallel electric field exists in the emission region to continuously supply energy to the emitting bunches (e.g. Katz 2014; Kumar et al. 2017; Yang & Zhang 2018; Lu et al. 2020; Cooper & Wĳers 2021; Wang et al. 2022d,c; Qu et al. 2023). It has been known that linear polarization exists for an on-axis observation and circular polarization can be generated with this mechanism if the line of sight is off the emission beam (Wang et al. 2022b; Tong & Wang 2022; Wang et al. 2022c).This mechanism will be further analyzed in this paper with a physical understanding (Sect. 3.1.1). \n\n• Inverse Compton scattering: For magnetar central engine models invoking crust cracking that sends Alfvén waves to the magnetosphere, the same oscillations would also emit low-frequency electromagnetic waves. As a result, bunched charges in charge starvation regions can also emit FRB emission via inverse Compton scattering (ICS) off the low-frequency waves (Zhang 2022b; Qu et al. 2023). The polarization properties of such a process have been studied within the context of radio pulsars (Qiao & Lin 1998; Xu et al. 2000). We will provide a fresh analysis of this problem and show that high circular polarization could be produced at an off-axis geometry in this paper (Sect 3.1.2). \n\n• Synchrotron radiation: For models invoking relativistic shocks, synchrotron maser mechanism in an ordered magnetic field has been widely discussed as a mechanism to produce FRBs (Lyubarsky 2014; Metzger et al. 2019; Beloborodov 2020; Plotnikov & Sironi 2019). The polarization properties of this mechanism have not been well studied in the literature, which will be analyzed in detail (Sec. 4.1). \n\nVarious propagation effects of producing circular polarization for radio pulsars have been discussed in the literature. Here we summarize some relevant physical processes below, which will be investigated in detail within the context of FRBs in the paper: \n\n• Cyclotron absorption: In the outer part of the pulsar magnetosphere, radio waves may undergo cyclotron absorption at cyclotron resonance under special conditions that invoke extremely asymmetric electron-positron plasmas (Luo & Melrose 2001; Petrova 2006; Wang et al. 2010). This may generate circular polarization for pulsar radio emission. The importance of this process for FRBs is investigated in Sect. 3.2. \n\n• Generalized Faraday rotation (also called Faraday conversion): This effect can convert linearly polarized waves to partially circularly polarized waves under certain conditions (Melrose 2010; Vedantham \n\nMNRAS **000** , 1–30 (2023) \n\n_FRB Polarization_ 3 \n\n\n**Figure 2.** A cartoon picture of various physical processes discussed in this paper, which include radiation mechanisms (curvature radiation and ICS inside the magnetosphere and synchrotron radiation in relativistic, magnetized shocks outside the magnetosphere) and propagation effects (cyclotron/synchrotron absorption inside the magnetosphere and Faraday conversion / synchorotron absorption outside the magnetosphere). The orange circular cones and the orange wiggler denote FRB emission. Dashed orange lines are the directions of line of sight. The purple wiggler demotes lowfrequency waves generated from magnetar surface, which are upscattered to produce FRB waves in the ICS model. The dark, purple wiggler denotes cyclotron motion of particles that potentially absorb the FRB waves. \n\n& Ravi 2019; Gruzinov & Levin 2019). The incident waves can be decomposed into the R-mode and L-mode in the quasi-parallel regime ( _𝑘_[�] ∥ _𝐵_[�] ), or into the X-mode and O-mode in the quasi-perpendicular regime[1] ( _𝑘_[�] ⊥ _𝐵_[�] ). For each case, the dispersion relations of the two eigen-modes are differentsothat theypropagatewith different speeds. For the quasi-parallel regime case, different propagating speeds of the R-mode and L-mode would lead to rotation of the linear polarization angle with frequency, the so-called Faraday rotation, but the waves remain linearly polarized. For the quasi-perpendicular case (which may invoke a field line reversal), on the other hand, the phase difference between the X-mode and O-mode would make the superposed waves elliptically polarized, or linear polarization is partially converted to circular polarization. This is Faraday conversion. We investigate this process in detail in this paper under three possible scenarios (Sect 4.2.3). \n\n• Selected synchrotron absorption: If the FRB source is surrounded by a synchrotron-radiating nebula, FRB waves may undergo synchrotron absorption. If the synchrotron nebula carries an ordered magnetic field, it is possible that the synchrotron absorption optical depth for two different polarization modes differ. If one mode has _𝜏_ ≫ 1 while the other mode has _𝜏_ ≪ 1, FRB wave modes can be selectively absorbed. This would change the final superposed polarization status (e.g. enhancing the relative linear polarization degree for an elliptically polarized wave), causing apparent Faraday conversion. This is studied in Sect. 4.2.1. \n\n> 1 In the literature (Booker 1935; Melrose & McPhedran 1991; Wang et al. 2010), this is also called as quasi-tangential (QT). \n\nIn this paper, we generally discuss a variety of intrinsic radiation mechanisms and propagation effects of FRBs inside and outside magnetospheres, aiming to offer explanations to the polarization properties (especially circular polarization) of some FRBs. Figure 2 is a cartoon picture for all the physical processes discussed in this paper. Our general guide line is to adequately investigate possible intrinsic radiation mechanisms and propagation effects within the FRB problem and judge whether each of them could contribute to the generation of circular polarization in FRBs. This paper is organized as follows. In section 2, we introduce the basic polarization theory for a radiation field and the dispersion relations of FRBs in a cold plasma. In section 3, we discuss the possible linear/circular polarization processes within a magnetar magnetophere, including coherent curvature and ICS radiation by charged bunches and cyclotron resonance absorption. In section 4, we discuss possible linear/circular polarization processes outside a magnetar magnetophere, including synchrotron maser radiation, Faraday conversion, and selected synchrotron absorption. The main conclusions and discussions are summarized in section 5. Throughout the paper, the convention _𝑄_ = 10 _[𝑛] 𝑄𝑛_ in cgs units is adopted.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "fast radio bursts",
+      "polarization",
+      "radiation mechanisms",
+      "magnetosphere",
+      "coherent emission"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:55:31.545010+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.99,
+      "term": "Fast Radio Bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.98,
+      "term": "polarization",
+      "normalized": "偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.97,
+      "term": "magnetar",
+      "normalized": "磁星",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.96,
+      "term": "coherent curvature radiation",
+      "normalized": "相干曲率辐射",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.96,
+      "term": "inverse Compton scattering",
+      "normalized": "逆康普顿散射",
+      "std_label": "ICS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "term": "charged bunches",
+      "normalized": "带电团",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "term": "synchrotron maser emission",
+      "normalized": "同步辐射微波激射",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "term": "Faraday conversion",
+      "normalized": "法拉第转换",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "term": "cyclotron absorption",
+      "normalized": "回旋吸收",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_55a7bf5f3ad12520_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "term": "synchrotron absorption",
+      "normalized": "同步吸收",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.98,
+      "head": "doc_55a7bf5f3ad12520_c1",
+      "relation_type": "measures",
+      "relation_surface": "observed to be highly polarized",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.96,
+      "head": "doc_55a7bf5f3ad12520_c4",
+      "relation_type": "produces",
+      "relation_surface": "produce 100% linear polarization",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.96,
+      "head": "doc_55a7bf5f3ad12520_c5",
+      "relation_type": "produces",
+      "relation_surface": "produce 100% linear polarization",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "head": "doc_55a7bf5f3ad12520_c6",
+      "relation_type": "uses",
+      "relation_surface": "by charged bunches",
+      "tail": "doc_55a7bf5f3ad12520_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "head": "doc_55a7bf5f3ad12520_c6",
+      "relation_type": "uses",
+      "relation_surface": "by charged bunches",
+      "tail": "doc_55a7bf5f3ad12520_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "head": "doc_55a7bf5f3ad12520_c9",
+      "relation_type": "enhances",
+      "relation_surface": "may produce high circular polarization",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "head": "doc_55a7bf5f3ad12520_c10",
+      "relation_type": "inhibits",
+      "relation_surface": "may reduce the circular polarization degree",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "head": "doc_55a7bf5f3ad12520_c8",
+      "relation_type": "enhances",
+      "relation_surface": "can convert one polarization mode to another",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_55a7bf5f3ad12520_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.95,
+      "head": "doc_55a7bf5f3ad12520_c7",
+      "relation_type": "produces",
+      "relation_surface": "produces highly linearly polarized emission",
+      "tail": "doc_55a7bf5f3ad12520_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d1",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Observationally, many non-repeaters and 9 repeaters with polarization properties have been reported, which show diverse polarization patterns. These include ∼ 100% linearly polarized emission in most sources (Petroff et al. 2019) and most bursts for individual repeating sources (Xu et al. 2022; Jiang et al. 2022), both constant (Michilli et al. 2018) and varying (Luo et al. 2020) polarization angles, and both secular (Michilli et al. 2018) and short-term (Xu et al. 2022; Anna-Thomas et al. 2022) variations of the Faraday rotation measure (RM) for repeating sources. The dominant feature of FRB emission is its high linear polarization. This can be generally generated in ordered magnetic fields in the emission region. Circular polarization, on the other hand, is usually not straightforwardly expected and it carries useful information about the intrinsic radiation mechanisms and propagation effects. Interestingly, current data show interesting but puzzling features regarding circular polarization, which we summarize below: • Strong circular polarization has been detected in a good fraction of non-repeating FRBs (Masui et al. 2015; Petroff et al. 2015; Cho et al. 2020; Day et al. 2020). • It was suspected that circular polarization may be the characteristics of non-repeating FRBs that differentiate them from repeaters (Dai et al. 2021). Indeed early observations of repeating FRBs did not show significant circular polarization. Rather, they are mostly nearly 100% linearly polarized. Some reported repeating FRB sources have not shown circular polarization yet. These include FRB 20180301A (Price et al. 2019; Luo et al. 2020), FRB 20180916B (Nimmo et al. 2021), FRB 20190417A (Feng et al. 2022b), FRB 20190604A (Feng et al. 2022b), FRB 20190711A (Day et al. 2020; Kumar et al. 2022a), and a few other CHIME repeaters (Fonseca et al. 2020). • The situation changed after the intense observations of an active repeater FRB 20201124A. The source was detected to enter a period of increased activity in March 2021 by CHIME (Chime/Frb Collabortion 2021) and has been extensively studied by FAST (Xu et al. 2022; Zhou et al. 2022; Zhang et al. 2022; Jiang et al. 2022; Niu et al. 2022a) and other telescopes. Kumar et al. (2022a) reported a burst with significant circular polarized emission with circular polarization degree of Π 𝑉 ∼ 47% using the Ultra-wideband Low receiver at the Parkes radio telescope. Later, FAST detected many more cases of circularly polarized bursts. In an active episode 2021 April 1 to June 11, Xu et al. (2022) detected 1863 polarized bursts from FRB 20201124A in 54 days. In particular, some bursts (e.g. Bursts 779 and 926) show clear oscillating features as a function of wavelength, in linear and circular polarization degrees as well as the total intensity, showing evidence of possible Faraday conversion and/or synchrotron absorption (Xu et al. 2022). Later, in another 4- day active episode, more than 90% bursts were detected with a total degree of polarization greater than 90% (Jiang et al. 2022). Some bursts have Π 𝑉 > 50% and even reaching Π 𝑉 = 75%. Interestingly, those bursts with high Π 𝑉 values usually have reduced Π 𝐿 so that the total polarization degree remains close to ∼ 100% (Jiang et al. 2022). • A further scrutiny of archival data revealed circular polarization in two more active repeaters (Feng et al. 2022a). The first case is FRB 20121102A, the first repeater discovered by Arecibo Telescope (Spitler et al. 2014, 2016). Most of its bursts are ∼ 100% linearly polarized as measured in the C-band with a very large RM in the source frame (Michilli et al. 2018). However, the linear polarization degree decreases in the L-band and is not detectable with the Fivehundred-meter Aperture Spherical radio Telescope (FAST) (Li et al. 2021b). This was interpreted as the large RM scatter due to the multipath effect (Feng et al. 2022b; Yang et al. 2022a). Recently, circular polarization was detected in a dozen of bursts out of nearly 2000 bursts (Feng et al. 2022a). • Another case is FRB 20190520B, a FAST-discovered repeater as a close analogy of FRB 20121102A (Niu et al. 2022b). Most bursts are linear polarized, but a few bursts with circular polarization (as high as Π 𝑉 ∼ 42%) have been detected (Anna-Thomas et al. 2022; Feng et al. 2022a)."
+      },
+      "confidence": 0.95,
+      "name": "FRB polarization observations",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d2",
+      "evidence": {
+        "section": "INSIDE MAGNETOSPHERES",
+        "original_text": "We numerically integrate the two components of the electric field amplitudes and insert them into Eq. (1) to obtain the evolution of the Stokes parameters. The linear and circular polarization degrees (Π 𝐿 and Π 𝑉 ) as well as the 𝐼 , 𝐿 and 𝑉 parameters as a function of viewing angle are presented in the right panel of Fig. 3. One can see Π − 𝐿 is 100% at 𝜃 𝑣 = 0, i.e. 𝐴 ⊥ ( 𝜔 ) = 0. As 𝜃 𝑣 increases, circular polarization starts to appear. The 𝑉 parameter reaches the peak at 𝜃 𝑣 ∼ 0 .0026 and Π 𝑉 reaches the peak at 𝜃 𝑣 ∼ 0 .006 and stays high at 𝜃 𝑣 > 1/𝛾 where the emission flux is much degraded. Since within the 1/𝛾 cone the emission power is comparable, the probability of detecting high circular polarization for point-like bunches is quite high. Observationally, since circular polarization only appears in a small fraction of bursts, one needs to invoke more complicated geometry, e.g. the emission beam solid angle is much larger than 1/𝛾 , to account for observations. In such a geometry, within the broader emission beam there are always on-beam bunches that produce ∼ 100% linear polarization (Wang et al. 2022c)."
+      },
+      "confidence": 0.9,
+      "name": "Simulated polarization fractions for curvature radiation",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d3",
+      "evidence": {
+        "section": "INSIDE MAGNETOSPHERES",
+        "original_text": "We numerically integrate the scattered electric fields and calculate the degree of linear and circular polarization presented in Fig. 5 and 6. For the on-axis case, i.e. 𝜃 𝑣 = 0, the ICS radiation is always 100% linearly polarized[7] (Π 𝐿 = 100%) and no circular polarized waves (Π 𝑉 = 0) are produced (see Eq.(1) and Eq.(16) for definitions). We present the numerical results of circular and linear polarization degree as a function of 𝜙𝑣 for different incident angles in Figs. 5 and 6 for 𝜃𝑖 = 10◦ and 30◦ , respectively. Red line and orange line denote the degree of linear and circular polarization, respectively. When 𝜃 𝑣 ≠ 0, one can see circular polarization shows up. the larger the 𝜃 𝑣 , the larger the circular polarization degree at a specific 𝜙𝑣 . When 𝜃𝑖 = 10◦ , the circular polarization degree could reach ∼ 30◦ for 𝜃 𝑣 = 0 .003 rad (on-beam case), and ∼ 60% for 𝜃 𝑣 = 0 .01 rad exactly at the cone edge, and ∼ 90% for 𝜃 𝑣 = 0 .02 rad outside the cone. When 𝜃𝑖 = 30◦ , the circular polarization degree could reach ∼ 60% for 𝜃 𝑣 = 0 .01 rad exactly at the cone edge. One can also see that the polarization profile has a rotational symmetry with respect to 𝜙𝑣 = 𝜋 since the incident wave is in the 𝑥 − 𝑧 plane. Similar to curvature radiation for a bunch of opening angle of 1/𝛾 , the ICS bunch can also produce circular polarization in a wide solid angle of viewing angle. In order to accommodate the data that show a small fraction of circular polarization, one also needs to introduce a bunch with a much wider cross section so that within a large solid angle within the bunch cone, one can roughly have a symmetric scattering geometry so that the upscattered photons mostly carry linear polarization."
+      },
+      "confidence": 0.9,
+      "name": "Simulated polarization degrees for ICS radiation",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d4",
+      "evidence": {
+        "section": "INSIDE MAGNETOSPHERES",
+        "original_text": "We present the numerical results of the circular polarization degree as a function of 𝛾 + and 𝛾 − in Fig.8. One can see that when 𝛾 − = 𝛾 +, there is no circular polarization since the R-mode and L-mode of incident waves undergo the same absorption so that 𝜏 − = 𝜏 +. When 𝛾 − ≠ 𝛾 +, net circular polarization can be generated through different cyclotron resonance absorption degrees for R-mode and L-mode. One can see that at higher Lorentz factors, a small relative Lorentz factor difference would generate a large circular polarization degree. The reason is that a higher Lorentz factor corresponds to a smaller resonance radius, where the pair plasma number densities are higher."
+      },
+      "confidence": 0.9,
+      "name": "Simulated circular polarization degree via cyclotron resonance absorption",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d5",
+      "evidence": {
+        "section": "OUTSIDE MAGNETOSPHERE",
+        "original_text": "We present the degree of linear and circular polarization of synchrotron-maser FRB emission as a function of viewing angle 𝜗 in the lab frame in the left panel of Fig.10. The electron Lorentz factor in the co-moving frame is adopted as 𝛾 = 10 and the bulk Lorentz factor is Γ = 100. In order to produce the typical 1-GHz radio waves, the frequency in the co-moving frame of the bulk motion can be calculated as 𝜈 = 𝜈𝐵 ≃ 𝜈 frb/Γ ∼(107 Hz) 𝜈 frb ,9Γ2 for 𝜃 𝑣 < 𝜃 𝑗 case and 𝜈 = 𝜈𝐵 = 𝜈 frb/D fir 𝜃 𝑣 > 𝜃 𝑗 case. One can see that within the bulk angle 𝜃 𝑗 , the radiation is completely linearly polarized since the LOS can always intersect with the trajectory of “on-axis” electrons. When 𝜃 𝑣 > 𝜃 𝑗 , one can start to observe circular polarization, with the maximum achievable circular polarization degree Π 𝑉 ∼ 50%. However, the observed isotropic out side the jet cone decreases rapidly with 𝜃 when 𝜃 𝑣 > 𝜃 𝑗 as 𝐿 = D2 𝐿′ , where the Doppler factor D is defined as D = 1/Γ(1 − 𝛽 cos 𝜗 ). We present the value of Don/off2 𝐹 ( 𝑥 ) as a function of 𝜃 in the right panel of Fig.10, where 𝐹 ( 𝑥 ) is the single electron’s synchrotron spectrum function defined as 𝐹 ( 𝑥 ) = 𝑥 ∫ ∞ 𝑥 𝐾5/3( 𝜉 ) 𝑑𝜉 , where 𝑥 = 𝜈 frb/ 𝜈𝐵 is the ratio between the emission frequency and the characteristic frequency. The vertical blue dashed line is the jet angle which is adopted as 𝜃 𝑗 = 0 .1. One can see the isotropic luminosity (D2 𝐹 ( 𝑥 ) as a proxy) remains constant when 𝜃 𝑣 < 𝜃 𝑗 but decreases rapidly when 𝜃 𝑣 > 𝜃 𝑗 . This suggests that the off-axis emission from a synchrotron maser shock is likely barely observable unless the line of sight is slightly outside 𝜃 𝑗 . In this case, one cannot see high circular polarization. The observed high circular polarization (up to 75% for FRB 20201124A, Xu et al. (2022)) therefore disfavors the synchrotron maser as the FRB emission mechanism at least for some bursts."
+      },
+      "confidence": 0.9,
+      "name": "Simulated polarization degrees for synchrotron maser emission",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d6",
+      "evidence": {
+        "section": "OUTSIDE MAGNETOSPHERE",
+        "original_text": "With the parameters to account for the PRS of FRB 121102, we present the numerical results of linear and circular polarization degree after synchrotron absorption as a function of 𝜙2 ( 𝜙1 is set to 0) in Fig.12 for the two cases. We also present the four absorption coefficients and four Stokes parameters as a function of 𝜙2. We have assumed that the two modes of the incident wave have the same wave amplitude[12] . Case (i) is on the upper panel and Case (ii) is on the lower panel. Dashed lines denote the original linear and circular polarization degrees, respectively. Red and orange lines denote the linear and circular polarization degrees after passing through the absorption region, respectively. Since we assumed 𝜙1 = 0, one can see when 𝜙2 = 0 , 𝜋 or 2 𝜋 , the escaped wave has the same polarization degree as the incident wave, i.e. completely linearly polarized. One can see that for the adopted parameters the synchrotron absorption effect is insignificant to absorb the two modes of the incident wave. The linear and circular polarization degree profiles are nearly the same as those of the original incident wave."
+      },
+      "confidence": 0.9,
+      "name": "Simulated polarization degrees after synchrotron absorption",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_55a7bf5f3ad12520_d7",
+      "evidence": {
+        "section": "OUTSIDE MAGNETOSPHERE",
+        "original_text": "In the three scenarios, we solve the differential equations (81)-(83) and present the circular and linear polarization degrees as a function of 𝜆2 in the bottom panels in Fig.15, with the same field reversal scenarios presented in the columns. One can see that the field reversal for the Be-star case is the most possible scenario for Faraday conversion, and black hole scenario has the weakest Faraday conversion effect. For the supernova remnant case, the Faraday conversion effect could exist and be significant for the case of a large electron number density environment. It should be pointed out that Faraday conversion cannot change the total polarization degree, i.e. Π 𝑃 = √ Π2 𝑉 + Π2 𝐿 remains unchanged all the time."
+      },
+      "confidence": 0.9,
+      "name": "Simulated polarization degrees for Faraday conversion scenarios",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_55a7bf5f3ad12520_ds1",
+      "evidence": {
+        "section": "POLARIZATION OF A RADIATION FIELD AND RADIATION TRANSFER OF POLARIZED EMISSION",
+        "original_text": "The polarization properties of a quasi-monochromatic electromagnetic wave can be described by four Stokes parameters (Rybicki & Lightman 1979) 𝐼 = 𝐸𝑥 𝐸𝑥∗ + 𝐸𝑦 𝐸𝑦∗ , 𝑄 = 𝐸𝑥 𝐸𝑥∗ − 𝐸𝑦 𝐸𝑦∗ , 𝑈 = 2Re( 𝐸𝑥 𝐸𝑦∗ ), 𝑉 = 2Im( 𝐸𝑥 𝐸𝑦∗ ), where 𝐸 𝑥 and 𝐸𝑦 are the electric vector amplitudes of two linearly polarized wave eigen-modes perpendicular to the line of sight (LOS), the superscript “∗” denotes the conjugation of 𝐸 𝑥 / 𝑦 , 𝐼 = | 𝐸 |2 defines the total intensity, 𝑄 and 𝑈 define linear polarization and its position angle, and 𝑉 describes circular polarization. The linear, circular, and the overall degree of polarization are described by Π 𝐿 = ( 𝑄2 + 𝑈2 )1/2 / 𝐼 , Π 𝑉 = 𝑉 / 𝐼 and Π 𝑃 = ( 𝑄2 + 𝑈2 + 𝑉2 )1/2 / 𝐼 , respectively, all of which are ≤ 1. The Faraday rotation angle is defined as Φ = tan−1 ( 𝑈 / 𝑄 )."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Stokes parameters definition for polarization analysis"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_55a7bf5f3ad12520_ds2",
+      "evidence": {
+        "section": "POLARIZATION OF A RADIATION FIELD AND RADIATION TRANSFER OF POLARIZED EMISSION",
+        "original_text": "One can define a four vector using the Stokes parameters, which can undergo generalized Faraday rotation and absorption. The generalized Faraday rotation can be described as a 4 × 4 matrix (Melrose & McPhedran 1991) 𝑑 𝑑𝑠 ( 𝐼 𝑄 𝑈 𝑉 ) = ( 0 𝜌𝑉 0 0 − 𝜌𝑉 0 𝜌𝑄 𝜌𝑈 0 − 𝜌𝑄 0 𝜌𝑉 0 − 𝜌𝑈 − 𝜌𝑉 0 ) ( 𝐼 𝑄 𝑈 𝑉 ), where 𝜌𝑉 is Faraday rotation coefficient, and 𝜌𝑄 and 𝜌𝑈 are Faraday conversion coefficients. One can also write an absorption matrix (Melrose & McPhedran 1991) 𝑑 𝑑𝑠 ( 𝐼 𝑄 𝑈 𝑉 ) = − ( 𝜂 𝜂𝑄 𝜂𝑈 𝜂𝑉 𝜂𝑄 𝜂 𝜂𝑉 𝜂𝑈 𝜂𝑈 𝜂𝑉 𝜂 𝜂𝑄 𝜂𝑉 𝜂𝑈 𝜂𝑄 𝜂 ) ( 𝐼 𝑄 𝑈 𝑉 ), where 𝜂 , 𝜂𝑄 , 𝜂𝑈 and 𝜂𝑉 are the absorption coefficients for 𝐼 , 𝑄 , 𝑈 and 𝑉 , respectively. Therefore, the general radiation transfer equation can be written as[2] (Sazonov 1969) 𝑑 𝑑𝑠 ( 𝐼 𝑄 𝑈 𝑉 ) = ( 𝜖𝐼 𝜖𝑄 𝜖𝑈 𝜖𝑉 ) − ( 𝜂 𝜂𝑄 𝜂𝑈 𝜂𝑉 𝜂𝑄 𝜂 𝜂𝑉 𝜂𝑈 𝜂𝑈 𝜂𝑉 𝜂 𝜂𝑄 𝜂𝑉 𝜂𝑈 𝜂𝑄 𝜂 ) ( 𝐼 𝑄 𝑈 𝑉 ) + ( 0 𝜌𝑉 0 0 − 𝜌𝑉 0 𝜌𝑄 𝜌𝑈 0 − 𝜌𝑄 0 𝜌𝑉 0 − 𝜌𝑈 − 𝜌𝑉 0 ) ( 𝐼 𝑄 𝑈 𝑉 ), where 𝜖𝐼 , 𝜖𝑄 , 𝜖𝑈 and 𝜖𝑉 are the spontaneous emission coefficients. Without loss of generality, one can define a coordinate system to make 𝜂𝑈 = 0, so that 𝜂 , 𝜂𝑄 and 𝜂𝑉 can be considered as isotropic, linear and circular absorption coefficients, respectively[3] . Note that the 𝜂 values are defined as positive for absorption. Under special conditions, they can be negative, which denote the inverse emission process. For such a case, the waves would undergo maser amplifications[4] ."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "General radiation transfer equation for polarized emission"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_55a7bf5f3ad12520_ds3",
+      "evidence": {
+        "section": "POLARIZATION OF A RADIATION FIELD AND RADIATION TRANSFER OF POLARIZED EMISSION",
+        "original_text": "We consider the background magnetic field 𝐵 is along the 𝑧 -axis and the plasma is cold, non-relativistic, and uniformly distributed in space. We describe the plasma dispersion relations in the linear regime below. • For the cold electron-ion plasma case: In general, the refractive index of a wave propagating through a cold electron-ion plasma can be written as (Stix 1992) 𝑛2 = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 ± √ Δ , where 𝜔 𝑝 = √ 4 𝜋𝑞2 𝑛 / 𝑚𝑒 is the plasma frequency, 𝜃 is the angle between the wave vector and the background magnetic field direction, 𝑛 is the lepton number density, Δ = [Ω2 𝑒 sin4 𝜃 + 4( 𝜔2 − 𝜔2 𝑝 )2 cos2 𝜃 / 𝜔2 ]1/2 and Ω 𝑒 = − 𝑒𝐵 /( 𝑚𝑒𝑐 ) = − 𝜔𝐵 is the electron cyclotron frequency (which is the Larmor frequency 𝜔𝐵 with a negative sign). The conditions of quasi-perpendicular and quasi-parallel regimes can be written as 𝜔2 𝐵 sin4 𝜃 ≫ 4( 𝜔2 − 𝜔2 𝑝 )2 cos2 𝜃 / 𝜔2 and 𝜔2 𝐵 sin4 𝜃 ≪ 4( 𝜔2 − 𝜔2 𝑝 )2 cos2 𝜃 / 𝜔2 , respectively. Under the quasi-perpendicular condition, the dispersion relations of the X-mode and O-mode can be expressed as (see the Appendix A for a derivation) 𝑛2 X = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 + √ Δ ≃ 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 , 𝑛2 O = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 − √ Δ ≃ 1 − 𝜔2 𝑝 𝜔2 , where we have applied 𝜃 = 𝜋 /2 in the last step to denote the case when the wave vector is perpendicular to background magnetic field. Under the quasi-parallel condition, on the other hand, the dispersion relations can be written as 𝑛2 R = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 + √ Δ ≃ 1 − 𝜔2 𝑝 𝜔 ( 𝜔 − 𝜔𝐵 ), 𝑛2 L = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 − √ Δ ≃ 1 − 𝜔2 𝑝 𝜔 ( 𝜔 + 𝜔𝐵 ), where the approximation 𝜃 → 0 is applied in the last step to denote the case when the wave vector is parallel to background magnetic field."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Dispersion relations for cold electron-ion plasma"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_55a7bf5f3ad12520_ds4",
+      "evidence": {
+        "section": "POLARIZATION OF A RADIATION FIELD AND RADIATION TRANSFER OF POLARIZED EMISSION",
+        "original_text": "• For the cold pair (electron-positron) plasma case: The dispersion relations in the quasi-perpendicular case can be written as (see Appendix A for a derivation) 𝑛2 X = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 + √ Δ ≃ 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 , 𝑛2 O = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 − √ Δ ≃ 1 − 𝜔2 𝑝 𝜔2 , where we apply 𝜃 = 𝜋 /2 in the last step. For the quasi-parallel case, the dispersion relations can be written as 𝑛2 R = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 + √ Δ ≃ 1 − 𝜔2 𝑝 𝜔2 , 𝑛2 L = 1 − 𝜔2 𝑝 𝜔2 − 𝜔2 𝑝 𝜔2 𝐵 sin2 𝜃 − √ Δ ≃ 1 − 𝜔2 𝑝 𝜔2 , where we apply 𝜃 = 0 in the last step."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Dispersion relations for cold pair plasma"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_55a7bf5f3ad12520_ds5",
+      "evidence": {
+        "section": "OUTSIDE MAGNETOSPHERE",
+        "original_text": "For the convenience of later discussion, we first list the characteristic frequencies in both a magnetar wind and an ambient interstellar medium (ISM). In the magnetar wind region out side the light cylinder, the characteristic value of plasma frequency can be calculated as 𝜔 𝑝 = √ 4 𝜋𝑒2 𝑛𝑒 𝑚𝑒 ≃ √ 4 𝜋𝑒2 𝜉 𝑁 GJ 𝑚𝑒 4 𝜋𝑟2 𝑣 ≃ (1 .1 × 108 rad s−1 ) 𝜉1/2 𝐵★ ,15 𝑃−1/2 𝑟−1 12 , where 𝑁 GJ = 2 𝑐𝐴 cap 𝑛 pole is the Goldreich-Julian particle ejection rate from the polar cap, 𝐴 cap ≃ 𝜋𝑅★3 / 𝑅 LC is the area of the polar cap and 𝑛 pole = 𝐵★ /( 𝑃𝑒𝑐 ) is the Goldreich-Julian density at the magnetar surface, 𝐵★ is the surface magnetic field strength of the magnetar at the pole, and 𝜉 is pair multiplicity. The Larmor frequency can be calculated as 𝜔𝐵 = 𝑒𝐵 𝑚𝑒𝑐 ≃ 𝑒𝐵★ 𝑚𝑒𝑐 ( 𝑟 𝑅 LC )−1 ≃ (1 .8 × 107 rad s−1 ) 𝐵★ ,15 𝑃 𝑟−1 12 . The ratio between the plasma frequency and the Larmor (cyclotron) frequency in the magnetar wind region can be estimated as 𝜔 𝑝 𝜔𝐵 ≃ 6 .1 𝜉1/2 𝑃−1/2 , which is independent of distance 𝑟 . In the ISM region, the typical magnetic field strength is 𝐵 ∼ 10−6 G and electron number density is 𝑛𝑒 ∼ 1 cm−3 . We then have the plasma frequency 𝜔 𝑝 = √ 4 𝜋𝑒2 𝑛𝑒 𝑚𝑒 ≃ (5 .6 × 104 rad s−1 ) 𝑛1/2 0 , and the Larmor frequency 𝜔𝐵 = 𝑒𝐵 𝑚𝑒𝑐 ≃ (1 .8 × 104 rad s−1 ) 𝐵−6 ."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Characteristic frequencies in magnetar wind and ISM"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_55a7bf5f3ad12520_m1",
+      "evidence": {
+        "section": "3.1.1",
+        "original_text": "A commonly discussed FRB emission mechanism inside a magnetar magnetosphere is coherent curvature radiation by bunches. Within this model, relativistic bunch of particles, typically at a radius of 10s to 100s times of neutron star radius, is believed to radiate coherently to power the bright FRB emission. To sustain high emission power, the bunches need to be continuously accelerated by an electric field (E∥) parallel to the local magnetic field, possibly produced when crust-oscillation-driven Alf´ven waves propagate to the charge starvation region (Lu et al. 2020; Kumar & Bošnjak 2020; Kumar et al. 2022b). Yang & Zhang (2018) have calculated the spectrum of coherent curvature radiation in different geometric conditions of bunches. The polarization properties of curvature radiation have been studied within the framework of pulsars (e.g. Gil & Snakowski 1990) and FRBs (Gangadhara 2010; Wang et al. 2022d,c; Tong & Wang 2022; Liu et al. 2023) by various authors. Consider a bunch with charge Q = Ne e and Lorentz factor γ moving along the local magnetic field with curvature radius ρ. The condition of coherence requires that the longitudinal size is smaller than the wavelength of FRB emission λ ≃(30 cm) ν9−1.The net charge number density in the magnetosphere in terms of GJ density (Goldreich & Julian 1969) can be written as n = ζn GJ ≃ (102 ζ2) B★,15 P−1 rˆ2−3, where ζ is the net charge factor normalized to 102. Thus the total number of net charges in one bunch can be estimated as Ne = nAl∥ ≃ 1020 ζ2 B★,15 P−1 rˆ2−3 ν9−3, where A ∼ π(γλ)2 is the cross section of the bunch. To produce ∼ 1 GHz curvature radiation, the required Lorentz factor can be written as γ ≃ 241(ρ8 ν9)1/3. To maintain the bunch in the radiation-reaction-limited regime to power the bright FRB emission, one requires a parallel electric field (Kumar et al. 2017) E∥ ≃ (1.6 × 106 V m−1) ζ2 B★,15 P−1 rˆ2−3 ν9−3 ρ8−1. The radiation electric field of a single moving electron is given by (Jackson 1998) Erad = q nˆ × (nˆ − β) × β˙ R(1 − nˆ · β)3. The polarization state of curvature radiation depends on the relative direction of relativistic beaming and the line of sight (LOS) significantly. We present a cartoon picture in the left panel of Fig. 3 and explain how circular polarization can be generated in an off-beam case below. We consider the electron moves along a background strong magnetic field, i.e. the black dashed curve. A linearly polarized wave means that the electric field vector is a straight line projected in the plane perpendicular to the LOS. When an observer is along the blue solid line, i.e. the on-axis case, the direction of Erad is along the vector nˆ × (nˆ − β) × β˙, which is the projection of β˙ on the blue plane perpendicular to the LOS. The acceleration vector β˙ may change its amplitude but it is always in x − y plane, thus the projection of β˙ is always a straight line, i.e. the observer always observes linearly polarized radiation. For the off-beam case (the red line direction), on the other hand, one should look at the the projection of vector β˙ on red plane. Carefully inspecting the projected direction of β˙, one can see that it tracks a curve as a function of time, i.e. the observer could see a circularly polarized radiation. We now calculate the polarization properties of curvature radiation from the first principle. The energy radiated per unit solid angle per unit frequency interval for a single charged particle is given by (Rybicki & Lightman 1979; Jackson 1998) d2WdωdΩ = ω24π2c |A∥(ω)ϵˆ∥ + A⊥(ω)ϵˆ⊥|2, where the unit vector ϵˆ∥ is along the direction of the instantaneous curvature radius in the orbital plane and ϵˆ⊥ = n × ϵˆ∥ is the orthogonal polarization vector. The amplitudes of electric fields can be written as A∥(ω) = ωρ2c ∫ ∞−∞ x exp[iς(x + x3/3)]dx, and A⊥(ω) = iωρθv2c ∫ ∞−∞ exp[iς(x + x3/3)]dx, where x = ct/[ρ(1/γ2 + θ2)1/2] is a replacement variable, ς = ωρ(1/γ2 + θ2v)3/2/3c and θv is the angle between the LOS and the trajectory plane. The integrals in the above equation can be written as ∫ ∞−∞ x exp[iς(x + x3/3)]dx = 2πς K2/3(ς), and ∫ ∞−∞ exp[iς(x + x3/3)]dx = 2πς K1/3(ς), where Kν(ς) is the modified Bessel function. Without loss generality, we consider an electron moving along the magnetic field line in the direction with an angle χ with respect to the initial trajectory at the retarded time t = 0, the amplitudes of emission can be written as A∥(ω) = ωρ2c ∫ ∞−∞ x exp[iς(x + x3/3)]dx, and A⊥(ω) = iωρ(θv + χ)2c ∫ ∞−∞ exp[iς(x + x3/3)]dx, where x = ct/[ρ(1/γ2 + θ2 + χ2)1/2] and ς = ωρ(1/γ2 + θ2v + χ2)3/2/3c are modified. We integrate the two components of the electric field amplitudes and insert them into Eq. (1) to obtain the evolution of the Stokes parameters. The linear and circular polarization degrees (ΠL and ΠV) as well as the I, L and V parameters as a function of viewing angle are presented in the right panel of Fig. 3. One can see Π−L is 100% at θv = 0, i.e. A⊥(ω) = 0. As θv increases, circular polarization starts to appear. The V parameter reaches the peak at θv ∼ 0.0026 and ΠV reaches the peak at θv ∼ 0.006 and stays high at θv > 1/γ where the emission flux is much degraded. Since within the 1/γ cone the emission power is comparable, the probability of detecting high circular polarization for point-like bunches is quite high. Observationally, since circular polarization only appears in a small fraction of bursts, one needs to invoke more complicated geometry, e.g. the emission beam solid angle is much larger than 1/γ, to account for observations. In such a geometry, within the broader emission beam there are always on-beam bunches that produce ∼ 100% linear polarization (Wang et al. 2022c)."
+      },
+      "confidence": 0.95,
+      "name": "coherent curvature radiation",
+      "method_type": "radiation mechanism"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_55a7bf5f3ad12520_m2",
+      "evidence": {
+        "section": "3.1.2",
+        "original_text": "The coherent inverse Compton scattering (ICS) process by charged bunches off low frequency electromagnetic waves produced by inner gap sparking and the corresponding polarization properties have been discussed by Qiao & Lin (1998) and Xu et al. (2000) within the context of radio pulsars. Within the context of FRBs, Zhang (2022b) proposed the coherent ICS model invoking low-frequency electromagnetic waves generated by near-surface oscillating charges due to crust shaking that also drives Alfvén waves: Particles accelerated in the charge starvation region at a high altitude (e.g. due to charge depletion as Alfvén waves propagate to a critical radius (Kumar & Bošnjak 2020)) would coherently upscatter the incoming electromagnetic waves with angular frequency ωi and power the observed ∼ GHz FRB emission. With a general incident angle θi between the low-frequency waves and charge motion direction, one can generally define two eigen-modes: Mode (1) or \"X\"-mode: the wave electric field E is perpendicular to the (k, B) plane, and Mode (2) or \"O\"-mode: E is parallel to the (k, B) plane. It should be pointed out that the terminology so called X-mode and O-mode is more relevant in the quasi-perpendicular case, i.e. k and B are nearly perpendicular to each other. In the quasi-parallel case (k and B are nearly parallel), both Modes (1) and (2) are nearly extraordinary and the so-called O-mode (Mode (2)) is similar to the X-mode and can propagate in a magnetar magnetosphere (Qu et al. 2023). Different from curvature emission, coherent ICS by bunches discussed in this model only requires merely charge density fluctuations in an relativistic particle outflow to satisfy the observed luminosity of FRBs (Zhang 2022b). In order to produce 1-GHz radio waves through the ICS mechanism, one requires the Lorentz factor of the bunch to be ΓICS ≃ 316 ν91/2 νi,4−1/2 (1 − β cos θi)−1/2, where the frequency of the incident wave is normalized to νi = 10 kHz. The rapid radiative cooling of the bunch requires that a parallel electric field E∥, ICS along the magnetic field lines must be produced. Thus the balance between acceleration and ICS radiation cooling requires (Zhang 2022b) E∥, ICS ≃ (1.6 × 106 V m−1) δB6 νi,4 ν9−1 rˆ−3, where f(θi) = sin2 θi/(1 − β cos θi) is defined to describe the cross section and δB is the magnetic field strength of the low frequency waves near the magnetar surface region, which we normalize to a relatively small value δB = 106 G. One can see that the parallel electric field strength is so large in the radius range (108 − 109 cm) that the surrounding plasma could be separated since E∥, ICS can overcome the plasma Coulomb potential and the plasma suppression effect can be ignored (Qu et al. 2023). In this subsection, our plan as follows. First, we will discuss ICS by a single non-relativistic electron and study its polarization properties. Then, we will present a detail calculation on ICS by a charged bunch and the generation of circular polarization. Finally, we will discuss the main differences of polarization properties between coherent curvature radiation and ICS radiation by bunches. Hereafter, subscripts i and s denote the incident and scattered waves, respectively. (i) ICS radiation by a single electron: The ICS geometry of a single electron is presented in the left panel of Fig. 4. Generally, we consider an arbitrary strong background magnetic field B along (θ, ϕ) (blue line) and the electron at origin can only move along the magnetic field. The unit vector of LOS (red line) is chosen as nˆ = (sin θv cos ϕv, sin θv sin ϕv, cos θv) in the lab frame (hereafter, all quantities in co-moving frame are denoted with a prime (′)). The incident low-frequency electromagnetic wave vector is in the x − z plane with an incident angle θi between the wave vector and z-axis. Assuming that the incident waves are linearly polarized with the electric field vector in the x − z plane, one has the electric field unit vector eˆi = (cos θi, 0, sin θi) and the three components of the incident electric field as Ei = (Ei,0 cos θi, 0, Ei,0 sin θi). The initial rest electron motion equation in the lab frame can be written as r¨ = qme Ei, where r is the position vector. The scattered electric field can be calculated by applying Larmor’s formula as (Rybicki & Lightman 1979) Es = q nˆ × (nˆ × β˙) R. The direction of Es is determined by nˆ × (nˆ × β˙) and this vector is β˙ projected in the plane perpendicular to LOS. In the non-relativistic case, the direction of β˙ is the same as that of the incident electric field Ei, i.e. we can project Ei onto the red plane in Fig. 4. One can see that the electric field perpendicular to the LOS only has one direction and the observer can always detect linear polarized waves. This is consistent with classical result that the upscattered photons in ICS are always linearly polarized. In order to obtain the scattered electric field of a single relativistic electron through ICS, we take the following steps (see Appendix B for detailed derivations): In the first step, we solve the scattered electric field Es′ in the co-moving frame of one electron by applying Larmor’s formula written in the xyz-frame as Es′ = q nˆ′ × (nˆ′ × β˙′) R′, where r′x/y/z are given by Eqs. (B14), (B15) and (B16) and D′ is the distance between the retarded emission point to the observer. Then we decompose the Es′ into the parallel and perpendicular directions which are with respect to the electron’s moving direction (Es,z,B′ and Es,x/y,B′). We then perform the relativistic transformation of Es′ to obtain Es in the lab frame E⊥,B = γ(E⊥,B′ + v × E∥,B′), and E∥,B = γ(E∥,B′ − v × E⊥,B′), where v is the electron’s velocity. Finally, we project the scattered electric field vector Es back to the xyz-frame as E⊥,i = E⊥,B,i cos ϕ − E⊥,B,j sin ϕ, E⊥,j = E⊥,B,i sin ϕ cos θ + E⊥,B,j cos ϕ cos θ + E∥,B,k sin θ, E∥,k = −E⊥,B,i sin ϕ sin θ − E⊥,B,j cos ϕ sin θ + E∥,B,k cos θ. One notices that E⊥,i and E⊥,j have the same phase. Thus, we conclude that ICS produced by a single electron is always 100% linearly polarized in any scattered direction. (ii) Polarization properties of coherent ICS radiation by a bunch: We consider a charged bunch that consists positive charged electrons and the scattered radiation is required to be coherent. In order to calculate the the scattered electric field of relativistic electrons, based on the general electric field expression we solved, we project them onto the plane perpendicular to LOS and write the amplitudes of the two orthogonal components as A∥ = E⊥,i sin ϕv + E⊥,j cos ϕv + E∥,k sin θv, and A⊥ = −E⊥,i cos θv sin ϕv + E⊥,j cos θv cos ϕv − E∥,k sin θv. The total scattered electric field perpendicular to the line of sight can be calculated as A∥,tot = ∫ rmaxrmin ∫ θc0 ∫ 2π0 A∥fV dϕdθdr, and A⊥,tot = ∫ rmaxrmin ∫ θc0 ∫ 2π0 A⊥fV dϕdθdr, where fV is defined to describe the volume of the bunch, rmin = (d − λ) cos θc/cos θ and rmax = d cos θc/cos θ. Here again for simplicity, we consider the cone angle θc is equal to 1/γ of one bunch, but in reality it can be larger. The geometry of the bunch is presented in the right panel of Fig. 4. The bunch longitudinal size is chosen as the typical FRB wavelength λ = 30 cm and the transverse size is ∼ dθc = 103 cm. Each particle is moving along a different local magnetic field line with the same Lorentz factor and radiates photons towards the LOS. We choose the minimum transverse size for the bunch as γλ ≃ θc d for self-consistency. We numerically integrate the scattered electric fields and calculate the degree of linear and circular polarization presented in Fig. 5 and 6. For the on-axis case, i.e. θv = 0, the ICS radiation is always 100% linearly polarized (ΠL = 100%) and no circular polarized waves (ΠV = 0) are produced (see Eq.(1) and Eq.(16) for definitions). We present the numerical results of circular and linear polarization degree as a function of ϕv for different incident angles in Figs. 5 and 6 for θi = 10◦ and 30◦, respectively. Red line and orange line denote the degree of linear and circular polarization, respectively. When θv ≠ 0, one can see circular polarization shows up. the larger the θv, the larger the circular polarization degree at a specific ϕv. When θi = 10◦, the circular polarization degree could reach ∼ 30◦ for θv = 0.003 rad (on-beam case), and ∼ 60% for θv = 0.01 rad exactly at the cone edge, and ∼ 90% for θv = 0.02 rad outside the cone. When θi = 30◦, the circular polarization degree could reach ∼ 60% for θv = 0.01 rad exactly at the cone edge. One can also see that the polarization profile has a rotational symmetry with respect to ϕv = π since the incident wave is in the x − z plane. Similar to curvature radiation for a bunch of opening angle of 1/γ, the ICS bunch can also produce circular polarization in a wide solid angle of viewing angle. In order to accommodate the data that show a small fraction of circular polarization, one also needs to introduce a bunch with a much wider cross section so that within a large solid angle within the bunch cone, one can roughly have a symmetric scattering geometry so that the upscattered photons mostly carry linear polarization."
+      },
+      "confidence": 0.95,
+      "name": "coherent inverse Compton scattering (ICS)",
+      "method_type": "radiation mechanism"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_55a7bf5f3ad12520_m3",
+      "evidence": {
+        "section": "4.1",
+        "original_text": "The GRB-like models invoke internal shocks or external shocks to accelerate particles, as a highly magnetized relativistic outflow collide internally or with a circumstellar medium. FRBs may be generated by a plasma maser process as charged particles gyrate coherently in an ordered magnetic field by forming a ring in the momentum space and radiating synchrotron/cyclotron photons coherently (Lyubarsky 2014; Beloborodov 2017; Plotnikov & Sironi 2019; Metzger et al. 2019; Beloborodov 2020; Margalit et al. 2020). To calculate the polarization properties of emission in such a model, we first consider an electron in gyro-motion around a uniform magnetic field with a pitch angle α, as shown in the right panel of Fig.9. The perpendicular component velocity with respect to the z-axis is in the x − y plane, i.e v = (v cos ωBt, v sin ωBt, 0). The general motion equation of a single electron can be described by r¨ = qme v × B + Frad, where Frad is the radiation reaction force. For simplicity, we consider that the electron only moves circularly around the magnetic field, i.e. α = π/2. This is roughly consistent with the physical picture because in this model the ordered magnetic field lines are expected to be parallel to the shock plane. We use the Cartesian coordinates with zˆ in the direction of the background magnetic field (B = B0 zˆ) and assume that the observer direction is in the x − z plane for generality, i.e. nˆ = (sin θ, 0, cos θ). The position vector can be solved from Equation (58), giving r = ρ(cos ωBt, sin ωBt, 0). For the low γ case, the electron emits cyclotron radiation. Based on Parseval’s theorem, the radiation spectrum of a periodic electron with no parallel velocity along B-field can be written as dWdω = ∑∞s=1 ω24π2c |∫ T0 Es exp[iωt]dt|2, where s is the harmonic number. The integral term in Eq.(60) can be written as (Landau & Lifshitz 1975) ∫ T0 Es exp[iωt]dt = qωB2πc ∫ T0 nˆ × (nˆ × β˙) exp[iωt]dt. The electric field of cyclotron emission at the base frequency (s = 1) can be written as Ecyc = qωB2πc [−i sin θ cos ωBt, −i sin θ sin ωBt, cos θ]. One can see that for the case of θ = 0 (along the magnetic field), one has Ez = 0 and Ex = iEy, suggesting that the cyclotron wave is circularly polarized. For θ = π/2 (along the LOS for a parallel shock as required for the synchrotron/cyclotron maser model), one has Ez ≠ 0 and Ex = Ey = 0, suggesting that the wave is linear polarized. In general, one can consider an arbitrary LOS and define the amplitudes of the electric field components A∥ and A⊥, with the magnetic field always along the z-axis. The direction of the LOS is chosen as (θv, ϕv). Therefore, the parallel (along the x-axis) and perpendicular (along the y-axis) components of electric field in the LOS frame can be written as A∥,cyc = Ecyc,i sin ϕv + (Ecyc,j cos θv − Ecyc,k sin θv) cos ϕv, and A⊥,cyc = Ecyc,i cos ϕv + (Ecyc,j cos θv − Ecyc,k sin θv) sin ϕv. For the high γ case, the electron emits synchrotron radiation. There are many electrons in the gyro-motion trajectories in the shocked region with a bulk motion Lorentz factor Γ. We consider the emission of one electron for simplicity, which is adequate to calculate polarization properties. We discuss synchrotron radiation of the electron in the comoving frame of the bulk motion. Let the angle between the line of sight and the electron trajectory plane is ϑ in the lab frame and ϑ′ in the comoving frame. One has sin ϑ′ = D sin ϑ, or ϑ′ = D ϑ when both angles are small, where D = 1/Γ(1 − β cos ϑ) is the Doppler factor. Because the shock moving direction is perpendicular to the background magnetic field and the pitch angle is π/2, ϑ′ is also the angle between the LOS and electron’s trajectory plane in the bulk motion comoving frame. The amplitudes of the electric field can be written as A∥(ω′) = ω′ρ2c ∫ ∞−∞ x exp[iς′(x + x3/3)]dx = ω′ρ2c 2πς′ K2/3(ς′), and A⊥(ω′) = iω′ρϑ′2c ∫ ∞−∞ exp[iς′(x + x3/3)]dx = iω′ρϑ′2c 2πς′ K1/3(ς′), where Kν(ς′) is the modified Bessel function of the second kind and ς′ is given by (Jackson 1998) ς′ = ω′ρ(1/γ2 + ϑ′2)3/2/3c. The required magnetic field in the shock region can be calculated through the critical frequency of synchrotron radiation as B = 4πme cνfrb3eγ2Γ ≃ (0.36 G) νfrb,9 γ−22 Γ−12, where ωB is equal to the critical synchrotron radiation frequency. The corresponding radius can be estimated as r ≃ Γ2cΔt ≃ (3 × 1010 cm) Γ22 Δt−3. According to Eq.(16) and electric field amplitudes of synchrotron emission, the degree of linear and circular polarization at angle ϑ′ in the comoving frame can be written as ΠL′ = |A∥(ω′)|2 − |A⊥(ω′)|2|A∥(ω′)|2 + |A⊥(ω′)|2, and ΠV′ = 2Im(A∥(ω′)A⊥∗(ω′))|A∥(ω′)|2 + |A⊥(ω′)|2. We transform the expression of the circular polarization degree from the co-moving frame to the lab frame as ΠV = 2Im(A∥(ω)A⊥∗(ω))|A∥(ω)|2 + |A⊥(ω)|2, where we have used ω = ω′ D and ς = ω D ρ[γ−2 + ϑ2 D2]3/2/3c. We define a bulk half opening angle θj for the FRB-emitting shock and rewrite the general degree of circular polarization as ΠV = ΠV′ for θv < θj and ΠV = ΠV′ D2 for θv > θj. We present the degree of linear and circular polarization of synchrotron-maser FRB emission as a function of viewing angle ϑ in the lab frame in the left panel of Fig.10. The electron Lorentz factor in the co-moving frame is adopted as γ = 10 and the bulk Lorentz factor is Γ = 100. In order to produce the typical 1-GHz radio waves, the frequency in the co-moving frame of the bulk motion can be calculated as ν = νB ≃ νfrb/Γ ∼(107 Hz) νfrb,9Γ2 for θv < θj case and ν = νB = νfrb/D fir θv > θj case. One can see that within the bulk angle θj, the radiation is completely linearly polarized since the LOS can always intersect with the trajectory of \"on-axis\" electrons. When θv > θj, one can start to observe circular polarization, with the maximum achievable circular polarization degree ΠV ∼ 50%. However, the observed isotropic out side the jet cone decreases rapidly with θ when θv > θj as L = D2 L′, where the Doppler factor D is defined as D = 1Γ(1 − β cos θ). We present the value of Don/off2 F(x) as a function of θ in the right panel of Fig.10, where F(x) is the single electron’s synchrotron spectrum function defined as F(x) = x ∫ ∞x K5/3(ξ)dξ. The vertical blue dashed line is the jet angle which is adopted as θj = 0.1. One can see the isotropic luminosity (D2 F(x) as a proxy) remains constant when θv < θj but decreases rapidly when θv > θj. This suggests that the off-axis emission from a synchrotron maser shock is likely barely observable unless the line of sight is slightly outside θj. In this case, one cannot see high circular polarization. The observed high circular polarization (up to 75% for FRB 20201124A, Xu et al. (2022)) therefore disfavors the synchrotron maser as the FRB emission mechanism at least for some bursts."
+      },
+      "confidence": 0.95,
+      "name": "synchrotron/cyclotron maser emission",
+      "method_type": "radiation mechanism"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_55a7bf5f3ad12520_m4",
+      "evidence": {
+        "section": "3.2",
+        "original_text": "Within the magnetosphere, one possible propagation effect to generate circular polarization is cyclotron absorption, which has been discussed within the context of radio pulsars (Wang et al. 2010). We reinvestigate this mechanism within the context of FRBs in this sub-section. If FRB waves are generated in the inner magnetosphere of a magnetar along magnetic field lines, the wave vector is quasi-parallel to the background magnetic field lines within the light cylinder and two eigen-orthogonal modes can be considered as the two circularly polarized modes: R-mode and L-mode. If the two modes undergo different levels of absorption, circular polarization components could be produced. Cyclotron emission/absorption can be considered as the energy level transition processes. We consider the incident FRB waves interact with background pair plasma and the electrons/positrons absorb the photon energy to jump to a higher energy level. In a strong magnetic field, the allowed energy levels for electrons are the Landau energy levels. For simplicity, we consider a dipolar magnetic field with the surface field strength B★, which decreases rapidly with radius as B = B★(r/R★)−3 for r> R★ and r< RLC. The minimum energy of Landau level can be written as Emin = ℏωB = ℏeBme c. In order to excite cyclotron resonance, electrons/positrons should be allowed to jump between two energy levels with an interval defined by the typical frequency of the FRB emission in the rest frame of electrons, i.e. ω′ = γ±ω(1 − β± cos θB) = ωB, where ω′ is the FRB wave circular frequency in the rest frame of lepton, γ+ and γ− are the Lorentz factors of positrons and electrons, respectively, θB is the angle between the wave vector and the magnetic field at the resonance radius. When the absorption optical depth is different for R-mode and L-mode, which requires different properties of positrons and electrons, one mode may be selectively absorbed so that net circular polarization could be generated from linear polarization. In order to detect FRBs at all, this mechanism should allow at least one mode escape freely without having the FRB being completely absorbed. The resonance condition gives the cyclotron resonance absorption radius, which can be written as rres = R★(B★eγ±me cω(1 − β± cos θB))1/3. We present a calculation of the cyclotron resonance radius as a function of γ± in Fig. 7. One can see the resonance radius can be within the magnetosphere if γ± is large enough. A lower B∗ and a longer period would allow a larger parameter space for cyclotron resonance. In general, the Lorentz factors of the leptons are required to be larger than a few times 102 for most angles in order to satisfy the cyclotron resonance absorption condition. On the other hand, such as high Lorentz factor is naturally expected in the open field line region of a magnetar, as has been argued by Qu et al. (2022). The total intensity for both incident circular polarization modes (L-mode and R-mode) may be considered to have the same strength, i.e. Ii,L = Ii,R. After the cyclotron resonance absorption, the intensities of the left-hand and right-hand polarized circular waves can be expressed as Is,L = Ii,L e−τ+ and Is,R = Ii,R e−τ−, respectively. In this calculation, we have ignored the emissivity of the plasma itself because the FRB is much brighter than the emission of the background plasma. Thus, the Stokes-V that measures the intensity difference between the right-hand and left-hand polarized circular waves can be written as V = Is,L − Is,R, and the circular polarization degree can be calculated as ΠV = Is,L − Is,RIs,L + Is,R = e−τ+ − e−τ−e−τ+ + e−τ−, where τ± corresponds to optical depths of positrons and electrons, respectively. For the case of a symmetric pair plasma, i.e the two species of leptons have exactly the same Lorentz factor and number density, one can see ΠV = 0, which means that the radio waves remain 100% linearly polarized. When one of the two modes (e.g. R-mode) is completely absorbed (e.g. τ+ ≫ 1) whereas the other mode (e.g. L-mode) is barely absorbed (e.g. τ− ≪ 1), then the outgoing waves would be nearly 100% circularly polarized. We now estimate the optical depth for cyclotron absorption. The cross section for the electron/positron cyclotron resonance absorption in the co-moving frame of electron is given by (Herold 1979; Daugherty & Ventura 1978; Dermer 1990) σcyc = π2re c ϕ(ν′ − νB′), where ν′νB′ = ωB/(2π) and ϕ(ν′ − νB′) describes the line profile which obeys the Lorentz profile as (Rybicki & Lightman 1979) ϕ(ν′ − νB′) = Γlu/4π2(ν′ − νB′)2 + (Γlu/4π)2, where the parameter Γlu describes the transition from a lower Landau level to an upper Landau level. For transition from the ground state to the first Landau state, it can be written as Γlu = 4e2ωB23me c3. The electron/positron number density can be estimated as n± = ξ± n GJ and the optical depths for both species of leptons in the lab frame can be written as (Qu et al. 2022) τ± = ∫ σcyc n± dr. Note that in order to have net cyclotron resonance absorption, β+/β− and θB,+/θB,− could be different, even though ξ+ ≃ ξ− is expected to keep global neutrality of the generated pairs. When the incident FRB wave frequency is exactly equal to the Larmor frequency in the co-moving frame of a lepton, the cyclotron absorption cross section of reaches the maximum value at resonance σcyc,max = π2re c 4πΓlu. The profile of cyclotron resonance cross section as a function of radius has a sharp peak around the resonance radius. The cross section drops quickly when the radius changes slightly. We consider a characteristic length scale as the range where the cross section drops up to 10% of σcyc,max and assume σcyc,max is valid for all points within such a length scale. One can then estimate the optical depths for both electrons and positrons and then calculate the net circular polarization degree assuming γ+ and γ− are different (which means θB,+ and θB,− could be different). We present the numerical results of the circular polarization degree as a function of γ+ and γ− in Fig.8. One can see that when γ− = γ+, there is no circular polarization since the R-mode and L-mode of incident waves undergo the same absorption so that τ− = τ+. When γ− ≠ γ+, net circular polarization can be generated through different cyclotron resonance absorption degrees for R-mode and L-mode. One can see that at higher Lorentz factors, a small relative Lorentz factor difference would generate a large circular polarization degree. The reason is that a higher Lorentz factor corresponds to a smaller resonance radius, where the pair plasma number densities are higher."
+      },
+      "confidence": 0.95,
+      "name": "cyclotron absorption",
+      "method_type": "propagation effect"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr1",
+      "evidence": {
+        "section": "3 INSIDE MAGNETOSPHERES",
+        "original_text": "At this location, the plasma frequency can be estimated as ωp = √4πq2n/me = √4πξnGJq2/me = (1.8 × 109 Hz) ξ2B★,14P−1r̂−3, where ξ is the pair multiplicity factor with respect to the Goldreich Julian density, and B★ is the surface magnetic field of the magnetar."
+      },
+      "confidence": 0.98,
+      "quantity": "plasma frequency",
+      "value": 1800000000.0,
+      "unit": "Hz",
+      "context": "magnetospheric plasma in the open field line region at altitude r̂ ∼ 10 − 100, with surface magnetic field B★ = 10^14 G, pair multiplicity factor ξ = 100, magnetar radius R★ = 10^6 cm, and period P = 3 s",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr2",
+      "evidence": {
+        "section": "3 INSIDE MAGNETOSPHERES",
+        "original_text": "The cyclotron frequency is ωB = eB/me = eB★/(meR★3) = (1.8 × 1011 Hz) B★,14r̂−3."
+      },
+      "confidence": 0.98,
+      "quantity": "cyclotron frequency",
+      "value": 180000000000.0,
+      "unit": "Hz",
+      "context": "magnetospheric plasma in the open field line region at altitude r̂ ∼ 10 − 100, with surface magnetic field B★ = 10^14 G",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr3",
+      "evidence": {
+        "section": "3 INSIDE MAGNETOSPHERES",
+        "original_text": "The ratio between the plasma frequency and the cyclotron frequency can be calculated as ωp/ωB = (ξ/√P) r̂−3/2 = (0.01) ξ2P−1/2r̂−3/2."
+      },
+      "confidence": 0.98,
+      "quantity": "ratio between plasma frequency and cyclotron frequency",
+      "value": 0.01,
+      "unit": "",
+      "context": "magnetospheric plasma in the open field line region at altitude r̂ ∼ 10 − 100, with surface magnetic field B★ = 10^14 G, pair multiplicity factor ξ = 100, magnetar radius R★ = 10^6 cm, and period P = 3 s",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr4",
+      "evidence": {
+        "section": "3.1.1 Coherent curvature radiation",
+        "original_text": "To produce ∼ 1 GHz curvature radiation, the required Lorentz factor can be written as γ ≃ 241(ρ8ν9)1/3."
+      },
+      "confidence": 0.98,
+      "quantity": "Lorentz factor",
+      "value": 241,
+      "unit": "",
+      "context": "coherent curvature radiation to produce ∼ 1 GHz emission, with curvature radius ρ = 10^8 cm",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr5",
+      "evidence": {
+        "section": "3.1.1 Coherent curvature radiation",
+        "original_text": "To maintain the bunch in the radiation-reaction-limited regime to power the bright FRB emission, one requires a parallel electric field E∥ ≃ (1.1 × 109 statvolt/cm) ζ2B★,15P−1r̂−3ν9−3."
+      },
+      "confidence": 0.98,
+      "quantity": "parallel electric field",
+      "value": 1100000000.0,
+      "unit": "statvolt/cm",
+      "context": "coherent curvature radiation by bunches in radiation-reaction-limited regime to power bright FRB emission",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr6",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "In order to produce 1-GHz radio waves through the ICS mechanism, one requires the Lorentz factor of the bunch to be ΓICS ≃ 316 ν91/2νi,4−1/2(1 − β cos θi)−1/2, where the frequency of the incident wave is normalized to νi = 10 kHz."
+      },
+      "confidence": 0.98,
+      "quantity": "Lorentz factor",
+      "value": 316,
+      "unit": "",
+      "context": "coherent inverse Compton scattering to produce 1-GHz radio waves, with incident wave frequency νi = 10 kHz",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr7",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "Thus the balance between acceleration and ICS radiation cooling requires E∥,ICS ≃ (1.1 × 1011 statvolt/cm) δB6νi,4ν9−1r̂−3."
+      },
+      "confidence": 0.98,
+      "quantity": "parallel electric field",
+      "value": 110000000000.0,
+      "unit": "statvolt/cm",
+      "context": "coherent inverse Compton scattering by bunches, with magnetic field strength of low frequency waves δB = 10^6 G near magnetar surface",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr8",
+      "evidence": {
+        "section": "4 OUTSIDE MAGNETOSPHERE",
+        "original_text": "The characteristic value of plasma frequency can be calculated as ωp = √4πq2n/me = √4πξnGJq2/me = (1.8 × 109 Hz) ξ2B★,14P−1r̂−3."
+      },
+      "confidence": 0.98,
+      "quantity": "plasma frequency",
+      "value": 1800000000.0,
+      "unit": "Hz",
+      "context": "magnetar wind region outside light cylinder, with surface magnetic field B★ = 10^14 G, pair multiplicity ξ = 100, magnetar radius R★ = 10^6 cm, and period P = 3 s",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr9",
+      "evidence": {
+        "section": "4 OUTSIDE MAGNETOSPHERE",
+        "original_text": "The Larmor frequency can be calculated as ωB = eB/me = eB★/(meR★3) = (1.8 × 1011 Hz) B★,14r̂−3."
+      },
+      "confidence": 0.98,
+      "quantity": "Larmor frequency",
+      "value": 180000000000.0,
+      "unit": "Hz",
+      "context": "magnetar wind region outside light cylinder, with surface magnetic field B★ = 10^14 G",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr10",
+      "evidence": {
+        "section": "4 OUTSIDE MAGNETOSPHERE",
+        "original_text": "The ratio between the plasma frequency and the Larmor (cyclotron) frequency in the magnetar wind region can be estimated as ωp/ωB = (ξ/√P) r̂−3/2 = (0.01) ξ2P−1/2r̂−3/2."
+      },
+      "confidence": 0.98,
+      "quantity": "ratio between plasma frequency and Larmor frequency",
+      "value": 0.01,
+      "unit": "",
+      "context": "magnetar wind region outside light cylinder, with surface magnetic field B★ = 10^14 G, pair multiplicity ξ = 100, magnetar radius R★ = 10^6 cm, and period P = 3 s",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr11",
+      "evidence": {
+        "section": "4 OUTSIDE MAGNETOSPHERE",
+        "original_text": "In the ISM region, the typical magnetic field strength is B ∼ 10−6 G and electron number density is ne ∼ 1 cm−3. We then have the plasma frequency ωp = √4πq2ne/me = (1.8 × 104 Hz) ne,0."
+      },
+      "confidence": 0.98,
+      "quantity": "plasma frequency",
+      "value": 18000.0,
+      "unit": "Hz",
+      "context": "ISM region with electron number density ne ∼ 1 cm−3",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr12",
+      "evidence": {
+        "section": "4 OUTSIDE MAGNETOSPHERE",
+        "original_text": "The Larmor frequency ωB = eB/me = (1.8 × 104 Hz) B−6."
+      },
+      "confidence": 0.98,
+      "quantity": "Larmor frequency",
+      "value": 18000.0,
+      "unit": "Hz",
+      "context": "ISM region with magnetic field strength B ∼ 10−6 G",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr13",
+      "evidence": {
+        "section": "4.2.2 Cyclotron absorption",
+        "original_text": "In order to satisfy the cyclotron absorption condition, i.e. ωB = ωfrb = 2πνfrb, the required magnetic field is B = 2πνfrbme/e = (360 G) νfrb,9."
+      },
+      "confidence": 0.98,
+      "quantity": "magnetic field",
+      "value": 360,
+      "unit": "G",
+      "context": "cyclotron absorption to satisfy ωB = ωfrb = 2πνfrb for νfrb = 1 GHz",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr14",
+      "evidence": {
+        "section": "4.2.2 Cyclotron absorption",
+        "original_text": "The electron density in the stellar wind of the three types of stars can be estimated as ne = Ṁ/(4πr2vwmp) = (1.7 × 107 cm−3) Ṁ−11vw,9−1r11−2 for Be-star."
+      },
+      "confidence": 0.98,
+      "quantity": "electron density",
+      "value": 17000000.0,
+      "unit": "cm−3",
+      "context": "stellar wind of a Be-star with mass loss rate Ṁ ∼ 10−11 − 10−8 M⊙ yr−1, wind velocity vw = 103 km s−1, at distance r = 1011 cm",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_55a7bf5f3ad12520_qr15",
+      "evidence": {
+        "section": "4.2.2 Cyclotron absorption",
+        "original_text": "Thanks to the high electron number densities in their stellar winds, O stars with the highest mass loss rate could achieve a circular polarization degree as high as 100% and Be stars can achieve a moderate value 46%."
+      },
+      "confidence": 0.95,
+      "quantity": "circular polarization degree",
+      "value": 46,
+      "unit": "%",
+      "context": "cyclotron absorption in stellar wind of a Be-star with mass loss rate Ṁ ∼ 10−11 − 10−8 M⊙ yr−1, wind velocity vw = 103 km s−1, at distance r = 1011 cm, magnetic field B = 360 G, and electron velocity along LOS β = 0.01",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_55a7bf5f3ad12520_p1",
+      "evidence": {
+        "section": "3.1.1 Coherent curvature radiation",
+        "original_text": "One can see ΠL is 100% at θv = 0, i.e. A⊥(ω) = 0. As θv increases, circular polarization starts to appear. The V parameter reaches the peak at θv ∼ 0.0026 and ΠV reaches the peak at θv ∼ 0.006 and stays high at θv > 1/γ where the emission flux is much degraded. Since within the 1/γ cone the emission power is comparable, the probability of detecting high circular polarization for point-like bunches is quite high. Observationally, since circular polarization only appears in a small fraction of bursts, one needs to invoke more complicated geometry, e.g. the emission beam solid angle is much larger than 1/γ, to account for observations. In such a geometry, within the broader emission beam there are always on-beam bunches that produce ∼ 100% linear polarization."
+      },
+      "confidence": 0.95,
+      "metric": "circular polarization degree",
+      "compared_to": "on-axis vs off-axis observation"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_55a7bf5f3ad12520_p2",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "When θi = 10◦, the circular polarization degree could reach ∼ 30◦ for θv = 0.003 rad (on-beam case), and ∼ 60% for θv = 0.01 rad exactly at the cone edge, and ∼ 90% for θv = 0.02 rad outside the cone. When θi = 30◦, the circular polarization degree could reach ∼ 60% for θv = 0.01 rad exactly at the cone edge. One can also see that the polarization profile has a rotational symmetry with respect to ϕv = π since the incident wave is in the x − z plane. Similar to curvature radiation for a bunch of opening angle of 1/γ, the ICS bunch can also produce circular polarization in a wide solid angle of viewing angle. In order to accommodate the data that show a small fraction of circular polarization, one also needs to introduce a bunch with a much wider cross section so that within a large solid angle within the bunch cone, one can roughly have a symmetric scattering geometry so that the upscattered photons mostly carry linear polarization."
+      },
+      "confidence": 0.95,
+      "metric": "circular polarization degree",
+      "compared_to": "different incident angles and viewing angles"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_55a7bf5f3ad12520_p3",
+      "evidence": {
+        "section": "4.1 Emission mechanism: synchrotron/cyclotron maser",
+        "original_text": "One can see that within the bulk angle θj, the radiation is completely linearly polarized since the LOS can always intersect with the trajectory of “on-axis” electrons. When θv > θj, one can start to observe circular polarization, with the maximum achievable circular polarization degree ΠV ∼ 50%. However, the observed isotropic out side the jet cone decreases rapidly with θ when θv > θj as L = D2L′, where the Doppler factor D is defined as D = 1/Γ(1 − β cos θ). We present the value of Don/off2F(x) as a function of θ in the right panel of Fig.10, where F(x) is the single electron’s synchrotron spectrum function defined as F(x) = x ∫∞x K5/3(ξ)dξ, where x = νfrb/νB is the ratio between the emission frequency and the characteristic frequency. The vertical blue dashed line is the jet angle which is adopted as θj = 0.1. One can see the isotropic luminosity (D2F(x) as a proxy) remains constant when θv < θj but decreases rapidly when θv > θj. This suggests that the off-axis emission from a synchrotron maser shock is likely barely observable unless the line of sight is slightly outside θj. In this case, one cannot see high circular polarization. The observed high circular polarization (up to 75% for FRB 20201124A, Xu et al. (2022)) therefore disfavors the synchrotron maser as the FRB emission mechanism at least for some bursts."
+      },
+      "confidence": 0.95,
+      "metric": "circular polarization degree",
+      "compared_to": "synchrotron maser on-beam vs off-beam"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_55a7bf5f3ad12520_p4",
+      "evidence": {
+        "section": "4.2.1 Synchrotron Absorption",
+        "original_text": "Left penal of Figure 13 presents the linear/circular polarization degree as a function of ϕ2 for a range of age values. When the incident wave is completely linear polarized, i.e. ϕ1 = ϕ2 = 0, π or 2π, circular polarization components cannot be generated only through the synchrotron absorption since V = 0 at the initial time and ηV = 0 all the time, i.e. dΠV/ds = 0 (see Eq.(77)). However, the linear polarization component can be enhanced through the synchrotron absorption since L = √Q2 + U2 is influenced by both Q and U. When the incident wave is completely circularly polarized, i.e. ϕ2 − ϕ1 = π/2 or 3π/2, although dU/ds = 0, dQ/ds ≠ 0. In such case, the absolute value circular polarization degree will decrease. For an elliptically polarized incident wave in general, synchrotron absorption tends to lower the circular polarization degree and increase the linear polarization degree. This can be readily seen in the right panel of Fig.13, where we plot the circular polarization degree (ΠV) as a function of τ∥ and τ⊥. Black dashed line corresponding to τ∥ = τ⊥ with ΠV = 0.5 (for sin(ϕ2 − ϕ1) = 1). Once can see ΠV always decreases monotonically as τ⊥ or τ∥ increase."
+      },
+      "confidence": 0.95,
+      "metric": "circular polarization degree",
+      "compared_to": "different supernova remnant ages"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are observed to be highly polarized. Most have high linear polarization but a small fraction show significant circular polarization. We systematically investigate a variety of polarization mechanisms of FRBs within the magnetar theoretical framework considering two emission sites inside and outside the magnetosphere. For each site, we discuss both intrinsic radiation mechanisms and propagation effects. Inside the magnetosphere, we investigate the polarization properties of both coherent curvature radiation and inverse Compton scattering by charged bunches and conclude that both mechanisms produce 100% linear polarization at an on-axis geometry but can produce circular polarization if the viewing angle is off axis. The lack of circular polarization for the majority of bursts requires that the bunches have a large transverse dimension size. Resonant cyclotron absorption within magnetosphere may produce high circular polarization if electrons and positrons have an asymmetric Lorentz factor distribution. Outside the magnetosphere, the synchrotron maser emission mechanism in general produces highly linearly polarized emission. Circular polarization would appear at off-beam angles but the flux is greatly degraded and such bursts are not detectable at cosmological distances. Synchrotron absorption in a nebula with ordered magnetic field may reduce the circular polarization degree. Cyclotron absorption in a strongly magnetized medium may generate significant circular polarization. Faraday conversion in a medium with field reversal can convert one polarization mode to another. The two absorption processes require stringent physical conditions. Significant Faraday conversion may be realized in a magnetized dense environment involving binary systems or supernova remnants."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca2",
+      "evidence": {
+        "section": "1 INTRODUCTION",
+        "original_text": "The dominant feature of FRB emission is its high linear polarization. This can be generally generated in ordered magnetic fields in the emission region. Circular polarization, on the other hand, is usually not straightforwardly expected and it carries useful information about the intrinsic radiation mechanisms and propagation effects. Interestingly, current data show interesting but puzzling features regarding circular polarization, which we summarize below: • Strong circular polarization has been detected in a good fraction of non-repeating FRBs (Masui et al. 2015; Petroff et al. 2015; Cho et al. 2020; Day et al. 2020). • It was suspected that circular polarization may be the characteristics of non-repeating FRBs that differentiate them from repeaters (Dai et al. 2021). Indeed early observations of repeating FRBs did not show significant circular polarization. Rather, they are mostly nearly 100% linearly polarized. Some reported repeating FRB sources have not shown circular polarization yet. These include FRB 20180301A (Price et al. 2019; Luo et al. 2020), FRB 20180916B (Nimmo et al. 2021), FRB 20190417A (Feng et al. 2022b), FRB 20190604A (Feng et al. 2022b), FRB 20190711A (Day et al. 2020; Kumar et al. 2022a), and a few other CHIME repeaters (Fonseca et al. 2020). • The situation changed after the intense observations of an active repeater FRB 20201124A. The source was detected to enter a period of increased activity in March 2021 by CHIME (Chime/Frb Collabortion 2021) and has been extensively studied by FAST (Xu et al. 2022; Zhou et al. 2022; Zhang et al. 2022; Jiang et al. 2022; Niu et al. 2022a) and other telescopes. Kumar et al. (2022a) reported a burst with significant circular polarized emission with circular polarization degree of Π 𝑉 ∼ 47% using the Ultra-wideband Low receiver at the Parkes radio telescope. Later, FAST detected many more cases of circularly polarized bursts. In an active episode 2021 April 1 to June 11, Xu et al. (2022) detected 1863 polarized bursts from FRB 20201124A in 54 days. In particular, some bursts (e.g. Bursts 779 and 926) show clear oscillating features as a function of wavelength, in linear and circular polarization degrees as well as the total intensity, showing evidence of possible Faraday conversion and/or synchrotron absorption (Xu et al. 2022). Later, in another 4- day active episode, more than 90% bursts were detected with a total degree of polarization greater than 90% (Jiang et al. 2022). Some bursts have Π 𝑉 > 50% and even reaching Π 𝑉 = 75%. Interestingly, those bursts with high Π 𝑉 values usually have reduced Π 𝐿 so that the total polarization degree remains close to ∼ 100% (Jiang et al. 2022). • A further scrutiny of archival data revealed circular polarization in two more active repeaters (Feng et al. 2022a). The first case is FRB 20121102A, the first repeater discovered by Arecibo Telescope (Spitler et al. 2014, 2016). Most of its bursts are ∼ 100% linearly polarized as measured in the C-band with a very large RM in the source frame (Michilli et al. 2018). However, the linear polarization degree decreases in the L-band and is not detectable with the Fivehundred-meter Aperture Spherical radio Telescope (FAST) (Li et al. 2021b). This was interpreted as the large RM scatter due to the multipath effect (Feng et al. 2022b; Yang et al. 2022a). Recently, circular polarization was detected in a dozen of bursts out of nearly 2000 bursts (Feng et al. 2022a). • Another case is FRB 20190520B, a FAST-discovered repeater as a close analogy of FRB 20121102A (Niu et al. 2022b). Most bursts are linear polarized, but a few bursts with circular polarization (as high as Π 𝑉 ∼ 42%) have been detected (Anna-Thomas et al. 2022; Feng et al. 2022a)."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca3",
+      "evidence": {
+        "section": "3.1 Emission mechanisms",
+        "original_text": "In this section, we discuss coherent curvature and ICS radiation by bunches, respectively. For simplicity, we consider a point-like bunch so that the emission beaming angle is 1/𝛾, where 𝛾 is the Lorentz factor of the bunch. Hereafter, we define the on-beam case is within the 1/𝛾 cone and off-beam case is outside the cone. In reality, the bunch shape can be more complicated (a pancake shape) so that the bunch opening angle can be larger (e.g. Zhang 2022a). Emission properties for such a more complicated geometry has been studied by Wang et al. (2022c) within the framework of bunched curvature radiation. When studying emission mechanisms, what matters is the emission properties at the emission region. For the convenience of treatment, hereafter we replace the electric field in the detected waves to the amplitude of emission in the source region, i.e. 𝐴 = (𝑐/4𝜋)1/2 (𝑅𝐸)rec, where the power radiated per unit solid angle can be written as 𝑑𝑃/𝑑Ω = |𝐴|2 (Jackson 1998), and 𝑅 is the distance from the radiation source to the field point (observer) at the retarded time. Therefore, based on Eq. (1), the degree of linear and circular polarization in the Fourier space can be re-written as Π𝐿 = (|𝐴∥|2 − |𝐴⊥|2)/(|𝐴∥|2 + |𝐴⊥|2) and Π𝑉 = 2|𝐴∥||𝐴⊥|/(|𝐴∥|2 + |𝐴⊥|2)."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca4",
+      "evidence": {
+        "section": "3.1.1 Coherent curvature radiation",
+        "original_text": "A commonly discussed FRB emission mechanism inside a magnetar magnetosphere is coherent curvature radiation by bunches. Within this model, relativistic bunch of particles, typically at a radius of 10s to 100s times of neutron star radius, is believed to radiate coherently to power the bright FRB emission. To sustain high emission power, the bunches need to be continuously accelerated by an electric field (𝐸∥) parallel to the local magnetic field, possibly produced when crust-oscillation-driven Alf´ven waves propagate to the charge starvation region (Lu et al. 2020; Kumar & Bošnjak 2020; Kumar et al. 2022b). Yang & Zhang (2018) have calculated the spectrum of coherent curvature radiation in different geometric conditions of bunches. The polarization properties of curvature radiation have been studied within the framework of pulsars (e.g. Gil & Snakowski 1990) and FRBs (Gangadhara 2010; Wang et al. 2022d,c; Tong & Wang 2022; Liu et al. 2023) by various authors. Consider a bunch with charge 𝑄 = 𝑁𝑒𝑒 and Lorentz factor 𝛾 moving along the local magnetic field with curvature radius 𝜌. The condition of coherence requires that the longitudinal size is smaller than the wavelength of FRB emission 𝜆 ≃(30 cm) 𝜈9−1.The net charge number density in the magnetosphere in terms of GJ density (Goldreich & Julian 1969) can be written as 𝑛𝑒 = 𝜁𝑛GJ ≃ (10^12 cm^-3) 𝜁2𝐵★,15𝑃−1𝑟ˆ2−3, where 𝜁 is the net charge factor normalized to 10^2. Thus the total number of net charges in one bunch can be estimated as 𝑁𝑒 = 𝑛𝐴𝑙∥ ≃ 10^20 𝜁2𝐵★,15𝑃−1𝑟ˆ2−3𝜈9−3, where 𝐴∼ 𝜋(𝛾𝜆)^2 is the cross section of the bunch. To produce ∼ 1 GHz curvature radiation, the required Lorentz factor can be written as 𝛾 ≃ 241(𝜌8𝜈9)^1/3. To maintain the bunch in the radiation-reaction-limited regime to power the bright FRB emission, one requires a parallel electric field (Kumar et al. 2017) 𝐸∥ ≃ (1.2 × 10^7 statvolt cm^-1) 𝜁2𝐵★,15𝑃−1𝑟ˆ2−3𝜈9−3𝜌8−1."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca5",
+      "evidence": {
+        "section": "3.1.1 Coherent curvature radiation",
+        "original_text": "The radiation electric field of a single moving electron is given by (Jackson 1998) 𝐸rad = 𝑞[𝑛ˆ × (𝑛ˆ −𝛽) ×𝛽]/𝑅(1 −𝛽 ·𝑛ˆ)^3. The polarization state of curvature radiation depends on the relative direction of relativistic beaming and the line of sight (LOS) significantly. We present a cartoon picture in the left panel of Fig. 3 and explain how circular polarization can be generated in an off-beam case below. We consider the electron moves along a background strong magnetic field, i.e. the black dashed curve. A linearly polarized wave means that the electric field vector is a straight line projected in the plane perpendicular to the LOS. When an observer is along the blue solid line, i.e. the on-axis case, the direction of 𝐸rad is along the vector 𝑛ˆ × (𝑛ˆ −𝛽) ×𝛽, which is the projection of𝛽 on the blue plane perpendicular to the LOS. The acceleration vector𝛽 may change its amplitude but it is always in 𝑥−𝑦 plane, thus the projection of𝛽 is always a straight line, i.e. the observer always observes linearly polarized radiation. For the off-beam case (the red line direction), on the other hand, one should look at the the projection of vector𝛽 on red plane. Carefully inspecting the projected direction of𝛽, one can see that it tracks a curve as a function of time, i.e. the observer could see a circularly polarized radiation."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca6",
+      "evidence": {
+        "section": "3.1.1 Coherent curvature radiation",
+        "original_text": "We now calculate the polarization properties of curvature radiation from the first principle. The energy radiated per unit solid angle per unit frequency interval for a single charged particle is given by (Rybicki & Lightman 1979; Jackson 1998) 𝑑^2𝑊/𝑑Ω𝑑𝜔 = 𝑞^2𝜔^2/(4𝜋^2𝑐) |∫−∞∞ 𝑛ˆ × (𝑛ˆ ×𝛽)𝑒𝑖𝜔𝑡𝑑𝑡|^2, where the unit vector 𝜖∥ is along the direction of the instantaneous curvature radius in the orbital plane and 𝜖⊥ = 𝑛×𝜖∥ is the orthogonal polarization vector. The amplitudes of electric fields can be written as 𝐴∥ = 𝑞𝜔/(2𝜋𝑐) ∫−∞∞ (𝛽 ·𝜖∥)𝑒𝑖𝜔𝑡𝑑𝑡 and 𝐴⊥ = 𝑞𝜔/(2𝜋𝑐) ∫−∞∞ (𝛽 ·𝜖⊥)𝑒𝑖𝜔𝑡𝑑𝑡, where 𝑥 = 𝑐𝑡/[𝜌(1/𝛾^2 + 𝜃^2)^1/2] is a replacement variable, 𝜍 = 𝜔𝜌(1/𝛾^2 + 𝜃^2𝑣)^3/2/3𝑐 and 𝜃𝑣 is the angle between the LOS and the trajectory plane. The integrals in the above equation can be written as ∫−∞∞ (𝛽 ·𝜖∥)𝑒𝑖𝜔𝑡𝑑𝑡 = (𝜌/𝑐)(1/𝛾^2 + 𝜃^2)^1/2 ∫−∞∞ cos(𝑥)𝑒𝑖𝜍𝑥^3/3𝑑𝑥 and ∫−∞∞ (𝛽 ·𝜖⊥)𝑒𝑖𝜔𝑡𝑑𝑡 = (𝜌/𝑐)(1/𝛾^2 + 𝜃^2)^1/2 ∫−∞∞ sin(𝑥)𝑒𝑖𝜍𝑥^3/3𝑑𝑥, where 𝐾𝜈(𝜍) is the modified Bessel function. Without loss generality, we consider an electron moving along the magnetic field line in the direction with an angle 𝜒 with respect to the initial trajectory at the retarded time 𝑡 = 0, the amplitudes of emission can be written as 𝐴∥ = 𝑞𝜔/(2𝜋𝑐) (𝜌/𝑐)(1/𝛾^2 + 𝜃^2 + 𝜒^2)^1/2 ∫−∞∞ cos(𝑥)𝑒𝑖𝜍𝑥^3/3𝑑𝑥 and 𝐴⊥ = 𝑞𝜔/(2𝜋𝑐) (𝜌/𝑐)(1/𝛾^2 + 𝜃^2 + 𝜒^2)^1/2 ∫−∞∞ sin(𝑥)𝑒𝑖𝜍𝑥^3/3𝑑𝑥, where 𝑥 = 𝑐𝑡/[𝜌(1/𝛾^2 + 𝜃^2 + 𝜒^2)^1/2] and 𝜍 = 𝜔𝜌(1/𝛾^2 + 𝜃^2𝑣 + 𝜒^2)^3/2/3𝑐 are modified. We integrate the two components of the electric field amplitudes and insert them into Eq. (1) to obtain the evolution of the Stokes parameters. The linear and circular polarization degrees (Π𝐿 and Π𝑉) as well as the 𝐼, 𝐿 and 𝑉 parameters as a function of viewing angle are presented in the right panel of Fig. 3. One can see Π−𝐿 is 100% at 𝜃𝑣 = 0, i.e. 𝐴⊥(𝜔) = 0. As 𝜃𝑣 increases, circular polarization starts to appear. The 𝑉 parameter reaches the peak at 𝜃𝑣 ∼ 0.0026 and Π𝑉 reaches the peak at 𝜃𝑣 ∼ 0.006 and stays high at 𝜃𝑣 > 1/𝛾 where the emission flux is much degraded. Since within the 1/𝛾 cone the emission power is comparable, the probability of detecting high circular polarization for point-like bunches is quite high. Observationally, since circular polarization only appears in a small fraction of bursts, one needs to invoke more complicated geometry, e.g. the emission beam solid angle is much larger than 1/𝛾, to account for observations. In such a geometry, within the broader emission beam there are always on-beam bunches that produce ∼ 100% linear polarization (Wang et al. 2022c)."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca7",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "The coherent inverse Compton scattering (ICS) process by charged bunches off low frequency electromagnetic waves produced by inner gap sparking and the corresponding polarization properties have been discussed by Qiao & Lin (1998) and Xu et al. (2000) within the context of radio pulsars. Within the context of FRBs, Zhang (2022b) proposed the coherent ICS model invoking low-frequency electromagnetic waves generated by near-surface oscillating charges due to crust shaking that also drives Alfvén waves: Particles accelerated in the charge starvation region at a high altitude (e.g. due to charge depletion as Alfvén waves propagate to a critical radius (Kumar & Bošnjak 2020)) would coherently upscatter the incoming electromagnetic waves with angular frequency 𝜔𝑖 and power the observed ∼ GHz FRB emission. With a general incident angle 𝜃𝑖 between the low-frequency waves and charge motion direction, one can generally define two eigen-modes: Mode (1) or \"X\"-mode: the wave electric field 𝐸 is perpendicular to the (𝑘,𝐵) plane, and Mode (2) or \"O\"-mode: 𝐸 is parallel to the (𝑘,𝐵) plane. It should be pointed out that the terminology so called X-mode and O-mode is more relevant in the quasi-perpendicular case, i.e. 𝑘 and 𝐵 are nearly perpendicular to each other. In the quasi-parallel case (𝑘 and 𝐵 are nearly parallel), both Modes (1) and (2) are nearly extraordinary and the so-called O-mode (Mode (2)) is similar to the X-mode and can propagate in a magnetar magnetosphere (Qu et al. 2023). Different from curvature emission, coherent ICS by bunches discussed in this model only requires merely charge density fluctuations in an relativistic particle outflow to satisfy the observed luminosity of FRBs (Zhang 2022b). In order to produce 1-GHz radio waves through the ICS mechanism, one requires the Lorentz factor of the bunch to be ΓICS ≃ 316 𝜈9^1/2𝜈𝑖,−1^4/2 (1 −𝛽 cos 𝜃𝑖)^−1/2, where the frequency of the incident wave is normalized to 𝜈𝑖 = 10 kHz. The rapid radiative cooling of the bunch requires that a parallel electric field 𝐸∥,ICS along the magnetic field lines must be produced. Thus the balance between acceleration and ICS radiation cooling requires (Zhang 2022b) 𝐸∥,ICS ≃ (1.2 × 10^7 statvolt cm^-1) 𝜁2𝐵★,15𝑃−1𝑟ˆ2−3𝜈9−3𝜌8−1, where 𝑓(𝜃𝑖) = sin^2𝜃𝑖/(1 −𝛽 cos 𝜃𝑖) is defined to describe the cross section and 𝛿𝐵 is the magnetic field strength of the low frequency waves near the magnetar surface region, which we normalize to a relatively small value 𝛿𝐵 = 10^6 G. One can see that the parallel electric field strength is so large in the radius range (10^8 − 10^9 cm) that the surrounding plasma could be separated since 𝐸∥,ICS can overcome the plasma Coulomb potential and the plasma suppression effect can be ignored (Qu et al. 2023)."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca8",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "(i) ICS radiation by a single electron: The ICS geometry of a single electron is presented in the left panel of Fig. 4. Generally, we consider an arbitrary strong background magnetic field 𝐵 along (𝜃, 𝜙) (blue line) and the electron at origin can only move along the magnetic field. The unit vector of LOS (red line) is chosen as 𝑛 = (sin 𝜃𝑣 cos 𝜙𝑣, sin 𝜃𝑣 sin 𝜙𝑣, cos 𝜃𝑣) in the lab frame (hereafter, all quantities in co-moving frame are denoted with a prime ([′])). The incident low-frequency electromagnetic wave vector is in the 𝑥−𝑧 plane with an incident angle 𝜃𝑖 between the wave vector and 𝑧-axis. Assuming that the incident waves are linearly polarized with the electric field vector in the 𝑥−𝑧 plane, one has the electric field unit vector 𝑒ˆ𝑖 = (cos 𝜃𝑖, 0, sin 𝜃𝑖) and the three components of the incident electric field as 𝐸𝑖 = (𝐸𝑖,0 cos 𝜃𝑖, 0, 𝐸𝑖,0 sin 𝜃𝑖). The initial rest electron motion equation in the lab frame can be written as 𝑑𝛽/𝑑𝑡 = 𝑞𝐸𝑖/𝑚𝑒𝑐, where 𝑟 is the position vector. The scattered electric field can be calculated by applying Larmor’s formula as (Rybicki & Lightman 1979) 𝐸𝑠 = 𝑞[𝑛ˆ × (𝑛ˆ ×𝛽)]/𝑅. The direction of 𝐸𝑠 is determined by 𝑛 × (𝑛×𝛽) and this vector is𝛽 projected in the plane perpendicular to LOS. In the non-relativistic case, the direction of𝛽 is the same as that of the incident electric field 𝐸𝑖, i.e. we can project 𝐸𝑖 onto the red plane in Fig. 4. One can see that the electric field perpendicular to the LOS only has one direction and the observer can always detect linear polarized waves. This is consistent with classical result that the upscattered photons in ICS are always linearly polarized."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca9",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "(ii) Polarization properties of coherent ICS radiation by a bunch: We consider a charged bunch that consists positive charged electrons and the scattered radiation is required to be coherent. In order to calculate the the scattered electric field of relativistic electrons, based on the general electric field expression we solved, we project them onto the plane perpendicular to LOS and write the amplitudes of the two orthogonal components as 𝐴∥ = 𝐸⊥,𝑖 sin 𝜙𝑣 + 𝐸⊥, 𝑗 cos 𝜙𝑣 + 𝐸∥,𝑘 sin 𝜃𝑣 and 𝐴⊥ = −𝐸⊥,𝑖 cos 𝜃𝑣 sin 𝜙𝑣 + 𝐸⊥, 𝑗 cos 𝜃𝑣 cos 𝜙𝑣 − 𝐸∥,𝑘 sin 𝜃𝑣. The total scattered electric field perpendicular to the line of sight can be calculated as 𝐴∥,tot = ∫𝑉 𝐴∥𝑓𝑉𝑑𝑉 and 𝐴⊥,tot = ∫𝑉 𝐴⊥𝑓𝑉𝑑𝑉, where 𝑓𝑉 is defined to describe the volume of the bunch, 𝑟min = (𝑑−𝜆) cos 𝜃𝑐/cos 𝜃 and 𝑟max = 𝑑 cos 𝜃𝑐/cos 𝜃. Here again for simplicity, we consider the cone angle 𝜃𝑐 is equal to 1/𝛾 of one bunch, but in reality it can be larger. The geometry of the bunch is presented in the right panel of Fig. 4. The bunch longitudinal size is chosen as the typical FRB wavelength 𝜆 = 30 cm and the transverse size is ∼ 𝑑𝜃𝑐 = 10^3 cm. Each particle is moving along a different local magnetic field line with the same Lorentz factor and radiates photons towards the LOS. We choose the minimum transverse size for the bunch as 𝛾𝜆 ≃ 𝜃𝑐𝑑 for self-consistency. We numerically integrate the scattered electric fields and calculate the degree of linear and circular polarization presented in Fig. 5 and 6. For the on-axis case, i.e. 𝜃𝑣 = 0, the ICS radiation is always 100% linearly polarized (Π𝐿 = 100%) and no circular polarized waves (Π𝑉 = 0) are produced (see Eq.(1) and Eq.(16) for definitions). We present the numerical results of circular and linear polarization degree as a function of 𝜙𝑣 for different incident angles in Figs. 5 and 6 for 𝜃𝑖 = 10◦ and 30◦, respectively. Red line and orange line denote the degree of linear and circular polarization, respectively. When 𝜃𝑣 ≠ 0, one can see circular polarization shows up. the larger the 𝜃𝑣, the larger the circular polarization degree at a specific 𝜙𝑣. When 𝜃𝑖 = 10◦, the circular polarization degree could reach ∼ 30◦ for 𝜃𝑣 = 0.003 rad (on-beam case), and ∼ 60% for 𝜃𝑣 = 0.01 rad exactly at the cone edge, and ∼ 90% for 𝜃𝑣 = 0.02 rad outside the cone. When 𝜃𝑖 = 30◦, the circular polarization degree could reach ∼ 60% for 𝜃𝑣 = 0.01 rad exactly at the cone edge. One can also see that the polarization profile has a rotational symmetry with respect to 𝜙𝑣 = 𝜋 since the incident wave is in the 𝑥−𝑧 plane. Similar to curvature radiation for a bunch of opening angle of 1/𝛾, the ICS bunch can also produce circular polarization in a wide solid angle of viewing angle. In order to accommodate the data that show a small fraction of circular polarization, one also needs to introduce a bunch with a much wider cross section so that within a large solid angle within the bunch cone, one can roughly have a symmetric scattering geometry so that the upscattered photons mostly carry linear polarization."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca10",
+      "evidence": {
+        "section": "3.1.2 Coherent inverse Compton scattering",
+        "original_text": "(iii) The polarization properties and main differences between coherent curvature and ICS radiation can be summarized as follows: • For emission of a single electron, curvature radiation can produce both linear and circular polarization depending on the viewing angle, whereas ICS can only make linearly polarized upscattered waves. This can be most directly visualized from the geometric plots as shown in Figs. 3 and 4 by noticing the projection of the acceleration vector on the plane perpendicular to the LOS. For ICS, consider one electron moving in an incident low frequency electromagnetic wave. The acceleration unit vector is the same as the incident electric field of the wave and can be projected on the plane perpendicular to an arbitrary LOS, one can always see a straight line. Thus ICS by a single electron can only make 100% linear polarization in any viewing angles. However, for the single electron curvature radiation off-beam case, the projection of the acceleration vector on such a plane is not always a straight line. Circular polarization can therefore be generated in the off-axis configuration. • For the case of curvature radiation produced by a bunch, high degree of circular polarization can be observed in the off-axis case, similar to the single electron case. This is because in the off-beam case the two orthogonal electric field components in the emitted waves have different phases. When the radiation cone (∼ 1/𝛾) is considered, the polarization properties of the bunch are similar to those of a point charge. • For ICS emitted by a charged bunch, circular polarization could be generated because of the different phases of the electric fields of the scattered waves due to the spatial distribution of electrons within the bunch. The generation of circular polarization is not from the intrinsic ICS itself. In order to produce circular polarization, different phases and different polarization angles of the electric fields of the scattered waves are both needed. Both factors are influenced by the curved magnetic field geometry. If the magnetic field lines are straight lines towards one direction, no net circular polarization can be produced from a charged bunch. • For both radiation mechanisms, the observed flux decreases rapidly once viewing angle is outside the radiation cone, which is assumed to be 1/𝛾 in our calculations but could be in principle larger. In the off-beam geometry, even if high polarization can be generated, it is unlikely to be observed because of the much lower flux."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca11",
+      "evidence": {
+        "section": "3.2 Cyclotron absorption",
+        "original_text": "In view of the radiation mechanisms discussed, we consider propagation of the FRB waves across the open field line regions. Within the magnetosphere, one possible propagation effect to generate circular polarization is cyclotron absorption, which has been discussed within the context of radio pulsars (Wang et al. 2010). We reinvestigate this mechanism within the context of FRBs in this sub-section. If FRB waves are generated in the inner magnetosphere of a magnetar along magnetic field lines, the wave vector is quasi-parallel to the background magnetic field lines within the light cylinder and two eigen-orthogonal modes can be considered as the two circularly polarized modes: R-mode and L-mode. If the two modes undergo different levels of absorption, circular polarization components could be produced. Cyclotron emission/absorption can be considered as the energy level transition processes. We consider the incident FRB waves interact with background pair plasma and the electrons/positrons absorb the photon energy to jump to a higher energy level. In a strong magnetic field, the allowed energy levels for electrons are the Landau energy levels. For simplicity, we consider a dipolar magnetic field with the surface field strength 𝐵★, which decreases rapidly with radius as 𝐵 = 𝐵★(𝑟/𝑅★)^−3 for 𝑟> 𝑅★ and 𝑟< 𝑅LC. The minimum energy of Landau level can be written as 𝐸min = ℏ𝜔𝐵/2, where ℏ is the Planck constant. In order to excite cyclotron resonance, electrons/positrons should be allowed to jump between two energy levels with an interval defined by the typical frequency of the FRB emission in the rest frame of electrons, i.e. 𝜔′ = 𝜔𝐵/(𝛾±(1 −𝛽± cos 𝜃𝐵)), where 𝜔′ is the FRB wave circular frequency in the rest frame of lepton, 𝛾+ and 𝛾− are the Lorentz factors of positrons and electrons, respectively, 𝜃𝐵 is the angle between the wave vector and the magnetic field at the resonance radius. When the absorption optical depth is different for R-mode and L-mode, which requires different properties of positrons and electrons, one mode may be selectively absorbed so that net circular polarization could be generated from linear polarization. In order to detect FRBs at all, this mechanism should allow at least one mode escape freely without having the FRB being completely absorbed."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_55a7bf5f3ad12520_ca12",
+      "evidence": {
+        "section": "3.2 Cyclotron absorption",
+        "original_text": "The resonance condition gives the cyclotron resonance absorption radius, which can be written as 𝑟res = 𝑅★(𝐵★/𝐵res)^1/3 = 𝑅★[𝐵★/(2𝜋𝑚𝑒𝑐𝜈frb/𝑒𝛾±(1 −𝛽± cos 𝜃𝐵))]^1/3. We present a calculation of the cyclotron resonance radius as a function of 𝛾± in Fig. 7. One can see the resonance radius can be within the magnetosphere if 𝛾± is large enough. A lower 𝐵∗ and a longer period would allow a larger parameter space for cyclotron resonance. In general, the Lorentz factors of the leptons are required to be larger than a few times 10^2 for most angles in order to satisfy the cyclotron resonance absorption condition. On the other hand, such as high Lorentz factor is naturally expected in the open field line region of a magnetar, as has been argued by Qu et al. (2022). The total intensity for both incident circular polarization modes (L-mode and R-mode) may be considered to have the same strength, i.e. 𝐼𝑖,𝐿 = 𝐼𝑖,𝑅. After the cyclotron resonance absorption, the intensities of the left-hand and right-hand polarized circular waves can be expressed as 𝐼𝑠,𝐿 = 𝐼𝑖,𝐿𝑒−𝜏+ and 𝐼𝑠,𝑅 = 𝐼𝑖,𝑅𝑒−𝜏−, respectively. In this calculation, we have ignored the emissivity of the plasma itself because the FRB is much brighter than the emission of the background plasma. Thus, the Stokes-V that measures the intensity difference between the right-hand and left-hand polarized circular waves can be written as 𝑉 = 𝐼𝑠,𝐿 − 𝐼𝑠,𝑅, and the circular polarization degree can be calculated as Π𝑉 = (𝐼𝑠,𝐿 − 𝐼𝑠,𝑅)/(𝐼𝑠,𝐿 + 𝐼𝑠,𝑅) = (𝑒−𝜏+ −𝑒−𝜏−)/(𝑒−𝜏+ +𝑒−𝜏−), where 𝜏± corresponds to optical depths of positrons and electrons, respectively. For the case of a symmetric pair plasma, i.e the two species of leptons have exactly the same Lorentz factor and number density, one can see Π𝑉 = 0, which means that the radio waves remain 100% linearly polarized. When one of the two modes (e.g. R-mode) is completely absorbed (e.g. 𝜏+ ≫ 1) whereas the other mode (e.g. L-mode) is barely absorbed (e.g. 𝜏− ≪ 1), then the outgoing waves would be nearly 100% circularly polarized."
+      },
+      "confidence": 0.91
+    }
+  ]
+}

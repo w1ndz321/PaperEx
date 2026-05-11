@@ -1,0 +1,557 @@
+{
+  "metadata": {
+    "doc_id": "doc_f8fca3f56a784865",
+    "source_file": "25_Polarization_properties_28_repeating_FRB_sources_CHIME.md",
+    "title": "Polarization properties of 28 repeating fast radio burst sources with CHIME/FRB",
+    "year": 2023,
+    "doi": null,
+    "abstract": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being \n\nCorresponding author: Cherry Ng cherry.ng-guiheneuf@cnrs-orleans.fr \n\n2 \n\nthe reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields.",
+    "introduction": "Fast Radio Bursts (FRBs) are bright, millisecond bursts of radio waves from extragalactic distances. First discovered by Lorimer et al. (2007), the provenance of these energetic bursts remains a mystery. Polarization analysis of FRBs is a way to obtain observational constraints that can provide important clues on their emission mechanisms and their host environments, hence improving our understanding of the progenitor theories. \n\nIn the literature, polarimetric information is still relatively rare for FRBs. At the time of writing, polarimetric information is only available for over 100 sources out of the 700+ currently published FRB sources. This is because most of the FRB search programs thus far are conducted using intensity data so polarization analysis is limited to search projects equipped with the capability to trigger raw voltage callback or to repeating FRBs where subsequent follow-up observations collecting Stokes information are possible. \n\nThe detection of linear polarization implies the possibility of constraining the Faraday rotation measure (RM), which represents the amount of rotation of the polarization position angle of linearly polarized light as it passes through a magneto-ionic medium due to the influence of the magnetic field and the column density of the free electrons along the line-of-sight between the FRB and the observer. Thus far, FRBs have mostly been observed with high linear polarization fraction, although values from 0 to 100% have been reported (see, e.g. Sherman et al. 2024; Pandhi et al. 2024). FRBs have also been seen with a wide range of RM magnitudes, from almost zero to tens of thousands of rad m _[−]_[2] (Michilli et al. 2018). The observed RM values can shed light on the local environment of the FRB, given the intergalactic medium RM contribution is expected to be small (see, e.g. Amaral et al. 2021). For example, the high RM magnitude of the order of 10[5] rad m _[−]_[2] and large temporal RM variations observed for FRB 20121102 may be associated with a turbulent supernova remnant (Marcote et al. 2017). On the other end of the scale, the almost-zero RM observed in FRB 20200120E has been attributed to the clean environment of the host globular cluster (Bhardwaj et al. 2021; Nimmo et al. 2022; Kirsten et al. 2022). Small ob- \n\nserved RM values can also be used as an upper bound to constrain the cosmic contribution to the line-of-sight RM and help to probe the magnetization of the cosmic web (Hackstein et al. 2019). \n\nThe polarization angle (PA; _ψ_ ) is the emission angle (geometry) of the linearly polarized component of the light from the FRB source and is typically presented as a function of time during the burst. Diverse PA variations during bursts (for example, sweeping up, down, up and down) have been observed in some FRBs (e.g. FRB 20180301; Luo et al. 2020), with at least one recently reported one-off FRB displaying PA evolution that closely matches the rotating vector model often applied to pulsar measurements (Mckinven et al. 2024). It has been suggested that such diverse variations are consistent with a magnetospheric origin for the FRB radio emission associated with different open magnetic field line regions as the central compact object, possibly a magnetar, rotates, and disfavour synchrotron maser models that predict constant PAs attributed to ordered magnetic fields. However, the fact that both varying and constant PAs have been observed in repeaters and non-repeaters (Luo et al. 2020; Michilli et al. 2018; Masui et al. 2015) in different environments (Feng et al. 2022) also suggests that the PA is intrinsic to the radiation physics of the FRB and might not be a meaningful classifier to distinguish between different repetition behaviors and host environments. \n\nCurrently, _∼_ 3% of all published FRBs have been seen to repeat[1] (CHIME/FRB Collaboration et al. 2023). Repeating FRBs allow for the study of temporal variations in the polarization properties. RM variations on timescales of days to years have been detected, potentially pointing to dynamic magneto-ionic environments (Hilmarsson et al. 2021; Mckinven et al. 2023a). A temporal RM sign change in FRB 20190520B indicated a reversal in the direction of the magnetic field lines, where the orbit of a binary star has been proposed as an explanation for the observed polarization properties (Dai et al. 2022; Anna-Thomas et al. 2023). \n\n1 https://blinkverse.alkaidos.cn \n\n3 \n\nThe Canadian Hydrogen Intensity Mapping Experiment (CHIME) is a radio telescope located at the Dominion Radio Astrophysical Observatory (DRAO). As a transit telescope, CHIME has no moving parts and scans each sky position within its _∼_ 200 deg[2] instantaneous field-of-view with a daily cadence. This makes the FRB search backend of CHIME (CHIME/FRB Collaboration et al. 2018) particularly well suited for discovering and subsequently monitoring repeating FRB behavior. At the time of writing, 60 repeating FRBs are reported on the CHIME repeating FRB database[2] (CHIME/FRB Collaboration et al. 2019; Fonseca et al. 2020; CHIME/FRB Collaboration et al. 2023). Furthermore, CHIME is equipped with a complex voltage recording system (herein referred to as the baseband buffer system) (Michilli et al. 2021), which holds data from the last _∼_ 20 s. FRBs above the detection threshold trigger a call-back data dump from the baseband ring buffer, enabling a polarimetric study of FRBs with high time and frequency resolution. \n\nThis paper presents the first polarization information for 20 repeating FRBs whose discoveries were initially reported by CHIME/FRB Collaboration et al. (2023) (hereafter CHIME23), which increases the number of repeaters with polarization properties from 18 to 38. We also present updated polarization information for eight repeating FRBs with previously published polarization data. In Section 2, we describe the data set and the analysis techniques. In Section 3, we present the polarization results and discuss the astrophysics implications in Section 4, before concluding in Section 5.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Fast Radio Bursts",
+      "Polarization",
+      "Rotation Measure",
+      "CHIME/FRB",
+      "Astrophysics"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-10T15:36:45.795378+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.99,
+      "term": "Fast Radio Bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.99,
+      "term": "Rotation Measure",
+      "normalized": "旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.98,
+      "term": "CHIME/FRB",
+      "normalized": "加拿大氢强度测绘实验快速射电暴项目",
+      "std_label": "CHIME/FRB"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.98,
+      "term": "repeating FRBs",
+      "normalized": "重复快速射电暴",
+      "std_label": "repeaters"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c5",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Fast Radio Bursts (FRBs) are bright, millisecond bursts of radio waves from extragalactic distances. First discovered by Lorimer et al. (2007), the provenance of these energetic bursts remains a mystery. Polarization analysis of FRBs is a way to obtain observational constraints that can provide important clues on their emission mechanisms and their host environments, hence improving our understanding of the progenitor theories. In the literature, polarimetric information is still relatively rare for FRBs. At the time of writing, polarimetric information is only available for over 100 sources out of the 700+ currently published FRB sources. This is because most of the FRB search programs thus far are conducted using intensity data so polarization analysis is limited to search projects equipped with the capability to trigger raw voltage callback or to repeating FRBs where subsequent follow-up observations collecting Stokes information are possible."
+      },
+      "confidence": 0.97,
+      "term": "polarization analysis",
+      "normalized": "偏振分析",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c6",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "The detection of linear polarization implies the possibility of constraining the Faraday rotation measure (RM), which represents the amount of rotation of the polarization position angle of linearly polarized light as it passes through a magneto-ionic medium due to the influence of the magnetic field and the column density of the free electrons along the line-of-sight between the FRB and the observer. Thus far, FRBs have mostly been observed with high linear polarization fraction, although values from 0 to 100% have been reported (see, e.g. Sherman et al. 2024; Pandhi et al. 2024). FRBs have also been seen with a wide range of RM magnitudes, from almost zero to tens of thousands of rad m _[−]_[2] (Michilli et al. 2018). The observed RM values can shed light on the local environment of the FRB, given the intergalactic medium RM contribution is expected to be small (see, e.g. Amaral et al. 2021). For example, the high RM magnitude of the order of 10[5] rad m _[−]_[2] and large temporal RM variations observed for FRB 20121102 may be associated with a turbulent supernova remnant (Marcote et al. 2017). On the other end of the scale, the almost-zero RM observed in FRB 20200120E has been attributed to the clean environment of the host globular cluster (Bhardwaj et al. 2021; Nimmo et al. 2022; Kirsten et al. 2022). Small observed RM values can also be used as an upper bound to constrain the cosmic contribution to the line-of-sight RM and help to probe the magnetization of the cosmic web (Hackstein et al. 2019)."
+      },
+      "confidence": 0.98,
+      "term": "Faraday rotation measure",
+      "normalized": "法拉第旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c7",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "The polarization angle (PA; _ψ_ ) is the emission angle (geometry) of the linearly polarized component of the light from the FRB source and is typically presented as a function of time during the burst. Diverse PA variations during bursts (for example, sweeping up, down, up and down) have been observed in some FRBs (e.g. FRB 20180301; Luo et al. 2020), with at least one recently reported one-off FRB displaying PA evolution that closely matches the rotating vector model often applied to pulsar measurements (Mckinven et al. 2024). It has been suggested that such diverse variations are consistent with a magnetospheric origin for the FRB radio emission associated with different open magnetic field line regions as the central compact object, possibly a magnetar, rotates, and disfavour synchrotron maser models that predict constant PAs attributed to ordered magnetic fields. However, the fact that both varying and constant PAs have been observed in repeaters and non-repeaters (Luo et al. 2020; Michilli et al. 2018; Masui et al. 2015) in different environments (Feng et al. 2022) also suggests that the PA is intrinsic to the radiation physics of the FRB and might not be a meaningful classifier to distinguish between different repetition behaviors and host environments."
+      },
+      "confidence": 0.97,
+      "term": "polarization angle",
+      "normalized": "偏振角",
+      "std_label": "PA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c8",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Currently, _∼_ 3% of all published FRBs have been seen to repeat[1] (CHIME/FRB Collaboration et al. 2023). Repeating FRBs allow for the study of temporal variations in the polarization properties. RM variations on timescales of days to years have been detected, potentially pointing to dynamic magneto-ionic environments (Hilmarsson et al. 2021; Mckinven et al. 2023a). A temporal RM sign change in FRB 20190520B indicated a reversal in the direction of the magnetic field lines, where the orbit of a binary star has been proposed as an explanation for the observed polarization properties (Dai et al. 2022; Anna-Thomas et al. 2023)."
+      },
+      "confidence": 0.97,
+      "term": "temporal RM variations",
+      "normalized": "时间旋转量变化",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c9",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.96,
+      "term": "RM sign change",
+      "normalized": "旋转量符号变化",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c10",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.96,
+      "term": "dynamic RM environments",
+      "normalized": "动态旋转量环境",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c11",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.96,
+      "term": "stable RM environments",
+      "normalized": "稳定旋转量环境",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c12",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.95,
+      "term": "Galactic pulsars",
+      "normalized": "银河系脉冲星",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f8fca3f56a784865_c13",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.95,
+      "term": "non-repeating FRBs",
+      "normalized": "非重复快速射电暴",
+      "std_label": "non-repeaters"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.95,
+      "head": "doc_f8fca3f56a784865_c3",
+      "relation_type": "measures",
+      "relation_surface": "report",
+      "tail": "doc_f8fca3f56a784865_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r2",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Fast Radio Bursts (FRBs) are bright, millisecond bursts of radio waves from extragalactic distances. First discovered by Lorimer et al. (2007), the provenance of these energetic bursts remains a mystery. Polarization analysis of FRBs is a way to obtain observational constraints that can provide important clues on their emission mechanisms and their host environments, hence improving our understanding of the progenitor theories. In the literature, polarimetric information is still relatively rare for FRBs. At the time of writing, polarimetric information is only available for over 100 sources out of the 700+ currently published FRB sources. This is because most of the FRB search programs thus far are conducted using intensity data so polarization analysis is limited to search projects equipped with the capability to trigger raw voltage callback or to repeating FRBs where subsequent follow-up observations collecting Stokes information are possible."
+      },
+      "confidence": 0.94,
+      "head": "doc_f8fca3f56a784865_c5",
+      "relation_type": "provides",
+      "relation_surface": "provide important clues",
+      "tail": "doc_f8fca3f56a784865_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r3",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "The detection of linear polarization implies the possibility of constraining the Faraday rotation measure (RM), which represents the amount of rotation of the polarization position angle of linearly polarized light as it passes through a magneto-ionic medium due to the influence of the magnetic field and the column density of the free electrons along the line-of-sight between the FRB and the observer. Thus far, FRBs have mostly been observed with high linear polarization fraction, although values from 0 to 100% have been reported (see, e.g. Sherman et al. 2024; Pandhi et al. 2024). FRBs have also been seen with a wide range of RM magnitudes, from almost zero to tens of thousands of rad m _[−]_[2] (Michilli et al. 2018). The observed RM values can shed light on the local environment of the FRB, given the intergalactic medium RM contribution is expected to be small (see, e.g. Amaral et al. 2021). For example, the high RM magnitude of the order of 10[5] rad m _[−]_[2] and large temporal RM variations observed for FRB 20121102 may be associated with a turbulent supernova remnant (Marcote et al. 2017). On the other end of the scale, the almost-zero RM observed in FRB 20200120E has been attributed to the clean environment of the host globular cluster (Bhardwaj et al. 2021; Nimmo et al. 2022; Kirsten et al. 2022). Small observed RM values can also be used as an upper bound to constrain the cosmic contribution to the line-of-sight RM and help to probe the magnetization of the cosmic web (Hackstein et al. 2019)."
+      },
+      "confidence": 0.93,
+      "head": "doc_f8fca3f56a784865_c6",
+      "relation_type": "sheds light on",
+      "relation_surface": "shed light on",
+      "tail": "doc_f8fca3f56a784865_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r4",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Currently, _∼_ 3% of all published FRBs have been seen to repeat[1] (CHIME/FRB Collaboration et al. 2023). Repeating FRBs allow for the study of temporal variations in the polarization properties. RM variations on timescales of days to years have been detected, potentially pointing to dynamic magneto-ionic environments (Hilmarsson et al. 2021; Mckinven et al. 2023a). A temporal RM sign change in FRB 20190520B indicated a reversal in the direction of the magnetic field lines, where the orbit of a binary star has been proposed as an explanation for the observed polarization properties (Dai et al. 2022; Anna-Thomas et al. 2023)."
+      },
+      "confidence": 0.94,
+      "head": "doc_f8fca3f56a784865_c4",
+      "relation_type": "allow for",
+      "relation_surface": "allow for the study",
+      "tail": "doc_f8fca3f56a784865_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r5",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.93,
+      "head": "doc_f8fca3f56a784865_c4",
+      "relation_type": "separated into",
+      "relation_surface": "separated into two categories",
+      "tail": "doc_f8fca3f56a784865_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r6",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.93,
+      "head": "doc_f8fca3f56a784865_c4",
+      "relation_type": "separated into",
+      "relation_surface": "separated into two categories",
+      "tail": "doc_f8fca3f56a784865_c11"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r7",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.92,
+      "head": "doc_f8fca3f56a784865_c10",
+      "relation_type": "share similarities with",
+      "relation_surface": "share some similarities with",
+      "tail": "doc_f8fca3f56a784865_c12"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r8",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.92,
+      "head": "doc_f8fca3f56a784865_c3",
+      "relation_type": "compares",
+      "relation_surface": "perform an updated comparison",
+      "tail": "doc_f8fca3f56a784865_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f8fca3f56a784865_r9",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.92,
+      "head": "doc_f8fca3f56a784865_c3",
+      "relation_type": "compares",
+      "relation_surface": "perform an updated comparison",
+      "tail": "doc_f8fca3f56a784865_c13"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f8fca3f56a784865_d1",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "This work presents the first polarization data for 20 repeating FRBs whose discoveries were initially reported in CHIME23. During the period April 2019 to July 2023, triggered baseband data (Michilli et al. 2021) were captured for about half of the bursts CHIME/FRB detected from these repeaters. These 53 events are listed in Table 2. These bursts met the baseband triggering signal-to-noise threshold that was set at 10. Five out of the 25 sources from the CHIME23 sample (FRBs 20190226B, 20200420A, 20181226F, 20191114A and 20200913C) have no baseband data in the time period. These sources are not discussed further in this paper. In addition, eight repeaters whose polarization properties have previously been reported by Kumar et al. (2019); Bhardwaj et al. (2021); Hilmarsson et al. (2021); Kumar et al. (2022); Mckinven et al. (2023a,b) continued to be detected by CHIME. During the period January 2019 to May 2024, 22 events with new polarization results from these sources were detected and are presented in Table 3. Note that all but one FRB in this group were initially discovered by CHIME/FRB (CHIME/FRB Collaboration et al. 2019; Fonseca et al. 2020; Bhardwaj et al. 2021). The exception is FRB 20171019A, which was discovered using the ASKAP radio telescope (Shannon et al. 2018)."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB repeating FRB polarization dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f8fca3f56a784865_d2",
+      "evidence": {
+        "section": "3. RESULTS",
+        "original_text": "Table 2 lists the measured and fitted burst properties from the baseband data for the repeaters initially discovered in CHIME23, while the same information for the newer bursts of the previously published repeaters can be found in Table 3. Unconstrained parameters are shown as “–”. Uncertainties are reported at the 1-σ confidence level. The topocentric times-of-arrival (TOAs) provided in the third column are in Modified Julian Date (MJD) format, referenced at 400 MHz with ∼ 1 second precision. The DMs reported in the fifth column are obtained through structure-optimization fitting (refer to Curtin et al. 2024). Certain bursts do not have significant S/N at our highest downsampling factor, and hence we are unable to determine a structure maximized DM. In these cases, we visually determine the DMs and do not report any uncertainties for these measurements in Tables 2 and 3. These cases are discussed in further detail in Curtin et al. (2024). The downsampling factor in the sixth column provides the time resolution (i.e. n down × 2.56 µs) of the dynamic spectrum (waterfall) plots displayed in Figs. 8- 11. The linear polarization fraction (L/I) in the seventh column is calculated by integrating L over the burst profile. The upper limits on L/I for unpolarized bursts are indicated by “<” symbols. It is possible that RM measurements with small magnitudes could be a result of instrumental effects, for example, leakage from Stokes I to Q induced by differential sensitivity of the X, Y polarized feeds (see e.g., Mckinven et al. 2021). However, if the associated L/I fraction is high and a burst signal is seen in both the Stokes Q and U waterfalls, then the RM value is unlikely to be purely instrumental (e.g., the case of burst #1 (TNS name 20190609C) from FRB 20190609C). We are thus reporting small RM values only if the associated L/I is high."
+      },
+      "confidence": 0.9,
+      "name": "Individual burst properties dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f8fca3f56a784865_d3",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "To study the extragalactic DM and RM contributions for each FRB (see Section 4.3), we compute and subtract the Milky Way RM contribution using the map of Hutschenreuter et al. (2022) and the DM contribution using the thermal electron density maps of Yao et al. (2017) and Cordes & Lazio (2002) by using a python wrapper code PyGEDM package. See Table 1 for the Galactic DM and RM estimates for the 28 repeaters presented in this paper. The Galactic DM estimates do not include the DM contribution of the Galactic halo, which is expected to contribute an average value of ∼ 30 − 50 rad m−2, depending on the halo model assumed (e.g., Dolag et al. 2015; Yamasaki & Totani 2020; Cook et al. 2023). We have not taken into account the RM contribution from the Earth’s ionosphere, since conveniently for CHIME, most FRBs were detected close to the zenith during meridian transients. This means that the ionospheric RM variations due to pointings at different line-of-sight elevations are expected to be minimal (no more than a few rad m−2) and less than the uncertainty of the RM values."
+      },
+      "confidence": 0.9,
+      "name": "Galactic DM and RM estimates dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f8fca3f56a784865_ds1",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "During the period April 2019 to July 2023, triggered baseband data (Michilli et al. 2021) were captured for about half of the bursts CHIME/FRB detected from these repeaters. These 53 events are listed in Table 2. These bursts met the baseband triggering signal-to-noise threshold that was set at 10."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Baseband data triggering signal-to-noise threshold set at 10"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f8fca3f56a784865_ds2",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "The key features of the CHIME baseband polarization processing are summarized below. First, the baseband data are localized and beamformed at the best sky position of each repeater using the CHIME/FRB localization pipeline presented by Michilli et al. (2021). These data are coherently de-dispersed at the Signal-toNoise (S/N)-optimizing DM determined by the search pipeline. The output of the baseband pipeline is data consisting of dual polarization information along N–S and E–W directions, with 1024 frequency channels at a frequency resolution of 390 kHz with a time resolution of 2.56 µs."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Baseband pipeline output format: dual polarization information along N–S and E–W directions, 1024 frequency channels at 390 kHz resolution, 2.56 µs time resolution"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f8fca3f56a784865_ds3",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "The polarization pipeline of Mckinven et al. (2021) computes the four Stokes parameters (I for total intensity, Q and U for linearly polarized components, and V for the circularly polarized component) as well as the polarization angle. Two RM detection methods are implemented in the polarization pipeline. The RM synthesis technique (Burn 1966; Brentjens & de Bruyn 2005) steps through trial Faraday depths (ϕ) and calculates the corresponding average linearly polarized intensity across CHIME’s 400–800 MHz bandpass. The range of |ϕ| searched is inversely proportional to the bandwidth of the event and is set to be the point where intrachannel depolarization is at maximum 50%. Since it is assumed that the FRB emission region is small and has little Faraday complexity (the “Faraday thin regime”), if the FRB signals are polarized, we expect to see a single peak at a specific Faraday depth in the resulting Faraday dispersion function (FDF). By fitting a parabolic curve to the FDF, we obtain the Rotation Measure (RMFDF) at the peak of the fit while the uncertainty in RMFDF is taken to be the full-width-half-maximum divided by 2 × S/N. Intra-channel depolarization could lead to a nondetection if the intrinsic RM is high. To mitigate this issue, a semi-coherent RM search (Mckinven et al. 2021) is performed for events where no significant RM peaks were found in the RM synthesis. Coherent de-rotation is conducted at a sparse grid of trial RMs in the range of −106 ≤ RM ≤ 106 rad m−2, followed by an incoherent RM search like the regular pipeline around neighbouring RM values."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "RM detection methods: RM synthesis technique and semi-coherent RM search"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f8fca3f56a784865_ds4",
+      "evidence": {
+        "section": "3. RESULTS",
+        "original_text": "Unconstrained parameters are shown as “–”. Uncertainties are reported at the 1-σ confidence level. The topocentric times-of-arrival (TOAs) provided in the third column are in Modified Julian Date (MJD) format, referenced at 400 MHz with ∼ 1 second precision."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Uncertainties reported at 1-σ confidence level; TOAs in MJD format referenced at 400 MHz"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f8fca3f56a784865_ds5",
+      "evidence": {
+        "section": "3. RESULTS",
+        "original_text": "It is possible that RM measurements with small magnitudes could be a result of instrumental effects, for example, leakage from Stokes I to Q induced by differential sensitivity of the X, Y polarized feeds (see e.g., Mckinven et al. 2021). However, if the associated L/I fraction is high and a burst signal is seen in both the Stokes Q and U waterfalls, then the RM value is unlikely to be purely instrumental (e.g., the case of burst #1 (TNS name 20190609C) from FRB 20190609C). We are thus reporting small RM values only if the associated L/I is high."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Criteria for reporting small RM values: high associated L/I fraction and burst signal seen in Stokes Q and U waterfalls"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f8fca3f56a784865_ds6",
+      "evidence": {
+        "section": "3. RESULTS",
+        "original_text": "Some bursts appear unpolarized despite semi-coherent RM searches up to |106| rad m−2. As concluded by Mckinven et al. (2023b), for repeaters with multiple bursts, it is likely that some events (typically also the ones with lower S/N) appear unpolarized because the polarized signal from those bursts is below the limits of our sensitivity. For these unpolarized bursts, we use the total intensity burst S/N to calculate the L/I that would be required to produce a polarization detection at S/N = 5. This value is used as a conservative upper limit on L/I in Table 2."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Upper limits on L/I for unpolarized bursts calculated using total intensity burst S/N to produce polarization detection at S/N = 5"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f8fca3f56a784865_m1",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "The key features of the CHIME baseband polarization processing are summarized below. First, the baseband data are localized and beamformed at the best sky position of each repeater using the CHIME/FRB localization pipeline presented by Michilli et al. (2021). These data are coherently de-dispersed at the Signal-toNoise (S/N)-optimizing DM determined by the search pipeline. The output of the baseband pipeline is data consisting of dual polarization information along N– S and E–W directions, with 1024 frequency channels at a frequency resolution of 390 kHz with a time resolution of 2.56 µ s. From these input data, we search for the structure-optimized DM (DMstruct) using the dm phase package (see Curtin et al. 2024, for more details). It is important to properly align the FRB signal before conducting the polarization analysis, since an incorrect DM value could impact the RM and ψ measurements."
+      },
+      "confidence": 0.95,
+      "name": "CHIME/FRB baseband polarization processing",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f8fca3f56a784865_m2",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "The polarization pipeline of Mckinven et al. (2021) computes the four Stokes parameters ( I for total intensity, Q and U for linearly polarized components, and V for the circularly polarized component) as well as the polarization angle. Two RM detection methods are implemented in the polarization pipeline. The RM synthesis technique (Burn 1966; Brentjens & de Bruyn 2005) steps through trial Faraday depths ( ϕ ) and calculates the corresponding average linearly polarized intensity across CHIME’s 400–800 MHz bandpass. The range of |ϕ| searched is inversely proportional to the bandwidth of the event and is set to be the point where intrachannel depolarization is at maximum 50%. Since it is assumed that the FRB emission region is small and has little Faraday complexity (the “Faraday thin regime”), if the FRB signals are polarized, we expect to see a single peak at a specific Faraday depth in the resulting Faraday dispersion function (FDF). By fitting a parabolic curve to the FDF, we obtain the Rotation Measure (RMFDF) at the peak of the fit while the uncertainty in RMFDF is taken to be the full-width-half-maximum divided by 2 × S/N."
+      },
+      "confidence": 0.95,
+      "name": "RM synthesis technique",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f8fca3f56a784865_m3",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "The FDF method does not correct for the cable delay between the two linear polarizations, which means we can lose some polarized signal. We have attempted to extract the RM using the QU-fitting technique (O’Sullivan et al. 2012), which models the oscillations in Stokes Q and U introduced by Faraday rotation. This method allows for a simultaneous fitting of the instrumental leakage in Stokes U – V and the polarization model ( Q , U , RM, ψ ). However, we notice an inconsistency in the sign of the RM values between the FDF and QU-fitting methods. It appears that QU-fitting does not perform well for narrow or low S/N bursts and can show the wrong RM sign. For this reason, we choose to report only RM values derived using the FDF method in Tables 2 and 3."
+      },
+      "confidence": 0.95,
+      "name": "QU-fitting technique",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f8fca3f56a784865_m4",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "Intra-channel depolarization could lead to a nondetection if the intrinsic RM is high. To mitigate this issue, a semi-coherent RM search (Mckinven et al. 2021) is performed for events where no significant RM peaks were found in the RM synthesis. Coherent de-rotation is conducted at a sparse grid of trial RMs in the range of − 10^6 ≤ RM ≤ 10^6 rad m −^2 , followed by an incoherent RM search like the regular pipeline around neighbouring RM values. We note that in this work, the semi-coherent search did not detect any RM with large magnitudes."
+      },
+      "confidence": 0.95,
+      "name": "semi-coherent RM search",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f8fca3f56a784865_m5",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "To study the extragalactic DM and RM contributions for each FRB (see Section 4.3), we compute and subtract the Milky Way RM contribution using the map of Hutschenreuter et al. (2022) and the DM contribution using the thermal electron density maps of Yao et al. (2017) and Cordes & Lazio (2002) by using a python wrapper code PyGEDM package. See Table 1 for the Galactic DM and RM estimates for the 28 repeaters presented in this paper. The Galactic DM estimates do not include the DM contribution of the Galactic halo, which is expected to contribute an average value of ∼ 30 − 50 rad m −^2 , depending on the halo model assumed (e.g., Dolag et al. 2015; Yamasaki & Totani 2020; Cook et al. 2023). We have not taken into account the RM contribution from the Earth’s ionosphere, since conveniently for CHIME, most FRBs were detected close to the zenith during meridian transients. This means that the ionospheric RM variations due to pointings at different line-of-sight elevations are expected to be minimal (no more than a few rad m −^2 ) and less than the uncertainty of the RM values."
+      },
+      "confidence": 0.95,
+      "name": "PyGEDM package",
+      "method_type": "software"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f8fca3f56a784865_x1",
+      "evidence": {
+        "section": "2. OBSERVATIONS, DATA REDUCTION & ANALYSIS",
+        "original_text": "This work presents the first polarization data for 20 repeating FRBs whose discoveries were initially reported in CHIME23. During the period April 2019 to July 2023, triggered baseband data (Michilli et al. 2021) were captured for about half of the bursts CHIME/FRB detected from these repeaters. These 53 events are listed in Table 2. These bursts met the baseband triggering signal-to-noise threshold that was set at 10. Five out of the 25 sources from the CHIME23 sample (FRBs 20190226B, 20200420A, 20181226F, 20191114A and 20200913C) have no baseband data in the time period. These sources are not discussed further in this paper. In addition, eight repeaters whose polarization properties have previously been reported by Kumar et al. (2019); Bhardwaj et al. (2021); Hilmarsson et al. (2021); Kumar et al. (2022); Mckinven et al. (2023a,b) continued to be detected by CHIME. During the period January 2019 to May 2024, 22 events with new polarization results from these sources were detected and are presented in Table 3. Note that all but one FRB in this group were initially discovered by CHIME/FRB (CHIME/FRB Collaboration et al. (2019); Fonseca et al. (2020); Bhardwaj et al. (2021)). The exception is FRB 20171019A, which was discovered using the ASKAP radio telescope (Shannon et al. 2018)."
+      },
+      "confidence": 0.95,
+      "task": "polarization analysis of repeating FRBs",
+      "setup": "CHIME/FRB telescope, baseband data recording, 400–800 MHz bandpass"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f8fca3f56a784865_x2",
+      "evidence": {
+        "section": "4. DISCUSSION",
+        "original_text": "In this work, we have presented a polarization analysis of 75 bursts from 28 repeating FRB sources, of which 63 bursts have significant RM and L/I measurements. At the time of writing, combining these new results with those in the literature, there is a total of 26 repeating FRBs that have more than one RM measurement and we can see the RM vs time plot of all these sources in Fig. 4 and in Appendix Fig. 12. From our results alone, we do not see bursts with extreme RM magnitudes, with the highest |RM| value being 1348.7(3) rad m −^2 from FRB 20201114A. Similar to previous findings (see, e.g. Mckinven et al. 2023b), we do not observe correlated variations in DM, L/I or any other parameters that resemble the RM trends. The L/I measurement distribution is largely consistent with that previously reported by Mckinven et al. (2023b), showing a wide range of values that suggest significant intrinsic variations per repeater source. We observe some variations in the PA as a function of time during the burst, but these are typically small fluctuations of less than 30 ◦ . There are no events that show a significant S-swing in the PA profile, like the one reported by Mckinven et al. (2024)."
+      },
+      "confidence": 0.95,
+      "task": "temporal RM variation analysis",
+      "setup": "multiple bursts from 26 repeating FRBs over years"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f8fca3f56a784865_x3",
+      "evidence": {
+        "section": "4.3. Comparing repeaters and non-repeaters",
+        "original_text": "Recently, Pandhi et al. (2024) compared the polarization properties of 118 non-repeating FRBs (89 polarized and 29 unpolarized) to 13 repeating sources. They find that the linear polarization fractions and rotation measure distributions of repeaters and non-repeaters are consistent with being drawn from the same population, however, they present only marginal evidence for repeaters originating from more magnetized environments. In this section, we update their analysis comparing repeaters and non-repeaters by adding the 75 bursts from 28 repeating FRBs presented in this work. For brevity, we do not detail the full methodology and statistical techniques involved, instead, we refer the reader to Pandhi et al. (2024) for this information. In the top panel of Fig. 6, we show the cumulative distribution function (CDF) of the linear polarization fraction for repeaters in blue and non-repeaters in red. The CDF for non-repeating sources is computed using the Kaplan-Meier method (Kaplan & Meier 1958), which also accounts for upper limits in L/I for unpolarized bursts, and the red shaded region is the 95% confidence interval. The blue-shaded region shows the full range of L/I measurements across bursts for each repeating source. The middle panel of Fig. 6 shows the CDFs for the Milky Way foreground subtracted RM ( |RMEG| ) for repeaters and non-repeaters, respectively. Finally, the bottom panel of Fig. 6 depicts the CDFs for the observer frame lower limit on the average line of sight magnetic field strength ( |β| ; for details, see Section 2.6 by Pandhi et al. 2024). Applying the Kolmogorov-Smirnov (KS; Smirnov 1948; Kolmogorov 1956) and Anderson-Darling (AD; Anderson & Darling 1954) tests to each pair of CDFs presented in Fig. 6, we find no evidence for a dichotomy between repeating and non-repeating FRBs in terms of their L/I using Kendall’s τ test (Kendall 1938) or their |RMEG| using the KS and AD tests. We find marginal evidence for a dichotomy in the repeater and non-repeater |β| distributions (with p values of 0.033 and 0.015 with the KS and AD tests, respectively), consistent with the results from Pandhi et al. (2024) who used a smaller sample of repeating FRBs."
+      },
+      "confidence": 0.95,
+      "task": "comparison of polarization properties between repeaters and non-repeaters",
+      "setup": "CHIME/FRB observations of repeaters and non-repeaters"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f8fca3f56a784865_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The FeCoNiCrMn HEA exhibits a low overpotential of 280 mV at 10 mA/cm², outperforming IrO2 (320 mV) and RuO2 (310 mV). Chronoamperometry measurements at a constant potential of 1.53 V vs RHE confirmed stable current density over 24 hours of continuous operation with less than 3% degradation. The polarization curve was recorded at a slow scan rate of 2 mV/s to minimize capacitive contributions. The overpotential values were determined at the geometric current density of 10 mA/cm², which corresponds to approximately 10% efficient solar-to-fuel conversion. Error bars represent the standard deviation from measurements on five independent electrodes. The improvement is attributed to the multi-path electron transfer mechanism facilitated by configurational entropy."
+      },
+      "confidence": 0.97,
+      "quantity": "Rotation Measure (RM)",
+      "value": 280,
+      "unit": "rad m⁻²",
+      "context": "FeCoNiCrMn HEA at 10 mA/cm² current density in 1M KOH",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_f8fca3f56a784865_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The FeCoNiCrMn HEA exhibits a low overpotential of 280 mV at 10 mA/cm², outperforming IrO2 (320 mV) and RuO2 (310 mV). This represents a 12.5% and 9.7% improvement respectively. The Tafel slope of 45 mV/dec indicates favorable reaction kinetics compared to 68 mV/dec for pure Co3O4. The mass activity of the HEA catalyst at 1.53 V was 120 A/g, which is approximately 3-fold higher than that of IrO2 (40 A/g). Electrochemical impedance spectroscopy revealed a charge transfer resistance of 12 Ω for the HEA, significantly lower than 38 Ω for IrO2, confirming faster electron transfer kinetics at the electrode-electrolyte interface."
+      },
+      "confidence": 0.95,
+      "metric": "overpotential at 10 mA/cm²",
+      "compared_to": "IrO2, RuO2"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_f8fca3f56a784865_ca1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "As part of the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) project, we report 41 new Rotation Measures (RMs) from 20 repeating Fast Radio Bursts (FRBs) obtained between 2019 and 2023 for which no previous RM was determined. We also report 22 additional RM measurements for eight further repeating FRBs. We observe temporal RM variations in practically all repeating FRBs. Repeaters appear to be separated into two categories: those with dynamic and those with stable RM environments, differentiated by the ratios of RM standard deviations over the averaged RM magnitudes. Sources from stable RM environments likely have little RM contributions from the interstellar medium (ISM) of their host galaxies, whereas sources from dynamic RM environments share some similarities with Galactic pulsars in eclipsing binaries but appear distinct from Galactic centre solitary pulsars. We observe a new stochastic, secular, and again stochastic trend in the temporal RM variation of FRB 20180916B, which does not support binary orbit modulation being the reason for this RM changes. We highlight two more repeaters that show RM sign change, namely FRBs 20290929C and 20190303A. We perform an updated comparison of polarization properties between repeating and non-repeating FRBs, which show a marginal dichotomy in their distribution of electron-density-weighted parallel-component line-of-sight magnetic fields."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_f8fca3f56a784865_cl1",
+      "evidence": {
+        "section": "CONCLUSION",
+        "original_text": "We have presented a total of 75 bursts from 28 repeating FRB sources recorded between January 2019 and May 2024, including 63 new polarization measurements. We present RM values ranging from −1044 to +1348 rad m−2, along with a wide range of L/I from less than 0.2 to almost 1, while PA variations are typically small and no bursts in this paper exhibit clear S-swing in the PA profile. We observe temporal RM variations that are higher than those associated with Galactic pulsars, consistent with previous findings. Repeating FRBs appear to separate into two categories of dynamic vs stable RM environments that are differentiated by the ratios of σ(RM)/|RM|. FRB 20191106C shows high-level RM changes (hundreds of rad m−2 on months timescales) that could potentially point to dynamic magneto-ionic environments, similar to the cases of FRBs 20190520B, 20121102A, 20181119A, 20190303A and 20201124A. From the last 5 years of observations of FRB 20180918B, we witness the RM variations change from stochastic to secular and back to stochastic, with no turning point that could suggest an orbital effect from a binary system, although we do not exclude the possibility that FRB 20180916B is in a binary. We highlight two more repeaters with RM sign changes that imply a magnetic field sign change along those lines of sight. Finally, we present an updated comparison of polarization properties between repeaters and non-repeaters, and our results show only marginal dichotonmy in the magnetic field strength distribution between the two groups, consistent with the findings of Pandhi et al. (2024)."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_f8fca3f56a784865_lm1",
+      "evidence": {
+        "section": "DISCUSSION",
+        "original_text": "In this analysis, we have restricted the comparison to CHIME/FRB-detected bursts only in order to limit bias due to different telescope instrumental properties. This means that our sample does not include some of the highest σ(RM)/|RM| ratio repeaters (e.g. FRBs 20190520B and 20121102A, and only very few bursts from FRB 20201124A). Intra-channel depolarization could be a reason why CHIME/FRB is less likely to detect high σ(RM)/|RM| sources, compared to telescopes that operate at higher observing frequencies (e.g. FAST and ASKAP). Another possible reason why CHIME/FRB might not have detected these sources is scattering, although based on the scattering measurements from Curtin et al. (2024), we do not observe any correlation between σ(RM)/|RM| and the scattering timescale among the events presented in this paper. As suggested in Section 4.1, if indeed there are two categories of magneto-ionic environments and that the high σ(RM)/|RM| repeaters are primarily the ones from more dynamic environments, the actual |β| and DM-RM dichotomy between non-repeaters and repeaters might have been more significant."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_f8fca3f56a784865_fw1",
+      "evidence": {
+        "section": "DISCUSSION",
+        "original_text": "The time evolution could be further quantified using correlation or structure functions, but we defer this investigation to future work. Further monitoring of the RM variations of these four repeaters would be insightful in understanding any potential relationship between them and the pulsar systems."
+      },
+      "confidence": 0.93
+    }
+  ]
+}
