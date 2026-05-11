@@ -8,27 +8,21 @@
     "abstract": "- 1 Aerospace Information Research Institute, Chinese Academy of Sciences, Beijing 100094, China 2 School of Electronic, Electrical and Communication Engineering, University of Chinese Academy of Sciences, Beijing 100049, China",
     "introduction": "In today's era, with the development of science and technology, our ability to obtain remote sensing data has gradually reached an unprecedented level [1]. Remote sensing data already embody the characteristics of big data, and remote sensing big data are receiving more and more attention from experts in academic fields and commercial application fields. Remote sensing big data have inherent characteristics, such as being dynamic, multiscale, and nonlinear, as well as external characteristics, such as being multisource, high-dimensional, and heterogeneous, which play an important role in multiple fields, such as atmospheric science, land use [2], vegetation and ecology [3,4], environmental science [5], and crustal evolution [6]. Traditional remote sensing data organization and management methods based on \"scenes\" have been unable to meet the management and application requirements of remote sensing big data due to the temporal and spatial fragmentation of data [7]. People have been exploring new data organization and management frameworks or technologies to make up for the shortcomings of existing data management methods, thereby improving the utilization efficiency of remote sensing big data. \n\nMost of the traditional data management frameworks are created based on international standards such as those of the ISO (International Organization for Standardization) \n\n_Information_ **2022** , _13_ , 407. https://doi.org/10.3390/info13090407 \n\nwww.mdpi.com/journal/information \n\n2 of 13 \n\n_Information_ **2022** , _13_ , 407 \n\nand OGC (Open Geospatial Consortium) [8] for representing and storing spatial information in data files (such as GeoTIFF and Esri Shapefile) as well as database systems (such as PostGIS and Oracle Spatial), and for serving spatial data and metadata through web services. Most regional, national, and international remote sensing data management agencies still share and disseminate multisource Remote sensing data in the form of individual imagery data files through HTTP, FTP, and SSH protocols in web service portals [9]. In order to cope with the pressure faced by traditional data organization and management methods in storing, processing, and analyzing  remote sensing big data, scientists and engineers have proposed and developed new frameworks based on new technologies, including cloud computing and distributed systems, such as the array database system (Array DBMS) [10], Google Earth Engine [11], data cubes [12–14], and cloud-based remote sensing data production systems [15,16]. It is known from the literature [6] that array database systems (such as RasDaMam [17], SciDB [18]) are centered on multidimensional arrays, and large arrays are split into index blocks, which are stored and shared among multiple computers to improve performance and efficiency. The Google Earth Engine was launched by Google in 2010 as a commercial cloud platform for the large-scale scientific analysis and visualization of geospatial datasets. The Open Data Cube (ODC), formerly known as the AGDC, is an earth observation data organization and analysis framework consisting of a series of open source data structures and tools. The ODC provides the data access mode of OGC web services (such as WCS, WM, and WMT), and also provides an open source Python API interface and Jupyter Notebook with application examples, so as to help users to use and share multisource remote sensing imagery data [19]. \n\nBased on the ODC basic framework, combined with actual needs and application scenarios, multiple research teams from all over the world have carried out a series of research studies. Australian researchers, based on archived satellite imagery data, such as that of Landsat and Sentinel, constructed Australian data cubes to monitor surface water changes [20–22] and land cover change maps [23], mangrove area expansion [24], etc. Scholars in Switzerland, combining the massive amounts of satellite imagery data covering [22] Switzerland, have carried out studies on snow cover [25], urbanization [26], vegetation [22], and water quality changes [27], hoping to improve their understanding of Swiss resources and further understand the environment [25]. African research teams, by building the ODC-based Digital Earth Africa, focused on application areas such as land transformation, urbanization, and water range changes that are consistent with the United Nations’ Sustainable Development Goals and to meet national and regional decision-making needs [28–34]. In addition, research teams in countries such as Vietnam, Colombia, Brazil, Mexico, and China have used ODC for data management and application analyses in a variety of thematic areas, such as vegetation [34], hydrology [35,36], soils [37–39], and island ecology [40], using international and national satellite imagery data covering their countries. \n\nAlthough data management frameworks such as the Google Earth Engine and Array DBMS facilitate the large-scale processing and application of satellite imagery data, users still need to put in a lot of effort and learn advanced techniques to be able to utilize these data management environments. Moreover, China’s high-resolution imagery data require high security and are not suitable to be stored in a commercial cloud platform environment. Therefore, we choose the open source ODC framework to build a localized China Data Cube to meet the practical application requirements by extending data loading and application support for international imagery data and China imagery data. Specifically, based on the ODC open source framework, this study introduces ARD generation technology, designs and implements the CDC_DLTool tool, and extends data loading and application support for international imagery data, such as that of Landsat 8, and China imagery data, such as that of GF-1, covering the Chinese region. A localized China Data Cube is built to meet practical application requirements. Compared with the traditional scene- \n\n3 of 13 \n\n_Information_ **2022** , _13_ , 407 \n\nbased data organization, the smallest management unit in this study is a pixel, which facilitates the dynamic analysis of long time series of multisource satellite imagery data. \n\nThe main objectives of this paper are to introduce the Earth Observation Data Cube, present designs of the China Data Cube applicable to Chinese satellite imagery data, design two research cases and perform related case studies, discuss the shortcomings of existing research work, and list future work.",
     "primary_discipline": {
-      "level1": "计算机科学技术",
-      "level2": null,
+      "level1": "测绘科学技术",
+      "level2": "遥感技术",
       "level3": null
     },
-    "secondary_disciplines": [
-      {
-        "level1": "测绘科学技术",
-        "level2": null,
-        "level3": null
-      }
-    ],
+    "secondary_disciplines": null,
     "keywords": [
       "Earth Observation Data Cube",
-      "remote sensing big data",
+      "Remote Sensing Big Data",
       "Open Data Cube",
-      "data management framework",
-      "satellite imagery analysis"
+      "China Data Cube",
+      "Satellite Imagery Analysis"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:34:45.575276+00:00",
+      "extraction_timestamp": "2026-05-11T02:05:57.371574+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -40,7 +34,7 @@
       "concept_id": "doc_3dd469d939479433_c1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "As a new data management paradigm, the Earth Observation Data Cube simplifies the way that users manage and use earth observation data, and provides an analysis-ready form to access big spatiotemporal data, so as to realize the greater potential of earth observation data. Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework."
+        "original_text": "As a new data management paradigm, the Earth Observation Data Cube simplifies the way that users manage and use earth observation data, and provides an analysis-ready form to access big spatiotemporal data, so as to realize the greater potential of earth observation data. Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
       "confidence": 0.98,
       "term": "Earth Observation Data Cube",
@@ -52,7 +46,7 @@
       "concept_id": "doc_3dd469d939479433_c2",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1."
+        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
       "confidence": 0.98,
       "term": "China Data Cube",
@@ -64,7 +58,7 @@
       "concept_id": "doc_3dd469d939479433_c3",
       "evidence": {
         "section": "Introduction",
-        "original_text": "The Open Data Cube (ODC), formerly known as the AGDC, is an earth observation data organization and analysis framework consisting of a series of open source data structures and tools. The ODC provides the data access mode of OGC web services (such as WCS, WM, and WMT), and also provides an open source Python API interface and Jupyter Notebook with application examples, so as to help users to use and share multisource remote sensing imagery data."
+        "original_text": "The Open Data Cube (ODC), formerly known as the AGDC, is an earth observation data organization and analysis framework consisting of a series of open source data structures and tools. The ODC provides the data access mode of OGC web services (such as WCS, WM, and WMT), and also provides an open source Python API interface and Jupyter Notebook with application examples, so as to help users to use and share multisource remote sensing imagery data [19]. Based on the ODC basic framework, combined with actual needs and application scenarios, multiple research teams from all over the world have carried out a series of research studies. Australian researchers, based on archived satellite imagery data, such as that of Landsat and Sentinel, constructed Australian data cubes to monitor surface water changes [20–22] and land cover change maps [23], mangrove area expansion [24], etc. Scholars in Switzerland, combining the massive amounts of satellite imagery data covering [22] Switzerland, have carried out studies on snow cover [25], urbanization [26], vegetation [22], and water quality changes [27], hoping to improve their understanding of Swiss resources and further understand the environment [25]. African research teams, by building the ODC-based Digital Earth Africa, focused on application areas such as land transformation, urbanization, and water range changes that are consistent with the United Nations’ Sustainable Development Goals and to meet national and regional decision-making needs [28–34]. In addition, research teams in countries such as Vietnam, Colombia, Brazil, Mexico, and China have used ODC for data management and application analyses in a variety of thematic areas, such as vegetation [34], hydrology [35,36], soils [37–39], and island ecology [40], using international and national satellite imagery data covering their countries."
       },
       "confidence": 0.97,
       "term": "Open Data Cube",
@@ -75,10 +69,10 @@
       "type": "concept",
       "concept_id": "doc_3dd469d939479433_c4",
       "evidence": {
-        "section": "3.1. Data Access and ARD Production",
-        "original_text": "The systematic and regular delivery of analysis-ready data (ARD) is essential to facilitate the generation of useful information products and support the development of end user applications. CEOS defines ARD as 'satellite data that has been processed to minimum requirements and organized into a form that allows immediate analysis with minimal additional user effort, in the shortest possible time, and interoperability with other data sets'. ARD reduce the burden of fully utilizing satellite data by providing specifications that limit data preparation to produce relevant, consistent, normalized, and interoperable data."
+        "section": "Abstract",
+        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
-      "confidence": 0.98,
+      "confidence": 0.96,
       "term": "analysis-ready data",
       "normalized": "分析就绪数据",
       "std_label": "ARD"
@@ -88,19 +82,19 @@
       "concept_id": "doc_3dd469d939479433_c5",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework."
+        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
-      "confidence": 0.96,
+      "confidence": 0.95,
       "term": "CDC_DLTool",
       "normalized": "CDC数据加载工具",
-      "std_label": "CDC_DLTool"
+      "std_label": null
     },
     {
       "type": "concept",
       "concept_id": "doc_3dd469d939479433_c6",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Remote sensing data already embody the characteristics of big data, and remote sensing big data are receiving more and more attention from experts in academic fields and commercial application fields. Remote sensing big data have inherent characteristics, such as being dynamic, multiscale, and nonlinear, as well as external characteristics, such as being multisource, high-dimensional, and heterogeneous, which play an important role in multiple fields, such as atmospheric science, land use, vegetation and ecology, environmental science, and crustal evolution."
+        "original_text": "In today's era, with the development of science and technology, our ability to obtain remote sensing data has gradually reached an unprecedented level [1]. Remote sensing data already embody the characteristics of big data, and remote sensing big data are receiving more and more attention from experts in academic fields and commercial application fields. Remote sensing big data have inherent characteristics, such as being dynamic, multiscale, and nonlinear, as well as external characteristics, such as being multisource, high-dimensional, and heterogeneous, which play an important role in multiple fields, such as atmospheric science, land use [2], vegetation and ecology [3,4], environmental science [5], and crustal evolution [6]. Traditional remote sensing data organization and management methods based on \"scenes\" have been unable to meet the management and application requirements of remote sensing big data due to the temporal and spatial fragmentation of data [7]. People have been exploring new data organization and management frameworks or technologies to make up for the shortcomings of existing data management methods, thereby improving the utilization efficiency of remote sensing big data."
       },
       "confidence": 0.97,
       "term": "remote sensing big data",
@@ -123,12 +117,12 @@
       "type": "concept",
       "concept_id": "doc_3dd469d939479433_c8",
       "evidence": {
-        "section": "3.2. Data Indexing Based on the CDC Grid",
-        "original_text": "As a new data management method, the CDC grid realizes the paradigm shift from 'scene' to pixels, and it can efficiently store satellite imagery data with multitime, multispatial, multispectrum, and multiattribute characteristics. At the same time, the CDC grid also takes into account the temporal and spatial correlation of satellite imagery data, avoiding the temporal and spatial fragmentation of the original 'scene' management approach, and making it easy and efficient to analyze the imagery data for long time series applications."
+        "section": "Abstract",
+        "original_text": "The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
-      "confidence": 0.96,
-      "term": "CDC grid",
-      "normalized": "CDC网格",
+      "confidence": 0.95,
+      "term": "pixel-based grid",
+      "normalized": "基于像素的网格",
       "std_label": null
     },
     {
@@ -136,11 +130,11 @@
       "concept_id": "doc_3dd469d939479433_c9",
       "evidence": {
         "section": "Abstract",
-        "original_text": "The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
+        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
-      "confidence": 0.95,
-      "term": "pixel-based management",
-      "normalized": "基于像素的管理",
+      "confidence": 0.96,
+      "term": "water change monitoring",
+      "normalized": "水体变化监测",
       "std_label": null
     },
     {
@@ -148,43 +142,7 @@
       "concept_id": "doc_3dd469d939479433_c10",
       "evidence": {
         "section": "Abstract",
-        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1."
-      },
-      "confidence": 0.98,
-      "term": "Landsat 8",
-      "normalized": "Landsat 8卫星数据",
-      "std_label": null
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_3dd469d939479433_c11",
-      "evidence": {
-        "section": "Abstract",
-        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1."
-      },
-      "confidence": 0.98,
-      "term": "GF-1",
-      "normalized": "高分一号卫星数据",
-      "std_label": null
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_3dd469d939479433_c12",
-      "evidence": {
-        "section": "4.1. Water Body Change Monitoring of the Baiyangdian Lake",
-        "original_text": "In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS, this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5. By comparing and analyzing the annual changes in the water bodies of the Baiyangdian Lake, a theoretical basis for dynamic changes in domestic and industrial generation can be provided."
-      },
-      "confidence": 0.96,
-      "term": "water body change monitoring",
-      "normalized": "水体变化监测",
-      "std_label": null
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_3dd469d939479433_c13",
-      "evidence": {
-        "section": "4.2. Vegetation Change Detection in the Beijing Suburbs",
-        "original_text": "In order to verify the availability of the China GF-1 imagery data stored in the CDC framework, this study selected a small area in Huairou District, Beijing, for vegetation change monitoring, as shown in Figure 7. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods."
+        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
       "confidence": 0.96,
       "term": "vegetation change monitoring",
@@ -196,9 +154,9 @@
       "relation_id": "doc_3dd469d939479433_r1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework."
+        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
-      "confidence": 0.97,
+      "confidence": 0.98,
       "head": "doc_3dd469d939479433_c2",
       "relation_type": "derives",
       "relation_surface": "based on",
@@ -209,9 +167,9 @@
       "relation_id": "doc_3dd469d939479433_r2",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework."
+        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
-      "confidence": 0.96,
+      "confidence": 0.97,
       "head": "doc_3dd469d939479433_c2",
       "relation_type": "uses",
       "relation_surface": "combined with",
@@ -222,20 +180,46 @@
       "relation_id": "doc_3dd469d939479433_r3",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework."
+        "original_text": "The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
       "confidence": 0.95,
       "head": "doc_3dd469d939479433_c2",
       "relation_type": "enhances",
-      "relation_surface": "extends the support for",
-      "tail": "doc_3dd469d939479433_c5"
+      "relation_surface": "makes more convenient and faster",
+      "tail": "doc_3dd469d939479433_c7"
     },
     {
       "type": "relation",
       "relation_id": "doc_3dd469d939479433_r4",
       "evidence": {
         "section": "Abstract",
-        "original_text": "As a new data management paradigm, the Earth Observation Data Cube simplifies the way that users manage and use earth observation data, and provides an analysis-ready form to access big spatiotemporal data, so as to realize the greater potential of earth observation data."
+        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
+      },
+      "confidence": 0.96,
+      "head": "doc_3dd469d939479433_c2",
+      "relation_type": "uses",
+      "relation_surface": "carried out case studies",
+      "tail": "doc_3dd469d939479433_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3dd469d939479433_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
+      },
+      "confidence": 0.96,
+      "head": "doc_3dd469d939479433_c2",
+      "relation_type": "uses",
+      "relation_surface": "carried out case studies",
+      "tail": "doc_3dd469d939479433_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3dd469d939479433_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "As a new data management paradigm, the Earth Observation Data Cube simplifies the way that users manage and use earth observation data, and provides an analysis-ready form to access big spatiotemporal data, so as to realize the greater potential of earth observation data. Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
       "confidence": 0.94,
       "head": "doc_3dd469d939479433_c1",
@@ -245,111 +229,46 @@
     },
     {
       "type": "relation",
-      "relation_id": "doc_3dd469d939479433_r5",
-      "evidence": {
-        "section": "3.2. Data Indexing Based on the CDC Grid",
-        "original_text": "As a new data management method, the CDC grid realizes the paradigm shift from 'scene' to pixels, and it can efficiently store satellite imagery data with multitime, multispatial, multispectrum, and multiattribute characteristics. At the same time, the CDC grid also takes into account the temporal and spatial correlation of satellite imagery data, avoiding the temporal and spatial fragmentation of the original 'scene' management approach, and making it easy and efficient to analyze the imagery data for long time series applications."
-      },
-      "confidence": 0.95,
-      "head": "doc_3dd469d939479433_c8",
-      "relation_type": "enhances",
-      "relation_surface": "makes it easy and efficient",
-      "tail": "doc_3dd469d939479433_c9"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_3dd469d939479433_r6",
-      "evidence": {
-        "section": "Abstract",
-        "original_text": "The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
-      },
-      "confidence": 0.96,
-      "head": "doc_3dd469d939479433_c9",
-      "relation_type": "compares",
-      "relation_surface": "compared with",
-      "tail": "doc_3dd469d939479433_c7"
-    },
-    {
-      "type": "relation",
       "relation_id": "doc_3dd469d939479433_r7",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1."
+        "section": "Introduction",
+        "original_text": "The Open Data Cube (ODC), formerly known as the AGDC, is an earth observation data organization and analysis framework consisting of a series of open source data structures and tools. The ODC provides the data access mode of OGC web services (such as WCS, WM, and WMT), and also provides an open source Python API interface and Jupyter Notebook with application examples, so as to help users to use and share multisource remote sensing imagery data [19]. Based on the ODC basic framework, combined with actual needs and application scenarios, multiple research teams from all over the world have carried out a series of research studies. Australian researchers, based on archived satellite imagery data, such as that of Landsat and Sentinel, constructed Australian data cubes to monitor surface water changes [20–22] and land cover change maps [23], mangrove area expansion [24], etc. Scholars in Switzerland, combining the massive amounts of satellite imagery data covering [22] Switzerland, have carried out studies on snow cover [25], urbanization [26], vegetation [22], and water quality changes [27], hoping to improve their understanding of Swiss resources and further understand the environment [25]. African research teams, by building the ODC-based Digital Earth Africa, focused on application areas such as land transformation, urbanization, and water range changes that are consistent with the United Nations’ Sustainable Development Goals and to meet national and regional decision-making needs [28–34]. In addition, research teams in countries such as Vietnam, Colombia, Brazil, Mexico, and China have used ODC for data management and application analyses in a variety of thematic areas, such as vegetation [34], hydrology [35,36], soils [37–39], and island ecology [40], using international and national satellite imagery data covering their countries."
       },
-      "confidence": 0.97,
-      "head": "doc_3dd469d939479433_c2",
-      "relation_type": "uses",
-      "relation_surface": "carried out case studies",
-      "tail": "doc_3dd469d939479433_c10"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_3dd469d939479433_r8",
-      "evidence": {
-        "section": "Abstract",
-        "original_text": "In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1."
-      },
-      "confidence": 0.97,
-      "head": "doc_3dd469d939479433_c2",
-      "relation_type": "uses",
-      "relation_surface": "carried out case studies",
-      "tail": "doc_3dd469d939479433_c11"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_3dd469d939479433_r9",
-      "evidence": {
-        "section": "4.1. Water Body Change Monitoring of the Baiyangdian Lake",
-        "original_text": "In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS, this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5."
-      },
-      "confidence": 0.96,
-      "head": "doc_3dd469d939479433_c12",
-      "relation_type": "uses",
-      "relation_surface": "based on",
-      "tail": "doc_3dd469d939479433_c10"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_3dd469d939479433_r10",
-      "evidence": {
-        "section": "4.2. Vegetation Change Detection in the Beijing Suburbs",
-        "original_text": "In order to verify the availability of the China GF-1 imagery data stored in the CDC framework, this study selected a small area in Huairou District, Beijing, for vegetation change monitoring, as shown in Figure 7."
-      },
-      "confidence": 0.96,
-      "head": "doc_3dd469d939479433_c13",
-      "relation_type": "uses",
-      "relation_surface": "based on",
-      "tail": "doc_3dd469d939479433_c11"
+      "confidence": 0.93,
+      "head": "doc_3dd469d939479433_c3",
+      "relation_type": "enhances",
+      "relation_surface": "helps users to use and share",
+      "tail": "doc_3dd469d939479433_c6"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_3dd469d939479433_d1",
       "evidence": {
-        "section": "4. Case Study and Results",
-        "original_text": "In this study, Landsat 8 satellite imagery data were used to extract the area of water bodies in the Baiyangdian Lake. Landsat 8 imagery data were downloaded for the period of 2013 to 2021 with less than 20% cloud cover, which were selected from June to September. Taking advantage of the Landsat 8 data, monitoring studies of water body coverage information can provide scientific data for the development of effective measures to improve the ecological environment of the reservoir basin in the future. In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS [51], this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5. By comparing and analyzing the annual changes in the water bodies of the Baiyangdian Lake, a theoretical basis for dynamic changes in domestic and industrial generation can be provided. For example, from the second graph in the first row, it can be seen that there was a relatively significant increase in the volume of water in the Baiyangdian Lake in 2014, due to the introduction of external water from the South–North Water Transfer Project. As can also be seen in the third graph in the second row, there was also an incremental change in the quantity of the Baiyangdian Lake in 2018, thanks to a series of protection policies for the Baiyangdian Lake issued after the establishment of the Xiong’an New Area. Figure 6 shows the total number of observable water bodies in the Baiyangdian Lake based on the CDC grid and the WOfS water body extraction algorithm for the 9 years between 2013 and 2021. The values of the total number of observable water bodies are from large to small, in line with the colored bars (dark blue, blue, green, yellow, red) on the right. The darker the colored bars are, the larger are the total number of observable water bodies in the study area. From this, it can be assumed that the change of water body in Baiyangdian Lake is smaller, and its ecological environment is more balanced. The dark-blue area in the purple rectangle at the bottom right of Figure 6 indicates that water has been present in this area for nine consecutive years. In contrast, it can be seen that the light-green areas in the red rectangles presented in the left part, top-right part, and bottom-left part of Figure 6 indicate that the values identified as water bodies in these three parts range from one to three, indicating that the Baiyangdian Lake is dynamically changing. More in-depth studies will be carried out later, to determine whether the sizes of the water bodies are increasing or decreasing."
+        "section": "4.1. Water Body Change Monitoring of the Baiyangdian Lake",
+        "original_text": "In this study, Landsat 8 satellite imagery data were used to extract the area of water bodies in the Baiyangdian Lake. Landsat 8 imagery data were downloaded for the period of 2013 to 2021 with less than 20% cloud cover, which were selected from June to September. Taking advantage of the Landsat 8 data, monitoring studies of water body coverage information can provide scientific data for the development of effective measures to improve the ecological environment of the reservoir basin in the future. In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS [51], this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5. By comparing and analyzing the annual changes in the water bodies of the Baiyangdian Lake, a theoretical basis for dynamic changes in domestic and industrial generation can be provided. For example, from the second graph in the first row, it can be seen that there was a relatively significant increase in the volume of water in the Baiyangdian Lake in 2014, due to the introduction of external water from the South–North Water Transfer Project. As can also be seen in the third graph in the second row, there was also an incremental change in the quantity of the Baiyangdian Lake in 2018, thanks to a series of protection policies for the Baiyangdian Lake issued after the establishment of the Xiong’an New Area."
       },
       "confidence": 0.95,
-      "name": "Landsat 8 imagery data for Baiyangdian Lake water body change monitoring",
+      "name": "Landsat 8 imagery data covering Baiyangdian Lake",
       "modality": "image",
-      "domain": "earth observation, remote sensing"
+      "domain": "remote sensing"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_3dd469d939479433_d2",
       "evidence": {
-        "section": "4. Case Study and Results",
-        "original_text": "In order to verify the availability of the China GF-1 imagery data stored in the CDC framework, this study selected a small area (40.8050° N, 40.8574° N, 116.5207° E, and 116.653° E) in Huairou District, Beijing, for vegetation change monitoring, as shown in Figure 7. Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods. Different baseline NDVI threshold ranges can be set for different vegetation types, e.g., 0.6 to 0.9 for dense vegetation and 0.2 to 0.6 for grassland. Figure 10a and Figure 10b represent the change in dense vegetation in the study area between the two time periods of 2015 and 2017, based on the GF-1 imagery data stored and managed in the CDC grid framework. This is an NDVI threshold plot showing the change in green pixels within the threshold range. Based on this map, shown in Figure 10c, it can be seen that dense vegetation changes significantly elsewhere except the ridges, which can provide a data reference for forest vegetation change studies [3]."
+        "section": "4.2. Vegetation Change Detection in the Beijing Suburbs",
+        "original_text": "In order to verify the availability of the China GF-1 imagery data stored in the CDC framework, this study selected a small area (40.8050° N, 40.8574° N, 116.5207° E, and 116.653° E) in Huairou District, Beijing, for vegetation change monitoring, as shown in Figure 7. Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods. Different baseline NDVI threshold ranges can be set for different vegetation types, e.g., 0.6 to 0.9 for dense vegetation and 0.2 to 0.6 for grassland. Figure 10a and Figure 10b represent the change in dense vegetation in the study area between the two time periods of 2015 and 2017, based on the GF-1 imagery data stored and managed in the CDC grid framework."
       },
       "confidence": 0.95,
-      "name": "GF-1 imagery data for vegetation change detection in Huairou District",
+      "name": "GF-1 imagery data covering Huairou District, Beijing",
       "modality": "image",
-      "domain": "earth observation, remote sensing"
+      "domain": "remote sensing"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_3dd469d939479433_ds1",
       "evidence": {
-        "section": "3. Development of the China Data Cube (CDC)",
+        "section": "3.1. Data Access and ARD Production",
         "original_text": "The systematic and regular delivery of analysis-ready data (ARD) is essential to facilitate the generation of useful information products and support the development of end user applications [42]. CEOS defines ARD as 'satellite data that has been processed to minimum requirements and organized into a form that allows immediate analysis with minimal additional user effort, in the shortest possible time, and interoperability with other data sets' [41]. ARD reduce the burden of fully utilizing satellite data by providing specifications that limit data preparation to produce relevant, consistent, normalized, and interoperable data. These specifications save time and effort and minimize the cost of preprocessing data, while leveraging the knowledge and expertise of users, allowing them to spend more time analyzing data rather than searching and preprocessing them. These requirements involve parameters such as radiometric and geometric corrections, atmospheric corrections, and metadata descriptions. In optical imageries the ARD level corresponds to the surface reflectance product, while in radar images it corresponds to the radiation-normalized backward-scattering product [41]. Since the Landsat 8 data provided by the USGS have been processed by the EPSA program to be generated to the LaSRC level, they can provide a surface reflectivity level (L2A) data file, and no further preprocessing is needed to reach the ARD standard. For domestic satellite imageries, the data distribution unit provides users with data at the L1A level, which require further preprocessing, such as radiometric correction and geometric correction, to reach the ARD level. In this paper, absolute radiometric calibration coefficients are used to achieve the radiometric calibration of GF-1 imagery data, and the FLASSH method [43] is used to achieve the atmospheric correction of GF-1 imagery data. The geometric normalization of the GF-1 imagery data is achieved by using the HighImgCorrect method [44]. Finally, the quality of the GF-1 imagery data products is improved to the L4 level, which can meet the requirements of quantitative remote sensing analyses, such as water body change, vegetation change, urbanization, and coastline change."
       },
       "confidence": 0.95,
@@ -360,41 +279,41 @@
       "type": "data_specification",
       "ds_id": "doc_3dd469d939479433_ds2",
       "evidence": {
-        "section": "3. Development of the China Data Cube (CDC)",
+        "section": "3.1. Data Access and ARD Production",
         "original_text": "The ODC provides definition files and organization scripts for earth observation imagery data products such as Landsat and MODIS, which can automatically generate YAML [45] profiles and imagery metadata files from imagery files, but lacks relevant access methods and tools for Chinese satellite imagery data, such as those of GF-1. To this end, based on GDAL, YamlDotNet, and other components, this paper designs and implements the CDC_DLTool middleware, which realizes the acquisition of spectral information, band information, spatial location, and other contents from Chinese satellite imagery files and generates YAML metadata documents conforming to ODC standards; the specific operation flow is shown in Figure 2."
       },
       "confidence": 0.9,
       "spec_type": "format_rule",
-      "description": "CDC_DLTool middleware for generating YAML metadata documents conforming to ODC standards"
+      "description": "CDC_DLTool workflow for generating ODC-compatible metadata from Chinese satellite imagery"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_3dd469d939479433_ds3",
       "evidence": {
-        "section": "4. Case Study and Results",
-        "original_text": "Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters."
+        "section": "3.1. Data Access and ARD Production",
+        "original_text": "The ODC provides definition files and organization scripts for earth observation imagery data products such as Landsat and MODIS, which can automatically generate YAML [45] profiles and imagery metadata files from imagery files, but lacks relevant access methods and tools for Chinese satellite imagery data, such as those of GF-1. To this end, based on GDAL, YamlDotNet, and other components, this paper designs and implements the CDC_DLTool middleware, which realizes the acquisition of spectral information, band information, spatial location, and other contents from Chinese satellite imagery files and generates YAML metadata documents conforming to ODC standards; the specific operation flow is shown in Figure 2."
       },
       "confidence": 0.9,
-      "spec_type": "quality_standard",
-      "description": "Data preprocessing steps for GF-1 imagery to generate ARD products"
+      "spec_type": "metadata_standard",
+      "description": "ODC standard YAML metadata format for satellite imagery indexing"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_3dd469d939479433_ds4",
       "evidence": {
-        "section": "2. Open Data Cube for Earth Observations (EODC)",
-        "original_text": "The EODC can be deployed in environments such as local file systems, cloud platforms, and high-performance computing, providing users with pixel-level data computation and processing capabilities, allowing them to flexibly implement data analysis algorithms and applications for specific application scenarios with the help of existing analysis tools, thus solving the difficulties encountered when managing and analyzing data based on traditional scenic satellite imagery [41]. However, the EODC also has some shortcomings. Although the EODC open sources the source code of the ODC core technology framework and some example code based on the Jupyter Notebook, it is still not possible to use the application and data directly in the new environment. Users must follow the relevant documentation to manually install, configure, and, if necessary, write interface plug-ins to reproduce the results of an instance. This requires EODC users to have a relevant professional background and programming skills. It can be seen that building a Chinese data cube based on the EODC is both necessary and technically difficult. In the process of constructing the CDC, a data storage strategy is an important step in the management of large amounts of multisource heterogeneous satellite imagery data. The optimal resampling scheme needs to be determined based on the spatial resolution and magnitude of the managed satellite imageries to ensure that all of the observed values (i.e., pixels) have the same characteristics, such as spatial resolution. The AGDC resamples Landsat data with a spatial resolution of 30 m and MODIS data with a spatial resolution of 250 m into a grid with a spatial resolution of 25 m [23]. In the CDC grid framework, Landsat 8 data and GF-1 data are stored in two different sets, which retain the original spatial resolution. At the same time, the CDC keeps the original data of Landsat and GF1 data to ensure that users can decide whether to use panchromatic bands according to the actual needs."
+        "section": "3.3. Data Storage Strategy and Services",
+        "original_text": "In the process of constructing the CDC, a data storage strategy is an important step in the management of large amounts of multisource heterogeneous satellite imagery data. The optimal resampling scheme needs to be determined based on the spatial resolution and magnitude of the managed satellite imageries to ensure that all of the observed values (i.e., pixels) have the same characteristics, such as spatial resolution. The AGDC resamples Landsat data with a spatial resolution of 30 m and MODIS data with a spatial resolution of 250 m into a grid with a spatial resolution of 25 m [23]. In the CDC grid framework, Landsat 8 data and GF-1 data are stored in two different sets, which retain the original spatial resolution. At the same time, the CDC keeps the original data of Landsat and GF1 data to ensure that users can decide whether to use panchromatic bands according to the actual needs."
       },
-      "confidence": 0.85,
-      "spec_type": "env_requirement",
-      "description": "CDC framework deployment considerations and data storage strategy"
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "CDC grid data storage strategy preserving original spatial resolution"
     },
     {
       "type": "method",
       "method_id": "doc_3dd469d939479433_m1",
       "evidence": {
         "section": "3. Development of the China Data Cube (CDC)",
-        "original_text": "Specifically, based on the ODC open source framework, this study introduces ARD generation technology, designs and implements the CDC_DLTool tool, and extends data loading and application support for international imagery data, such as that of Landsat 8, and China imagery data, such as that of GF-1, covering the Chinese region. A localized China Data Cube is built to meet practical application requirements. Compared with the traditional scene-based data organization, the smallest management unit in this study is a pixel, which facilitates the dynamic analysis of long time series of multisource satellite imagery data. The ODC provides definition files and organization scripts for earth observation imagery data products such as Landsat and MODIS, which can automatically generate YAML [45] profiles and imagery metadata files from imagery files, but lacks relevant access methods and tools for Chinese satellite imagery data, such as those of GF-1. To this end, based on GDAL, YamlDotNet, and other components, this paper designs and implements the CDC_DLTool middleware, which realizes the acquisition of spectral information, band information, spatial location, and other contents from Chinese satellite imagery files and generates YAML metadata documents conforming to ODC standards; the specific operation flow is shown in Figure 2."
+        "original_text": "Based on the ODC open source framework, this study introduces ARD generation technology, designs and implements the CDC_DLTool tool, and extends data loading and application support for international imagery data, such as that of Landsat 8, and China imagery data, such as that of GF-1, covering the Chinese region. A localized China Data Cube is built to meet practical application requirements. Compared with the traditional scene-based data organization, the smallest management unit in this study is a pixel, which facilitates the dynamic analysis of long time series of multisource satellite imagery data. The ODC provides definition files and organization scripts for earth observation imagery data products such as Landsat and MODIS, which can automatically generate YAML [45] profiles and imagery metadata files from imagery files, but lacks relevant access methods and tools for Chinese satellite imagery data, such as those of GF-1. To this end, based on GDAL, YamlDotNet, and other components, this paper designs and implements the CDC_DLTool middleware, which realizes the acquisition of spectral information, band information, spatial location, and other contents from Chinese satellite imagery files and generates YAML metadata documents conforming to ODC standards; the specific operation flow is shown in Figure 2."
       },
       "confidence": 0.95,
       "name": "CDC_DLTool",
@@ -404,10 +323,10 @@
       "type": "method",
       "method_id": "doc_3dd469d939479433_m2",
       "evidence": {
-        "section": "3.1. Data Access and ARD Production",
-        "original_text": "For domestic satellite imageries, the data distribution unit provides users with data at the L1A level, which require further preprocessing, such as radiometric correction and geometric correction, to reach the ARD level. In this paper, absolute radiometric calibration coefficients are used to achieve the radiometric calibration of GF-1 imagery data, and the FLASSH method [43] is used to achieve the atmospheric correction of GF-1 imagery data. The geometric normalization of the GF-1 imagery data is achieved by using the HighImgCorrect method [44]. Finally, the quality of the GF-1 imagery data products is improved to the L4 level, which can meet the requirements of quantitative remote sensing analyses, such as water body change, vegetation change, urbanization, and coastline change."
+        "section": "3. Development of the China Data Cube (CDC)",
+        "original_text": "In this paper, absolute radiometric calibration coefficients are used to achieve the radiometric calibration of GF-1 imagery data, and the FLASSH method [43] is used to achieve the atmospheric correction of GF-1 imagery data. The geometric normalization of the GF-1 imagery data is achieved by using the HighImgCorrect method [44]. Finally, the quality of the GF-1 imagery data products is improved to the L4 level, which can meet the requirements of quantitative remote sensing analyses, such as water body change, vegetation change, urbanization, and coastline change."
       },
-      "confidence": 0.0,
+      "confidence": 0.95,
       "name": "FLASSH method",
       "method_type": "algorithm"
     },
@@ -415,10 +334,10 @@
       "type": "method",
       "method_id": "doc_3dd469d939479433_m3",
       "evidence": {
-        "section": "3.1. Data Access and ARD Production",
-        "original_text": "For domestic satellite imageries, the data distribution unit provides users with data at the L1A level, which require further preprocessing, such as radiometric correction and geometric correction, to reach the ARD level. In this paper, absolute radiometric calibration coefficients are used to achieve the radiometric calibration of GF-1 imagery data, and the FLASSH method [43] is used to achieve the atmospheric correction of GF-1 imagery data. The geometric normalization of the GF-1 imagery data is achieved by using the HighImgCorrect method [44]. Finally, the quality of the GF-1 imagery data products is improved to the L4 level, which can meet the requirements of quantitative remote sensing analyses, such as water body change, vegetation change, urbanization, and coastline change."
+        "section": "3. Development of the China Data Cube (CDC)",
+        "original_text": "In this paper, absolute radiometric calibration coefficients are used to achieve the radiometric calibration of GF-1 imagery data, and the FLASSH method [43] is used to achieve the atmospheric correction of GF-1 imagery data. The geometric normalization of the GF-1 imagery data is achieved by using the HighImgCorrect method [44]. Finally, the quality of the GF-1 imagery data products is improved to the L4 level, which can meet the requirements of quantitative remote sensing analyses, such as water body change, vegetation change, urbanization, and coastline change."
       },
-      "confidence": 0.0,
+      "confidence": 0.95,
       "name": "HighImgCorrect method",
       "method_type": "algorithm"
     },
@@ -426,7 +345,7 @@
       "type": "method",
       "method_id": "doc_3dd469d939479433_m4",
       "evidence": {
-        "section": "4.1. Water Body Change Monitoring of the Baiyangdian Lake",
+        "section": "4. Case Study and Results",
         "original_text": "In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS [51], this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5. By comparing and analyzing the annual changes in the water bodies of the Baiyangdian Lake, a theoretical basis for dynamic changes in domestic and industrial generation can be provided. For example, from the second graph in the first row, it can be seen that there was a relatively significant increase in the volume of water in the Baiyangdian Lake in 2014, due to the introduction of external water from the South–North Water Transfer Project. As can also be seen in the third graph in the second row, there was also an incremental change in the quantity of the Baiyangdian Lake in 2018, thanks to a series of protection policies for the Baiyangdian Lake issued after the establishment of the Xiong’an New Area."
       },
       "confidence": 0.95,
@@ -437,32 +356,32 @@
       "type": "experiment",
       "experiment_id": "doc_3dd469d939479433_x1",
       "evidence": {
-        "section": "4.1. Water Body Change Monitoring of the Baiyangdian Lake",
-        "original_text": "The Baiyangdian Lake, the largest freshwater lake in the urban agglomeration of Beijing, Tianjin, and Hebei Provinces [46], is located in An’xin County, Hebei Province, with a water area of 366 km², as shown in Figure 4a. Due to the complexity of Baiyangdian, the lake wetland and its surrounding water play an important role in several processes that maintain the normal function of the local ecosystem, including supplying water for the growth of vegetation such as reeds, increasing groundwater supply, improving the local climate system, and protecting biodiversity, as shown in Figure 4b [47]. In recent years, the water bodies of the Baiyangdian Lake have suffered serious impacts due to people's excessive interventions, causing many ecological problems, such as the eutrophication of the water bodies and a reduction in the water body area. Therefore, there is an urgent need to study the changes in the water body area of the Baiyangdian Lake to prevent the further deterioration of the current ecological problems. With the rapid development of science and technology, it has become increasingly important to map and detect changes in lake waters through satellite imageries, especially because satellites capture and provide data in the visible and infrared spectral bands, where it is relatively easy to distinguish between land and water [48–50]. This makes optical satellite imageries suitable for monitoring changes in the area of lake waters. In this study, Landsat 8 satellite imagery data were used to extract the area of water bodies in the Baiyangdian Lake. Landsat 8 imagery data were downloaded for the period of 2013 to 2021 with less than 20% cloud cover, which were selected from June to September. Taking advantage of the Landsat 8 data, monitoring studies of water body coverage information can provide scientific data for the development of effective measures to improve the ecological environment of the reservoir basin in the future. In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS [51], this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5. By comparing and analyzing the annual changes in the water bodies of the Baiyangdian Lake, a theoretical basis for dynamic changes in domestic and industrial generation can be provided. For example, from the second graph in the first row, it can be seen that there was a relatively significant increase in the volume of water in the Baiyangdian Lake in 2014, due to the introduction of external water from the South–North Water Transfer Project. As can also be seen in the third graph in the second row, there was also an incremental change in the quantity of the Baiyangdian Lake in 2018, thanks to a series of protection policies for the Baiyangdian Lake issued after the establishment of the Xiong’an New Area."
+        "section": "4. Case Study and Results",
+        "original_text": "In this study, Landsat 8 satellite imagery data were used to extract the area of water bodies in the Baiyangdian Lake. Landsat 8 imagery data were downloaded for the period of 2013 to 2021 with less than 20% cloud cover, which were selected from June to September. Taking advantage of the Landsat 8 data, monitoring studies of water body coverage information can provide scientific data for the development of effective measures to improve the ecological environment of the reservoir basin in the future. In order to test the usability of the CDC grid, based on the loaded Landsat 8 imagery data and the water body extraction algorithm WOfS [51], this study calculated the changes in the spatial distribution of water bodies in the Baiyangdian Lake, as shown in Figure 5. By comparing and analyzing the annual changes in the water bodies of the Baiyangdian Lake, a theoretical basis for dynamic changes in domestic and industrial generation can be provided. For example, from the second graph in the first row, it can be seen that there was a relatively significant increase in the volume of water in the Baiyangdian Lake in 2014, due to the introduction of external water from the South–North Water Transfer Project. As can also be seen in the third graph in the second row, there was also an incremental change in the quantity of the Baiyangdian Lake in 2018, thanks to a series of protection policies for the Baiyangdian Lake issued after the establishment of the Xiong’an New Area."
       },
       "confidence": 0.95,
-      "task": "water body change monitoring of the Baiyangdian Lake",
-      "setup": "CDC grid framework, Landsat 8 satellite imagery data (2013-2021, June-September, cloud cover <20%), Baiyangdian Lake study area, WOfS water body extraction algorithm"
+      "task": "water body change monitoring of Baiyangdian Lake",
+      "setup": "CDC grid framework, Landsat 8 imagery data (2013-2021, June-September, cloud cover <20%), WOfS algorithm"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_3dd469d939479433_x2",
       "evidence": {
-        "section": "4.2. Vegetation Change Detection in the Beijing Suburbs",
-        "original_text": "The forest area of Huairou District, Beijing, reaches 164,242 hectares, with a forest coverage rate of 77.38%. Forests play an important role in maintaining water and soil, regulating the climate, purifying the atmosphere, preventing noise, and maintaining the ecological balance of nature [52]. In order to verify the availability of the China GF-1 imagery data stored in the CDC framework, this study selected a small area (40.8050° N, 40.8574° N, 116.5207° E, and 116.653° E) in Huairou District, Beijing, for vegetation change monitoring, as shown in Figure 7. Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods. Different baseline NDVI threshold ranges can be set for different vegetation types, e.g., 0.6 to 0.9 for dense vegetation and 0.2 to 0.6 for grassland. Figure 10a and Figure 10b represent the change in dense vegetation in the study area between the two time periods of 2015 and 2017, based on the GF-1 imagery data stored and managed in the CDC grid framework. This is an NDVI threshold plot showing the change in green pixels within the threshold range. Based on this map, shown in Figure 10c, it can be seen that dense vegetation changes significantly elsewhere except the ridges, which can provide a data reference for forest vegetation change studies [3]."
+        "section": "4. Case Study and Results",
+        "original_text": "In order to verify the availability of the China GF-1 imagery data stored in the CDC framework, this study selected a small area (40.8050° N, 40.8574° N, 116.5207° E, and 116.653° E) in Huairou District, Beijing, for vegetation change monitoring, as shown in Figure 7. Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods. Different baseline NDVI threshold ranges can be set for different vegetation types, e.g., 0.6 to 0.9 for dense vegetation and 0.2 to 0.6 for grassland. Figure 10a and Figure 10b represent the change in dense vegetation in the study area between the two time periods of 2015 and 2017, based on the GF-1 imagery data stored and managed in the CDC grid framework. This is an NDVI threshold plot showing the change in green pixels within the threshold range. Based on this map, shown in Figure 10c, it can be seen that dense vegetation changes significantly elsewhere except the ridges, which can provide a data reference for forest vegetation change studies [3]."
       },
       "confidence": 0.95,
-      "task": "vegetation change detection in the Beijing suburbs",
-      "setup": "CDC grid framework, GF-1 imagery data (L1A level, Huairou District, Beijing), radiometric and geometric correction preprocessing, NDVI-based change detection"
+      "task": "vegetation change detection in Beijing suburbs",
+      "setup": "CDC grid framework, GF-1 imagery data (Huairou District, Beijing), NDVI-based change detection"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_3dd469d939479433_qr1",
       "evidence": {
-        "section": "Case Study and Results",
-        "original_text": "Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters."
+        "section": "4.2. Vegetation Change Detection in the Beijing Suburbs",
+        "original_text": "Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16-meter spatial resolution GF-1 imagery data was 24.126 meters. Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods. Different baseline NDVI threshold ranges can be set for different vegetation types, e.g., 0.6 to 0.9 for dense vegetation and 0.2 to 0.6 for grassland. Figure 10a and Figure 10b represent the change in dense vegetation in the study area between the two time periods of 2015 and 2017, based on the GF-1 imagery data stored and managed in the CDC grid framework."
       },
-      "confidence": 0.98,
+      "confidence": 0.95,
       "quantity": "geometric correction error",
       "value": 1.508,
       "unit": "pixels",
@@ -473,10 +392,10 @@
       "type": "quantitative_result",
       "qr_id": "doc_3dd469d939479433_qr2",
       "evidence": {
-        "section": "Case Study and Results",
-        "original_text": "The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16meter spatial resolution GF-1 imagery data was 24.126 meters."
+        "section": "4.2. Vegetation Change Detection in the Beijing Suburbs",
+        "original_text": "The error in the geometric correction process was 1.508 pixels. On the metric scale of meters, the error in the geometric correction of this 16-meter spatial resolution GF-1 imagery data was 24.126 meters. Figure 9b,c show the geometric deformation and corresponding pixel position shift of the GF-1 imagery data covering the study area before and after geometric correction. Since the GF-1 imagery data downloaded from the official data website are of an L1A level, further data preprocessing steps, such as radiometric correction and geometric correction, are required to generate ARD products. Figure 8a,b show the changes in the vegetation spectral curve in the process of radiometric and geometric correction processing of the GF-1 imagery data used in this study. This case study is based on the NDVI (normalized difference vegetation index) values to determine the vegetation change in the same area at two different time periods. Different baseline NDVI threshold ranges can be set for different vegetation types, e.g., 0.6 to 0.9 for dense vegetation and 0.2 to 0.6 for grassland. Figure 10a and Figure 10b represent the change in dense vegetation in the study area between the two time periods of 2015 and 2017, based on the GF-1 imagery data stored and managed in the CDC grid framework."
       },
-      "confidence": 0.98,
+      "confidence": 0.95,
       "quantity": "geometric correction error",
       "value": 24.126,
       "unit": "meters",
@@ -487,10 +406,10 @@
       "type": "performance_result",
       "perf_id": "doc_3dd469d939479433_p1",
       "evidence": {
-        "section": "Discussion and Conclusions",
-        "original_text": "Second, compared with the traditional scene-based organization, this research framework is much more efficient in data management in terms of imageries storage, imageries retrieval, and imageries processing."
+        "section": "5. Discussion and Conclusions",
+        "original_text": "The advantages of this research framework are mainly focused on two aspects. First, the minimum data management unit in our research framework is pixels, which realizes a paradigm shift from the traditional scene organization mode to the pixel organization mode. This facilitates the organization and management of heterogeneous satellite imagery data from multiple sources in a consistent way. Second, compared with the traditional scene-based organization, this research framework is much more efficient in data management in terms of imageries storage, imageries retrieval, and imageries processing. The China Data Cube data management framework constructed in this paper has the following main features: (1) Based on the existing framework and open source code of the Open Data Cube, the CDC_DLTool middleware is designed and implemented to extend support for the data loading and processing of international and Chinese satellite imagery data covering the Chinese region. (2) In order to verify the reliability of this CDC framework, this study conducted case studies on the spatial variation in water bodies and vegetation based on Landsat 8 and GF-1 imagery data, respectively. The current CDC data management framework project is in its infancy. In the process of remote sensing big data generation and practice, there are many sources of satellite imagery data, more complex data formats, and more diverse project needs."
       },
-      "confidence": 0.85,
+      "confidence": 0.9,
       "metric": "data management efficiency",
       "compared_to": "traditional scene-based organization"
     },
@@ -499,7 +418,7 @@
       "claim_id": "doc_3dd469d939479433_ca1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "As a new data management paradigm, the Earth Observation Data Cube simplifies the way that users manage and use earth observation data, and provides an analysis-ready form to access big spatiotemporal data, so as to realize the greater potential of earth observation data. Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
+        "original_text": "In the face of tight natural resources and complex as well as volatile environments, and in order to meet the pressure brought by population growth, we need to overcome a series of challenges. As a new data management paradigm, the Earth Observation Data Cube simplifies the way that users manage and use earth observation data, and provides an analysis-ready form to access big spatiotemporal data, so as to realize the greater potential of earth observation data. Based on the Open Data Cube (ODC) framework, combined with analysis-ready data (ARD) generation technology, the design and implementation of CDC_DLTool, extending the support for data loading and the processing of international and Chinese imagery data covering China, this study eventually constructs the China Data Cube (CDC) framework. In the framework of this CDC grid, this study carried out case studies of water change monitoring based on international satellite imagery data of Landsat 8 in addition to vegetation change monitoring based on Chinese satellite imagery data of GF-1. The experimental results show that, compared with traditional scene-based data organization, the minimum management unit of this framework is a pixel, which makes the unified organization and management of multisource heterogeneous satellite imagery data more convenient and faster."
       },
       "confidence": 0.95
     },
@@ -508,18 +427,27 @@
       "claim_id": "doc_3dd469d939479433_ca2",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Traditional remote sensing data organization and management methods based on 'scenes' have been unable to meet the management and application requirements of remote sensing big data due to the temporal and spatial fragmentation of data. People have been exploring new data organization and management frameworks or technologies to make up for the shortcomings of existing data management methods, thereby improving the utilization efficiency of remote sensing big data. Although data management frameworks such as the Google Earth Engine and Array DBMS facilitate the large-scale processing and application of satellite imagery data, users still need to put in a lot of effort and learn advanced techniques to be able to utilize these data management environments. Moreover, China’s high-resolution imagery data require high security and are not suitable to be stored in a commercial cloud platform environment. Therefore, we choose the open source ODC framework to build a localized China Data Cube to meet the practical application requirements by extending data loading and application support for international imagery data and China imagery data. Specifically, based on the ODC open source framework, this study introduces ARD generation technology, designs and implements the CDC_DLTool tool, and extends data loading and application support for international imagery data, such as that of Landsat 8, and China imagery data, such as that of GF-1, covering the Chinese region. A localized China Data Cube is built to meet practical application requirements. Compared with the traditional scene-based data organization, the smallest management unit in this study is a pixel, which facilitates the dynamic analysis of long time series of multisource satellite imagery data."
+        "original_text": "Traditional remote sensing data organization and management methods based on 'scenes' have been unable to meet the management and application requirements of remote sensing big data due to the temporal and spatial fragmentation of data. People have been exploring new data organization and management frameworks or technologies to make up for the shortcomings of existing data management methods, thereby improving the utilization efficiency of remote sensing big data. Most of the traditional data management frameworks are created based on international standards such as those of the ISO (International Organization for Standardization) and OGC (Open Geospatial Consortium) for representing and storing spatial information in data files (such as GeoTIFF and Esri Shapefile) as well as database systems (such as PostGIS and Oracle Spatial), and for serving spatial data and metadata through web services. Most regional, national, and international remote sensing data management agencies still share and disseminate multisource Remote sensing data in the form of individual imagery data files through HTTP, FTP, and SSH protocols in web service portals. In order to cope with the pressure faced by traditional data organization and management methods in storing, processing, and analyzing remote sensing big data, scientists and engineers have proposed and developed new frameworks based on new technologies, including cloud computing and distributed systems, such as the array database system (Array DBMS), Google Earth Engine, data cubes, and cloud-based remote sensing data production systems."
       },
-      "confidence": 0.93
+      "confidence": 0.94
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3dd469d939479433_ca3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Although data management frameworks such as the Google Earth Engine and Array DBMS facilitate the large-scale processing and application of satellite imagery data, users still need to put in a lot of effort and learn advanced techniques to be able to utilize these data management environments. Moreover, China’s high-resolution imagery data require high security and are not suitable to be stored in a commercial cloud platform environment. Therefore, we choose the open source ODC framework to build a localized China Data Cube to meet the practical application requirements by extending data loading and application support for international imagery data and China imagery data. Specifically, based on the ODC open source framework, this study introduces ARD generation technology, designs and implements the CDC_DLTool tool, and extends data loading and application support for international imagery data, such as that of Landsat 8, and China imagery data, such as that of GF-1, covering the Chinese region. A localized China Data Cube is built to meet practical application requirements. Compared with the traditional scene-based data organization, the smallest management unit in this study is a pixel, which facilitates the dynamic analysis of long time series of multisource satellite imagery data."
+      },
+      "confidence": 0.95
     },
     {
       "type": "conclusion",
       "conclusion_id": "doc_3dd469d939479433_cl1",
       "evidence": {
         "section": "Discussion and Conclusions",
-        "original_text": "The China Data Cube data management framework constructed in this paper has the following main features: (1) Based on the existing framework and open source code of the Open Data Cube, the CDC_DLTool middleware is designed and implemented to extend support for the data loading and processing of international and Chinese satellite imagery data covering the Chinese region. (2) In order to verify the reliability of this CDC framework, this study conducted case studies on the spatial variation in water bodies and vegetation based on Landsat 8 and GF-1 imagery data, respectively. The advantages of this research framework are mainly focused on two aspects. First, the minimum data management unit in our research framework is pixels, which realizes a paradigm shift from the traditional scene organization mode to the pixel organization mode. This facilitates the organization and management of heterogeneous satellite imagery data from multiple sources in a consistent way. Second, compared with the traditional scene-based organization, this research framework is much more efficient in data management in terms of imageries storage, imageries retrieval, and imageries processing."
+        "original_text": "Of particular concern to data managers is the question of how to efficiently manage the massive amounts of EO data generated every day and overcome the limitations as well as problems encountered in the downloading of data and the transmission of data providers and high-performance computing infrastructures. The freely accessible EO Data Cube, capable of bringing global ARD into local infrastructure, makes the EODC one of the most popular EO data management tools. The main research purpose of this paper was to introduce the EODC, propose the design of the CDC, suitable for Chinese satellite imagery data, and then design two research cases as well as conduct related case studies. The China Data Cube data management framework constructed in this paper has the following main features: (1) Based on the existing framework and open source code of the Open Data Cube, the CDC_DLTool middleware is designed and implemented to extend support for the data loading and processing of international and Chinese satellite imagery data covering the Chinese region. (2) In order to verify the reliability of this CDC framework, this study conducted case studies on the spatial variation in water bodies and vegetation based on Landsat 8 and GF-1 imagery data, respectively. The advantages of this research framework are mainly focused on two aspects. First, the minimum data management unit in our research framework is pixels, which realizes a paradigm shift from the traditional scene organization mode to the pixel organization mode. This facilitates the organization and management of heterogeneous satellite imagery data from multiple sources in a consistent way. Second, compared with the traditional scene-based organization, this research framework is much more efficient in data management in terms of imageries storage, imageries retrieval, and imageries processing."
       },
-      "confidence": 0.94
+      "confidence": 0.96
     },
     {
       "type": "limitation",
@@ -537,7 +465,7 @@
         "section": "Discussion and Conclusions",
         "original_text": "Future research will also study and learn from existing geospatial cloud platforms such as Sentinel Hub, Google Earth Engine and Microsoft Azure, and conduct quantitative comparative analyses in terms of data storage and computation."
       },
-      "confidence": 0.9
+      "confidence": 0.93
     }
   ]
 }

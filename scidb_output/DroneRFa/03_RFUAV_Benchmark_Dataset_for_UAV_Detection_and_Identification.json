@@ -18,11 +18,11 @@
       "UAV identification",
       "benchmark dataset",
       "drone fingerprint",
-      "signal processing"
+      "signal-to-noise ratio"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:38:12.518058+00:00",
+      "extraction_timestamp": "2026-05-11T02:07:57.761164+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -58,7 +58,7 @@
       "concept_id": "doc_7d37a79e4fbb4169_c3",
       "evidence": {
         "section": "4 RFUAV Dataset",
-        "original_text": "Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an _\"RF drone fingerprint\"_ . This RF drone fingerprint will serve as the primary input for deep learning networks, thereby enabling differentiation among various drone types."
+        "original_text": "This section will address the following aspects: (i) the methodology for collecting raw data from UAVs, (ii) the definition of the _\"RF drone fingerprint\"_ through in-depth analysis of the raw data, (iii) the development of a two-stage model for drone detection and identification based on RFUAV, and (iv) the evaluation of several signal processing algorithms on the RFUAV. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an _\"RF drone fingerprint\"_ . This RF drone fingerprint will serve as the primary input for deep learning networks, thereby enabling differentiation among various drone types."
       },
       "confidence": 0.97,
       "term": "RF drone fingerprint",
@@ -70,19 +70,19 @@
       "concept_id": "doc_7d37a79e4fbb4169_c4",
       "evidence": {
         "section": "4.3 Drone Detection and Identification Using Two-Stage Model",
-        "original_text": "To comprehensively showcase the capabilities of RFUAV, we designed a two-stage model for drone detection and identification. The first-stage model utilizes an object detection network to detect drone signals, while the second-stage model employs an image classification network for identifying the drone type. The newly acquired radio frequency data undergoes a series of preprocessing techniques to generate spectrograms, which are then input into the first-stage network for drone signal detection. This network identifies the presence of drones within the spectrogram by detecting signal targets. The regions of the spectrogram containing detected signals are subsequently passed to the second-stage network, which classifies the drones based on their type. In this paper, we use YOLO as the first-stage detection network and ResNet as the second-stage classification network, forming a two-stage network. During the data preprocessing phase, we employ a dual-buffer queue combined with Fast Fourier Transform (FFT) to implement an efficient time-frequency spectrogram generation algorithm. This system achieves high efficiency in drone detection tasks while maintaining high accuracy, offering strong practicality."
+        "original_text": "To comprehensively showcase the capabilities of RFUAV, we designed a two-stage model for drone detection and identification. The first-stage model utilizes an object detection network to detect drone signals, while the second-stage model employs an image classification network for identifying the drone type. The newly acquired radio frequency data undergoes a series of preprocessing techniques to generate spectrograms, which are then input into the first-stage network for drone signal detection. This network identifies the presence of drones within the spectrogram by detecting signal targets. The regions of the spectrogram containing detected signals are subsequently passed to the second-stage network, which classifies the drones based on their type. In this paper, we use YOLO as the first-stage detection network and ResNet as the second-stage classification network, forming a two-stage network. During the data preprocessing phase, we employ a dual-buffer queue combined with Fast Fourier Transform (FFT) to implement an efficient time-frequency spectrogram generation algorithm. This system achieves high efficiency in drone detection tasks while maintaining high accuracy, offering strong practicality. The specific performance and implementation details can be found in our GitHub repository."
       },
       "confidence": 0.96,
       "term": "two-stage model",
       "normalized": "两阶段模型",
-      "std_label": null
+      "std_label": "Two-stage model"
     },
     {
       "type": "concept",
       "concept_id": "doc_7d37a79e4fbb4169_c5",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Secondly, existing datasets often lack raw data covering a broad range of signal-to-noise ratios (SNR), or do not provide tools for transforming raw data to different SNR levels. This limitation undermines the validity of model training and evaluation. RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
+        "original_text": "Secondly, existing datasets often lack raw data covering a broad range of signal-to-noise ratios (SNR), or do not provide tools for transforming raw data to different SNR levels. This limitation undermines the validity of model training and evaluation. RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
       },
       "confidence": 0.98,
       "term": "signal-to-noise ratio",
@@ -106,9 +106,9 @@
       "concept_id": "doc_7d37a79e4fbb4169_c7",
       "evidence": {
         "section": "4.1 Data Collection",
-        "original_text": "The hardware utilized in this setup primarily consists of the following: (i) two Universal Software Radio Peripheral (USRP) X310 units for signal acquisition and transmission, (ii) a computer equipped with an AMD Ryzen 5950X CPU, 32 GB of RAM, and a 2TB Samsung M.2 Solid State Drive (SSD), running Ubuntu 22.04 Linux and GNU Radio v3.9.10, serving as the signal collector, (iii) a HUAWEI SP310 10GbE card acting as the intermediary connecting the USRP X310 units and the signal collector, (iv) a spectrum analyzer with a frequency range of 9 kHz to, 13.2 GHz, used to verify the feasibility of the acquired signals, and (v) a laptop running adobe audition (AU) for signal observation. Initially, two USRP X310 units are interfaced with the signal collector via 10GbE I/O ports. The first USRP X310 (USRPI) captures raw data, which is subsequently stored directly on the signal collector’s SSD. The second USRP X310 (USRPO) interfaces with a spectrum analyzer to assess the quality of the collected data."
+        "original_text": "To obtain a substantial volume of high-quality raw data, we develop a comprehensive signal acquisition platform. The platform consists of three key components: (i) a signal acquisition system for collecting raw data, (ii) a data storage system for archiving and sharing the collected data, and (iii) a real-time playback platform for inspecting the quality of acquired signals. The hardware utilized in this setup primarily consists of the following: (i) two Universal Software Radio Peripheral (USRP) X310 units for signal acquisition and transmission, (ii) a computer equipped with an AMD Ryzen 5950X CPU, 32 GB of RAM, and a 2TB Samsung M.2 Solid State Drive (SSD), running Ubuntu 22.04 Linux and GNU Radio v3.9.10, serving as the signal collector, (iii) a HUAWEI SP310 10GbE card acting as the intermediary connecting the USRP X310 units and the signal collector, (iv) a spectrum analyzer with a frequency range of 9 kHz to 13.2 GHz, used to verify the feasibility of the acquired signals, and (v) a laptop running adobe audition (AU) for signal observation. Initially, two USRP X310 units are interfaced with the signal collector via 10GbE I/O ports. The first USRP X310 (USRPI) captures raw data, which is subsequently stored directly on the signal collector’s SSD. The second USRP X310 (USRPO) interfaces with a spectrum analyzer to assess the quality of the collected data."
       },
-      "confidence": 0.98,
+      "confidence": 0.96,
       "term": "Universal Software Radio Peripheral",
       "normalized": "通用软件无线电外设",
       "std_label": "USRP"
@@ -130,40 +130,40 @@
       "type": "relation",
       "relation_id": "doc_7d37a79e4fbb4169_r2",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
+        "section": "4 RFUAV Dataset",
+        "original_text": "This section will address the following aspects: (i) the methodology for collecting raw data from UAVs, (ii) the definition of the _\"RF drone fingerprint\"_ through in-depth analysis of the raw data, (iii) the development of a two-stage model for drone detection and identification based on RFUAV, and (iv) the evaluation of several signal processing algorithms on the RFUAV. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an _\"RF drone fingerprint\"_ . This RF drone fingerprint will serve as the primary input for deep learning networks, thereby enabling differentiation among various drone types."
       },
       "confidence": 0.94,
-      "head": "doc_7d37a79e4fbb4169_c1",
-      "relation_type": "contains",
-      "relation_surface": "comprises",
-      "tail": "doc_7d37a79e4fbb4169_c3"
+      "head": "doc_7d37a79e4fbb4169_c3",
+      "relation_type": "derives",
+      "relation_surface": "is defined through in-depth analysis of the raw data",
+      "tail": "doc_7d37a79e4fbb4169_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_7d37a79e4fbb4169_r3",
       "evidence": {
-        "section": "2 RF-based Drone Detection System",
-        "original_text": "In this paper, we utilize the Short-Time Fourier Transformation(STFT) to convert the raw signal into the spectrogram (for a detailed transformation procedure see Appendix. A), which visually represents the energy characteristics of the signal over time. By applying deep learning techniques to analyze these spectrograms, valuable information regarding the drone can be extracted. The entire process is illustrated in Fig. 1. This system exploits the deep learning model’s capability to identify patterns and features within the frequency domain, thereby enabling the detection and classification of different drone types based on their unique spectral signatures."
+        "section": "4.3 Drone Detection and Identification Using Two-Stage Model",
+        "original_text": "To comprehensively showcase the capabilities of RFUAV, we designed a two-stage model for drone detection and identification. The first-stage model utilizes an object detection network to detect drone signals, while the second-stage model employs an image classification network for identifying the drone type. The newly acquired radio frequency data undergoes a series of preprocessing techniques to generate spectrograms, which are then input into the first-stage network for drone signal detection. This network identifies the presence of drones within the spectrogram by detecting signal targets. The regions of the spectrogram containing detected signals are subsequently passed to the second-stage network, which classifies the drones based on their type. In this paper, we use YOLO as the first-stage detection network and ResNet as the second-stage classification network, forming a two-stage network. During the data preprocessing phase, we employ a dual-buffer queue combined with Fast Fourier Transform (FFT) to implement an efficient time-frequency spectrogram generation algorithm. This system achieves high efficiency in drone detection tasks while maintaining high accuracy, offering strong practicality. The specific performance and implementation details can be found in our GitHub repository."
       },
-      "confidence": 0.96,
-      "head": "doc_7d37a79e4fbb4169_c2",
+      "confidence": 0.93,
+      "head": "doc_7d37a79e4fbb4169_c4",
       "relation_type": "uses",
-      "relation_surface": "utilizes",
-      "tail": "doc_7d37a79e4fbb4169_c6"
+      "relation_surface": "employs YOLO and ResNet",
+      "tail": "doc_7d37a79e4fbb4169_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_7d37a79e4fbb4169_r4",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
+        "section": "2 RF-based Drone Detection System",
+        "original_text": "In this paper, we utilize the Short-Time Fourier Transformation(STFT) to convert the raw signal into the spectrogram (for a detailed transformation procedure see Appendix. A), which visually represents the energy characteristics of the signal over time. By applying deep learning techniques to analyze these spectrograms, valuable information regarding the drone can be extracted. The entire process is illustrated in Fig. 1. This system exploits the deep learning model’s capability to identify patterns and features within the frequency domain, thereby enabling the detection and classification of different drone types based on their unique spectral signatures."
       },
-      "confidence": 0.97,
-      "head": "doc_7d37a79e4fbb4169_c1",
+      "confidence": 0.92,
+      "head": "doc_7d37a79e4fbb4169_c6",
       "relation_type": "uses",
-      "relation_surface": "collected using",
-      "tail": "doc_7d37a79e4fbb4169_c7"
+      "relation_surface": "utilize to convert the raw signal into the spectrogram",
+      "tail": "doc_7d37a79e4fbb4169_c2"
     },
     {
       "type": "relation",
@@ -172,7 +172,7 @@
         "section": "Abstract",
         "original_text": "Secondly, existing datasets often lack raw data covering a broad range of signal-to-noise ratios (SNR), or do not provide tools for transforming raw data to different SNR levels. This limitation undermines the validity of model training and evaluation. RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
       },
-      "confidence": 0.93,
+      "confidence": 0.94,
       "head": "doc_7d37a79e4fbb4169_c1",
       "relation_type": "measures",
       "relation_surface": "provides tools for transforming raw data to different SNR levels",
@@ -182,14 +182,14 @@
       "type": "relation",
       "relation_id": "doc_7d37a79e4fbb4169_r6",
       "evidence": {
-        "section": "7 CONCLUSION",
-        "original_text": "This paper introduces RFUAV as a novel benchmark dataset for RF-based drone detection and identification. The comprehensive data analysis and diverse use case examples underscore the significant potential inherent in RFUAV. Through rigorous experimentation, we have demonstrated a SOTA data preprocessing method that effectively integrates deep learning with signal processing. In future work, we plan to continuously update the dataset with data from newly emerging drone models."
+        "section": "Abstract",
+        "original_text": "RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
       },
-      "confidence": 0.92,
+      "confidence": 0.95,
       "head": "doc_7d37a79e4fbb4169_c1",
-      "relation_type": "enhances",
-      "relation_surface": "demonstrates a SOTA data preprocessing method",
-      "tail": "doc_7d37a79e4fbb4169_c4"
+      "relation_type": "uses",
+      "relation_surface": "collected using",
+      "tail": "doc_7d37a79e4fbb4169_c7"
     },
     {
       "type": "dataset",
@@ -201,7 +201,7 @@
       "confidence": 0.95,
       "name": "RFUAV",
       "modality": "tabular",
-      "domain": "radio-frequency signal processing, unmanned aerial vehicle detection"
+      "domain": "radio-frequency signal processing, unmanned aerial vehicle (UAV) detection"
     },
     {
       "type": "dataset",
@@ -213,14 +213,26 @@
       "confidence": 0.9,
       "name": "RFUAV subset for CMAP and STFTP experiments",
       "modality": "tabular",
-      "domain": "radio-frequency signal processing, unmanned aerial vehicle detection"
+      "domain": "radio-frequency signal processing, unmanned aerial vehicle (UAV) detection"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7d37a79e4fbb4169_d3",
+      "evidence": {
+        "section": "5.2 Frequency Resolution Comparison",
+        "original_text": "Based on the results presented in previous experiments, we use the \"Hot\" as a CMAP method and apply STFT with STFTP of 32, 64, 128, 256, 512, and 1024 to the raw data from the experimental drone objects to generate spectrograms within an SNR range of -20 to 20 dB, with intervals of 2 dB, for use as the validation set. The training data consists of the raw data augmented with an SNR of 20 dB to train the model. The data augmentation methods and dataset splitting strategy for training are consistent with those outlined in Sec. 5.1."
+      },
+      "confidence": 0.9,
+      "name": "RFUAV subset for frequency resolution comparison",
+      "modality": "tabular",
+      "domain": "radio-frequency signal processing, unmanned aerial vehicle (UAV) detection"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_7d37a79e4fbb4169_ds1",
       "evidence": {
         "section": "4.2 Data Analysis",
-        "original_text": "In RFUAV, the raw data is stored in accordance with the standard in-phase and quadrature components (IQ) sampling method [12]. Each data packet is organized as interleaved IQ binary bitstreams, where each sample is represented by two 32-bit floating-point numbers (fp32). To load the data into memory, any binary file processing workflow can be applied, provided the fp32 input format is specified. The I and Q components can be independently indexed into separate vectors, which are subsequently combined as _I_ + _j × Q_ to reconstruct the complete sampled signal. Furthermore, the parameters of the USRP configured during data acquisition for each drone type, are documented in a corresponding XML file. These parameter files are stored alongside the raw data to ensure seamless access to the original acquisition settings for future reference. The standard raw data can be processed into a signal processing-compatible data stream using either Matlab or Python workflows, with relevant preprocessing code available in our GitHub repository."
+        "original_text": "In RFUAV, the raw data is stored in accordance with the standard in-phase and quadrature components (IQ) sampling method [12]. Each data packet is organized as interleaved IQ binary bitstreams, where each sample is represented by two 32-bit floating-point numbers (fp32). To load the data into memory, any binary file processing workflow can be applied, provided the fp32 input format is specified. The I and Q components can be independently indexed into separate vectors, which are subsequently combined as I + j × Q to reconstruct the complete sampled signal. Furthermore, the parameters of the USRP configured during data acquisition for each drone type, are documented in a corresponding XML file. These parameter files are stored alongside the raw data to ensure seamless access to the original acquisition settings for future reference. The standard raw data can be processed into a signal processing-compatible data stream using either Matlab or Python workflows, with relevant preprocessing code available in our GitHub repository."
       },
       "confidence": 0.95,
       "spec_type": "format_rule",
@@ -231,33 +243,22 @@
       "ds_id": "doc_7d37a79e4fbb4169_ds2",
       "evidence": {
         "section": "4.1 Data Collection",
-        "original_text": "To obtain a substantial volume of high-quality raw data, we develop a comprehensive signal acquisition platform. The platform consists of three key components: (i) a signal acquisition system for collecting raw data, (ii) a data storage system for archiving and sharing the collected data, and (iii) a real-time playback platform for inspecting the quality of acquired signals. The hardware utilized in this setup primarily consists of the following: (i) two Universal Software Radio Peripheral (USRP) X310 units for signal acquisition and transmission, (ii) a computer equipped with an AMD Ryzen 5950X CPU, 32 GB of RAM, and a 2TB Samsung M.2 Solid State Drive (SSD), running Ubuntu 22.04 Linux and GNU Radio v3.9.10, serving as the signal collector, (iii) a HUAWEI SP310 10GbE card acting as the intermediary connecting the USRP X310 units and the signal collector, (iv) a spectrum analyzer with a frequency range of 9 kHz to 13.2 GHz, used to verify the feasibility of the acquired signals, and (v) a laptop running adobe audition (AU) for signal observation. Initially, two USRP X310 units are interfaced with the signal collector via 10GbE I/O ports. The first USRP X310 (USRPI) captures raw data, which is subsequently stored directly on the signal collector’s SSD. The second USRP X310 (USRPO) interfaces with a spectrum analyzer to assess the quality of the collected data."
+        "original_text": "To obtain a substantial volume of high-quality raw data, we develop a comprehensive signal acquisition platform. The platform consists of three key components: (i) a signal acquisition system for collecting raw data, (ii) a data storage system for archiving and sharing the collected data, and (iii) a real-time playback platform for inspecting the quality of acquired signals. The hardware utilized in this setup primarily consists of the following: (i) two Universal Software Radio Peripheral (USRP) X310 units for signal acquisition and transmission, (ii) a computer equipped with an AMD Ryzen 5950X CPU, 32 GB of RAM, and a 2TB Samsung M.2 Solid State Drive (SSD), running Ubuntu 22.04 Linux and GNU Radio v3.9.10, serving as the signal collector, (iii) a HUAWEI SP310 10GbE card acting as the intermediary connecting the USRP X310 units and the signal collector, (iv) a spectrum analyzer with a frequency range of 9 kHz to 13.2 GHz, used to verify the feasibility of the acquired signals, and (v) a laptop running adobe audition (AU) for signal observation. Initially, two USRP X310 units are interfaced with the signal collector via 10GbE I/O ports. The first USRP X310 (USRPI) captures raw data, which is subsequently stored directly on the signal collector's SSD. The second USRP X310 (USRPO) interfaces with a spectrum analyzer to assess the quality of the collected data. The data collection location is carefully selected to minimize signal interference. During the collection process, the transmitters of 37 different UAV types are either directly connected to the receiver of the USRPI or positioned in close proximity to it, ensuring optimal signal quality of the collected data. Upon completion of data acquisition for a specific drone type, the collected data is transferred from the signal collector to the portable SSD. Subsequently, the laptop is used to analyze the spectrogram and PSD to verify the signal has been fully captured. A dedicated signal playback module, implemented using GNU Radio, enables USRPO to transmit the collected data packets. USRPO is directly connected to a spectrum analyzer, which facilitates the evaluation of each raw data packet's bandwidth and SNR. This systematic workflow for data collection ensures the quality of every signal and establishes a robust foundation for subsequent research (for more detailed signal collection, see Appendix. B)."
       },
-      "confidence": 0.9,
+      "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "High SNR raw data collection protocol using USRP X310 units with spectrum analyzer verification"
+      "description": "High-quality raw data collection protocol using USRP X310 units, spectrum analyzer verification, and signal playback module"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_7d37a79e4fbb4169_ds3",
       "evidence": {
-        "section": "4.1 Data Collection",
-        "original_text": "The data collection location is carefully selected to minimize signal interference. During the collection process, the transmitters of 37 different UAV types are either directly connected to the receiver of the USRPI or positioned in close proximity to it, ensuring optimal signal quality of the collected data. Upon completion of data acquisition for a specific drone type, the collected data is transferred from the signal collector to the portable SSD. Subsequently, the laptop is used to analyze the spectrogram and PSD to verify the signal has been fully captured. A dedicated signal playback module, implemented using GNU Radio, enables USRPO to transmit the collected data packets. USRPO is directly connected to a spectrum analyzer, which facilitates the evaluation of each raw data packet’s bandwidth and SNR. This systematic workflow for data collection ensures the quality of every signal and establishes a robust foundation for subsequent research (for more detailed signal collection, see Appendix. B)."
+        "section": "4.2 Data Analysis",
+        "original_text": "To enhance readers' intuitive and comprehensive understanding of the RFUAV, we conduct an analysis of its core attributes, as illustrated in Fig. 3 (for more detailed results see Appendix. C). This analysis encompasses the data volume associated with each drone type, the center frequencies employed during data acquisition, and the SNR of the signals captured during the original sampling process. As depicted in the figure, each drone type is equipped with a minimum of 15GB of raw data storage. Certain drones, such as the DJI FPV COMBO, DJI AVATA2, and DJI MINI 3, possess the capability to select various signal bandwidths for video transmission during communication. To ensure comprehensive coverage of the data with each drone, we meticulously captured all potential scenarios that may arise throughout the signal transmission process. It is noteworthy that the frequency hopping pattern of certain drones' FHSS signals exhibits variability contingent upon the drone's behavior. For example, during the communication establishment process, the remote controller of the WFLY WFT09SII generates FHSS signals characterized by shorter FHSDC and irregular hopping patterns. However, once a stable connection is established between the drone and its controller, and subsequent to transmission from the flight controller to the drone, there is a transition in the FHSS signal towards a longer-period signal. At this stage, the frequency hopping pattern resembles that of a triangular waveform. To ensure comprehensive sample coverage, our dataset encompasses classifications based on various actions performed by the drone. For each individual drone, both the pairing process and flight operations are documented, thereby providing an extensive range of signal types across different operational phases."
       },
       "confidence": 0.9,
-      "spec_type": "env_requirement",
-      "description": "Data collection in interference-minimized real-world environments with direct or close proximity transmitter-receiver setup"
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_7d37a79e4fbb4169_ds4",
-      "evidence": {
-        "section": "4.2 Data Analysis",
-        "original_text": "To enhance readers’ intuitive and comprehensive understanding of the RFUAV, we conduct an analysis of its core attributes, as illustrated in Fig. 3 (for more detailed results see Appendix. C). This analysis encompasses the data volume associated with each drone type, the center frequencies employed during data acquisition, and the SNR of the signals captured during the original sampling process. As depicted in the figure, each drone type is equipped with a minimum of 15GB of raw data storage. Certain drones, such as the DJI FPV COMBO, DJI AVATA2, and DJI MINI 3, possess the capability to select various signal bandwidths for video transmission during communication. To ensure comprehensive coverage of the data with each drone, we meticulously captured all potential scenarios that may arise throughout the signal transmission process."
-      },
-      "confidence": 0.85,
       "spec_type": "metadata_standard",
-      "description": "Dataset includes statistical attributes per drone type: data volume, center frequency, SNR, and RF fingerprint features"
+      "description": "Dataset includes statistical overview of file size, SNR, center frequency, and detailed signal characteristics for each drone type"
     },
     {
       "type": "method",
@@ -268,39 +269,50 @@
       },
       "confidence": 0.95,
       "name": "Short-Time Fourier Transformation (STFT)",
-      "method_type": "signal processing"
+      "method_type": "preprocessing"
     },
     {
       "type": "method",
       "method_id": "doc_7d37a79e4fbb4169_m2",
       "evidence": {
-        "section": "4.1",
-        "original_text": "The hardware utilized in this setup primarily consists of the following: (i) two Universal Software Radio Peripheral (USRP) X310 units for signal acquisition and transmission, (ii) a computer equipped with an AMD Ryzen 5950X CPU, 32 GB of RAM, and a 2TB Samsung M.2 Solid State Drive (SSD), running Ubuntu 22.04 Linux and GNU Radio v3.9.10, serving as the signal collector, (iii) a HUAWEI SP310 10GbE card acting as the intermediary connecting the USRP X310 units and the signal collector, (iv) a spectrum analyzer with a frequency range of 9 kHz to 13.2 GHz, used to verify the feasibility of the acquired signals, and (v) a laptop running adobe audition (AU) for signal observation. Initially, two USRP X310 units are interfaced with the signal collector via 10GbE I/O ports. The first USRP X310 (USRPI) captures raw data, which is subsequently stored directly on the signal collector’s SSD. The second USRP X310 (USRPO) interfaces with a spectrum analyzer to assess the quality of the collected data."
+        "section": "4.2",
+        "original_text": "By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\" . This RF drone fingerprint will serve as the primary input for deep learning networks, thereby enabling differentiation among various drone types."
       },
       "confidence": 0.95,
-      "name": "Universal Software Radio Peripheral (USRP)",
-      "method_type": "instrument"
+      "name": "RF drone fingerprint",
+      "method_type": "preprocessing"
     },
     {
       "type": "method",
       "method_id": "doc_7d37a79e4fbb4169_m3",
-      "evidence": {
-        "section": "4.4",
-        "original_text": "We first employ a dual sliding window-based signal detection algorithm in the time domain to identify the starting and ending positions of a signal clip. Based on the results of this separation, we use Welch’s method to estimate the PSD of the signal and determine the center frequency of the signal. Finally, the SNR is calculated in the time domain according to the definition of SNR. The specific implementation process is detailed Appendix. D."
-      },
-      "confidence": 0.95,
-      "name": "Welch's method",
-      "method_type": "signal processing"
-    },
-    {
-      "type": "method",
-      "method_id": "doc_7d37a79e4fbb4169_m4",
       "evidence": {
         "section": "4.3",
         "original_text": "In this paper, we use YOLO as the first-stage detection network and ResNet as the second-stage classification network, forming a two-stage network. During the data preprocessing phase, we employ a dual-buffer queue combined with Fast Fourier Transform (FFT) to implement an efficient time-frequency spectrogram generation algorithm. This system achieves high efficiency in drone detection tasks while maintaining high accuracy, offering strong practicality. The specific performance and implementation details can be found in our GitHub repository."
       },
       "confidence": 0.95,
       "name": "dual-buffer queue combined with Fast Fourier Transform (FFT)",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7d37a79e4fbb4169_m4",
+      "evidence": {
+        "section": "4.4",
+        "original_text": "We first employ a dual sliding window-based signal detection algorithm in the time domain to identify the starting and ending positions of a signal clip. Based on the results of this separation, we use Welch’s method to estimate the PSD of the signal and determine the center frequency of the signal. Finally, the SNR is calculated in the time domain according to the definition of SNR. The specific implementation process is detailed Appendix. D."
+      },
+      "confidence": 0.95,
+      "name": "dual sliding window-based signal detection algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7d37a79e4fbb4169_m5",
+      "evidence": {
+        "section": "4.4",
+        "original_text": "We first employ a dual sliding window-based signal detection algorithm in the time domain to identify the starting and ending positions of a signal clip. Based on the results of this separation, we use Welch’s method to estimate the PSD of the signal and determine the center frequency of the signal. Finally, the SNR is calculated in the time domain according to the definition of SNR. The specific implementation process is detailed Appendix. D."
+      },
+      "confidence": 0.95,
+      "name": "Welch’s method",
       "method_type": "algorithm"
     },
     {
@@ -308,11 +320,11 @@
       "experiment_id": "doc_7d37a79e4fbb4169_x1",
       "evidence": {
         "section": "5.1",
-        "original_text": "Given that this experiment encompasses multiple comparative models and the primary objective of this subsection is specifically to identify the SOTA preprocessing pipeline for deep learning models, the experiments in this subsection will be conducted on a subset of the RFUAV. We select the raw signals from five drones equipped with a camera, namely the DJI AVATA2, DJI FPV COMBO, DJI MAVIC3 PRO, DJI MINI3, and DJI MINI4 PRO. Firstly, we estimate the SNR of each raw signal based on the SNR estimation results presented in Sec. 4.4. Then, we apply additive Gaussian white noise (AWGN) to adjust the SNR of the raw signals. Finally, for each drone, we generate raw data with SNR levels ranging from -20 dB to 20 dB in 2 dB increments. The raw signal and their SNR-adjusted counterparts are transformed into spectrograms with identical frequency resolutions, employing four distinct CMAP methods (for more detailed CMAP methods analysis, see Appendix. A) to produce images of consistent resolution. The spectrograms of the raw signals and the SNR-adjusted signals at 20 dB serve as training data, whereas the spectrograms of the SNR adjusted signals with SNR levels ranging from -20 dB to 20 dB (in 2 dB increments) are used as validation data."
+        "original_text": "Given that this experiment encompasses multiple comparative models and the primary objective of this subsection is specifically to identify the SOTA preprocessing pipeline for deep learning models, the experiments in this subsection will be conducted on a subset of the RFUAV. We select the raw signals from five drones equipped with a camera, namely the DJI AVATA2, DJI FPV COMBO, DJI MAVIC3 PRO, DJI MINI3, and DJI MINI4 PRO. Firstly, we estimate the SNR of each raw signal based on the SNR estimation results presented in Sec. 4.4. Then, we apply additive Gaussian white noise (AWGN) to adjust the SNR of the raw signals. Finally, for each drone, we generate raw data with SNR levels ranging from -20 dB to 20 dB in 2 dB increments. The raw signal and their SNR-adjusted counterparts are transformed into spectrograms with identical frequency resolutions, employing four distinct CMAP methods (for more detailed CMAP methods analysis, see Appendix. A) to produce images of consistent resolution. The spectrograms of the raw signals and the SNR-adjusted signals at 20 dB serve as training data, whereas the spectrograms of the SNR adjusted signals with SNR levels ranging from -20 dB to 20 dB (in 2 dB increments) are used as validation data. Based on the results obtained in previous experiments, we select ViT-L-16 as the baseline model for the subsequent CMAP comparison experiments. By utilizing the previously proposed dataset generation method, we construct training set and validation set of equivalent size to those produced using the \"Parula\", \"Hot\", \"Autumn\", and \"HSV\" CMAP methods. The same data augmentation techniques and model training strategies as in previous experiments are applied to train the ViT-L-16 model. Finally, the model is evaluated on their respective validation sets using the same evaluation parameters as before."
       },
       "confidence": 0.95,
       "task": "CMAP comparison",
-      "setup": "subset of RFUAV dataset, ViT-L-16 baseline model, SNR-adjusted signals"
+      "setup": "subset of RFUAV dataset, ViT-L-16 model, SNR range -20 dB to 20 dB"
     },
     {
       "type": "experiment",
@@ -323,7 +335,7 @@
       },
       "confidence": 0.95,
       "task": "Frequency Resolution Comparison",
-      "setup": "subset of RFUAV dataset, ViT-L-16 model, 'Hot' CMAP, varying STFTP"
+      "setup": "subset of RFUAV dataset, ViT-L-16 model, \"Hot\" CMAP, STFTP values 32 to 1024"
     },
     {
       "type": "experiment",
@@ -334,56 +346,28 @@
       },
       "confidence": 0.95,
       "task": "Model Pre-selection",
-      "setup": "subset of RFUAV dataset, fixed CMAP ('Parula') and frequency resolution (256), multiple classification models"
+      "setup": "subset of RFUAV dataset, fixed \"Parula\" CMAP and 256 frequency resolution"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_7d37a79e4fbb4169_qr1",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools. The RFUAV dataset and baseline implementation are publicly available at `https://github.com/kitoweeknd/RFUAV/`."
+        "section": "Abstract and 4.1",
+        "original_text": "RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. The data collection location is carefully selected to minimize signal interference. During the collection process, the transmitters of 37 different UAV types are either directly connected to the receiver of the USRPI or positioned in close proximity to it, ensuring optimal signal quality of the collected data. Upon completion of data acquisition for a specific drone type, the collected data is transferred from the signal collector to the portable SSD. Subsequently, the laptop is used to analyze the spectrogram and PSD to verify the signal has been fully captured. A dedicated signal playback module, implemented using GNU Radio, enables USRPO to transmit the collected data packets. USRPO is directly connected to a spectrum analyzer, which facilitates the evaluation of each raw data packet's bandwidth and SNR. This systematic workflow for data collection ensures the quality of every signal and establishes a robust foundation for subsequent research. In total, approximately 1.3 TB of raw data are collected from 37 distinct types of drones. These raw signals encompass Frequency-Hopping Spread Spectrum (FHSS) signals transmitted by the remote control to regulate the drone's behavior. FHSS signals are characterized by a fixed hopping bandwidth (FHSBW), hopping duration (FHSDT), hopping duty cycle (FHSDC), and hopping pattern period (FHSPP). Additionally, some drones equipped with cameras possess the capability to capture and transmit images. The raw signals from these drones also include fixed bandwidth signals used for image transmission."
       },
       "confidence": 0.99,
       "quantity": "dataset size",
       "value": 1.3,
       "unit": "TB",
-      "context": "RFUAV dataset comprising raw frequency data collected from 37 distinct UAVs using USRP devices in real-world environments",
+      "context": "raw frequency data collected from 37 distinct UAVs using USRP in real-world environments",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_7d37a79e4fbb4169_qr2",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools. The RFUAV dataset and baseline implementation are publicly available at `https://github.com/kitoweeknd/RFUAV/`."
-      },
-      "confidence": 0.99,
-      "quantity": "number of UAV types",
-      "value": 37,
-      "unit": null,
-      "context": "RFUAV dataset collection",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr3",
-      "evidence": {
         "section": "4.2",
-        "original_text": "As depicted in the figure, each drone type is equipped with a minimum of 15GB of raw data storage. Certain drones, such as the DJI FPV COMBO, DJI AVATA2, and DJI MINI 3, possess the capability to select various signal bandwidths for video transmission during communication. To ensure comprehensive coverage of the data with each drone, we meticulously captured all potential scenarios that may arise throughout the signal transmission process."
-      },
-      "confidence": 0.98,
-      "quantity": "minimum data volume per drone type",
-      "value": 15,
-      "unit": "GB",
-      "context": "RFUAV dataset storage allocation",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr4",
-      "evidence": {
-        "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping signal bandwidth",
@@ -394,10 +378,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr5",
+      "qr_id": "doc_7d37a79e4fbb4169_qr3",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping signal bandwidth",
@@ -408,10 +392,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr6",
+      "qr_id": "doc_7d37a79e4fbb4169_qr4",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping signal duration time",
@@ -422,10 +406,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr7",
+      "qr_id": "doc_7d37a79e4fbb4169_qr5",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping signal duration time",
@@ -436,10 +420,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr8",
+      "qr_id": "doc_7d37a79e4fbb4169_qr6",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping duty cycle",
@@ -450,10 +434,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr9",
+      "qr_id": "doc_7d37a79e4fbb4169_qr7",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping duty cycle",
@@ -464,10 +448,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr10",
+      "qr_id": "doc_7d37a79e4fbb4169_qr8",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping signal periodicity",
@@ -478,10 +462,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr11",
+      "qr_id": "doc_7d37a79e4fbb4169_qr9",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms."
+        "original_text": "As illustrated in the figure, the Herelink HX4 exhibits the smallest FHSBW at 2.9 MHz, while the WFLY-ET16S exhibits the largest FHSBW at 35.12 MHz, which is nearly the same as the video transmission signal bandwidth (VTSBW). The SKYDROID H12 shows the smallest FHSDT at 0.25 ms, whereas the JUMPER T14 exhibits the largest FHSDT at 10.73 ms. While most drones generate FHSS signals with a distinct FHSPP, several models, — including RadioMaster TX16S, Radiolink AT9S Pro, Radiolink AT10 II, SIYI MK15, SIYI MK32, and WFLY ET10 — do not exhibit a clear FHSPP within their FHSS signals. All drone-generated signals maintain a fixed FHSDC. The WFLY WFT09SII has the shortest FHSDC at 1.86 ms, while the FUTABA T14SG displays the longest FHSDC at 30.1 ms. Additionally, the YunZhuo H30 features the shortest FHSPP at 5 ms and the JUMPER T14 features the longest FHSPP at 480 ms. By integrating the FHSBW, FHSDT, FHSDC, FHSPP, and VTSBW, a distinctive feature sequence is generated that can be likened to an \"RF drone fingerprint\"."
       },
       "confidence": 0.98,
       "quantity": "frequency-hopping signal periodicity",
@@ -492,10 +476,10 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr12",
+      "qr_id": "doc_7d37a79e4fbb4169_qr10",
       "evidence": {
         "section": "4.2",
-        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations."
+        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations. This characteristic of temporal fluctuation is a crucial aspect that differentiates drone image transmission signals from other signal types. For example, the five distinct duration cases observed in the DJI FPV COMBO's image transmission signals reveal notable morphological differences in their time-frequency representations. In order to execute target detection tasks effectively, these signals must be categorized into five distinct types. The minor temporal fluctuations may arise from signal transmission losses and can occasionally result in morphological variations within the signals, potentially affecting the model's classification accuracy."
       },
       "confidence": 0.98,
       "quantity": "image transmission signal duration",
@@ -505,95 +489,25 @@
       "result_type": "measurement"
     },
     {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr13",
-      "evidence": {
-        "section": "4.2",
-        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations."
-      },
-      "confidence": 0.98,
-      "quantity": "image transmission signal duration",
-      "value": 2.076,
-      "unit": "ms",
-      "context": "DJI FPV COMBO drone",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr14",
-      "evidence": {
-        "section": "4.2",
-        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations."
-      },
-      "confidence": 0.98,
-      "quantity": "image transmission signal duration",
-      "value": 3.119,
-      "unit": "ms",
-      "context": "DJI FPV COMBO drone",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr15",
-      "evidence": {
-        "section": "4.2",
-        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations."
-      },
-      "confidence": 0.98,
-      "quantity": "image transmission signal duration",
-      "value": 4.116,
-      "unit": "ms",
-      "context": "DJI FPV COMBO drone",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr16",
-      "evidence": {
-        "section": "4.2",
-        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations."
-      },
-      "confidence": 0.98,
-      "quantity": "image transmission signal duration",
-      "value": 5.127,
-      "unit": "ms",
-      "context": "DJI FPV COMBO drone",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7d37a79e4fbb4169_qr17",
-      "evidence": {
-        "section": "4.2",
-        "original_text": "As illustrated in the figure, the image transmission signals of these four drones display irregular variations in duration, although they remain confined within a specific range. For the DJI FPV COMBO, the signal durations exhibit five distinct values: 1.079 ms, 2.076 ms, 3.119 ms, 4.116 ms, and 5.127 ms. Within this set of values, minor fluctuations of approximately 0.015 ms are also observed in the signal durations. Similar patterns can be noted for the other three drones; however, their image transmission signals vary between only two discrete values and demonstrate smaller fluctuations."
-      },
-      "confidence": 0.98,
-      "quantity": "duration fluctuation",
-      "value": 0.015,
-      "unit": "ms",
-      "context": "DJI FPV COMBO drone image transmission signals",
-      "result_type": "measurement"
-    },
-    {
       "type": "performance_result",
       "perf_id": "doc_7d37a79e4fbb4169_p1",
       "evidence": {
         "section": "5.1",
-        "original_text": "We train ResNet, Swin Transformer, ViT, and MobileNet on the aforementioned dataset. The evaluation metrics include accuracy (Acc) and overall accuracy (OA). To facilitate a clearer understanding of Acc variations under different SNR levels, we visualize the experimental results in Fig. 6 and provide detailed numerical results in Table 1. As shown in Table 1, ViT-L-16 achieve the highest OA and OA _−_ 8 _<_ SNR _<_ 8 at 56.44% and 52.60%; ViT-B-32 achieve the highest OASNR _>_ 10 at 100.00%; ResNet18 achieve the highest OASNR _<−_ 10 at 22.39%."
+        "original_text": "We train ResNet, Swin Transformer, ViT, and MobileNet on the aforementioned dataset. The evaluation metrics include accuracy (Acc) and overall accuracy (OA). To facilitate a clearer understanding of Acc variations under different SNR levels, we visualize the experimental results in Fig. 6 and provide detailed numerical results in Table 1. As shown in Table 1, ViT-L-16 achieve the highest OA and OA −8 < SNR < 8 at 56.44% and 52.60%; ViT-B-32 achieve the highest OASNR > 10 at 100.00%; ResNet18 achieve the highest OASNR <− 10 at 22.39%. Based on the results obtained in previous experiments, we select ViT-L-16 as the baseline model for the subsequent CMAP comparison experiments."
       },
       "confidence": 0.95,
-      "metric": "overall accuracy",
-      "compared_to": "ResNet, Swin Transformer, ViT, MobileNet"
+      "metric": "overall accuracy (OA)",
+      "compared_to": "ResNet18, Swin Transformer, ViT-B-32, MobileNet"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_7d37a79e4fbb4169_p2",
       "evidence": {
         "section": "5.1",
-        "original_text": "Based on the results obtained in previous experiments, we select ViT-L-16 as the baseline model for the subsequent CMAP comparison experiments. By utilizing the previously proposed dataset generation method, we construct training set and validation set of equivalent size to those produced using the \"Parula\", \"Hot\", \"Autumn\", and \"HSV\" CMAP methods. The same data augmentation techniques and model training strategies as in previous experiments are applied to train the ViT-L-16 model. Finally, the model is evaluated on their respective validation sets using the same evaluation parameters as before. The experimental results are illustrated in Fig. 7, with detailed results presented in Table. 2. As shown in the figure and table, we observe that the ViT-L-16 model achieves the highest OA of 58.16% on datasets using the \"Hot\" CMAP method. In scenarios where the SNR is between -8 dB and 20 dB, the model consistently achieves the highest precision, with OASNR _≥_ 10 at 99.70% and OA _−_ 8 _≤_ SNR _≤_ 8 at 55.80%, respectively. Meanwhile, for datasets using the \"HSV\" CMAP method, the ViT model achieves the highest OASNR _≤−_ 10 of 31.84%. Therefore, the \"Hot\" CMAP method should be considered the most suitable option for this task."
+        "original_text": "By utilizing the previously proposed dataset generation method, we construct training set and validation set of equivalent size to those produced using the \"Parula\", \"Hot\", \"Autumn\", and \"HSV\" CMAP methods. The same data augmentation techniques and model training strategies as in previous experiments are applied to train the ViT-L-16 model. Finally, the model is evaluated on their respective validation sets using the same evaluation parameters as before. The experimental results are illustrated in Fig. 7, with detailed results presented in Table. 2. As shown in the figure and table, we observe that the ViT-L-16 model achieves the highest OA of 58.16% on datasets using the \"Hot\" CMAP method. In scenarios where the SNR is between -8 dB and 20 dB, the model consistently achieves the highest precision, with OASNR ≥ 10 at 99.70% and OA −8 ≤ SNR ≤ 8 at 55.80%, respectively. Meanwhile, for datasets using the \"HSV\" CMAP method, the ViT model achieves the highest OASNR ≤− 10 of 31.84%. Therefore, the \"Hot\" CMAP method should be considered the most suitable option for this task."
       },
       "confidence": 0.95,
-      "metric": "overall accuracy",
+      "metric": "overall accuracy (OA)",
       "compared_to": "Parula, Hot, Autumn, HSV CMAP methods"
     },
     {
@@ -601,10 +515,10 @@
       "perf_id": "doc_7d37a79e4fbb4169_p3",
       "evidence": {
         "section": "5.2",
-        "original_text": "We evaluate the accuracy of the ViT-L-16 model on the aforementioned dataset, with the results presented in Table. 3 and Fig. 7. (b). As depicted in the table and figure, the impact of increasing STFTP on model accuracy demonstrates a boundary effect (for a more detailed analysis, refer to Appendix. D). Once STFTP reaches 256, further increments do not result in significant improvements in model accuracy. Instead, the accuracy gradually stabilizes, with larger STFTP values causing fluctuations in accuracy between 0.05% and 0.12%. Therefore, in this experiment, the model with STFTP set to 256, achieves the highest OA of 58.28%, OASNR _≤−_ 10 of 20.33%, and OA _−_ 8 _≤_ SNR _≤_ 8 of 56.00%."
+        "original_text": "We evaluate the accuracy of the ViT-L-16 model on the aforementioned dataset, with the results presented in Table. 3 and Fig. 7. (b). As depicted in the table and figure, the impact of increasing STFTP on model accuracy demonstrates a boundary effect (for a more detailed analysis, refer to Appendix. D). Once STFTP reaches 256, further increments do not result in significant improvements in model accuracy. Instead, the accuracy gradually stabilizes, with larger STFTP values causing fluctuations in accuracy between 0.05% and 0.12%. Therefore, in this experiment, the model with STFTP set to 256, achieves the highest OA of 58.28%, OASNR ≤− 10 of 20.33%, and OA −8 ≤ SNR ≤ 8 of 56.00%. From the frequency resolution comparison experiment results, it is evident that while STFTP is a crucial parameter influencing outcomes in traditional signal processing algorithms, its impact on deep learning-based signal processing research is less pronounced."
       },
       "confidence": 0.95,
-      "metric": "overall accuracy",
+      "metric": "overall accuracy (OA)",
       "compared_to": "STFTP settings of 32, 64, 128, 256, 512, 1024"
     },
     {
@@ -612,7 +526,7 @@
       "claim_id": "doc_7d37a79e4fbb4169_ca1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "In this paper, we propose RFUAV as a new benchmark dataset for radio-frequency based (RF-based) unmanned aerial vehicle (UAV) identification and address the following challenges: Firstly, many existing datasets feature a restricted variety of drone types and insufficient volumes of raw data, which fail to meet the demands of practical applications. Secondly, existing datasets often lack raw data covering a broad range of signal-to-noise ratios (SNR), or do not provide tools for transforming raw data to different SNR levels. This limitation undermines the validity of model training and evaluation. Lastly, many existing datasets do not offer open-access evaluation tools, leading to a lack of unified evaluation standards in current research within this field. RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools."
+        "original_text": "In this paper, we propose RFUAV as a new benchmark dataset for radio-frequency based (RF-based) unmanned aerial vehicle (UAV) identification and address the following challenges: Firstly, many existing datasets feature a restricted variety of drone types and insufficient volumes of raw data, which fail to meet the demands of practical applications. Secondly, existing datasets often lack raw data covering a broad range of signal-to-noise ratios (SNR), or do not provide tools for transforming raw data to different SNR levels. This limitation undermines the validity of model training and evaluation. Lastly, many existing datasets do not offer open-access evaluation tools, leading to a lack of unified evaluation standards in current research within this field. RFUAV comprises approximately 1.3 TB of raw frequency data collected from 37 distinct UAVs using the Universal Software Radio Peripheral (USRP) device in real-world environments. Through in-depth analysis of the RF data in RFUAV, we define a drone feature sequence called RF drone fingerprint, which aids in distinguishing drone signals. In addition to the dataset, RFUAV provides a baseline preprocessing method and model evaluation tools. Rigorous experiments demonstrate that these preprocessing methods achieve state-of-the-art (SOTA) performance using the provided evaluation tools. The RFUAV dataset and baseline implementation are publicly available at `https://github.com/kitoweeknd/RFUAV/`."
       },
       "confidence": 0.96
     },
@@ -628,6 +542,15 @@
     {
       "type": "claim",
       "claim_id": "doc_7d37a79e4fbb4169_ca3",
+      "evidence": {
+        "section": "RF-based Drone Detection System",
+        "original_text": "Traditional RF-based drone detection systems are designed to identify specific models of drones within a fixed area using some signal decoding methods [7], [1], [22]. After integrating deep learning technology, this system achieves a higher degree of automation and detection accuracy. This system automatically extracts features from raw signals to accurately determine the type of drones. However, directly extracting features from data packets poses significant challenges. A common approach to address this issue is to visualize the inherent features within the data packets. Common visualization methods in signal processing include power spectral density (PSD) [15], spectrogram [13], scalogram [9], and Wigner-Ville distribution [5]. In this paper, we utilize the Short-Time Fourier Transformation(STFT) to convert the raw signal into the spectrogram (for a detailed transformation procedure see Appendix. A), which visually represents the energy characteristics of the signal over time. By applying deep learning techniques to analyze these spectrograms, valuable information regarding the drone can be extracted. The entire process is illustrated in Fig. 1. This system exploits the deep learning model’s capability to identify patterns and features within the frequency domain, thereby enabling the detection and classification of different drone types based on their unique spectral signatures."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_7d37a79e4fbb4169_ca4",
       "evidence": {
         "section": "Limitations of Existing Datasets",
         "original_text": "The existing dataset, DroneRF [3], includes only three types of drones, whereas the market offers over 60 distinct models. Models trained on such datasets have exhibited restricted practical utility. Another dataset, DroneRFa [16], is significantly constrained by the signal-to-noise ratio (SNR) levels of the raw signals it contains. Although DroneRFa encompasses approximately 25 drone types, it does not provide precise SNR values for each raw data packet. Other drone detection methods, such as vision-based systems [19], [2], have gradually matured. Vision-based detection models now benefit from available benchmark dataset [28], enabling fair and comprehensive evaluation of model performance. In contrast, RF-based drone detection methods lack widely accepted baseline models and benchmark dataset. Therefore, this research aims to establish a benchmark dataset for RF-based drone classification."
@@ -648,16 +571,16 @@
       "conclusion_id": "doc_7d37a79e4fbb4169_cl2",
       "evidence": {
         "section": "CMAP Comparison",
-        "original_text": "As shown in the figure and table, we observe that the ViT-L-16 model achieves the highest OA of 58.16% on datasets using the \"Hot\" CMAP method. In scenarios where the SNR is between -8 dB and 20 dB, the model consistently achieves the highest precision, with OASNR ≥ 10 at 99.70% and OA −8 ≤ SNR ≤ 8 at 55.80%, respectively. Meanwhile, for datasets using the \"HSV\" CMAP method, the ViT model achieves the highest OASNR ≤− 10 of 31.84%. Therefore, the \"Hot\" CMAP method should be considered the most suitable option for this task. From this experiment, we can conclude that different CMAP methods significantly impact the performance of the model, specifically under low SNR conditions. When training is conducted exclusively with high-SNR data, the model frequently fails to capture the features associated with image differences caused by SNR variations. This observation aligns with practical application scenarios and underscores the challenge deep learning aims to address generalizing solutions for broader situations using features from a limited subset of data."
+        "original_text": "From this experiment, we can conclude that different CMAP methods significantly impact the performance of the model, specifically under low SNR conditions. When training is conducted exclusively with high-SNR data, the model frequently fails to capture the features associated with image differences caused by SNR variations. This observation aligns with practical application scenarios and underscores the challenge deep learning aims to address generalizing solutions for broader situations using features from a limited subset of data."
       },
-      "confidence": 0.93
+      "confidence": 0.92
     },
     {
       "type": "conclusion",
       "conclusion_id": "doc_7d37a79e4fbb4169_cl3",
       "evidence": {
         "section": "Frequency Resolution Comparison",
-        "original_text": "As depicted in the table and figure, the impact of increasing STFTP on model accuracy demonstrates a boundary effect (for a more detailed analysis, refer to Appendix. D). Once STFTP reaches 256, further increments do not result in significant improvements in model accuracy. Instead, the accuracy gradually stabilizes, with larger STFTP values causing fluctuations in accuracy between 0.05% and 0.12%. Therefore, in this experiment, the model with STFTP set to 256, achieves the highest OA of 58.28%, OASNR ≤− 10 of 20.33%, and OA −8 ≤ SNR ≤ 8 of 56.00%. From the frequency resolution comparison experiment results, it is evident that while STFTP is a crucial parameter influencing outcomes in traditional signal processing algorithms, its impact on deep learning-based signal processing research is less pronounced. This observation highlights that in wide-spectrum signal energy analysis, raw signal analysis is not heavily dependent on frequency resolution. In practical applications, adjusting STFTP to the most suitable value based on the specific task requirements is sufficient."
+        "original_text": "From the frequency resolution comparison experiment results, it is evident that while STFTP is a crucial parameter influencing outcomes in traditional signal processing algorithms, its impact on deep learning-based signal processing research is less pronounced. This observation highlights that in wide-spectrum signal energy analysis, raw signal analysis is not heavily dependent on frequency resolution. In practical applications, adjusting STFTP to the most suitable value based on the specific task requirements is sufficient."
       },
       "confidence": 0.92
     },
@@ -665,37 +588,37 @@
       "type": "limitation",
       "limitation_id": "doc_7d37a79e4fbb4169_lm1",
       "evidence": {
-        "section": "CMAP Comparison",
-        "original_text": "Given that this experiment encompasses multiple comparative models and the primary objective of this subsection is specifically to identify the SOTA preprocessing pipeline for deep learning models, the experiments in this subsection will be conducted on a subset of the RFUAV. We select the raw signals from five drones equipped with a camera, namely the DJI AVATA2, DJI FPV COMBO, DJI MAVIC3 PRO, DJI MINI3, and DJI MINI4 PRO. Firstly, we estimate the SNR of each raw signal based on the SNR estimation results presented in Sec. 4.4. Then, we apply additive Gaussian white noise (AWGN) to adjust the SNR of the raw signals. Finally, for each drone, we generate raw data with SNR levels ranging from -20 dB to 20 dB in 2 dB increments. The raw signal and their SNR-adjusted counterparts are transformed into spectrograms with identical frequency resolutions, employing four distinct CMAP methods (for more detailed CMAP methods analysis, see Appendix. A) to produce images of consistent resolution. The spectrograms of the raw signals and the SNR-adjusted signals at 20 dB serve as training data, whereas the spectrograms of the SNR adjusted signals with SNR levels ranging from -20 dB to 20 dB (in 2 dB increments) are used as validation data."
+        "section": "Limitations of Existing Datasets",
+        "original_text": "The existing dataset, DroneRF [3], includes only three types of drones, whereas the market offers over 60 distinct models. Models trained on such datasets have exhibited restricted practical utility. Another dataset, DroneRFa [16], is significantly constrained by the signal-to-noise ratio (SNR) levels of the raw signals it contains. Although DroneRFa encompasses approximately 25 drone types, it does not provide precise SNR values for each raw data packet. Other drone detection methods, such as vision-based systems [19], [2], have gradually matured. Vision-based detection models now benefit from available benchmark dataset [28], enabling fair and comprehensive evaluation of model performance. In contrast, RF-based drone detection methods lack widely accepted baseline models and benchmark dataset. Therefore, this research aims to establish a benchmark dataset for RF-based drone classification."
       },
-      "confidence": 0.9
+      "confidence": 0.95
     },
     {
       "type": "limitation",
       "limitation_id": "doc_7d37a79e4fbb4169_lm2",
       "evidence": {
-        "section": "Discussion",
-        "original_text": "RFUAV exhibits significant potential for further development. The experiments presented in this paper are conducted on a subset of the RFUAV, aiming to provide valuable insights for researchers and facilitate subsequent advancements in the field. The potential of RFUAV extends beyond its current capabilities, offering extensive opportunities for enhancing detection accuracy, especially under challenging conditions such as low SNR. Future work should focus on addressing the limitations observed in our experiments, exploring novel model architectures, and developing advanced signal processing techniques to improve detection reliability and robustness across diverse operational scenarios."
+        "section": "CMAP Comparison",
+        "original_text": "From this experiment, we can conclude that different CMAP methods significantly impact the performance of the model, specifically under low SNR conditions. When training is conducted exclusively with high-SNR data, the model frequently fails to capture the features associated with image differences caused by SNR variations. This observation aligns with practical application scenarios and underscores the challenge deep learning aims to address generalizing solutions for broader situations using features from a limited subset of data."
       },
-      "confidence": 0.91
+      "confidence": 0.92
     },
     {
       "type": "future_work",
       "future_work_id": "doc_7d37a79e4fbb4169_fw1",
       "evidence": {
         "section": "Discussion",
-        "original_text": "The raw data preprocessing methods and deep learning model presented in this paper are also applicable to other related studies, such as DroneRFa. To further enhance the detection model, additional drone data from datasets like DroneRFa and DroneRF can be integrated with RFUAV using the same preprocessing techniques. This integration would increase the total number of drone types to over 54, thereby effectively covering nearly all commercially available civilian drone models. To maintain the RFUAV's relevance, we will continuously update it with raw data from newly emerging civilian drone models. This approach not only provides a foundational resource for researchers studying radio-frequency data but also supplies essential materials for advancing deep learning research in the radio-frequency domain. We anticipate that, through our ongoing efforts, this drone detection method will continue to evolve and improve."
+        "original_text": "RFUAV exhibits significant potential for further development. The experiments presented in this paper are conducted on a subset of the RFUAV, aiming to provide valuable insights for researchers and facilitate subsequent advancements in the field. The potential of RFUAV extends beyond its current capabilities, offering extensive opportunities for enhancing detection accuracy, especially under challenging conditions such as low SNR. Future work should focus on addressing the limitations observed in our experiments, exploring novel model architectures, and developing advanced signal processing techniques to improve detection reliability and robustness across diverse operational scenarios. The raw data preprocessing methods and deep learning model presented in this paper are also applicable to other related studies, such as DroneRFa. To further enhance the detection model, additional drone data from datasets like DroneRFa and DroneRF can be integrated with RFUAV using the same preprocessing techniques. This integration would increase the total number of drone types to over 54, thereby effectively covering nearly all commercially available civilian drone models. To maintain the RFUAV’s relevance, we will continuously update it with raw data from newly emerging civilian drone models. This approach not only provides a foundational resource for researchers studying radio-frequency data but also supplies essential materials for advancing deep learning research in the radio-frequency domain. We anticipate that, through our ongoing efforts, this drone detection method will continue to evolve and improve."
       },
-      "confidence": 0.93
+      "confidence": 0.94
     },
     {
       "type": "future_work",
       "future_work_id": "doc_7d37a79e4fbb4169_fw2",
       "evidence": {
         "section": "Conclusion",
-        "original_text": "In future work, we plan to continuously update the dataset with data from newly emerging drone models."
+        "original_text": "This paper introduces RFUAV as a novel benchmark dataset for RF-based drone detection and identification. The comprehensive data analysis and diverse use case examples underscore the significant potential inherent in RFUAV. Through rigorous experimentation, we have demonstrated a SOTA data preprocessing method that effectively integrates deep learning with signal processing. In future work, we plan to continuously update the dataset with data from newly emerging drone models."
       },
-      "confidence": 0.94
+      "confidence": 0.96
     }
   ]
 }

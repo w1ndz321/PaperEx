@@ -3,32 +3,32 @@
     "doc_id": "doc_1bb084158f0afd4b",
     "source_file": "13_No_Fair_Lunch_causal_perspective_on_dataset_bias_in_medical_imaging.md",
     "title": "A causal perspective on dataset bias in medical imaging: prevalence, presentation, and annotation disparities",
-    "year": 2023,
+    "year": 2026,
     "doi": null,
     "abstract": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models.",
     "introduction": "Machine learning (ML) algorithms for medical image analysis are rapidly becoming powerful tools for supporting high-stakes clinical decision-making. However, these algorithms can reflect or amplify problematic biases present in their training data[1][–][4] . While ML methods have potential to improve outcomes by improving diagnostic accuracy and throughput, they often generalise poorly across clinical environments[5] and may exhibit algorithmic bias leading to worse performance in underrepresented populations[6][–][11] . In recent years, many methods for mitigating algorithmic bias in image analysis have been proposed[12][–][23] , however, it remains unclear when each method is most appropriate or even valid to employ[24][–][26] . Bias mitigation methods may show convincing results on one benchmark yet appear useless or even harmful on others[13] , raising the question: how should we effectively tackle bias in ML for medical imaging? \n\nIn this perspective, we discuss how the language of causality can illuminate the study of fairness. Inspired by causal work in dataset shift[27][–][31] and domain adaptation[32][–][34] , we argue that understanding the mechanisms of dataset bias which may _cause_ predictive models to become unfair is critical for reasoning about what steps to take in practice. We discuss how bias mitigation techniques may successfully combat one bias mechanism but be theoretically futile against others. We identify three key families of clinically relevant bias mechanisms: (i) _prevalence disparities_ , (ii) _presentation disparities_ , and (iii) _annotation disparities_ . We highlight how careful analysis of the underlying characteristics of these mechanisms is critical for informing the selection of appropriate methods and metrics. Our causal considerations are intended to help guide future research in the field.",
     "primary_discipline": {
       "level1": "计算机科学技术",
-      "level2": "人工智能",
-      "level3": "机器学习"
+      "level2": null,
+      "level3": null
     },
     "secondary_disciplines": [
       {
         "level1": "临床医学",
-        "level2": "医学影像学",
+        "level2": null,
         "level3": null
       }
     ],
     "keywords": [
       "algorithmic bias",
       "dataset bias",
-      "fairness",
       "medical imaging",
+      "fairness",
       "causal mechanisms"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:37:19.764131+00:00",
+      "extraction_timestamp": "2026-05-11T02:07:54.773596+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -51,10 +51,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c2",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Machine learning (ML) algorithms for medical image analysis are rapidly becoming powerful tools for supporting high-stakes clinical decision-making. However, these algorithms can reflect or amplify problematic biases present in their training data[1][–][4] . While ML methods have potential to improve outcomes by improving diagnostic accuracy and throughput, they often generalise poorly across clinical environments[5] and may exhibit algorithmic bias leading to worse performance in underrepresented populations[6][–][11] . In recent years, many methods for mitigating algorithmic bias in image analysis have been proposed[12][–][23] , however, it remains unclear when each method is most appropriate or even valid to employ[24][–][26] . Bias mitigation methods may show convincing results on one benchmark yet appear useless or even harmful on others[13] , raising the question: how should we effectively tackle bias in ML for medical imaging?"
+        "section": "Abstract",
+        "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.97,
+      "confidence": 0.98,
       "term": "algorithmic bias",
       "normalized": "算法偏差",
       "std_label": null
@@ -63,10 +63,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c3",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "In this perspective, we discuss how the language of causality can illuminate the study of fairness. Inspired by causal work in dataset shift[27][–][31] and domain adaptation[32][–][34] , we argue that understanding the mechanisms of dataset bias which may _cause_ predictive models to become unfair is critical for reasoning about what steps to take in practice. We discuss how bias mitigation techniques may successfully combat one bias mechanism but be theoretically futile against others. We identify three key families of clinically relevant bias mechanisms: (i) _prevalence disparities_ , (ii) _presentation disparities_ , and (iii) _annotation disparities_ . We highlight how careful analysis of the underlying characteristics of these mechanisms is critical for informing the selection of appropriate methods and metrics. Our causal considerations are intended to help guide future research in the field."
+        "section": "Abstract",
+        "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.96,
+      "confidence": 0.97,
       "term": "prevalence disparities",
       "normalized": "患病率差异",
       "std_label": null
@@ -75,10 +75,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c4",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "In this perspective, we discuss how the language of causality can illuminate the study of fairness. Inspired by causal work in dataset shift[27][–][31] and domain adaptation[32][–][34] , we argue that understanding the mechanisms of dataset bias which may _cause_ predictive models to become unfair is critical for reasoning about what steps to take in practice. We discuss how bias mitigation techniques may successfully combat one bias mechanism but be theoretically futile against others. We identify three key families of clinically relevant bias mechanisms: (i) _prevalence disparities_ , (ii) _presentation disparities_ , and (iii) _annotation disparities_ . We highlight how careful analysis of the underlying characteristics of these mechanisms is critical for informing the selection of appropriate methods and metrics. Our causal considerations are intended to help guide future research in the field."
+        "section": "Abstract",
+        "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.96,
+      "confidence": 0.97,
       "term": "presentation disparities",
       "normalized": "临床表现差异",
       "std_label": null
@@ -87,10 +87,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c5",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "In this perspective, we discuss how the language of causality can illuminate the study of fairness. Inspired by causal work in dataset shift[27][–][31] and domain adaptation[32][–][34] , we argue that understanding the mechanisms of dataset bias which may _cause_ predictive models to become unfair is critical for reasoning about what steps to take in practice. We discuss how bias mitigation techniques may successfully combat one bias mechanism but be theoretically futile against others. We identify three key families of clinically relevant bias mechanisms: (i) _prevalence disparities_ , (ii) _presentation disparities_ , and (iii) _annotation disparities_ . We highlight how careful analysis of the underlying characteristics of these mechanisms is critical for informing the selection of appropriate methods and metrics. Our causal considerations are intended to help guide future research in the field."
+        "section": "Abstract",
+        "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.96,
+      "confidence": 0.97,
       "term": "annotation disparities",
       "normalized": "标注差异",
       "std_label": null
@@ -99,10 +99,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c6",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "We consider image classification problems where we aim to learn a fair disease classifier, given a potentially biased training dataset of images and targets (e.g. class labels). Where much work focuses on algorithmic bias[35] , concerning errors introduced by imperfect models, we take a step back and focus on dataset bias. From a machine learning perspective, dataset bias would be reflected even by a ‘perfect’ model with no error on its biased training dataset. By focusing on what such a model would learn from a given dataset, we can use tools from causal reasoning to study how the underlying mapping between images and targets shifts across groups and settings. This is especially relevant in today’s paradigm of high-capacity deep learning models, which often achieve near-zero training error when trained with the standard approach of empirical risk minimization (ERM)[36] . Throughout this article, we take a graphical approach to causality, relying on the principles explained in our brief primer in Appendix A. We refer readers looking for further introductory material to Peters et al.[37] and to Pearl[38] ."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "From a machine learning perspective, dataset bias would be reflected even by a ‘perfect’ model with no error on its biased training dataset. By focusing on what such a model would learn from a given dataset, we can use tools from causal reasoning to study how the underlying mapping between images and targets shifts across groups and settings. This is especially relevant in today’s paradigm of high-capacity deep learning models, which often achieve near-zero training error when trained with the standard approach of empirical risk minimization (ERM). Throughout this article, we take a graphical approach to causality, relying on the principles explained in our brief primer in Appendix A. We refer readers looking for further introductory material to Peters et al. and to Pearl."
       },
-      "confidence": 0.95,
+      "confidence": 0.96,
       "term": "empirical risk minimization",
       "normalized": "经验风险最小化",
       "std_label": "ERM"
@@ -111,10 +111,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c7",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "Although dataset bias induces models to exploit sensitive information, this is not necessarily inappropriate in all cases. If a legitimate biological difference exists between groups, sensitive information may be relevant for disease prediction[45] . In this case, we would want a trained model to capture this information by learning group-specific disease mechanisms. In contrast, models may unfairly reflect spurious correlations caused by historical biases in healthcare provision or the diagnostic process. To account for both possibilities, we must distinguish between fair and unfair causal pathways[46] . Fair causal pathways contain information our model should use to inform predictions, whereas unfair pathways should be ignored or mitigated by a learning algorithm."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "Although dataset bias induces models to exploit sensitive information, this is not necessarily inappropriate in all cases. If a legitimate biological difference exists between groups, sensitive information may be relevant for disease prediction. In this case, we would want a trained model to capture this information by learning group-specific disease mechanisms. In contrast, models may unfairly reflect spurious correlations caused by historical biases in healthcare provision or the diagnostic process. To account for both possibilities, we must distinguish between fair and unfair causal pathways. Fair causal pathways contain information our model should use to inform predictions, whereas unfair pathways should be ignored or mitigated by a learning algorithm."
       },
-      "confidence": 0.94,
+      "confidence": 0.95,
       "term": "fair causal pathways",
       "normalized": "公平因果路径",
       "std_label": null
@@ -123,10 +123,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c8",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "Although dataset bias induces models to exploit sensitive information, this is not necessarily inappropriate in all cases. If a legitimate biological difference exists between groups, sensitive information may be relevant for disease prediction[45] . In this case, we would want a trained model to capture this information by learning group-specific disease mechanisms. In contrast, models may unfairly reflect spurious correlations caused by historical biases in healthcare provision or the diagnostic process. To account for both possibilities, we must distinguish between fair and unfair causal pathways[46] . Fair causal pathways contain information our model should use to inform predictions, whereas unfair pathways should be ignored or mitigated by a learning algorithm."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "Although dataset bias induces models to exploit sensitive information, this is not necessarily inappropriate in all cases. If a legitimate biological difference exists between groups, sensitive information may be relevant for disease prediction. In this case, we would want a trained model to capture this information by learning group-specific disease mechanisms. In contrast, models may unfairly reflect spurious correlations caused by historical biases in healthcare provision or the diagnostic process. To account for both possibilities, we must distinguish between fair and unfair causal pathways. Fair causal pathways contain information our model should use to inform predictions, whereas unfair pathways should be ignored or mitigated by a learning algorithm."
       },
-      "confidence": 0.94,
+      "confidence": 0.95,
       "term": "unfair causal pathways",
       "normalized": "不公平因果路径",
       "std_label": null
@@ -135,10 +135,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c9",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "Group fairness metrics aim to quantify algorithmic bias by measuring how classifier properties differ across subgroups. However, they are difficult to interpret and are often mutually incompatible[47] . With our causal formulation, we may recontextualise group fairness metrics as (necessary but not sufficient) measures of properties we expect an unbiased prediction model to have. When fairness metrics are incompatible, we may often view each metric as assuming a different form of the hypothetical unbiased dataset. For example, when all causal pathways are considered fair, the unbiased deployment setting may be assumed to be independent and identically distributed (i.i.d.) to the training data. In this case, socalled ‘bias-preserving’ metrics[48] , such as equal opportunity[49] , should be favoured, and fairness is aligned with maximising performance at training time. In contrast, when our dataset contains unfair pathways, our hypothetical unbiased setting is not i.i.d. to the training dataset, so train-time performance may be misleading, and we should favour ‘bias-transforming’[48] metrics such as demographic parity[50] . Causal analysis such as this may help practitioners to understand better the assumptions involved in choosing fairness metrics, as well as the illusive concept of fairness–accuracy tradeoffs under different sources of dataset bias[51][,][52] . We refer readers to Pleckoˇ and Bareinboim[53] for a more detailed causal examination of fairness metrics."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "Group fairness metrics aim to quantify algorithmic bias by measuring how classifier properties differ across subgroups. However, they are difficult to interpret and are often mutually incompatible. With our causal formulation, we may recontextualise group fairness metrics as (necessary but not sufficient) measures of properties we expect an unbiased prediction model to have. When fairness metrics are incompatible, we may often view each metric as assuming a different form of the hypothetical unbiased dataset. For example, when all causal pathways are considered fair, the unbiased deployment setting may be assumed to be independent and identically distributed (i.i.d.) to the training data. In this case, socalled ‘bias-preserving’ metrics, such as equal opportunity, should be favoured, and fairness is aligned with maximising performance at training time. In contrast, when our dataset contains unfair pathways, our hypothetical unbiased setting is not i.i.d. to the training dataset, so train-time performance may be misleading, and we should favour ‘bias-transforming’ metrics such as demographic parity."
       },
-      "confidence": 0.93,
+      "confidence": 0.94,
       "term": "group fairness metrics",
       "normalized": "群体公平性度量",
       "std_label": null
@@ -147,10 +147,10 @@
       "type": "concept",
       "concept_id": "doc_1bb084158f0afd4b_c10",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "One advantage of framing the bias mitigation problem as one of generalisation to an unbiased dataset is that we can use causal transportability theory[54][–][56] to investigate the circumstances under which we may expect a model trained on the biased dataset to be appropriate for the unbiased deployment setting. Revisiting the setting where all causal pathways are considered fair, empirical risk minimisation (ERM) is an appropriate learning strategy, as we wish to maximise performance on an i.i.d. deployment setting[36] . Conversely, ERM is inappropriate in cases of unfair presentation disparities and unfair annotation disparities, as the underlying mapping between disease features and targets is expected to shift from training to deployment. The case of unfair prevalence disparities is particularly interesting, as the disparity may disappear in the limit of infinite data or with targeted data collection. However, in practice, the class imbalance is likely to lead to ERM models becoming miscalibrated, and there may be further issues if the observed data does not cover the support of the unbiased distribution[27] . Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training[14][–][17] , is beyond the scope of this article but is fertile ground for future work. We briefly discuss the applicability of prominent methods from the literature in Section 3, emphasising that no method may effectively tackle all biases."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "One advantage of framing the bias mitigation problem as one of generalisation to an unbiased dataset is that we can use causal transportability theory to investigate the circumstances under which we may expect a model trained on the biased dataset to be appropriate for the unbiased deployment setting. Revisiting the setting where all causal pathways are considered fair, empirical risk minimisation (ERM) is an appropriate learning strategy, as we wish to maximise performance on an i.i.d. deployment setting. Conversely, ERM is inappropriate in cases of unfair presentation disparities and unfair annotation disparities, as the underlying mapping between disease features and targets is expected to shift from training to deployment. The case of unfair prevalence disparities is particularly interesting, as the disparity may disappear in the limit of infinite data or with targeted data collection. However, in practice, the class imbalance is likely to lead to ERM models becoming miscalibrated, and there may be further issues if the observed data does not cover the support of the unbiased distribution. Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training, is beyond the scope of this article but is fertile ground for future work."
       },
-      "confidence": 0.92,
+      "confidence": 0.93,
       "term": "adversarial training",
       "normalized": "对抗训练",
       "std_label": null
@@ -175,7 +175,7 @@
         "section": "Abstract",
         "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.94,
+      "confidence": 0.96,
       "head": "doc_1bb084158f0afd4b_c3",
       "relation_type": "belongs_to",
       "relation_surface": "stemming from disparities in prevalence",
@@ -188,7 +188,7 @@
         "section": "Abstract",
         "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.94,
+      "confidence": 0.96,
       "head": "doc_1bb084158f0afd4b_c4",
       "relation_type": "belongs_to",
       "relation_surface": "stemming from disparities in presentation",
@@ -201,7 +201,7 @@
         "section": "Abstract",
         "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.94,
+      "confidence": 0.96,
       "head": "doc_1bb084158f0afd4b_c5",
       "relation_type": "belongs_to",
       "relation_surface": "stemming from disparities in annotation",
@@ -211,53 +211,53 @@
       "type": "relation",
       "relation_id": "doc_1bb084158f0afd4b_r5",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "One advantage of framing the bias mitigation problem as one of generalisation to an unbiased dataset is that we can use causal transportability theory[54][–][56] to investigate the circumstances under which we may expect a model trained on the biased dataset to be appropriate for the unbiased deployment setting. Revisiting the setting where all causal pathways are considered fair, empirical risk minimisation (ERM) is an appropriate learning strategy, as we wish to maximise performance on an i.i.d. deployment setting[36] . Conversely, ERM is inappropriate in cases of unfair presentation disparities and unfair annotation disparities, as the underlying mapping between disease features and targets is expected to shift from training to deployment. The case of unfair prevalence disparities is particularly interesting, as the disparity may disappear in the limit of infinite data or with targeted data collection. However, in practice, the class imbalance is likely to lead to ERM models becoming miscalibrated, and there may be further issues if the observed data does not cover the support of the unbiased distribution[27] . Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training[14][–][17] , is beyond the scope of this article but is fertile ground for future work. We briefly discuss the applicability of prominent methods from the literature in Section 3, emphasising that no method may effectively tackle all biases."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "From a machine learning perspective, dataset bias would be reflected even by a ‘perfect’ model with no error on its biased training dataset. By focusing on what such a model would learn from a given dataset, we can use tools from causal reasoning to study how the underlying mapping between images and targets shifts across groups and settings. This is especially relevant in today’s paradigm of high-capacity deep learning models, which often achieve near-zero training error when trained with the standard approach of empirical risk minimization (ERM). Throughout this article, we take a graphical approach to causality, relying on the principles explained in our brief primer in Appendix A. We refer readers looking for further introductory material to Peters et al. and to Pearl."
       },
-      "confidence": 0.91,
+      "confidence": 0.92,
       "head": "doc_1bb084158f0afd4b_c6",
-      "relation_type": "enhances",
-      "relation_surface": "is an appropriate learning strategy",
-      "tail": "doc_1bb084158f0afd4b_c7"
+      "relation_type": "uses",
+      "relation_surface": "trained with the standard approach of empirical risk minimization",
+      "tail": "doc_1bb084158f0afd4b_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_1bb084158f0afd4b_r6",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "One advantage of framing the bias mitigation problem as one of generalisation to an unbiased dataset is that we can use causal transportability theory[54][–][56] to investigate the circumstances under which we may expect a model trained on the biased dataset to be appropriate for the unbiased deployment setting. Revisiting the setting where all causal pathways are considered fair, empirical risk minimisation (ERM) is an appropriate learning strategy, as we wish to maximise performance on an i.i.d. deployment setting[36] . Conversely, ERM is inappropriate in cases of unfair presentation disparities and unfair annotation disparities, as the underlying mapping between disease features and targets is expected to shift from training to deployment. The case of unfair prevalence disparities is particularly interesting, as the disparity may disappear in the limit of infinite data or with targeted data collection. However, in practice, the class imbalance is likely to lead to ERM models becoming miscalibrated, and there may be further issues if the observed data does not cover the support of the unbiased distribution[27] . Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training[14][–][17] , is beyond the scope of this article but is fertile ground for future work. We briefly discuss the applicability of prominent methods from the literature in Section 3, emphasising that no method may effectively tackle all biases."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "Although dataset bias induces models to exploit sensitive information, this is not necessarily inappropriate in all cases. If a legitimate biological difference exists between groups, sensitive information may be relevant for disease prediction. In this case, we would want a trained model to capture this information by learning group-specific disease mechanisms. In contrast, models may unfairly reflect spurious correlations caused by historical biases in healthcare provision or the diagnostic process. To account for both possibilities, we must distinguish between fair and unfair causal pathways. Fair causal pathways contain information our model should use to inform predictions, whereas unfair pathways should be ignored or mitigated by a learning algorithm."
       },
-      "confidence": 0.91,
-      "head": "doc_1bb084158f0afd4b_c6",
-      "relation_type": "inhibits",
-      "relation_surface": "is inappropriate",
+      "confidence": 0.94,
+      "head": "doc_1bb084158f0afd4b_c7",
+      "relation_type": "compares",
+      "relation_surface": "distinguish between fair and unfair causal pathways",
       "tail": "doc_1bb084158f0afd4b_c8"
     },
     {
       "type": "relation",
       "relation_id": "doc_1bb084158f0afd4b_r7",
       "evidence": {
-        "section": "Medical Mechanisms of (un)Fairness",
-        "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare[61][,][62] , skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling[21] and data augmentation[13] , may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning[50] , which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets[14][–][17] ."
+        "section": "2 Dataset Bias in Imaging",
+        "original_text": "Group fairness metrics aim to quantify algorithmic bias by measuring how classifier properties differ across subgroups. However, they are difficult to interpret and are often mutually incompatible. With our causal formulation, we may recontextualise group fairness metrics as (necessary but not sufficient) measures of properties we expect an unbiased prediction model to have. When fairness metrics are incompatible, we may often view each metric as assuming a different form of the hypothetical unbiased dataset. For example, when all causal pathways are considered fair, the unbiased deployment setting may be assumed to be independent and identically distributed (i.i.d.) to the training data. In this case, socalled ‘bias-preserving’ metrics, such as equal opportunity, should be favoured, and fairness is aligned with maximising performance at training time. In contrast, when our dataset contains unfair pathways, our hypothetical unbiased setting is not i.i.d. to the training dataset, so train-time performance may be misleading, and we should favour ‘bias-transforming’ metrics such as demographic parity."
       },
-      "confidence": 0.9,
-      "head": "doc_1bb084158f0afd4b_c10",
-      "relation_type": "uses",
-      "relation_surface": "have empirically shown promise in mitigating",
-      "tail": "doc_1bb084158f0afd4b_c3"
+      "confidence": 0.93,
+      "head": "doc_1bb084158f0afd4b_c9",
+      "relation_type": "measures",
+      "relation_surface": "aim to quantify algorithmic bias",
+      "tail": "doc_1bb084158f0afd4b_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_1bb084158f0afd4b_r8",
       "evidence": {
-        "section": "Dataset Bias in Imaging",
-        "original_text": "Group fairness metrics aim to quantify algorithmic bias by measuring how classifier properties differ across subgroups. However, they are difficult to interpret and are often mutually incompatible[47] . With our causal formulation, we may recontextualise group fairness metrics as (necessary but not sufficient) measures of properties we expect an unbiased prediction model to have. When fairness metrics are incompatible, we may often view each metric as assuming a different form of the hypothetical unbiased dataset. For example, when all causal pathways are considered fair, the unbiased deployment setting may be assumed to be independent and identically distributed (i.i.d.) to the training data. In this case, socalled ‘bias-preserving’ metrics[48] , such as equal opportunity[49] , should be favoured, and fairness is aligned with maximising performance at training time. In contrast, when our dataset contains unfair pathways, our hypothetical unbiased setting is not i.i.d. to the training dataset, so train-time performance may be misleading, and we should favour ‘bias-transforming’[48] metrics such as demographic parity[50] . Causal analysis such as this may help practitioners to understand better the assumptions involved in choosing fairness metrics, as well as the illusive concept of fairness–accuracy tradeoffs under different sources of dataset bias[51][,][52] . We refer readers to Pleckoˇ and Bareinboim[53] for a more detailed causal examination of fairness metrics."
+        "section": "3 Medical Mechanisms of (un)Fairness",
+        "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare, skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling and data augmentation, may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning, which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets."
       },
-      "confidence": 0.93,
-      "head": "doc_1bb084158f0afd4b_c9",
-      "relation_type": "measures",
-      "relation_surface": "aim to quantify",
-      "tail": "doc_1bb084158f0afd4b_c2"
+      "confidence": 0.92,
+      "head": "doc_1bb084158f0afd4b_c10",
+      "relation_type": "enhances",
+      "relation_surface": "mitigating prevalence disparities",
+      "tail": "doc_1bb084158f0afd4b_c3"
     },
     {
       "type": "dataset",
@@ -267,16 +267,16 @@
         "original_text": "For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
       },
       "confidence": 0.85,
-      "name": "CIFAR-S benchmark dataset",
+      "name": "CIFAR-S benchmark",
       "modality": "image",
-      "domain": "computer vision / fairness"
+      "domain": "computer vision, fairness"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_1bb084158f0afd4b_d2",
       "evidence": {
         "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Our unfair example in Fig. 6b is particularly relevant today, showing how the practice of releasing datasets with automatically-generated labels[69][,][70] may introduce dataset bias if the label quality varies across subgroups. Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations[44] ."
+        "original_text": "Our unfair example in Fig. 6b is particularly relevant today, showing how the practice of releasing datasets with automatically-generated labels[69][,][70] may introduce dataset bias if the label quality varies across subgroups. Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations[44]."
       },
       "confidence": 0.8,
       "name": "Medical imaging datasets with automatically-generated labels",
@@ -288,39 +288,39 @@
       "ds_id": "doc_1bb084158f0afd4b_ds1",
       "evidence": {
         "section": "4 Discussion",
-        "original_text": "Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45][,][74][–][77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases. One of the simplest yet most effective methods for bias mitigation remains the active collection of unbiased data[72] , and a promising future direction may be to apply counterfactual generative models[78][,][79] for leveraging causal assumptions to generate debiased synthetic data[73] ."
+        "original_text": "Causal diagrams provide a clear, mathematically principled way of making assumptions about dataset bias explicit. To encourage researchers to consider causality in future problems, we provide a simple three-step framework to aid with causal thinking, displayed in Table 1. It may be challenging to apply this approach to many problems; however, even attempting to infer causal relationships can provide valuable insights and may highlight important knowledge gaps. As a result, researchers may identify opportunities for engaging with experts from other disciplines. Oftentimes, we do not have perfect knowledge about the data-generating process, and a medical ethicist will likely be needed to evaluate the fairness of causal paths. However, we emphasise that these assumptions must be made (explicitly or implicitly) by _all_ methods, so stating them up-front will only improve transparency in machine learning solutions."
       },
       "confidence": 0.9,
-      "spec_type": "metadata_standard",
-      "description": "Transparency regarding data collection and curation processes"
+      "spec_type": "quality_standard",
+      "description": "Standardized three-step causal reasoning framework for fairness analysis"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_1bb084158f0afd4b_ds2",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Under suspected annotation disparities, it also becomes difficult to interpret evaluation results as there is no reliable ground truth[60] . In this case, it may be necessary to relabel the data with a consistent diagnosis policy."
+        "section": "4 Discussion",
+        "original_text": "Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45][,][74][–][77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases. One of the simplest yet most effective methods for bias mitigation remains the active collection of unbiased data[72] , and a promising future direction may be to apply counterfactual generative models[78][,][79] for leveraging causal assumptions to generate debiased synthetic data[73]."
       },
       "confidence": 0.85,
-      "spec_type": "quality_standard",
-      "description": "Consistent annotation policy across subgroups to avoid annotation disparities"
+      "spec_type": "metadata_standard",
+      "description": "Transparency regarding collection and curation processes for medical imaging datasets"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_1bb084158f0afd4b_ds3",
       "evidence": {
         "section": "2 Dataset Bias in Imaging",
-        "original_text": "For real-world datasets, determining whether a causal pathway is fair or unfair is challenging and requires specific knowledge, including the ethical considerations of the particular application domain[45] . A simplistic guide is to imagine an unbiased deployment setting and consider whether we would expect a particular causal pathway to remain present. If not, the path is likely unfair. For example, a historic labelling policy may cause some groups to be underdiagnosed in training data – if this effect is not expected to persist in deployment, we say that the policy is unfair. This heuristic allows us to convert any fairness problem into a dataset shift problem. A fair model in this context is one with perfect classification performance when deployed on a (potentially hypothetical) dataset with all unfair causal pathways removed."
+        "original_text": "With our causal formulation, we may recontextualise group fairness metrics as (necessary but not sufficient) measures of properties we expect an unbiased prediction model to have. When fairness metrics are incompatible, we may often view each metric as assuming a different form of the hypothetical unbiased dataset. For example, when all causal pathways are considered fair, the unbiased deployment setting may be assumed to be independent and identically distributed (i.i.d.) to the training data. In this case, socalled ‘bias-preserving’ metrics[48] , such as equal opportunity[49] , should be favoured, and fairness is aligned with maximising performance at training time. In contrast, when our dataset contains unfair pathways, our hypothetical unbiased setting is not i.i.d. to the training dataset, so train-time performance may be misleading, and we should favour ‘bias-transforming’[48] metrics such as demographic parity[50] . Causal analysis such as this may help practitioners to understand better the assumptions involved in choosing fairness metrics, as well as the illusive concept of fairness–accuracy tradeoffs under different sources of dataset bias[51][,][52] . We refer readers to Pleckoˇ and Bareinboim[53] for a more detailed causal examination of fairness metrics."
       },
       "confidence": 0.9,
-      "spec_type": "env_requirement",
-      "description": "Consideration of deployment setting equivalence to training data for fair causal pathways"
+      "spec_type": "quality_standard",
+      "description": "Evaluation metrics selection based on causal fairness analysis"
     },
     {
       "type": "method",
       "method_id": "doc_1bb084158f0afd4b_m1",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
+        "section": "Introduction",
         "original_text": "This is especially relevant in today’s paradigm of high-capacity deep learning models, which often achieve near-zero training error when trained with the standard approach of empirical risk minimization (ERM)[36]. Throughout this article, we take a graphical approach to causality, relying on the principles explained in our brief primer in Appendix A. We refer readers looking for further introductory material to Peters et al.[37] and to Pearl[38]. Causality and sensitive information We begin with a causal formulation of the image classification problem, examining the data-generating process behind medical datasets. In medical image analysis, we deal with medical scans X from patients with an underlying condition Z, causing pathological structures to be visible in their scans (Z → X, read as ‘Z causes X’). We wish to learn a model which may classify the condition of unlabelled images in deployment. However, since Z is not directly observable, we must train our models to predict a proxy target Y, collected as part of the training dataset. For didactic clarity, our examples in this article primarily focus on tasks where Y derives from Z, such as confirmed diagnoses or patient outcomes. We may view this setup as generalising the common assumption of anticausal classification[27,39]. Where anticausal tasks traditionally assume that the target is a gold standard for the underlying condition (Y := Z), our formulation allows for the more general case where there may be label noise (Y ← Z). Finally, we include a selection node S in our diagrams to consider possible selection biases, where all observed data points are conditioned on S. When selection is random, we may omit S for simplicity."
       },
       "confidence": 0.95,
@@ -331,100 +331,164 @@
       "type": "method",
       "method_id": "doc_1bb084158f0afd4b_m2",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training[14–17], is beyond the scope of this article but is fertile ground for future work. We briefly discuss the applicability of prominent methods from the literature in Section 3, emphasising that no method may effectively tackle all biases. No fair lunch When viewing a fair model as one which generalises from a biased training dataset to an unbiased deployment one, a simple problem reveals itself: no model may attain perfect performance over all possible deployment settings[57]. While we’ve demonstrated in anticausal settings how different biases may require different mitigation strategies, the general case is even more challenging. For any given training dataset, we could always construct opposing causal models which are equally compatible with the observed data[58] and would render the same model or metric appropriate or inappropriate. This is the crux of this article. All methods for mitigating bias and metrics for measuring it must make causal assumptions about the structure of the observed dataset, including ethical assumptions about which causal pathways must be preserved or mitigated. This is closely related to the recently established fundamental problem of causal fairness analysis (FPCFA)[53]. With this in mind, we now focus on how this problem is relevant in medical imaging."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]. Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
       },
       "confidence": 0.95,
-      "name": "Adversarial training",
+      "name": "Adversarial Training",
       "method_type": "algorithm"
     },
     {
       "type": "method",
       "method_id": "doc_1bb084158f0afd4b_m3",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
+        "section": "Medical Mechanisms of (un)Fairness",
         "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare[61,62], skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling[21] and data augmentation[13], may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning[50], which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets[14–17]. In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]."
       },
       "confidence": 0.95,
-      "name": "Subgroup-aware resampling",
-      "method_type": "algorithm"
+      "name": "Subgroup-aware Resampling",
+      "method_type": "preprocessing"
     },
     {
       "type": "method",
       "method_id": "doc_1bb084158f0afd4b_m4",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]. Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare[61,62], skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling[21] and data augmentation[13], may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning[50], which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets[14–17]. In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]."
       },
       "confidence": 0.95,
-      "name": "Domain discriminative training",
+      "name": "Fair Representation Learning",
       "method_type": "algorithm"
     },
     {
       "type": "method",
       "method_id": "doc_1bb084158f0afd4b_m5",
       "evidence": {
-        "section": "4 Discussion",
-        "original_text": "The bias mechanisms we explored are particularly relevant to medical imaging but are not an exhaustive list. Our proposed mechanisms focus on the common case of anticausal classification and contain one causal pathway connecting the sensitive attribute to the primary task; however, real-world datasets may simultaneously contain multiple fair and unfair paths or have a different underlying causal structure (e.g. image segmentation may be better modelled as Z → X → Y). Today, there is little work combating compound bias mechanisms, and we are unaware of any image analysis methods that can simultaneously handle fair and unfair bias mechanisms. Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45,74–77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases. One of the simplest yet most effective methods for bias mitigation remains the active collection of unbiased data[72], and a promising future direction may be to apply counterfactual generative models[78,79] for leveraging causal assumptions to generate debiased synthetic data[73]. There remains a great opportunity for machine learning to improve patient outcomes in healthcare. Still, the tendency of today’s methods to produce unfair and inequitable predictions will continue to restrict true progress in the field. Causal reasoning provides a principled formulation of the problems we face and should play a role in future analyses of the issues."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]. Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
       },
       "confidence": 0.95,
-      "name": "Counterfactual generative models",
-      "method_type": "model"
+      "name": "Domain Discriminative Training",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_1bb084158f0afd4b_m6",
+      "evidence": {
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]. Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
+      },
+      "confidence": 0.95,
+      "name": "Decoupled Classification",
+      "method_type": "algorithm"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_1bb084158f0afd4b_x1",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare[61,62], skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling[21] and data augmentation[13], may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning[50], which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets[14–17]. In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]."
       },
       "confidence": 0.95,
-      "task": "benchmarking bias mitigation methods",
-      "setup": "CIFAR-S benchmark dataset"
+      "task": "predicting biopsy outcomes from skin lesion images",
+      "setup": "dataset with unfair prevalence disparity due to disparate healthcare access across racial groups"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_1bb084158f0afd4b_x2",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare[61,62], skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling[21] and data augmentation[13], may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning[50], which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets[14–17]. In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]. Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
       },
       "confidence": 0.95,
-      "task": "predicting biopsy outcomes from skin lesion images",
-      "setup": "dataset with unfair prevalence disparity due to disparate healthcare access"
+      "task": "predicting patient outcomes from brain MRI images",
+      "setup": "dataset with fair prevalence disparity due to age as a clinically meaningful risk factor for Alzheimer's disease"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_1bb084158f0afd4b_x3",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease[63,64] – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training[12] or decoupled classification[65]. We draw an analogy, in this case, to human experts, who often use risk factors and other background information beyond the disease features alone to inform their decisions[66]. Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups. Fair presentation disparities may occur due to biological differences between groups, such as our example in Fig. 5a, showing how tissue density differences may affect breast cancer manifestation in men and women. Like fair prevalence disparities, empirical risk minimisation is appropriate in fair cases of presentation disparities and, again, there may even be situations where we should encourage models to use sensitive information[12,65]. Importantly, when datasets contain presentation disparities, there is no guarantee that the disease should be equally predictable in all groups, so fairness metrics that measure performance disparities across groups are unlikely to be meaningful measures of algorithmic bias when used in isolation."
       },
       "confidence": 0.95,
-      "task": "predicting patient outcomes from brain MRI images",
-      "setup": "dataset where age is a fair risk factor for Alzheimer's disease"
+      "task": "diagnostic ultrasound for disease progression",
+      "setup": "dataset with unfair presentation disparity due to location-specific referral policies causing different disease presentation"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_1bb084158f0afd4b_x4",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67,68]. This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12,13]. For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
-      },
-      "confidence": 0.95,
-      "task": "diagnostic ultrasound analysis",
-      "setup": "dataset with unfair presentation disparity due to inconsistent referral policies across locations"
-    },
-    {
-      "type": "experiment",
-      "experiment_id": "doc_1bb084158f0afd4b_x5",
-      "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "We present two examples of annotation disparities in Fig. 6. These are the most complex causal diagrams in this article, demonstrating how our causal reasoning approach may be applied in messy real-world situations beyond the simple cases of anticausal classification demonstrated so far. Our unfair example in Fig. 6b is particularly relevant today, showing how the practice of releasing datasets with automatically-generated labels[69,70] may introduce dataset bias if the label quality varies across subgroups. Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations[44]. While it may be possible to mitigate unfair annotation disparities by making assumptions on the function class that corrupts the labels[71], such assumptions may be too strong to justify in practice. Under suspected annotation disparities, it also becomes difficult to interpret evaluation results as there is no reliable ground truth[60]. In this case, it may be necessary to relabel the data with a consistent diagnosis policy."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "We present two examples of annotation disparities in Fig. 6. These are the most complex causal diagrams in this article, demonstrating how our causal reasoning approach may be applied in messy real-world situations beyond the simple cases of anticausal classification demonstrated so far. Our unfair example in Fig. 6b is particularly relevant today, showing how the practice of releasing datasets with automatically-generated labels[69,70] may introduce dataset bias if the label quality varies across subgroups. Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations[44]. While it may be possible to mitigate unfair annotation disparities by making assumptions on the function class that corrupts the labels[71], such assumptions may be too strong to justify in practice. Under suspected annotation disparities, it also becomes difficult to interpret evaluation results as there is no reliable ground truth[60]. In this case, it may be necessary to relabel the data with a consistent diagnosis policy. Our fair example of an annotation disparity (Fig. 6a) involves a setting with differential diagnosis of osteoporosis from CT scans. Since the underlying prevalence of osteoporosis and similar diseases is age-dependent, patients with the same disease features may receive different diagnoses depending on their age due to the clinical practice of differential diagnosis. ERM-trained models will likely reflect this process by picking up on age-related image features such as bone density, which may be desirable, provided we expect to deploy the trained model on an i.i.d. dataset. When deploying such a model, it is crucial to consider whether we expect the deployment hospitals to use the same diagnosis criteria as the training dataset."
       },
       "confidence": 0.95,
       "task": "labeling chest X-ray data from radiology reports",
-      "setup": "dataset with unfair annotation disparity due to inconsistent performance of a natural language model across languages"
+      "setup": "dataset with unfair annotation disparity due to language model performance variation across languages"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1bb084158f0afd4b_qr1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "When a dataset exhibits an unfair prevalence disparity, ERM models trained on it will be miscalibrated when deployed in settings where this bias is not present – leading to under- or over-diagnosis of the condition in one or more groups. We demonstrate an example in Fig. 4b, involving predicting biopsy outcomes from skin lesion images. In this example, patients from different racial groups may receive disparate access to healthcare, skewing the observed prevalence of the disease at training time. This is a well-studied situation. Approaches for mitigating class imbalance, such as subgroup-aware resampling and data augmentation, may be theoretically sound for tackling prevalence disparities. Similarly, methods for fair representation learning, which prevent the model from using sensitive information, may also be appropriate. In particular, adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets."
+      },
+      "confidence": 0.95,
+      "quantity": "performance disparity",
+      "value": null,
+      "unit": null,
+      "context": "machine learning models trained with empirical risk minimization (ERM) on datasets with unfair prevalence disparities",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_1bb084158f0afd4b_p1",
+      "evidence": {
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "Adversarial training methods have empirically shown promise in mitigating prevalence disparities on benchmark datasets. In some cases, prevalence disparities may not be unfair. For example, although age is often considered a sensitive attribute, in Fig. 4a, we demonstrate the task of predicting patient outcomes from brain MRI images. Here, age is a clinically meaningful risk factor for Alzheimer’s disease – the correlation between age and disease is not spurious and is not expected to disappear when translating a trained model into clinical practice. We should thus encourage our model to extract age-related features from the image to inform and calibrate its predictions correctly. Methods such as adversarial training on the age attribute would inappropriately worsen performance by forcing models to ignore clinically meaningful information. Suppose our model cannot accurately determine age from the image alone. In that case, it may even be necessary to supply this metadata explicitly at inference time, such as in domain discriminative training or decoupled classification."
+      },
+      "confidence": 0.9,
+      "metric": "performance of adversarial training methods",
+      "compared_to": "other bias mitigation methods"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_1bb084158f0afd4b_p2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Today, theoretically sound methods exist for tackling a small subset of disparities, but there remains a wide world of underexplored bias mechanisms in medical data. Worse still, even if a method is theoretically appropriate for tackling dataset bias, there is no guarantee that it is easily trainable, and it may yet introduce algorithmic bias if there are issues with training or model selection. Importantly, no bias mitigation method or metric can be successful against all mechanisms of dataset bias; any attempt at mitigating dataset bias must make causal and ethical assumptions about the problem at hand. Causal diagrams provide a clear, mathematically principled way of making assumptions about dataset bias explicit. To encourage researchers to consider causality in future problems, we provide a simple three-step framework to aid with causal thinking, displayed in Table 1."
+      },
+      "confidence": 0.95,
+      "metric": "performance of bias mitigation methods",
+      "compared_to": "different bias mechanisms"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1bb084158f0afd4b_qr2",
+      "evidence": {
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods. For instance, Wang et al. observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups. Fair presentation disparities may occur due to biological differences between groups, such as our example in Fig. 5a, showing how tissue density differences may affect breast cancer manifestation in men and women."
+      },
+      "confidence": 0.9,
+      "quantity": "failure of bias mitigation methods",
+      "value": null,
+      "unit": null,
+      "context": "hidden presentation disparities in benchmark datasets",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1bb084158f0afd4b_qr3",
+      "evidence": {
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations. While it may be possible to mitigate unfair annotation disparities by making assumptions on the function class that corrupts the labels, such assumptions may be too strong to justify in practice. Under suspected annotation disparities, it also becomes difficult to interpret evaluation results as there is no reliable ground truth. In this case, it may be necessary to relabel the data with a consistent diagnosis policy."
+      },
+      "confidence": 0.9,
+      "quantity": "performance disparity",
+      "value": null,
+      "unit": null,
+      "context": "image classifiers trained on datasets with unfair annotation disparities",
+      "result_type": "main_result"
     },
     {
       "type": "claim",
@@ -433,59 +497,41 @@
         "section": "Introduction",
         "original_text": "As machine learning methods gain prominence within clinical decision-making, addressing fairness concerns becomes increasingly urgent. Despite considerable work dedicated to detecting and ameliorating algorithmic bias, today’s methods are deficient with potentially harmful consequences. Our causal perspective sheds new light on algorithmic bias, highlighting how different sources of dataset bias may appear indistinguishable yet require substantially different mitigation strategies. We introduce three families of causal bias mechanisms stemming from disparities in prevalence, presentation, and annotation. Our causal analysis underscores how current mitigation methods tackle only a narrow and often unrealistic subset of scenarios. We provide a practical three-step framework for reasoning about fairness in medical imaging, supporting the development of safe and equitable AI prediction models."
       },
-      "confidence": 0.96
+      "confidence": 0.95
     },
     {
       "type": "claim",
       "claim_id": "doc_1bb084158f0afd4b_ca2",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "We consider image classification problems where we aim to learn a fair disease classifier, given a potentially biased training dataset of images and targets (e.g. class labels). Where much work focuses on algorithmic bias[35] , concerning errors introduced by imperfect models, we take a step back and focus on dataset bias. From a machine learning perspective, dataset bias would be reflected even by a ‘perfect’ model with no error on its biased training dataset. By focusing on what such a model would learn from a given dataset, we can use tools from causal reasoning to study how the underlying mapping between images and targets shifts across groups and settings. This is especially relevant in today’s paradigm of high-capacity deep learning models, which often achieve near-zero training error when trained with the standard approach of empirical risk minimization (ERM)[36] . Throughout this article, we take a graphical approach to causality, relying on the principles explained in our brief primer in Appendix A. We refer readers looking for further introductory material to Peters et al.[37] and to Pearl[38] . Causality and sensitive information We begin with a causal formulation of the image classification problem, examining the data-generating process behind medical datasets. In medical image analysis, we deal with medical scans _X_ from patients with an underlying condition _Z_ , causing pathological structures to be visible in their scans ( _Z → X_ , read as ‘ _Z causes X_ ’). We wish to learn a model which may classify the condition of unlabelled images in deployment. However, since _Z_ is not directly observable, we must train our models to predict a proxy target _Y_ , collected as part of the training dataset. For didactic clarity, our examples in this article primarily focus on tasks where _Y_ derives from _Z_ , such as confirmed diagnoses or patient outcomes. We may view this setup as generalising the common assumption of anticausal classification[27][,][39] . Where anticausal tasks traditionally assume that the target is a gold standard for the underlying condition ( _Y_ := _Z_ ), our formulation allows for the more general case where there may be label noise ( _Y ← Z_ ). Finally, we include a selection node _S_ in our diagrams to consider possible selection biases, where all observed data points are conditioned on _S_ . When selection is random, we may omit _S_ for simplicity."
+        "section": "Introduction",
+        "original_text": "In this perspective, we discuss how the language of causality can illuminate the study of fairness. Inspired by causal work in dataset shift[27][–][31] and domain adaptation[32][–][34] , we argue that understanding the mechanisms of dataset bias which may _cause_ predictive models to become unfair is critical for reasoning about what steps to take in practice. We discuss how bias mitigation techniques may successfully combat one bias mechanism but be theoretically futile against others. We identify three key families of clinically relevant bias mechanisms: (i) _prevalence disparities_ , (ii) _presentation disparities_ , and (iii) _annotation disparities_ . We highlight how careful analysis of the underlying characteristics of these mechanisms is critical for informing the selection of appropriate methods and metrics. Our causal considerations are intended to help guide future research in the field."
       },
-      "confidence": 0.95
+      "confidence": 0.94
     },
     {
       "type": "claim",
       "claim_id": "doc_1bb084158f0afd4b_ca3",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "The defining theme of fair image analysis is that images contain sensitive information about individuals, which models may learn to exploit inappropriately. In group fairness, this information encodes membership of a clinically or socially relevant population subgroup, denoted by a sensitive attribute _A_ (such as self-reported race, biological sex, age, socioeconomic status etc.). It is thus helpful for fairness analysis to construct our causal diagram with the image decomposed into two causal factors: _XZ_ , representing the pathological structures directly caused by the disease ( _Z → XZ_ ), and _XA_ , features that encode subgroup-related sensitive information ( _A → XA_ )[1] . When these causal factors are independent, _XA_ provides no information about the disease, so it is not useful for the classification task. This constraint is expressed as _P_ ( _Y | XZ_ , _XA_ , _S_ ) = _P_ ( _Y | XZ_ , _S_ ), equivalent to the conditional independence statement _Y ⊥ XA | {XZ_ , _S}_ . We call this the ‘no-bias’ criterion. With a no-bias dataset, a poorly trained model may exhibit performance disparities across groups, but this would result from algorithmic bias, not dataset bias. In Fig. 2, we illustrate the simplest structure that satisfies the no-bias criterion, where the independence relationship may be derived through d-separation[40][,][41] (explained in Appendix A). In practice, we often see that models trained with ERM to predict _Y_ also acquire the ability to predict _A_[42][–][44] . This occurs when the no-bias criterion does not hold, and thus exploiting sensitive information improves task performance on the biased training dataset. We wish to represent such situations with our causal diagram. By applying d-separation to Fig. 2, we can see that any causal pathway linking _A_ to _Z_ , _XZ_ , or _Y_ provides a connecting path between _XA_ and _Y_ and hence violates the no-bias criterion. These are the core causal mechanisms behind dataset bias in medical imaging[2] and are shown in Fig. 3. We refer to them as _prevalence disparities_ , _presentation disparities_ , and _annotation disparities_ , respectively."
-      },
-      "confidence": 0.96
-    },
-    {
-      "type": "claim",
-      "claim_id": "doc_1bb084158f0afd4b_ca4",
-      "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "Fair and unfair causal pathways Although dataset bias induces models to exploit sensitive information, this is not necessarily inappropriate in all cases. If a legitimate biological difference exists between groups, sensitive information may be relevant for disease prediction[45] . In this case, we would want a trained model to capture this information by learning group-specific disease mechanisms. In contrast, models may unfairly reflect spurious correlations caused by historical biases in healthcare provision or the diagnostic process. To account for both possibilities, we must distinguish between fair and unfair causal pathways[46] . Fair causal pathways contain information our model should use to inform predictions, whereas unfair pathways should be ignored or mitigated by a learning algorithm. For real-world datasets, determining whether a causal pathway is fair or unfair is challenging and requires specific knowledge, including the ethical considerations of the particular application domain[45] . A simplistic guide is to imagine an unbiased deployment setting and consider whether we would expect a particular causal pathway to remain present. If not, the path is likely unfair. For example, a historic labelling policy may cause some groups to be underdiagnosed in training data – if this effect is not expected to persist in deployment, we say that the policy is unfair. This heuristic allows us to convert any fairness problem into a dataset shift problem. A fair model in this context is one with perfect classification performance when deployed on a (potentially hypothetical) dataset with all unfair causal pathways removed. This problem framing helps to simplify and clarify the consideration of fairness methods and metrics."
-      },
-      "confidence": 0.94
-    },
-    {
-      "type": "claim",
-      "claim_id": "doc_1bb084158f0afd4b_ca5",
-      "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "Measuring and mitigating bias Group fairness metrics aim to quantify algorithmic bias by measuring how classifier properties differ across subgroups. However, they are difficult to interpret and are often mutually incompatible[47] . With our causal formulation, we may recontextualise group fairness metrics as (necessary but not sufficient) measures of properties we expect an unbiased prediction model to have. When fairness metrics are incompatible, we may often view each metric as assuming a different form of the hypothetical unbiased dataset. For example, when all causal pathways are considered fair, the unbiased deployment setting may be assumed to be independent and identically distributed (i.i.d.) to the training data. In this case, socalled ‘bias-preserving’ metrics[48] , such as equal opportunity[49] , should be favoured, and fairness is aligned with maximising performance at training time. In contrast, when our dataset contains unfair pathways, our hypothetical unbiased setting is not i.i.d. to the training dataset, so train-time performance may be misleading, and we should favour ‘bias-transforming’[48] metrics such as demographic parity[50] . Causal analysis such as this may help practitioners to understand better the assumptions involved in choosing fairness metrics, as well as the illusive concept of fairness–accuracy tradeoffs under different sources of dataset bias[51][,][52] . We refer readers to Pleckoˇ and Bareinboim[53] for a more detailed causal examination of fairness metrics."
+        "section": "Dataset Bias in Imaging",
+        "original_text": "The defining theme of fair image analysis is that images contain sensitive information about individuals, which models may learn to exploit inappropriately. In group fairness, this information encodes membership of a clinically or socially relevant population subgroup, denoted by a sensitive attribute _A_ (such as self-reported race, biological sex, age, socioeconomic status etc.). It is thus helpful for fairness analysis to construct our causal diagram with the image decomposed into two causal factors: _XZ_ , representing the pathological structures directly caused by the disease ( _Z → XZ_ ), and _XA_ , features that encode subgroup-related sensitive information ( _A → XA_ )[1] . When these causal factors are independent, _XA_ provides no information about the disease, so it is not useful for the classification task. This constraint is expressed as _P_ ( _Y | XZ_ , _XA_ , _S_ ) = _P_ ( _Y | XZ_ , _S_ ), equivalent to the conditional independence statement _Y ⊥ XA | {XZ_ , _S}_ . We call this the ‘no-bias’ criterion. With a no-bias dataset, a poorly trained model may exhibit performance disparities across groups, but this would result from algorithmic bias, not dataset bias."
       },
       "confidence": 0.93
     },
     {
       "type": "claim",
-      "claim_id": "doc_1bb084158f0afd4b_ca6",
+      "claim_id": "doc_1bb084158f0afd4b_ca4",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "One advantage of framing the bias mitigation problem as one of generalisation to an unbiased dataset is that we can use causal transportability theory[54][–][56] to investigate the circumstances under which we may expect a model trained on the biased dataset to be appropriate for the unbiased deployment setting. Revisiting the setting where all causal pathways are considered fair, empirical risk minimisation (ERM) is an appropriate learning strategy, as we wish to maximise performance on an i.i.d. deployment setting[36] . Conversely, ERM is inappropriate in cases of unfair presentation disparities and unfair annotation disparities, as the underlying mapping between disease features and targets is expected to shift from training to deployment. The case of unfair prevalence disparities is particularly interesting, as the disparity may disappear in the limit of infinite data or with targeted data collection. However, in practice, the class imbalance is likely to lead to ERM models becoming miscalibrated, and there may be further issues if the observed data does not cover the support of the unbiased distribution[27] . Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training[14][–][17] , is beyond the scope of this article but is fertile ground for future work. We briefly discuss the applicability of prominent methods from the literature in Section 3, emphasising that no method may effectively tackle all biases."
+        "section": "Dataset Bias in Imaging",
+        "original_text": "One advantage of framing the bias mitigation problem as one of generalisation to an unbiased dataset is that we can use causal transportability theory[54][–][56] to investigate the circumstances under which we may expect a model trained on the biased dataset to be appropriate for the unbiased deployment setting. Revisiting the setting where all causal pathways are considered fair, empirical risk minimisation (ERM) is an appropriate learning strategy, as we wish to maximise performance on an i.i.d. deployment setting[36] . Conversely, ERM is inappropriate in cases of unfair presentation disparities and unfair annotation disparities, as the underlying mapping between disease features and targets is expected to shift from training to deployment. The case of unfair prevalence disparities is particularly interesting, as the disparity may disappear in the limit of infinite data or with targeted data collection. However, in practice, the class imbalance is likely to lead to ERM models becoming miscalibrated, and there may be further issues if the observed data does not cover the support of the unbiased distribution[27] ."
       },
-      "confidence": 0.94
+      "confidence": 0.92
     },
     {
       "type": "claim",
-      "claim_id": "doc_1bb084158f0afd4b_ca7",
+      "claim_id": "doc_1bb084158f0afd4b_ca5",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
-        "original_text": "No fair lunch When viewing a fair model as one which generalises from a biased training dataset to an unbiased deployment one, a simple problem reveals itself: no model may attain perfect performance over all possible deployment settings[57] . While we’ve demonstrated in anticausal settings how different biases may require different mitigation strategies, the general case is even more challenging. For any given training dataset, we could always construct opposing causal models which are equally compatible with the observed data[58] and would render the same model or metric appropriate or inappropriate. This is the crux of this article. _All methods for mitigating bias and metrics for measuring it must make causal assumptions about the structure of the observed dataset, including ethical assumptions about which causal pathways must be preserved or mitigated._ This is closely related to the recently established fundamental problem of causal fairness analysis (FPCFA)[53] . With this in mind, we now focus on how this problem is relevant in medical imaging."
+        "section": "Dataset Bias in Imaging",
+        "original_text": "This is the crux of this article. _All methods for mitigating bias and metrics for measuring it must make causal assumptions about the structure of the observed dataset, including ethical assumptions about which causal pathways must be preserved or mitigated._ This is closely related to the recently established fundamental problem of causal fairness analysis (FPCFA)[53] . With this in mind, we now focus on how this problem is relevant in medical imaging."
       },
       "confidence": 0.96
     },
@@ -496,7 +542,7 @@
         "section": "Discussion",
         "original_text": "While the study of algorithmic bias is important and has gained significant interest in recent years, underlying dataset biases remain poorly understood. We demonstrated how the causal nature of dataset bias has profound consequences for deep learning algorithms and explored several plausible bias mechanisms in medical datasets. Today, theoretically sound methods exist for tackling a small subset of disparities, but there remains a wide world of underexplored bias mechanisms in medical data. Worse still, even if a method is theoretically appropriate for tackling dataset bias, there is no guarantee that it is easily trainable, and it may yet introduce algorithmic bias if there are issues with training or model selection[13][,][26] . Importantly, no bias mitigation method or metric can be successful against all mechanisms of dataset bias; any attempt at mitigating dataset bias must make causal and ethical assumptions about the problem at hand."
       },
-      "confidence": 0.96
+      "confidence": 0.95
     },
     {
       "type": "conclusion",
@@ -505,23 +551,23 @@
         "section": "Discussion",
         "original_text": "Causal diagrams provide a clear, mathematically principled way of making assumptions about dataset bias explicit. To encourage researchers to consider causality in future problems, we provide a simple three-step framework to aid with causal thinking, displayed in Table 1. It may be challenging to apply this approach to many problems; however, even attempting to infer causal relationships can provide valuable insights and may highlight important knowledge gaps. As a result, researchers may identify opportunities for engaging with experts from other disciplines. Oftentimes, we do not have perfect knowledge about the data-generating process, and a medical ethicist will likely be needed to evaluate the fairness of causal paths. However, we emphasise that these assumptions must be made (explicitly or implicitly) by _all_ methods, so stating them up-front will only improve transparency in machine learning solutions."
       },
-      "confidence": 0.95
+      "confidence": 0.94
     },
     {
       "type": "conclusion",
       "conclusion_id": "doc_1bb084158f0afd4b_cl3",
       "evidence": {
         "section": "Discussion",
-        "original_text": "The bias mechanisms we explored are particularly relevant to medical imaging but are not an exhaustive list. Our proposed mechanisms focus on the common case of anticausal classification and contain one causal pathway connecting the sensitive attribute to the primary task; however, real-world datasets may simultaneously contain multiple fair and unfair paths or have a different underlying causal structure (e.g. image segmentation may be better modelled as _Z → X → Y_ ). Today, there is little work combating compound bias mechanisms, and we are unaware of any image analysis methods that can simultaneously handle fair and unfair bias mechanisms. Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45][,][74][–][77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases. One of the simplest yet most effective methods for bias mitigation remains the active collection of unbiased data[72] , and a promising future direction may be to apply counterfactual generative models[78][,][79] for leveraging causal assumptions to generate debiased synthetic data[73] . There remains a great opportunity for machine learning to improve patient outcomes in healthcare. Still, the tendency of today’s methods to produce unfair and inequitable predictions will continue to restrict true progress in the field. Causal reasoning provides a principled formulation of the problems we face and should play a role in future analyses of the issues."
+        "original_text": "There remains a great opportunity for machine learning to improve patient outcomes in healthcare. Still, the tendency of today’s methods to produce unfair and inequitable predictions will continue to restrict true progress in the field. Causal reasoning provides a principled formulation of the problems we face and should play a role in future analyses of the issues."
       },
-      "confidence": 0.96
+      "confidence": 0.93
     },
     {
       "type": "limitation",
       "limitation_id": "doc_1bb084158f0afd4b_lm1",
       "evidence": {
         "section": "Discussion",
-        "original_text": "The bias mechanisms we explored are particularly relevant to medical imaging but are not an exhaustive list. Our proposed mechanisms focus on the common case of anticausal classification and contain one causal pathway connecting the sensitive attribute to the primary task; however, real-world datasets may simultaneously contain multiple fair and unfair paths or have a different underlying causal structure (e.g. image segmentation may be better modelled as _Z → X → Y_ ). Today, there is little work combating compound bias mechanisms, and we are unaware of any image analysis methods that can simultaneously handle fair and unfair bias mechanisms. Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45][,][74][–][77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases."
+        "original_text": "The bias mechanisms we explored are particularly relevant to medical imaging but are not an exhaustive list. Our proposed mechanisms focus on the common case of anticausal classification and contain one causal pathway connecting the sensitive attribute to the primary task; however, real-world datasets may simultaneously contain multiple fair and unfair paths or have a different underlying causal structure (e.g. image segmentation may be better modelled as _Z → X → Y_ ). Today, there is little work combating compound bias mechanisms, and we are unaware of any image analysis methods that can simultaneously handle fair and unfair bias mechanisms."
       },
       "confidence": 0.92
     },
@@ -529,26 +575,26 @@
       "type": "limitation",
       "limitation_id": "doc_1bb084158f0afd4b_lm2",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67][,][68] . This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data. In fact, we postulate that hidden presentation disparities may be a factor behind surprising recent results demonstrating the failure of bias mitigation methods[12][,][13] . For instance, Wang et al.[12] observe that adversarial training methods worsen task performance on the CIFAR-S benchmark because they are unable to disentangle the sensitive information from the task-relevant information fully. One explanation for this result may be that generating the CIFAR-S dataset (by setting some images to greyscale) introduces a presentation disparity by changing the appearance of the class-specific features across subgroups."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "Presentation disparities are complex and often overlooked bias mechanisms and are especially relevant in medical imaging. It is not uncommon for different groups to be scanned with different equipment or to have natural variations in physical characteristics, causing the underlying condition to present differently. In Fig. 5b, we see an unfair example in diagnostic ultrasound. Here, patients in different geographic locations are referred for scans at different points in their disease progression due to differences in referral policy[67][,][68] . This causes the disease to appear systematically different for groups in each location. This disparity fundamentally alters the mapping from images to targets across groups – an ERM model trained on this dataset will pick up on location-specific scanner artefacts and will not be transportable to a setting without the bias. Today, it is unclear if it is possible to mitigate unfair presentation disparities in the general case, aside from simply collecting better data."
       },
-      "confidence": 0.93
+      "confidence": 0.91
     },
     {
       "type": "limitation",
       "limitation_id": "doc_1bb084158f0afd4b_lm3",
       "evidence": {
-        "section": "3 Medical Mechanisms of (un)Fairness",
-        "original_text": "Our unfair example in Fig. 6b is particularly relevant today, showing how the practice of releasing datasets with automatically-generated labels[69][,][70] may introduce dataset bias if the label quality varies across subgroups. Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations[44] . While it may be possible to mitigate unfair annotation disparities by making assumptions on the function class that corrupts the labels[71] , such assumptions may be too strong to justify in practice. Under suspected annotation disparities, it also becomes difficult to interpret evaluation results as there is no reliable ground truth[60] . In this case, it may be necessary to relabel the data with a consistent diagnosis policy."
+        "section": "Medical Mechanisms of (un)Fairness",
+        "original_text": "Our unfair example in Fig. 6b is particularly relevant today, showing how the practice of releasing datasets with automatically-generated labels[69][,][70] may introduce dataset bias if the label quality varies across subgroups. Consider a hypothetical setting where a natural language model is used to label chest X-ray data from radiology reports. If the language model has inconsistent performance across languages (e.g. because it was trained on a larger English corpus than Spanish), we may see patients in different locations being systematically misdiagnosed based on the language of the radiology reports. Image classifiers trained on such a dataset will pick up on the spurious correlation between location-specific scanner artefacts and label quality and show disparate performance for patients in different locations[44] . While it may be possible to mitigate unfair annotation disparities by making assumptions on the function class that corrupts the labels[71] , such assumptions may be too strong to justify in practice. Under suspected annotation disparities, it also becomes difficult to interpret evaluation results as there is no reliable ground truth[60] ."
       },
-      "confidence": 0.92
+      "confidence": 0.9
     },
     {
       "type": "future_work",
       "future_work_id": "doc_1bb084158f0afd4b_fw1",
       "evidence": {
         "section": "Discussion",
-        "original_text": "Today, there is little work combating compound bias mechanisms, and we are unaware of any image analysis methods that can simultaneously handle fair and unfair bias mechanisms. Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45][,][74][–][77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases. One of the simplest yet most effective methods for bias mitigation remains the active collection of unbiased data[72] , and a promising future direction may be to apply counterfactual generative models[78][,][79] for leveraging causal assumptions to generate debiased synthetic data[73] ."
+        "original_text": "Meanwhile, we call for medical imaging datasets to be more transparent regarding the processes involved in collection and curation[45][,][74][–][77] – without such knowledge, we cannot make informed assumptions about the nature of dataset biases. One of the simplest yet most effective methods for bias mitigation remains the active collection of unbiased data[72] , and a promising future direction may be to apply counterfactual generative models[78][,][79] for leveraging causal assumptions to generate debiased synthetic data[73] ."
       },
       "confidence": 0.93
     },
@@ -556,19 +602,10 @@
       "type": "future_work",
       "future_work_id": "doc_1bb084158f0afd4b_fw2",
       "evidence": {
-        "section": "2 Dataset Bias in Imaging",
+        "section": "Dataset Bias in Imaging",
         "original_text": "Detailed causal transportability analysis of further bias mitigation methods, such as adversarial training[14][–][17] , is beyond the scope of this article but is fertile ground for future work. We briefly discuss the applicability of prominent methods from the literature in Section 3, emphasising that no method may effectively tackle all biases."
       },
       "confidence": 0.92
-    },
-    {
-      "type": "future_work",
-      "future_work_id": "doc_1bb084158f0afd4b_fw3",
-      "evidence": {
-        "section": "Discussion",
-        "original_text": "Causal diagrams provide a clear, mathematically principled way of making assumptions about dataset bias explicit. To encourage researchers to consider causality in future problems, we provide a simple three-step framework to aid with causal thinking, displayed in Table 1. It may be challenging to apply this approach to many problems; however, even attempting to infer causal relationships can provide valuable insights and may highlight important knowledge gaps. As a result, researchers may identify opportunities for engaging with experts from other disciplines. Oftentimes, we do not have perfect knowledge about the data-generating process, and a medical ethicist will likely be needed to evaluate the fairness of causal paths. However, we emphasise that these assumptions must be made (explicitly or implicitly) by _all_ methods, so stating them up-front will only improve transparency in machine learning solutions."
-      },
-      "confidence": 0.94
     }
   ]
 }

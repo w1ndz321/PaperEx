@@ -20,15 +20,15 @@
       }
     ],
     "keywords": [
-      "Adversarial Machine Learning",
-      "Drone Detection",
-      "Radio Frequency",
-      "Over-the-Air Attack",
-      "I/Q Perturbation"
+      "Drone detection",
+      "Adversarial machine learning",
+      "RF signal processing",
+      "Over-the-air attack",
+      "I/Q perturbation"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:34:51.614932+00:00",
+      "extraction_timestamp": "2026-05-11T02:04:34.456954+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -40,7 +40,7 @@
       "concept_id": "doc_7abe3c1f04038a0c_c1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Radio frequency (RF) based systems are increasingly used to detect drones by analyzing their RF signal patterns, converting them into spectrogram images which are processed by object detection models. Existing RF attacks against image based models alter digital features, making over-the-air (OTA) implementation difficult due to the challenge of converting digital perturbations to transmittable waveforms that may introduce synchronization errors and interference, and encounter hardware limitations. We present the first physical attack on RF image based drone detectors, optimizing class-specific universal complex baseband (I/Q) perturbation waveforms that are transmitted alongside legitimate communications. We evaluated the attack using RF recordings and OTA experiments with four types of drones. Our results show that modest, structured I/Q perturbations are compatible with standard RF chains and reliably reduce target drone detection while preserving detection of legitimate drones."
+        "original_text": "Radio frequency (RF) based systems are increasingly used to detect drones by analyzing their RF signal patterns, converting them into spectrogram images which are processed by object detection models. Existing RF attacks against image based models alter digital features, making over-the-air (OTA) implementation difficult due to the challenge of converting digital perturbations to transmittable waveforms that may introduce synchronization errors and interference, and encounter hardware limitations."
       },
       "confidence": 0.98,
       "term": "radio frequency (RF) based drone detection",
@@ -67,19 +67,19 @@
         "original_text": "Converting complex baseband (I/Q) signals to time frequency images (i.e., spectrograms) via Short-Time Fourier Transform (STFT) enables the use of computer vision object detection (OD) frameworks like YOLO and Faster R-CNN for drone identification and localization in multi-emitter environments. However, OD frameworks are vulnerable to adversarial attacks where small perturbations can impede detection and induce false negatives."
       },
       "confidence": 0.96,
-      "term": "object detection models",
-      "normalized": "目标检测模型",
-      "std_label": "OD models"
+      "term": "object detection (OD) frameworks",
+      "normalized": "物体检测框架",
+      "std_label": "OD frameworks"
     },
     {
       "type": "concept",
       "concept_id": "doc_7abe3c1f04038a0c_c4",
       "evidence": {
         "section": "Introduction",
-        "original_text": "We introduce the first physical adversarial attack targeting drone transmission specifically designed for RF based OD models. Rather than optimizing perturbations in the digital feature space, our approach generates adversarial waveforms directly in the I/Q domain and emits them over-the-air (OTA) from an independent transmitter. This creates interference that is combined with legitimate drone signals but eliminates the need for the complex digital-to-RF conversion and ensures compatibility with standard RF hardware. We perform both digital and physical evaluation using the same optimized I/Qdomain CUAP across various OD architectures, demonstrating the generalizability of I/Q domain adversarial perturbation in RF detection systems."
+        "original_text": "We introduce the first physical adversarial attack targeting drone transmission specifically designed for RF based OD models. Rather than optimizing perturbations in the digital feature space, our approach generates adversarial waveforms directly in the I/Q domain and emits them over-the-air (OTA) from an independent transmitter. This creates interference that is combined with legitimate drone signals but eliminates the need for the complex digital-to-RF conversion and ensures compatibility with standard RF hardware."
       },
       "confidence": 0.95,
-      "term": "class-specific universal adversarial perturbation",
+      "term": "class-specific universal adversarial perturbation (CUAP)",
       "normalized": "类别特定的通用对抗性扰动",
       "std_label": "CUAP"
     },
@@ -88,120 +88,71 @@
       "concept_id": "doc_7abe3c1f04038a0c_c5",
       "evidence": {
         "section": "Introduction",
-        "original_text": "We introduce the first physical adversarial attack targeting drone transmission specifically designed for RF based OD models. Rather than optimizing perturbations in the digital feature space, our approach generates adversarial waveforms directly in the I/Q domain and emits them over-the-air (OTA) from an independent transmitter. This creates interference that is combined with legitimate drone signals but eliminates the need for the complex digital-to-RF conversion and ensures compatibility with standard RF hardware. We perform both digital and physical evaluation using the same optimized I/Qdomain CUAP across various OD architectures, demonstrating the generalizability of I/Q domain adversarial perturbation in RF detection systems."
-      },
-      "confidence": 0.96,
-      "term": "over-the-air transmission",
-      "normalized": "空中传输",
-      "std_label": "OTA"
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_7abe3c1f04038a0c_c6",
-      "evidence": {
-        "section": "Introduction",
-        "original_text": "Converting complex baseband (I/Q) signals to time frequency images (i.e., spectrograms) via Short-Time Fourier Transform (STFT) enables the use of computer vision object detection (OD) frameworks like YOLO and Faster R-CNN for drone identification and localization in multi-emitter environments."
-      },
-      "confidence": 0.97,
-      "term": "spectrogram",
-      "normalized": "频谱图",
-      "std_label": "Spectrogram"
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_7abe3c1f04038a0c_c7",
-      "evidence": {
-        "section": "Perturbation constraints and design",
-        "original_text": "To ensure a practical adversarial attack, we bound the perturbation power by enforcing a minimum signal perturbation ratio (SPR) of 10 dB, defined as the average clean signal power to average perturbation power ratio. For robustness and reduced synchronization requirements, we learn a short I/Q perturbation δ of size 64 × 1,024 samples (64 STFT frames, 1,024 samples per frame). We tile this perturbation along time with random circular shifts applied in the I/Q domain, where the shift offset is uniformly sampled from [0, |δ|). Each 1,024 × 1,024 input spectrogram is thus covered by a randomly shifted version of the 64-frame tile rather than frame-aligned repetitions. Physically, the base waveform is transmitted OTA in a continuous loop. OTA timing uncertainty is modeled during training via an intra-hop random circular shift (described below)."
+        "original_text": "We perform both digital and physical evaluation using the same optimized I/Q domain CUAP across various OD architectures, demonstrating the generalizability of I/Q domain adversarial perturbation in RF detection systems. We conduct comprehensive OTA experiments using RF transmissions from four drone platforms, validating that modest, structured I/Q perturbations learned digitally reliably degrade detection performance while overcoming real-world wireless challenges such as timing misalignment and channel effects."
       },
       "confidence": 0.94,
-      "term": "signal perturbation ratio",
-      "normalized": "信号扰动比率",
-      "std_label": "SPR"
+      "term": "over-the-air (OTA) validation",
+      "normalized": "空中传输验证",
+      "std_label": "OTA validation"
     },
     {
-      "type": "concept",
-      "concept_id": "doc_7abe3c1f04038a0c_c8",
+      "type": "relation",
+      "relation_id": "doc_7abe3c1f04038a0c_r1",
       "evidence": {
-        "section": "Evaluation Metrics",
-        "original_text": "For physical experiments, where precise frame-level annotations are unavailable, we quantify performance using the missed detection rate (MDR) for the class, reflecting the same attack objective as AP, where non-target classes are aggregated in a single class: MDR = (Number of missed detections) / (Total number of ground truth instances). We use a fixed confidence threshold of 0.4 in which the produced mAP = 0.947 on clean data across detectors. A signal is considered missed if, after applying a threshold of 0.4 and applying NMS, no prediction achieves an IoU ≥ 0.5. A successful attack is thus reflected by a high MDR on the target class and a low MDR on non-target classes (i.e., suppress target detection and preserve non-target detection)."
+        "section": "Abstract",
+        "original_text": "We present the first physical attack on RF image based drone detectors, optimizing class-specific universal complex baseband (I/Q) perturbation waveforms that are transmitted alongside legitimate communications. We evaluated the attack using RF recordings and OTA experiments with four types of drones. Our results show that modest, structured I/Q perturbations are compatible with standard RF chains and reliably reduce target drone detection while preserving detection of legitimate drones."
       },
-      "confidence": 0.95,
-      "term": "missed detection rate",
-      "normalized": "漏检率",
-      "std_label": "MDR"
+      "confidence": 0.93,
+      "head": "doc_7abe3c1f04038a0c_c2",
+      "relation_type": "targets",
+      "relation_surface": "targeting",
+      "tail": "doc_7abe3c1f04038a0c_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_7abe3c1f04038a0c_r2",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Converting complex baseband (I/Q) signals to time frequency images (i.e., spectrograms) via Short-Time Fourier Transform (STFT) enables the use of computer vision object detection (OD) frameworks like YOLO and Faster R-CNN for drone identification and localization in multi-emitter environments."
+        "original_text": "Converting complex baseband (I/Q) signals to time frequency images (i.e., spectrograms) via Short-Time Fourier Transform (STFT) enables the use of computer vision object detection (OD) frameworks like YOLO and Faster R-CNN for drone identification and localization in multi-emitter environments. However, OD frameworks are vulnerable to adversarial attacks where small perturbations can impede detection and induce false negatives."
       },
-      "confidence": 0.94,
-      "head": "doc_7abe3c1f04038a0c_c3",
-      "relation_type": "uses",
-      "relation_surface": "enables the use of",
-      "tail": "doc_7abe3c1f04038a0c_c6"
+      "confidence": 0.92,
+      "head": "doc_7abe3c1f04038a0c_c2",
+      "relation_type": "impacts",
+      "relation_surface": "vulnerable to",
+      "tail": "doc_7abe3c1f04038a0c_c3"
     },
     {
       "type": "relation",
       "relation_id": "doc_7abe3c1f04038a0c_r3",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "We present the first physical attack on RF image based drone detectors, optimizing class-specific universal complex baseband (I/Q) perturbation waveforms that are transmitted alongside legitimate communications. We evaluated the attack using RF recordings and OTA experiments with four types of drones. Our results show that modest, structured I/Q perturbations are compatible with standard RF chains and reliably reduce target drone detection while preserving detection of legitimate drones."
+        "section": "Introduction",
+        "original_text": "We introduce the first physical adversarial attack targeting drone transmission specifically designed for RF based OD models. Rather than optimizing perturbations in the digital feature space, our approach generates adversarial waveforms directly in the I/Q domain and emits them over-the-air (OTA) from an independent transmitter. This creates interference that is combined with legitimate drone signals but eliminates the need for the complex digital-to-RF conversion and ensures compatibility with standard RF hardware."
       },
-      "confidence": 0.92,
+      "confidence": 0.91,
       "head": "doc_7abe3c1f04038a0c_c4",
-      "relation_type": "enhances",
-      "relation_surface": "optimizing",
-      "tail": "doc_7abe3c1f04038a0c_c2"
+      "relation_type": "uses",
+      "relation_surface": "generates adversarial waveforms directly in",
+      "tail": "doc_7abe3c1f04038a0c_c5"
     },
     {
       "type": "relation",
       "relation_id": "doc_7abe3c1f04038a0c_r4",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Rather than optimizing perturbations in the digital feature space, our approach generates adversarial waveforms directly in the I/Q domain and emits them over-the-air (OTA) from an independent transmitter. This creates interference that is combined with legitimate drone signals but eliminates the need for the complex digital-to-RF conversion and ensures compatibility with standard RF hardware."
+        "section": "Abstract",
+        "original_text": "Radio frequency (RF) based systems are increasingly used to detect drones by analyzing their RF signal patterns, converting them into spectrogram images which are processed by object detection models. Existing RF attacks against image based models alter digital features, making over-the-air (OTA) implementation difficult due to the challenge of converting digital perturbations to transmittable waveforms that may introduce synchronization errors and interference, and encounter hardware limitations."
       },
-      "confidence": 0.93,
-      "head": "doc_7abe3c1f04038a0c_c5",
-      "relation_type": "uses",
-      "relation_surface": "emits them over-the-air",
-      "tail": "doc_7abe3c1f04038a0c_c4"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_7abe3c1f04038a0c_r5",
-      "evidence": {
-        "section": "Perturbation constraints and design",
-        "original_text": "To ensure a practical adversarial attack, we bound the perturbation power by enforcing a minimum signal perturbation ratio (SPR) of 10 dB, defined as the average clean signal power to average perturbation power ratio."
-      },
-      "confidence": 0.91,
-      "head": "doc_7abe3c1f04038a0c_c7",
-      "relation_type": "measures",
-      "relation_surface": "defined as",
-      "tail": "doc_7abe3c1f04038a0c_c2"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_7abe3c1f04038a0c_r6",
-      "evidence": {
-        "section": "Evaluation Metrics",
-        "original_text": "For physical experiments, where precise frame-level annotations are unavailable, we quantify performance using the missed detection rate (MDR) for the class, reflecting the same attack objective as AP, where non-target classes are aggregated in a single class: MDR = (Number of missed detections) / (Total number of ground truth instances). A successful attack is thus reflected by a high MDR on the target class and a low MDR on non-target classes (i.e., suppress target detection and preserve non-target detection)."
-      },
-      "confidence": 0.92,
-      "head": "doc_7abe3c1f04038a0c_c8",
-      "relation_type": "measures",
-      "relation_surface": "quantify performance using",
-      "tail": "doc_7abe3c1f04038a0c_c2"
+      "confidence": 0.9,
+      "head": "doc_7abe3c1f04038a0c_c1",
+      "relation_type": "employs",
+      "relation_surface": "processed by",
+      "tail": "doc_7abe3c1f04038a0c_c3"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_7abe3c1f04038a0c_d1",
       "evidence": {
         "section": "4.1. Dataset",
-        "original_text": "The evaluation was performed on a dataset of drones’ RF recordings (I/Q stream) that we collected. Training data collection. We collected RF baseband I/Q data using an Analog Devices ADRV9009 transceiver interfaced to a Xilinx ZCU102 evaluation board. All training recordings were obtained in a shielded room (Faraday cage) to suppress external interference and ensure signal integrity. The receiver was configured with a local oscillator at 2.45 GHz, a complex sampling rate of 122.88 MS/s, and an effective analog bandwidth of 100 MHz, fully covering the 2.4 GHz ISM band used by our drones. Four types of drones (Mavic 2 Zoom, Mavic Pro, Mavic Air, and Matrice 600) were operated in idle-on mode separately on multiple RF channels; each drone’s transmissions were recorded, converted to spectrograms using the pipeline described in Sec. 3.1, and segmented into detector input frames of size F × T = 1,024 × 1,024 (frequency × time). For each class of drones we augmented the recordings by digitally mixing baseband I/Q signals from the recording sessions of different drones, and applying random carrier frequency offsets to shift transmissions across the 2.4 GHz band. To increase training data diversity, additive white Gaussian noise (AWGN) was injected at controlled SNRs. To match the three-channel input of image based OD models, we constructed a pseudo-RGB tensor by duplicating the normalized single-channel spectrogram along the channel dimension. Formally, if X ∈ [0, 1]F ×T denotes the magnitude˜ (dB) spectrogram after normalization, we feed X = stack(X, X, X) ∈ [0, 1]3×F ×T. No color mapping or additional preprocessing was applied. The final dataset divided into target, surrogate, and test subsets in proportions of 40%, 40%, and 20%, respectively. Training data annotation. While recording, we added the occupied band range reported by the drone to the metadata. Then we isolated those frequencies and applied an energy detector to extract time annotations of the transmission bursts and manually validated the bounding boxes. Attack set generation. We assume an adversary that aims to prevent their drone’s detection by OD systems. They can control their drone’s transmit channel (i.e., center frequency) but have no control of other drones’ transmission channels. Accordingly, we recorded the target drone OTA in a realistic, noisy environment; other drones’ signals were digitally mixed into the I/Q stream at random channels across the 2.4 GHz ISM band. This setup reflects a realistic threat model in which the adversary transmits an additional OTA adversarial signal but cannot influence coexisting signals. The attack set used to train the adversarial waveform was split into 70%, 15%, and 15% for the training, validation, and test subsets, respectively."
+        "original_text": "The evaluation was performed on a dataset of drones’ RF recordings (I/Q stream) that we collected. Training data collection. We collected RF baseband I/Q data using an Analog Devices ADRV9009 transceiver interfaced to a Xilinx ZCU102 evaluation board. All training recordings were obtained in a shielded room (Faraday cage) to suppress external interference and ensure signal integrity. The receiver was configured with a local oscillator at 2.45 GHz, a complex sampling rate of 122.88 MS/s, and an effective analog bandwidth of 100 MHz, fully covering the 2.4 GHz ISM band used by our drones. Four types of drones (Mavic 2 Zoom, Mavic Pro, Mavic Air, and Matrice 600) were operated in idle-on mode separately on multiple RF channels; each drone’s transmissions were recorded, converted to spectrograms using the pipeline described in Sec. 3.1, and segmented into detector input frames of size F × T = 1,024 × 1,024 (frequency × time). For each class of drones we augmented the recordings by digitally mixing baseband I/Q signals from the recording sessions of different drones, and applying random carrier frequency offsets to shift transmissions across the 2.4 GHz band. To increase training data diversity, additive white Gaussian noise (AWGN) was injected at controlled SNRs. To match the three-channel input of image based OD models, we constructed a pseudo-RGB tensor by duplicating the normalized single-channel spectrogram along the channel dimension. Formally, if X ∈ [0, 1]F×T denotes the magnitude˜ (dB) spectrogram after normalization, we feed X = stack(X, X, X) ∈ [0, 1]3×F×T. No color mapping or additional preprocessing was applied. The final dataset divided into target, surrogate, and test subsets in proportions of 40%, 40%, and 20%, respectively. Training data annotation. While recording, we added the occupied band range reported by the drone to the metadata. Then we isolated those frequencies and applied an energy detector to extract time annotations of the transmission bursts and manually validated the bounding boxes. Attack set generation. We assume an adversary that aims to prevent their drone’s detection by OD systems. They can control their drone’s transmit channel (i.e., center frequency) but have no control of other drones’ transmission channels. Accordingly, we recorded the target drone OTA in a realistic, noisy environment; other drones’ signals were digitally mixed into the I/Q stream at random channels across the 2.4 GHz ISM band. This setup reflects a realistic threat model in which the adversary transmits an additional OTA adversarial signal but cannot influence coexisting signals. The attack set used to train the adversarial waveform was split into 70%, 15%, and 15% for the training, validation, and test subsets, respectively."
       },
       "confidence": 0.95,
       "name": "RF drone recordings dataset",
@@ -213,7 +164,7 @@
       "ds_id": "doc_7abe3c1f04038a0c_ds1",
       "evidence": {
         "section": "3.1. Adversarial Waveform Design",
-        "original_text": "Signal processing pipeline. Both clean and adversarial signals undergo identical processing to reach the detector: each signal is divided into segments of 1,024 samples using Hann windowing. An STFT is applied with 1,024-point windows and hop length h = 1,024 (no overlap), yielding 1,024 × 1,024 complex time frequency coefficients S. The magnitude |S| is converted to decibels M = 10 log10(|S| + ε), clipped to a constant global range [M min, M max] determined across all recordings in the training set for consistent normalization, and linearly mapped to [0, 1], resulting in the final spectrogram input to the detector. The adversarial waveform is generated as an I/Q stream which is then being added to the recorded I/Q stream and processed together into one spectrogram (as shown in Fig. 1). This pipeline is fully differentiable, enabling gradient flow from detector D back to the I/Q domain for end-to-end optimization of perturbation δ."
+        "original_text": "Signal processing pipeline. Both clean and adversarial signals undergo identical processing to reach the detector: each signal is divided into segments of 1,024 samples using Hann windowing. An STFT is applied with 1,024-point windows and hop length h = 1,024 (no overlap), yielding 1,024 × 1,024 complex time frequency coefficients S. The magnitude |S| is converted to decibels M = 10 log10(|S| + ε), clipped to a constant global range [Mmin, Mmax] determined across all recordings in the training set for consistent normalization, and linearly mapped to [0, 1], resulting in the final spectrogram input to the detector. The adversarial waveform is generated as an I/Q stream which is then being added to the recorded I/Q stream and processed together into one spectrogram (as shown in Fig. 1). This pipeline is fully differentiable, enabling gradient flow from detector D back to the I/Q domain for end-to-end optimization of perturbation δ."
       },
       "confidence": 0.9,
       "spec_type": "format_rule",
@@ -239,7 +190,7 @@
       },
       "confidence": 0.85,
       "spec_type": "metadata_standard",
-      "description": "Annotation procedure for drone RF signals using energy detection and manual validation"
+      "description": "Annotation procedure for drone RF signal bounding boxes"
     },
     {
       "type": "data_specification",
@@ -250,14 +201,14 @@
       },
       "confidence": 0.85,
       "spec_type": "env_requirement",
-      "description": "OTA experimental setup for physical attack validation with distance variations"
+      "description": "OTA experimental setup for physical attack validation"
     },
     {
       "type": "method",
       "method_id": "doc_7abe3c1f04038a0c_m1",
       "evidence": {
-        "section": "3.1",
-        "original_text": "Let xclean be the recorded I/Q signal of the drone, δ be the learned adversarial I/Q waveform, and xadv be the combined I/Q signal received by the detector. The adversarial signal is defined as: Signal processing pipeline. Both clean and adversarial signals undergo identical processing to reach the detector: each signal is divided into segments of 1,024 samples using Hann windowing. An STFT is applied with 1,024-point windows and hop length h = 1,024 (no overlap), yielding 1,024 × 1,024 complex time frequency coefficients S. The magnitude |S| is converted to decibels M = 10 log10(|S| + ε), clipped to a constant global range [M min, M max] determined across all recordings in the training set for consistent normalization, and linearly mapped to [0, 1], resulting in the final spectrogram input to the detector. The adversarial waveform is generated as an I/Q stream which is then being added to the recorded I/Q stream and processed together into one spectrogram (as shown in Fig. 1). This pipeline is fully differentiable, enabling gradient flow from detector D back to the I/Q domain for end-to-end optimization of perturbation δ."
+        "section": "3.1. Adversarial Waveform Design",
+        "original_text": "Both clean and adversarial signals undergo identical processing to reach the detector: each signal is divided into segments of 1,024 samples using Hann windowing. An STFT is applied with 1,024-point windows and hop length h = 1,024 (no overlap), yielding 1,024 × 1,024 complex time frequency coefficients S. The magnitude |S| is converted to decibels M = 10 log10(|S| + ε), clipped to a constant global range [M min, M max] determined across all recordings in the training set for consistent normalization, and linearly mapped to [0, 1], resulting in the final spectrogram input to the detector."
       },
       "confidence": 0.95,
       "name": "Short-Time Fourier Transform (STFT)",
@@ -267,19 +218,30 @@
       "type": "method",
       "method_id": "doc_7abe3c1f04038a0c_m2",
       "evidence": {
-        "section": "3.2",
-        "original_text": "Perturbation δ is optimized digitally through an iterative procedure using standard gradient descent, and then reused unchanged for both digital and OTA evaluations, aiming to achieve our main objective of reducing target class confidence while preserving non-target classes as follows: Suppressing the detection of the target class. To selectively suppress the target class c* and avoid attacking false positives, we retain only detections that spatially align with the target class ground truth: Let I = {1, . . . , N} index all pre-NMS predictions of the detector, where each prediction (bi, si,1, . . . , si,C) contains the bounding box bi and the confidence score si,c for each class c ∈ C, and let Gc∗ be the ground-truth boxes of the target class c*. We define the set of predictions that match the ground truth using intersection-over-union (IoU) threshold τ = 0.5: The evasion loss drives the target class confidence toward zero and minimizes the probability of detection: Maintaining the detection of untargeted classes. We include another component to maintain consistent detection of non-target classes by minimizing the output divergence: The final objective combines both terms: with λ = 2 controlling the trade-off between attack effectiveness and non-target preservation. In each training iteration, we (i) uniformly sample a time offset over the 64 × 1,024 perturbation tile in the I/Q domain and apply a circular shift to δ prior to mixing with x clean, emulating timing asynchronization; (ii) compute the losses and update the parameters; and (iii) normalize δ to satisfy SPR ≤ 10 dB."
+        "section": "3. THE PROPOSED ATTACK FRAMEWORK",
+        "original_text": "We present a method for optimizing a CUAP (an I/Q waveform) to suppress detections of a chosen target class in RF image based OD models while preserving the detection of non-target classes. The adversarial waveform is designed to be: (i) input-independent and reusable across different inputs and channel conditions; (ii) time-shift invariant through random circular shifts and tiled parameterization; and (iii) OTA-realizable by optimizing directly in the I/Q domain under practical power constraints and asynchronous conditions."
       },
       "confidence": 0.95,
-      "name": "CUAP optimization",
+      "name": "CUAP (Class-specific Universal Adversarial Perturbation)",
       "method_type": "algorithm"
     },
     {
       "type": "method",
       "method_id": "doc_7abe3c1f04038a0c_m3",
       "evidence": {
-        "section": "4.2",
-        "original_text": "The detectors were trained on magnitude (dB) spectrograms derived from the drones’ recordings, using the pipeline in Sec. 3.1. We evaluate our attack on five pretrained object detectors (YOLOv5, v8, v9, v11 [4], and Faster R-CNN [5]) fine-tuned on the annotated spectrograms from the target subset. The detectors’ performance on the clean target subset is reported in the Clean row of Table 1. To assess the transferability of adversarial perturbations across architectures and data distributions, surrogate detectors were fine-tuned on the surrogate subset and used to train the perturbations."
+        "section": "3.2. Optimization Objective",
+        "original_text": "We define the set of predictions that match the ground truth using intersection-over-union (IoU) threshold τ = 0.5."
+      },
+      "confidence": 0.95,
+      "name": "Intersection-over-union (IoU)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7abe3c1f04038a0c_m4",
+      "evidence": {
+        "section": "1. INTRODUCTION",
+        "original_text": "Converting complex baseband (I/Q) signals to time frequency images (i.e., spectrograms) via Short-Time Fourier Transform (STFT) enables the use of computer vision object detection (OD) frameworks like YOLO and Faster R-CNN for drone identification and localization in multi-emitter environments."
       },
       "confidence": 0.95,
       "name": "YOLO",
@@ -287,47 +249,80 @@
     },
     {
       "type": "method",
-      "method_id": "doc_7abe3c1f04038a0c_m4",
+      "method_id": "doc_7abe3c1f04038a0c_m5",
       "evidence": {
-        "section": "4.2",
-        "original_text": "The detectors were trained on magnitude (dB) spectrograms derived from the drones’ recordings, using the pipeline in Sec. 3.1. We evaluate our attack on five pretrained object detectors (YOLOv5, v8, v9, v11 [4], and Faster R-CNN [5]) fine-tuned on the annotated spectrograms from the target subset. The detectors’ performance on the clean target subset is reported in the Clean row of Table 1. To assess the transferability of adversarial perturbations across architectures and data distributions, surrogate detectors were fine-tuned on the surrogate subset and used to train the perturbations."
+        "section": "1. INTRODUCTION",
+        "original_text": "Converting complex baseband (I/Q) signals to time frequency images (i.e., spectrograms) via Short-Time Fourier Transform (STFT) enables the use of computer vision object detection (OD) frameworks like YOLO and Faster R-CNN for drone identification and localization in multi-emitter environments."
       },
       "confidence": 0.95,
       "name": "Faster R-CNN",
       "method_type": "model"
     },
     {
+      "type": "method",
+      "method_id": "doc_7abe3c1f04038a0c_m6",
+      "evidence": {
+        "section": "4.1. Dataset",
+        "original_text": "We collected RF baseband I/Q data using an Analog Devices ADRV9009 transceiver interfaced to a Xilinx ZCU102 evaluation board."
+      },
+      "confidence": 0.95,
+      "name": "Analog Devices ADRV9009 transceiver",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7abe3c1f04038a0c_m7",
+      "evidence": {
+        "section": "4.1. Dataset",
+        "original_text": "We collected RF baseband I/Q data using an Analog Devices ADRV9009 transceiver interfaced to a Xilinx ZCU102 evaluation board."
+      },
+      "confidence": 0.95,
+      "name": "Xilinx ZCU102 evaluation board",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7abe3c1f04038a0c_m8",
+      "evidence": {
+        "section": "4.1. Dataset",
+        "original_text": "To increase training data diversity, additive white Gaussian noise (AWGN) was injected at controlled SNRs."
+      },
+      "confidence": 0.95,
+      "name": "Additive white Gaussian noise (AWGN)",
+      "method_type": "preprocessing"
+    },
+    {
       "type": "experiment",
       "experiment_id": "doc_7abe3c1f04038a0c_x1",
       "evidence": {
-        "section": "4.1",
-        "original_text": "The evaluation was performed on a dataset of drones’ RF recordings (I/Q stream) that we collected. Training data collection. We collected RF baseband I/Q data using an Analog Devices ADRV9009 transceiver interfaced to a Xilinx ZCU102 evaluation board. All training recordings were obtained in a shielded room (Faraday cage) to suppress external interference and ensure signal integrity. The receiver was configured with a local oscillator at 2.45 GHz, a complex sampling rate of 122.88 MS/s, and an effective analog bandwidth of 100 MHz, fully covering the 2.4 GHz ISM band used by our drones. Four types of drones (Mavic 2 Zoom, Mavic Pro, Mavic Air, and Matrice 600) were operated in idle-on mode separately on multiple RF channels; each drone’s transmissions were recorded, converted to spectrograms using the pipeline described in Sec. 3.1, and segmented into detector input frames of size F × T = 1,024 × 1,024 (frequency × time). For each class of drones we augmented the recordings by digitally mixing baseband I/Q signals from the recording sessions of different drones, and applying random carrier frequency offsets to shift transmissions across the 2.4 GHz band. To increase training data diversity, additive white Gaussian noise (AWGN) was injected at controlled SNRs. To match the three-channel input of image based OD models, we constructed a pseudo-RGB tensor by duplicating the normalized single-channel spectrogram along the channel dimension. Formally, if X ∈ [0, 1]F ×T denotes the magnitude˜ (dB) spectrogram after normalization, we feed X = stack(X, X, X) ∈ [0, 1]3 ×F ×T. No color mapping or additional preprocessing was applied. The final dataset divided into target, surrogate, and test subsets in proportions of 40%, 40%, and 20%, respectively."
+        "section": "4.1. Dataset",
+        "original_text": "Training data collection. We collected RF baseband I/Q data using an Analog Devices ADRV9009 transceiver interfaced to a Xilinx ZCU102 evaluation board. All training recordings were obtained in a shielded room (Faraday cage) to suppress external interference and ensure signal integrity. The receiver was configured with a local oscillator at 2.45 GHz, a complex sampling rate of 122.88 MS/s, and an effective analog bandwidth of 100 MHz, fully covering the 2.4 GHz ISM band used by our drones. Four types of drones (Mavic 2 Zoom, Mavic Pro, Mavic Air, and Matrice 600) were operated in idle-on mode separately on multiple RF channels; each drone’s transmissions were recorded, converted to spectrograms using the pipeline described in Sec. 3.1, and segmented into detector input frames of size F × T = 1,024 × 1,024 (frequency × time)."
       },
       "confidence": 0.95,
-      "task": "training data collection",
-      "setup": "RF baseband I/Q data collection using ADRV9009 transceiver and ZCU102 board in a shielded room"
+      "task": "Training data collection",
+      "setup": "RF baseband I/Q data collection in shielded room using ADRV9009 transceiver and ZCU102 board, drones operated in idle-on mode"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_7abe3c1f04038a0c_x2",
       "evidence": {
-        "section": "4.4",
-        "original_text": "Digital attacks. For the digital evaluation, we digitally injected the CUAP into the I/Q stream prior to spectrogram formation (Eq. 1). As baselines we report the results obtained on clean I/Q signals and with random AWGN. We considered the following four attacker-knowledge scenarios: White-box (WB): per-architecture CUAP with full access to the target detector’s weights; Gray-box (GB): CUAP optimized on a surrogate with the same architecture using a disjoint training subset; Closed-set (CS): CUAP optimized jointly on all surrogates; Black-box (BB): leave-one-architecture-out training where the held-out architecture serves as the BB target. As can be seen in Table 1, for the Mavic 2 Zoom in the WB setting, the target class’s AP consistently collapsed to near zero while preserving the non-target classes’ mAP, indicating selective suppression rather than global degradation. In the GB and CS settings, transferability varies across models, with the CS scenario generally outperforming the GB. The BB setting produced the largest residual target AP value yet still resulted in substantial suppression relative to that of the clean/AWGN settings. AWGN has a negligible effect on the target class, underscoring that the observed failures are adversarial rather than power-induced. For other drone platforms, similar results were typically obtained in the CS setting."
+        "section": "4.4. Experimental Results",
+        "original_text": "Digital attacks. For the digital evaluation, we digitally injected the CUAP into the I/Q stream prior to spectrogram formation (Eq. 1). As baselines we report the results obtained on clean I/Q signals and with random AWGN. We considered the following four attacker-knowledge scenarios: White-box (WB): per-architecture CUAP with full access to the target detector’s weights; Gray-box (GB): CUAP optimized on a surrogate with the same architecture using a disjoint training subset; Closed-set (CS): CUAP optimized jointly on all surrogates; Black-box (BB): leave-one-architecture-out training where the held-out architecture serves as the BB target."
       },
       "confidence": 0.95,
-      "task": "digital adversarial attack evaluation",
-      "setup": "digital injection of CUAP into I/Q stream prior to spectrogram formation"
+      "task": "Digital adversarial attack evaluation",
+      "setup": "CUAP digitally injected into I/Q stream prior to spectrogram formation, evaluated under white-box, gray-box, closed-set, and black-box attacker-knowledge scenarios"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_7abe3c1f04038a0c_x3",
       "evidence": {
-        "section": "4.4",
-        "original_text": "Physical attacks. Due to space limitations, we present only the closed-set CUAP, which exhibited the strongest crossarchitecture transfer in digital evaluations to demonstrate OTA feasibility in a realistic multi-emitter environment. Following the described threat model, the target drone operated in the same predetermined channel, while the other three drones independently selected transmission channels, eliminating spectral hopping and isolating OTA effects. The optimized δ was transmitted alongside legitimate communications, with transmit power adjusted to match the received perturbation levels from digital experiments. Drones were placed at fixed distances (3 m, 5 m, and 7 m) from the receiving antenna to assess range effects. Clean and Attacked recordings were acquired consecutively under identical conditions due to non-repeatable OTA timing and phase. The results presented in Table 2 highlight the transferability of our digital optimization approach to a physical attack designed for the Mavic 2 Zoom. The target class MDR reached near-complete suppression (≥ 99%) on most models across distances, with YOLOv9 at 3 m and FRCNN as exceptions. Detection of the non-target classes remained largely preserved (MDR degradation ≤ 18.3%), confirming a classspecific targeting effect. These OTA results demonstrate that I/Q domain perturbations retain adversarial effects after propagation through physical RF channels across varying ranges."
+        "section": "4.4. Experimental Results",
+        "original_text": "Physical attacks. Due to space limitations, we present only the closed-set CUAP, which exhibited the strongest crossarchitecture transfer in digital evaluations to demonstrate OTA feasibility in a realistic multi-emitter environment. Following the described threat model, the target drone operated in the same predetermined channel, while the other three drones independently selected transmission channels, eliminating spectral hopping and isolating OTA effects. The optimized δ was transmitted alongside legitimate communications, with transmit power adjusted to match the received perturbation levels from digital experiments. Drones were placed at fixed distances (3 m, 5 m, and 7 m) from the receiving antenna to assess range effects. Clean and Attacked recordings were acquired consecutively under identical conditions due to non-repeatable OTA timing and phase."
       },
       "confidence": 0.95,
-      "task": "physical adversarial attack evaluation",
-      "setup": "OTA transmission of CUAP alongside legitimate drone communications at varying distances"
+      "task": "Physical adversarial attack evaluation",
+      "setup": "OTA transmission of optimized CUAP alongside legitimate drone signals in multi-emitter environment, drones placed at fixed distances (3 m, 5 m, and 7 m)"
     },
     {
       "type": "quantitative_result",
@@ -339,8 +334,8 @@
       "confidence": 0.95,
       "quantity": "average precision (AP)",
       "value": 0,
-      "unit": null,
-      "context": "Mavic 2 Zoom drone detection under white-box (WB) adversarial attack with SPR = 10 dB",
+      "unit": "",
+      "context": "Mavic 2 Zoom drone under white-box (WB) adversarial attack with SPR = 10 dB",
       "result_type": "main_result"
     },
     {
@@ -365,7 +360,7 @@
       "quantity": "missed detection rate (MDR)",
       "value": 99,
       "unit": "%",
-      "context": "OTA attack on Mavic 2 Zoom drone at varying distances (3m, 5m, 7m) using closed-set CUAP",
+      "context": "Mavic 2 Zoom drone under OTA closed-set (CS) adversarial attack at varying distances (3m, 5m, 7m)",
       "result_type": "main_result"
     },
     {
@@ -390,8 +385,19 @@
       "quantity": "signal perturbation ratio (SPR)",
       "value": 10,
       "unit": "dB",
-      "context": "Constraint applied to adversarial perturbation power during optimization",
+      "context": "adversarial waveform power constraint during optimization",
       "result_type": "threshold"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_7abe3c1f04038a0c_p3",
+      "evidence": {
+        "section": "4.4. Experimental Results",
+        "original_text": "As can be seen in Table 1, for the Mavic 2 Zoom in the WB setting, the target class’s AP consistently collapsed to near zero while preserving the non-target classes’ mAP, indicating selective suppression rather than global degradation. In the GB and CS settings, transferability varies across models, with the CS scenario generally outperforming the GB. The BB setting produced the largest residual target AP value yet still resulted in substantial suppression relative to that of the clean/AWGN settings. AWGN has a negligible effect on the target class, underscoring that the observed failures are adversarial rather than power-induced. For other drone platforms, similar results were typically obtained in the CS setting."
+      },
+      "confidence": 0.95,
+      "metric": "average precision (AP)",
+      "compared_to": "white-box (WB), gray-box (GB), closed-set (CS), black-box (BB) attack scenarios"
     },
     {
       "type": "quantitative_result",
@@ -404,50 +410,14 @@
       "quantity": "missed detection rate (MDR) degradation",
       "value": 18.3,
       "unit": "%",
-      "context": "OTA attack on non-target drone classes at varying distances",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_7abe3c1f04038a0c_qr5",
-      "evidence": {
-        "section": "4.3. Evaluation Metrics",
-        "original_text": "We use a fixed confidence threshold of 0.4 in which the produced mAP = 0.947 on clean data across detectors. A signal is considered missed if, after applying a threshold of 0.4 and applying NMS, no prediction achieves an IoU ≥ 0.5. A successful attack is thus reflected by a high MDR on the target class and a low MDR on non-target classes (i.e., suppress target detection and preserve non-target detection)."
-      },
-      "confidence": 0.98,
-      "quantity": "mean average precision (mAP)",
-      "value": 0.947,
-      "unit": null,
-      "context": "Clean data across detectors using a fixed confidence threshold of 0.4",
-      "result_type": "baseline"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_7abe3c1f04038a0c_p3",
-      "evidence": {
-        "section": "4.4. Experimental Results",
-        "original_text": "Fig. 2 presents the attack effectiveness as a function of the SPR. As can be seen, as the SPR decreases, the target class’s AP decreases monotonically while the non-target classes’ mAP remains unchanged, confirming that our class-specific approach improves evasion without degrading non-target class detection. The 10 dB SPR constraint balances effective drone suppression with low detectability."
-      },
-      "confidence": 0.95,
-      "metric": "attack effectiveness",
-      "compared_to": "SPR power constraint"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_7abe3c1f04038a0c_p4",
-      "evidence": {
-        "section": "4.4. Experimental Results",
-        "original_text": "As can be seen in Table 1, for the Mavic 2 Zoom in the WB setting, the target class’s AP consistently collapsed to near zero while preserving the non-target classes’ mAP, indicating selective suppression rather than global degradation. In the GB and CS settings, transferability varies across models, with the CS scenario generally outperforming the GB. The BB setting produced the largest residual target AP value yet still resulted in substantial suppression relative to that of the clean/AWGN settings. AWGN has a negligible effect on the target class, underscoring that the observed failures are adversarial rather than power-induced. For other drone platforms, similar results were typically obtained in the CS setting."
-      },
-      "confidence": 0.95,
-      "metric": "transferability across architectures",
-      "compared_to": "white-box, gray-box, closed-set, black-box settings"
+      "context": "non-target classes under OTA closed-set (CS) adversarial attack",
+      "result_type": "measurement"
     },
     {
       "type": "claim",
       "claim_id": "doc_7abe3c1f04038a0c_ca1",
       "evidence": {
-        "section": "Abstract",
+        "section": "ABSTRACT",
         "original_text": "We present the first physical attack on RF image based drone detectors, optimizing class-specific universal complex baseband (I/Q) perturbation waveforms that are transmitted alongside legitimate communications. We evaluated the attack using RF recordings and OTA experiments with four types of drones. Our results show that modest, structured I/Q perturbations are compatible with standard RF chains and reliably reduce target drone detection while preserving detection of legitimate drones."
       },
       "confidence": 0.96
@@ -456,25 +426,43 @@
       "type": "claim",
       "claim_id": "doc_7abe3c1f04038a0c_ca2",
       "evidence": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "original_text": "We introduce the first physical adversarial attack targeting drone transmission specifically designed for RF based OD models. Rather than optimizing perturbations in the digital feature space, our approach generates adversarial waveforms directly in the I/Q domain and emits them over-the-air (OTA) from an independent transmitter. This creates interference that is combined with legitimate drone signals but eliminates the need for the complex digital-to-RF conversion and ensures compatibility with standard RF hardware. We perform both digital and physical evaluation using the same optimized I/Qdomain CUAP across various OD architectures, demonstrating the generalizability of I/Q domain adversarial perturbation in RF detection systems."
       },
       "confidence": 0.95
     },
     {
+      "type": "claim",
+      "claim_id": "doc_7abe3c1f04038a0c_ca3",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "We summarize the contributions of our work as follows: (1) To the best of our knowledge, this is the first work to demonstrate a physical adversarial attack specifically targeting image based OD models, addressing the unique challenges of multi-emitter detection scenarios. (2) We introduce a novel method that optimizes perturbations directly in the I/Q domain, ensuring physical realizability and compatibility with standard RF transmission chains. (3) We conduct comprehensive OTA experiments using RF transmissions from four drone platforms, validating that modest, structured I/Q perturbations learned digitally reliably degrade detection performance while overcoming real-world wireless challenges such as timing misalignment and channel effects."
+      },
+      "confidence": 0.97
+    },
+    {
       "type": "conclusion",
       "conclusion_id": "doc_7abe3c1f04038a0c_cl1",
       "evidence": {
-        "section": "Discussion and Conclusion",
+        "section": "5. DISCUSSION AND CONCLUSION",
         "original_text": "This work presents the first physical adversarial attack against image-based RF drone detectors by learning CUAPs in the I/Q domain, enabling OTA implementation. Our evaluation demonstrates selective suppression of the target class with minimal impact on non-target classes and strong crossarchitecture transfer. These proof-of-concept results, limited to an office environment, idle-on drones, and fixed distances, reveal fundamental vulnerabilities in RF-based detection systems and motivate robust defenses such as adversarial training and RF anomaly detection."
       },
       "confidence": 0.96
     },
     {
+      "type": "conclusion",
+      "conclusion_id": "doc_7abe3c1f04038a0c_cl2",
+      "evidence": {
+        "section": "4.4. Experimental Results",
+        "original_text": "The results presented in Table 2 highlight the transferability of our digital optimization approach to a physical attack designed for the Mavic 2 Zoom. The target class MDR reached near-complete suppression (≥99%) on most models across distances, with YOLOv9 at 3 m and FRCNN as exceptions. Detection of the non-target classes remained largely preserved (MDR degradation ≤18.3%), confirming a classspecific targeting effect. These OTA results demonstrate that I/Q domain perturbations retain adversarial effects after propagation through physical RF channels across varying ranges."
+      },
+      "confidence": 0.94
+    },
+    {
       "type": "limitation",
       "limitation_id": "doc_7abe3c1f04038a0c_lm1",
       "evidence": {
-        "section": "Discussion and Conclusion",
+        "section": "5. DISCUSSION AND CONCLUSION",
         "original_text": "These proof-of-concept results, limited to an office environment, idle-on drones, and fixed distances, reveal fundamental vulnerabilities in RF-based detection systems and motivate robust defenses such as adversarial training and RF anomaly detection."
       },
       "confidence": 0.92
@@ -483,16 +471,25 @@
       "type": "limitation",
       "limitation_id": "doc_7abe3c1f04038a0c_lm2",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "However, converting these digital modifications back to transmittable I/Q waveforms is challenging due to bandwidth limitations, power constraints, and hardware limitations. In addition, validation has been predominantly digital in these studies, while real-world transmission introduces complexities such as carrier frequency offsets, multipath propagation, and timing misalignment that could diminish attack effectiveness [12], leaving RF detection systems’ vulnerability to adversarial attacks not fully understood."
+        "section": "4.1. Dataset",
+        "original_text": "All training recordings were obtained in a shielded room (Faraday cage) to suppress external interference and ensure signal integrity. The receiver was configured with a local oscillator at 2.45 GHz, a complex sampling rate of 122.88 MS/s, and an effective analog bandwidth of 100 MHz, fully covering the 2.4 GHz ISM band used by our drones. Four types of drones (Mavic 2 Zoom, Mavic Pro, Mavic Air, and Matrice 600) were operated in idle-on mode separately on multiple RF channels; each drone’s transmissions were recorded, converted to spectrograms using the pipeline described in Sec. 3.1, and segmented into detector input frames of size F × T = 1,024 × 1,024 (frequency × time)."
       },
       "confidence": 0.9
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_7abe3c1f04038a0c_lm3",
+      "evidence": {
+        "section": "4.4. Experimental Results",
+        "original_text": "We focus on the the results for the Mavic 2 Zoom due to space limitations; consistent patterns were observed for the other evaluated drone platforms."
+      },
+      "confidence": 0.88
     },
     {
       "type": "future_work",
       "future_work_id": "doc_7abe3c1f04038a0c_fw1",
       "evidence": {
-        "section": "Discussion and Conclusion",
+        "section": "5. DISCUSSION AND CONCLUSION",
         "original_text": "These proof-of-concept results, limited to an office environment, idle-on drones, and fixed distances, reveal fundamental vulnerabilities in RF-based detection systems and motivate robust defenses such as adversarial training and RF anomaly detection."
       },
       "confidence": 0.93

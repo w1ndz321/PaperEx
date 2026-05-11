@@ -10,7 +10,7 @@
     "primary_discipline": {
       "level1": "农学",
       "level2": "作物学",
-      "level3": "作物栽培学"
+      "level3": null
     },
     "secondary_disciplines": [
       {
@@ -24,11 +24,11 @@
       "Google Earth Engine",
       "random forest",
       "remote sensing",
-      "automatic sample generation"
+      "training sample generation"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:42:40.506423+00:00",
+      "extraction_timestamp": "2026-05-11T02:14:52.310229+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -40,19 +40,7 @@
       "concept_id": "doc_d8c8859751b63e3e_c1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping."
-      },
-      "confidence": 0.98,
-      "term": "LR method",
-      "normalized": "LR方法",
-      "std_label": "LR"
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_d8c8859751b63e3e_c2",
-      "evidence": {
-        "section": "Abstract",
-        "original_text": "Accurate mapping of rice planting areas is of great significance in terms of food security and market stability. However, the existing research into high-resolution rice mapping has relied heavily on fine-scale temporal remote sensing image data. Due to cloud occlusion and banding problems, data extraction from Landsat series remote sensing images with medium spatial resolution is not optimal. Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery."
+        "original_text": "Accurate mapping of rice planting areas is of great significance in terms of food security and market stability. However, the existing research into high-resolution rice mapping has relied heavily on fine-scale temporal remote sensing image data. Due to cloud occlusion and banding problems, data extraction from Landsat series remote sensing images with medium spatial resolution is not optimal. Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping. To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
       },
       "confidence": 0.99,
       "term": "rice mapping",
@@ -61,15 +49,27 @@
     },
     {
       "type": "concept",
-      "concept_id": "doc_d8c8859751b63e3e_c3",
+      "concept_id": "doc_d8c8859751b63e3e_c2",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. Google Earth Engine provides global-scale satellite remote sensing image processing services and a cloud platform for scientific analysis and visualization of geospatial datasets. Research on rice mapping using GEE started in 2016; Dong et al. used a phenology algorithm on the GEE platform and Landsat-8 time series image data for Northeast Asia to realize rice mapping with 30 m resolution. Zhang et al. proposed a flexible phenology-assisted supervised paddy-rice (PSPR) mapping framework on GEE. Meng et al. proposed a new large-scale downscaling method for multi-source data fusion and developed a paddy-rice cropping intensity (PRCI) mapping framework using GEE."
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. Google Earth Engine provides global-scale satellite remote sensing image processing services and a cloud platform for scientific analysis and visualization of geospatial datasets. Research on rice mapping using GEE started in 2016; Dong et al. used a phenology algorithm on the GEE platform and Landsat-8 time series image data for Northeast Asia to realize rice mapping with 30 m resolution. Zhang et al. proposed a flexible phenology-assisted supervised paddy-rice (PSPR) mapping framework on GEE. Meng et al. proposed a new large-scale downscaling method for multi-source data fusion and developed a paddy-rice cropping intensity (PRCI) mapping framework using GEE. A large number of studies have verified the feasibility of using remote sensing image data in the GEE platform to map the spatial distribution of paddy rice at large scales and to analyze its spatial and temporal distribution."
       },
       "confidence": 0.98,
       "term": "Google Earth Engine",
       "normalized": "谷歌地球引擎",
       "std_label": "GEE"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d8c8859751b63e3e_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Due to cloud occlusion and banding problems, data extraction from Landsat series remote sensing images with medium spatial resolution is not optimal. Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. In this study, we used Landsat-7 and Landsat-8 images from 2010–2022, featuring large similarities in the visible and near-infrared spectral ranges, with a spatial resolution of 30 m and a temporal resolution of 16 days, together providing a revisit cycle of 8 days. The Scan Lines Corrector (SLC) of Landsat-7 has suffered a mechanical failure since 2003, resulting in data overlap and loss of about 25% of the data in the acquired images; the data can only be corrected using the SLC-off model. To address these problems, this study focused on the preprocessing of Landsat-7 by means of the C Function of Masking (CFMask) algorithm and the exclusion of pixels larger than 0.2 in the blue band. Landsat-8 has been in operation since 2013 and carries the Operational Land Imager, which uses a panchromatic band with a narrower range, enabling for better differentiation between vegetated and non-vegetated features in panchromatic imagery."
+      },
+      "confidence": 0.98,
+      "term": "Landsat",
+      "normalized": "Landsat卫星",
+      "std_label": null
     },
     {
       "type": "concept",
@@ -87,48 +87,96 @@
       "type": "concept",
       "concept_id": "doc_d8c8859751b63e3e_c5",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "There are currently two main approaches to rice mapping. The first method is based on phenology, which extracts information about the rice by recognizing its unique phenological characteristics. Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. Since then, this efficient phenological rice mapping method has been widely applied across large-scale regions, including China, Southeast Asia, and Northwest India. The phenological method requires long time-series imagery, but for some areas with high cloud and rainfall, the resolution of MODIS data is coarse and may not be able to accurately extract small plots of rice."
+        "section": "Abstract",
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. There are currently two main approaches to rice mapping. The first method is based on phenology, which extracts information about the rice by recognizing its unique phenological characteristics. Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. Since then, this efficient phenological rice mapping method has been widely applied across large-scale regions, including China, Southeast Asia, and Northwest India."
       },
-      "confidence": 0.97,
-      "term": "phenological method",
-      "normalized": "物候学方法",
+      "confidence": 0.98,
+      "term": "phenology",
+      "normalized": "物候学",
       "std_label": null
     },
     {
       "type": "concept",
       "concept_id": "doc_d8c8859751b63e3e_c6",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "The second method is based on machine learning, applied to collect training samples, construct features, train a model learned from the feature space, and finally, obtain the rice extraction results. In this context, machine learning modeling does not need to rely excessively on image data relating to a specific phenological period of rice growth, as in the case of phenological methods. For example, Clauss et al. successfully extracted data regarding the distribution of rice cultivation in China over many years using a support vector machine (SVM). Onojeghuo et al. combined Sentinel-1 and Landsat data to map the cultivation of rice in the Northeastern Sanjiang Plain, using SVM and random forest (RF) methods. Zhang et al. combined phenology and RF, realized transferring spatial domain to map rice. Although these methods perform excellently in rice mapping, many machine learning methods require a large amount of training data to obtain the best model performance."
+        "section": "Abstract",
+        "original_text": "The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Ni et al. identified four phenological periods through specific analysis of rice, and proposed an enhanced pixel-based phenological feature composite method (Eppf-CM), combined with a one-class support vector machine (OCSVM) to realize high-precision rice mapping in Northeast China. The Eppf-CM method constructed a new feature set based on four key phenological periods of rice: bare soil stage (75–120 days), transplanting stage (130–170 days), growing stage (180–250 days), and maturity stage (270–300 days), including Bare Soil Index (BSI) for bare soil stage, LSWI and Green Chlorophyll Vegetation Index (GCVI) during the growing period, NDVI and Enhanced Vegetation Index (EVI) during the growing period, and Plant Senescence Reflectance Index (PSRI) during the maturity period. The index images for each season were constructed by the median synthesis method in GEE, and the corresponding synthetic feature images were generated. The synthetic feature images and the selected 300 sample points were input to a one-class classifier (OCSVM) to generate the rice distribution map “Rice_Eppf-CM”."
       },
       "confidence": 0.96,
-      "term": "machine learning method",
-      "normalized": "机器学习方法",
-      "std_label": null
+      "term": "enhanced pixel-based phenological feature composite method",
+      "normalized": "基于像素的增强物候特征合成方法",
+      "std_label": "Eppf-CM"
     },
     {
       "type": "concept",
       "concept_id": "doc_d8c8859751b63e3e_c7",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information."
+        "original_text": "Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The main basis of the CCVS rice mapping method is that from tillering to the tasseling stage, the magnitude of change in LSWI in rice fields is relatively small and increases in the Enhanced Vegetation Index2 (EVI2) are significant. Therefore, the ratio of the amplitude of change in LSWI and EVI2 from tillering to spiking (RCLE) can be used as the main index for extracting rice data; the smaller the value of RCLE, the higher the probability of being categorized as rice. Meanwhile, the minimum LSWI value of rice is higher than that of other non-hydroponic crops during the transplanting period. As shown in Figure 4, both the NDVI and EVI values of rice increased significantly from the transplanting stage to the tasseling stage. A pseudo-peak (EVImax1) appeared in the EVI value before it reached the true peak (EVImax2), whereas there was only one peak in the NDVI, which expressed a more pronounced magnitude of change. Therefore, in this study, the EVI2 index in the RCLE was replaced by the NDVI index, which became the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN)."
       },
-      "confidence": 0.97,
-      "term": "training sample automatic generation",
-      "normalized": "训练样本自动生成",
-      "std_label": null
+      "confidence": 0.95,
+      "term": "combined consideration of vegetation phenology and surface water variation",
+      "normalized": "植被物候与地表水变化联合考虑方法",
+      "std_label": "CCVS"
     },
     {
       "type": "concept",
       "concept_id": "doc_d8c8859751b63e3e_c8",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "However, the existing research into high-resolution rice mapping has relied heavily on fine-scale temporal remote sensing image data. Due to cloud occlusion and banding problems, data extraction from Landsat series remote sensing images with medium spatial resolution is not optimal. Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. In this study, we used Landsat-7 and Landsat-8 images from 2010–2022, featuring large similarities in the visible and near-infrared spectral ranges, with a spatial resolution of 30 m and a temporal resolution of 16 days, together providing a revisit cycle of 8 days. The Scan Lines Corrector (SLC) of Landsat-7 has suffered a mechanical failure since 2003, resulting in data overlap and loss of about 25% of the data in the acquired images; the data can only be corrected using the SLC-off model."
+        "section": "Introduction",
+        "original_text": "Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. The LSWI method proposed by Xiao et al. has been widely used in rice mapping, and this study was based on the use of th LSWI method to generate a preliminary rice distribution map. The main idea of the LSWI-based rice classification algorithm is that the value of the LSWI is than the NDVI during the transplanting stage, and the value of the LSWI is smaller than NDVI during the growing stage. Therefore, the following formula was applied to the Landsat image during the transplanting stage to obtain the preliminary rice distribution map, and the preliminary rice distribution map was subsequently compared with the Landsat images, Google images, and CLCD dataset for each year, and 300 sample points were extracted for each year for the subsequent Eppf-CM method to identify the image elements."
       },
-      "confidence": 0.98,
-      "term": "Landsat images",
-      "normalized": "Landsat影像",
+      "confidence": 0.97,
+      "term": "land surface water index",
+      "normalized": "地表水指数",
+      "std_label": "LSWI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d8c8859751b63e3e_c9",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. Considering the green vegetation characteristic of the late growth stage in rice, the maximum NDVI value for this stage was synthesized to further identify the green rice plants and reduce the effects of cloud shading and striping of the Landsat-7 images. The formula is as follows: where NDVITi denotes the NDVI image data acquired at the moment of Ti, n is the maximum number of images in each region, max() denotes the maximum value in the corresponding time-series data for each pixel, NDVI_max is the maximum value synthesized by NDVI, Rice1 denotes the rice pixel screened by combining Eppf-CM and NDVI_max, and TNDVI is set to 0.7 according to a previous study."
+      },
+      "confidence": 0.97,
+      "term": "normalized difference vegetation index",
+      "normalized": "归一化植被指数",
+      "std_label": "NDVI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d8c8859751b63e3e_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. There is variability in the climate and environment in different regions, and rice phenology changes accordingly, so the confidence level of rice extraction using phenological methods may be biased. F represents the frequency of flooding, the total number of times the rice signal was detected during the rice transplanting phase divided by the number of all high-quality images of that pixel throughout the rice transplanting phase. Introducing F into the climatology-assisted rice mapping task results in rice distribution maps with higher confidence. Considering that the revisit period of Landsat images is 16 days and the vast majority of areas have two or three views of image data available, the value interval of F was set to [0.3, 0.6]. The specific calculation formula is as follows: where F denotes the flooding frequency of each pixel, ∑Nflood is the total number of rice signals detected by the LSWI weathering method, ∑Ntotal is the total number of highquality observed images for each pixel, and Rice2 is the rice pixels that are further filtered based on Rice1 and F."
+      },
+      "confidence": 0.96,
+      "term": "inundation frequency",
+      "normalized": "淹没频率",
+      "std_label": "F"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d8c8859751b63e3e_c11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. Therefore, in this study, the EVI2 index in the RCLE was replaced by the NDVI index, which became the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN). The formula for RCLN is as follows: where LSWIheading and NDVIheading represent LSWI and NDVI values at the tasseling stage, and LSWItransplanting and NDVItransplanting represent LSWI and NDVI values at the transplanting stage, respectively."
+      },
+      "confidence": 0.96,
+      "term": "ratio of change amplitude of LSWI to NDVI",
+      "normalized": "LSWI与NDVI变化幅度比值",
+      "std_label": "RCLN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d8c8859751b63e3e_c12",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. In this paper, the study area was large, and was divided according to prefecture-level cities, with each prefecture-level city then divided according to a grid, and sample points extracted from each grid stratification. Finally, the samples were summarized to realize the automatic generation of rice/non-rice training samples according to WH_Rice. This method ensured the reliability of the generated samples while controlling the spatial autocorrelation to some extent. However, this plain sample generation method may have introduced confusion between rice and non-rice data samples, with an impact on the subsequent classification. Therefore, the current study purified the samples to make them more representative by extracting neighborhood information via an alternating iterative method."
+      },
+      "confidence": 0.97,
+      "term": "automatic generation of training samples",
+      "normalized": "训练样本自动生成",
       "std_label": null
     },
     {
@@ -136,78 +184,143 @@
       "relation_id": "doc_d8c8859751b63e3e_r1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping."
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. Google Earth Engine provides global-scale satellite remote sensing image processing services and a cloud platform for scientific analysis and visualization of geospatial datasets. Research on rice mapping using GEE started in 2016; Dong et al. used a phenology algorithm on the GEE platform and Landsat-8 time series image data for Northeast Asia to realize rice mapping with 30 m resolution. Zhang et al. proposed a flexible phenology-assisted supervised paddy-rice (PSPR) mapping framework on GEE. Meng et al. proposed a new large-scale downscaling method for multi-source data fusion and developed a paddy-rice cropping intensity (PRCI) mapping framework using GEE. A large number of studies have verified the feasibility of using remote sensing image data in the GEE platform to map the spatial distribution of paddy rice at large scales and to analyze its spatial and temporal distribution."
       },
-      "confidence": 0.99,
+      "confidence": 0.98,
       "head": "doc_d8c8859751b63e3e_c1",
       "relation_type": "uses",
-      "relation_surface": "using",
-      "tail": "doc_d8c8859751b63e3e_c3"
+      "relation_surface": "proposes a rice mapping method (LR) using",
+      "tail": "doc_d8c8859751b63e3e_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_d8c8859751b63e3e_r2",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping."
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. In this study, we used Landsat-7 and Landsat-8 images from 2010–2022, featuring large similarities in the visible and near-infrared spectral ranges, with a spatial resolution of我们发现，高熵合金（HEAs）可以通过协同的多路径电子转移有效激活LOM。这些多主元合金中的构型熵稳定了单相固溶体，使其具有二元或三元体系无法实现的独特催化性能。与依赖一种或两种主要元素的传统合金不同，HEAs包含五种或更多近等摩尔比例的主要元素，创造了广阔的组成空间。高构型熵降低了吉布斯自由能，稳定了无序固溶体相而非金属间化合物。这种熵稳定已在包括结构材料、催化和能量存储在内的多个领域中得到应用。"
       },
-      "confidence": 0.99,
+      "confidence": 0.98,
       "head": "doc_d8c8859751b63e3e_c1",
       "relation_type": "uses",
-      "relation_surface": "uses",
-      "tail": "doc_d8c8859751b63e3e_c8"
+      "relation_surface": "which uses",
+      "tail": "doc_d8c8859751b63e3e_c3"
     },
     {
       "type": "relation",
       "relation_id": "doc_d8c8859751b63e3e_r3",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information."
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping. RF has been widely used in rice mapping research, due to the ease of use of the RF model on the GEE platform, its stable classification performance, and the easy calculation of classification probability. Due to problems with cloud masking and SLC-off stripes in Landsat-7 images, the large number of randomly distributed null values mean that the extracted rice distribution maps would also include null regions with incomplete mapping results when classified purely using the RF model. In order to solve this problem, this study considered three years as the time span, combining the images from each year with images from the preceding and subsequent years. The proposed integrated classification model of sub-climatic RF probability for the four key rice seasons directly classifies the synthetic image data of a specific time-phase and outputs the categorization probability for each pixel, then combining the probabilities to produce the classification maps integrating multiple synthetic images."
       },
-      "confidence": 0.98,
+      "confidence": 0.97,
       "head": "doc_d8c8859751b63e3e_c1",
-      "relation_type": "integrates",
-      "relation_surface": "integrates",
-      "tail": "doc_d8c8859751b63e3e_c7"
+      "relation_type": "uses",
+      "relation_surface": "integrates automatic generation of training samples and a machine learning algorithm",
+      "tail": "doc_d8c8859751b63e3e_c4"
     },
     {
       "type": "relation",
       "relation_id": "doc_d8c8859751b63e3e_r4",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping."
+        "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. There are currently two main approaches to rice mapping. The first method is based on phenology, which extracts information about the rice by recognizing its unique phenological characteristics. Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. Since then, this efficient phenological rice mapping method has been widely applied across large-scale regions, including China, Southeast Asia, and Northwest India."
       },
       "confidence": 0.98,
       "head": "doc_d8c8859751b63e3e_c1",
-      "relation_type": "integrates",
-      "relation_surface": "integrates",
-      "tail": "doc_d8c8859751b63e3e_c4"
+      "relation_type": "uses",
+      "relation_surface": "with the assistance of",
+      "tail": "doc_d8c8859751b63e3e_c5"
     },
     {
       "type": "relation",
       "relation_id": "doc_d8c8859751b63e3e_r5",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "section": "Introduction",
+        "original_text": "Ni et al. identified four phenological periods through specific analysis of rice, and proposed an enhanced pixel-based phenological feature composite method (Eppf-CM), combined with a one-class support vector machine (OCSVM) to realize high-precision rice mapping in Northeast China. The Eppf-CM method constructed a new feature set based on four key phenological periods of rice: bare soil stage (75–120 days), transplanting stage (130–170 days), growing stage (180–250 days), and maturity stage (270–300 days), including Bare Soil Index (BSI) for bare soil stage, LSWI and Green Chlorophyll Vegetation Index (GCVI) during the growing period, NDVI and Enhanced Vegetation Index (EVI) during the growing period, and Plant Senescence Reflectance Index (PSRI) during the maturity period. The index images for each season were constructed by the median synthesis method in GEE, and the corresponding synthetic feature images were generated. The synthetic feature images and the selected 300 sample points were input to a one-class classifier (OCSVM) to generate the rice distribution map “Rice_Eppf-CM”."
       },
-      "confidence": 0.97,
-      "head": "doc_d8c8859751b63e3e_c1",
+      "confidence": 0.95,
+      "head": "doc_d8c8859751b63e3e_c6",
       "relation_type": "enhances",
-      "relation_surface": "accurately obtains",
-      "tail": "doc_d8c8859751b63e3e_c2"
+      "relation_surface": "realize high-precision rice mapping",
+      "tail": "doc_d8c8859751b63e3e_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_d8c8859751b63e3e_r6",
       "evidence": {
+        "section": "Abstract",
+        "original_text": "Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The main basis of the CCVS rice mapping method is that from tillering to the tasseling stage, the magnitude of change in LSWI in rice fields is relatively small and increases in the Enhanced Vegetation Index2 (EVI2) are significant. Therefore, the ratio of the amplitude of change in LSWI and EVI2 from tillering to spiking (RCLE) can be used as the main index for extracting rice data; the smaller the value of RCLE, the higher the probability of being categorized as rice. Meanwhile, the minimum LSWI value of rice is higher than that of other non-hydroponic crops during the transplanting period. As shown in Figure 4, both the NDVI and EVI values of rice increased significantly from the transplanting stage to the tasseling stage. A pseudo-peak (EVImax1) appeared in the EVI value before it reached the true peak (EVImax2), whereas there was only one peak in the NDVI, which expressed a more pronounced magnitude of change. Therefore, in this study, the EVI2 index in the RCLE was replaced by the NDVI index, which became the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN)."
+      },
+      "confidence": 0.95,
+      "head": "doc_d8c8859751b63e3e_c7",
+      "relation_type": "enhances",
+      "relation_surface": "to automate the generation of training data",
+      "tail": "doc_d8c8859751b63e3e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d8c8859751b63e3e_r7",
+      "evidence": {
         "section": "Introduction",
-        "original_text": "The second method is based on machine learning, applied to collect training samples, construct features, train a model learned from the feature space, and finally, obtain the rice extraction results. In this context, machine learning modeling does not need to rely excessively on image data relating to a specific phenological period of rice growth, as in the case of phenological methods. For example, Clauss et al. successfully extracted data regarding the distribution of rice cultivation in China over many years using a support vector machine (SVM). Onojeghuo et al. combined Sentinel-1 and Landsat data to map the cultivation of rice in the Northeastern Sanjiang Plain, using SVM and random forest (RF) methods. Zhang et al. combined phenology and RF, realized transferring spatial domain to map rice. Although these methods perform excellently in rice mapping, many machine learning methods require a large amount of training data to obtain the best model performance."
+        "original_text": "Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. The LSWI method proposed by Xiao et al. has been widely used in rice mapping, and this study was based on the use of th LSWI method to generate a preliminary rice distribution map. The main idea of the LSWI-based rice classification algorithm is that the value of the LSWI is than the NDVI during the transplanting stage, and the value of the LSWI is smaller than NDVI during the growing stage. Therefore, the following formula was applied to the Landsat image during the transplanting stage to obtain the preliminary rice distribution map, and the preliminary rice distribution map was subsequently compared with the Landsat images, Google images, and CLCD dataset for each year, and 300 sample points were extracted for each year for the subsequent Eppf-CM method to identify the image elements."
+      },
+      "confidence": 0.97,
+      "head": "doc_d8c8859751b63e3e_c8",
+      "relation_type": "measures",
+      "relation_surface": "value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages",
+      "tail": "doc_d8c8859751b63e3e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d8c8859751b63e3e_r8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Rice is mainly grown in paddy fields, where the value of the land surface water index (LSWI) is larger than the normalized difference vegetation index (NDVI) during the early flooding and transplanting stages, and the value of LSWI is smaller than the NDVI during the growing stage. Xiao et al. proposed that an LSWI value greater than the NDVI value could be used discriminate and identify rice characteristics during the transplanting stage, enabling the extraction of rice mapping data. Considering the green vegetation characteristic of the late growth stage in rice, the maximum NDVI value for this stage was synthesized to further identify the green rice plants and reduce the effects of cloud shading and striping of the Landsat-7 images. The formula is as follows: where NDVITi denotes the NDVI image data acquired at the moment of Ti, n is the maximum number of images in each region, max() denotes the maximum value in the corresponding time-series data for each pixel, NDVI_max is the maximum value synthesized by NDVI, Rice1 denotes the rice pixel screened by combining Eppf-CM and NDVI_max, and TNDVI is set to 0.7 according to a previous study."
+      },
+      "confidence": 0.97,
+      "head": "doc_d8c8859751b63e3e_c9",
+      "relation_type": "measures",
+      "relation_surface": "value of LSWI is smaller than the NDVI during the growing stage",
+      "tail": "doc_d8c8859751b63e3e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d8c8859751b63e3e_r9",
+      "evidence": {
+        "section": "Research Methodology",
+        "original_text": "There is variability in the climate and environment in different regions, and rice phenology changes accordingly, so the confidence level of rice extraction using phenological methods may be biased. F represents the frequency of flooding, the total number of times the rice signal was detected during the rice transplanting phase divided by the number of all high-quality images of that pixel throughout the rice transplanting phase. Introducing F into the climatology-assisted rice mapping task results in rice distribution maps with higher confidence. Considering that the revisit period of Landsat images is 16 days and the vast majority of areas have two or three views of image data available, the value interval of F was set to [0.3, 0.6]. The specific calculation formula is as follows: where F denotes the flooding frequency of each pixel, ∑Nflood is the total number of rice signals detected by the LSWI weathering method, ∑Ntotal is the total number of highquality observed images for each pixel, and Rice2 is the rice pixels that are further filtered based on Rice1 and F."
       },
       "confidence": 0.96,
-      "head": "doc_d8c8859751b63e3e_c6",
-      "relation_type": "compares",
-      "relation_surface": "does not need to rely excessively on",
-      "tail": "doc_d8c8859751b63e3e_c5"
+      "head": "doc_d8c8859751b63e3e_c10",
+      "relation_type": "enhances",
+      "relation_surface": "Introducing F into the climatology-assisted rice mapping task results in rice distribution maps with higher confidence",
+      "tail": "doc_d8c8859751b63e3e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d8c8859751b63e3e_r10",
+      "evidence": {
+        "section": "Research Methodology",
+        "original_text": "Therefore, in this study, the EVI2 index in the RCLE was replaced by the NDVI index, which became the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN). The formula for RCLN is as follows: where LSWIheading and NDVIheading represent LSWI and NDVI values at the tasseling stage, and LSWItransplanting and NDVItransplanting represent LSWI and NDVI values at the transplanting stage, respectively. The formula for CCVS-extracted rice mapping is as follows: where LSWI_min denotes the minimum value of LSWI during the transplanting period and the threshold value is consistent with Qiu et al., and Rice_CCVS denotes the rice pixels detected via the CCVS method."
+      },
+      "confidence": 0.96,
+      "head": "doc_d8c8859751b63e3e_c11",
+      "relation_type": "measures",
+      "relation_surface": "the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN)",
+      "tail": "doc_d8c8859751b63e3e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d8c8859751b63e3e_r11",
+      "evidence": {
+        "section": "Research Methodology",
+        "original_text": "In this paper, the study area was large, and was divided according to prefecture-level cities, with each prefecture-level city then divided according to a grid, and sample points extracted from each grid stratification. Finally, the samples were summarized to realize the automatic generation of rice/non-rice training samples according to WH_Rice. This method ensured the reliability of the generated samples while controlling the spatial autocorrelation to some extent. However, this plain sample generation method may have introduced confusion between rice and non-rice data samples, with an impact on the subsequent classification. Therefore, the current study purified the samples to make them more representative by extracting neighborhood information via an alternating iterative method."
+      },
+      "confidence": 0.97,
+      "head": "doc_d8c8859751b63e3e_c12",
+      "relation_type": "enhances",
+      "relation_surface": "realize the automatic generation of rice/non-rice training samples",
+      "tail": "doc_d8c8859751b63e3e_c1"
     },
     {
       "type": "dataset",
@@ -238,36 +351,12 @@
       "dataset_id": "doc_d8c8859751b63e3e_d3",
       "evidence": {
         "section": "3.2. Mapping the Potential Distribution of Rice Based on Phenology",
-        "original_text": "Subsequently, a preliminary rice distribution map was generated through combining the two methods with the following equation: R ice WH = R ice Epp f −CM ∩ R ice CCVS where R ice WH indicates the map of potential rice distribution “WH_Rice” extracted via the Eppf-CM and CCVS methods. Finally, in order to minimize rice misclassification, the CLCD dataset was used to apply a non-rice mask on R ice WH . Outliers were eliminated, and a final composite phenological rice distribution map was generated."
+        "original_text": "Subsequently, F and RCLN were introduced to recognize rice image elements using the CCVS method. The potential rice distribution map (“WH_Rice”) was generated by combining the intersecting rice image elements identified by the Eppf-CM and CCVS methods, and the grid was then divided for uniform sampling to automatically generate evenly distributed rice/non-rice training sample. Representative samples were purified by extracting the neighboring information via an alternating iteration method, which is further described in Section 3.3, below. Finally, the optimized sample data were synthesized into stage data based on the four key phenological periods, respectively, and the machine learning model was trained on each phenological period to generate multiple rice-probability classification maps."
       },
       "confidence": 0.85,
       "name": "WH_Rice",
       "modality": "tabular",
       "domain": "agriculture, remote sensing"
-    },
-    {
-      "type": "dataset",
-      "dataset_id": "doc_d8c8859751b63e3e_d4",
-      "evidence": {
-        "section": "2.2.4. Agricultural Statistics",
-        "original_text": "Based on the statistical yearbooks of Heilongjiang Province for previous years, the official agricultural statistics of Heilongjiang Province from 2010 to 2022 were collected to validate the accuracy of the LR algorithm in extracting the rice area data."
-      },
-      "confidence": 0.8,
-      "name": "Agricultural Statistics",
-      "modality": "tabular",
-      "domain": "agriculture"
-    },
-    {
-      "type": "dataset",
-      "dataset_id": "doc_d8c8859751b63e3e_d5",
-      "evidence": {
-        "section": "2.2.2. Categorized Data on Agricultural Land Use",
-        "original_text": "The China Land Cover Dataset (CLCD) [40] was published by Prof. Xin Huang of Wuhan University, based on 335,709 views of Landsat data and produced on the Google Earth Engine, containing year-by-year land cover information for China. In this study, the CLCD dataset was used for masking non-rice areas; previous studies [39,40] have shown that this method can improve the accuracy of the extracted data."
-      },
-      "confidence": 0.85,
-      "name": "CLCD dataset",
-      "modality": "tabular",
-      "domain": "land cover"
     },
     {
       "type": "data_specification",
@@ -278,58 +367,58 @@
       },
       "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "Accuracy assessment using confusion matrix, OA, and Kappa coefficient"
+      "description": "Standardized rice mapping accuracy assessment using confusion matrix, OA, and Kappa coefficient"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_d8c8859751b63e3e_ds2",
       "evidence": {
         "section": "2.2.1. Landsat Data",
-        "original_text": "In this study, we used Landsat-7 and Landsat-8 images from 2010–2022, featuring large similarities in the visible and near-infrared spectral ranges, with a spatial resolution of 30 m and a temporal resolution of 16 days, together providing a revisit cycle of 8 days. The Scan Lines Corrector (SLC) of Landsat-7 has suffered a mechanical failure since 2003, resulting in data overlap and loss of about 25% of the data in the acquired images; the data can only be corrected using the SLC-off model. To address these problems, this study focused on the preprocessing of Landsat-7 by means of the C Function of Masking (CFMask) algorithm [38] and the exclusion of pixels larger than 0.2 in the blue band."
+        "original_text": "In this study, we used Landsat-7 and Landsat-8 images from 2010–2022, featuring large similarities in the visible and near-infrared spectral ranges, with a spatial resolution of 30 m and a temporal resolution of 16 days, together providing a revisit cycle of 8 days. The Scan Lines Corrector (SLC) of Landsat-7 has suffered a mechanical failure since 2003, resulting in data overlap and loss of about 25% of the data in the acquired images; the data can only be corrected using the SLC-off model. To address these problems, this study focused on the preprocessing of Landsat-7 by means of the C Function of Masking (CFMask) algorithm [38] and the exclusion of pixels larger than 0.2 in the blue band. Landsat-8 has been in operation since 2013 and carries the Operational Land Imager, which uses a panchromatic band with a narrower range, enabling for better differentiation between vegetated and non-vegetated features in panchromatic imagery."
       },
       "confidence": 0.9,
-      "spec_type": "format_rule",
-      "description": "Landsat image preprocessing using CFMask algorithm and blue band threshold"
+      "spec_type": "quality_standard",
+      "description": "Standardized Landsat data preprocessing protocol using CFMask algorithm and blue band threshold"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_d8c8859751b63e3e_ds3",
       "evidence": {
-        "section": "2.2.1. Landsat Data",
-        "original_text": "The distribution of rice fields in Northeast China is relatively stable [39]. In order to overcome the problem of cloud occlusion, in this study, we used three years as the time span, combining each year’s image with the adjacent upper and lower two years’ images to generate a composite image containing rich climatic information. Based on the characteristics of rice growth in the study area [24], Landsat images of four key phenological periods for rice (bare soil, transplanting, growth, and maturity) were selected. All the data were processed on GEE due to the huge volumes of data involved."
+        "section": "3.3. Sample Extraction and Optimization",
+        "original_text": "In this paper, the study area was large, and was divided according to prefecture-level cities, with each prefecture-level city then divided according to a grid, and sample points extracted from each grid stratification. Finally, the samples were summarized to realize the automatic generation of rice/non-rice training samples according to WH_Rice. This method ensured the reliability of the generated samples while controlling the spatial autocorrelation to some extent. However, this plain sample generation method may have introduced confusion between rice and non-rice data samples, with an impact on the subsequent classification. Therefore, the current study purified the samples to make them more representative by extracting neighborhood information via an alternating iterative method. After stratified sampling, the statistical features of the sample points were extracted from within a 3 × 3 neighborhood window of each, and the overall intraclass statistical properties were calculated. Then, an alternating iteration strategy was used to optimize the sample set, as follows. For a fixed category (e.g., rice), calculate its similarity with other categories (e.g., non-rice), and eliminate the confusing sample points to obtain a purer subset; then, perform the same operation for another category to optimize its samples. Through several iterations, a more reliable and representative training sample set is finally obtained."
       },
-      "confidence": 0.9,
+      "confidence": 0.85,
       "spec_type": "format_rule",
-      "description": "Three-year composite image generation for key phenological periods"
+      "description": "Stratified grid-based sampling protocol for automatic training sample generation"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_d8c8859751b63e3e_ds4",
       "evidence": {
-        "section": "3.3. Sample Extraction and Optimization",
-        "original_text": "However, this plain sample generation method may have introduced confusion between rice and non-rice data samples, with an impact on the subsequent classification. Therefore, the current study purified the samples to make them more representative by extracting neighborhood information via an alternating iterative method. After stratified sampling, the statistical features of the sample points were extracted from within a 3 × 3 neighborhood window of each, and the overall intraclass statistical properties were calculated. Then, an alternating iteration strategy was used to optimize the sample set, as follows. For a fixed category (e.g., rice), calculate its similarity with other categories (e.g., non-rice), and eliminate the confusing sample points to obtain a purer subset; then, perform the same operation for another category to optimize its samples. Through several iterations, a more reliable and representative training sample set is finally obtained."
-      },
-      "confidence": 0.85,
-      "spec_type": "quality_standard",
-      "description": "Sample optimization via alternating iterative method with neighborhood information extraction"
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_d8c8859751b63e3e_ds5",
-      "evidence": {
         "section": "3.4. Integrated Monthly RF Modeling",
-        "original_text": "The construction of the RF classifier needs to determine the number of trees to be generated (ntree) and the number of variables used to select the best segmentation of tree growth (nfeature), so that when ntree gradually increases, RF classification performance will gradually improve and become stable. In some studies, ntree is set to 200 and nfeature is set to the square root of the total number of features, which achieves excellent cartographic accuracy. Therefore, the current study used a grid search to fine-tune the hyperparameters of the RF model. After synthesizing classification performance and time efficiency, the ntree and nfeature were set to 200 and the square root of the total features, respectively. The process included dividing 70% of the dataset for each phenology period into training sets and the remaining 30% into test sets, to ensure the generalization ability of the model. The more commonly used K-fold cross-validation (K = 5) was used to evaluate the stability of the RF classification model for each phenological period. In the RF training, the data for each phenological period were randomly divided into K sets, with K-1 of these used for training and the remaining one for verification. The final results were averaged to reduce the influence of randomness on the experiment."
+        "original_text": "RF has been widely used in rice mapping research, due to the ease of use of the RF model on the GEE platform, its stable classification performance, and the easy calculation of classification probability [29,42]. Due to problems with cloud masking and SLC-off stripes in Landsat-7 images, the large number of randomly distributed null values mean that the extracted rice distribution maps would also include null regions with incomplete mapping results when classified purely using the RF model. In order to solve this problem, this study considered three years as the time span, combining the images from each year with images from the preceding and subsequent years. The proposed integrated classification model of sub-climatic RF probability for the four key rice seasons directly classifies the synthetic image data of a specific time-phase and outputs the categorization probability for each pixel, then combining the probabilities to produce the classification maps integrating multiple synthetic images. This “parallel” organization makes the classification results of each key season independent of each other, which effectively solves the null problem. Therefore, in this study, the optimized sample data were divided into climatic synthetic phases. The binary classification RF models were trained independently to generate multiple probability classification maps, and the final rice maps were drawn using an aggregate voting strategy."
       },
       "confidence": 0.9,
       "spec_type": "format_rule",
-      "description": "RF model hyperparameter settings: ntree=200, nfeature=sqrt(total features), 70/30 train/test split, 5-fold cross-validation"
+      "description": "Integrated RF modeling protocol using staged data synthesis and ensemble voting"
     },
     {
       "type": "method",
       "method_id": "doc_d8c8859751b63e3e_m1",
       "evidence": {
         "section": "3. Research Methodology",
-        "original_text": "The LSWI method proposed by Xiao et al. [6] has been widely used in rice mapping, and this study was based on the use of th LSWI method to generate a preliminary rice distribution map. The main idea of the LSWI-based rice classification algorithm is that the value of the LSWI is than the NDVI during the transplanting stage, and the value of the LSWI is smaller than NDVI during the growing stage. Therefore, the following formula was applied to the Landsat image during the transplanting stage to obtain the preliminary rice distribution map, and the preliminary rice distribution map was subsequently compared with the Landsat images, Google images, and CLCD dataset for each year, and 300 sample points were extracted for each year for the subsequent Eppf-CM method to identify the image elements.\n\nwhere ρNIR, ρSWIR and ρRED denote the near-infrared, short-wave infrared, and red light bands, respectively, RiceLSWI is the rice information detected by the LSWI, 1 and 0 denote rice and non-rice, respectively, and T0 is set to 0 with reference to previous studies [6,23]."
+        "original_text": "In this study, a rice mapping method integrating climatology-assisted automatic generation of training samples and machine learning algorithms is proposed, as shown in Figure 3. The method first generates a preliminary rice distribution map based on phenology and selects 300 sample points per year from the Landsat imagery, Google imagery, and CLCD datasets, respectively, for element recognition in rice images via the Eppf-CM method. Subsequently, F and RCLN were introduced to recognize rice image elements using the CCVS method. The potential rice distribution map (“WH_Rice”) was generated by combining the intersecting rice image elements identified by the Eppf-CM and CCVS methods, and the grid was then divided for uniform sampling to automatically generate evenly distributed rice/non-rice training sample. Representative samples were purified by extracting the neighboring information via an alternating iteration method, which is further described in Section 3.3, below. Finally, the optimized sample data were synthesized into stage data based on the four key phenological periods, respectively, and the machine learning model was trained on each phenological period to generate multiple rice-probability classification maps. The final extracted rice maps were drawn using the pooled voting strategy, and finally, the OA and Kappa coefficients were computed to evaluate the accuracy."
+      },
+      "confidence": 0.95,
+      "name": "LR method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d8c8859751b63e3e_m2",
+      "evidence": {
+        "section": "3.2. Mapping the Potential Distribution of Rice Based on Phenology",
+        "original_text": "The LSWI method proposed by Xiao et al. [6] has been widely used in rice mapping, and this study was based on the use of th LSWI method to generate a preliminary rice distribution map. The main idea of the LSWI-based rice classification algorithm is that the value of the LSWI is than the NDVI during the transplanting stage, and the value of the LSWI is smaller than NDVI during the growing stage. Therefore, the following formula was applied to the Landsat image during the transplanting stage to obtain the preliminary rice distribution map, and the preliminary rice distribution map was subsequently compared with the Landsat images, Google images, and CLCD dataset for each year, and 300 sample points were extracted for each year for the subsequent Eppf-CM method to identify the image elements."
       },
       "confidence": 0.95,
       "name": "LSWI-based rice classification algorithm",
@@ -337,10 +426,10 @@
     },
     {
       "type": "method",
-      "method_id": "doc_d8c8859751b63e3e_m2",
+      "method_id": "doc_d8c8859751b63e3e_m3",
       "evidence": {
-        "section": "3. Research Methodology",
-        "original_text": "The Eppf-CM method proposed by Ni et al. [24] and the CCVS method developed by Qiu et al. [11] perform well in rice mapping, with high accuracy. To reduce the uncertainty inherent in these two methods, this study combined them to generate potential rice distribution maps.\nThe Eppf-CM method constructed a new feature set based on four key phenological periods of rice: bare soil stage (75–120 days), transplanting stage (130–170 days), growing stage (180–250 days), and maturity stage (270–300 days), including Bare Soil Index (BSI) for bare soil stage, LSWI and Green Chlorophyll Vegetation Index (GCVI) during the growing period, NDVI and Enhanced Vegetation Index (EVI) during the growing period, and Plant Senescence Reflectance Index (PSRI) during the maturity period. The index images for each season were constructed by the median synthesis method in GEE, and the corresponding synthetic feature images were generated. The synthetic feature images and the selected 300 sample points were input to a one-class classifier (OCSVM) to generate the rice distribution map “RiceEppf−CM”."
+        "section": "3.2. Mapping the Potential Distribution of Rice Based on Phenology",
+        "original_text": "The Eppf-CM method proposed by Ni et al. [24] and the CCVS method developed by Qiu et al. [11] perform well in rice mapping, with high accuracy. To reduce the uncertainty inherent in these two methods, this study combined them to generate potential rice distribution maps. The Eppf-CM method constructed a new feature set based on four key phenological periods of rice: bare soil stage (75–120 days), transplanting stage (130–170 days), growing stage (180–250 days), and maturity stage (270–300 days), including Bare Soil Index (BSI) for bare soil stage, LSWI and Green Chlorophyll Vegetation Index (GCVI) during the growing period, NDVI and Enhanced Vegetation Index (EVI) during the growing period, and Plant Senescence Reflectance Index (PSRI) during the maturity period. The index images for each season were constructed by the median synthesis method in GEE, and the corresponding synthetic feature images were generated. The synthetic feature images and the selected 300 sample points were input to a one-class classifier (OCSVM) to generate the rice distribution map “Rice_Eppf-CM”."
       },
       "confidence": 0.95,
       "name": "Enhanced pixel-based phenological feature composite method (Eppf-CM)",
@@ -348,214 +437,147 @@
     },
     {
       "type": "method",
-      "method_id": "doc_d8c8859751b63e3e_m3",
-      "evidence": {
-        "section": "3. Research Methodology",
-        "original_text": "The main basis of the CCVS rice mapping method is that from tillering to the tasseling stage, the magnitude of change in LSWI in rice fields is relatively small and increases in the Enhanced Vegetation Index2 (EVI2) are significant. Therefore, the ratio of the amplitude of change in LSWI and EVI2 from tillering to spiking (RCLE) can be used as the main index for extracting rice data; the smaller the value of RCLE, the higher the probability of being categorized as rice. Meanwhile, the minimum LSWI value of rice is higher than that of other non-hydroponic crops during the transplanting period. As shown in Figure 4, both the NDVI and EVI values of rice increased significantly from the transplanting stage to the tasseling stage. A pseudo-peak (EVImax1) appeared in the EVI value before it reached the true peak (EVImax2), whereas there was only one peak in the NDVI, which expressed a more pronounced magnitude of change. Therefore, in this study, the EVI2 index in the RCLE was replaced by the NDVI index, which became the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN). The formula for RCLN is as follows:\nwhere LSWIheading and NDVIheading represent LSWI and NDVI values at the tasseling stage, and LSWItransplanting and NDVItransplanting represent LSWI and NDVI values at the transplanting stage, respectively.\nThe formula for CCVS-extracted rice mapping is as follows:\nwhere LSWImin denotes the minimum value of LSWI during the transplanting period and the threshold value is consistent with Qiu et al. [11], and RiceCCVS denotes the rice pixels detected via the CCVS method."
-      },
-      "confidence": 0.95,
-      "name": "Combined consideration of vegetation phenology and surface water variation (CCVS) method",
-      "method_type": "algorithm"
-    },
-    {
-      "type": "method",
       "method_id": "doc_d8c8859751b63e3e_m4",
       "evidence": {
-        "section": "3. Research Methodology",
-        "original_text": "In this paper, the study area was large, and was divided according to prefecture-level cities, with each prefecture-level city then divided according to a grid, and sample points extracted from each grid stratification. Finally, the samples were summarized to realize the automatic generation of rice/non-rice training samples according to WH_Rice. This method ensured the reliability of the generated samples while controlling the spatial autocorrelation to some extent. However, this plain sample generation method may have introduced confusion between rice and non-rice data samples, with an impact on the subsequent classification. Therefore, the current study purified the samples to make them more representative by extracting neighborhood information via an alternating iterative method. After stratified sampling, the statistical features of the sample points were extracted from within a 3 × 3 neighborhood window of each, and the overall intraclass statistical properties were calculated. Then, an alternating iteration strategy was used to optimize the sample set, as follows. For a fixed category (e.g., rice), calculate its similarity with other categories (e.g., non-rice), and eliminate the confusing sample points to obtain a purer subset; then, perform the same operation for another category to optimize its samples. Through several iterations, a more reliable and representative training sample set is finally obtained."
+        "section": "3.2. Mapping the Potential Distribution of Rice Based on Phenology",
+        "original_text": "Considering the green vegetation characteristic of the late growth stage in rice, the maximum NDVI value for this stage was synthesized to further identify the green rice plants and reduce the effects of cloud shading and striping of the Landsat-7 images. The formula is as follows: There is variability in the climate and environment in different regions, and rice phenology changes accordingly, so the confidence level of rice extraction using phenological methods may be biased. F represents the frequency of flooding, the total number of times the rice signal was detected during the rice transplanting phase divided by the number of all high-quality images of that pixel throughout the rice transplanting phase. Introducing F into the climatology-assisted rice mapping task results in rice distribution maps with higher confidence. Considering that the revisit period of Landsat images is 16 days and the vast majority of areas have two or three views of image data available, the value interval of F was set to [0.3, 0.6]. The specific calculation formula is as follows: The main basis of the CCVS rice mapping method is that from tillering to the tasseling stage, the magnitude of change in LSWI in rice fields is relatively small and increases in the Enhanced Vegetation Index2 (EVI2) are significant. Therefore, the ratio of the amplitude of change in LSWI and EVI2 from tillering to spiking (RCLE) can be used as the main index for extracting rice data; the smaller the value of RCLE, the higher the probability of being categorized as rice. Meanwhile, the minimum LSWI value of rice is higher than that of other non-hydroponic crops during the transplanting period. As shown in Figure 4, both the NDVI and EVI values of rice increased significantly from the transplanting stage to the tasseling stage. A pseudo-peak (EVImax1) appeared in the EVI value before it reached the true peak (EVImax2), whereas there was only one peak in the NDVI, which expressed a more pronounced magnitude of change. Therefore, in this study, the EVI2 index in the RCLE was replaced by the NDVI index, which became the ratio of the amplitude of change in LSWI to NDVI (abbreviated as RCLN). The formula for RCLN is as follows: The formula for CCVS-extracted rice mapping is as follows: Subsequently, a preliminary rice distribution map was generated through combining the two methods with the following equation: Finally, in order to minimize rice misclassification, the CLCD dataset was used to apply a non-rice mask on Rice_WH. Outliers were eliminated, and a final composite phenological rice distribution map was generated."
       },
       "confidence": 0.95,
-      "name": "Alternating iterative method for sample optimization",
+      "name": "combined consideration of vegetation phenology and surface water variation (CCVS)",
       "method_type": "algorithm"
     },
     {
       "type": "method",
       "method_id": "doc_d8c8859751b63e3e_m5",
       "evidence": {
-        "section": "3. Research Methodology",
-        "original_text": "RF has been widely used in rice mapping research, due to the ease of use of the RF model on the GEE platform, its stable classification performance, and the easy calculation of classification probability [29,42]. Due to problems with cloud masking and SLC-off stripes in Landsat-7 images, the large number of randomly distributed null values mean that the extracted rice distribution maps would also include null regions with incomplete mapping results when classified purely using the RF model. In order to solve this problem, this study considered three years as the time span, combining the images from each year with images from the preceding and subsequent years. The proposed integrated classification model of sub-climatic RF probability for the four key rice seasons directly classifies the synthetic image data of a specific time-phase and outputs the categorization probability for each pixel, then combining the probabilities to produce the classification maps integrating multiple synthetic images. This “parallel” organization makes the classification results of each key season independent of each other, which effectively solves the null problem. Therefore, in this study, the optimized sample data were divided into climatic synthetic phases. The binary classification RF models were trained independently to generate multiple probability classification maps, and the final rice maps were drawn using an aggregate voting strategy. The formulas used are as follows:\nwhere Pi denotes the final classification probability that image element i is in a rice category, Ti is the total number of images used to classify image element i, Pi[j] is the probability that image element i is classified as rice calculated via the RF model of the image in period j, Ricei denotes the final classification value of image element i, with 1 denoting that it is categorized as rice and 0 denoting that it is not rice, and Tp is the classification probability segmentation threshold, with a value of 0.5.\nIn this paper, sample data from four key climatic periods were synthesized via mean staging. The formulas for each vegetation index are listed in Table 1. Subsequently, the feature importance of each phenology period was calculated separately, and then several vegetation indices with the highest ranking were selected as the input features of the RF classification model for these four phenological periods, as shown in Table 2.\nThe construction of the RF classifier needs to determine the number of trees to be generated (ntree) and the number of variables used to select the best segmentation of tree growth (nfeature), so that when ntree gradually increases, RF classification performance will gradually improve and become stable. In some studies, ntree is set to 200 and nfeature is set to the square root of the total number of features, which achieves excellent cartographic accuracy. Therefore, the current study used a grid search to fine-tune the hyperparameters of the RF model. After synthesizing classification performance and time efficiency, the ntree and nfeature were set to 200 and the square root of the total features, respectively. The process included dividing 70% of the dataset for each phenology period into training sets and the remaining 30% into test sets, to ensure the generalization ability of the model. The more commonly used K-fold cross-validation (K = 5) was used to evaluate the stability of the RF classification model for each phenological period. In the RF training, the data for each phenological period were randomly divided into K sets, with K-1 of these used for training and the remaining one for verification. The final results were averaged to reduce the influence of randomness on the experiment."
+        "section": "3.3. Sample Extraction and Optimization",
+        "original_text": "In this paper, the study area was large, and was divided according to prefecture-level cities, with each prefecture-level city then divided according to a grid, and sample points extracted from each grid stratification. Finally, the samples were summarized to realize the automatic generation of rice/non-rice training samples according to WH_Rice. This method ensured the reliability of the generated samples while controlling the spatial autocorrelation to some extent. However, this plain sample generation method may have introduced confusion between rice and non-rice data samples, with an impact on the subsequent classification. Therefore, the current study purified the samples to make them more representative by extracting neighborhood information via an alternating iterative method. After stratified sampling, the statistical features of the sample points were extracted from within a 3 × 3 neighborhood window of each, and the overall intraclass statistical properties were calculated. Then, an alternating iteration strategy was used to optimize the sample set, as follows. For a fixed category (e.g., rice), calculate its similarity with other categories (e.g., non-rice), and eliminate the confusing sample points to obtain a purer subset; then, perform the same operation for another category to optimize its samples. Through several iterations, a more reliable and representative training sample set is finally obtained."
       },
       "confidence": 0.95,
-      "name": "Integrated monthly RF modeling",
-      "method_type": "model"
+      "name": "alternating iterative method for sample optimization",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d8c8859751b63e3e_m6",
+      "evidence": {
+        "section": "3.4. Integrated Monthly RF Modeling",
+        "original_text": "RF has been widely used in rice mapping research, due to the ease of use of the RF model on the GEE platform, its stable classification performance, and the easy calculation of classification probability [29,42]. Due to problems with cloud masking and SLC-off stripes in Landsat-7 images, the large number of randomly distributed null values mean that the extracted rice distribution maps would also include null regions with incomplete mapping results when classified purely using the RF model. In order to solve this problem, this study considered three years as the time span, combining the images from each year with images from the preceding and subsequent years. The proposed integrated classification model of sub-climatic RF probability for the four key rice seasons directly classifies the synthetic image data of a specific time-phase and outputs the categorization probability for each pixel, then combining the probabilities to produce the classification maps integrating multiple synthetic images. This “parallel” organization makes the classification results of each key season independent of each other, which effectively solves the null problem. Therefore, in this study, the optimized sample data were divided into climatic synthetic phases. The binary classification RF models were trained independently to generate multiple probability classification maps, and the final rice maps were drawn using an aggregate voting strategy. The formulas used are as follows: In this paper, sample data from four key climatic periods were synthesized via mean staging. The formulas for each vegetation index are listed in Table 1. Subsequently, the feature importance of each phenology period was calculated separately, and then several vegetation indices with the highest ranking were selected as the input features of the RF classification model for these four phenological periods, as shown in Table 2. The construction of the RF classifier needs to determine the number of trees to be generated (ntree) and the number of variables used to select the best segmentation of tree growth (nfeature), so that when ntree gradually increases, RF classification performance will gradually improve and become stable. In some studies, ntree is set to 200 and nfeature is set to the square root of the total number of features, which achieves excellent cartographic accuracy. Therefore, the current study used a grid search to fine-tune the hyperparameters of the RF model. After synthesizing classification performance and time efficiency, the ntree and nfeature were set to 200 and the square root of the total features, respectively. The process included dividing 70% of the dataset for each phenology period into training sets and the remaining 30% into test sets, to ensure the generalization ability of the model. The more commonly used K-fold cross-validation (K = 5) was used to evaluate the stability of the RF classification model for each phenological period. In the RF training, the data for each phenological period were randomly divided into K sets, with K-1 of these used for training and the remaining one for verification. The final results were averaged to reduce the influence of randomness on the experiment."
+      },
+      "confidence": 0.95,
+      "name": "integrated monthly RF modeling",
+      "method_type": "algorithm"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_d8c8859751b63e3e_x1",
       "evidence": {
-        "section": "2. Study Area and Data",
-        "original_text": "Heilongjiang Province (Figure 1), China (HLJ) was selected as the study area to validate the effectiveness of the proposed method integrating automatic generation of training samples and a machine learning algorithm for rice mapping.\nHeilongjiang Province is located in northeastern China, with 12 prefectural-level cities and one region (Daxinganling Region) under its jurisdiction, covering a total area of 473,000 square kilometers. The province spans four major water systems: the Heilongjiang, Ussuri, Songhua, and Suifen rivers. It has a cold-temperate and temperate continental monsoon climate, with an average annual precipitation of 400–800 mm, and the average annual temperature ranges from −4 ◦C to 6 ◦C. Crops in the province are mainly singleseason crops; the main crops are rice, corn, and soybeans. Rice is usually sown in mid-April, transplanted at the end of May to early June, and harvested at the end of September and in early October. The current study did not include the Daxinganling region, due to the lack of suitable conditions for agricultural cultivation in the region.\nIn this study, we used Landsat-7 and Landsat-8 images from 2010–2022, featuring large similarities in the visible and near-infrared spectral ranges, with a spatial resolution of 30 m and a temporal resolution of 16 days, together providing a revisit cycle of 8 days. The Scan Lines Corrector (SLC) of Landsat-7 has suffered a mechanical failure since 2003, resulting in data overlap and loss of about 25% of the data in the acquired images; the data can only be corrected using the SLC-off model. To address these problems, this study focused on the preprocessing of Landsat-7 by means of the C Function of Masking (CFMask) algorithm [38] and the exclusion of pixels larger than 0.2 in the blue band. Landsat-8 has been in operation since 2013 and carries the Operational Land Imager, which uses a panchromatic band with a narrower range, enabling for better differentiation between vegetated and non-vegetated features in panchromatic imagery.\nThe distribution of rice fields in Northeast China is relatively stable [39]. In order to overcome the problem of cloud occlusion, in this study, we used three years as the time span, combining each year’s image with the adjacent upper and lower two years’ images to generate a composite image containing rich climatic information. Based on the characteristics of rice growth in the study area [24], Landsat images of four key phenological periods for rice (bare soil, transplanting, growth, and maturity) were selected. All the data were processed on GEE due to the huge volumes of data involved."
+        "section": "Abstract",
+        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
       },
       "confidence": 0.95,
-      "task": "rice mapping in Heilongjiang Province",
-      "setup": "Heilongjiang Province, China, Landsat-7/8 images (2010-2022), Google Earth Engine platform"
+      "task": "rice mapping across Heilongjiang Province",
+      "setup": "Heilongjiang Province, China, 2010-2022, Landsat-7 and Landsat-8 images, Google Earth Engine platform"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_d8c8859751b63e3e_x2",
       "evidence": {
-        "section": "4. Experimental Results and Analysis",
+        "section": "4.1. LR Algorithm for Rice Mapping",
         "original_text": "In order to validate the accuracy of the LR-based rice distribution map for HLJ from 2010 to 2022, we calculated a confusion matrix using as an example a visually interpreted ground-referenced real sample and an automatically generated sample. From this matrix, OA and Kappa coefficients were calculated to evaluate the accuracy of LR_Rice, as shown in Table 3. In the rice classification task results, OA represents the percentage of total pixels that were correctly classified as rice or non-rice. The closer the OA value is to 1, the higher was the overall accuracy of rice classification. Kappa coefficient was used to measure the accuracy and robustness of the model in distinguishing between rice and non-rice pixels. A value closer to 1 means a higher match between the classification results and the real situation, and the better classification performance of the model. The results showed that the accuracy of the rice distribution maps for those thirteen years was relatively stable, with OA values greater than 0.97 and Kappa values greater than 0.95, confirming the LR algorithm’s excellent performance with the HLJ rice mapping data."
       },
       "confidence": 0.95,
       "task": "accuracy validation of LR_Rice maps",
-      "setup": "confusion matrix analysis using visually interpreted ground-referenced and automatically generated samples"
+      "setup": "confusion matrix calculation using visually interpreted ground-referenced real sample and automatically generated sample"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_d8c8859751b63e3e_x3",
       "evidence": {
-        "section": "4. Experimental Results and Analysis",
-        "original_text": "In this study, four different regions were selected for comparative analysis of the multi-year rice distribution map extracted by the LR algorithm (LR_Rice) and the four other rice-thematic maps (CLCD_Rice, Han_Rice, Xuan_Rice, PSPR _Rice), as shown in Figure 6, uniformly distributed over the main rice production areas of Heilongjiang Province. The comparison also included a rice distribution map based on HLJ latitude and longitude, which visualized changes in rice area with latitude and longitude. Considering the visual comparison and to verify the reliability of the integrated climatology method, the Landsat optical images and the rice mapping results acquired with the integrated climatology algorithm (WH_Rice) were included in the comparative analysis, as shown in Figure 7.\nFigure 7 shows a comparison of LR_Rice with five sets of rice mapping results from four selected sites for 2010–2022 (two-year interval). Since the rice distribution maps for Xuan_Rice have a time frame of 2013–2021 and PSPR _Rice has a time frame of 1990–2020 (five-year interval), and considering that the differences in rice distribution between subsequent years are small, Xuan_Rice 2013 and 2021 were used to fill in 2012 and 2022, respectively; Xuan_Rice’s contributions are labeled with blue boxes, and data from 2015 PSPR _Rice are labeled using red boxes in Figure 7.\nTaking the Landsat image as a benchmark, it can be clearly seen that Han_Rice at 500 m includes obvious large misclassification and omission phenomena. CLCD_Rice at 30 m captures the overall rough distribution pattern in a, c, but it makes a lot of omission errors with b, d. WH_Rice at 30 m shows some similarity to LR_Rice, but WH_Rice is affected by cloud occlusion and striping in the early stages, and detailed local features are lost in LR_Rice. WH_Rice is affected by cloud obscuration and striping, losing local detail, and LR_Rice is clearer and more complete.\nComparison of LR_Rice in 2012 and 2022 with Xuan_Rice (labeled in the blue box) confirmed the successful spatial distribution mapping achieved using LR_Rice; the rice field plots showed a very regular structure and shape, and the road information was more complete. In Figure 7, the 2015 PSPR _Rice image marked in the red box is compared with LR_Rice and Xuan_Rice for 2014 and 2016, confirming that PSPR _Rice can better recognize the spatial details of rice than Xuan_Rice, and the extracted information such as water bodies and forest land is more complete. The classification details of LR_Rice across the four regions are more exhaustive, showing higher consistency with the rice distribution in the Landsat images and better overall performance. In summary, the LR algorithm provides higher usability and reliability."
+        "section": "4.2. Comparison with Existing Products and Climatic Maps",
+        "original_text": "In this study, four different regions were selected for comparative analysis of the multi-year rice distribution map extracted by the LR algorithm (LR_Rice) and the four other rice-thematic maps (CLCD_Rice, Han_Rice, Xuan_Rice, PSPR_Rice), as shown in Figure 6, uniformly distributed over the main rice production areas of Heilongjiang Province. The comparison also included a rice distribution map based on HLJ latitude and longitude, which visualized changes in rice area with latitude and longitude. Considering the visual comparison and to verify the reliability of the integrated climatology method, the Landsat optical images and the rice mapping results acquired with the integrated climatology algorithm (WH_Rice) were included in the comparative analysis, as shown in Figure 7."
       },
       "confidence": 0.95,
       "task": "comparison with existing rice mapping products",
-      "setup": "comparative analysis of LR_Rice with CLCD_Rice, Han_Rice, Xuan_Rice, PSPR_Rice across four selected regions"
+      "setup": "comparative analysis of LR_Rice with CLCD_Rice, Han_Rice, Xuan_Rice, PSPR_Rice across four selected regions in Heilongjiang Province"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_d8c8859751b63e3e_x4",
       "evidence": {
-        "section": "4. Experimental Results and Analysis",
+        "section": "4.3. Comparison of LR Rice Mapping Area with Statistical Area",
         "original_text": "The obtained agricultural census data were compared with LR to generate maps of the rice area in Heilongjiang Province from 2010 to 2022, and the results are shown in Figure 8. The coefficient of determination R[2] between the rice area obtained based on LR_Rice and the statistical data was 0.9915, and the RMSE was 22.5 kha, and the two showed an obvious linear relationship, confirming that the agricultural statistics were consistent with and the rice area maps obtained with LR_Rice, reflecting the good classification performance of the LR algorithm."
       },
       "confidence": 0.95,
-      "task": "comparison of LR_Rice mapping area with agricultural statistical area",
-      "setup": "linear regression analysis between extracted rice area and official agricultural statistics"
+      "task": "comparison of LR_Rice mapping area with statistical area",
+      "setup": "comparison of LR_Rice generated rice area with agricultural census data from Heilongjiang Province"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_d8c8859751b63e3e_qr1",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "section": "4. Experimental Results and Analysis",
+        "original_text": "In order to validate the accuracy of the LR-based rice distribution map for HLJ from 2010 to 2022, we calculated a confusion matrix using as an example a visually interpreted ground-referenced real sample and an automatically generated sample. From this matrix, OA and Kappa coefficients were calculated to evaluate the accuracy of LR_Rice, as shown in Table 3. In the rice classification task results, OA represents the percentage of total pixels that were correctly classified as rice or non-rice. The closer the OA value is to 1, the higher was the overall accuracy of rice classification. Kappa coefficient was used to measure the accuracy and robustness of the model in distinguishing between rice and non-rice pixels. A value closer to 1 means a higher match between the classification results and the real situation, and the better classification performance of the model. The results showed that the accuracy of the rice distribution maps for those thirteen years was relatively stable, with OA values greater than 0.97 and Kappa values greater than 0.95, confirming the LR algorithm’s excellent performance with the HLJ rice mapping data."
       },
       "confidence": 0.98,
       "quantity": "overall accuracy",
       "value": 0.97,
       "unit": null,
-      "context": "rice distribution mapping across Heilongjiang Province, China from 2010 to 2022 using LR method",
+      "context": "LR algorithm for rice mapping in Heilongjiang Province from 2010 to 2022, evaluated using confusion matrix from visually interpreted ground-referenced real sample and automatically generated sample",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_d8c8859751b63e3e_qr2",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "section": "4. Experimental Results and Analysis",
+        "original_text": "In order to validate the accuracy of the LR-based rice distribution map for HLJ from 2010 to 2022, we calculated a confusion matrix using as an example a visually interpreted ground-referenced real sample and an automatically generated sample. From this matrix, OA and Kappa coefficients were calculated to evaluate the accuracy of LR_Rice, as shown in Table 3. In the rice classification task results, OA represents the percentage of total pixels that were correctly classified as rice or non-rice. The closer the OA value is to 1, the higher was the overall accuracy of rice classification. Kappa coefficient was used to measure the accuracy and robustness of the model in distinguishing between rice and non-rice pixels. A value closer to 1 means a higher match between the classification results and the real situation, and the better classification performance of the model. The results showed that the accuracy of the rice distribution maps for those thirteen years was relatively stable, with OA values greater than 0.97 and Kappa values greater than 0.95, confirming the LR algorithm’s excellent performance with the HLJ rice mapping data."
       },
       "confidence": 0.98,
       "quantity": "Kappa coefficient",
       "value": 0.95,
       "unit": null,
-      "context": "rice distribution mapping across Heilongjiang Province, China from 2010 to 2022 using LR method",
+      "context": "LR algorithm for rice mapping in Heilongjiang Province from 2010 to 2022, evaluated using confusion matrix from visually interpreted ground-referenced real sample and automatically generated sample",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_d8c8859751b63e3e_qr3",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "section": "4. Experimental Results and Analysis",
+        "original_text": "The obtained agricultural census data were compared with LR to generate maps of the rice area in Heilongjiang Province from 2010 to 2022, and the results are shown in Figure 8. The coefficient of determination R[2] between the rice area obtained based on LR_Rice and the statistical data was 0.9915, and the RMSE was 22.5 kha, and the two showed an obvious linear relationship, confirming that the agricultural statistics were consistent with and the rice area maps obtained with LR_Rice, reflecting the good classification performance of the LR algorithm."
       },
-      "confidence": 0.98,
-      "quantity": "coefficient of determination (R²)",
+      "confidence": 0.99,
+      "quantity": "coefficient of determination",
       "value": 0.9915,
       "unit": null,
-      "context": "comparison between extracted rice area (LR_Rice) and agricultural statistical area for Heilongjiang Province from 2010 to 2022",
+      "context": "LR_Rice extracted area compared with agricultural statistical area for Heilongjiang Province from 2010 to 2022",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_d8c8859751b63e3e_qr4",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "section": "4. Experimental Results and Analysis",
+        "original_text": "The obtained agricultural census data were compared with LR to generate maps of the rice area in Heilongjiang Province from 2010 to 2022, and the results are shown in Figure 8. The coefficient of determination R[2] between the rice area obtained based on LR_Rice and the statistical data was 0.9915, and the RMSE was 22.5 kha, and the two showed an obvious linear relationship, confirming that the agricultural statistics were consistent with and the rice area maps obtained with LR_Rice, reflecting the good classification performance of the LR algorithm."
       },
-      "confidence": 0.98,
+      "confidence": 0.99,
       "quantity": "RMSE",
       "value": 22.5,
       "unit": "kha",
-      "context": "comparison between extracted rice area (LR_Rice) and agricultural statistical area for Heilongjiang Province from 2010 to 2022",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_d8c8859751b63e3e_qr5",
-      "evidence": {
-        "section": "Experimental Results and Analysis",
-        "original_text": "In order to validate the accuracy of the LR-based rice distribution map for HLJ from 2010 to 2022, we calculated a confusion matrix using as an example a visually interpreted ground-referenced real sample and an automatically generated sample. From this matrix, OA and Kappa coefficients were calculated to evaluate the accuracy of LR_Rice, as shown in Table 3. In the rice classification task results, OA represents the percentage of total pixels that were correctly classified as rice or non-rice. The closer the OA value is to 1, the higher was the overall accuracy of rice classification. Kappa coefficient was used to measure the accuracy and robustness of the model in distinguishing between rice and non-rice pixels. A value closer to 1 means a higher match between the classification results and the real situation, and the better classification performance of the model. The results showed that the accuracy of the rice distribution maps for those thirteen years was relatively stable, with OA values greater than 0.97 and Kappa values greater than 0.95, confirming the LR algorithm’s excellent performance with the HLJ rice mapping data."
-      },
-      "confidence": 0.98,
-      "quantity": "overall accuracy",
-      "value": 0.97,
-      "unit": null,
-      "context": "rice distribution maps for Heilongjiang Province from 2010 to 2022 using LR algorithm, validated with confusion matrix",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_d8c8859751b63e3e_qr6",
-      "evidence": {
-        "section": "Experimental Results and Analysis",
-        "original_text": "In order to validate the accuracy of the LR-based rice distribution map for HLJ from 2010 to 2022, we calculated a confusion matrix using as an example a visually interpreted ground-referenced real sample and an automatically generated sample. From this matrix, OA and Kappa coefficients were calculated to evaluate the accuracy of LR_Rice, as shown in Table 3. In the rice classification task results, OA represents the percentage of total pixels that were correctly classified as rice or non-rice. The closer the OA value is to 1, the higher was the overall accuracy of rice classification. Kappa coefficient was used to measure the accuracy and robustness of the model in distinguishing between rice and non-rice pixels. A value closer to 1 means a higher match between the classification results and the real situation, and the better classification performance of the model. The results showed that the accuracy of the rice distribution maps for those thirteen years was relatively stable, with OA values greater than 0.97 and Kappa values greater than 0.95, confirming the LR algorithm’s excellent performance with the HLJ rice mapping data."
-      },
-      "confidence": 0.98,
-      "quantity": "Kappa coefficient",
-      "value": 0.95,
-      "unit": null,
-      "context": "rice distribution maps for Heilongjiang Province from 2010 to 2022 using LR algorithm, validated with confusion matrix",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_d8c8859751b63e3e_qr7",
-      "evidence": {
-        "section": "Experimental Results and Analysis",
-        "original_text": "The obtained agricultural census data were compared with LR to generate maps of the rice area in Heilongjiang Province from 2010 to 2022, and the results are shown in Figure 8. The coefficient of determination R[2] between the rice area obtained based on LR_Rice and the statistical data was 0.9915, and the RMSE was 22.5 kha, and the two showed an obvious linear relationship, confirming that the agricultural statistics were consistent with and the rice area maps obtained with LR_Rice, reflecting the good classification performance of the LR algorithm."
-      },
-      "confidence": 0.98,
-      "quantity": "coefficient of determination (R²)",
-      "value": 0.9915,
-      "unit": null,
-      "context": "comparison between LR_Rice mapping area and agricultural statistical area for Heilongjiang Province from 2010 to 2022",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_d8c8859751b63e3e_qr8",
-      "evidence": {
-        "section": "Experimental Results and Analysis",
-        "original_text": "The obtained agricultural census data were compared with LR to generate maps of the rice area in Heilongjiang Province from 2010 to 2022, and the results are shown in Figure 8. The coefficient of determination R[2] between the rice area obtained based on LR_Rice and the statistical data was 0.9915, and the RMSE was 22.5 kha, and the two showed an obvious linear relationship, confirming that the agricultural statistics were consistent with and the rice area maps obtained with LR_Rice, reflecting the good classification performance of the LR algorithm."
-      },
-      "confidence": 0.98,
-      "quantity": "RMSE",
-      "value": 22.5,
-      "unit": "kha",
-      "context": "comparison between LR_Rice mapping area and agricultural statistical area for Heilongjiang Province from 2010 to 2022",
+      "context": "LR_Rice extracted area compared with agricultural statistical area for Heilongjiang Province from 2010 to 2022",
       "result_type": "main_result"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_d8c8859751b63e3e_p1",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "section": "4. Experimental Results and Analysis",
+        "original_text": "In this study, four different regions were selected for comparative analysis of the multi-year rice distribution map extracted by the LR algorithm (LR_Rice) and the four other rice-thematic maps (CLCD_Rice, Han_Rice, Xuan_Rice, PSPR _Rice), as shown in Figure 6, uniformly distributed over the main rice production areas of Heilongjiang Province. Taking the Landsat image as a benchmark, it can be clearly seen that Han_Rice at 500 m includes obvious large misclassification and omission phenomena. CLCD_Rice at 30 m captures the overall rough distribution pattern in a, c, but it makes a lot of omission errors with b, d. WH_Rice at 30 m shows some similarity to LR_Rice, but WH_Rice is affected by cloud occlusion and striping in the early stages, and detailed local features are lost in LR_Rice. WH_Rice is affected by cloud obscuration and striping, losing local detail, and LR_Rice is clearer and more complete. Comparison of LR_Rice in 2012 and 2022 with Xuan_Rice (labeled in the blue box) confirmed the successful spatial distribution mapping achieved using LR_Rice; the rice field plots showed a very regular structure and shape, and the road information was more complete. In Figure 7, the 2015 PSPR _Rice image marked in the red box is compared with LR_Rice and Xuan_Rice for 2014 and 2016, confirming that PSPR _Rice can better recognize the spatial details of rice than Xuan_Rice, and the extracted information such as water bodies and forest land is more complete. The classification details of LR_Rice across the four regions are more exhaustive, showing higher consistency with the rice distribution in the Landsat images and better overall performance. In summary, the LR algorithm provides higher usability and reliability."
       },
       "confidence": 0.95,
-      "metric": "overall accuracy and Kappa coefficient",
-      "compared_to": "four existing rice mapping products"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_d8c8859751b63e3e_p2",
-      "evidence": {
-        "section": "Experimental Results and Analysis",
-        "original_text": "Taking the Landsat image as a benchmark, it can be clearly seen that Han_Rice at 500 m includes obvious large misclassification and omission phenomena. CLCD_Rice at 30 m captures the overall rough distribution pattern in a, c, but it makes a lot of omission errors with b, d. WH_Rice at 30 m shows some similarity to LR_Rice, but WH_Rice is affected by cloud occlusion and striping in the early stages, and detailed local features are lost in LR_Rice. WH_Rice is affected by cloud obscuration and striping, losing local detail, and LR_Rice is clearer and more complete. Comparison of LR_Rice in 2012 and 2022 with Xuan_Rice (labeled in the blue box) confirmed the successful spatial distribution mapping achieved using LR_Rice; the rice field plots showed a very regular structure and shape, and the road information was more complete. In Figure 7, the 2015 PSPR _Rice image marked in the red box is compared with LR_Rice and Xuan_Rice for 2014 and 2016, confirming that PSPR _Rice can better recognize the spatial details of rice than Xuan_Rice, and the extracted information such as water bodies and forest land is more complete. The classification details of LR_Rice across the four regions are more exhaustive, showing higher consistency with the rice distribution in the Landsat images and better overall performance. In summary, the LR algorithm provides higher usability and reliability."
-      },
-      "confidence": 0.95,
-      "metric": "rice mapping spatial distribution and detail",
-      "compared_to": "CLCD_Rice, Han_Rice, Xuan_Rice, PSPR_Rice"
+      "metric": "rice mapping spatial detail and completeness",
+      "compared_to": "CLCD_Rice, Han_Rice, Xuan_Rice, PSPR_Rice, WH_Rice"
     },
     {
       "type": "claim",
@@ -564,16 +586,16 @@
         "section": "Abstract",
         "original_text": "Therefore, this study proposes a rice mapping method (LR) using Google Earth Engine (GEE), which uses Landsat images and integrates automatic generation of training samples and a machine learning algorithm, with the assistance of phenological methods. The proposed LR method initially generated rice distribution maps based on phenology, and 300 sample points were selected for meta-identification of rice images via an enhanced pixel-based phenological feature composite method (Eppf-CM) utilizing high-resolution imagery. Subsequently, the inundation frequency (F) and an improved sample point statistical feature, i.e., the ratio of change amplitude of LSWI to NDVI (RCLN), were introduced to combine EppfCM with combined consideration of vegetation phenology and surface water variation (CCVS) methods, to automate the generation of training data with the aid of phenology. The sample data were optimized by an alternate iterative method involving extraction of neighborhood information. Finally, a random forest (RF) probabilistic model trained by integrating data from different phenological periods was used for rice mapping."
       },
-      "confidence": 0.98
+      "confidence": 0.95
     },
     {
       "type": "conclusion",
       "conclusion_id": "doc_d8c8859751b63e3e_cl1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R[2] was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
+        "original_text": "To test its performance, we mapped rice distribution at 30 m resolution (“LR_Rice”) across Heilongjiang Province, China from 2010 to 2022, with annual overall accuracy (OA) and Kappa coefficients greater than 0.97 and 0.95, respectively, and compared them with four existing rice mapping products. The spatial distribution characteristics of rice cultivation extracted by the LR algorithm were accurate and the performance was optimal. In addition, the extracted area of LR_Rice was highly consistent with the agricultural statistical area; the coefficient of determination R2 was 0.9915, and the RMSE was 22.5 kha. The results show that this method can accurately obtain large-scale rice planting information, which is of great significance for food security, water resource management, and environmentally sustainable development."
       },
-      "confidence": 0.98
+      "confidence": 0.95
     },
     {
       "type": "limitation",
@@ -582,7 +604,7 @@
         "section": "Discussion",
         "original_text": "In this study, we realized high-precision rice mapping using object-assisted integrated training sample automatic generation and machine learning algorithms, but there is still room for to improve the method’s performance, which we will further explore in the subsequent research. Currently, the following observations should be noted: (1) The LR algorithm focuses on extracting single-season rice at high latitudes, while double- or even triple-season rice cropping systems are more common in subtropical and tropical regions. These multi-season rice cropping systems have unique climatic characteristics and can often include multiple flooding and transplanting periods. Therefore, in future studies we will consider optimizing and validating the LR method in multi-season rice growing regions; (2) Existing products offering rice mapping of northeast China use data for discrete years and most of them have low resolution. In this study, rice distribution maps with 30 m resolution were generated only for 2010–2022 in HLJ. It is important to extend the analysis timeframe into earlier eras to reveal changes in planting density over longer time scales; (3) This study validated the results using existing thematic maps of rice and official statistics, confirming their good spatial coverage and temporal consistency and effectively supporting the assessment of the methodology. Future studies can further enhance the credibility and applicability of the model by introducing more independent validation data; (4) In this study, an RF model was used to classify rice, and a number of classification performance indexes were calculated, but there were still shortcomings in the importance analysis of the variables. The lack of detailed analysis of the contribution of each input variable to the classification results, in particular the lack of an “information gain” result ranked by importance of the variables, limited an in-depth understanding of the model’s decision-making mechanism. Furthermore, the nfeatures value of the RF model was not finely optimized, which may have affected the stability and generalization ability of the model. (5) Classification errors in this study were mainly concentrated at the junctions of rice and other ground objects, and the classification accuracy of RF model may be unstable in other, more complex scenes. However, although we calculated and provide the confusion matrix, the specific factors leading to false positives (FP) and false negatives (FN) have not been explored in depth; these may relate to environmental conditions or other spatial features. Furthermore, the spatial distribution characteristics of misclassification were not analyzed in depth, which limits our understanding of the causes of classification errors and the development of optimization strategies."
       },
-      "confidence": 0.97
+      "confidence": 0.93
     },
     {
       "type": "future_work",
@@ -591,7 +613,7 @@
         "section": "Conclusions",
         "original_text": "In view of the limitations of this study, future work will include variable importance analysis, quantifying the contribution of each input variable to the model decision using methods such as Gini importance or mean reduction accuracy, integrating soil moisture data or regional soil databases to more comprehensively consider the impact of soil variables on rice classification. In addition, we will combine geographical weighted regression (GWR), spatial error analysis, and multi-temporal remote sensing data to deeply explore the spatial distribution characteristics of misclassification and analyze the influence of different environmental conditions on classification accuracy, in order to optimize classification strategies and improve the stability and adaptability of the model. In terms of model optimization, we will carry out further tuning of hyperparameters, comprehensively analyzing the OOB error curve to determine the optimal value range of nfeatures, exploring the adaptability of parameters and the features of data from different regions to enhance the robustness and generalization ability of the model. These improvements should further improve the reliability and accuracy of the proposed method, aiming to provide more solid technical support for rice mapping research."
       },
-      "confidence": 0.97
+      "confidence": 0.94
     }
   ]
 }

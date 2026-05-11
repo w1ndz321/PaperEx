@@ -9,26 +9,20 @@
     "introduction": "Satellite images captured by high-altitude sensors differ significantly from daily images taken by ordinary ground cameras. The overhead perspective of satellite images provides a macroscopic view that encompasses extensive regional topography, building layouts, and road networks. street-view images, on the other hand, are captured by mobile phones or vehicle-mounted cameras, providing a ground-level observation the scene. In this study, we address the task of cross-view synthesis, especially satellite-to-street view synthesis, which is an important and challenging computer vision task that has received increasing attention in recent years Shi et al. (2022); Qian et al. (2023); Lu et al. (2020). Generating realistic street-view images from corresponding satellite images through cross-view synthesis can benefit various applications, such as cross-view geolocalization Li et al. (2024a); Toker et al. (2021), urban building attribute recognition Ye et al. (2024b), and 3D scene reconstruction Li et al. (2024c). \n\nDue to the significant differences in viewpoints and imaging methods, the overlapping information between different perspectives is very limited Tang et al. (2019); Regmi & Borji (2018); Ye et al. (2024c;a), as shown in Figure 1 (a). This creates a substantial domain gap between satellite and street-view images, making the synthesis task highly challenging Lu et al. (2020); Shi et al. (2022). Consequently, some studies have explored the use of additional ground truth semantic segmentation maps as auxiliary conditions for models to improve the synthesis results Zhai et al. (2017); Regmi & Borji (2018); Tang et al. (2019); Wu et al. (2022). However, this essentially generates \n\n> _∗_ These authors contributed equally to this work. \n\n> _†_ Corresponding author(s). E-mail(s):heconghui@pjlab.org.cn \n\n1 \n\nPreprint. \n\nimages from semantic maps and does not truly accomplish satellite-to-street cross-modal generation. Other studies have explored various satellite-to-street projection or transformation methods, utilizing geometric structure priors derived from satellite images to enhance the layout and structure of synthesized street-view panoramas Lu et al. (2020); Toker et al. (2021); Shi et al. (2022); Qian et al. (2023). However, there has been limited exploration of the fidelity and consistency of textures in cross-modal synthesis between satellite images and street-view panoramas. \n\nFurthermore, existing satellite-to-street view synthesis methods are mostly based on Generative Adversarial Networks (GANs), which often result in poor image quality and unrealistic textures in the synthesized results, as shown in Figure 1 (b). \n\nRecently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of streetview images. However, existing methods utilize similar-view images (e.g., sketches, segmentation maps) as inputs to control the structure or texture of the generated results. The different modality domains of satellite and street-view images limit the applicability of these methods in cross-view synthesis tasks. As shown in Figure 1(b), the domain gap results in synthesized images that are often realistic yet inconsistent, with significant differences between the synthesized street-view images and the actual corresponding satellite content. \n\n\nFigure 1: Illustration of the satellite-to-street view synthesis task. (a) In cross-view scenarios, the satellite view and street view differ significantly, with limited overlapping information, posing a serious challenge to the satellite-to-street view synthesis task. (b) Compared with existing methods using GANs (e.g., Sat2Density Qian et al. (2023)) or diffusion models (e.g., ControlNet Zhang et al. (2023a)), CrossViewDiff is capable of synthesizing more realistic street-view images with better perceptual quality and consistency with Ground Truth. \n\nFurthermore, existing cross-view generation studies Lu et al. (2020); Toker et al. (2021); Regmi & Borji (2018) commonly use image generation metrics such as SSIM Wang et al. (2004) and PSNR to evaluate the content consistency of synthesized images, as well as FID Heusel et al. (2017) and KID Bi´nkowski et al. (2018) to assess image realism. However, these traditional metrics often fall short in aligning with human perception and lack transparency and interpretability. With the development of multimodal large models (MLLM) OpenAI (2023); Team et al. (2023); Liu et al. (2024); Li et al. (2023b), an increasing number of studies have employed multimodal large models like GPT-4o OpenAI (2023) for assessing the quality of synthesized images Cho et al. (2023); Huang et al. (2023a); Wu et al. (2024); Zhang et al. (2023b), achieving interpretable and highly humanaligned scoring Ku et al. (2023); Peng et al. (2024). However, prior use of multimodal scoring \n\n2 \n\nPreprint. \n\nhas predominantly been in text-to-image synthesis or editing tasks, with no studies applying it to cross-view synthesis tasks. \n\nIn this work, we propose CrossViewDiff, a cross-view diffusion model for satellite-to-street view synthesis. Based on the geometric and imaging relationships between satellite and street views, we construct structural and texture controls from satellite images and have designed a cross-view control guided denoising process to enhance the structural and texture fidelity of synthesized panoramic images. Additionally, we extend the traditional satellite-to-street view synthesis task by exploring different data sources, such as text, map data, building height data and multiple-temporal satellite images. In our experiments, we additionally utilize GPT-4o OpenAI (2023) to score synthesized street-view images as a supplement to standard metrics, aiming for a more comprehensive evaluation of the generated results. Experimental results demonstrate that CrossViewDiff excels on three public cross-view datasets, generating realistic and content-consistent images, showcasing outstanding synthesis quality. \n\nThe main contributions of this work are summarized as follows: \n\n- We design satellite scene structure estimation and cross-view texture mapping modules to overcome the significant discrepancy between satellite and street views, constructing structure and texture controls for street-view image synthesis. \n\n- We propose a novel cross-view control guided denoising process that incorporates the structure and texture controls via an enhanced cross-view attention module to achieve more realistic street-view panorama synthesis. \n\n- We conduct extensive experiments in street-view image synthesis across a variety of scenes (rural, suburban, and urban), explore additional data sources (e.g. text, maps, multitemporal images, etc.), and design a GPT-based evaluation metric as a supplement to standard metrics. \n\n- CrossViewDiff outperforms state-of-the-art methods on three public cross-view datasets, achieving an average increase of 9.0% in SSIM, 39.0% in FID, and 35.5% in the GPTbased score.",
     "primary_discipline": {
       "level1": "计算机科学技术",
-      "level2": null,
-      "level3": null
+      "level2": "计算机应用",
+      "level3": "计算机图像处理"
     },
-    "secondary_disciplines": [
-      {
-        "level1": "测绘科学技术",
-        "level2": null,
-        "level3": null
-      }
-    ],
+    "secondary_disciplines": null,
     "keywords": [
-      "cross-view synthesis",
-      "satellite-to-street view",
-      "diffusion model",
+      "satellite-to-street view synthesis",
+      "cross-view diffusion model",
       "image generation",
-      "panorama synthesis"
+      "computer vision",
+      "multimodal evaluation"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:48:52.587807+00:00",
+      "extraction_timestamp": "2026-05-11T02:09:01.321990+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -40,45 +34,45 @@
       "concept_id": "doc_28e6748302e548a5_c1",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "Satellite-to-street view synthesis aims at generating a realistic street-view image from its corresponding satellite-view image. Although stable diffusion models have exhibit remarkable performance in a variety of image generation applications, their reliance on similar-view inputs to control the generated structure or texture restricts their application to the challenging cross-view synthesis task. In this work, we propose CrossViewDiff, a cross-view diffusion model for satelliteto-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "In this work, we propose CrossViewDiff, a cross-view diffusion model for satellite-to-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
       },
-      "confidence": 0.98,
-      "term": "satellite-to-street view synthesis",
-      "normalized": "卫星到街景视图合成",
-      "std_label": null
+      "confidence": 0.99,
+      "term": "CrossViewDiff",
+      "normalized": "跨视图扩散模型",
+      "std_label": "CrossViewDiff"
     },
     {
       "type": "concept",
       "concept_id": "doc_28e6748302e548a5_c2",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "In this work, we propose CrossViewDiff, a cross-view diffusion model for satelliteto-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "Satellite-to-street view synthesis aims at generating a realistic street-view image from its corresponding satellite-view image. Although stable diffusion models have exhibit remarkable performance in a variety of image generation applications, their reliance on similar-view inputs to control the generated structure or texture restricts their application to the challenging cross-view synthesis task. In this work, we propose CrossViewDiff, a cross-view diffusion model for satellite-to-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis."
       },
-      "confidence": 0.99,
-      "term": "CrossViewDiff",
-      "normalized": "CrossViewDiff",
-      "std_label": null
+      "confidence": 0.98,
+      "term": "satellite-to-street view synthesis",
+      "normalized": "卫星到街景合成",
+      "std_label": "satellite-to-street view synthesis"
     },
     {
       "type": "concept",
       "concept_id": "doc_28e6748302e548a5_c3",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics."
       },
-      "confidence": 0.95,
+      "confidence": 0.97,
       "term": "satellite scene structure estimation",
       "normalized": "卫星场景结构估计",
-      "std_label": null
+      "std_label": "structure estimation"
     },
     {
       "type": "concept",
       "concept_id": "doc_28e6748302e548a5_c4",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics."
       },
-      "confidence": 0.95,
+      "confidence": 0.97,
       "term": "cross-view texture mapping",
       "normalized": "跨视图纹理映射",
       "std_label": "CVTM"
@@ -88,97 +82,85 @@
       "concept_id": "doc_28e6748302e548a5_c5",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task."
       },
-      "confidence": 0.94,
+      "confidence": 0.96,
       "term": "cross-view control guided denoising process",
       "normalized": "跨视图控制引导的去噪过程",
-      "std_label": null
+      "std_label": "denoising process"
     },
     {
       "type": "concept",
       "concept_id": "doc_28e6748302e548a5_c6",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
       },
-      "confidence": 0.94,
-      "term": "enhanced cross-view attention module",
-      "normalized": "增强的跨视图注意力模块",
-      "std_label": null
+      "confidence": 0.95,
+      "term": "GPT-based scoring method",
+      "normalized": "GPT评分方法",
+      "std_label": "GPT scoring"
     },
     {
       "type": "concept",
       "concept_id": "doc_28e6748302e548a5_c7",
       "evidence": {
-        "section": "ABSTRACT",
-        "original_text": "To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "section": "INTRODUCTION",
+        "original_text": "Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of street-view images. However, existing methods utilize similar-view images (e.g., sketches, segmentation maps) as inputs to control the structure or texture of the generated results. The different modality domains of satellite and street-view images limit the applicability of these methods in cross-view synthesis tasks."
       },
-      "confidence": 0.93,
-      "term": "GPT-based scoring method",
-      "normalized": "基于GPT的评分方法",
-      "std_label": null
+      "confidence": 0.98,
+      "term": "diffusion models",
+      "normalized": "扩散模型",
+      "std_label": "diffusion models"
     },
     {
       "type": "concept",
       "concept_id": "doc_28e6748302e548a5_c8",
       "evidence": {
         "section": "INTRODUCTION",
-        "original_text": "Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of streetview images. However, existing methods utilize similar-view images (e.g., sketches, segmentation maps) as inputs to control the structure or texture of the generated results. The different modality domains of satellite and street-view images limit the applicability of these methods in cross-view synthesis tasks. As shown in Figure 1(b), the domain gap results in synthesized images that are often realistic yet inconsistent, with significant differences between the synthesized street-view images and the actual corresponding satellite content."
+        "original_text": "Furthermore, existing satellite-to-street view synthesis methods are mostly based on Generative Adversarial Networks (GANs), which often result in poor image quality and unrealistic textures in the synthesized results, as shown in Figure 1 (b). Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of street-view images."
       },
       "confidence": 0.97,
-      "term": "diffusion model",
-      "normalized": "扩散模型",
-      "std_label": null
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_28e6748302e548a5_c9",
-      "evidence": {
-        "section": "INTRODUCTION",
-        "original_text": "Furthermore, existing satellite-to-street view synthesis methods are mostly based on Generative Adversarial Networks (GANs), which often result in poor image quality and unrealistic textures in the synthesized results, as shown in Figure 1 (b). Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of streetview images. However, existing methods utilize similar-view images (e.g., sketches, segmentation maps) as inputs to control the structure or texture of the generated results. The different modality domains of satellite and street-view images limit the applicability of these methods in cross-view synthesis tasks. As shown in Figure 1(b), the domain gap results in synthesized images that are often realistic yet inconsistent, with significant differences between the synthesized street-view images and the actual corresponding satellite content."
-      },
-      "confidence": 0.96,
       "term": "Generative Adversarial Networks",
       "normalized": "生成对抗网络",
       "std_label": "GANs"
     },
     {
       "type": "concept",
-      "concept_id": "doc_28e6748302e548a5_c10",
+      "concept_id": "doc_28e6748302e548a5_c9",
       "evidence": {
-        "section": "INTRODUCTION",
-        "original_text": "Satellite images captured by high-altitude sensors differ significantly from daily images taken by ordinary ground cameras. The overhead perspective of satellite images provides a macroscopic view that encompasses extensive regional topography, building layouts, and road networks. street-view images, on the other hand, are captured by mobile phones or vehicle-mounted cameras, providing a ground-level observation the scene. In this study, we address the task of cross-view synthesis, especially satellite-to-street view synthesis, which is an important and challenging computer vision task that has received increasing attention in recent years Shi et al. (2022); Qian et al. (2023); Lu et al. (2020). Generating realistic street-view images from corresponding satellite images through cross-view synthesis can benefit various applications, such as cross-view geolocalization Li et al. (2024a); Toker et al. (2021), urban building attribute recognition Ye et al. (2024b), and 3D scene reconstruction Li et al. (2024c). Due to the significant differences in viewpoints and imaging methods, the overlapping information between different perspectives is very limited Tang et al. (2019); Regmi & Borji (2018); Ye et al. (2024c;a), as shown in Figure 1 (a). This creates a substantial domain gap between satellite and street-view images, making the synthesis task highly challenging Lu et al. (2020); Shi et al. (2022). Consequently, some studies have explored the use of additional ground truth semantic segmentation maps as auxiliary conditions for models to improve the synthesis results Zhai et al. (2017); Regmi & Borji (2018); Tang et al. (2019); Wu et al. (2022). However, this essentially generates images from semantic maps and does not truly accomplish satellite-to-street cross-modal generation."
+        "section": "METHODS",
+        "original_text": "Based on satellite scene estimation, we obtain binary maps to serve as structural controls for the street-view images. Utilizing cross-view mapping, we derive weight matrices to act as texture controls for the street-view images. Based on the characteristics of the structural and textural control information, we design an enhanced cross-view attention module to integrate both types of information, guiding the subsequent denoising process. In our enhanced cross-view attention module, let Q ∈ R hp×wp denote the Query feature from the panoramic binary map Spano, K ∈ R hs×ws denote the Key feature from the input satellite image Isate, and V ∈ R hs×ws denote the Value feature, which contain detailed texture information from the satellite image."
       },
-      "confidence": 0.98,
-      "term": "cross-view synthesis",
-      "normalized": "跨视图合成",
-      "std_label": null
+      "confidence": 0.96,
+      "term": "cross-view attention module",
+      "normalized": "跨视图注意力模块",
+      "std_label": "cross-view attention"
     },
     {
       "type": "relation",
       "relation_id": "doc_28e6748302e548a5_r1",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes. The code and models of this work will be released at https://opendatalab.github.io/CrossViewDiff/. In this work, we propose CrossViewDiff, a cross-view diffusion model for satellite-to-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis."
       },
-      "confidence": 0.95,
-      "head": "doc_28e6748302e548a5_c2",
-      "relation_type": "uses",
-      "relation_surface": "incorporates the above controls via",
-      "tail": "doc_28e6748302e548a5_c6"
+      "confidence": 0.94,
+      "head": "doc_28e6748302e548a5_c1",
+      "relation_type": "enhances",
+      "relation_surface": "outperforms current state-of-the-art",
+      "tail": "doc_28e6748302e548a5_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_28e6748302e548a5_r2",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "In this work, we propose CrossViewDiff, a cross-view diffusion model for satellite-to-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics."
       },
-      "confidence": 0.94,
-      "head": "doc_28e6748302e548a5_c2",
-      "relation_type": "enhances",
-      "relation_surface": "outperforms current state-of-the-art",
+      "confidence": 0.93,
+      "head": "doc_28e6748302e548a5_c3",
+      "relation_type": "uses",
+      "relation_surface": "design the satellite scene structure estimation",
       "tail": "doc_28e6748302e548a5_c1"
     },
     {
@@ -186,12 +168,12 @@
       "relation_id": "doc_28e6748302e548a5_r3",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "In this work, we propose CrossViewDiff, a cross-view diffusion model for satellite-to-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics."
       },
       "confidence": 0.93,
-      "head": "doc_28e6748302e548a5_c3",
-      "relation_type": "provides",
-      "relation_surface": "construct the structural and textural controls",
+      "head": "doc_28e6748302e548a5_c4",
+      "relation_type": "uses",
+      "relation_surface": "design the cross-view texture mapping",
       "tail": "doc_28e6748302e548a5_c1"
     },
     {
@@ -199,20 +181,7 @@
       "relation_id": "doc_28e6748302e548a5_r4",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
-      },
-      "confidence": 0.93,
-      "head": "doc_28e6748302e548a5_c4",
-      "relation_type": "provides",
-      "relation_surface": "construct the structural and textural controls",
-      "tail": "doc_28e6748302e548a5_c1"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_28e6748302e548a5_r5",
-      "evidence": {
-        "section": "ABSTRACT",
-        "original_text": "We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics."
       },
       "confidence": 0.92,
       "head": "doc_28e6748302e548a5_c5",
@@ -222,10 +191,10 @@
     },
     {
       "type": "relation",
-      "relation_id": "doc_28e6748302e548a5_r6",
+      "relation_id": "doc_28e6748302e548a5_r5",
       "evidence": {
         "section": "ABSTRACT",
-        "original_text": "We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for street-view image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics."
       },
       "confidence": 0.92,
       "head": "doc_28e6748302e548a5_c5",
@@ -235,49 +204,36 @@
     },
     {
       "type": "relation",
+      "relation_id": "doc_28e6748302e548a5_r6",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Furthermore, existing satellite-to-street view synthesis methods are mostly based on Generative Adversarial Networks (GANs), which often result in poor image quality and unrealistic textures in the synthesized results, as shown in Figure 1 (b). Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of street-view images."
+      },
+      "confidence": 0.91,
+      "head": "doc_28e6748302e548a5_c7",
+      "relation_type": "compares",
+      "relation_surface": "demonstrated superior performance",
+      "tail": "doc_28e6748302e548a5_c8"
+    },
+    {
+      "type": "relation",
       "relation_id": "doc_28e6748302e548a5_r7",
       "evidence": {
         "section": "ABSTRACT",
         "original_text": "To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
       },
-      "confidence": 0.91,
-      "head": "doc_28e6748302e548a5_c7",
+      "confidence": 0.9,
+      "head": "doc_28e6748302e548a5_c6",
       "relation_type": "supplements",
       "relation_surface": "as a supplement to standard evaluation metrics",
-      "tail": "doc_28e6748302e548a5_c1"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_28e6748302e548a5_r8",
-      "evidence": {
-        "section": "INTRODUCTION",
-        "original_text": "Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of streetview images. However, existing methods utilize similar-view images (e.g., sketches, segmentation maps) as inputs to control the structure or texture of the generated results. The different modality domains of satellite and street-view images limit the applicability of these methods in cross-view synthesis tasks. As shown in Figure 1(b), the domain gap results in synthesized images that are often realistic yet inconsistent, with significant differences between the synthesized street-view images and the actual corresponding satellite content."
-      },
-      "confidence": 0.9,
-      "head": "doc_28e6748302e548a5_c8",
-      "relation_type": "enhances",
-      "relation_surface": "demonstrated superior performance",
-      "tail": "doc_28e6748302e548a5_c1"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_28e6748302e548a5_r9",
-      "evidence": {
-        "section": "INTRODUCTION",
-        "original_text": "Furthermore, existing satellite-to-street view synthesis methods are mostly based on Generative Adversarial Networks (GANs), which often result in poor image quality and unrealistic textures in the synthesized results, as shown in Figure 1 (b). Recently, diffusion models have demonstrated superior performance in various content generation applications, garnering widespread attention Song et al. (2021); Ho et al. (2020); Balaji et al. (2022); Ramesh et al. (2022); Saharia et al. (2022b). Models like ControlNet enable controllable image synthesis based on various visual conditions Zhang et al. (2023a); Huang et al. (2023b); Zhao et al. (2023); Ruiz et al. (2023). For satellite-to-street view synthesis, one potential solution is to treat this task as a controllable image synthesis task, using satellite images to control the synthesis of streetview images. However, existing methods utilize similar-view images (e.g., sketches, segmentation maps) as inputs to control the structure or texture of the generated results. The different modality domains of satellite and street-view images limit the applicability of these methods in cross-view synthesis tasks. As shown in Figure 1(b), the domain gap results in synthesized images that are often realistic yet inconsistent, with significant differences between the synthesized street-view images and the actual corresponding satellite content."
-      },
-      "confidence": 0.89,
-      "head": "doc_28e6748302e548a5_c9",
-      "relation_type": "compares",
-      "relation_surface": "often result in poor image quality and unrealistic textures",
-      "tail": "doc_28e6748302e548a5_c8"
+      "tail": "doc_28e6748302e548a5_c2"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_28e6748302e548a5_d1",
       "evidence": {
-        "section": "4.1 DATASET",
-        "original_text": "CVUSA Zhai et al. (2017) is a standard large-scale cross-view benchmark, primarily featuring rural scenes such as roads, grasslands, and forests. This dataset comprises centrally aligned satellite and street-view images collected from various locations across the United States, which is randomly split into training and test sets in an 8:2 ratio."
+        "section": "4 EXPERIMENTS",
+        "original_text": "In our experiments, we used three popular cross-view datasets to evaluate the synthesis results, i.e., CVUSA Zhai et al. (2017), CVACT Liu & Li (2019) and OmniCity Li et al. (2023c). These three datasets encompass rural, suburban, and urban scenes, providing a robust benchmark for comprehensively evaluating the performance of satellite-to-street view synthesis. Furthermore, in addition to the original satellite imagery and building height data provided by OmniCity, we supplemented multimodal data including text, maps, and multi-temporal satellite imagery, providing data support for street-view synthesis tasks using additional multimodal data sources.\n\nCVUSA Zhai et al. (2017) is a standard large-scale cross-view benchmark, primarily featuring rural scenes such as roads, grasslands, and forests. This dataset comprises centrally aligned satellite and street-view images collected from various locations across the United States, which is randomly split into training and test sets in an 8:2 ratio.\n\nCVACT Liu & Li (2019) is a widely used cross-view dataset that includes satellite and street-view images from Canberra, Australia. This dataset mainly consists of suburban scenes with relatively low buildings and open views. Unlike CVUSA dataset, the training and test sets of CVACT dataset are divided by region.\n\nOmniCity Li et al. (2023c) is an urban cross-view dataset that includes street-view and satellite images from New York, USA. The primary scenes in OmniCity consist of dense urban buildings, and street-view images that are heavily obstructed by trees or vehicles will be filtered out. OmniCity is divided into training and test data by region.\n\nAdditionally, the orientation towards the north in both street view and satellite imagery is a critical attribute for cross-view datasets. In all three datasets, the north direction in satellite images is at the top of the image. In CVUSA Zhai et al. (2017) and CVACT Liu & Li (2019), the north direction in street-view images is in the center column, while in OmniCity Li et al. (2023c), it is in the first column."
       },
       "confidence": 0.95,
       "name": "CVUSA",
@@ -288,7 +244,7 @@
       "type": "dataset",
       "dataset_id": "doc_28e6748302e548a5_d2",
       "evidence": {
-        "section": "4.1 DATASET",
+        "section": "4 EXPERIMENTS",
         "original_text": "CVACT Liu & Li (2019) is a widely used cross-view dataset that includes satellite and street-view images from Canberra, Australia. This dataset mainly consists of suburban scenes with relatively low buildings and open views. Unlike CVUSA dataset, the training and test sets of CVACT dataset are divided by region."
       },
       "confidence": 0.95,
@@ -300,8 +256,8 @@
       "type": "dataset",
       "dataset_id": "doc_28e6748302e548a5_d3",
       "evidence": {
-        "section": "4.1 DATASET",
-        "original_text": "OmniCity Li et al. (2023c) is an urban cross-view dataset that includes street-view and satellite images from New York, USA. The primary scenes in OmniCity consist of dense urban buildings, and street-view images that are heavily obstructed by trees or vehicles will be filtered out. OmniCity is divided into training and test data by region. Additionally, the orientation towards the north in both street view and satellite imagery is a critical attribute for cross-view datasets. In all three datasets, the north direction in satellite images is at the top of the image. In CVUSA Zhai et al. (2017) and CVACT Liu & Li (2019), the north direction in street-view images is in the center column, while in OmniCity Li et al. (2023c), it is in the first column."
+        "section": "4 EXPERIMENTS",
+        "original_text": "OmniCity Li et al. (2023c) is an urban cross-view dataset that includes street-view and satellite images from New York, USA. The primary scenes in OmniCity consist of dense urban buildings, and street-view images that are heavily obstructed by trees or vehicles will be filtered out. OmniCity is divided into training and test data by region.\n\nFurthermore, in addition to the original satellite imagery and building height data provided by OmniCity, we supplemented multimodal data including text, maps, and multi-temporal satellite imagery, providing data support for street-view synthesis tasks using additional multimodal data sources."
       },
       "confidence": 0.95,
       "name": "OmniCity",
@@ -316,7 +272,7 @@
         "original_text": "To validate the effectiveness of GPT-based scoring, we invited ten human users to perform the same scoring task and measured the consistency between their scores and those generated by GPT. We provided thorough training to the users to ensure they fully understood the satellite-to-street view generation task. The users’ scoring tasks and schemes were aligned with the GPT scoring. We ensured that each generated image was scored by at least two human users. Due to the large volume of cross-view datasets and the cost of both user and GPT scoring, we randomly sampled 1000 images from the evaluation sets of each dataset for assessment. In addition to our method, we selected the best comparative results from GAN and diffusion methods for evaluation. A total of 9000 images were used for user scoring, and we measured the agreement between these scores and the GPT scores."
       },
       "confidence": 0.9,
-      "name": "GPT-based evaluation dataset",
+      "name": "GPT-based scoring dataset",
       "modality": "image",
       "domain": "computer vision, cross-view synthesis"
     },
@@ -324,23 +280,23 @@
       "type": "data_specification",
       "ds_id": "doc_28e6748302e548a5_ds1",
       "evidence": {
-        "section": "3.4 GPT-BASED EVALUATION METHOD FOR CROSS-VIEW SYNTHESIS",
-        "original_text": "Firstly, we design three key evaluation dimensions for cross-view synthesized images: Consistency, Visual and Structural Realism, and Perceptual Quality. We adopted a rating scheme, establishing a 5-level rating system with scores ranging from 1 (poor) to 5 (excellent). Consistency: This dimension evaluates the alignment of the content in synthesized images with real street-view images, including the structure and texture of buildings, the layout of roads, and the similarity of other significant landmarks, measuring the content consistency of the synthesized street-view images. Visual Realism: This evaluates the visual effect and structural reasonableness of the generated images, including the realism of color, shape, and texture, as well as the the structural integrity, assessing whether they look like real street-view images. Perceptual Quality: This evaluates the overall perceptual quality of the generated images, including aspects such as image clarity, noise level, and visual comfort, measuring the quality of the generated images. To achieve more effective GPT scoring, we employed Chain-of-Thought (CoT) and In-Context Learning (ICL) strategies Alayrac et al. (2022); Zhang et al. (2023c); Brown et al. (2020); Peng et al. (2024) to enhance its stability and effectiveness. Firstly, we provided GPT-4o with a small number of effective human-scored examples from multiple users, enabling the model to effectively learn human scoring patterns. Secondly, by enabling the large model to explain the reasoning behind its scores, we have introduced an element of internal reflection to the evaluation process. Additionally, we used GPT-4o to act as Evaluator A and Inspector B. After receiving the initial scores and reasons from Evaluator A, Inspector B will assess the reasonableness of these scores and make the final scoring decision. If the scores are deemed reasonable, they will be retained; otherwise, Inspector B will provide new scoring results and justifications."
+        "section": "4.2 EXPERIMENTAL SETTING",
+        "original_text": "Following previous studies Lu et al. (2020); Toker et al. (2021); Regmi & Borji (2018), we used common metrics such as SSIM Wang et al. (2004), SD, and PSNR to evaluate the content consistency of synthesized images, and FID Heusel et al. (2017) and KID Bi´nkowski et al. (2018) to assess image realism. Furthermore, in Section 4.3.2, we use GPT-4o to evaluate the synthesized street view images across three dimensions: consistency, visual realism, and perceptual quality."
       },
-      "confidence": 0.9,
+      "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "GPT-based scoring protocol for evaluating synthesized street-view images across three dimensions: Consistency, Visual Realism, and Perceptual Quality."
+      "description": "Standardized evaluation metrics for cross-view synthesis tasks"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_28e6748302e548a5_ds2",
       "evidence": {
-        "section": "4.2 EXPERIMENTAL SETTING",
-        "original_text": "Following previous studies Lu et al. (2020); Toker et al. (2021); Regmi & Borji (2018), we used common metrics such as SSIM Wang et al. (2004), SD, and PSNR to evaluate the content consistency of synthesized images, and FID Heusel et al. (2017) and KID Bi´nkowski et al. (2018) to assess image realism."
+        "section": "3.4 GPT-BASED EVALUATION METHOD FOR CROSS-VIEW SYNTHESIS",
+        "original_text": "Firstly, we design three key evaluation dimensions for cross-view synthesized images: Consistency, Visual and Structural Realism, and Perceptual Quality. We adopted a rating scheme, establishing a 5-level rating system with scores ranging from 1 (poor) to 5 (excellent).\n\nConsistency: This dimension evaluates the alignment of the content in synthesized images with real street-view images, including the structure and texture of buildings, the layout of roads, and the similarity of other significant landmarks, measuring the content consistency of the synthesized street-view images.\n\nVisual Realism: This evaluates the visual effect and structural reasonableness of the generated images, including the realism of color, shape, and texture, as well as the the structural integrity, assessing whether they look like real street-view images.\n\nPerceptual Quality: This evaluates the overall perceptual quality of the generated images, including aspects such as image clarity, noise level, and visual comfort, measuring the quality of the generated images.\n\nTo achieve more effective GPT scoring, we employed Chain-of-Thought (CoT) and In-Context Learning (ICL) strategies Alayrac et al. (2022); Zhang et al. (2023c); Brown et al. (2020); Peng et al. (2024) to enhance its stability and effectiveness. Firstly, we provided GPT-4o with a small number of effective human-scored examples from multiple users, enabling the model to effectively learn human scoring patterns. Secondly, by enabling the large model to explain the reasoning behind its scores, we have introduced an element of internal reflection to the evaluation process. Additionally, we used GPT-4o to act as Evaluator A and Inspector B. After receiving the initial scores and reasons from Evaluator A, Inspector B will assess the reasonableness of these scores and make the final scoring decision. If the scores are deemed reasonable, they will be retained; otherwise, Inspector B will provide new scoring results and justifications."
       },
       "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "Standardized evaluation metrics for cross-view synthesis tasks, including SSIM, PSNR, FID, and KID."
+      "description": "GPT-based scoring protocol for synthesized images"
     },
     {
       "type": "data_specification",
@@ -351,18 +307,29 @@
       },
       "confidence": 0.95,
       "spec_type": "env_requirement",
-      "description": "Training and inference hardware and software configuration for CrossViewDiff."
+      "description": "Computational environment and training configuration for CrossViewDiff"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_28e6748302e548a5_ds4",
+      "evidence": {
+        "section": "4.2 EXPERIMENTAL SETTING",
+        "original_text": "We conduct our experiments at a resolution of 1024 × 256 on the CVUSA Zhai et al. (2017) and 1024 × 512 on OmniCity Li et al. (2023c) and CVACT Liu & Li (2019)."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Image resolution specifications for different datasets"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_28e6748302e548a5_ds5",
       "evidence": {
         "section": "4.1 DATASET",
         "original_text": "Additionally, the orientation towards the north in both street view and satellite imagery is a critical attribute for cross-view datasets. In all three datasets, the north direction in satellite images is at the top of the image. In CVUSA Zhai et al. (2017) and CVACT Liu & Li (2019), the north direction in street-view images is in the center column, while in OmniCity Li et al. (2023c), it is in the first column."
       },
       "confidence": 0.95,
       "spec_type": "metadata_standard",
-      "description": "Cross-view dataset alignment requirement: north orientation must be specified and consistent."
+      "description": "North orientation alignment requirement for cross-view datasets"
     },
     {
       "type": "method",
@@ -384,29 +351,29 @@
       },
       "confidence": 0.95,
       "name": "satellite scene structure estimation",
-      "method_type": "protocol"
+      "method_type": "preprocessing"
     },
     {
       "type": "method",
       "method_id": "doc_28e6748302e548a5_m3",
       "evidence": {
         "section": "3.2 STRUCTURE AND TEXTURE CONTROLS FOR CROSS-VIEW SYNTHESIS",
-        "original_text": "Previous methods typically utilize the global texture information of satellite images for panorama synthesis. In contrast, we propose Cross-View Texture Mapping (CVTM), which achieves localized texture control by computing the mapping relationship between each coordinate of the panorama and the satellite image. Based on the 3D voxel grid, we calculate the elevation θ and azimuth ϕ angles from the panoramic image coordinates. For a pixel at (x pano, y pano) in the panoramic image, the angles are determined as follows: θ = (y pano − H pano/2) × π/H pano, ϕ = (x pano − W pano/2) × 2π/W pano. Here H pano and W pano denote the height and width of a panoramic image. The calculated angles, θ and ϕ, fall within the range [−π/2, π/2] and [−π, π], respectively. According to the two calculated angles, we can determine a ray starting from the center coordinate (x cen, y cen) of the 3D voxel map. The length of the ray R is the distance from its first intersection with the 3D voxel grid to the center coordinate. Based on the above information, the final mapping coordinates in the satellite image are calculated as follows: x sate = x cen + R × cos(ϕ) × cos(θ), y sate = y cen + R × sin(ϕ) × cos(θ). Consequently, we establish the pixel-wise mapping relation between each panoramic coordinate (x pano, y pano) and its corresponding satellite-view coordinate (x sate, y sate). In addition, considering the intrinsic errors in cross-view alignment and other factors in complex real-world environment, it is not enough to rely on one-to-one mapping to supplement texture information (the green arrow in Fig 2). The pixels around the mapped points in the satellite images are also valuable texture references that we need to exploit. Consequently, we further design an enhanced satellite texture mapping strategy that leverages the surroundings of the mapped points in the satellite image to enhance the texture details in the street-view image (the orange arrows in Fig 2). This technique utilizes an adaptive re-weighting mechanism based on the distance between the mapped point and other pixels in the satellite image. The values in the weight matrix are calculated as follows: Mj = sigmoid(−β × ∥p∗ − pj∥2). In this formula, p∗ indicates the coordinate (x sate, y sate) in the satellite image that is mapped from the street-view image according to formula (4)-(7). The pj represents each pixel position in the satellite image, where j is an index ranging in j ∈ [1, N], and N is the number of pixels in the satellite image. The term ∥·∥2 is the Euclidean distance. The parameter β controls the rate of change in the sigmoid function. The weight value Mj indicates the importance of pj to the mapped point p∗, which will be higher if pj is close to p∗, thus enhancing the overall realism and coherence of the street-view images. Consequently, we have obtained the weight matrix M, which reflects the texture mapping relationship between satellite and street-view images."
+        "original_text": "Previous methods typically utilize the global texture information of satellite images for panorama synthesis. In contrast, we propose Cross-View Texture Mapping (CVTM), which achieves localized texture control by computing the mapping relationship between each coordinate of the panorama and the satellite image. Based on the 3D voxel grid, we calculate the elevation θ and azimuth ϕ angles from the panoramic image coordinates. For a pixel at (x pano, y pano) in the panoramic image, the angles are determined as follows: θ = (y pano / Ĥ pano) * π - π/2, ϕ = (x pano / Ŵ pano) * 2π - π. Here Ĥ pano and Ŵ pano denote the height and width of a panoramic image. The calculated angles, θ and ϕ, fall within the range [-π/2, π/2] and [-π, π], respectively. According to the two calculated angles, we can determine a ray starting from the center coordinate (x cen, y cen) of the 3D voxel map. The length of the ray R is the distance from its first intersection with the 3D voxel grid to the center coordinate. Based on the above information, the final mapping coordinates in the satellite image are calculated as follows: x sate = x cen + R * cos(θ) * sin(ϕ), y sate = y cen + R * cos(θ) * cos(ϕ). Consequently, we establish the pixel-wise mapping relation between each panoramic coordinate (x pano, y pano) and its corresponding satellite-view coordinate (x sate, y sate). In addition, considering the intrinsic errors in cross-view alignment and other factors in complex real-world environment, it is not enough to rely on one-to-one mapping to supplement texture information (the green arrow in Fig 2). The pixels around the mapped points in the satellite images are also valuable texture references that we need to exploit. Consequently, we further design an enhanced satellite texture mapping strategy that leverages the surroundings of the mapped points in the satellite image to enhance the texture details in the street-view image (the orange arrows in Fig 2). This technique utilizes an adaptive re-weighting mechanism based on the distance between the mapped point and other pixels in the satellite image. The values in the weight matrix are calculated as follows: M_j = sigmoid(-β * ||p* - p_j||_2). In this formula, p* indicates the coordinate (x sate, y sate) in the satellite image that is mapped from the street-view image according to formula (4)-(7). The p_j represents each pixel position in the satellite image, where j is an index ranging in j ∈ [1, N], and N is the number of pixels in the satellite image. The term ||·||_2 is the Euclidean distance. The parameter β controls the rate of change in the sigmoid function. The weight value M_j indicates the importance of p_j to the mapped point p*, which will be higher if p_j is close to p*, thus enhancing the overall realism and coherence of the street-view images. Consequently, we have obtained the weight matrix M, which reflects the texture mapping relationship between satellite and street-view images."
       },
       "confidence": 0.95,
       "name": "Cross-View Texture Mapping (CVTM)",
-      "method_type": "protocol"
+      "method_type": "preprocessing"
     },
     {
       "type": "method",
       "method_id": "doc_28e6748302e548a5_m4",
       "evidence": {
         "section": "3.3 CROSS-VIEW CONTROL GUIDED DENOISING PROCESS",
-        "original_text": "Based on satellite scene estimation, we obtain binary maps to serve as structural controls for the street-view images. Utilizing cross-view mapping, we derive weight matrices to act as texture controls for the street-view images. Based on the characteristics of the structural and textural control information, we design an enhanced cross-view attention module to integrate both types of information, guiding the subsequent denoising process. In our enhanced cross-view attention module, let Q ∈ R hp×wp denote the Query feature from the panoramic binary map Spano, K ∈ R hs×ws denote the Key feature from the input satellite image Isate, and V ∈ R hs×ws denote the Value feature, which contain detailed texture information from the satellite image. Here, hp × wp and hs × ws represent the resolution of the panorama and satellite feature map, respectively. Moreover, E sate and E pano denote the satellite and panoramic encoders. Wq, Wk and Wv are projection matrices. The definitions of Q, K, V are as follows: Q = Wq · E pano(Spano), K = Wk · E sate(Isate), V = Wv · E sate(Isate). The process begins with the computation of an affinity matrix A ∈ R hpwp×hsws, reflecting the interaction between Q and K. Following this, the weight matrix derived from the previous module is down-sampled to M ∈ R hpwp×hsws and applied to each pixel within the satellite image to emphasize relevant features. This selective enhancement is crucial for the subsequent fusion of the detailed texture information from the satellite image into the panoramic feature F pano ∈ R hp×wp. The enhanced cross-view attention mechanism is formulated as follows: A = Q · K, A′ = A ⊙ M, F pano = A′ · V. In these expressions, ⊙ denotes element-wise multiplication, where the weight matrix M is applied to the affinity matrix (A) to obtain the reweighted affinity matrix (A′), emphasizing the connection between the most relevant pixels. The output z, generated at each step, is ingeniously reincorporated into the network as a pivotal conditional element. By employing z as a dynamic conditional catalyst within our cross-view diffusion architecture, we ensure that each step of the denoising process is informed by the evolving latent representation, thereby enabling a controlled and gradual transition from zt to z0. This process is meticulously orchestrated by a cross-view control guided denoising process, which integrates structural and textural knowledge extracted from I sate into the refinement of the final latent feature z, subsequently decoded through Stable Diffusion’s latent space decoder D to achieve the generated street-view panorama I pano."
+        "original_text": "Based on satellite scene estimation, we obtain binary maps to serve as structural controls for the street-view images. Utilizing cross-view mapping, we derive weight matrices to act as texture controls for the street-view images. Based on the characteristics of the structural and textural control information, we design an enhanced cross-view attention module to integrate both types of information, guiding the subsequent denoising process. In our enhanced cross-view attention module, let Q ∈ R^{hp×wp} denote the Query feature from the panoramic binary map S_pano, K ∈ R^{hs×ws} denote the Key feature from the input satellite image I_sate, and V ∈ R^{hs×ws} denote the Value feature, which contain detailed texture information from the satellite image. Here, hp × wp and hs × ws represent the resolution of the panorama and satellite feature map, respectively. Moreover, E_sate and E_pano denote the satellite and panoramic encoders. W_q, W_k and W_v are projection matrices. The definitions of Q, K, V are as follows: Q = W_q * E_pano(S_pano), K = W_k * E_sate(I_sate), V = W_v * E_sate(I_sate). The process begins with the computation of an affinity matrix A ∈ R^{hpwp×hsws}, reflecting the interaction between Q and K. Following this, the weight matrix derived from the previous module is down-sampled to M ∈ R^{hpwp×hsws} and applied to each pixel within the satellite image to emphasize relevant features. This selective enhancement is crucial for the subsequent fusion of the detailed texture information from the satellite image into the panoramic feature F_pano ∈ R^{hp×wp}. The enhanced cross-view attention mechanism is formulated as follows: A = Q * K^T, A' = A ⊙ M, F_pano = A' * V. In these expressions, ⊙ denotes element-wise multiplication, where the weight matrix M is applied to the affinity matrix (A) to obtain the reweighted affinity matrix (A'), emphasizing the connection between the most relevant pixels. The output z, generated at each step, is ingeniously reincorporated into the network as a pivotal conditional element. By employing z as a dynamic conditional catalyst within our cross-view diffusion architecture, we ensure that each step of the denoising process is informed by the evolving latent representation, thereby enabling a controlled and gradual transition from z_t to z_0. This process is meticulously orchestrated by a cross-view control guided denoising process, which integrates structural and textural knowledge extracted from I_sate into the refinement of the final latent feature z, subsequently decoded through Stable Diffusion’s latent space decoder D to achieve the generated street-view panorama I_pano."
       },
       "confidence": 0.95,
       "name": "cross-view control guided denoising process",
-      "method_type": "protocol"
+      "method_type": "algorithm"
     },
     {
       "type": "method",
@@ -428,62 +395,51 @@
       },
       "confidence": 0.95,
       "task": "satellite-to-street view synthesis performance evaluation",
-      "setup": "CVUSA, CVACT, OmniCity datasets, Stable Diffusion v1.5, ControlNet framework, NVIDIA A100 GPUs"
+      "setup": "three cross-view datasets (CVUSA, CVACT, OmniCity), comparison with state-of-the-art methods"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_28e6748302e548a5_x2",
       "evidence": {
         "section": "4.2 EXPERIMENTAL SETTING",
-        "original_text": "We implement CrossViewDiff based on the ControlNet Zhang et al. (2023a) framework, incorporating the pre-trained Stable Diffusion Rombach et al. (2022) v1.5 model. The diffusion decoder is configured in an unlocked state and the classifier-free guidance Ho & Salimans (2022) scale is established at 9.0. For the final inference sampling, we adopt T = 50 as the sampling step, consistent with the DDIM Song et al. (2021) strategy. The entire training process is performed on eight NVIDIA A100 GPUs, with a batch size of 128, spanning a total of 100 epochs. Our depth estimation method employs Marigold Ke et al. (2024) and is fine-tuned on the OmniCity dataset, which provides elevation information. We conduct our experiments at a resolution of 1024 × 256 on the CVUSA Zhai et al. (2017) and 1024 × 512 on OmniCity Li et al. (2023c) and CVACT Liu & Li (2019)."
+        "original_text": "We implement CrossViewDiff based on the ControlNet Zhang et al. (2023a) framework, incorporating the pre-trained Stable Diffusion Rombach et al. (2022) v1.5 model. The diffusion decoder is configured in an unlocked state and the classifier-free guidance Ho & Salimans (2022) scale is established at 9.0. For the final inference sampling, we adopt T = 50 as the sampling step, consistent with the DDIM Song et al. (2021) strategy. The entire training process is performed on eight NVIDIA A100 GPUs, with a batch size of 128, spanning a total of 100 epochs. Our depth estimation method employs Marigold Ke et al. (2024) and is fine-tuned on the OmniCity dataset, which provides elevation information. We conduct our experiments at a resolution of 1024 × 256 on the CVUSA Zhai et al. (2017) and 1024 × 512 on OmniCity Li et al. (2023c) and CVACT Liu & Li (2019). We compared our method with several state-of-the-art cross-view synthesis methods on the three datasets, including GAN-based methods such as Sate2Ground Lu et al. (2020), CDTE Toker et al. (2021), S2SP Shi et al. (2022), and Sat2Density Qian et al. (2023), as well as diffusion models for image transformation control like ControlNet Zhang et al. (2023a) and Instruct pix2pix (Instrp2p) Brooks et al. (2023). For Sat2Density Qian et al. (2023), we follow their original setup, i.e., the lighting hints are determined based on the average values of the sky histograms obtained from random selections. For diffusion-based methods (ControlNet and instr-p2p), we use a pre-trained model consistent with that of CrossViewDiff and maintain the same sample steps. Note that all comparison methods are conducted according to their optimal experimental settings. Following previous studies Lu et al. (2020); Toker et al. (2021); Regmi & Borji (2018), we used common metrics such as SSIM Wang et al. (2004), SD, and PSNR to evaluate the content consistency of synthesized images, and FID Heusel et al. (2017) and KID Bi´nkowski et al. (2018) to assess image realism. Furthermore, in Section 4.3.2, we use GPT-4o to evaluate the synthesized street view images across three dimensions: consistency, visual realism, and perceptual quality."
       },
       "confidence": 0.95,
-      "task": "implementation and training setup",
-      "setup": "ControlNet framework, Stable Diffusion v1.5, DDIM sampling, eight NVIDIA A100 GPUs"
+      "task": "implementation and training details",
+      "setup": "ControlNet framework, Stable Diffusion v1.5, eight NVIDIA A100 GPUs"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_28e6748302e548a5_x3",
       "evidence": {
-        "section": "4.3 COMPARISON WITH STATE-OF-THE-ART METHODS",
-        "original_text": "We compared our method with several state-of-the-art cross-view synthesis methods on the three datasets, including GAN-based methods such as Sate2Ground Lu et al. (2020), CDTE Toker et al. (2021), S2SP Shi et al. (2022), and Sat2Density Qian et al. (2023), as well as diffusion models for image transformation control like ControlNet Zhang et al. (2023a) and Instruct pix2pix (Instrp2p) Brooks et al. (2023). For Sat2Density Qian et al. (2023), we follow their original setup, i.e., the lighting hints are determined based on the average values of the sky histograms obtained from random selections. For diffusion-based methods (ControlNet and instr-p2p), we use a pre-trained model consistent with that of CrossViewDiff and maintain the same sample steps. Note that all comparison methods are conducted according to their optimal experimental settings. Following previous studies Lu et al. (2020); Toker et al. (2021); Regmi & Borji (2018), we used common metrics such as SSIM Wang et al. (2004), SD, and PSNR to evaluate the content consistency of synthesized images, and FID Heusel et al. (2017) and KID Bi´nkowski et al. (2018) to assess image realism. Furthermore, in Section 4.3.2, we use GPT-4o to evaluate the synthesized street view images across three dimensions: consistency, visual realism, and perceptual quality."
+        "section": "4.3.2 GPT-BASED EVALUATION",
+        "original_text": "Beyond conventional similarity and realism metrics, we also leverage the powerful visual-linguistic capabilities of existing MLLM large models to design a GPT-based scoring method for evaluating synthetic images. As shown in Figure 5, GPT can provide scores across multiple dimensions along with the corresponding reasons for the scores. The description of the scoring reasons by GPT enhances the interpretability of the metric scores. As described in section 3.4, a subset of the dataset (9K pairs of images) was evaluated by both human users and GPT. By calculating the similarity between each user rating and the GPT score, the results, as shown in Table 3, demonstrate that GPT-based scoring performs well in aligning with human ratings across multiple metrics, with an average similarity exceeding 80%. This highlights the fact that GPT-based scoring is very close to human preferences and can effectively evaluate synthetic street-view images. Moreover, as illustrated in Table 4 and Figure 6, our method significantly outperforms other GAN-based and diffusion-based generation methods in the three evaluation dimensions of Consistency, Visual Realism, and Perceptual Quality. This also indicates that the street-view images synthesized by our method are more aligned with the requirement of human users, which aids in subsequent applications such as immersive scenes and virtual reality tasks."
       },
       "confidence": 0.95,
-      "task": "comparison with state-of-the-art methods",
-      "setup": "CVUSA, CVACT, OmniCity datasets, SSIM, FID, KID, PSNR metrics"
+      "task": "GPT-based evaluation validation",
+      "setup": "GPT-4o scoring, comparison with human ratings"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_28e6748302e548a5_x4",
       "evidence": {
-        "section": "4.3.2 GPT-BASED EVALUATION",
-        "original_text": "Beyond conventional similarity and realism metrics, we also leverage the powerful visual-linguistic capabilities of existing MLLM large models to design a GPT-based scoring method for evaluating synthetic images. As shown in Figure 5, GPT can provide scores across multiple dimensions along with the corresponding reasons for the scores. The description of the scoring reasons by GPT enhances the interpretability of the metric scores. As described in section 3.4, a subset of the dataset (9K pairs of images) was evaluated by both human users and GPT. By calculating the similarity between each user rating and the GPT score, the results, as shown in Table 3, demonstrate that GPTbased scoring performs well in aligning with human ratings across multiple metrics, with an average similarity exceeding 80%. This highlights the fact that GPT-based scoring is very close to human preferences and can effectively evaluate synthetic street-view images. Moreover, as illustrated in Table 4 and Figure 6, our method significantly outperforms other GANbased and diffusion-based generation methods in the three evaluation dimensions of Consistency, Visual Realism, and Perceptual Quality. This also indicates that the street-view images synthesized by our method are more aligned with the requirement of human users, which aids in subsequent applications such as immersive scenes and virtual reality tasks."
-      },
-      "confidence": 0.95,
-      "task": "GPT-based evaluation",
-      "setup": "GPT-4o, 1000 sampled images per dataset, human user comparison"
-    },
-    {
-      "type": "experiment",
-      "experiment_id": "doc_28e6748302e548a5_x5",
-      "evidence": {
         "section": "4.4 ABLATION STUDY",
         "original_text": "In our ablation study, we first assessed the effectiveness of our structure and texture control modules. As shown in the first two rows of each dataset of Table 5, using structural information derived from satellites as input proved effective, achieving improvements across multiple metrics such as SSIM Wang et al. (2004), FID Heusel et al. (2017), and KID Bi´nkowski et al. (2018). The last two rows of each dataset show the results of using direct Cross-Attention to incorporate global textures (w/o CVTM) and our Cross-View Texture Mapping (w/ CVTM) methods. Compared to the direct incorporation global textures, the approach guided by cross-view mapping relationships effectively assigns local textures from corresponding satellite regions to the appropriate locations in street-view images. Figure 8 presents qualitative ablation results on CVUSA Zhai et al. (2017) and OmniCity Li et al. (2023c), where structural control contributes to consistent content distribution, and texture control enhances the consistency of generated textures in buildings and forests."
       },
       "confidence": 0.95,
-      "task": "ablation study",
-      "setup": "CVUSA, OmniCity datasets, structure and texture control modules"
+      "task": "ablation study on control modules",
+      "setup": "CVUSA and OmniCity datasets"
     },
     {
       "type": "experiment",
-      "experiment_id": "doc_28e6748302e548a5_x6",
+      "experiment_id": "doc_28e6748302e548a5_x5",
       "evidence": {
         "section": "4.5 EXPERIMENTAL RESULTS USING ADDITIONAL DATA SOURCES",
         "original_text": "In this section, we provide more experimental results of real-wolrd application scenarios using additional data sources. In addition to the satellite images, other inputs such as textual data, building height data, and public map data (e.g. OpenStreetMap) can also be used for generating street-view images. In this study, we explored the synthesis of street-view images using multiple data sources on the OmniCity Li et al. (2023c) dataset and analyzed their impacts. Based on OmniCity street-view images, we generate corresponding text prompts of street-views images using the CLIP Radford et al. (2021) model, and supplement the corresponding historical satellite imagery and OSM map data based on the street view capture locations. As shown in Figure 9, textual data can provide some global information about the scene , but its lack of detail and specificity results in visually unrealistic images. OSM (OpenStreetMap) data offers semantic features of different areas, such as roads, buildings, and parks. These semantic features aid in generating street-view images with consistent semantic content. However, when using only OSM data, the structure and texture of the synthesized street view images still show a certain gap compared to real images. Building height data provides the outlines of buildings, and street-view images synthesized using this data show consistent building contours but lack texture and detail. Combining OSM and building height data for street view synthesis perform well in terms of semantics and structure. However, there are still deficiencies in texture details, such as building colors. Combining satellite imagery and building height data yields street-view images that are optimal in both structure and texture, visually closest to real street views. Table 7 provide the quantitative results obtained from different types of input data. Due to the rich texture information in satellite images, our CrossViewDiff achieved SSIM Wang et al. (2004) and FID Heusel et al. (2017) scores of 0.361 and 37.89, respectively, representing improvements of 4.6% and 17.6% compared to the results synthesized using OSM and building height data as inputs."
       },
       "confidence": 0.95,
       "task": "experiments using additional data sources",
-      "setup": "OmniCity dataset, text, OSM map, building height, multi-temporal satellite imagery"
+      "setup": "OmniCity dataset, various input types"
     },
     {
       "type": "quantitative_result",
@@ -496,7 +452,7 @@
       "quantity": "SSIM",
       "value": null,
       "unit": null,
-      "context": "CVUSA dataset, compared to state-of-the-art method Sat2Density",
+      "context": "CVUSA dataset, compared to Sat2Density",
       "result_type": "main_result"
     },
     {
@@ -510,7 +466,7 @@
       "quantity": "FID",
       "value": null,
       "unit": null,
-      "context": "CVUSA dataset, compared to state-of-the-art method Sat2Density",
+      "context": "CVUSA dataset, compared to Sat2Density",
       "result_type": "main_result"
     },
     {
@@ -524,7 +480,7 @@
       "quantity": "SSIM",
       "value": null,
       "unit": null,
-      "context": "CVACT dataset, compared to state-of-the-art method Sat2Density",
+      "context": "CVACT dataset, compared to Sat2Density",
       "result_type": "main_result"
     },
     {
@@ -538,7 +494,7 @@
       "quantity": "FID",
       "value": null,
       "unit": null,
-      "context": "CVACT dataset, compared to state-of-the-art method Sat2Density",
+      "context": "CVACT dataset, compared to Sat2Density",
       "result_type": "main_result"
     },
     {
@@ -552,7 +508,7 @@
       "quantity": "SSIM",
       "value": null,
       "unit": null,
-      "context": "OmniCity dataset, compared to state-of-the-art method Sat2Density",
+      "context": "OmniCity dataset, compared to Sat2Density",
       "result_type": "main_result"
     },
     {
@@ -566,102 +522,83 @@
       "quantity": "FID",
       "value": null,
       "unit": null,
-      "context": "OmniCity dataset, compared to state-of-the-art method Sat2Density",
+      "context": "OmniCity dataset, compared to Sat2Density",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_28e6748302e548a5_qr7",
       "evidence": {
-        "section": "4.5",
-        "original_text": "Table 7 provide the quantitative results obtained from different types of input data. Due to the rich texture information in satellite images, our CrossViewDiff achieved SSIM Wang et al. (2004) and FID Heusel et al. (2017) scores of 0.361 and 37.89, respectively, representing improvements of 4.6% and 17.6% compared to the results synthesized using OSM and building height data as inputs."
+        "section": "4.3.2",
+        "original_text": "As described in section 3.4, a subset of the dataset (9K pairs of images) was evaluated by both human users and GPT. By calculating the similarity between each user rating and the GPT score, the results, as shown in Table 3, demonstrate that GPTbased scoring performs well in aligning with human ratings across multiple metrics, with an average similarity exceeding 80%. This highlights the fact that GPT-based scoring is very close to human preferences and can effectively evaluate synthetic street-view images. Moreover, as illustrated in Table 4 and Figure 6, our method significantly outperforms other GANbased and diffusion-based generation methods in the three evaluation dimensions of Consistency, Visual Realism, and Perceptual Quality. This also indicates that the street-view images synthesized by our method are more aligned with the requirement of human users, which aids in subsequent applications such as immersive scenes and virtual reality tasks."
       },
       "confidence": 0.95,
-      "quantity": "SSIM",
-      "value": null,
-      "unit": null,
-      "context": "OmniCity dataset, using satellite image and building height as input compared to using OSM and building height data",
-      "result_type": "main_result"
+      "quantity": "GPT-based score similarity",
+      "value": 80,
+      "unit": "%",
+      "context": "Comparison between human user ratings and GPT ratings on a subset of 9000 images",
+      "result_type": "measurement"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_28e6748302e548a5_qr8",
       "evidence": {
         "section": "4.5",
-        "original_text": "Table 7 provide the quantitative results obtained from different types of input data. Due to the rich texture information in satellite images, our CrossViewDiff achieved SSIM Wang et al. (2004) and FID Heusel et al. (2017) scores of 0.361 and 37.89, respectively, representing improvements of 4.6% and 17.6% compared to the results synthesized using OSM and building height data as inputs."
+        "original_text": "Combining satellite imagery and building height data yields street-view images that are optimal in both structure and texture, visually closest to real street views. Table 7 provide the quantitative results obtained from different types of input data. Due to the rich texture information in satellite images, our CrossViewDiff achieved SSIM Wang et al. (2004) and FID Heusel et al. (2017) scores of 0.361 and 37.89, respectively, representing improvements of 4.6% and 17.6% compared to the results synthesized using OSM and building height data as inputs."
+      },
+      "confidence": 0.95,
+      "quantity": "SSIM",
+      "value": null,
+      "unit": null,
+      "context": "OmniCity dataset, using satellite image and building height as input compared to using OSM and building height data",
+      "result_type": "ablation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_28e6748302e548a5_qr9",
+      "evidence": {
+        "section": "4.5",
+        "original_text": "Combining satellite imagery and building height data yields street-view images that are optimal in both structure and texture, visually closest to real street views. Table 7 provide the quantitative results obtained from different types of input data. Due to the rich texture information in satellite images, our CrossViewDiff achieved SSIM Wang et al. (2004) and FID Heusel et al. (2017) scores of 0.361 and 37.89, respectively, representing improvements of 4.6% and 17.6% compared to the results synthesized using OSM and building height data as inputs."
       },
       "confidence": 0.95,
       "quantity": "FID",
       "value": null,
       "unit": null,
       "context": "OmniCity dataset, using satellite image and building height as input compared to using OSM and building height data",
-      "result_type": "main_result"
+      "result_type": "ablation"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_28e6748302e548a5_p1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
+        "original_text": "Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes. The code and models of this work will be released at https://opendatalab.github.io/CrossViewDiff/. CrossViewDiff outperforms state-of-the-art methods on three public cross-view datasets, achieving an average increase of 9.0% in SSIM, 39.0% in FID, and 35.5% in the GPTbased score."
       },
       "confidence": 0.95,
-      "metric": "SSIM, FID",
+      "metric": "SSIM and FID",
       "compared_to": "Sat2Density"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_28e6748302e548a5_p2",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "CrossViewDiff outperforms state-of-the-art methods on three public cross-view datasets, achieving an average increase of 9.0% in SSIM, 39.0% in FID, and 35.5% in the GPTbased score."
+        "section": "4.3.2",
+        "original_text": "Moreover, as illustrated in Table 4 and Figure 6, our method significantly outperforms other GANbased and diffusion-based generation methods in the three evaluation dimensions of Consistency, Visual Realism, and Perceptual Quality. This also indicates that the street-view images synthesized by our method are more aligned with the requirement of human users, which aids in subsequent applications such as immersive scenes and virtual reality tasks."
       },
       "confidence": 0.95,
-      "metric": "SSIM, FID, GPT-based score",
-      "compared_to": "state-of-the-art methods"
+      "metric": "GPT-based evaluation scores (Consistency, Visual Realism, Perceptual Quality)",
+      "compared_to": "GAN-based and diffusion-based generation methods"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_28e6748302e548a5_p3",
       "evidence": {
-        "section": "4.3.2",
-        "original_text": "Moreover, as illustrated in Table 4 and Figure 6, our method significantly outperforms other GANbased and diffusion-based generation methods in the three evaluation dimensions of Consistency, Visual Realism, and Perceptual Quality. This also indicates that the street-view images synthesized by our method are more aligned with the requirement of human users, which aids in subsequent applications such as immersive scenes and virtual reality tasks."
-      },
-      "confidence": 0.95,
-      "metric": "Consistency, Visual Realism, Perceptual Quality",
-      "compared_to": "GAN-based and diffusion-based generation methods"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_28e6748302e548a5_p4",
-      "evidence": {
         "section": "4.3.3",
-        "original_text": "As illustrated in the qualitative results in Figure 7, both GANbased and diffusion-based methods produce synthesis results with apparent boundary lines, as they treat panorama synthesis as a general image synthesis task. In contrast, our method constructs structural controls from a continuous scene composed of 3D voxels projected onto panoramic street views, allowing seamless integration at the left and right boundaries. For texture controls, the texture mapping features at the left and right positions of the street views are derived from proximate and continuous positions on the satellite image. Owing to these continuous structural and textural constraints, our method produces panoramic images with excellent 360° coherence."
+        "original_text": "For street-view panorama synthesis, another important evaluation factor is the continuity between the left and right sides of the image. As illustrated in the qualitative results in Figure 7, both GANbased and diffusion-based methods produce synthesis results with apparent boundary lines, as they treat panorama synthesis as a general image synthesis task. In contrast, our method constructs structural controls from a continuous scene composed of 3D voxels projected onto panoramic street views, allowing seamless integration at the left and right boundaries. For texture controls, the texture mapping features at the left and right positions of the street views are derived from proximate and continuous positions on the satellite image. Owing to these continuous structural and textural constraints, our method produces panoramic images with excellent 360° coherence."
       },
       "confidence": 0.95,
       "metric": "panorama continuity",
       "compared_to": "GAN-based and diffusion-based methods"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_28e6748302e548a5_p5",
-      "evidence": {
-        "section": "4.4",
-        "original_text": "As shown in the first two rows of each dataset of Table 5, using structural information derived from satellites as input proved effective, achieving improvements across multiple metrics such as SSIM Wang et al. (2004), FID Heusel et al. (2017), and KID Bi´nkowski et al. (2018)."
-      },
-      "confidence": 0.95,
-      "metric": "SSIM, FID, KID",
-      "compared_to": "baseline without structure control"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_28e6748302e548a5_p6",
-      "evidence": {
-        "section": "4.4",
-        "original_text": "The last two rows of each dataset show the results of using direct Cross-Attention to incorporate global textures (w/o CVTM) and our Cross-View Texture Mapping (w/ CVTM) methods. Compared to the direct incorporation global textures, the approach guided by cross-view mapping relationships effectively assigns local textures from corresponding satellite regions to the appropriate locations in street-view images."
-      },
-      "confidence": 0.95,
-      "metric": "texture consistency",
-      "compared_to": "direct incorporation of global textures (w/o CVTM)"
     },
     {
       "type": "claim",
@@ -670,34 +607,34 @@
         "section": "ABSTRACT",
         "original_text": "Satellite-to-street view synthesis aims at generating a realistic street-view image from its corresponding satellite-view image. Although stable diffusion models have exhibit remarkable performance in a variety of image generation applications, their reliance on similar-view inputs to control the generated structure or texture restricts their application to the challenging cross-view synthesis task. In this work, we propose CrossViewDiff, a cross-view diffusion model for satelliteto-street view synthesis. To address the challenges posed by the large discrepancy across views, we design the satellite scene structure estimation and cross-view texture mapping modules to construct the structural and textural controls for streetview image synthesis. We further design a cross-view control guided denoising process that incorporates the above controls via an enhanced cross-view attention module. To achieve a more comprehensive evaluation of the synthesis results, we additionally design a GPT-based scoring method as a supplement to standard evaluation metrics. We also explore the effect of different data sources (e.g., text, maps, building heights, and multi-temporal satellite imagery) on this task. Results on three public cross-view datasets show that CrossViewDiff outperforms current state-of-the-art on both standard and GPT-based evaluation metrics, generating high-quality street-view panoramas with more realistic structures and textures across rural, suburban, and urban scenes."
       },
-      "confidence": 0.96
+      "confidence": 0.98
     },
     {
       "type": "conclusion",
       "conclusion_id": "doc_28e6748302e548a5_cl1",
       "evidence": {
-        "section": "CONCLUSION",
-        "original_text": "In this work, we have proposed CrossViewDiff, a cross-view diffusion model to synthesize a streetview panorama from a given satellite image. The core of our diffusion model is a cross-view control guided denoising process that incorporates the structure and texture controls constructed by satellite scene structure estimation and cross-view texture mapping via an enhanced cross-view attention module. Qualitative and quantitative results show that our method generates street-view panoramas with better consistency and perceptual quality as well as more realistic structures and textures compared with the state-of-the-art. We believe that this paper motivates new ideas and inspirations for large-scale city simulation and 3D scene reconstruction."
+        "section": "5 CONCLUSION",
+        "original_text": "In this work, we have proposed CrossViewDiff, a cross-view diffusion model to synthesize a streetview panorama from a given satellite image. The core of our diffusion model is a cross-view control guided denoising process that incorporates the structure and texture controls constructed by satellite scene structure estimation and cross-view texture mapping via an enhanced cross-view attention module. Qualitative and quantitative results show that our method generates street-view panoramas with better consistency and perceptual quality as well as more realistic structures and textures compared with the state-of-the-art. We believe that this paper motivates new ideas and inspirations for large-scale city simulation and 3D scene reconstruction. In our future work, we will further explore the fusion of more types of multimodal data including textual data, map data, 3D data, and multitemporal satellite imagery to enhance the quality and realism of the synthesized street-view images. We also plan to extend our method to more cities and improve our methods for more complex application scenes such as urban planning, virtual tourism, and intelligent navigation."
       },
-      "confidence": 0.96
+      "confidence": 0.97
     },
     {
       "type": "limitation",
       "limitation_id": "doc_28e6748302e548a5_lm1",
       "evidence": {
-        "section": "LIMITATION ANALYSIS",
+        "section": "4.6 LIMITATION ANALYSIS",
         "original_text": "Despite the above advantages, street-view images generated by CrossViewDiff still have several limitations. Although we fused features rich in structural and textural information based on satellite image, the gap between the two viewpoints is still large, and Stable Diffusion is more capable of creating additional details that do not actually exist. Figure 11 provides some typical failure cases obtained by CrossViewDiff. For satellite and street-view images that were not taken at the same season, even though the synthetic street-view image is consistent with the satellite’s features, it may not be consistent with the ground truth. Besides, in less constrained regions of the image such as the sky, the synthesis result is somewhat different from GT and has a certain amount of color shifting, resulting in the relatively low PSNR to some extent. Moreover, due to the presence of moving objects such as pedestrians and vehicles in the scene, achieving consistency in cross-view synthesis results remains challenging."
       },
-      "confidence": 0.92
+      "confidence": 0.96
     },
     {
       "type": "future_work",
       "future_work_id": "doc_28e6748302e548a5_fw1",
       "evidence": {
-        "section": "CONCLUSION",
+        "section": "5 CONCLUSION",
         "original_text": "In our future work, we will further explore the fusion of more types of multimodal data including textual data, map data, 3D data, and multitemporal satellite imagery to enhance the quality and realism of the synthesized street-view images. We also plan to extend our method to more cities and improve our methods for more complex application scenes such as urban planning, virtual tourism, and intelligent navigation."
       },
-      "confidence": 0.93
+      "confidence": 0.95
     }
   ]
 }

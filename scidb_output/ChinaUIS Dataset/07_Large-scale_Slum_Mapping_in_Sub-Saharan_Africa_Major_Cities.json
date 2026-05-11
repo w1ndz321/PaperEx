@@ -1,0 +1,716 @@
+{
+  "metadata": {
+    "doc_id": "doc_e46af8e0477bca1e",
+    "source_file": "07_Large-scale_Slum_Mapping_in_Sub-Saharan_Africa_Major_Cities.md",
+    "title": "Applying deep learning to Sentinel-2 satellite imagery for spatiotemporal mapping of slums in sub-Saharan Africa",
+    "year": 2025,
+    "doi": "10.1016/j.habitatint.2025.103403",
+    "abstract": "a _Department of Humanities, Social and Political Sciences, ETH Zurich, Clausiusstrasse 37, 8092, Zurich, Switzerland_ b _Swiss Data Science Center, ETH Zurich and EPF Lausanne, Andreasstrasse 5, 8092, Zurich, Switzerland_ c _Centre for Advanced Spatial Analysis, University College London, 90 Tottenham Ct Rd, London, W1T 4TJ, United Kingdom_",
+    "introduction": "’ More than one billion people – a quarter of the world s urban population – are currently living in slums,[1] and in sub-Saharan Africa, every second urban resident is considered a so-called ‘slum dweller’ (UN-Habitat, 2021). UN-Habitat (2003) defines a ‘slum dweller’ as a person affected by at least one of the following five ‘household deprivations’: Lack of 1) access to an improved water source, 2) access to an improved sanitation facility, 3) sufficient living area, 4) housing durability of dwelling, and 5) security of tenure. Slum dwellers are thus particularly vulnerable to infectious diseases (WHO and UN-Habitat, 2016) and natural disasters (Williams et al., 2019), suffer from a lack of privacy (Muanda et al., 2020), and face the constant threat of eviction (UN-Habitat, 2018a). \n\nWith an annual growth rate in the urban population of around 4% in the past two decades, sub-Saharan Africa is the world’s fastest urbanizing region. Its urban population is expected to grow from half a billion to 1.3 billion by 2050, corresponding to an increase in the urbanization \n\nrate from 41% to 58% (UN DESA, 2018). The region already hosts two megacities (Lagos and Kinshasa), i.e., cities with a population exceeding 10 million, with another four (Luanda, Dar es Salaam, Nairobi, and Khartoum) projected to pass this threshold by 2050 (Institute for Economics & Peace, 2022). Given the rapidness of the urbanization process, the lack of planned urban development, and insufficient provision of basic infrastructure, a large share of these new urban dwellers will likely live in slums (United Nations, 2019). \n\nTracking the development of slums is thus crucial for monitoring progress towards Sustainable Development Goal (SDG) 11.1 – “ensuring access for all to adequate, safe and affordable housing and basic services and upgrade slums” (UN General Assembly, 2015) – as well as an important information tool for policymakers to alleviate potentially adverse living conditions of the region’s rapidly growing urban population. Timely identification of ‘informal growth hotspots’ can help allocate resources where they are most needed – at the national, regional, and local level. \n\nHowever, established methods of data collection on slums have \n\n* Corresponding author. \n\n_E-mail addresses:_ nicolas.buettner@nadel.ethz.ch (N. Büttner), steven.stalder@sdsc.ethz.ch (S. Stalder), michele.volpi@sdsc.ethz.ch (M. Volpi), e.suel@ucl.ac.uk (E. Suel), kenneth.harttgen@nadel.ethz.ch (K. Harttgen). \n\n> 1 While there has been growing concern that the term ‘slum’ carries negative connotations and alternative terms like ‘informal settlement’ have been suggested, most organizations, including several UN agencies, use both terms interchangeably and the term ‘slum’ remains dominant in the policy and scholarly discourse. For ’ the sake of comprehensibility and simplicity, we thus adhere to the term ‘slum . \n\nhttps://doi.org/10.1016/j.habitatint.2025.103403 \n\nReceived 19 July 2024; Received in revised form 25 November 2024; Accepted 9 April 2025 Available online 2 May 2025 \n\n0197-3975/© 2025 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ). \n\n_Habitat International 161 (2025) 103403_ \n\n> _N. Büttner et al.                                                                                                                                                                                                                                 Habitat International_ \n\nseveral drawbacks which bedevil prompt and targeted policy responses to slum formation. Most estimates on slums at the national, continental, or global level are based on national censuses and household surveys (e. g., Demographic and Health Surveys (DHS)), which are typically carried out every ten and every three to five years, respectively (UN-Habitat, 2019) – too infrequently for timely tracking of slum formations. Political instability and violent conflict regularly delay or prevent data collection, leading to even longer intervals (Hoogeveen & Pape, 2020). In addition, slum dwellers tend to be under-sampled in household surveys (Lucci et al., 2018) and thus a non-negligible portion of affected individuals is not considered in current statistics on slums. Furthermore, several studies have shown that the estimates of the extent of slums (both in terms of area and population) vary significantly depending on the type of data source (e.g., household survey versus census versus administrative data) or the definition of slums (e.g., UN-Habitat versus local definitions) employed (Patel et al., 2014, 2020; Pedro & Queiroz, 2019). \n\nLastly, a major drawback of these methods is spatial imprecision. While the UN-Habitat definition is based on _households_ , slums arguably pertain to a _geographic area_ . This issue has been tackled by defining an urban DHS Primary Sampling Unit (PSU) as a slum if the proportion of slum dwellers exceeds a certain threshold, e.g., 50% (Günther & Harttgen, 2012). However, this binary approach leaves scope for substantial imprecision, especially when PSUs fall just below or just above the selected threshold. \n\nIn addition, even though most censuses and household surveys provide geocoded information, it is not sufficiently precise to map the spatial extent of slums. For example, the DHS only provide the coordinates of the PSU centroids, which are randomly displaced at a random angle and at a random distance (within a 2 km radius for urban PSUs) to protect respondent identity (Burgert et al., 2013). Hence, the identification of slums remains spatially very imprecise. Tusting et al. (2019) used geocoded surveys and censuses to produce gridded maps of housing conditions in sub-Saharan Africa, yet the 5 km spatial resolution still does not enable precise mapping and tracking of slums in cities. \n\nIn light of these shortcomings, new approaches to the mapping of slums have emerged. One approach in the domain of Citizen Science and Volunteered Geographic Information actively engages citizens, particularly residents of slums, in mapping efforts (Hachmann et al., 2018; Falco et al., 2019). This approach has the advantage of making use of local knowledge, but in practice, it often limits the geographic scope of slum mapping. By contrast, an emerging literature uses increasingly available remote sensing data, in particular satellite imagery, to map slums. One strand of this literature is based on the visual interpretation of very high-resolution satellite images (Baud et al., 2010; Wurm and Taubenbock, 2018¨ ; Breuer et al., 2024) or aerial images (Cinnamon & Noth, 2023). A growing body of studies employs machine learning methods enabling automated (machine-based) identification of slums, such as object-based image analysis (Fallatah et al., 2019, 2020) and more recently deep learning (Ansari et al., 2020; Fan et al., 2022; Najmi et al., 2022). However, these studies are typically restricted to one or very few small geographic areas due to the enormous data storage and computing capacity requirements of very high resolution ( _<_ 1m/pixel) satellite imagery. Few studies so far have mapped slums on a larger – geographical scale using high (1m 5m/pixel) or medium resolution (5m–30m/pixel) satellite imagery, and even these are restricted to a few cities and do not track changes over time (Gram-Hansen et al., 2019; De Mattos et al., 2021). Other studies applied transfer learning (Verma et al., 2019) and random forest classification with spectral and textural information (Matarira et al., 2022) or composite slum spectral indices (Peng et al., 2023) to medium-resolution satellite imagery, yet again restricted to a single city. Mahabir et al. (2018) document the increased usage of remote sensing data for slum mapping in more detail and also draw attention to concomitant challenges, such as a limited geographical focus, barely any tracking over time, or a narrow set of methodologies employed. While few studies have applied deep learning to map economic conditions at a larger scale, e.g., across Nigeria at 7.65 km \n\ngrids (Lee & Braithwaite, 2022) and across sub-Saharan Africa at 1.6 km grids (Yeh et al., 2020), these studies did not focus on urban slums but mapped poverty and wealth. \n\nHere, we apply deep learning to Sentinel-2 optical satellite imagery (Drusch et al., 2012) to identify and map slums in 529 cities from 44 countries across sub-Saharan Africa from 2016 to 2022. Utilizing open-access medium-resolution imagery enabled us to strongly expand the spatial and temporal coverage in comparison to existing studies. Our deep learning models are ‘trained’ (i.e., optimized) on satellite images with shapefiles of the exact locations and boundaries of known slums in 16 African cities from six countries (Supplementary Material Fig. S1) and applied afterward to predict the locations and extent of slums in cities and years without existing ground truth data. Our algorithm relies primarily on detecting visual, specifically morphological, features to delineate the boundaries of slums, such as dense and irregular construction patterns as well as substandard roof materials. For each city and year, the algorithm produced a raster map with pixel values ranging from 0 to 1, which can be interpreted as a score of slum probability. These ‘probability maps’ are suitable to infer the locations and extents of slums within cities and track their spatiotemporal development. Calibrated threshold values were then applied to produce binary maps of slum locations. In conjunction with Africapolis city shapefiles (OECD/SWAC, 2020) and population count data (WorldPop, 2020), these were used to calculate city- and country-level estimates of slum prevalence, including population shares and totals, in 2016 and 2022, as well as changes thereof during the observation period.",
+    "primary_discipline": {
+      "level1": "测绘科学技术",
+      "level2": "摄影测量与遥感技术",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "计算机科学技术",
+        "level2": "人工智能",
+        "level3": null
+      },
+      {
+        "level1": "社会学",
+        "level2": "城市社会学",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "slum mapping",
+      "deep learning",
+      "Sentinel-2",
+      "sub-Saharan Africa",
+      "remote sensing"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:10:01.347820+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.99,
+      "term": "slum",
+      "normalized": "贫民窟",
+      "std_label": "slum"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.98,
+      "term": "deep learning",
+      "normalized": "深度学习",
+      "std_label": "DL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.98,
+      "term": "satellite imagery",
+      "normalized": "卫星影像",
+      "std_label": "satellite imagery"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Tracking the development of slums is thus crucial for monitoring progress towards Sustainable Development Goal (SDG) 11.1 – “ensuring access for all to adequate, safe and affordable housing and basic services and upgrade slums” (UN General Assembly, 2015) – as well as an important information tool for policymakers to alleviate potentially adverse living conditions of the region’s rapidly growing urban population. Timely identification of ‘informal growth hotspots’ can help allocate resources where they are most needed – at the national, regional, and local level."
+      },
+      "confidence": 0.97,
+      "term": "Sustainable Development Goal (SDG) 11.1",
+      "normalized": "可持续发展目标11.1",
+      "std_label": "SDG 11.1"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "UN-Habitat (2003) defines a ‘slum dweller’ as a person affected by at least one of the following five ‘household deprivations’: Lack of 1) access to an improved water source, 2) access to an improved sanitation facility, 3) sufficient living area, 4) housing durability of dwelling, and 5) security of tenure. Slum dwellers are thus particularly vulnerable to infectious diseases (WHO and UN-Habitat, 2016) and natural disasters (Williams et al., 2019), suffer from a lack of privacy (Muanda et al., 2020), and face the constant threat of eviction (UN-Habitat, 2018a)."
+      },
+      "confidence": 0.96,
+      "term": "slum dweller",
+      "normalized": "贫民窟居民",
+      "std_label": "slum dweller"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.95,
+      "term": "urban periphery",
+      "normalized": "城市外围",
+      "std_label": "urban periphery"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c7",
+      "evidence": {
+        "section": "Data and methods",
+        "original_text": "Here, we apply deep learning to Sentinel-2 optical satellite imagery (Drusch et al., 2012) to identify and map slums in 529 cities from 44 countries across sub-Saharan Africa from 2016 to 2022. Utilizing open-access medium-resolution imagery enabled us to strongly expand the spatial and temporal coverage in comparison to existing studies. Our deep learning models are ‘trained’ (i.e., optimized) on satellite images with shapefiles of the exact locations and boundaries of known slums in 16 African cities from six countries (Supplementary Material Fig. S1) and applied afterward to predict the locations and extent of slums in cities and years without existing ground truth data. Our algorithm relies primarily on detecting visual, specifically morphological, features to delineate the boundaries of slums, such as dense and irregular construction patterns as well as substandard roof materials. For each city and year, the algorithm produced a raster map with pixel values ranging from 0 to 1, which can be interpreted as a score of slum probability."
+      },
+      "confidence": 0.97,
+      "term": "Sentinel-2",
+      "normalized": "哨兵2号",
+      "std_label": "Sentinel-2"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A growing body of studies employs machine learning methods enabling automated (machine-based) identification of slums, such as object-based image analysis (Fallatah et al., 2019, 2020) and more recently deep learning (Ansari et al., 2020; Fan et al., 2022; Najmi et al., 2022). However, these studies are typically restricted to one or very few small geographic areas due to the enormous data storage and computing capacity requirements of very high resolution (< 1m/pixel) satellite imagery. Few studies so far have mapped slums on a larger – geographical scale using high (1m–5m/pixel) or medium resolution (5m–30m/pixel) satellite imagery, and even these are restricted to a few cities and do not track changes over time (Gram-Hansen et al., 2019; De Mattos et al., 2021)."
+      },
+      "confidence": 0.96,
+      "term": "machine learning",
+      "normalized": "机器学习",
+      "std_label": "ML"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.95,
+      "term": "slum probability maps",
+      "normalized": "贫民窟概率图",
+      "std_label": "slum probability maps"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_e46af8e0477bca1e_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.99,
+      "term": "sub-Saharan Africa",
+      "normalized": "撒哈拉以南非洲",
+      "std_label": "SSA"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.97,
+      "head": "doc_e46af8e0477bca1e_c2",
+      "relation_type": "uses",
+      "relation_surface": "applying deep learning to",
+      "tail": "doc_e46af8e0477bca1e_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.96,
+      "head": "doc_e46af8e0477bca1e_c2",
+      "relation_type": "enhances",
+      "relation_surface": "produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of",
+      "tail": "doc_e46af8e0477bca1e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.95,
+      "head": "doc_e46af8e0477bca1e_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "slums in",
+      "tail": "doc_e46af8e0477bca1e_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Tracking the development of slums is thus crucial for monitoring progress towards Sustainable Development Goal (SDG) 11.1 – “ensuring access for all to adequate, safe and affordable housing and basic services and upgrade slums” (UN General Assembly, 2015) – as well as an important information tool for policymakers to alleviate potentially adverse living conditions of the region’s rapidly growing urban population. Timely identification of ‘informal growth hotspots’ can help allocate resources where they are most needed – at the national, regional, and local level."
+      },
+      "confidence": 0.94,
+      "head": "doc_e46af8e0477bca1e_c1",
+      "relation_type": "measures",
+      "relation_surface": "tracking the development of slums is thus crucial for monitoring progress towards",
+      "tail": "doc_e46af8e0477bca1e_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "UN-Habitat (2003) defines a ‘slum dweller’ as a person affected by at least one of the following five ‘household deprivations’: Lack of 1) access to an improved water source, 2) access to an improved sanitation facility, 3) sufficient living area, 4) housing durability of dwelling, and 5) security of tenure. Slum dwellers are thus particularly vulnerable to infectious diseases (WHO and UN-Habitat, 2016) and natural disasters (Williams et al., 2019), suffer from a lack of privacy (Muanda et al., 2020), and face the constant threat of eviction (UN-Habitat, 2018a)."
+      },
+      "confidence": 0.93,
+      "head": "doc_e46af8e0477bca1e_c1",
+      "relation_type": "causes",
+      "relation_surface": "Slum dwellers are thus particularly vulnerable to infectious diseases and natural disasters, suffer from a lack of privacy, and face the constant threat of eviction.",
+      "tail": "doc_e46af8e0477bca1e_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.95,
+      "head": "doc_e46af8e0477bca1e_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "slum growth occurred primarily in",
+      "tail": "doc_e46af8e0477bca1e_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r7",
+      "evidence": {
+        "section": "Data and methods",
+        "original_text": "Here, we apply deep learning to Sentinel-2 optical satellite imagery (Drusch et al., 2012) to identify and map slums in 529 cities from 44 countries across sub-Saharan Africa from 2016 to 2022. Utilizing open-access medium-resolution imagery enabled us to strongly expand the spatial and temporal coverage in comparison to existing studies. Our deep learning models are ‘trained’ (i.e., optimized) on satellite images with shapefiles of the exact locations and boundaries of known slums in 16 African cities from six countries (Supplementary Material Fig. S1) and applied afterward to predict the locations and extent of slums in cities and years without existing ground truth data. Our algorithm relies primarily on detecting visual, specifically morphological, features to delineate the boundaries of slums, such as dense and irregular construction patterns as well as substandard roof materials. For each city and year, the algorithm produced a raster map with pixel values ranging from 0 to 1, which can be interpreted as a score of slum probability."
+      },
+      "confidence": 0.96,
+      "head": "doc_e46af8e0477bca1e_c7",
+      "relation_type": "uses",
+      "relation_surface": "apply deep learning to Sentinel-2 optical satellite imagery",
+      "tail": "doc_e46af8e0477bca1e_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A growing body of studies employs machine learning methods enabling automated (machine-based) identification of slums, such as object-based image analysis (Fallatah et al., 2019, 2020) and more recently deep learning (Ansari et al., 2020; Fan et al., 2022; Najmi et al., 2022). However, these studies are typically restricted to one or very few small geographic areas due to the enormous data storage and computing capacity requirements of very high resolution (< 1m/pixel) satellite imagery. Few studies so far have mapped slums on a larger – geographical scale using high (1m–5m/pixel) or medium resolution (5m–30m/pixel) satellite imagery, and even these are restricted to a few cities and do not track changes over time (Gram-Hansen et al., 2019; De Mattos et al., 2021)."
+      },
+      "confidence": 0.94,
+      "head": "doc_e46af8e0477bca1e_c8",
+      "relation_type": "enhances",
+      "relation_surface": "employs machine learning methods enabling automated (machine-based) identification of",
+      "tail": "doc_e46af8e0477bca1e_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_e46af8e0477bca1e_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across Sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.95,
+      "head": "doc_e46af8e0477bca1e_c2",
+      "relation_type": "produces",
+      "relation_surface": "produced 10m resolution",
+      "tail": "doc_e46af8e0477bca1e_c9"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d1",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "To train our deep learning models, we used geospatial data on slums from different providers covering a total of 16 cities in six countries: Kenya (Kisumu and Nairobi), Sierra Leone (Freetown), South Africa (Cape Town, Durban, Embalenhle, Lebohang), Sudan (Nyala), Tanzania (Arusha, Dodoma, Kigoma, Mbeya, Mtwara, Mwanza, Tanga), and Uganda (Kampala) (Supplementary Material Fig. S1 and Table S1). The datasets differ in terms of geographic coverage, reference year, and data format. Some providers map slums in a rather fragmented way, including small clusters of a few slum dwellings, while others map the exterior boundaries of a bigger contiguous slum neighborhood (including green spaces, roads, public buildings, etc.). The ground truth datasets were created by third parties, using either 1) field-based mapping with GPS-tracking devices, 2) visual interpretation of very highresolution satellite images, or 3) digitization of governmental hard copy maps. All three methods generally provide maps of very high accuracy due to a high level of expert knowledge involved and a narrow geographic focus. Via visual inspection, we confirmed a strong overlap in the morphological features of slums across our various ground truth datasets. Areas labeled as ‘slums’ typically exhibit a high density of small buildings with substandard roof material, irregular building patterns, and the absence of paved roads. While the lack of access to water and sanitation, and in particular, insecurity of tenure, are less explicitly captured, this does not constitute a major concern in our setup, given that all UN-Habitat indicators of ‘household deprivations’ tend to be highly correlated. We used the ground truth data from all cities in South Africa and Tanzania without further manipulation. In the case of Sierra Leone, we applied minor adjustments, while for Kenya, Sudan, and Uganda, we had to manually create polygons by hand-drawing boundaries of slums in QGIS, based on maps provided in (Geo)PDF format. The final product for each city was a raster map in GeoTIFF format with a spatial resolution of 10m per pixel, with each pixel classified as 1 (=slum) or 0 (= no slum)."
+      },
+      "confidence": 0.95,
+      "name": "Ground truth data of known slums",
+      "modality": "tabular",
+      "domain": "urban geography, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d2",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "We used openly accessible satellite imagery from the Sentinel-2 mission of the European Union’s Earth Observation Programme Copernicus (Drusch et al., 2012) to train a deep neural network. Since June 2015, Sentinel-2 has provided daytime satellite images of the entire globe, recorded every few days and with a maximum spatial resolution of 10m per pixel. Sentinel-2 images are pre-processed, including corrections for atmospheric distortions, and contain pixel-level information on cloud coverage, which is important for neural network training. We utilized the Red, Green, Blue, and Near Infrared (NIR) bands, as only these come at the maximum spatial resolution of 10m per pixel and contain the necessary visual attributes to distinguish patterns of slums. For each city and year of interest, we used all available images with a cloud coverage of less than 15%. Images with higher cloud coverage are undesirable, especially at inference time, as pixels covered by clouds cannot be assessed accurately. The more “cloud-free” images are available for a city, the more accurate the predictions, as seasonal changes affecting the visual and spectral appearance of images will be averaged out during data preparation. For cities with very few images, predictions should be interpreted with more caution. The mean (median) number of “cloud-free” images across cities was 49 (36) in 2016 and 49 (34) in 2022. Fig. S2 and S3 in the Supplementary Material provide detailed information on the (averaged) number of utilized images per city and per country."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-2 satellite imagery",
+      "modality": "image",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d3",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "We retrieved information on the location, size, and boundaries of African cities through the Africapolis database, which provides a shapefile containing polygons of urban agglomerations from 54 African countries (OECD/SWAC, 2020). Africapolis utilizes data from censuses, electoral registers, and official administrative boundaries, and combines them with satellite and aerial images to map urbanization in Africa. Agglomerations are formed based on a physical criterion (continuously built-up area: <200m distance between buildings/constructions) and a demographic criterion (>10,000 inhabitants in 2015) (Heinrigs, 2020). The Africapolis database contains 7,720 urban agglomerations, yet we restricted our analysis to all major cities (>100,000 inhabitants) in sub-Saharan Africa (excluding North Africa and small island states), leading to a total of 529 cities. This restriction served to increase computational efficiency and save data storage demands as well as to increase comparability across cities and countries."
+      },
+      "confidence": 0.95,
+      "name": "Africapolis city polygons",
+      "modality": "tabular",
+      "domain": "urban geography"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d4",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "To estimate the share and total count of the urban population living in slums, information on the spatial distribution of the population is necessary. We retrieved this information from the WorldPop database of population counts (“Unconstrained individual countries 2000–2020 UN adjusted (100m)”) (WorldPop, 2020). These raster files with a spatial resolution of 100m per pixel provide for each country globally and from 2000 to 2020 an estimate of the number of inhabitants per pixel. The estimates are based on a combination of census data with various geospatial covariates, such as land cover, nighttime lights, temperature, roads, and buildings. While WorldPop has been criticized for underestimating populations in slums (Thomson et al., 2021, 2022a; 2022b), this criticism is based on few country case studies, and there is currently no superior data source for gridded population count estimates. However, with this potential caveat in mind, estimates on the share and total count of urban slum dwellers should generally be interpreted as lower bounds."
+      },
+      "confidence": 0.95,
+      "name": "WorldPop population distribution data",
+      "modality": "tabular",
+      "domain": "demography"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d5",
+      "evidence": {
+        "section": "2.2. Machine learning pipeline",
+        "original_text": "For any image input, this model generates an output of the same size, where every pixel contains a value between 0 and 1, indicating the probability of this pixel belonging to a slum. At every training step, the neural network receives a batch of satellite image tiles and produces corresponding probability maps, which are then compared to the binary ground truth tiles of the same locations. Over many training iterations, the model learns to segment slums by minimizing the binary crossentropy between its own outputs and the ground truth. Optimization of the model parameters is done through the state-of-the-art AdamW optimization algorithm (Loshchilov & Hutter, 2019). The optimization is stopped once the binary cross-entropy loss value does not decrease on held-out validation data for ten training epochs, after which we select the model where this validation loss was lowest. After training all models, we aggregated their predictions as motivated above. In this prediction process, any satellite image from a new city was tiled and fed through each network, segmenting slums in each tile after the other until we could assemble these tiles to a full segmentation over the whole image. Once this was done, we first averaged the segmentation maps across all models trained in the same given country. This was only applicable for Tanzania, Kenya, and South Africa, where we had several models per country. Finally, we took a weighted average of the final four segmentation maps (one each for Tanzania, Kenya, South Africa, and the final one for Freetown-Kampala-Nyala-Mtwara-Embalenhle-Kisumu). The final raw product for each city and year was a raster file at a spatial resolution of 10m per pixel with continuous pixel values ranging from 0 to 1, indicating the predicted probability that this pixel was covered by a slum."
+      },
+      "confidence": 0.9,
+      "name": "Slum probability maps",
+      "modality": "image",
+      "domain": "urban geography, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d6",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "Prior to calculating city- and country-level estimates of slum prevalence, we converted the continuous probability maps into binary maps such that each pixel was either 0 (= no slum) or 1 (=slum). Given the broad spatial scope of our study and the non-negligible geographical and morphological differences in urban areas across countries, we decided against a uniform threshold value for all 529 cities. Instead, we applied the following iterative procedure. First, we applied for each city three different intuitive threshold values to the continuous probability map – 1/5, 1/4, and 1/3 – yielding three binary maps per city and year. Based on these maps (in conjunction with the population count data), we calculated three alternative country-level estimates of the share of the urban population living in slums (see Geospatial analysis for more details) for the year 2020. We next compared these estimates to the corresponding estimates provided by UN-Habitat (2021). For each country, we then selected the threshold value that minimized the difference between our estimates and the UN-Habitat estimates (Supplementary Material Table S2). After calibration, the correlation coefficient between our estimates and the UN-Habitat estimates of 2020 was very large with r = 0.79, and for the majority of countries, the modulus difference between our estimates and the UN-Habitat estimates was smaller than 5 percentage points (pp) (16 countries) or smaller than 10 pp (10 countries) (Supplementary Material Fig. S7 and S8)."
+      },
+      "confidence": 0.9,
+      "name": "Binary slum segmentation maps",
+      "modality": "tabular",
+      "domain": "urban geography"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d7",
+      "evidence": {
+        "section": "3. Results",
+        "original_text": "Fig. 3 maps the share of the urban population living in and the share of the urban area covered by slums for 529 major cities in 2016 and 2022, and its change between 2016 and 2022. The maps show a high prevalence as well as an expansion of slums in many African cities. The full results for all 529 covered cities, including additional estimates on the total urban population living in slums, are provided in Table S4 (Supplementary Material). The number of cities with a population share living in slums exceeding 50% increased from 155 in 2016 to 274 out of 529 in 2022. In the same period, the population share living in slums increased in 84% of all cities – the majority (320 cities) experienced an increase of between 0 and 25 pp. Only in 82 of 529 cities a decrease in the population share living in slums was observed (Supplementary Material Fig. S13 and S14). Our estimates also reveal interesting spatiotemporal dynamics. In 2016, on average, the share of the urban population living in slums was highest in East African cities at 40%, followed by Middle (37%), West (30%), and lastly Southern African cities (17%). However, due to differential growth dynamics, this order changed until 2022 with Middle African cities now having the largest population share living in slums (58%), followed by East (52%), West (48%), and lastly Southern African cities (19%). In 2022, there were 41 cities with more than 80% of their population living in slums – among them 11 in DR Congo, 10 in Ethiopia, five in Kenya, and four in Angola. The five cities with the highest estimated total number of inhabitants living in slums were Luanda, Angola (5.9M); Lagos, Nigeria (5.7M); Kinshasa, DR Congo (3.6M); Dar es Salaam, Tanzania (3.2M); and Kampala, Uganda (2.9M). In 50 cities, the population share living in slums had increased by more than 40 pp between 2016 and 2022 – among them 23 in Nigeria, 11 in DR Congo, and three in Kenya and Uganda each. The five cities with the highest estimated absolute increase in their slum population were Lagos, Nigeria; Luanda, Angola; Ibadan, Nigeria; Kinshasa, DR Congo; and Yaounde, Cameroon – each with more than 1 million additional slum dwellers in 2022 compared to 2016."
+      },
+      "confidence": 0.9,
+      "name": "City-level estimates of slum prevalence and growth",
+      "modality": "tabular",
+      "domain": "urban geography"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_e46af8e0477bca1e_d8",
+      "evidence": {
+        "section": "3. Results",
+        "original_text": "Fig. 4 maps the share of the urban population living in, and the share of the urban area covered by slums for 44 countries in sub-Saharan Africa in 2016 and 2022, and its change between 2016 and 2022. The full results for all 44 covered countries, including estimates on the total urban population living in slums, are provided in Table S5 (Supplementary Material). In 2016, the urban population share living in slums exceeded 50% in 14 out of 44 countries. This increased to 25 countries in 2022. Between 2016 and 2022, in all except eight countries, the urban population share living in slums increased, and the unweighted mean share across all 44 countries increased from 40% in 2016 to 51% in 2022. The spatial patterns at the country level differ to some extent from those observed at the city level. In 2016, West African countries had on average the highest estimated urban population share living in slums with 44%, followed by East (41%), Middle (37%), and with considerable distance Southern African countries (24%). By 2022, these numbers rose to 55% in both West and Middle African countries, closely followed by East (51%), and again at last Southern African countries (29%). Stark regional discrepancies also pertain to the growth of the slum population. Between 2016 and 2022 the share of the slum population grew by far the strongest in Middle African countries with on average 18 pp, and by 11 pp, 10 pp, and 5 pp in West, East, and Southern African countries, respectively. In 2022, the five countries with the highest share of urban dwellers living in slums were Central African Republic (85%), Liberia (76%), Somalia (75%), Ethiopia (72%), and Sierra Leone (72%). The five countries with the highest increase between 2016 and 2022 were Cameroon (41 pp), Niger (36 pp), Sudan (34 pp), Gabon (30 pp), and Central African Republic (26 pp)."
+      },
+      "confidence": 0.9,
+      "name": "Country-level estimates of slum prevalence and change",
+      "modality": "tabular",
+      "domain": "urban geography"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds1",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "The ground truth datasets were created by third parties, using either 1) field-based mapping with GPS-tracking devices, 2) visual interpretation of very highresolution satellite images, or 3) digitization of governmental hard copy maps. All three methods generally provide maps of very high accuracy due to a high level of expert knowledge involved and a narrow geographic focus."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Ground truth data creation standards: field-based GPS mapping, visual interpretation of high-resolution satellite images, or digitization of governmental maps"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds2",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "The final product for each city was a raster map in GeoTIFF format with a spatial resolution of 10m per pixel, with each pixel classified as 1 (=slum) or 0 (= no slum)."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Final ground truth data format: raster map in GeoTIFF format with 10m spatial resolution and binary pixel classification (1=slum, 0=no slum)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds3",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "For each city and year of interest, we used all available images with a cloud coverage of less than 15%. Images with higher cloud coverage are undesirable, especially at inference time, as pixels covered by clouds cannot be assessed accurately."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "Sentinel-2 image selection criteria: cloud coverage less than 15%"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds4",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "We utilized the Red, Green, Blue, and Near Infrared (NIR) bands, as only these come at the maximum spatial resolution of 10m per pixel and contain the necessary visual attributes to distinguish patterns of slums."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Sentinel-2 imagery utilized bands: Red, Green, Blue, and Near Infrared (NIR) at maximum spatial resolution of 10m per pixel"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds5",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "Agglomerations are formed based on a physical criterion (continuously built-up area: <200m distance between buildings/constructions) and a demographic criterion (>10,000 inhabitants in 2015) (Heinrigs, 2020)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Africapolis urban agglomeration definition criteria: continuously built-up area (<200m distance between buildings) and >10,000 inhabitants in 2015"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds6",
+      "evidence": {
+        "section": "2.1. Data",
+        "original_text": "These raster files with a spatial resolution of 100m per pixel provide for each country globally and from 2000 to 2020 an estimate of the number of inhabitants per pixel."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "WorldPop population data format: raster files with 100m spatial resolution providing population count estimates per pixel"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds7",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "The performance of machine learning models for binary classification tasks can be evaluated through various accuracy metrics. For our specific task, three metrics are particularly informative – Recall (also Sensitivity or True Positive Rate, TPR), Precision (also Positive Predictive Value, PPV), and the F1 Score, which are calculated as follows: TPR = TP/(TP + FN), PPV = TP/(TP + FP), F1 = 2TP/(2TP + FP + FN). T/F/P/N stand for true/false/positive/negative. Both the TPR and the PPV measure the ability of the model to correctly identify pixels covered by slums (TP) – in relation to the actual extent of slums in the ground truth (P or TP + FN) or in relation to all predicted slum pixels (TP + FP). The F1 score is the harmonic mean of TPR and PPV and thus a composite measure of Recall and Precision. Table S3 (Supplementary Material) provides these test metrics for all cities with available ground truth data from Kenya, South Africa, and Tanzania, based on the country-specific models. We also included three additional measures, namely Accuracy, Specificity (True Negative Rate, TNR), and Intersection over Union (IoU)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Model performance evaluation metrics: Recall (TPR), Precision (PPV), F1 Score, Accuracy, Specificity (TNR), and Intersection over Union (IoU)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds8",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "Since these evaluation statistics can only be calculated for cities with ground truth data, we complemented them with an alternative measure of certainty that can be calculated for all cities. Specifically, we calculated the per-pixel standard deviation (SD) of the four different predictions of slum locations (according to the four different models – before aggregating them to an ensemble prediction). We then calculated city-level and country-level means of the SD across predictions (Supplementary Material Fig. S11 and S12). A lower mean SD indicates a higher confidence across models in our ensemble prediction for the corresponding city or country."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Alternative model certainty measure: per-pixel standard deviation (SD) of predictions across different models before ensemble aggregation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds9",
+      "evidence": {
+        "section": "2.2. Machine learning pipeline",
+        "original_text": "The final raw product for each city and year was a raster file at a spatial resolution of 10m per pixel with continuous pixel values ranging from 0 to 1, indicating the predicted probability that this pixel was covered by a slum."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Final slum probability map format: raster file at 10m spatial resolution with continuous pixel values ranging from 0 to 1"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds10",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "Given the broad spatial scope of our study and the non-negligible geographical and morphological differences in urban areas across countries, we decided against a uniform threshold value for all 529 cities. Instead, we applied the following iterative procedure. First, we applied for each city three different intuitive threshold values to the continuous probability map – 1/5, 1/4, and 1/3 – yielding three binary maps per city and year. Based on these maps (in conjunction with the population count data), we calculated three alternative country-level estimates of the share of the urban population living in slums (see Geospatial analysis for more details) for the year 2020. We next compared these estimates to the corresponding estimates provided by UN-Habitat (2021). For each country, we then selected the threshold value that minimized the difference between our estimates and the UN-Habitat estimates (Supplementary Material Table S2)."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Binary map threshold calibration procedure: iterative comparison with UN-Habitat estimates using thresholds 1/5, 1/4, and 1/3"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_e46af8e0477bca1e_ds11",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "Based on the binary segmentation maps, we conducted several geospatial analyses in R. We calculated 1) at the city level and 2) at the country level the a) share of the urban area covered by slums (ShA), b) the share of the urban population living in slums (ShP), and c) the total urban population living in slums (TotP). The following equations illustrate these calculations: ShA_{c,t} = Σ_{i=1}^{N} Sbin_{i,c,t} / N, ShP_{c,t} = Σ_{i=1}^{N} (Sbin_{i,c,t} * P_{i,c,t}) / Σ_{i=1}^{N} P_{i,c,t}, TotP_{c,t} = Σ_{i=1}^{N} (Sbin_{i,c,t} * P_{i,c,t}). Sbin is a pixel-level binary indicator of slum coverage, P is the WorldPop population count estimate per pixel, c stands for city or country, t for time (year), and N is the number of pixels within city or country boundaries (urban area only). In the absence of more recent population count data, we used the 2020 WorldPop data as an approximation when calculating ShP and TotP for 2022."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Geospatial analysis calculations: share of urban area covered by slums (ShA), share of urban population living in slums (ShP), total urban population living in slums (TotP)"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_e46af8e0477bca1e_m1",
+      "evidence": {
+        "section": "2.2. Machine learning pipeline",
+        "original_text": "For our neural network, we applied a widely used state-of-the-art architecture for semantic image segmentation – the DeepLabV3 system with a ResNet-50 backbone (He et al., 2016). DeepLabV3 employs atrous convolutions (also called dilated convolutions) and an Atrous Spatial Pyramid Pooling (ASPP) module which greatly improved its ability to capture image-level features at different scales compared to previous segmentation models. This is highly relevant to our task since slum areas can vary greatly in size and shape. For any image input, this model generates an output of the same size, where every pixel contains a value between 0 and 1, indicating the probability of this pixel belonging to a slum. At every training step, the neural network receives a batch of satellite image tiles and produces corresponding probability maps, which are then compared to the binary ground truth tiles of the same locations. Over many training iterations, the model learns to segment slums by minimizing the binary cross-entropy between its own outputs and the ground truth. Optimization of the model parameters is done through the state-of-the-art AdamW optimization algorithm (Loshchilov & Hutter, 2019). The optimization is stopped once the binary cross-entropy loss value does not decrease on held-out validation data for ten training epochs, after which we select the model where this validation loss was lowest."
+      },
+      "confidence": 0.95,
+      "name": "DeepLabV3 with ResNet-50 backbone",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_e46af8e0477bca1e_m2",
+      "evidence": {
+        "section": "2.2. Machine learning pipeline",
+        "original_text": "We further improved the performance of our models significantly by starting the supervised training procedures with neural network weights initialized through self-supervised learning. Self-supervised learning describes methods that don’t utilize explicit, human-annotated ground truth information but instead automatically create their own supervisory learning signals from unlabeled data. It has been shown that initializing model weights by pre-training them in a self-supervised manner can lead to a sharp increase in downstream performance on supervised tasks (Balestriero et al., 2023). Specifically, we used a modified version of the Barlow Twins method (Zbontar et al., 2021) to pre-train our models to become insensitive and possibly invariant to the differences between satellite images from the same location, taken at a different time. This is sensible because most visual differences between the images would either come from seasonal or atmospheric effects or discolorations during pre-processing. On the other hand, assuming that the time difference between the images is relatively small, we expected that visual changes due to important structural differences would be comparatively infrequent."
+      },
+      "confidence": 0.95,
+      "name": "Barlow Twins method",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_e46af8e0477bca1e_m3",
+      "evidence": {
+        "section": "2.2. Machine learning pipeline",
+        "original_text": "After training all models, we aggregated their predictions as motivated above. In this prediction process, any satellite image from a new city was tiled and fed through each network, segmenting slums in each tile after the other until we could assemble these tiles to a full segmentation over the whole image. Once this was done, we first averaged the segmentation maps across all models trained in the same given country. This was only applicable for Tanzania, Kenya, and South Africa, where we had several models per country. Finally, we took a weighted average of the final four segmentation maps (one each for Tanzania, Kenya, South Africa, and the final one for Freetown-Kampala-Nyala-Mtwara-Embalenhle-Kisumu). The final raw product for each city and year was a raster file at a spatial resolution of 10m per pixel with continuous pixel values ranging from 0 to 1, indicating the predicted probability that this pixel was covered by a slum."
+      },
+      "confidence": 0.95,
+      "name": "Ensemble predictions",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_e46af8e0477bca1e_x1",
+      "evidence": {
+        "section": "2.2. Machine learning pipeline",
+        "original_text": "In Tanzania, where we have ground truth data for seven cities, we trained seven different models, each of them trained on six of the cities and evaluated on the remaining one after every training epoch. Leaving one city out of every training process allowed us to validate how well our current model was able to generalize to unseen data, and to save the model at a specific moment in time when this generalization was best. For Kenya and South Africa, we applied the same procedure for the seven and four available ground truth maps, respectively. For the last model, we paired the remaining data from Freetown (Sierra Leone), Kampala (Uganda), and Nyala (Sudan) with the already used data from Mtwara (Tanzania), Embalenhle (South Africa), and Kisumu (Kenya). We did this because we found that adding one city from Tanzania, South Africa, and Kenya each improved the performance of this model. To increase diversity between the models, we varied the size of the tiles taken from the full satellite images and selected the tiles with random shifts but equally spread across all parts of the images during training. Furthermore, we applied the same pre-processing steps for all cities. All image tiles were normalized by the mean and standard deviation of each spectral band based on more than 2,000 satellite images across sub-Saharan African cities. Moreover, for all ground truth tiles, we set the pixel value to 0 (= no slum) for all pixels affected by cloud coverage."
+      },
+      "confidence": 0.95,
+      "task": "slum mapping model training and validation",
+      "setup": "Sentinel-2 satellite imagery, ground truth data from 16 cities, cross-validation across countries"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_e46af8e0477bca1e_x2",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "Prior to calculating city- and country-level estimates of slum prevalence, we converted the continuous probability maps into binary maps such that each pixel was either 0 (= no slum) or 1 (=slum). Given the broad spatial scope of our study and the non-negligible geographical and morphological differences in urban areas across countries, we decided against a uniform threshold value for all 529 cities. Instead, we applied the following iterative procedure. First, we applied for each city three different intuitive threshold values to the continuous probability map – 1/5, 1/4, and 1/3 – yielding three binary maps per city and year. Based on these maps (in conjunction with the population count data), we calculated three alternative country-level estimates of the share of the urban population living in slums (see Geospatial analysis for more details) for the year 2020. We next compared these estimates to the corresponding estimates provided by UN-Habitat (2021). For each country, we then selected the threshold value that minimized the difference between our estimates and the UN-Habitat estimates (Supplementary Material Table S2). After calibration, the correlation coefficient between our estimates and the UN-Habitat estimates of 2020 was very large with r = 0.79, and for the majority of countries, the modulus difference between our estimates and the UN-Habitat estimates was smaller than 5 percentage points (pp) (16 countries) or smaller than 10 pp (10 countries) (Supplementary Material Fig. S7 and S8)."
+      },
+      "confidence": 0.95,
+      "task": "slum probability map binarization and calibration",
+      "setup": "country-specific threshold calibration using UN-Habitat estimates"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_e46af8e0477bca1e_x3",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "The performance of machine learning models for binary classification tasks can be evaluated through various accuracy metrics. For our specific task, three metrics are particularly informative – Recall (also Sensitivity or True Positive Rate, TPR), Precision (also Positive Predictive Value, PPV), and the F1 Score, which are calculated as follows: TP/(TP+FN), TP/(TP+FP), and 2*(TP/(TP+FN))*(TP/(TP+FP))/(TP/(TP+FN)+TP/(TP+FP)). TP/FN/FP stand for true positives/false negatives/false positives. Both the TPR and the PPV measure the ability of the model to correctly identify pixels covered by slums (TP) – in relation to the actual extent of slums in the ground truth (TP + FN) or in relation to all predicted slum pixels (TP + FP). The F1 score is the harmonic mean of TPR and PPV and thus a composite measure of Recall and Precision. Table S3 (Supplementary Material) provides these test metrics for all cities with available ground truth data from Kenya, South Africa, and Tanzania, based on the country-specific models. We also included three additional measures, namely Accuracy, Specificity (True Negative Rate, TNR), and Intersection over Union (IoU). Given the limited amount of ground truth data, we generally reach satisfactory accuracy measures, with mean (median) values across all cities of 59.31% (64.58%) for Precision, 70.45% (72.01%) for Recall, and 62.55% (63.21%) for the F1 Score, respectively. These test statistics were complemented with the Precision-Recall Curve and the Receiver Operating Characteristic (ROC) Curve (Supplementary Material Fig. S9), which identify the ideal binary threshold values that either jointly optimize Precision and Recall or jointly optimize the TPR and FPR."
+      },
+      "confidence": 0.95,
+      "task": "model performance evaluation",
+      "setup": "calculation of Recall, Precision, F1 Score, Accuracy, Specificity, IoU, Precision-Recall Curve, ROC Curve"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_e46af8e0477bca1e_x4",
+      "evidence": {
+        "section": "2.3. Analysis",
+        "original_text": "Based on the binary segmentation maps, we conducted several geospatial analyses in R. We calculated 1) at the city level and 2) at the country level the a) share of the urban area covered by slums (ShA), b) the share of the urban population living in slums (ShP), and c) the total urban population living in slums (TotP). The following equations illustrate these calculations: ShA_c,t = Σ Sbin_c,t / N_c, ShP_c,t = Σ (Sbin_c,t * P_c,t) / Σ P_c,t, TotP_c,t = Σ (Sbin_c,t * P_c,t). Sbin is a pixel-level binary indicator of slum coverage, P is the WorldPop population count estimate per pixel, c stands for city or country, t for time (year), and N is the number of pixels within city or country boundaries (urban area only). In the absence of more recent population count data, we used the 2020 WorldPop data as an approximation when calculating ShP and TotP for 2022."
+      },
+      "confidence": 0.95,
+      "task": "geospatial analysis of slum prevalence",
+      "setup": "binary segmentation maps, WorldPop population data, Africapolis city polygons"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_e46af8e0477bca1e_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The number of cities with a population share living in slums exceeding 50% increased from 155 in 2016 to 274 out of 529 in 2022. In the same period, the population share living in slums increased in 84% of all cities – the majority (320 cities) experienced an increase of between 0 and 25 pp. Only in 82 of 529 cities a decrease in the population share living in slums was observed. Our estimates also reveal interesting spatiotemporal dynamics. In 2016, on average, the share of the urban population living in slums was highest in East African cities at 40%, followed by Middle (37%), West (30%), and lastly Southern African cities (17%). However, due to differential growth dynamics, this order changed until 2022 with Middle African cities now having the largest population share living in slums (58%), followed by East (52%), West (48%), and lastly Southern African cities (19%). In 2022, there were 41 cities with more than 80% of their population living in slums – among them 11 in DR Congo, 10 in Ethiopia, five in Kenya, and four in Angola. The five cities with the highest estimated total number of inhabitants living in slums were Luanda, Angola (5.9M); Lagos, Nigeria (5.7M); Kinshasa, DR Congo (3.6M); Dar es Salaam, Tanzania (3.2M); and Kampala, Uganda (2.9M)."
+      },
+      "confidence": 0.95,
+      "quantity": "share of urban population living in slums",
+      "value": 274,
+      "unit": "number of cities",
+      "context": "529 major cities across sub-Saharan Africa in 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_e46af8e0477bca1e_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "In the same period, the population share living in slums increased in 84% of all cities – the majority (320 cities) experienced an increase of between 0 and 25 pp. Only in 82 of 529 cities a decrease in the population share living in slums was observed. In 50 cities, the population share living in slums had increased by more than 40 pp between 2016 and 2022 – among them 23 in Nigeria, 11 in DR Congo, and three in Kenya and Uganda each. The five cities with the highest estimated absolute increase in their slum population were Lagos, Nigeria; Luanda, Angola; Ibadan, Nigeria; Kinshasa, DR Congo; and Yaounde, Cameroon – each with more than 1 million additional slum dwellers in 2022 compared to 2016."
+      },
+      "confidence": 0.95,
+      "quantity": "increase in slum population share",
+      "value": 320,
+      "unit": "number of cities",
+      "context": "529 major cities across sub-Saharan Africa between 2016 and 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_e46af8e0477bca1e_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "In 2016, the urban population share living in slums exceeded 50% in 14 out of 44 countries. This increased to 25 countries in 2022. Between 2016 and 2022, in all except eight countries, the urban population share living in slums increased, and the unweighted mean share across all 44 countries increased from 40% in 2016 to 51% in 2022. The spatial patterns at the country level differ to some extent from those observed at the city level. In 2016, West African countries had on average the highest estimated urban population share living in slums with 44%, followed by East (41%), Middle (37%), and with considerable distance Southern African countries (24%). By 2022, these numbers rose to 55% in both West and Middle African countries, closely followed by East (51%), and again at last Southern African countries (29%). Stark regional discrepancies also pertain to the growth of the slum population. Between 2016 and 2022 the share of the slum population grew by far the strongest in Middle African countries with on average 18 pp, and by 11 pp, 10 pp, and 5 pp in West, East, and Southern African countries, respectively."
+      },
+      "confidence": 0.95,
+      "quantity": "share of urban population living in slums",
+      "value": 51,
+      "unit": "%",
+      "context": "44 countries in sub-Saharan Africa in 2022",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_e46af8e0477bca1e_qr4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Table S3 (Supplementary Material) provides these test metrics for all cities with available ground truth data from Kenya, South Africa, and Tanzania, based on the country-specific models. We also included three additional measures, namely Accuracy, Specificity (True Negative Rate, TNR), and Intersection over Union (IoU). Given the limited amount of ground truth data, we generally reach satisfactory accuracy measures, with mean (median) values across all cities of 59.31% (64.58%) for Precision, 70.45% (72.01%) for Recall, and 62.55% (63.21%) for the F1 Score, respectively. These test statistics were complemented with the Precision-Recall Curve and the Receiver Operating Characteristic (ROC) Curve (Supplementary Material Fig. S9), which identify the ideal binary threshold values that either jointly optimize Precision and Recall or jointly optimize the TPR and FPR. In addition, Fig. S10 (Supplementary Material) visualizes the performance of our predictions, i.e., it shows the distribution of true/false positives/ negatives across pixels within cities with ground truth data."
+      },
+      "confidence": 0.95,
+      "quantity": "model performance metrics",
+      "value": null,
+      "unit": null,
+      "context": "Cities with available ground truth data from Kenya, South Africa, and Tanzania",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_e46af8e0477bca1e_p1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The observed increase in the population share living in slums across most major cities in sub-Saharan Africa stands in contrast to the trends published by UN-Habitat. According to their Urban Indicators Database, the population share living in slums in sub-Saharan Africa has decreased in the past two decades – from 64.1% in 2000 to 57.3% in 2010 and 50.2% in 2020 (UN-Habitat, 2021). This discrepancy might partly be explained by some key differences between our estimation approach and the conventional survey- and census-based approach employed by UN-Habitat to track SDG 11.1. First, given the three-to five-year survey intervals, the biannual publications of UN-Habitat have to conduct extrapolations, while satellite data allows estimates for all places of interest on a true annual basis. Second, survey-based approaches capture slums based on householdlevel data, while our approach more accurately classifies contiguous geographic areas as slums. Our estimates should thus be less sensitive to improvements in specific deprivation indicators of a few households when a neighborhood overall remains deprived. The third and most important difference lies in the sampling procedure of cities within countries and of the population within cities. While the delineation between urban and rural PSUs in surveys may differ between countries (and over time), we use one standardized database of cities across all countries. Further, instead of a random subsample of cities, we use all major cities of a country. Our city database also has the advantage that it encompasses not just the official city proper but the entire built-up area of an urban agglomeration, including the periphery. The latter might be missed in many household surveys, especially if growth in the urban periphery is unplanned and if sampling frames are not continuously updated."
+      },
+      "confidence": 0.9,
+      "metric": "share of urban population living in slums",
+      "compared_to": "UN-Habitat estimates"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_e46af8e0477bca1e_p2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Since these evaluation statistics can only be calculated for cities with ground truth data, we complemented them with an alternative measure of certainty that can be calculated for all cities. Specifically, we calculated the per-pixel standard deviation (SD) of the four different predictions of slum locations (according to the four different models – before aggregating them to an ensemble prediction). We then calculated city-level and country-level means of the SD across predictions (Supplementary Material Fig. S11 and S12). A lower mean SD indicates a higher confidence across models in our ensemble prediction for the corresponding city or country. Both across cities and across countries, the mean and median of the aggregate SD were around 0.12 in 2016 and around 0.16 in 2022, rather low values compared to the theoretically possible maximum of 0.5."
+      },
+      "confidence": 0.9,
+      "metric": "model prediction confidence",
+      "compared_to": "theoretical maximum"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_e46af8e0477bca1e_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Around half of sub-Saharan Africa’s urban population lives in slums, yet data on the spatiotemporal development of slums remains scarce, impeding policies to alleviate urban poverty and inequality. We propose a solution to this problem by applying deep learning to open-access satellite imagery to map slums in 529 major cities across sub-Saharan Africa and track their spatiotemporal development. Our model produced 10m resolution ‘slum probability maps’ allowing timely and cost-effective tracking of slum growth. On this basis, we estimated that in 2022 the share of the urban population living in slums exceeded 50% in 274 cities, and in 84% of cities this share increased between 2016 and 2022, most severely in Middle and West Africa. Slum growth occurred primarily in the urban periphery, which tends to be missed in survey-based slum monitoring."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_e46af8e0477bca1e_cl1",
+      "evidence": {
+        "section": "Discussion and conclusion",
+        "original_text": "Our findings suggest a high prevalence and fast expansion of urban slums across sub-Saharan Africa, particularly in Middle and West Africa, closely followed by East Africa. According to our estimates, 84% of all analyzed cities experienced an increase in the population share living in slums between 2016 and 2022. By 2022, in more than half of all cities, at least half of the population lived in slums. The observed increase in the population share living in slums across most major cities in sub-Saharan Africa stands in contrast to the trends published by UN-Habitat. According to their Urban Indicators Database, the population share living in slums in sub-Saharan Africa has decreased in the past two decades – from 64.1% in 2000 to 57.3% in 2010 and 50.2% in 2020 (UN-Habitat, 2021). This discrepancy might partly be explained by some key differences between our estimation approach and the conventional survey- and census-based approach employed by UN-Habitat to track SDG 11.1. First, given the three-to five-year survey intervals, the biannual publications of UN-Habitat have to conduct extrapolations, while satellite data allows estimates for all places of interest on a true annual basis. Second, survey-based approaches capture slums based on household-level data, while our approach more accurately classifies contiguous geographic areas as slums. Our estimates should thus be less sensitive to improvements in specific deprivation indicators of a few households when a neighborhood overall remains deprived. The third and most important difference lies in the sampling procedure of cities within countries and of the population within cities. While the delineation between urban and rural PSUs in surveys may differ between countries (and over time), we use one standardized database of cities across all countries. Further, instead of a random subsample of cities, we use all major cities of a country. Our city database also has the advantage that it encompasses not just the official city proper but the entire built-up area of an urban agglomeration, including the periphery. The latter might be missed in many household surveys, especially if growth in the urban periphery is unplanned and if sampling frames are not continuously updated. Fig. S15 (Supplementary Material) illustrates this issue exemplarily for Ouagadougou, Burkina Faso. It shows that almost all DHS 2018 (ICF International, 2019) PSUs were located in the city’s central area, while large parts of the urban periphery were not covered. According to our predictions, however, these were exactly the areas with the most pronounced slum growth. Importantly, our probability maps (see Fig. 2 and our GitLab repository) reveal that slum expansion in many cities took place predominantly in the urban periphery. This is in line with findings from Boanada-Fuchs et al. (2024), who estimate that the majority of slum prevalence and growth in sub-Saharan Africa is located outside of official city boundaries, mostly in the urban periphery and also in the semi-rural vicinity. Lastly, the observed growth patterns indicating slum expansion primarily in the urban periphery are in line with continued high rural-urban migration patterns and the common neglect of the periphery in urban planning in contexts with limited resources."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_e46af8e0477bca1e_lm1",
+      "evidence": {
+        "section": "Discussion and conclusion",
+        "original_text": "Lastly, we acknowledge that part of the discrepancies could also be caused by inaccuracies in our predictions. The main causes for potential inaccuracies stem from the limited amount of ground truth data on slums as well as from the climate-related limited amount of cloud-free satellite images in some regions. A limited amount of ground truth data might bias predictions for cities in countries without ground truth data, especially when the geographical and morphological characteristics of slums differ strongly from those in the ground truth data. Another cause for varying accuracy across cities and countries is the model’s tendency to predict larger slum areas better than smaller ones, especially if they are isolated from larger slum areas and scattered throughout the city and/or close to formal neighborhoods. This is likely due to the limited spatial resolution of Sentinel-2 imagery. Predictions for cities with a larger number of small and scattered slum areas might therefore be worse than for cities where slums span large contiguous areas. While we generally reached satisfactory accuracy measures (Recall, Precision, F1 Score), these could only be calculated for cities with ground truth data, leaving room for substantial uncertainties in other cities, especially those in countries without any ground truth data. As an additional metric, we calculated the average per-pixel standard deviations (SD) of the predictions across country-specific models (see Fig. S11 and S12 for city- and country-level maps). The variability of predictions is generally low, yet caution might be warranted in several East African cities that show higher levels of variability, especially in Kenya, DR Congo, Uganda, Rwanda, and Ethiopia. Caution is also warranted in cities where only a few cloud-free satellite images were available, as this makes the predictions more prone to bias caused by seasonal changes and lower-quality aggregate images. Most cities affected by this issue are located in Nigeria, DR Congo, and a few other countries in West and Middle Africa."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_e46af8e0477bca1e_lm2",
+      "evidence": {
+        "section": "2.1.2. Satellite imagery – Sentinel-2",
+        "original_text": "We note that a clear limitation of Sentinel-2 is the limited time horizon it covers. Other openly available satellite data, such as those provided by the Landsat program would allow us to investigate slums going further back in time. However, while Sentinel-2 offers certain bands at a maximum resolution of 10m per pixel, the same bands come with a resolution of only 30m per pixel for Landsat sensors. Detecting slum areas, especially smaller ones, is already a challenging task with Sentinel-2 data and we believe that at considerably lower resolutions, many problems will be aggravated, potentially to a degree where model predictions would not be useful anymore."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_e46af8e0477bca1e_lm3",
+      "evidence": {
+        "section": "2.1.4. Population distribution data – WorldPop",
+        "original_text": "While WorldPop has been criticized for underestimating populations in slums (Thomson et al., 2021, 2022a; 2022b), this criticism is based on few country case studies, and there is currently no superior data source for gridded population count estimates. However, with this potential caveat in mind, estimates on the share and total count of urban slum dwellers should generally be interpreted as lower bounds."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_e46af8e0477bca1e_fw1",
+      "evidence": {
+        "section": "Discussion and conclusion",
+        "original_text": "Given the limited availability of ground truth data, the present study focused on mapping slums in major cities of at least 100,000 inhabitants in sub-Saharan Africa. As a next step, we plan to expand our predictions to smaller cities and, depending on the emerging availability of suitable ground truth data, to other world regions. Priority will be given to regions most affected by high levels of urbanization and slum prevalence, such as South Asia and Southeast Asia, but we aim to eventually cover the entire Global South, including Latin America and the Caribbean as well as the Middle East and North Africa. Furthermore, we plan to incorporate additional geospatial datasets with broad geographical and sufficient temporal coverage to explicitly incorporate distinct morphological features of slums, such as dwelling size, irregular settlement layout, or the absence of roads. With this multimodal learning-based approach, we hope to reduce the dependency on high-quality ground truth data and facilitate global slum monitoring efforts in support of SDG 11.1."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_e46af8e0477bca1e_fw2",
+      "evidence": {
+        "section": "2.1.2. Satellite imagery – Sentinel-2",
+        "original_text": "Nonetheless, it would be interesting to see further work utilizing such lower-resolution data because of the clear advantages related to the covered time horizon they offer. This might be particularly relevant for multimodal approaches, where satellite imagery is not the only source of data."
+      },
+      "confidence": 0.85
+    }
+  ]
+}

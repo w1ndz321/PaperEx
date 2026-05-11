@@ -6,7 +6,7 @@
 |------|------|
 | 数据集 | 10 个 (ChinaUIS, DroneRFa, FRB, FRB20220912a, Fish Iridovirus, PeriCBD, Pinglu Canal, SSP1-5, Single season rice) |
 | 论文总数 | 156 篇 |
-| 抽取成功 | 141 篇 |
+| 抽取成功 | 145 篇 |
 | convert 失败 | 4 篇（PDF 文件损坏或为空） |
 | 内容重复跳过 | 7 篇（与已处理论文 MD5 一致） |
 | 知识条目总计 | 7,322 条 |

@@ -15,12 +15,7 @@
     "secondary_disciplines": [
       {
         "level1": "计算机科学技术",
-        "level2": null,
-        "level3": null
-      },
-      {
-        "level1": "测绘科学技术",
-        "level2": null,
+        "level2": "人工智能",
         "level3": null
       }
     ],
@@ -29,11 +24,11 @@
       "Sentinel-1",
       "Google Earth Engine",
       "machine learning",
-      "cropping patterns"
+      "remote sensing"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:54:21.175333+00:00",
+      "extraction_timestamp": "2026-05-11T02:13:31.513991+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -57,11 +52,11 @@
       "concept_id": "doc_69eca119af6bd780_c2",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Time series images such as the Sentinel-1 data are now freely available. Sentinel-1A is the next generation of the C-band (center frequency: 5.405 GHz) radar sensor which was launched on 3 April 2014 and operated by the European Commission’s Copernicus Programme [4]. It was designed for continuous near-real-time land and ocean monitoring, and revisits the equator every 12 days. The launch of Sentinel-1B on 25 April 2016 is expected to double the revisit time. The Sentinel satellites provide dual-polarized (VV + VH) SAR images with a spatial resolution of 5 m × 20 m. Because of the excellent spatiotemporal coverage, resolution, and independence from cloud coverage, Sentinel-1 data are a valuable alternative to other satellite products, such as the multi-spectral, 250 m resolution, 16-day composite images from MODIS [5], or the combined MODIS/Landsat data [6]. Extensive research has been conducted on mapping and monitoring rice extent and rice verities using SAR backscatter data [7,8]. The potential of using Sentinel-1 to map rice extent and growing season has been investigated in various regions in the world, including Vietnam [9–13], China [14–18], USA and Spain [19], India [20–23], the Mediterranean region [24], Philippines [25], Thailand [23], and Myanmar [26]. In particular, studies [10,17] reported that the VH backscatter of Sentinel-1 is more sensitive to detecting rice growth than the VV backscatter."
+        "original_text": "Time series images such as the Sentinel-1 data are now freely available. Sentinel-1A is the next generation of the C-band (center frequency: 5.405 GHz) radar sensor which was launched on 3 April 2014 and operated by the European Commission’s Copernicus Programme [4]. It was designed for continuous near-real-time land and ocean monitoring, and revisits the equator every 12 days. The launch of Sentinel-1B on 25 April 2016 is expected to double the revisit time. The Sentinel satellites provide dual-polarized (VV + VH) SAR images with a spatial resolution of 5 m × 20 m. Because of the excellent spatiotemporal coverage, resolution, and independence from cloud coverage, Sentinel-1 data are a valuable alternative to other satellite products, such as the multi-spectral, 250 m resolution, 16-day composite images from MODIS [5], or the combined MODIS/Landsat data [6]. Extensive research has been conducted on mapping and monitoring rice extent and rice verities using SAR backscatter data [7,8]. The potential of using Sentinel-1 to map rice extent and growing season has been investigated in various regions in the world, including Vietnam [9–13], China [14– 18], USA and Spain [19], India [20–23], the Mediterranean region [24], Philippines [25], Thailand [23], and Myanmar [26]. In particular, studies [10,17] reported that the VH backscatter of Sentinel-1 is more sensitive to detecting rice growth than the VV backscatter."
       },
       "confidence": 0.97,
       "term": "Sentinel-1",
-      "normalized": "哨兵一号",
+      "normalized": "哨兵-1",
       "std_label": ""
     },
     {
@@ -92,12 +87,12 @@
       "type": "concept",
       "concept_id": "doc_69eca119af6bd780_c5",
       "evidence": {
-        "section": "Materials and Methods",
-        "original_text": "Rice phenological parameters, including the starting season and the length of the growing season, were manually extracted for each of the rice field clusters from Figure 6 (site 1) and Figure 7 (site 2). Then, based on the start of the growing season, rice growth stages were allocated to one of the designated growth stages (T&P, V-1, V-2, R, M). Note that every stage was assumed to last for a month. Once the local minimum of the VH polarization cluster profile was identified as tillage and planting (see Section 2.4.1), the proceeding growth stages (i.e., V-1, V-2, R, and M) were readily determined. Table S1 and S2 present list of rice cropping phenological stages for site 1 and 2, respectively."
+        "section": "Abstract",
+        "original_text": "The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Thus, one season of rice cropping takes about 150 days or 5 months. At planting, when the land was tilled and flooded, the rice fields had a local minimum VH polarization value of about <−18 dB (i.e., close to the value of water body). Note that this value depended on water level or soil moisture during soil tillage. Higher water level leads to more negative VH values. The VH polarization value rapidly increased during vegetative growth and generative stages, peaking at the end of the generative stage when the crop entered the heading or maturity stage. The difference between the local minimum and the peak is about five months, representing one growing season. The polarization value decreased during fallow. Between seasons, a VH polarization value greater than −18 dB signified the beginning of cash crop cultivation."
       },
-      "confidence": 0.94,
-      "term": "rice phenological parameters",
-      "normalized": "水稻物候参数",
+      "confidence": 0.98,
+      "term": "rice growth stages",
+      "normalized": "水稻生长阶段",
       "std_label": ""
     },
     {
@@ -107,7 +102,7 @@
         "section": "Materials and Methods",
         "original_text": "The Sentinel-1 time series images (monthly layers from September 2016–October 2018 = 26 layers stack) were classified using the K-Means unsupervised classification method in GEE. This unsupervised classification method was used due to the large study area size, and diverse land uses and cropping patterns. The ee.Clusterer.wekaKMeans() function was used. The algorithm automatically normalizes numerical input attributes and uses the Euclidean distance to measure distances between clusters, with the objective to minimize within cluster variation (distances). The K-Means model was built based on 10,000 random sampling points as representative pixels from the images. The model was used to predict clusters in the image collection at each site. The number of clusters was set at 50. This number of clusters was chosen to represent land uses in the area (rice field, waterbody, built-up, tree) because a low number of clusters can lead to a loss of important information and less accurate analysis [5,30,51]."
       },
-      "confidence": 0.93,
+      "confidence": 0.96,
       "term": "K-means clustering",
       "normalized": "K均值聚类",
       "std_label": ""
@@ -119,7 +114,7 @@
         "section": "Materials and Methods",
         "original_text": "Some of the clusters established by the K-means method were similar, and thus the clusters were grouped based on their similarities of VH polarization profiles. To establish a natural gradient grouping, VH polarization cluster profiles were grouped using the HCA in R software [52] using the factoextra package. The Ward D2 method with the Euclidian distance was applied. The result of the HCA is presented as a dendrogram and shown in Figure 5a for site 1 and Figure 5b for site 2. Subsequently, median VH polarization profiles for every cluster were inspected visually to identify each cluster whether it was belonging rice field or non-rice field (e.g., water bodies, built-up and tree). For site 1, 27 out of 50 clusters were identified as rice fields (see Figure 6) and grouped into seven rice units (Figure 5a) as follows: Rice field A (grouping cluster V22, V48, V44 and V8), Rice field B (grouping cluster V11, V10, V46, V5 and V2), Rice field C (grouping cluster V32, V13, and V35), Rice field D (grouping cluster V6, V2 and V39), Rice field E (grouping cluster V17, V42, V28 and V41), Rice field F (grouping cluster V14, V23 and V40), and Rice field G (grouping cluster V21, V24, V16 and V49). For site 2, only five out of 50 clusters were identified as rice fields (see Figure 7) and were grouped into two rice units (Rice field X and Y) (Figure 5b) as follows: Rice field X (grouping cluster V46 and V7), and Rice field Y (grouping cluster V49, V6 and V9). These units correspond to different rice cropping phenological stages, and will be discussed in Section 3.1."
       },
-      "confidence": 0.92,
+      "confidence": 0.95,
       "term": "hierarchical cluster analysis",
       "normalized": "层次聚类分析",
       "std_label": "HCA"
@@ -131,7 +126,7 @@
         "section": "Materials and Methods",
         "original_text": "Since rice fields change seasonally, it was assumed that the representative VH polarization profiles also replicated annual rice field characteristics and occurred in clusters. Thus, to automatically generate rice cropping pattern maps (i.e., rice units A, B, C, D, E, F and G at site 1 and rice unit X and Y at site 2), supervised classification sorted the clusters into rice units based on the representative VH polarization profiles. Four different algorithms: support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models were trialled independently and compared. SVM classification was conducted using the kernlab R package [53]. The C-SVM classification algorithm with the Gaussian radial basis function was selected. Two parameters: σ and C were tuned with σ = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.2] and C = [2 : 5]. ANN classification was performed using the nnet R package [54]. ANN consisted of three layers: input, hidden and output layers. The nodes were connected from input to hidden layers, hidden to output layers, and bypass connected from input to output layers. The number of nodes in hidden layers (size) and decay parameter values were tuned with size = [5,10,15,20] and decay = [0.01, 0.1, 0.25]. Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
       },
-      "confidence": 0.91,
+      "confidence": 0.94,
       "term": "support vector machine",
       "normalized": "支持向量机",
       "std_label": "SVM"
@@ -143,7 +138,7 @@
         "section": "Materials and Methods",
         "original_text": "Since rice fields change seasonally, it was assumed that the representative VH polarization profiles also replicated annual rice field characteristics and occurred in clusters. Thus, to automatically generate rice cropping pattern maps (i.e., rice units A, B, C, D, E, F and G at site 1 and rice unit X and Y at site 2), supervised classification sorted the clusters into rice units based on the representative VH polarization profiles. Four different algorithms: support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models were trialled independently and compared. SVM classification was conducted using the kernlab R package [53]. The C-SVM classification algorithm with the Gaussian radial basis function was selected. Two parameters: σ and C were tuned with σ = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.2] and C = [2 : 5]. ANN classification was performed using the nnet R package [54]. ANN consisted of three layers: input, hidden and output layers. The nodes were connected from input to hidden layers, hidden to output layers, and bypass connected from input to output layers. The number of nodes in hidden layers (size) and decay parameter values were tuned with size = [5,10,15,20] and decay = [0.01, 0.1, 0.25]. Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
       },
-      "confidence": 0.91,
+      "confidence": 0.94,
       "term": "artificial neural networks",
       "normalized": "人工神经网络",
       "std_label": "ANN"
@@ -153,11 +148,11 @@
       "relation_id": "doc_69eca119af6bd780_r1",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Time series images such as the Sentinel-1 data are now freely available. Sentinel-1A is the next generation of the C-band (center frequency: 5.405 GHz) radar sensor which was launched on 3 April 2014 and operated by the European Commission’s Copernicus Programme [4]. It was designed for continuous near-real-time land and ocean monitoring, and revisits the equator every 12 days. The launch of Sentinel-1B on 25 April 2016 is expected to double the revisit time. The Sentinel satellites provide dual-polarized (VV + VH) SAR images with a spatial resolution of 5 m × 20 m. Because of the excellent spatiotemporal coverage, resolution, and independence from cloud coverage, Sentinel-1 data are a valuable alternative to other satellite products, such as the multi-spectral, 250 m resolution, 16-day composite images from MODIS [5], or the combined MODIS/Landsat data [6]. Extensive research has been conducted on mapping and monitoring rice extent and rice verities using SAR backscatter data [7,8]. The potential of using Sentinel-1 to map rice extent and growing season has been investigated in various regions in the world, including Vietnam [9–13], China [14–18], USA and Spain [19], India [20–23], the Mediterranean region [24], Philippines [25], Thailand [23], and Myanmar [26]. In particular, studies [10,17] reported that the VH backscatter of Sentinel-1 is more sensitive to detecting rice growth than the VV backscatter."
+        "original_text": "Time series images such as the Sentinel-1 data are now freely available. Sentinel-1A is the next generation of the C-band (center frequency: 5.405 GHz) radar sensor which was launched on 3 April 2014 and operated by the European Commission’s Copernicus Programme [4]. It was designed for continuous near-real-time land and ocean monitoring, and revisits the equator every 12 days. The launch of Sentinel-1B on 25 April 2016 is expected to double the revisit time. The Sentinel satellites provide dual-polarized (VV + VH) SAR images with a spatial resolution of 5 m × 20 m. Because of the excellent spatiotemporal coverage, resolution, and independence from cloud coverage, Sentinel-1 data are a valuable alternative to other satellite products, such as the multi-spectral, 250 m resolution, 16-day composite images from MODIS [5], or the combined MODIS/Landsat data [6]. Extensive research has been conducted on mapping and monitoring rice extent and rice verities using SAR backscatter data [7,8]. The potential of using Sentinel-1 to map rice extent and growing season has been investigated in various regions in the world, including Vietnam [9–13], China [14– 18], USA and Spain [19], India [20–23], the Mediterranean region [24], Philippines [25], Thailand [23], and Myanmar [26]. In particular, studies [10,17] reported that the VH backscatter of Sentinel-1 is more sensitive to detecting rice growth than the VV backscatter."
       },
-      "confidence": 0.95,
+      "confidence": 0.93,
       "head": "doc_69eca119af6bd780_c2",
-      "relation_type": "uses",
+      "relation_type": "measures",
       "relation_surface": "used to map rice extent and growing season",
       "tail": "doc_69eca119af6bd780_c1"
     },
@@ -165,13 +160,13 @@
       "type": "relation",
       "relation_id": "doc_69eca119af6bd780_r2",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "The ability to process multi-temporal satellite data has also become less complicated. The Google Earth Engine platform (GEE, www.earthengine.google.com) is one of the most promising developments for earth science data access and analysis [36,37]. It contains a multi-petabyte catalogue of satellite imagery including Landsat, Sentinels, and MODIS. It also provides scripting ability to access, operate and visualize such data in an easy and scalable manner. For example, Global Forest Watch (https://earthengine.google.com/case_studies/) uses GEE to monitor changes to the world's forests [38]. Users can synthesise data from the past decade or receive alerts about possible new threats in near-real-time. Thus, GEE also has a high potential to apply in near-real-time mapping and monitoring of paddy rice extent and cropping patterns. In a recent study, temporal Sentinel-1 data in GEE were used to map rice extent in India [21,22]. However, these studies only distinguished between rice and non-rice areas, and early and late rice."
+        "section": "Abstract",
+        "original_text": "More than 50% of the world’s population consumes rice. Accurate and up-to-date information on rice field extent is important to help manage food and water security. Currently, field surveys or MODIS satellite data are used to estimate rice growing areas. This study presents a cost-effective methodology for near-real-time mapping and monitoring of rice growth extent and cropping patterns over a large area. This novel method produces high-resolution monthly maps (10 m resolution) of rice growing areas, as well as rice growth stages. The method integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform. It uses monthly median time series of Sentinel-1 at VH polarization from September 2016 to October 2018. The two study areas are the northern region of West Java, Indonesia (0.75 million ha), and the Kedah and Perlis states in Malaysia (over 1 million ha). K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages. To automate the process, four supervised classification methods (support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models) were independently trialled to identify cluster labels. The results from each classification method were compared. The method can also forecast rice extent for up to two months. The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Compared to field survey data, this method measures overall rice extent with an accuracy of 96.5% and a kappa coefficient of 0.92. SVM and ANN show better performance than random forest and C5.0 models. This simple and robust method could be rolled out across Southeast Asia, and could be used as an alternative to timeconsuming, expensive field surveys."
       },
-      "confidence": 0.94,
+      "confidence": 0.92,
       "head": "doc_69eca119af6bd780_c3",
-      "relation_type": "enhances",
-      "relation_surface": "has a high potential to apply in near-real-time mapping and monitoring",
+      "relation_type": "uses",
+      "relation_surface": "integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform",
       "tail": "doc_69eca119af6bd780_c1"
     },
     {
@@ -179,9 +174,9 @@
       "relation_id": "doc_69eca119af6bd780_r3",
       "evidence": {
         "section": "Abstract",
-        "original_text": "More than 50% of the world’s population consumes rice. Accurate and up-to-date information on rice field extent is important to help manage food and water security. Currently, field surveys or MODIS satellite data are used to estimate rice growing areas. This study presents a cost-effective methodology for near-real-time mapping and monitoring of rice growth extent and cropping patterns over a large area. This novel method produces high-resolution monthly maps (10 m resolution) of rice growing areas, as well as rice growth stages. The method integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform. It uses monthly median time series of Sentinel-1 at VH polarization from September 2016 to October 2018. The two study areas are the northern region of West Java, Indonesia (0.75 million ha), and the Kedah and Perlis states in Malaysia (over 1 million ha). K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages. To automate the process, four supervised classification methods (support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models) were independently trialled to identify cluster labels. The results from each classification method were compared. The method can also forecast rice extent for up to two months. The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Compared to field survey data, this method measures overall rice extent with an accuracy of 96.5% and a kappa coefficient of 0.92. SVM and ANN show better performance than random forest and C5.0 models. This simple and robust method could be rolled out across Southeast Asia, and could be used as an alternative to timeconsuming, expensive field surveys."
+        "original_text": "The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Thus, one season of rice cropping takes about 150 days or 5 months. At planting, when the land was tilled and flooded, the rice fields had a local minimum VH polarization value of about <−18 dB (i.e., close to the value of water body). Note that this value depended on water level or soil moisture during soil tillage. Higher water level leads to more negative VH values. The VH polarization value rapidly increased during vegetative growth and generative stages, peaking at the end of the generative stage when the crop entered the heading or maturity stage. The difference between the local minimum and the peak is about five months, representing one growing season. The polarization value decreased during fallow. Between seasons, a VH polarization value greater than −18 dB signified the beginning of cash crop cultivation."
       },
-      "confidence": 0.93,
+      "confidence": 0.95,
       "head": "doc_69eca119af6bd780_c4",
       "relation_type": "measures",
       "relation_surface": "can identify four growth stages of rice",
@@ -194,10 +189,10 @@
         "section": "Abstract",
         "original_text": "More than 50% of the world’s population consumes rice. Accurate and up-to-date information on rice field extent is important to help manage food and water security. Currently, field surveys or MODIS satellite data are used to estimate rice growing areas. This study presents a cost-effective methodology for near-real-time mapping and monitoring of rice growth extent and cropping patterns over a large area. This novel method produces high-resolution monthly maps (10 m resolution) of rice growing areas, as well as rice growth stages. The method integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform. It uses monthly median time series of Sentinel-1 at VH polarization from September 2016 to October 2018. The two study areas are the northern region of West Java, Indonesia (0.75 million ha), and the Kedah and Perlis states in Malaysia (over 1 million ha). K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages. To automate the process, four supervised classification methods (support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models) were independently trialled to identify cluster labels. The results from each classification method were compared. The method can also forecast rice extent for up to two months. The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Compared to field survey data, this method measures overall rice extent with an accuracy of 96.5% and a kappa coefficient of 0.92. SVM and ANN show better performance than random forest and C5.0 models. This simple and robust method could be rolled out across Southeast Asia, and could be used as an alternative to timeconsuming, expensive field surveys."
       },
-      "confidence": 0.92,
+      "confidence": 0.91,
       "head": "doc_69eca119af6bd780_c6",
       "relation_type": "uses",
-      "relation_surface": "used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages",
+      "relation_surface": "K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages",
       "tail": "doc_69eca119af6bd780_c1"
     },
     {
@@ -207,10 +202,10 @@
         "section": "Abstract",
         "original_text": "More than 50% of the world’s population consumes rice. Accurate and up-to-date information on rice field extent is important to help manage food and water security. Currently, field surveys or MODIS satellite data are used to estimate rice growing areas. This study presents a cost-effective methodology for near-real-time mapping and monitoring of rice growth extent and cropping patterns over a large area. This novel method produces high-resolution monthly maps (10 m resolution) of rice growing areas, as well as rice growth stages. The method integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform. It uses monthly median time series of Sentinel-1 at VH polarization from September 2016 to October 2018. The two study areas are the northern region of West Java, Indonesia (0.75 million ha), and the Kedah and Perlis states in Malaysia (over 1 million ha). K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages. To automate the process, four supervised classification methods (support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models) were independently trialled to identify cluster labels. The results from each classification method were compared. The method can also forecast rice extent for up to two months. The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Compared to field survey data, this method measures overall rice extent with an accuracy of 96.5% and a kappa coefficient of 0.92. SVM and ANN show better performance than random forest and C5.0 models. This simple and robust method could be rolled out across Southeast Asia, and could be used as an alternative to timeconsuming, expensive field surveys."
       },
-      "confidence": 0.92,
+      "confidence": 0.91,
       "head": "doc_69eca119af6bd780_c7",
       "relation_type": "uses",
-      "relation_surface": "used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages",
+      "relation_surface": "K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages",
       "tail": "doc_69eca119af6bd780_c1"
     },
     {
@@ -223,7 +218,7 @@
       "confidence": 0.9,
       "head": "doc_69eca119af6bd780_c8",
       "relation_type": "compares",
-      "relation_surface": "show better performance than random forest and C5.0 models",
+      "relation_surface": "SVM and ANN show better performance than random forest and C5.0 models",
       "tail": "doc_69eca119af6bd780_c9"
     },
     {
@@ -234,7 +229,7 @@
         "original_text": "For rice mapping, the VH polarization of Sentinel-1 gives more valuable information than VV polarization [10]. As such, VH polarization data from September 2016 to October 2018 were used for both study sites. The data had a spatial resolution of 10 m in interferometric wide swath (IW) mode and ground range detected (GRD) format, and was collected from both orbital directions (ascending and descending). Study site 1 had 321 Sentinel-1 scenes from GEE, while study site 2 had 405. Only Sentinel-1A data were used as Sentinel-1B data was not available in both study areas. The data were pre-processed by GEE within the Sentinel-1 Toolbox, including orbital correction, thermal noise removal, radiometric calibration, and terrain correction (orthorectification). A median filter was applied to obtain monthly Sentinel-1 layers using the imageCollection.median() function in GEE. This filter was used to reduce the amount of noise, especially at the border between scenes, as the sites are covered by six (site 1) and four (site 2) different scenes (Figure 1). Monthly image compositing was also required as each scene in the study sites was acquired at a different time."
       },
       "confidence": 0.95,
-      "name": "Sentinel-1 monthly median VH polarization time series",
+      "name": "Monthly median Sentinel-1 VH polarization time series",
       "modality": "time_series",
       "domain": "remote sensing, agriculture"
     },
@@ -267,10 +262,10 @@
       "dataset_id": "doc_69eca119af6bd780_d4",
       "evidence": {
         "section": "3.1. Map of Rice Extent and Cropping Patterns",
-        "original_text": "Figure 8a presents the rice extent and cropping patterns at site 1. The cropping phenological parameters of growth stages for each of the rice field clusters from September 2016 to October 2018 are listed in Table S1. The results show that rice fields in the study area have a double cropping system. From September 2016 to October 2018, the start of season ranges from November to March for the wet planting season and March to September for the dry planting season. Note that crops were planted in every month except for October. After the dry planting season, cash crop cultivation was detected in rice field C, D, E, F and G. Areas in fallow were identified by clusters that did not show tillage or another rice stage for a period of 1–2 months. The rice field units at site 1 were characterized by elongated horizontal shapes representing the gradient of rice cropping schedules. This pattern was also reported by [5,47]. As shown in Table S1, the planting season started in the south and progressed north to the coast as the season advanced (starting from rice field D, then E, F, G, A, B to C), following the release of irrigation water from the Ir. Djuanda reservoir. Consequently, rice field clusters that are close to the coastal areas were planted later and classified as late rice groups (rice field A and B). Figure 5a also shows the similarities of the VH polarization cluster profiles within the rice units at site 1. Rice units D and E were located at a higher elevation and have a larger within-cluster variation compared to rice units located in lowlands. This indicates that rice fields located at higher elevations have a larger variation in planting schedules, likely because of the lack of irrigation water. At site 2, Figure 8b shows that most rice fields are concentrated in the MADA granary (around Alor Setar, the capital city of Kedah state). It also shows that only two rice units (rice field X and Y) were generated when the five clusters were grouped (see Figure 5b). Table S2 outlines crop growth stages derived from the crop phenological parameters for each cluster. Rice field X is located in the northern and southern part of the MADA granary area, while rice field Y covers the central part of MADA as well as a small part of Langkawi Island. Both rice groups are typically double cropping pattern without cash crops. Rice field X was planted earlier than rice field Y, and planting times reflect irrigation water availability. Rice field X was planted in October for the main season and April to May for the off-season. Rice field Y was planted in November for the main season and May to June for the off-season."
+        "original_text": "Figure 8a presents the rice extent and cropping patterns at site 1. The cropping phenological parameters of growth stages for each of the rice field clusters from September 2016 to October 2018 are listed in Table S1. The results show that rice fields in the study area have a double cropping system. From September 2016 to October 2018, the start of season ranges from November to March for the wet planting season and March to September for the dry planting season. Note that crops were planted in every month except for October. After the dry planting season, cash crop cultivation was detected in rice field C, D, E, F and G. Areas in fallow were identified by clusters that did not show tillage or another rice stage for a period of 1–2 months. The rice field units at site 1 were characterized by elongated horizontal shapes representing the gradient of rice cropping schedules. This pattern was also reported by [5,47]. As shown in Table S1, the planting season started in the south and progressed north to the coast as the season advanced (starting from rice field D, then E, F, G, A, B to C), following the release of irrigation water from the Ir. Djuanda reservoir. Consequently, rice field clusters that are close to the coastal areas were planted later and classified as late rice groups (rice field A and B)."
       },
       "confidence": 0.9,
-      "name": "Rice extent and cropping patterns maps",
+      "name": "Rice field extent and cropping pattern maps",
       "modality": "image",
       "domain": "remote sensing, agriculture"
     },
@@ -279,7 +274,7 @@
       "dataset_id": "doc_69eca119af6bd780_d5",
       "evidence": {
         "section": "3.2. Spatiotemporal Distribution of Rice Growth Stages",
-        "original_text": "Based on the analysis presented in Tables S1 and S2, Figure 9a–j (site 1) and Figure 10a–j (site 2) present the spatiotemporal distribution of rice growth stages generated from January to October 2018. At site 1, the peak land area for each stage occurred in December for tillage, January for vegetative1, February for vegetative-2, March for reproductive stage, and April for maturity stage; which resulted in a mosaic of rice fields from three rice units: E, F and G. In the peak maturity stage, the largest harvested area was about 100,000 ha in April, and the smallest area about 10,000 ha from January to March. During the dry season, September to October, most rice fields were utilized for cash crops or left in fallow. The rice pattern at site 2 is less complicated. Different rice growth stages peaked in terms of land area in October (tillage), November (vegetative-1), December (vegetative-2), January (reproductive), and February (maturity). These areas were mostly from rice field-X. During the off-season, crop growth stages peaked in May (tillage), June (vegetative-1), July (vegetative-2), August (reproductive), September (maturity). Because crop growth stages are known and sequential, it is possible to forecast how much land each stage will cover. Forecasting rice field extent is important to determine appropriate food security measures related to the import and export of rice, as the trade of rice requires a supply chain and time for transportation and shipping. Figure 9k,9l and Figure 10k,10l predict land area for each crop stage in November and December 2018. Note these predictions are no longer valid if there is no planting, or harvest failure due to flood, drought, insect, pests and/or disease infestations. The model can only accurately forecast up to one month after maturity, as it is unknown if farmers will plant another crop."
+        "original_text": "Based on the analysis presented in Tables S1 and S2, Figure 9a–j (site 1) and Figure 10a–j (site 2) present the spatiotemporal distribution of rice growth stages generated from January to October 2018. At site 1, the peak land area for each stage occurred in December for tillage, January for vegetative1, February for vegetative-2, March for reproductive stage, and April for maturity stage; which resulted in a mosaic of rice fields from three rice units: E, F and G. In the peak maturity stage, the largest harvested area was about 100,000 ha in April, and the smallest area about 10,000 ha from January to March. During the dry season, September to October, most rice fields were utilized for cash crops or left in fallow. The rice pattern at site 2 is less complicated. Different rice growth stages peaked in terms of land area in October (tillage), November (vegetative-1), December (vegetative-2), January (reproductive), and February (maturity). These areas were mostly from rice field-X. During the off-season, crop growth stages peaked in May (tillage), June (vegetative-1), July (vegetative-2), August (reproductive), September (maturity)."
       },
       "confidence": 0.9,
       "name": "Spatiotemporal distribution of rice growth stages maps",
@@ -290,74 +285,97 @@
       "type": "dataset",
       "dataset_id": "doc_69eca119af6bd780_d6",
       "evidence": {
-        "section": "2.3.2. Reference Data",
-        "original_text": "At site 1, a camera was installed in the Indramayu district (at 6.4275[o] S, 108.1085[o] E) to take daily photos from May 2017–February 2018. The photos were used to gather ground-truthed phenological information of rice and water conditions in the field during the growing season. The very high resolution (VHR) images from Google Earth (resolution of 15–30 cm [50]) were also used as reference data for differentiating rice and non-rice areas. Survey data on rice field extents were obtained from the provincial government statistical agency [40]. Rice cropping calendars were obtained from the previous study of [5]. At study site 2, VHR images from Google Earth (resolution of 15–30 cm [50]) were used to differentiate rice and non-rice areas. There was no camera at site 2. Rice cropping calendars and data on rice field extents were gathered from Department of Agriculture Peninsular Malaysia [46]. Administrative boundaries at the district level at site 1, and state levels at site 2, were obtained from ESRI shapefiles from http://www.diva-gis.org/gdata."
+        "section": "2.4.7. Accuracy Assessment",
+        "original_text": "The reference data from VHR images—with a resolution of 15–30 cm [50]—were obtained from Google Earth by generating 500 random points within the study area. This assessment was conducted at the pixel level. From the 500 points, 199 points were visually identified as rice fields and 301 points were identified as non-rice (tree, water body and built-up) for site 1. For site 2, 59 points were identified as rice fields and 441 points were identified as non-rice. The accuracy of the rice field map was then evaluated using a confusion matrix and kappa analysis."
       },
-      "confidence": 0.9,
-      "name": "Validation reference data (VHR images and government statistics)",
-      "modality": "tabular",
+      "confidence": 0.95,
+      "name": "Validation reference dataset from VHR images",
+      "modality": "image",
       "domain": "remote sensing, agriculture"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_69eca119af6bd780_d7",
+      "evidence": {
+        "section": "2.4.7. Accuracy Assessment",
+        "original_text": "The accuracy of the rice field extents was also evaluated at the district level from the West Java provincial statistic agency for site 1, and at the state level of Kedah and Perlis from Department of Agriculture Peninsular Malaysia [46] for site 2. Note that this data was compiled from field surveys. Root mean square error (RMSE) and R[2] were used to compare and to measure the accuracy of the maps from this study with the government data."
+      },
+      "confidence": 0.95,
+      "name": "Government statistical data on rice field area",
+      "modality": "tabular",
+      "domain": "agriculture"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_69eca119af6bd780_ds1",
       "evidence": {
-        "section": "4.2. Establishing Time Series Datasets: Intervals and Filtering",
-        "original_text": "Various researchers have attempted to establish a Sentinel-1 time series database for rice field identification. Layer stacks of time series based on acquisition date is more commonly used, such as [10,21,22]. Another approach is to use temporal metrics, including the 50[th] percentile and the standard deviation of VH polarization time series, and the 10[th] percentile of VV polarized data [19]. In this study, a median composite filter was applied to generate monthly median time series datasets. This approach was used to ensure that the whole study area was covered by Sentinel-1 data scenes and to reduce noise in the borders where data scenes overlapped. This median composite filter can also help determine trends in Sentinel-1 time series data."
+        "section": "2.3.1. Sentinel-1 Data and Pre-Processing",
+        "original_text": "A median filter was applied to obtain monthly Sentinel-1 layers using the imageCollection.median() function in GEE. This filter was used to reduce the amount of noise, especially at the border between scenes, as the sites are covered by six (site 1) and four (site 2) different scenes (Figure 1). Monthly image compositing was also required as each scene in the study sites was acquired at a different time."
       },
-      "confidence": 0.9,
+      "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "Monthly median composite filtering of Sentinel-1 VH polarization data for noise reduction and trend determination"
+      "description": "Monthly median compositing of Sentinel-1 VH polarization data for noise reduction and scene coverage"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_69eca119af6bd780_ds2",
       "evidence": {
-        "section": "4.1. Near-Real-Time Mapping and Monitoring",
-        "original_text": "The GEE provides Sentinel-1 data images with VV and VH dual polarization. From comparison between representative VH and VV polarization cluster profiles for clusters of rice fields in this study, it is found that the different values of VH polarization cluster profiles at different rice growth stages are more pronounced than its different values at VV polarization. It suggests that to discriminate rice growth stages, it is better to use Sentinel-1 data at VH polarization instead of VV polarization as also reported by a previous study [10]."
+        "section": "2.3.1. Sentinel-1 Data and Pre-Processing",
+        "original_text": "The data were pre-processed by GEE within the Sentinel-1 Toolbox, including orbital correction, thermal noise removal, radiometric calibration, and terrain correction (orthorectification)."
       },
-      "confidence": 0.9,
+      "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "Use of VH polarization over VV polarization for rice growth stage discrimination"
+      "description": "Standardized pre-processing of Sentinel-1 data including orbital correction, thermal noise removal, radiometric calibration, and terrain correction"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_69eca119af6bd780_ds3",
       "evidence": {
-        "section": "2.4.1. Analyzing the Time Series Profile of VH Polarization",
-        "original_text": "The VH polarization time series, as shown in Figures 3 and 4, were used to distinguish between rice growth stages. The time series can be related to the four designated rice cropping phenology groups—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Thus, one season of rice cropping takes about 150 days or 5 months. At planting, when the land was tilled and flooded, the rice fields had a local minimum VH polarization value of about <−18 dB (i.e., close to the value of water body). Note that this value depended on water level or soil moisture during soil tillage. Higher water level leads to more negative VH values. The VH polarization value rapidly increased during vegetative growth and generative stages, peaking at the end of the generative stage when the crop entered the heading or maturity stage. The difference between the local minimum and the peak is about five months, representing one growing season. The polarization value decreased during fallow. Between seasons, a VH polarization value greater than −18 dB signified the beginning of cash crop cultivation."
+        "section": "2.4.2. Classifying Time Series of VH Polarization",
+        "original_text": "The K-Means model was built based on 10,000 random sampling points as representative pixels from the images. The model was used to predict clusters in the image collection at each site. The number of clusters was set at 50. This number of clusters was chosen to represent land uses in the area (rice field, waterbody, built-up, tree) because a low number of clusters can lead to a loss of important information and less accurate analysis [5,30,51]. The ee.Clusterer.wekaKMeans() function was used. The algorithm automatically normalizes numerical input attributes and uses the Euclidean distance to measure distances between clusters, with the objective to minimize within cluster variation (distances)."
       },
-      "confidence": 0.95,
-      "spec_type": "quality_standard",
-      "description": "Standardized rice growth stage designation based on VH polarization time series profiles"
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "K-means clustering with 50 clusters based on 10,000 random sampling points and Euclidean distance"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_69eca119af6bd780_ds4",
       "evidence": {
-        "section": "2.4.7. Accuracy Assessment",
-        "original_text": "The accuracy of the rice field extents was evaluated using three types of data: (1) validation using the VHR images, (2) comparison with the government statistics of rice field area and (3) comparison with the known planting and harvesting schedule. The reference data from VHR images—with a resolution of 15–30 cm [50]—were obtained from Google Earth by generating 500 random points within the study area. This assessment was conducted at the pixel level. From the 500 points, 199 points were visually identified as rice fields and 301 points were identified as non-rice (tree, water body and built-up) for site 1. For site 2, 59 points were identified as rice fields and 441 points were identified as non-rice. The accuracy of the rice field map was then evaluated using a confusion matrix and kappa analysis. The accuracy of the rice field extents was also evaluated at the district level from the West Java provincial statistic agency for site 1, and at the state level of Kedah and Perlis from Department of Agriculture Peninsular Malaysia [46] for site 2. Note that this data was compiled from field surveys. Root mean square error (RMSE) and R[2] were used to compare and to measure the accuracy of the maps from this study with the government data. To assess temporal accuracy, planting schedules were compared with reference data from the previous study of [5] and Department of Agriculture Peninsular Malaysia [46] for the first and second study sites, respectively."
+        "section": "2.4.4. Grouping and Labelling Clusters",
+        "original_text": "To establish a natural gradient grouping, VH polarization cluster profiles were grouped using the HCA in R software [52] using the factoextra package. The Ward D2 method with the Euclidian distance was applied."
       },
-      "confidence": 0.95,
-      "spec_type": "quality_standard",
-      "description": "Accuracy assessment protocol using confusion matrix, kappa coefficient, RMSE, and R²"
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Hierarchical cluster analysis (HCA) using Ward D2 method with Euclidean distance for grouping similar clusters"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_69eca119af6bd780_ds5",
       "evidence": {
-        "section": "2.4.5. Models for Automated Rice Cropping Pattern Mapping",
-        "original_text": "Since rice fields change seasonally, it was assumed that the representative VH polarization profiles also replicated annual rice field characteristics and occurred in clusters. Thus, to automatically generate rice cropping pattern maps (i.e., rice units A, B, C, D, E, F and G at site 1 and rice unit X and Y at site 2), supervised classification sorted the clusters into rice units based on the representative VH polarization profiles. Four different algorithms: support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models were trialled independently and compared. SVM classification was conducted using the kernlab R package [53]. The C-SVM classification algorithm with the Gaussian radial basis function was selected. Two parameters: σ and C were tuned with σ = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.2] and C = [2 : 5]. ANN classification was performed using the nnet R package [54]. ANN consisted of three layers: input, hidden and output layers. The nodes were connected from input to hidden layers, hidden to output layers, and bypass connected from input to output layers. The number of nodes in hidden layers (size) and decay parameter values were tuned with size = [5,10,15,20] and decay = [0.01, 0.1, 0.25]. Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
+        "section": "2.4.7. Accuracy Assessment",
+        "original_text": "The reference data from VHR images—with a resolution of 15–30 cm [50]—were obtained from Google Earth by generating 500 random points within the study area. This assessment was conducted at the pixel level. From the 500 points, 199 points were visually identified as rice fields and 301 points were identified as non-rice (tree, water body and built-up) for site 1. For site 2, 59 points were identified as rice fields and 441 points were identified as non-rice. The accuracy of the rice field map was then evaluated using a confusion matrix and kappa analysis."
       },
       "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "Supervised classification model training and evaluation protocol using 5-fold cross-validation"
+      "description": "Accuracy assessment using confusion matrix and kappa analysis at pixel level with VHR images"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_69eca119af6bd780_ds6",
+      "evidence": {
+        "section": "2.4.7. Accuracy Assessment",
+        "original_text": "The accuracy of the rice field extents was also evaluated at the district level from the West Java provincial statistic agency for site 1, and at the state level of Kedah and Perlis from Department of Agriculture Peninsular Malaysia [46] for site 2. Note that this data was compiled from field surveys. Root mean square error (RMSE) and R[2] were used to compare and to measure the accuracy of the maps from this study with the government data."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Comparison of rice field extent with government statistical data using RMSE and R²"
     },
     {
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m1",
       "evidence": {
-        "section": "Materials and Methods",
+        "section": "2.4.2",
         "original_text": "The Sentinel-1 time series images (monthly layers from September 2016–October 2018 = 26 layers stack) were classified using the K-Means unsupervised classification method in GEE. This unsupervised classification method was used due to the large study area size, and diverse land uses and cropping patterns. The ee.Clusterer.wekaKMeans() function was used. The algorithm automatically normalizes numerical input attributes and uses the Euclidean distance to measure distances between clusters, with the objective to minimize within cluster variation (distances). The K-Means model was built based on 10,000 random sampling points as representative pixels from the images. The model was used to predict clusters in the image collection at each site. The number of clusters was set at 50. This number of clusters was chosen to represent land uses in the area (rice field, waterbody, built-up, tree) because a low number of clusters can lead to a loss of important information and less accurate analysis [5,30,51]."
       },
       "confidence": 0.95,
@@ -368,8 +386,8 @@
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m2",
       "evidence": {
-        "section": "Materials and Methods",
-        "original_text": "Clusters were then grouped using hierarchical cluster analysis (HCA), based on the similarities of the representative VH polarization cluster profiles. This grouping resulted in seven rice units (rice group A, B, C, D, E, F and G) at site 1 (see Figure 5a and Table S1), and two rice units (rice group X and Y) at site 2 (see Figure 5b and Table S2). Rice cropping patterns were identified based on the representative VH polarization profile of each cluster. Automated mapping of rice cropping patterns in cluster levels was established using four different machine learning algorithms: SVM, ANN, random forests, and C5.0 classification models. The machine learning methods classified VH polarization profiles into defined rice units (growth stages). Rice phenological parameters (tillage and planting, vegetative, reproduction and maturity time) were identified from the representative VH polarization profiles of each rice cluster to determine monthly extents of growth stages."
+        "section": "2.4.4",
+        "original_text": "Some of the clusters established by the K-means method were similar, and thus the clusters were grouped based on their similarities of VH polarization profiles. To establish a natural gradient grouping, VH polarization cluster profiles were grouped using the HCA in R software [52] using the factoextra package. The Ward D2 method with the Euclidian distance was applied. The result of the HCA is presented as a dendrogram and shown in Figure 5a for site 1 and Figure 5b for site 2."
       },
       "confidence": 0.95,
       "name": "Hierarchical cluster analysis (HCA)",
@@ -379,51 +397,51 @@
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m3",
       "evidence": {
-        "section": "Materials and Methods",
-        "original_text": "SVM classification was conducted using the kernlab R package [53]. The C-SVM classification algorithm with the Gaussian radial basis function was selected. Two parameters: σ and C were tuned with σ = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.2] and C = [2 : 5]. ANN classification was performed using the nnet R package [54]. ANN consisted of three layers: input, hidden and output layers. The nodes were connected from input to hidden layers, hidden to output layers, and bypass connected from input to output layers. The number of nodes in hidden layers (size) and decay parameter values were tuned with size = [5,10,15,20] and decay = [0.01, 0.1, 0.25]. Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
+        "section": "2.4.5",
+        "original_text": "SVM classification was conducted using the kernlab R package [53]. The C-SVM classification algorithm with the Gaussian radial basis function was selected. Two parameters: σ and C were tuned with σ = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.2] and C = [2 : 5]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
       },
       "confidence": 0.95,
       "name": "Support vector machine (SVM)",
-      "method_type": "algorithm"
+      "method_type": "model"
     },
     {
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m4",
       "evidence": {
-        "section": "Materials and Methods",
-        "original_text": "ANN classification was performed using the nnet R package [54]. ANN consisted of three layers: input, hidden and output layers. The nodes were connected from input to hidden layers, hidden to output layers, and bypass connected from input to output layers. The number of nodes in hidden layers (size) and decay parameter values were tuned with size = [5,10,15,20] and decay = [0.01, 0.1, 0.25]. Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
+        "section": "2.4.5",
+        "original_text": "ANN classification was performed using the nnet R package [54]. ANN consisted of three layers: input, hidden and output layers. The nodes were connected from input to hidden layers, hidden to output layers, and bypass connected from input to output layers. The number of nodes in hidden layers (size) and decay parameter values were tuned with size = [5,10,15,20] and decay = [0.01, 0.1, 0.25]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
       },
       "confidence": 0.95,
       "name": "Artificial neural networks (ANN)",
-      "method_type": "algorithm"
+      "method_type": "model"
     },
     {
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m5",
       "evidence": {
-        "section": "Materials and Methods",
-        "original_text": "Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
+        "section": "2.4.5",
+        "original_text": "Random forests for classification was carried out using RandomForest R package [55]. The number of trees to grow was set at 500 as a default value. Only one parameter, the number of variables randomly sampled as candidates at each split (mtry) was tuned with mtry = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
       },
       "confidence": 0.95,
       "name": "Random forests",
-      "method_type": "algorithm"
+      "method_type": "model"
     },
     {
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m6",
       "evidence": {
-        "section": "Materials and Methods",
+        "section": "2.4.5",
         "original_text": "The C5.0 classification model was performed using C5.0 [56] R packages [57]. Model type (classification tree models or rule-based models), number of boosting iterations (trials), and winnowing (i.e., feature selection) (whether it is used or not) were tuned with trials = [1 : 10]. For tuning parameters in the four supervised classification models, 5-fold cross-validation was used and repeated five times. The tuning parameters were conducted using the caret R package [58] with a grid search method. Overall accuracy (%) and the kappa coefficient were used to evaluate model performance."
       },
       "confidence": 0.95,
       "name": "C5.0 classification model",
-      "method_type": "algorithm"
+      "method_type": "model"
     },
     {
       "type": "method",
       "method_id": "doc_69eca119af6bd780_m7",
       "evidence": {
-        "section": "Materials and Methods",
+        "section": "2.3.1",
         "original_text": "The data were pre-processed by GEE within the Sentinel-1 Toolbox, including orbital correction, thermal noise removal, radiometric calibration, and terrain correction (orthorectification). A median filter was applied to obtain monthly Sentinel-1 layers using the imageCollection.median() function in GEE. This filter was used to reduce the amount of noise, especially at the border between scenes, as the sites are covered by six (site 1) and four (site 2) different scenes (Figure 1). Monthly image compositing was also required as each scene in the study sites was acquired at a different time."
       },
       "confidence": 0.95,
@@ -434,36 +452,47 @@
       "type": "experiment",
       "experiment_id": "doc_69eca119af6bd780_x1",
       "evidence": {
-        "section": "Materials and Methods",
-        "original_text": "For rice mapping, the VH polarization of Sentinel-1 gives more valuable information than VV polarization [10]. As such, VH polarization data from September 2016 to October 2018 were used for both study sites. The data had a spatial resolution of 10 m in interferometric wide swath (IW) mode and ground range detected (GRD) format, and was collected from both orbital directions (ascending and descending). Study site 1 had 321 Sentinel-1 scenes from GEE, while study site 2 had 405. Only Sentinel-1A data were used as Sentinel-1B data was not available in both study areas. The data were pre-processed by GEE within the Sentinel-1 Toolbox, including orbital correction, thermal noise removal, radiometric calibration, and terrain correction (orthorectification). A median filter was applied to obtain monthly Sentinel-1 layers using the imageCollection.median() function in GEE. This filter was used to reduce the amount of noise, especially at the border between scenes, as the sites are covered by six (site 1) and four (site 2) different scenes (Figure 1). Monthly image compositing was also required as each scene in the study sites was acquired at a different time."
+        "section": "2.4",
+        "original_text": "Figure 2 presents the methodology for this study, and comprises the following steps: Monthly median Sentinel 1 VH polarization time series data were extracted for rice fields and non-rice areas at both study sites. These monthly time series were sampled and classified using the K-means clustering method in GEE, resulting in 50 time series profile clusters. The spatial median of the VH polarization time series profiles was extracted for each cluster as a representative VH polarization profile. Clusters were then grouped using hierarchical cluster analysis (HCA), based on the similarities of the representative VH polarization cluster profiles. This grouping resulted in seven rice units (rice group A, B, C, D, E, F and G) at site 1 (see Figure 5a and Table S1), and two rice units (rice group X and Y) at site 2 (see Figure 5b and Table S2). Rice cropping patterns were identified based on the representative VH polarization profile of each cluster. Automated mapping of rice cropping patterns in cluster levels was established using four different machine learning algorithms: SVM, ANN, random forests, and C5.0 classification models. The machine learning methods classified VH polarization profiles into defined rice units (growth stages). Rice phenological parameters (tillage and planting, vegetative, reproduction and maturity time) were identified from the representative VH polarization profiles of each rice cluster to determine monthly extents of growth stages."
       },
       "confidence": 0.95,
       "task": "rice extent and cropping pattern mapping",
-      "setup": "Sentinel-1 VH polarization time series data from September 2016 to October 2018, Google Earth Engine platform, two study sites in Indonesia and Malaysia"
+      "setup": "Sentinel-1 VH polarization monthly median time series (Sep 2016–Oct 2018), Google Earth Engine platform, two study sites in Indonesia and Malaysia"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_69eca119af6bd780_x2",
       "evidence": {
-        "section": "Materials and Methods",
+        "section": "2.4.7",
         "original_text": "The accuracy of the rice field extents was evaluated using three types of data: (1) validation using the VHR images, (2) comparison with the government statistics of rice field area and (3) comparison with the known planting and harvesting schedule. The reference data from VHR images—with a resolution of 15–30 cm [50]—were obtained from Google Earth by generating 500 random points within the study area. This assessment was conducted at the pixel level. From the 500 points, 199 points were visually identified as rice fields and 301 points were identified as non-rice (tree, water body and built-up) for site 1. For site 2, 59 points were identified as rice fields and 441 points were identified as non-rice. The accuracy of the rice field map was then evaluated using a confusion matrix and kappa analysis. The accuracy of the rice field extents was also evaluated at the district level from the West Java provincial statistic agency for site 1, and at the state level of Kedah and Perlis from Department of Agriculture Peninsular Malaysia [46] for site 2. Note that this data was compiled from field surveys. Root mean square error (RMSE) and R[2] were used to compare and to measure the accuracy of the maps from this study with the government data. To assess temporal accuracy, planting schedules were compared with reference data from the previous study of [5] and Department of Agriculture Peninsular Malaysia [46] for the first and second study sites, respectively."
       },
       "confidence": 0.95,
-      "task": "accuracy assessment of rice field maps",
-      "setup": "validation using VHR images from Google Earth, comparison with government statistics, comparison with known planting schedules"
+      "task": "accuracy assessment of rice field extent maps",
+      "setup": "validation using VHR images, comparison with government statistics, comparison with planting schedules"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_69eca119af6bd780_x3",
+      "evidence": {
+        "section": "3.4",
+        "original_text": "Box plot results of overall accuracy and kappa coefficients for the four classification models for automated rice crop pattern mapping at the cluster level are shown in Figure 12a and b. Both SVM and ANN perform similarly, and better than random forests and C5.0. At site 1, accuracy was 83% (SVM) and 84% (ANN). Kappa coefficients were 0.73 (SVM) and 0.74 (ANN). At site 2, SVM and ANN performed better than at site 1, with the same values for overall accuracy (=1) and kappa coefficient (=1)."
+      },
+      "confidence": 0.95,
+      "task": "automated rice cropping pattern mapping model comparison",
+      "setup": "four supervised classification models (SVM, ANN, random forests, C5.0) applied to cluster labels"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_69eca119af6bd780_qr1",
       "evidence": {
-        "section": "Conclusions",
-        "original_text": "The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%."
+        "section": "Results",
+        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
       },
-      "confidence": 0.99,
-      "quantity": "rice field area",
-      "value": 302108,
-      "unit": "ha",
-      "context": "Indonesian rice growing area at four northern districts in West Java derived from Sentinel-1 data",
+      "confidence": 0.98,
+      "quantity": "overall accuracy",
+      "value": 96.5,
+      "unit": "%",
+      "context": "rice field extent mapping using Sentinel-1 VH polarization time series, K-means clustering, HCA, and machine learning classification on Google Earth Engine platform, validated with VHR images from Google Earth across two study sites in Indonesia and Malaysia",
       "result_type": "main_result"
     },
     {
@@ -471,275 +500,65 @@
       "qr_id": "doc_69eca119af6bd780_qr2",
       "evidence": {
         "section": "Conclusions",
-        "original_text": "The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%."
+        "original_text": "The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%. The approach proposed in this paper is a rapid, accurate, and cost-effective. It could be expanded to a national scale and to the whole of Southeast Asia. The Indonesian and Malaysian governments currently rely on ground sampling for data collection, which is laborious, expensive, and could be biased. The methodology in this paper could be used as an alternative source of information to field survey data. However, this approach is limited to rice extent and growth stage, and further research is necessary to estimate potential rice production of a region."
       },
-      "confidence": 0.99,
-      "quantity": "rice field area",
-      "value": 119637,
-      "unit": "ha",
-      "context": "Malaysian rice growing area in Kedah and Perlis states derived from Sentinel-1 data",
+      "confidence": 0.98,
+      "quantity": "kappa coefficient",
+      "value": 0.92,
+      "unit": null,
+      "context": "combined validation across both study sites for rice extent mapping",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_69eca119af6bd780_qr3",
       "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
+        "section": "Results",
+        "original_text": "The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%."
       },
-      "confidence": 0.99,
-      "quantity": "overall accuracy",
-      "value": 96.5,
-      "unit": "%",
-      "context": "Rice field map validation using VHR images from Google Earth across both study sites",
+      "confidence": 0.97,
+      "quantity": "rice extent area",
+      "value": 302108,
+      "unit": "ha",
+      "context": "four northern districts of West Java, Indonesia, derived from Sentinel-1 VH polarization time series (September 2016 to October 2018)",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_69eca119af6bd780_qr4",
       "evidence": {
-        "section": "Conclusions",
+        "section": "Results",
         "original_text": "The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%."
       },
-      "confidence": 0.99,
-      "quantity": "kappa coefficient",
-      "value": 0.92,
-      "unit": null,
-      "context": "Overall accuracy assessment of rice field maps",
+      "confidence": 0.97,
+      "quantity": "rice extent area",
+      "value": 119637,
+      "unit": "ha",
+      "context": "Kedah and Perlis states, Malaysia, derived from Sentinel-1 VH polarization time series (September 2016 to October 2018)",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_69eca119af6bd780_qr5",
       "evidence": {
-        "section": "Conclusions",
-        "original_text": "The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%."
+        "section": "Results",
+        "original_text": "Figure 11 compares rice field extents derived from this study with government statistics. A high linear relationship is observed with an R2 = 0.97. From the slope of linear regression, this study underestimated rice areas by approximately 14%, which was also shown by a relatively high omission error (see Tables 1, 2 and 3). Figure 11 also shows that all predicted data were consistently lower than statistical data, with RMSE = 12.73 × 1000 ha."
       },
-      "confidence": 0.99,
-      "quantity": "underestimation percentage",
+      "confidence": 0.96,
+      "quantity": "underestimation error",
       "value": 14,
       "unit": "%",
-      "context": "Comparison of rice extent derived from Sentinel-1 method with government statistical data",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr6",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Figure 11 compares rice field extents derived from this study with government statistics. A high linear relationship is observed with an R2 = 0.97. From the slope of linear regression, this study underestimated rice areas by approximately 14%, which was also shown by a relatively high omission error (see Tables 1, 2 and 3). Figure 11 also shows that all predicted data were consistently lower than statistical data, with RMSE = 12.73 × 1000 ha."
-      },
-      "confidence": 0.99,
-      "quantity": "RMSE",
-      "value": 12.73,
-      "unit": "1000 ha",
-      "context": "Comparison between estimated and observed rice field areas at district and state levels",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr7",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Figure 11 compares rice field extents derived from this study with government statistics. A high linear relationship is observed with an R2 = 0.97. From the slope of linear regression, this study underestimated rice areas by approximately 14%, which was also shown by a relatively high omission error (see Tables 1, 2 and 3). Figure 11 also shows that all predicted data were consistently lower than statistical data, with RMSE = 12.73 × 1000 ha."
-      },
-      "confidence": 0.99,
-      "quantity": "R-squared",
-      "value": 0.97,
-      "unit": null,
-      "context": "Linear relationship between estimated and observed rice field areas",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr8",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "overall accuracy",
-      "value": 94.8,
-      "unit": "%",
-      "context": "Rice classification accuracy at the Northern Region of West Java Indonesia using VHR images",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr9",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "kappa coefficient",
-      "value": 0.89,
-      "unit": null,
-      "context": "Rice classification accuracy at the Northern Region of West Java Indonesia",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr10",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "omission error",
-      "value": 12.1,
-      "unit": "%",
-      "context": "Rice classification error for rice field category at site 1 (West Java)",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr11",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "commission error",
-      "value": 1.1,
-      "unit": "%",
-      "context": "Rice classification error for rice field category at site 1 (West Java)",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr12",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "overall accuracy",
-      "value": 98.2,
-      "unit": "%",
-      "context": "Rice classification accuracy at Kedah and Perlis states, Malaysia using VHR images",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr13",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "kappa coefficient",
-      "value": 0.94,
-      "unit": null,
-      "context": "Rice classification accuracy at Kedah and Perlis states, Malaysia",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr14",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "omission error",
-      "value": 10.2,
-      "unit": "%",
-      "context": "Rice classification error for rice field category at site 2 (Kedah and Perlis)",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr15",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "commission error",
-      "value": 5.4,
-      "unit": "%",
-      "context": "Rice classification error for rice field category at site 2 (Kedah and Perlis)",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr16",
-      "evidence": {
-        "section": "Accuracy Assessment",
-        "original_text": "Based on the VHR images from Google Earth, the predicted rice field maps (Figure 8a,b) show a high level of accuracy at the pixel level. Overall accuracy was 94.8% (site 1) and 98.2% (site 2), with a kappa coefficient of 0.89 (site 1) and 0.94 (site 2) (Tables 1 and 2). Omission errors occurred when rice fields were classified as non-rice fields. Commission errors occurred when non-rice fields were classified as rice fields. The omission and commission errors of the rice field categories are 12.1% and 1.1% for site 1 (Table 1) and 10.2% and 5.4% for site 2 (Table 2). When the validation data from the first and second study sites were combined, the overall accuracy was 96.5%. The kappa coefficient was 0.91 (Table 3)."
-      },
-      "confidence": 0.99,
-      "quantity": "kappa coefficient",
-      "value": 0.91,
-      "unit": null,
-      "context": "Combined accuracy assessment across both study sites",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr17",
-      "evidence": {
-        "section": "Discussion",
-        "original_text": "The time required by GEE for clustering depends on the speed of internet access and the size of the study area. In these study areas, it took less than 20 seconds to process the data. Other processing such as cluster labelling and phenological parameter extraction take longer, about one to two hours, and depend on the number of main unit groupings."
-      },
-      "confidence": 0.99,
-      "quantity": "processing time",
-      "value": 20,
-      "unit": "seconds",
-      "context": "Time required by Google Earth Engine for clustering data in the study areas",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr18",
-      "evidence": {
-        "section": "Discussion",
-        "original_text": "The time required by GEE for clustering depends on the speed of internet access and the size of the study area. In these study areas, it took less than 20 seconds to process the data. Other processing such as cluster labelling and phenological parameter extraction take longer, about one to two hours, and depend on the number of main unit groupings."
-      },
-      "confidence": 0.99,
-      "quantity": "processing time",
-      "value": 1,
-      "unit": "hours",
-      "context": "Time required for cluster labelling and phenological parameter extraction",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr19",
-      "evidence": {
-        "section": "Comparison between Temporal VH and VV Polarization Cluster Profiles",
-        "original_text": "Comparison between temporal VH and VV polarization cluster profiles for clusters of rice fields is shown in Figure S1a and b. Although both profiles for rice fields show a similar pattern, VH polarization cluster profiles for rice fields have a larger amplitude (i.e., difference between maximum and minimum peak values = around 10 dB) than the amplitude of VV polarization cluster profiles (around 7 dB). As a result, the minimum peaks at VH polarization cluster profiles for rice fields that represent soil tillage in the rice fields are developed distinctly and then increase with time sharply for about four months as a response to rice growth. Moreover, the different values of VH polarization cluster profiles at different rice growth stages are also larger than its different values in VV polarization cluster profiles."
-      },
-      "confidence": 0.99,
-      "quantity": "amplitude difference",
-      "value": 10,
-      "unit": "dB",
-      "context": "Difference between maximum and minimum peak values in VH polarization cluster profiles for rice fields",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_69eca119af6bd780_qr20",
-      "evidence": {
-        "section": "Comparison between Temporal VH and VV Polarization Cluster Profiles",
-        "original_text": "Comparison between temporal VH and VV polarization cluster profiles for clusters of rice fields is shown in Figure S1a and b. Although both profiles for rice fields show a similar pattern, VH polarization cluster profiles for rice fields have a larger amplitude (i.e., difference between maximum and minimum peak values = around 10 dB) than the amplitude of VV polarization cluster profiles (around 7 dB). As a result, the minimum peaks at VH polarization cluster profiles for rice fields that represent soil tillage in the rice fields are developed distinctly and then increase with time sharply for about four months as a response to rice growth. Moreover, the different values of VH polarization cluster profiles at different rice growth stages are also larger than its different values in VV polarization cluster profiles."
-      },
-      "confidence": 0.99,
-      "quantity": "amplitude difference",
-      "value": 7,
-      "unit": "dB",
-      "context": "Difference between maximum and minimum peak values in VV polarization cluster profiles for rice fields",
-      "result_type": "measurement"
+      "context": "comparison between Sentinel-1 derived rice extent and government statistical field survey data",
+      "result_type": "baseline"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_69eca119af6bd780_p1",
       "evidence": {
-        "section": "Automated Rice Cropping Pattern Mapping",
+        "section": "Results",
         "original_text": "Box plot results of overall accuracy and kappa coefficients for the four classification models for automated rice crop pattern mapping at the cluster level are shown in Figure 12a and b. Both SVM and ANN perform similarly, and better than random forests and C5.0. At site 1, accuracy was 83% (SVM) and 84% (ANN). Kappa coefficients were 0.73 (SVM) and 0.74 (ANN). At site 2, SVM and ANN performed better than at site 1, with the same values for overall accuracy (=1) and kappa coefficient (=1)."
       },
-      "confidence": 0.99,
+      "confidence": 0.95,
       "metric": "overall accuracy",
       "compared_to": "SVM, ANN, random forests, C5.0"
     },
@@ -747,10 +566,10 @@
       "type": "performance_result",
       "perf_id": "doc_69eca119af6bd780_p2",
       "evidence": {
-        "section": "Automated Rice Cropping Pattern Mapping",
+        "section": "Results",
         "original_text": "Box plot results of overall accuracy and kappa coefficients for the four classification models for automated rice crop pattern mapping at the cluster level are shown in Figure 12a and b. Both SVM and ANN perform similarly, and better than random forests and C5.0. At site 1, accuracy was 83% (SVM) and 84% (ANN). Kappa coefficients were 0.73 (SVM) and 0.74 (ANN). At site 2, SVM and ANN performed better than at site 1, with the same values for overall accuracy (=1) and kappa coefficient (=1)."
       },
-      "confidence": 0.99,
+      "confidence": 0.95,
       "metric": "kappa coefficient",
       "compared_to": "SVM, ANN, random forests, C5.0"
     },
@@ -758,59 +577,57 @@
       "type": "performance_result",
       "perf_id": "doc_69eca119af6bd780_p3",
       "evidence": {
-        "section": "Comparison between Temporal VH and VV Polarization Cluster Profiles",
-        "original_text": "Comparison between temporal VH and VV polarization cluster profiles for clusters of rice fields is shown in Figure S1a and b. Although both profiles for rice fields show a similar pattern, VH polarization cluster profiles for rice fields have a larger amplitude (i.e., difference between maximum and minimum peak values = around 10 dB) than the amplitude of VV polarization cluster profiles (around 7 dB). As a result, the minimum peaks at VH polarization cluster profiles for rice fields that represent soil tillage in the rice fields are developed distinctly and then increase with time sharply for about four months as a response to rice growth. Moreover, the different values of VH polarization cluster profiles at different rice growth stages are also larger than its different values in VV polarization cluster profiles."
-      },
-      "confidence": 0.99,
-      "metric": "amplitude of polarization cluster profiles",
-      "compared_to": "VH polarization, VV polarization"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_69eca119af6bd780_p4",
-      "evidence": {
-        "section": "Comparison with Rice Extent Derived Using MODIS Data",
+        "section": "Discussion",
         "original_text": "MODIS imagery data is widely used to map rice extents [5,6,12,28,29,31,32,63–65,66–68] especially in large study areas because it has moderate resolution (250 and 500 m) and high temporal coverage. In an earlier study [5], the total rice extent at site 1, generated using MODIS data, was reported as 407,703 ha. This value is much higher than the estimated rice area in this study (302,108 ha), and higher than the field survey which estimated rice area as 351,900 ha [40]. These results suggest that the moderate resolution of MODIS data leads to overestimation of rice extent, especially in perimeter areas between non-rice and rice fields."
       },
-      "confidence": 0.99,
+      "confidence": 0.94,
       "metric": "rice extent estimation",
-      "compared_to": "MODIS data, field survey"
+      "compared_to": "MODIS data"
     },
     {
       "type": "claim",
       "claim_id": "doc_69eca119af6bd780_ca1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "This study presents a cost-effective methodology for near-real-time mapping and monitoring of rice growth extent and cropping patterns over a large area. This novel method produces high-resolution monthly maps (10 m resolution) of rice growing areas, as well as rice growth stages. The method integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform. It uses monthly median time series of Sentinel-1 at VH polarization from September 2016 to October 2018. The two study areas are the northern region of West Java, Indonesia (0.75 million ha), and the Kedah and Perlis states in Malaysia (over 1 million ha). K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages. To automate the process, four supervised classification methods (support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models) were independently trialled to identify cluster labels. The results from each classification method were compared. The method can also forecast rice extent for up to two months. The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Compared to field survey data, this method measures overall rice extent with an accuracy of 96.5% and a kappa coefficient of 0.92. SVM and ANN show better performance than random forest and C5.0 models."
+        "original_text": "This study presents a cost-effective methodology for near-real-time mapping and monitoring of rice growth extent and cropping patterns over a large area. This novel method produces high-resolution monthly maps (10 m resolution) of rice growing areas, as well as rice growth stages. The method integrates temporal Sentinel-1 data and rice phenological parameters with the Google Earth Engine (GEE) cloud-based platform. It uses monthly median time series of Sentinel-1 at VH polarization from September 2016 to October 2018. The two study areas are the northern region of West Java, Indonesia (0.75 million ha), and the Kedah and Perlis states in Malaysia (over 1 million ha). K-means clustering, hierarchical cluster analysis (HCA), and a visual interpretation of VH polarization time series profiles are used to generate rice extent, cropping patterns, and spatiotemporal distribution of growth stages. To automate the process, four supervised classification methods (support vector machine (SVM), artificial neural networks (ANN), random forests, and C5.0 classification models) were independently trialled to identify cluster labels. The results from each classification method were compared. The method can also forecast rice extent for up to two months. The VH polarization data can identify four growth stages of rice—T&P: tillage and planting (30 days); V: vegetative-1 and 2 (60 days); R: reproductive (30 days); M: maturity (30 days). Compared to field survey data, this method measures overall rice extent with an accuracy of 96.5% and a kappa coefficient of 0.92. SVM and ANN show better performance than random forest and C5.0 models. This simple and robust method could be rolled out across Southeast Asia, and could be used as an alternative to timeconsuming, expensive field surveys."
       },
-      "confidence": 0.95
+      "confidence": 0.96
     },
     {
       "type": "conclusion",
       "conclusion_id": "doc_69eca119af6bd780_cl1",
       "evidence": {
-        "section": "Conclusions",
-        "original_text": "This study demonstrated that integrating Sentinel-1 data, rice phenology, and GEE cloud computing can produce automated near-real-time mapping and monitoring of rice extent, cropping patterns, and growth stages. The method is cost-effective as the Sentinel-1 data, GEE and R software are open-source and freely available. GEE has sophisticated computational infrastructure and machine learning functions that allow the proposed methodology to be computed rapidly. The resulting maps of rice growth stages and extent have a relatively high spatial resolution (10 m) and cover a large region (over 1 million ha). The data can be updated monthly. The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha. The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%. The approach proposed in this paper is a rapid, accurate, and cost-effective. It could be expanded to a national scale and to the whole of Southeast Asia. The Indonesian and Malaysian governments currently rely on ground sampling for data collection, which is laborious, expensive, and could be biased. The methodology in this paper could be used as an alternative source of information to field survey data."
+        "section": "Conclusion",
+        "original_text": "This study demonstrated that integrating Sentinel-1 data, rice phenology, and GEE cloud computing can produce automated near-real-time mapping and monitoring of rice extent, cropping patterns, and growth stages. The method is cost-effective as the Sentinel-1 data, GEE and R software are open-source and freely available. GEE has sophisticated computational infrastructure and machine learning functions that allow the proposed methodology to be computed rapidly. The resulting maps of rice growth stages and extent have a relatively high spatial resolution (10 m) and cover a large region (over 1 million ha). The data can be updated monthly. The results show that: The Indonesian rice growing area at four northern districts in West Java is 302,108 ha. The Malaysian rice growing area in two states, Kedah and Perlis, is 119,637 ha. The overall map accuracy is 96.5% with a kappa coefficient = 0.92. Compared with government statistical data, the method underestimates rice extent by about 14%. The approach proposed in this paper is a rapid, accurate, and cost-effective. It could be expanded to a national scale and to the whole of Southeast Asia. The Indonesian and Malaysian governments currently rely on ground sampling for data collection, which is laborious, expensive, and could be biased. The methodology in this paper could be used as an alternative source of information to field survey data. However, this approach is limited to rice extent and growth stage, and further research is necessary to estimate potential rice production of a region."
       },
-      "confidence": 0.95
+      "confidence": 0.96
     },
     {
       "type": "limitation",
       "limitation_id": "doc_69eca119af6bd780_lm1",
       "evidence": {
         "section": "Discussion",
-        "original_text": "However, this approach is limited to rice extent and growth stage, and further research is necessary to estimate potential rice production of a region. The rice extent derived using Sentinel-1 data in this study was lower than the field survey data [39]. Similar results were reported in [10], where rice extents derived from Sentinel-1 data were lower than anticipated. This underestimation stems from the larger omission error for rice field category compared to the commission error, i.e., more rice fields were classified as non-rice fields than the opposite. Occasionally non-rice fields (usually floodplains) were classified as rice fields. Floodplains have some similarities with rice fields as the water level and soil moisture also fluctuate seasonally. These errors were usually found at the border between rice and non-rice fields (Figure 13a,b). Mixed pixel effects and the properties of the pixels in the boundaries along the field edge contributed to the error. The mixed pixel effects might be related to orbit direction as well as the angle of Sentinel-1. The mixed pixel effects have been previously reported in rice mapping and become a source of spatial uncertainty [10,19,63,66,69]. Since the Sentinel-1 time series data is continuously updated, the prediction model is only valid for the same initial month and end month. For example, the model that used training data from January to December is only valid for predictions in January to December in the following year."
+        "original_text": "Theoretically, Sentinel-1 will revisit the study area every 12 days, or six days with the two-satellite constellation (i.e., Sentinel-1A and B). The GEE team will update the data collection weekly. After a couple of days, the acquisition data from Sentinel-1 will be archived in GEE. This means that monitoring and mapping rice extent and growth stages can be conducted every 1–2 weeks. Since the algorithm has been coded in GEE and R software, the mapping processes can be done automatically. However, cluster assignment and phenological parameter extraction (during set-up phase) still require visual interpretation. The time required by GEE for clustering depends on the speed of internet access and the size of the study area. In these study areas, it took less than 20 seconds to process the data. Other processing such as cluster labelling and phenological parameter extraction take longer, about one to two hours, and depend on the number of main unit groupings. The GEE provides Sentinel-1 data images with VV and VH dual polarization. From comparison between representative VH and VV polarization cluster profiles for clusters of rice fields in this study, it is found that the different values of VH polarization cluster profiles at different rice growth stages are more pronounced than its different values at VV polarization. It suggests that to discriminate rice growth stages, it is better to use Sentinel-1 data at VH polarization instead of VV polarization as also reported by a previous study [10]. Sentinel-1 data at VH polarization, GEE and R software are available freely in the public domain making this near-real-time mapping methodology cost-effective. Moreover, as GEE can cope with very large areas (as reported by [60], this proposed methodology can be extended to a national scale."
       },
-      "confidence": 0.93
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_69eca119af6bd780_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The rice extent derived using Sentinel-1 data in this study was lower than the field survey data [39]. Similar results were reported in [10], where rice extents derived from Sentinel-1 data were lower than anticipated. This underestimation stems from the larger omission error for rice field category compared to the commission error, i.e., more rice fields were classified as non-rice fields than the opposite. Occasionally non-rice fields (usually floodplains) were classified as rice fields. Floodplains have some similarities with rice fields as the water level and soil moisture also fluctuate seasonally. These errors were usually found at the border between rice and non-rice fields (Figure 13a,b). Mixed pixel effects and the properties of the pixels in the boundaries along the field edge contributed to the error. The mixed pixel effects might be related to orbit direction as well as the angle of Sentinel-1. The mixed pixel effects have been previously reported in rice mapping and become a source of spatial uncertainty [10,19,63,66,69]."
+      },
+      "confidence": 0.92
     },
     {
       "type": "future_work",
       "future_work_id": "doc_69eca119af6bd780_fw1",
       "evidence": {
-        "section": "Conclusions",
-        "original_text": "However, this approach is limited to rice extent and growth stage, and further research is necessary to estimate potential rice production of a region. The approach proposed in this paper is a rapid, accurate, and cost-effective. It could be expanded to a national scale and to the whole of Southeast Asia. The Indonesian and Malaysian governments currently rely on ground sampling for data collection, which is laborious, expensive, and could be biased. The methodology in this paper could be used as an alternative source of information to field survey data."
+        "section": "Conclusion",
+        "original_text": "The approach proposed in this paper is a rapid, accurate, and cost-effective. It could be expanded to a national scale and to the whole of Southeast Asia. The Indonesian and Malaysian governments currently rely on ground sampling for data collection, which is laborious, expensive, and could be biased. The methodology in this paper could be used as an alternative source of information to field survey data. However, this approach is limited to rice extent and growth stage, and further research is necessary to estimate potential rice production of a region."
       },
-      "confidence": 0.92
+      "confidence": 0.93
     }
   ]
 }

@@ -1,0 +1,861 @@
+{
+  "metadata": {
+    "doc_id": "doc_cecf4711e6281e32",
+    "source_file": "04_UrbanMLLM_Joint_Learning_of_Cross-view_Imagery_for_Urban_Understanding.md",
+    "title": "UrbanMLLM: Joint Learning of Cross View Imagery for Urban Understanding",
+    "year": 2025,
+    "doi": null,
+    "abstract": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments. \n\n**011 012** \n\n**013** on are **014** on remote sensing imagery.. However, except for the macroscopic information **015** from remote sensing imagery, effective urban understanding also requires de- **016** tailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of develop- **017** ing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale **018** corpus with well-organized, cross-view urban imagery paired with correspond- **019** ing text for cross-modal training. Secondly, traditional MLLMs typically learn **020** image-text pairs independently, hard to support joint modeling of cross-view ur- **021** ban imagery. To address these challenges, in this work, we propose UrbanM- **022** LLM, a novel MLLM that jointly learns from remote sensing and street-view im- **023** agery to harness their complementary information. We first collect a large-scale **024** dataset containing satellite-view and street-view imagery along with their geotags **025** and annotated texts. Technically, we propose a brand MLLM architecture with **026** a cross-view perceiver to explicitly connect visual information of cross-view ur- **027** ban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view im- **028** agery and related textual descriptions. This approach encourages the model to **029** implicitly learn the relationships between different types of urban imagery, en- **030** hancing the understanding in each domain. We evaluate our model on a com- **031** prehensive benchmark comprising 13 diverse urban understanding tasks across **032** satellite-view, street-view, and cross-view domains. These tasks include scene **033** classification, object reasoning, spatial relationship reasoning, geo-localization, **034** landmark reasoning, and indicator prediction, providing a robust assessment of **035** the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM **036** achieves an average of 27.3% and 25.5% performance improvement compared **037** with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, **038** we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The **039** proposed UrbanMLLM offers a scalable and versatile solution for understanding **040** urban environments. **041 042 043** 1 INTRODUCTION **044 045** Urban imagery has been widely used for understanding cities in terms of urban spatial struc- **046** ture, functionality, and socio-economic status. The advancement in computer vision and multi- **047** modal learning has driven the utilization of multimodal urban data for urban understanding tasks, **048** such as scene classification (Kuckreja et al., 2024; Mall et al., 2024), scene geo-localization (Vi- **049** vanco Cepeda et al., 2024; Xu et al., 2024), urban indicator prediction (Fan et al., 2023; Hao et al., **050** 2024), etc. More recently, benefiting from the impressive performance and generalizability of large language models (LLMs), multimodal large language models (MLLMs) have shown great potential **051** for effectively solving distinct multimodal tasks in a “one-for-all” manner. **052 053** In the urban study area, there has been a line of works using MLLMs to tackle urban understanding \n\nIn the urban study area, there has been a line of works using MLLMs to tackle urban understanding tasks, while predominantly focusing on remote sensing (Kuckreja et al., 2024; Luo et al., 2024; Bazi \n\n1 \n\nUnder review as a conference paper at ICLR 2025 \n\n**054** et al., 2024; Muhtar et al., 2024). Remote sensing imagery provides a macroscopic and comprehen- **055** sive overview of how the city’s functional zones are laid out while lacking some detailed contexts **056** of the urban elements. Therefore, the existing MLLMs in urban studies can only deal with high- **057** level urban understanding tasks such as land use classification and region captions. By comparison, **058** street-view imagery captures a more fine-grained appearance of urban zones, providing comple- **059** mentary information such as building facades and heights. However, no existing MLLMs in urban **060** science has explored integrating street-view imagery to enhance urban understanding. To enhance **061** MLLMs’ comprehensive understanding of urban environments, satellite imagery, which captures **062** large-scale spatial layouts, and street-view imagery, which provides ground-level details, should be **063** integrated and jointly learned within a unified model. **064** Achieving this goal needs to address two primary challenges. The first is the lack of well-organized **065** multimodal urban data. Currently, publicly available urban datasets do not pair cross-view im- **066** agery with corresponding textual annotations, making them unable to support multimodal learning **067** of MLLMs. The second challenge comes from the joint learning paradigm of connecting remote **068** sensing and street-view imagery. In conventional MLLM frameworks (Liu et al., 2024c; Chen et al., **069** 2024), visual features from cross-view imagery are encoded separately and aligned only with their respective annotated texts. These approaches fail to capture the complementary relationships be- **070** tween satellite and street-view imagery, leaving their information isolated. **071 072** In this work, we address the above two challenges and introduce a novel urban MLLM jointly **073** learning from remote sensing and street-view imagery and associated textual data. Specifically, our **074** efforts focus on both data contribution and methodology innovation. Given that existing publicly **075** available datasets about urban imagery (Luo et al., 2024; Astruc et al., 2024) commonly lack paired cross-view images and large-scale annotated text information, we first collect a large-scale multi- **076** modal urban imagery dataset. Our dataset covers the whole United States, comprising paired-up **077** satellite-view and street-view images, together with geotags and annotated textual descriptions. We **078** propose two key designs to break the visual knowledge isolation to facilitate the mutual learning **079** of cross-view urban imagery. The first one is about the model architecture, where we propose a **080** cross-view perceiver module that bridges the paired-up satellite-view and street-view visual features **081** through a cross-attention mechanism. This design _explicitly_ facilitates the exchange of informa- **082** tion between the region-level context of satellite imagery and the fine-grained appearance details **083** of street-view imagery. For example, the injection of street-view information to the satellite-view **084** encoding can provide more detailed urban region context. The second part is a novel interleaved pre- **085** training paradigm to enhance the mutual learning between cross-view imagery. In detail, we design **086** coherent image-text documents that interleave the satellite-view image with matched street-view images and associated textual descriptions, forming a comprehensive profile of an urban region. Such **087** interleaved training corpus helps MLLMs _implicitly_ learn the relationship between different-view **088** urban imagery via in-context learning. Through the explicit and implicit mutual learning between **089** cross-view urban imagery, our proposed UrbanMLLM is expected to overcome the visual isolation **090** issue, benefiting the comprehensive understanding of urban environments from diverse views. **091 092** For a comprehensive evaluation of urban understanding abilities for MLLMs, we build UrbanView Benchmark which includes 13 different tasks of urban perception (scene classification, geo- **093** localization), reasoning (object reasoning, spatial relationship reasoning, landmark reasoning) and **094** prediction (indicator prediction) based on single-view or cross-view urban imagery. Extensive ex- **095** periments on the benchmark validate the noticeable superiority of UrbanMLLM on a wide range of **096** urban understanding tasks, achieving an average 27.3% and 25.5% performance gain compared with **097** the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we study the impact of **098** different pre-training data choices and model scales on the final performance, offering practical in- **099** sights for effective MLLM design. This work serves as a foundational technique for addressing **100** a wide range of urban-related tasks requiring comprehensive visual understanding capabilities. In **101** brief, our major contributions can be summarized as follows: \n\n**102** \n\n- **103** • We propose a brand MLLM architecture with a designed cross-perceiver module to facilitate cross- **104** fusion of the complementary visual context from satellite-view and street-view imagery. **105 106** • We construct a novel interleaved pre-training corpus that links satellite and street-view imagery **107** through geo-location relationships, and propose a training paradigm that implicitly promotes mutual learning between cross-view imagery. \n\n2 \n\nUnder review as a conference paper at ICLR 2025 \n\n**108 109** Table 1: Comparison of UrbanMLLM with other models in terms of data sources and targeted tasks. **110** Data Task Method Type Model **111** Satellite Image Street View Image Perception Reasoning Prediction **112** RemoteCLIP ✓ ✗ ✗ ✗ ✓ CLIP-based UrbanCLIP ✓ ✗ ✗ ✗ ✓ **113** UrbanVLP ✓ ✓ ✗ ✗ ✓ **114** GeoChat ✓ ✗ ✓ ✓ ✗ **115** LHRS-Bot ✓ ✗ ✓ ✓ ✗ **116** MLLM-based SkysenseGPT ✓ ✗ ✓ ✓ ✗ **117** UrbanMLLM ✓ ✓ ✓ ✓ ✓ **118 119** • We establish a comprehensive benchmark including 13 different urban understanding tasks based **120** on single-view or cross-view urban imagery. Extensive experiments verify that our model **121** achieves substantial improvement in urban understanding over both open-source and closed- **122** sourced MLLMs. **123 124** 2 RELATED WORK **125 126 127** 2.1 MULTIMODAL LARGE LANGUAGE MODELS (MLLMS) **128** With the rapid development and significant success of large language models (LLMs), recent re- **129** search has focused on developing multimodal large language models (MLLMs) with the ability **130** to comprehend both visual and textual knowledge, enabling them to address complex visual rea- **131** soning and understanding tasks. Existing MLLMs can be roughly divided into closed-source and **132** open-source models. Closed-source MLLMs are mostly built based on corresponding commercial **133** LLMs, such as GPT-4o (Achiam et al., 2023), Gemini (Reid et al., 2024) and Qwen-VL (Bai et al., **134** 2023). These models benefit from the large-scale and extensive training corpus, which have been **135** shown to exhibit powerful general multimodal understanding capabilities. By comparison, open- **136** source MLLMs are usually smaller-scale, established by aligning a visual encoding branch to an **137** off-the-shelf LLM. Following an earlier work LLaVA (Liu et al., 2024c), there are mainly two di- **138** rections to advance the performance of MLLMs. The first line of works explores more advanced architectures such as introducing dual vision encoders (Li et al., 2024b), more sophisticated visual **139** adapters (Cha et al., 2024) and the mixture-of-expert (MoE) strategy (Li et al., 2024c). Another line **140** tries to uplift the performance of MLLMs with more beneficial pre-training data, such as interleaved **141** multimodal data (Lin et al., 2024) and synthetic data (McKinzie et al., 2024). By comparison, **142** our work introduces a novel MLLM architecture that integrates a cross-view perceiver module to **143** enhance cross-view information fusion and contribute a unique interleaved pre-training corpus for **144** MLLMs in urban areas. **145 146** 2.2 MULTIMODAL MODELS FOR URBAN UNDERSTANDING **147 148** Understanding the urban environment usually requires multimodal information from diverse **149** sources, such as satellite-view images, street-view images, POI information and geo-locations, **150** etc. Existing methods in urban study can be categorized into two types: CLIP-based methods and **151** MLLM-based methods, as shown in Table 1. From the data aspect, existing methods based urban **152** imagery in urban study all focus on satellite images while overlooking using the street-view imagery **153** for urban understanding. CLIP-based methods are mostly developed based on the contrastive learning strategy used in CLIP (Radford et al., 2021), such as training with satellite image-text pairs (Liu **154** et al., 2024a; Yan et al., 2024), street-view image-text pairs (Hao et al., 2024) and satellite-view and **155** street-view image pairs (Mall et al., 2024). These works can only deal with prediction tasks such as **156** indicator prediction via end-to-end fine-tuning, but fail to conduct perception and reasoning tasks. **157** Another line of research focuses on developing specialized MLLMs for problem-solving in the ur- **158** ban domain. Existing models, such as GeoChat (Kuckreja et al., 2024), SkysenseGPT (Luo et al., **159** 2024), H[2] RSVLM Pang et al. (2024), and EarthGPT (Zhang et al., 2024) only leverage remote sens- **160** ing data including satellite images and annotated text for model learning. These models are capable **161** of handling remote sensing perception and reasoning tasks but fail to deal with prediction tasks such as indicator predictions. However, relying solely on region-level knowledge is insufficient to capture \n\n3 \n\nUnder review as a conference paper at ICLR 2025 \n\n**162** the complexities of urban environments, thereby limiting their applications for a wide range of urban **163** understanding tasks. In contrast, our work proposes a novel learning paradigm based on cross-view **164** urban image-text data which is capable of solving both remote sensing and street-view tasks. **165**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Multimodal Large Language Models",
+      "Urban Understanding",
+      "Remote Sensing",
+      "Street-view Imagery",
+      "Cross-view Learning"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:09:40.969451+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.99,
+      "term": "multimodal large language models",
+      "normalized": "多模态大语言模型",
+      "std_label": "MLLMs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.98,
+      "term": "urban understanding",
+      "normalized": "城市理解",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.97,
+      "term": "remote sensing imagery",
+      "normalized": "遥感影像",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.97,
+      "term": "street-view imagery",
+      "normalized": "街景影像",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c5",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.99,
+      "term": "UrbanMLLM",
+      "normalized": "UrbanMLLM",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c6",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.96,
+      "term": "cross-view perceiver",
+      "normalized": "跨视图感知器",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c7",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.95,
+      "term": "interleaved pre-training paradigm",
+      "normalized": "交错预训练范式",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_cecf4711e6281e32_c8",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.94,
+      "term": "UrbanView Benchmark",
+      "normalized": "UrbanView基准",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.92,
+      "head": "doc_cecf4711e6281e32_c5",
+      "relation_type": "enhances",
+      "relation_surface": "jointly learns from",
+      "tail": "doc_cecf4711e6281e32_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.93,
+      "head": "doc_cecf4711e6281e32_c5",
+      "relation_type": "uses",
+      "relation_surface": "jointly learns from",
+      "tail": "doc_cecf4711e6281e32_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r3",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.93,
+      "head": "doc_cecf4711e6281e32_c5",
+      "relation_type": "uses",
+      "relation_surface": "jointly learns from",
+      "tail": "doc_cecf4711e6281e32_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r4",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.94,
+      "head": "doc_cecf4711e6281e32_c5",
+      "relation_type": "incorporates",
+      "relation_surface": "propose a brand MLLM architecture with",
+      "tail": "doc_cecf4711e6281e32_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r5",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.94,
+      "head": "doc_cecf4711e6281e32_c5",
+      "relation_type": "uses",
+      "relation_surface": "introduce a novel pre-training paradigm based on",
+      "tail": "doc_cecf4711e6281e32_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r6",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.93,
+      "head": "doc_cecf4711e6281e32_c5",
+      "relation_type": "evaluated_on",
+      "relation_surface": "evaluate our model on",
+      "tail": "doc_cecf4711e6281e32_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_cecf4711e6281e32_r7",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Urban imagery has been widely used for understanding cities in terms of urban spatial structure, functionality, and socio-economic status. The advancement in computer vision and multimodal learning has driven the utilization of multimodal urban data for urban understanding tasks, such as scene classification (Kuckreja et al., 2024; Mall et al., 2024), scene geo-localization (Vivanco Cepeda et al., 2024; Xu et al., 2024), urban indicator prediction (Fan et al., 2023; Hao et al., 2024), etc. More recently, benefiting from the impressive performance and generalizability of large language models (LLMs), multimodal large language models (MLLMs) have shown great potential for effectively solving distinct multimodal tasks in a “one-for-all” manner. In the urban study area, there has been a line of works using MLLMs to tackle urban understanding tasks, while predominantly focusing on remote sensing (Kuckreja et al., 2024; Luo et al., 2024; Bazi et al., 2024; Muhtar et al., 2024). Remote sensing imagery provides a macroscopic and comprehensive overview of how the city’s functional zones are laid out while lacking some detailed contexts of the urban elements. Therefore, the existing MLLMs in urban studies can only deal with high-level urban understanding tasks such as land use classification and region captions. By comparison, street-view imagery captures a more fine-grained appearance of urban zones, providing complementary information such as building facades and heights. However, no existing MLLMs in urban science has explored integrating street-view imagery to enhance urban understanding. To enhance MLLMs’ comprehensive understanding of urban environments, satellite imagery, which captures large-scale spatial layouts, and street-view imagery, which provides ground-level details, should be integrated and jointly learned within a unified model."
+      },
+      "confidence": 0.91,
+      "head": "doc_cecf4711e6281e32_c3",
+      "relation_type": "provides",
+      "relation_surface": "provides a macroscopic and comprehensive overview",
+      "tail": "doc_cecf4711e6281e32_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cecf4711e6281e32_d1",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. We first collect a large scale satellite-view and street-view imagery individually across the United States, and perform cross-view matching based on geotags (including located county, longitude and latitude), creating a paired cross-view urban imagery set S = {(Ist, Isv[1], Isv[2], ..., Isv[n])|n∈Z+}. We then employ an advanced MLLM InternVL (Chen et al., 2024) with carefully crafted prompts to efficiently generate textual descriptions for each image. Next, we link the cross-view images based on their geographical relationships and integrate their corresponding textual descriptions and geotags, forming a comprehensive urban profile for each element in S. Training on such interleaved multimodal urban data benefits the MLLM to capture the relational knowledge between cross-view imagery, facilitating comprehensive urban understanding by fully integrating contextual information."
+      },
+      "confidence": 0.95,
+      "name": "UrbanMLLM cross-view pretraining dataset",
+      "modality": "multimodal",
+      "domain": "urban understanding"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cecf4711e6281e32_d2",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "We also construct an instruction tuning dataset for a variety of urban tasks, ranging from perception, reasoning to numerical prediction, as detailed below: Satellite Imagery Tasks (SI): Scene Classification (SC), Object Reasoning (OR), Spatial Relationship Reasoning (SRR), Geo-Localization (GL),Indicator Prediction (IP), population density prediction (Pop) and nightlight intensity prediction (Nightlight) are the sub-task of Indicator Prediction. Single Scene Classification (Single) and Multi-Scene Classification (Multi) are the sub-task of Scene Classification. Street View Imagery Tasks (SVI): Scene Classification (SC), Object Reasoning (OR), Landmark Recognition (LR), Spatial Relationship Reasoning (SRR), Geo-Localization (GL), Indicator Prediction (IP), predicting the beautiful (BF), wealthy (WE) and depressing (DP) level are the sub-tasks of Indicator Prediction. Cross-View Tasks (CV): Spatial Relationship Reasoning (SRR), Indicator Prediction (IP), predicting the median income (Med. income), poverty ratio (Pov. ratio), total population (Population) and depression rate (Depr. rate) level are the sub-tasks of Indicator Prediction."
+      },
+      "confidence": 0.95,
+      "name": "UrbanView instruction tuning dataset",
+      "modality": "multimodal",
+      "domain": "urban understanding"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_cecf4711e6281e32_d3",
+      "evidence": {
+        "section": "Appendix",
+        "original_text": "We propose UrbanView Benchmark and construct corresponding evaluation methods. One thousand data points are sampled from our dataset for each street view, cross-view, and satellite indicator prediction task for the benchmark evaluation, while the original data size are kept for all the satellite tasks based on FIT-RS. For the Benchmark for evaluation, all metrics are in format of accuracy, except for the satellite multi scene classification task, which uses F1-score as a evaluation metric. The ground-truth labels in benchmark also remain identical with our dataset."
+      },
+      "confidence": 0.9,
+      "name": "UrbanView Benchmark",
+      "modality": "multimodal",
+      "domain": "urban understanding"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_cecf4711e6281e32_ds1",
+      "evidence": {
+        "section": "Appendix",
+        "original_text": "We use a Human-AI mixture method for pre-training caption quality validation. We first use two powerful open-source MLLM, VILA-1.5-40B and LLaVA-Next-34B to judge if the caption matches with the image. If either of them thinks it is not a match, we will proceed to send this case to GPT-4o, which has state-of-the-art comprehension ability, but not quite affordable for large-scale deployment. If GPT-4o also thinks there is a problem with the case, graduate-level human-being will manually check this case to give the final judgement. In order to quantify the caption quality improvement, we further use GPT-4o to regenerate captions for excluded images with human assistance to test the quality improvement. We use CLIP-Score as the evaluation metric and calculate our original caption score and cleaned caption score of 10,000 samples, resulting 29.99535 and 29.99571 respectively."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Human-AI mixture method for pre-training caption quality validation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_cecf4711e6281e32_ds2",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "We first collect a large scale satellite-view and street-view imagery individually across the United States, and perform cross-view matching based on geotags (including located county, longitude and latitude), creating a paired cross-view urban imagery set S = {(Ist, Isv[1], Isv[2], ..., Isv[n])|n∈Z+}. Using a similar data structure in MMC4 (Zhu et al., 2024), the county name and coordinates of the satellite image are also embedded to the interleaved pre-training data, together with imagery and caption embeddings."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Geotag-based cross-view matching and integration of county name and coordinates"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_cecf4711e6281e32_ds3",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We design coherent image-text documents that interleave the satellite-view image with matched street-view images and associated textual descriptions, forming a comprehensive profile of an urban region. Such interleaved training corpus helps MLLMs implicitly learn the relationship between different-view urban imagery via in-context learning."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Interleaved image-text document structure for pre-training corpus"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_cecf4711e6281e32_m1",
+      "evidence": {
+        "section": "METHODOLOGY",
+        "original_text": "To overcome this issue, we propose two key designs to facilitate the comprehensive understanding on cross-view urban imagery. Firstly, we introduce a cross-view perceiver module in the MLLM architecture, explicitly enabling satellite-view and street-view visual contexts to complement each other. Secondly, we propose a novel interleaved pre-training paradigm leveraging structurally interleaved urban image-text contexts, integrating satellite-view and street-view imagery with corresponding textual descriptions. Training on such interleaved data enables MLLMs to learn relationships between cross-view urban imagery, leading to a more comprehensive understanding of urban environments. We elaborate the MLLM architecture enhanced with cross-view fusion in Section 3.2, followed by the designed pre-training paradigm based on interleaved urban contexts in Section 3.3."
+      },
+      "confidence": 0.95,
+      "name": "UrbanMLLM",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_cecf4711e6281e32_m2",
+      "evidence": {
+        "section": "METHODOLOGY",
+        "original_text": "Aiming to address the visual knowledge isolation issue, we introduce a cross-view perceiver module gζ (·) to promote the awareness of urban imagery from other views during the visual encoding process. The cross-view perceiver is shown in the Figure 1. It performs 4 steps: (1) cross-attention from satellite-view image embedding (as queries) to the street-view image embedding; (2) cross-attention from street-view image embedding (as queries) to the satellite-view image embedding; (3) gating module before the residual connection; (4) MLP for aligning the semantic space of text. When both satellite-view and street-view images exist in the multimodal input, let Ist denote a satellite-view image and {Isv[i]}n i=1 represent n paired street-view images. The satellite-view and street-view images are firstly encoded by a pre-trained visual encoder fϕ (·), resulting in visual features fst and {fsv[i]}n i=1, respectively. When encoding each street-view image Isv[i], we inject the matched satellite-view features, giving rise to the fused feature e[i] st→sv at the step of SI2SVI attn. For the satellite-view image, we first conduct an average-pooling on the visual features of n paired street-view images then fuse it with the satellite-view feature, obtaining the fused feature esv→st at the step of SVI2SI attn. Next, the fused visual feature is adaptively combined with the original feature using a gating strategy implemented with a one-layer MLP. The final visual embeddings V[i] sv and Vst are then obtained after a visual adapter (two-layer MLP). The whole operation of the cross-view perceiver is following: e[i] st→sv = MLP(Softmax(f[i] svfst √dk ) fst ), (1) V[i] sv = MLP(Gating(e[i] st→sv) + f[i] sv), (2) fsv esv→st = MLP(Softmax(fstfsv √dk ) fsv ), (3) Vst = MLP(Gating(esv→st) + fst ), (4) where fsv = Pooling({fsv[i]}n i=1)."
+      },
+      "confidence": 0.95,
+      "name": "cross-view perceiver module",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_cecf4711e6281e32_m3",
+      "evidence": {
+        "section": "METHODOLOGY",
+        "original_text": "Existing explorations on general MLLMs have demonstrated that training on interleaved data yields superior performance than the traditional image-text pairs (Lin et al., 2024; McKinzie et al., 2024). The interleaved structure fosters semantic connections between multiple images, enabling MLLMs to better capture contextual relationships across images. This advantage aligns well with our objective of jointly learning from cross-view urban imagery to enhance the comprehensive understanding of urban visual knowledge. For instance, when predicting the geo-location of a satellite image, region-level visual information alone may be insufficient. Supplementing detailed street-view information can provide the necessary contextual knowledge for more accurate predictions. Motivated by this, we introduce an urban context-based interleaved training paradigm tailored for urban understanding tasks. The core of this part is the construction of multimodal interleaved urban data as the training corpus. We first collect a large scale satellite-view and street-view imagery individually across the United States, and perform cross-view matching based on geotags (including located county, longitude and latitude), creating a paired cross-view urban imagery set S = {(Ist, Isv[1], Isv[2], ..., Isv[n])|n∈Z+}. We then employ an advanced MLLM InternVL (Chen et al., 2024) with carefully crafted prompts to efficiently generate textual descriptions for each image. Next, we link the cross-view images based on their geographical relationships and integrate their corresponding textual descriptions and geotags, forming a comprehensive urban profile for each element in S . An illustrative example is shown in Figure 16. Training on such interleaved multimodal urban data benefits the MLLM to capture the relational knowledge between cross-view imagery, facilitating comprehensive urban understanding by fully integrating contextual information. Assuming that the interleaved document contains K ordered urban images I = {Ik}K k=1 interleaved with a T-length word sequence w = {wt}T t=1 tokenized by a θ-parameterized LLM. The k-th image is processed by a frozen visual encoder fϕ (·) and the cross-view perceiver gζ (·) into L-length image tokens Vk = {vl}L l=1. Denote K(t) as the image index before the t-th word token. The pre-training objective of UrbanMLLM is to accurately predict the next word token with preceding image and word tokens: L(Θ = {θ, ζ}, w, I) = − Et[log pΘ(wt|w<t), V<K(t))], VK(t) = gζ ◦ fϕ (IK(t)). (5)"
+      },
+      "confidence": 0.95,
+      "name": "interleaved urban context-based pre-training paradigm",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cecf4711e6281e32_x1",
+      "evidence": {
+        "section": "EXPERIMENTS",
+        "original_text": "We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design."
+      },
+      "confidence": 0.95,
+      "task": "urban understanding benchmark evaluation",
+      "setup": "UrbanView Benchmark comprising 13 diverse tasks across satellite-view, street-view, and cross-view domains"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cecf4711e6281e32_x2",
+      "evidence": {
+        "section": "EXPERIMENTS",
+        "original_text": "Dataset We use over 2 million satellite and street view images to build a large-scale cross-view interleaved pretraining dataset. Street view images offer ground-level details and appearance, while satellite imagery provide top-down views, capturing urban structures for comprehensive understanding of the entire landscape. Satellite and street view imagery in the same census tract are batched together with descriptive captions generated by MLLM. The corresponding county name and coordinates of the satellite image are also integrated into the batch."
+      },
+      "confidence": 0.95,
+      "task": "dataset construction and pre-training",
+      "setup": "over 2 million satellite and street view images across the United States, cross-view matching based on geotags, caption generation using InternVL"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cecf4711e6281e32_x3",
+      "evidence": {
+        "section": "EXPERIMENTS",
+        "original_text": "We also construct an instruction tuning dataset for a variety of urban tasks, ranging from perception, reasoning to numerical prediction, as detailed below: Satellite Imagery Tasks (SI): Scene Classification (SC), Object Reasoning (OR), Spatial Relationship Reasoning (SRR), Geo-Localization (GL),Indicator Prediction (IP), population density prediction (Pop) and nightlight intensity prediction (Nightlight) are the sub-task of Indicator Prediction. Single Scene Classification (Single) and Multi-Scene Classification (Multi) are the sub-task of Scene Classification. Street View Imagery Tasks (SVI): Scene Classification (SC), Object Reasoning (OR), Landmark Recognition (LR), Spatial Relationship Reasoning (SRR), Geo-Localization (GL), Indicator Prediction (IP), predicting the beautiful (BF), wealthy (WE) and depressing (DP) level are the sub-tasks of Indicator Prediction. Cross-View Tasks (CV): Spatial Relationship Reasoning (SRR), Indicator Prediction (IP), predicting the median income (Med. income), poverty ratio (Pov. ratio), total population (Population) and depression rate (Depr. rate) level are the sub-tasks of Indicator Prediction. More details on the task settings and evaluation can be seen in A.6."
+      },
+      "confidence": 0.95,
+      "task": "instruction tuning dataset construction",
+      "setup": "variety of urban tasks ranging from perception, reasoning to numerical prediction"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cecf4711e6281e32_x4",
+      "evidence": {
+        "section": "EXPERIMENTS",
+        "original_text": "Implementation We initialize our model’s weights using the pretrained VILA-1.5 model, and adapt the AdamW optimizer with a cosine learning rate scheduler during training. The training process consists of two stages: in the first stage, we train on the entire interleaved pretraining dataset with a batch size of 8 for one epoch, corresponding to 7200 steps with 8 hours. For the second stage, we fine-tune the model on the instruct tuning dataset at a batch size of 16 for one epoch with 8 hours. More information about baselines can be seen in A.5."
+      },
+      "confidence": 0.95,
+      "task": "model training implementation",
+      "setup": "initialized with VILA-1.5 weights, AdamW optimizer with cosine scheduler, two-stage training on pretraining and instruct tuning datasets"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_cecf4711e6281e32_x5",
+      "evidence": {
+        "section": "EXPERIMENTS",
+        "original_text": "To evaluate the effectiveness of each module in UrbanMLLM, we evaluate the performance of various task of different model variants in Table 5, Table 6, and Table 7. Specifically, we evaluate the UrbanMLLM without cross-view perceiver (w/o Perceiver), satellite imagery in the pretraining stage and cross-view perceiver (w/o SI+Perceiver) , street view imagery in the pretraining stage and cross-view perceiver (w/o SVI+Perceiver), satellite imagery and street view imagery in the pretraining stage and cross-view perceive (w/o SI+SVI+Perceiver). Note that in the variant without the cross-view Perceiver (w/o Perceiver), a two-layer MLP is implemented as a replacement."
+      },
+      "confidence": 0.95,
+      "task": "ablation analysis",
+      "setup": "evaluating performance of UrbanMLLM variants without cross-view perceiver, satellite imagery, street view imagery, or both in pretraining"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.98,
+      "quantity": "average performance improvement",
+      "value": 27.3,
+      "unit": "%",
+      "context": "UrbanMLLM compared with the best open-sourced MLLMs across 13 diverse urban understanding tasks",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.98,
+      "quantity": "average performance improvement",
+      "value": 25.5,
+      "unit": "%",
+      "context": "UrbanMLLM compared with the best closed-sourced MLLMs across 13 diverse urban understanding tasks",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr3",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "Dataset We use over 2 million satellite and street view images to build a large-scale cross-view interleaved pretraining dataset. Street view images offer ground-level details and appearance, while satellite imagery provide top-down views, capturing urban structures for comprehensive understanding of the entire landscape. Satellite and street view imagery in the same census tract are batched together with descriptive captions generated by MLLM. The corresponding county name and coordinates of the satellite image are also integrated into the batch."
+      },
+      "confidence": 0.95,
+      "quantity": "dataset size",
+      "value": 2000000,
+      "unit": "images",
+      "context": "Satellite and street view images used to build a large-scale cross-view interleaved pretraining dataset",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr4",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.901,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Scene Classification (SC) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr5",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.91,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Scene Classification (SC) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr6",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.898,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Scene Classification (SC) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr7",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.923,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Geo-Localization (GL) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr8",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.924,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Geo-Localization (GL) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr9",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.906,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Geo-Localization (GL) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr10",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.735,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Spatial Relationship Reasoning (SRR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr11",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.789,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Spatial Relationship Reasoning (SRR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr12",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.728,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Spatial Relationship Reasoning (SRR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr13",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.816,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Indicator Prediction (IP) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr14",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.825,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Indicator Prediction (IP) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr15",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.81,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Indicator Prediction (IP) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr16",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.815,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Object Reasoning (OR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr17",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.821,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Object Reasoning (OR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr18",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.816,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Object Reasoning (OR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr19",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.59,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Multi-Scene Classification (Multi) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr20",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.577,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Multi-Scene Classification (Multi) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr21",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.626,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Multi-Scene Classification (Multi) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr22",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.909,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Single Scene Classification (Single) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr23",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.924,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Single Scene Classification (Single) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr24",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.906,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Single Scene Classification (Single) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr25",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.898,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Nightlight intensity prediction (Nightlight) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr26",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.898,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Nightlight intensity prediction (Nightlight) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr27",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.871,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite Nightlight intensity prediction (Nightlight) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr28",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.923,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite population density prediction (Pop) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr29",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.898,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite population density prediction (Pop) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr30",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.871,
+      "unit": null,
+      "context": "UrbanMLLM-13B on Satellite population density prediction (Pop) sub-task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr31",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.735,
+      "unit": null,
+      "context": "UrbanMLLM-3B on Satellite Spatial Relationship Reasoning (SRR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_cecf4711e6281e32_qr32",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "UrbanMLLM-3B 0.901 0.816 0.815 0.590 0.909 0.923 0.735 UrbanMLLM-8B 0.910 0.825 0.821 0.577 0.924 0.898 0.789 UrbanMLLM-13B 0.898 0.810 0.816 0.626 0.906 0.871 0.728 Improv. 33.8% 60.8% 18.8% 5.4% 14.1% 23.1% -"
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 0.789,
+      "unit": null,
+      "context": "UrbanMLLM-8B on Satellite Spatial Relationship Reasoning (SRR) task",
+      "result_type": "main_result"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_cecf4711e6281e32_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Multimodal large language models (MLLMs) have exhibited remarkable capabilities for performing complex vision-language tasks in various domains. Currently, MLLMs based on urban imagery in urban studies are only developed focusing on remote sensing imagery.. However, except for the macroscopic information from remote sensing imagery, effective urban understanding also requires detailed appearance information of urban zones from street-view imagery, which is largely overlooked by existing MLLMs. The primary challenges of developing such a versatile urban MLLM are twofold. Firstly, it needs a large-scale corpus with well-organized, cross-view urban imagery paired with corresponding text for cross-modal training. Secondly, traditional MLLMs typically learn image-text pairs independently, hard to support joint modeling of cross-view urban imagery. To address these challenges, in this work, we propose UrbanMLLM, a novel MLLM that jointly learns from remote sensing and street-view imagery to harness their complementary information. We first collect a large-scale dataset containing satellite-view and street-view imagery along with their geotags and annotated texts. Technically, we propose a brand MLLM architecture with a cross-view perceiver to explicitly connect visual information of cross-view urban imagery. We also introduce a novel pre-training paradigm based on structural interleaved urban image-text documents integrating satellite-view, street-view imagery and related textual descriptions. This approach encourages the model to implicitly learn the relationships between different types of urban imagery, enhancing the understanding in each domain. We evaluate our model on a comprehensive benchmark comprising 13 diverse urban understanding tasks across satellite-view, street-view, and cross-view domains. These tasks include scene classification, object reasoning, spatial relationship reasoning, geo-localization, landmark reasoning, and indicator prediction, providing a robust assessment of the model’s capabilities. Extensive experiments demonstrate that UrbanMLLM achieves an average of 27.3% and 25.5% performance improvement compared with the best open-sourced and closed-sourced MLLMs, respectively. Moreover, we thoroughly study the impact of different pre-training data choices and model scales on performance, offering practical insights for effective MLLM design. The proposed UrbanMLLM offers a scalable and versatile solution for understanding urban environments."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_cecf4711e6281e32_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "In this paper, we propose UrbanMLLM, a novel multimodal large language model designed to jointly learn from remote sensing and street-view imagery for comprehensive urban understanding. By leveraging a large-scale cross-view dataset and a cross-view perceiver architecture, UrbanMLLM effectively captures complementary information from satellite-view and street-view. Our model outperforms existing MLLMs, achieving significant improvements across various urban understanding tasks."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_cecf4711e6281e32_lm1",
+      "evidence": {
+        "section": "A.2 LIMITATIONS AND FUTURE WORK",
+        "original_text": "Although our model, UrbanMLLM, covers a wide range of urban understanding tasks and achieves state-of-the-art performance, there are still some limitations. Our dataset is limited to the United States, and the generalization of the model to other countries may require additional data collection and pre-training. Therefore, we plan to extend the dataset to cover more regions and improve the general applicability of the model, and explore the use of additional modalities for urban understanding tasks."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_cecf4711e6281e32_fw1",
+      "evidence": {
+        "section": "A.2 LIMITATIONS AND FUTURE WORK",
+        "original_text": "Although our model, UrbanMLLM, covers a wide range of urban understanding tasks and achieves state-of-the-art performance, there are still some limitations. Our dataset is limited to the United States, and the generalization of the model to other countries may require additional data collection and pre-training. Therefore, we plan to extend the dataset to cover more regions and improve the general applicability of the model, and explore the use of additional modalities for urban understanding tasks."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

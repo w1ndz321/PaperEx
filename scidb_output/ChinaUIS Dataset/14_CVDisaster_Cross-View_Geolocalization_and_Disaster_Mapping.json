@@ -9,26 +9,26 @@
     "introduction": "Given the fast development in Remote Sensing (RS) technology, the availability of large-scale and high-quality Earth observation (EO) data has significantly benefited timely humanitarian responses to natural disasters (Van Westen, 2000; Dong and Shan, 2013; Li et al., 2023a). Meanwhile, recently, Street View imagery (SVI) has gained significant momentum in urban studies and computer vision in the last few years (Zhang et al., 2018, 2019; Biljecki and Ito, 2021), and has shown great potential in complementing traditional satellite imagery analysis by providing a unique and informative cross-view perspective on the ground (Zhu et al., 2022). \n\nIn a disaster mapping scenario, two types of information are critical for timely and accurate disaster response and relief. The first type of information is the disaster damage perception, which refers to the ways in which individuals and \n\n∗Corresponding author \n\nhao_bgd.li@tum.de (H. Li); fabian.deuser@tum.de (F. Deuser); wenping.yin@tum.de (W. Yin); xuanshu.luo@tum.de (X. Luo); paul.walther@tum.de (P. Walther); gengchen.mai@austin.utexas.edu (G. Mai); wei_huang@tongji.edu.cn (W. Huang); martin.werner@tum.de (M. Werner) \n\nORCID(s): 0000-0002-6336-8772 (H. Li); 0000-0003-4511-4223 (F. Deuser); 0000-0002-6934-5854 (X. Luo); 0000-0002-5101-5793 (P. Walther); 0000-0002-7818-7309 (G. Mai); 0000-0002-6951-8022 (M. Werner) \n\ngroups evaluate, subjectivize, and perceive damages to the urban built environment due to the disaster. This information is usually estimated from RS data based on expert knowledge and intensive manual efforts. The second type of information is geolocation awareness, which is basically how accurately people can geographically locate themselves on the map. By combining both information, an ideal disaster mapping framework is able to simultaneously estimate human perception of the damage levels and provide accurate geolocations in the affected areas. \n\nHowever, it is not a trivial task to build such a framework due to two major challenges: on the one hand, traditional RS data can become insufficient for fine-grained damage perceptions, especially for distinct and sophisticated urban contexts, where a potential solution is to combine satellite imagery with the emerging source of SVIs to ensure a more fine-grained and cross-view of urban disaster damage perception. On the other hand, existing geolocalization approaches are often not satisfying, because they predominantly depend on satellite navigation systems, such as GPS, Galileo, and BeiDou, which typically lack the appropriate accuracy required for disaster response. Meanwhile, urban context and weather conditions can bring another dimension of complexity where satellite signals are blocked. Fortunately, we have enough ingredients to address the latter challenge as cross-view geolocalization with satellite and \n\nPage 1 of 15 \n\nLi et al.: _Preprint submitted to Elsevier_ \n\nCVDisaster \n\n\n**----- Start of picture text -----**<br>\n+<br>**----- End of picture text -----**<br>\n\n\n**Figure 1:** An overview of the proposed framework for **Cross-view** Geolocalization and **Disaster** mapping with street-view and satellite imagery, namely **CVDisaster** . \n\nstreet-view imagery offers a sensible alternative. Herein, this technique can match real-time SVI obtained from carriers against a collection of satellite imagery with known geolocations so that the geographical coordinates of SVI can be decided. To the best of our knowledge, there is no such disaster mapping framework exists that can achieve damage perception and cross-view geolocalization at the same time. \n\nIn this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - **CVDisaster** - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of **CVDisaster** in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities. \n\nIn Section 2, we give an overview of related works regarding state-of-the-art disaster mapping, street-view imagebased urban analysis, and cross-view geolocalization, respectively. In Section 3, we elaborate on the detailed methodology design of the proposed framework, ranging from the problem statement to the training and inferencing of both geolocalization and damage perception estimation models. Next, Section 4 shows the experimental results from the case study of Hurricane IAN and summarizes the key findings, followed by Section 5 presenting a critical reflection of limitations and identifying future works. Last but not least, \n\nSection 6 concludes the paper by highlighting the scientific contributions to a broader community.",
     "primary_discipline": {
       "level1": "测绘科学技术",
-      "level2": null,
+      "level2": "摄影测量与遥感技术",
       "level3": null
     },
     "secondary_disciplines": [
       {
         "level1": "计算机科学技术",
-        "level2": null,
+        "level2": "人工智能",
         "level3": null
       }
     ],
     "keywords": [
-      "cross-view geolocalization",
-      "disaster mapping",
-      "street-view imagery",
-      "satellite imagery",
+      "Cross-view geolocalization",
+      "Disaster mapping",
+      "Street-view imagery",
+      "Satellite imagery",
       "GeoAI"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:37:58.287310+00:00",
+      "extraction_timestamp": "2026-05-11T02:12:09.768421+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -44,7 +44,7 @@
       },
       "confidence": 0.98,
       "term": "Cross-view Geolocalization",
-      "normalized": "跨视图地理定位",
+      "normalized": "跨视角地理定位",
       "std_label": "CVGeoloc"
     },
     {
@@ -52,36 +52,36 @@
       "concept_id": "doc_6f3498afe2c22b32_c2",
       "evidence": {
         "section": "Introduction",
-        "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
+        "original_text": "Disaster mapping refers to the capability for even non-profession to assist in disaster response situations via mapping and other spatial analysis (Herfort et al., 2021; Li et al., 2022). The concept of disaster mapping has been successfully used to support disaster response and humanitarian aid activities, especially under a disaster scenario, where successful examples include the mapping tasks during the 2017 Hurrican Harvey (Feng et al., 2020), the 2019 Cyclone Idai and Kenneth in Mozambique (Li et al., 2020), and the 2023 Turkey Syria Earthquake (Wikipedia, 2023). However, considering the time-crucial nature of disaster responses and humanitarian aid, traditional disaster mapping workflows become less efficient and unsatisfactory in covering a large-scale area and providing timely damage assessment within a rather short time. In this context, the emergence of high-resolution satellite imagery allows for faster and better disaster mapping with GeoAI techniques (Salcedo-Sanz et al., 2020; Werner and Li, 2022), thus providing a promising solution to address this challenge that local stakeholders currently encounter."
       },
-      "confidence": 0.99,
-      "term": "CVDisaster",
-      "normalized": "CVDisaster框架",
-      "std_label": "CVDisaster"
+      "confidence": 0.97,
+      "term": "Disaster Mapping",
+      "normalized": "灾害制图",
+      "std_label": null
     },
     {
       "type": "concept",
       "concept_id": "doc_6f3498afe2c22b32_c3",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Given the fast development in Remote Sensing (RS) technology, the availability of large-scale and high-quality Earth observation (EO) data has significantly benefited timely humanitarian responses to natural disasters (Van Westen, 2000; Dong and Shan, 2013; Li et al., 2023a). Meanwhile, recently, Street View imagery (SVI) has gained significant momentum in urban studies and computer vision in the last few years (Zhang et al., 2018, 2019; Biljecki and Ito, 2021), and has shown great potential in complementing traditional satellite imagery analysis by providing a unique and informative cross-view perspective on the ground (Zhu et al., 2022). In a disaster mapping scenario, two types of information are critical for timely and accurate disaster response and relief. The first type of information is the disaster damage perception, which refers to the ways in which individuals and groups evaluate, subjectivize, and perceive damages to the urban built environment due to the disaster. This information is usually estimated from RS data based on expert knowledge and intensive manual efforts. The second type of information is geolocation awareness, which is basically how accurately people can geographically locate themselves on the map. By combining both information, an ideal disaster mapping framework is able to simultaneously estimate human perception of the damage levels and provide accurate geolocations in the affected areas."
+        "original_text": "Given the fast development in Remote Sensing (RS) technology, the availability of large-scale and high-quality Earth observation (EO) data has significantly benefited timely humanitarian responses to natural disasters (Van Westen, 2000; Dong and Shan, 2013; Li et al., 2023a). Meanwhile, recently, Street View imagery (SVI) has gained significant momentum in urban studies and computer vision in the last few years (Zhang et al., 2018, 2019; Biljecki and Ito, 2021), and has shown great potential in complementing traditional satellite imagery analysis by providing a unique and informative cross-view perspective on the ground (Zhu et al., 2022). In a disaster mapping scenario, two types of information are critical for timely and accurate disaster response and relief. The first type of information is the disaster damage perception, which refers to the ways in which individuals and groups evaluate, subjectivize, and perceive damages to the urban built environment due to the disaster. This information is usually estimated from RS data based on expert knowledge and intensive manual efforts. The second type of information is geolocation awareness, which is basically how accurately people can geographically locate themselves on the map. By combining both information, an ideal disaster mapping framework is able to simultaneously estimate human perception of the damage levels and provide accurate geolocations in the affected areas. However, it is not a trivial task to build such a framework due to two major challenges: on the one hand, traditional RS data can become insufficient for fine-grained damage perceptions, especially for distinct and sophisticated urban contexts, where a potential solution is to combine satellite imagery with the emerging source of SVIs to ensure a more fine-grained and cross-view of urban disaster damage perception."
       },
-      "confidence": 0.97,
-      "term": "Street View imagery",
-      "normalized": "街景图像",
+      "confidence": 0.98,
+      "term": "Street-view imagery",
+      "normalized": "街景影像",
       "std_label": "SVI"
     },
     {
       "type": "concept",
       "concept_id": "doc_6f3498afe2c22b32_c4",
       "evidence": {
-        "section": "Experiment",
-        "original_text": "Hurricane IAN formed on September 23, 2022, causing severe storm surges and significant economic losses, making it one of the most devastating hurricanes in the history of Florida, USA. To this end, we have selected the renowned Sanibel Island and its surrounding area in southwest Florida, which was hit devastatingly by Hurricane IAN in 2022, as our case study area and created a novel cross-view dataset, namely CVIAN. VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal, and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures."
+        "section": "Introduction",
+        "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.96,
-      "term": "Very High Resolution satellite imagery",
-      "normalized": "超高分辨率卫星图像",
-      "std_label": "VHR satellite imagery"
+      "confidence": 0.99,
+      "term": "CVDisaster",
+      "normalized": "CVDisaster框架",
+      "std_label": null
     },
     {
       "type": "concept",
@@ -90,7 +90,7 @@
         "section": "Introduction",
         "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.95,
+      "confidence": 0.96,
       "term": "Geospatial Artificial Intelligence",
       "normalized": "地理空间人工智能",
       "std_label": "GeoAI"
@@ -99,37 +99,61 @@
       "type": "concept",
       "concept_id": "doc_6f3498afe2c22b32_c6",
       "evidence": {
-        "section": "Experiment",
-        "original_text": "Hurricane IAN formed on September 23, 2022, causing severe storm surges and significant economic losses, making it one of the most devastating hurricanes in the history of Florida, USA. To this end, we have selected the renowned Sanibel Island and its surrounding area in southwest Florida, which was hit devastatingly by Hurricane IAN in 2022, as our case study area and created a novel cross-view dataset, namely CVIAN. VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal, and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures."
+        "section": "Introduction",
+        "original_text": "To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.97,
-      "term": "CVIAN dataset",
-      "normalized": "CVIAN数据集",
-      "std_label": "CVIAN"
+      "confidence": 0.95,
+      "term": "Hurricane Ian",
+      "normalized": "飓风伊恩",
+      "std_label": null
     },
     {
       "type": "concept",
       "concept_id": "doc_6f3498afe2c22b32_c7",
       "evidence": {
-        "section": "Methodology",
-        "original_text": "To build a rock-solid image encoder for both SVI and satellite imagery, we follow the design in Deuser et al. (2023) by using a Siamese network that uses the modernized ConvNeXt as a backbone (Liu et al., 2022). Similar to the classic ResNet(He et al., 2016), ConvNeXt belongs to the Convolution Neural Network (CNN) family, which follows the classic sliding-window, fully convolutional paradigm, but brings in a list of modern neural architecture designs specificity for performance boosting, especially for highresolution input, such as satellite imagery. The key motivation for using ConvNeXt as the image encoder f() is actually intuitive: first, it keeps the simplicity and effectiveness of classic CNN then modernizes the ResNet step by step towards the modern Swin Transformer (Liu et al., 2021) style to ensure performance gain. Figure 3 shows the architecture of the 4-stage ConvNeXt network and highlights a comparison between ConvNeXt and ResNet blocks. Herein, it is necessary to notice the following modification w.r.t a classic ResNet model."
+        "section": "Introduction",
+        "original_text": "To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.96,
-      "term": "ConvNeXt",
-      "normalized": "ConvNeXt网络",
-      "std_label": "ConvNeXt"
+      "confidence": 0.95,
+      "term": "CVIAN dataset",
+      "normalized": "CVIAN数据集",
+      "std_label": null
     },
     {
       "type": "concept",
       "concept_id": "doc_6f3498afe2c22b32_c8",
       "evidence": {
         "section": "Methodology",
-        "original_text": "To tackle this cross-view image classification task, we develop a coupled GCViT model (CGCViT) as depicted in Figure 4) including two separate branches for SVI and satellite imagery, respectively. Unlike the siamese ConvNeXt, the design of CGCViT is driven by two special considerations: first, the appearance of disaster damages from two perspectives (head-view and street-view) differs significantly, therefore, requires highly-distinct image encoders f() or sets of parameter θ; second, CGCViT can benefit from the complementary prediction capabilities learned from cross-view pairs at the same time. Moreover, the inference process also differs as the classification of damage perception level always relies on both views while the geolocalization inference actually uses only SVI imagery to query an existing satellite database. This is also why there is a single weight-shared image encoder designed for the cross-view geolocalization task. As a backbone network, the core idea of GCVit is to advocate short- and long-range spatial dependencies with a multi-resolution architecture where self-attention is still computed in local windows but can reach long-range patch via global tokens (Hatamizadeh et al., 2023). Given a crossview imagery pair Ii = {Lsi, Lai} with the same dimension of ℝH×W×3, the CGCViT consists of two branches of GCViT following by a 2D average pooling layer and a softmax classifier. Each branch will include four stages of local and global self-attention modules similar to ConvNeXt(Liu et al., 2022) and Swin Transformer (Liu et al., 2021), but with an increasing number of channels and decreasing spatial resolutions, both by a factor of 2. Herein, the difference between local and global self-attention modules lies in the access to global queried features from the global query generator."
+        "original_text": "To build a rock-solid image encoder for both SVI and satellite imagery, we follow the design in Deuser et al. (2023) by using a Siamese network that uses the modernized ConvNeXt as a backbone (Liu et al., 2022). Similar to the classic ResNet(He et al., 2016), ConvNeXt belongs to the Convolution Neural Network (CNN) family, which follows the classic sliding-window, fully convolutional paradigm, but brings in a list of modern neural architecture designs specificity for performance boosting, especially for high-resolution input, such as satellite imagery. The key motivation for using ConvNeXt as the image encoder f() is actually intuitive: first, it keeps the simplicity and effectiveness of classic CNN then modernizes the ResNet step by step towards the modern Swin Transformer (Liu et al., 2021) style to ensure performance gain. Figure 3 shows the architecture of the 4-stage ConvNeXt network and highlights a comparison between ConvNeXt and ResNet blocks."
       },
-      "confidence": 0.94,
+      "confidence": 0.97,
+      "term": "ConvNeXt",
+      "normalized": "ConvNeXt网络",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6f3498afe2c22b32_c9",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "To tackle this cross-view image classification task, we develop a coupled GCViT model (CGCViT) as depicted in Figure 4) including two separate branches for SVI and satellite imagery, respectively. Unlike the siamese ConvNeXt, the design of CGCViT is driven by two special considerations: first, the appearance of disaster damages from two perspectives (head-view and street-view) differs significantly, therefore, requires highly-distinct image encoders f() or sets of parameter θ; second, CGCViT can benefit from the complementary prediction capabilities learned from cross-view pairs at the same time. Moreover, the inference process also differs as the classification of damage perception level always relies on both views while the geolocalization inference actually uses only SVI imagery to query an existing satellite database. This is also why there is a single weight-shared image encoder designed for the cross-view geolocalization task. As a backbone network, the core idea of GCVit is to advocate short- and long-range spatial dependencies with a multi-resolution architecture where self-attention is still computed in local windows but can reach long-range patch via global tokens (Hatamizadeh et al., 2023). Given a cross-view imagery pair I_i = {L_s^i, L_a^i} with the same dimension of ℝ^{H×W×3}, the CGCViT consists of two branches of GCViT following by a 2D average pooling layer and a softmax classifier. Each branch will include four stages of local and global self-attention modules similar to ConvNeXt(Liu et al., 2022) and Swin Transformer (Liu et al., 2021), but with an increasing number of channels and decreasing spatial resolutions, both by a factor of 2. Herein, the difference between local and global self-attention modules lies in the access to global queried features from the global query generator."
+      },
+      "confidence": 0.96,
       "term": "Coupled Global Context Vision Transformer",
       "normalized": "耦合全局上下文视觉Transformer",
       "std_label": "CGCViT"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_6f3498afe2c22b32_c10",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "Herein, CVDisaster-Est, specifically the task of damage perception estimation, is tackled as a multi-class image classification problem. Similarly to the geolocalization task, we define an image encoder f() as a nonlinear function f(I_i, θ) : ℝ^{H×W×3} → ℝ^{B} parameterized by θ and would map the input image feature space (again spatial dimension of H × W with RGB three bands) into a vector embedding representation of B dimension, but following by a softmax classification layer. In this manner, we can use exactly the same cross-view imagery pairs (e.g., I_i = {L_s^i, L_a^i}) to simultaneously estimate the damage perception level of the place when another model is trying to decide where SVI are collected. Although this is a straightforward model design, we argue that this can bring key advantages for CVDisaster against existing disaster mapping approaches (Li et al., 2020; Herfort et al., 2019; Hu et al., 2023b). On the one hand, the data preprocessing is synchronized with zero overhead for preparing two datasets for distinct tasks (i.e., geolocalization and disaster mapping). On the other hand, the cross-view imagery can provide a unique combination of observation angles and opportunities to fasten and automate the traditional post-disaster survey with inherent geolocation metadata immediately available during the survey. This can be extremely helpful in such a time-crucial application scenario."
+      },
+      "confidence": 0.97,
+      "term": "Damage Perception Estimation",
+      "normalized": "灾害感知评估",
+      "std_label": null
     },
     {
       "type": "relation",
@@ -139,10 +163,10 @@
         "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
       "confidence": 0.95,
-      "head": "doc_6f3498afe2c22b32_c2",
+      "head": "doc_6f3498afe2c22b32_c4",
       "relation_type": "uses",
       "relation_surface": "leveraging",
-      "tail": "doc_6f3498afe2c22b32_c3"
+      "tail": "doc_6f3498afe2c22b32_c5"
     },
     {
       "type": "relation",
@@ -151,24 +175,24 @@
         "section": "Introduction",
         "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.95,
-      "head": "doc_6f3498afe2c22b32_c2",
-      "relation_type": "uses",
-      "relation_surface": "leveraging",
-      "tail": "doc_6f3498afe2c22b32_c4"
+      "confidence": 0.94,
+      "head": "doc_6f3498afe2c22b32_c4",
+      "relation_type": "enhances",
+      "relation_surface": "addresses",
+      "tail": "doc_6f3498afe2c22b32_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_6f3498afe2c22b32_r3",
       "evidence": {
         "section": "Introduction",
-        "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
+        "original_text": "However, it is not a trivial task to build such a framework due to two major challenges: on the one hand, traditional RS data can become insufficient for fine-grained damage perceptions, especially for distinct and sophisticated urban contexts, where a potential solution is to combine satellite imagery with the emerging source of SVIs to ensure a more fine-grained and cross-view of urban disaster damage perception. On the other hand, existing geolocalization approaches are often not satisfying, because they predominantly depend on satellite navigation systems, such as GPS, Galileo, and BeiDou, which typically lack the appropriate accuracy required for disaster response. Meanwhile, urban context and weather conditions can bring another dimension of complexity where satellite signals are blocked. Fortunately, we have enough ingredients to address the latter challenge as cross-view geolocalization with satellite and street-view imagery offers a sensible alternative. Herein, this technique can match real-time SVI obtained from carriers against a collection of satellite imagery with known geolocations so that the geographical coordinates of SVI can be decided. To the best of our knowledge, there is no such disaster mapping framework exists that can achieve damage perception and cross-view geolocalization at the same time."
       },
-      "confidence": 0.95,
-      "head": "doc_6f3498afe2c22b32_c2",
-      "relation_type": "uses",
-      "relation_surface": "using",
-      "tail": "doc_6f3498afe2c22b32_c5"
+      "confidence": 0.93,
+      "head": "doc_6f3498afe2c22b32_c4",
+      "relation_type": "combines",
+      "relation_surface": "combining",
+      "tail": "doc_6f3498afe2c22b32_c3"
     },
     {
       "type": "relation",
@@ -177,10 +201,10 @@
         "section": "Introduction",
         "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.96,
-      "head": "doc_6f3498afe2c22b32_c2",
-      "relation_type": "enhances",
-      "relation_surface": "addresses",
+      "confidence": 0.95,
+      "head": "doc_6f3498afe2c22b32_c4",
+      "relation_type": "combines",
+      "relation_surface": "addresses at the same time",
       "tail": "doc_6f3498afe2c22b32_c1"
     },
     {
@@ -188,124 +212,137 @@
       "relation_id": "doc_6f3498afe2c22b32_r5",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Fortunately, we have enough ingredients to address the latter challenge as cross-view geolocalization with satellite and street-view imagery offers a sensible alternative. Herein, this technique can match real-time SVI obtained from carriers against a collection of satellite imagery with known geolocations so that the geographical coordinates of SVI can be decided. To the best of our knowledge, there is no such disaster mapping framework exists that can achieve damage perception and cross-view geolocalization at the same time."
+        "original_text": "In this paper, we fill the aforementioned research gap by developing a novel disaster mapping framework - CVDisaster - (see Figure 1). Specifically, our framework addresses the damage perception estimation and cross-view geolocalization at the same time by leveraging the head-view satellite and street-view imagery using state-of-the-art Geospatial Artificial Intelligence (GeoAI) models. To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
-      "confidence": 0.97,
-      "head": "doc_6f3498afe2c22b32_c1",
-      "relation_type": "uses",
-      "relation_surface": "match",
-      "tail": "doc_6f3498afe2c22b32_c3"
+      "confidence": 0.95,
+      "head": "doc_6f3498afe2c22b32_c4",
+      "relation_type": "combines",
+      "relation_surface": "addresses at the same time",
+      "tail": "doc_6f3498afe2c22b32_c10"
     },
     {
       "type": "relation",
       "relation_id": "doc_6f3498afe2c22b32_r6",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Fortunately, we have enough ingredients to address the latter challenge as cross-view geolocalization with satellite and street-view imagery offers a sensible alternative. Herein, this technique can match real-time SVI obtained from carriers against a collection of satellite imagery with known geolocations so that the geographical coordinates of SVI can be decided. To the best of our knowledge, there is no such disaster mapping framework exists that can achieve damage perception and cross-view geolocalization at the same time."
+        "original_text": "Given the fast development in Remote Sensing (RS) technology, the availability of large-scale and high-quality Earth observation (EO) data has significantly benefited timely humanitarian responses to natural disasters (Van Westen, 2000; Dong and Shan, 2013; Li et al., 2023a). Meanwhile, recently, Street View imagery (SVI) has gained significant momentum in urban studies and computer vision in the last few years (Zhang et al., 2018, 2019; Biljecki and Ito, 2021), and has shown great potential in complementing traditional satellite imagery analysis by providing a unique and informative cross-view perspective on the ground (Zhu et al., 2022). In a disaster mapping scenario, two types of information are critical for timely and accurate disaster response and relief. The first type of information is the disaster damage perception, which refers to the ways in which individuals and groups evaluate, subjectivize, and perceive damages to the urban built environment due to the disaster. This information is usually estimated from RS data based on expert knowledge and intensive manual efforts. The second type of information is geolocation awareness, which is basically how accurately people can geographically locate themselves on the map. By combining both information, an ideal disaster mapping framework is able to simultaneously estimate human perception of the damage levels and provide accurate geolocations in the affected areas."
       },
-      "confidence": 0.97,
-      "head": "doc_6f3498afe2c22b32_c1",
-      "relation_type": "uses",
-      "relation_surface": "match",
-      "tail": "doc_6f3498afe2c22b32_c4"
+      "confidence": 0.94,
+      "head": "doc_6f3498afe2c22b32_c3",
+      "relation_type": "complements",
+      "relation_surface": "complementing",
+      "tail": "doc_6f3498afe2c22b32_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_6f3498afe2c22b32_r7",
       "evidence": {
-        "section": "Experiment",
-        "original_text": "Hurricane IAN formed on September 23, 2022, causing severe storm surges and significant economic losses, making it one of the most devastating hurricanes in the history of Florida, USA. To this end, we have selected the renowned Sanibel Island and its surrounding area in southwest Florida, which was hit devastatingly by Hurricane IAN in 2022, as our case study area and created a novel cross-view dataset, namely CVIAN. VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal, and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures."
+        "section": "Methodology",
+        "original_text": "To build a rock-solid image encoder for both SVI and satellite imagery, we follow the design in Deuser et al. (2023) by using a Siamese network that uses the modernized ConvNeXt as a backbone (Liu et al., 2022). Similar to the classic ResNet(He et al., 2016), ConvNeXt belongs to the Convolution Neural Network (CNN) family, which follows the classic sliding-window, fully convolutional paradigm, but brings in a list of modern neural architecture designs specificity for performance boosting, especially for high-resolution input, such as satellite imagery. The key motivation for using ConvNeXt as the image encoder f() is actually intuitive: first, it keeps the simplicity and effectiveness of classic CNN then modernizes the ResNet step by step towards the modern Swin Transformer (Liu et al., 2021) style to ensure performance gain. Figure 3 shows the architecture of the 4-stage ConvNeXt network and highlights a comparison between ConvNeXt and ResNet blocks."
       },
-      "confidence": 0.96,
-      "head": "doc_6f3498afe2c22b32_c2",
-      "relation_type": "derives",
-      "relation_surface": "created",
-      "tail": "doc_6f3498afe2c22b32_c6"
+      "confidence": 0.93,
+      "head": "doc_6f3498afe2c22b32_c1",
+      "relation_type": "uses",
+      "relation_surface": "using",
+      "tail": "doc_6f3498afe2c22b32_c8"
     },
     {
       "type": "relation",
       "relation_id": "doc_6f3498afe2c22b32_r8",
       "evidence": {
         "section": "Methodology",
-        "original_text": "To build a rock-solid image encoder for both SVI and satellite imagery, we follow the design in Deuser et al. (2023) by using a Siamese network that uses the modernized ConvNeXt as a backbone (Liu et al., 2022). Similar to the classic ResNet(He et al., 2016), ConvNeXt belongs to the Convolution Neural Network (CNN) family, which follows the classic sliding-window, fully convolutional paradigm, but brings in a list of modern neural architecture designs specificity for performance boosting, especially for highresolution input, such as satellite imagery. The key motivation for using ConvNeXt as the image encoder f() is actually intuitive: first, it keeps the simplicity and effectiveness of classic CNN then modernizes the ResNet step by step towards the modern Swin Transformer (Liu et., 2021) style to ensure performance gain. Figure 3 shows the architecture of the 4-stage ConvNeXt network and highlights a comparison between ConvNeXt and ResNet blocks. Herein, it is necessary to notice the following modification w.r.t a classic ResNet model."
+        "original_text": "To tackle this cross-view image classification task, we develop a coupled GCViT model (CGCViT) as depicted in Figure 4) including two separate branches for SVI and satellite imagery, respectively. Unlike the siamese ConvNeXt, the design of CGCViT is driven by two special considerations: first, the appearance of disaster damages from two perspectives (head-view and street-view) differs significantly, therefore, requires highly-distinct image encoders f() or sets of parameter θ; second, CGCViT can benefit from the complementary prediction capabilities learned from cross-view pairs at the same time. Moreover, the inference process also differs as the classification of damage perception level always relies on both views while the geolocalization inference actually uses only SVI imagery to query an existing satellite database. This is also why there is a single weight-shared image encoder designed for the cross-view geolocalization task. As a backbone network, the core idea of GCVit is to advocate short- and long-range spatial dependencies with a multi-resolution architecture where self-attention is still computed in local windows but can reach long-range patch via global tokens (Hatamizadeh et al., 2023). Given a cross-view imagery pair I_i = {L_s^i, L_a^i} with the same dimension of ℝ^{H×W×3}, the CGCViT consists of two branches of GCViT following by a 2D average pooling layer and a softmax classifier. Each branch will include four stages of local and global self-attention modules similar to ConvNeXt(Liu et al., 2022) and Swin Transformer (Liu et al., 2021), but with an increasing number of channels and decreasing spatial resolutions, both by a factor of 2. Herein, the difference between local and global self-attention modules lies in the access to global queried features from the global query generator."
       },
-      "confidence": 0.95,
-      "head": "doc_6f3498afe2c22b32_c2",
+      "confidence": 0.94,
+      "head": "doc_6f3498afe2c22b32_c10",
       "relation_type": "uses",
-      "relation_surface": "using",
-      "tail": "doc_6f3498afe2c22b32_c7"
+      "relation_surface": "develop",
+      "tail": "doc_6f3498afe2c22b32_c9"
     },
     {
       "type": "relation",
       "relation_id": "doc_6f3498afe2c22b32_r9",
       "evidence": {
-        "section": "Methodology",
-        "original_text": "To tackle this cross-view image classification task, we develop a coupled GCViT model (CGCViT) as depicted in Figure 4) including two separate branches for SVI and satellite imagery, respectively. Unlike the siamese ConvNeXt, the design of CGCViT is driven by two special considerations: first, the appearance of disaster damages from two perspectives (head-view and street-view) differs significantly, therefore, requires highly-distinct image encoders f() or sets of parameter θ; second, CGCViT can benefit from the complementary prediction capabilities learned from cross-view pairs at the same time. Moreover, the inference process also differs as the classification of damage perception level always relies on both views while the geolocalization inference actually uses only SVI imagery to query an existing satellite database. This is also why there is a single weight-shared image encoder designed for the cross-view geolocalization task. As a backbone network, the core idea of GCVit is to advocate short- and long-range spatial dependencies with a multi-resolution architecture where self-attention is still computed in local windows but can reach long-range patch via global tokens (Hatamizadeh et al., 2023). Given a crossview imagery pair Ii = {Lsi, Lai} with the same dimension of ℝH×W×3, the CGCViT consists of two branches of GCViT following by a 2D average pooling layer and a softmax classifier. Each branch will include four stages of local and global self-attention modules similar to ConvNeXt(Liu et al., 2022) and Swin Transformer (Liu et al., 2021), but with an increasing number of channels and decreasing spatial resolutions, both by a factor of 2. Herein, the difference between local and global self-attention modules lies in the access to global queried features from the global query generator."
+        "section": "Introduction",
+        "original_text": "To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
+      },
+      "confidence": 0.95,
+      "head": "doc_6f3498afe2c22b32_c4",
+      "relation_type": "validated_by",
+      "relation_surface": "case study",
+      "tail": "doc_6f3498afe2c22b32_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_6f3498afe2c22b32_r10",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "To validate the proposed framework, we conducted a case study in Sanibel Island, Florida, which was hit by Hurricane Ian in 2022. Intensive experiments show the great potential of CVDisaster in providing timely damage perception and geolocation awareness with competitive accuracy, leading to substantial advantages for future disaster response applications. Moreover, we made the case study dataset (i.e., CVIAN) openly available to encourage related research in both computer vision and disaster mapping communities."
       },
       "confidence": 0.94,
-      "head": "doc_6f3498afe2c22b32_c2",
-      "relation_type": "uses",
-      "relation_surface": "develop",
-      "tail": "doc_6f3498afe2c22b32_c8"
+      "head": "doc_6f3498afe2c22b32_c6",
+      "relation_type": "generates",
+      "relation_surface": "based on",
+      "tail": "doc_6f3498afe2c22b32_c7"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_6f3498afe2c22b32_d1",
       "evidence": {
         "section": "4.1. Dataset overview",
-        "original_text": "Hurricane IAN formed on September 23, 2022, causing severe storm surges and significant economic losses, making it one of the most devastating hurricanes in the history of Florida, USA. To this end, we have selected the renowned Sanibel Island and its surrounding area in southwest Florida, which was hit devastatingly by Hurricane IAN in 2022, as our case study area and created a novel cross-view dataset, namely CVIAN. VHR Satellite Imagery: VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal[1] , and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures. Street-view Imagery : The street-view images of Hurricane IAN used in our study were collected from the open-source Mapilliry platform, specifically from a mapping campaign conducted by Site Tour 360 in our study area. These images were captured by Site Tour 360 after access was restored post-disaster. Site Tour 360 utilized Mapillary as an mapping tool. The Mapillary platform can rapidly and openly disseminate these high-resolution images, which is crucial for disaster response. This enables rescue organizations and the public to promptly access the latest post-disaster images, aiding in identifying areas in urgent need of assistance and efficiently allocating resources. For downloading and filtering these street-view images, we adopted the ZenSVI[2] tool. ZenSVI can efficiently download, process, and analyze large-scale street-view image data, providing valuable data support for planning post-disaster recovery efforts. In total, we have processed and filtered in total 957,539 SVI records from Mapiliary using geographic extents (i.e., five subareas) and their timestamps (i.e., only after 28th September, 2022), out of which we have selected 1,135 and manually labelled them for the damage perception level with a group of GIS and disaster experts. The detailed split of SVI and extent of VHR satellite imagery is listed in Table 1. Damage Perception Reference Data: Based on the aforementioned 1,135 SVI related to Hurricane IAN, we manually categorized them into three damage severity levels - light, medium, and heavy damages - based on a list of quantifiable and disaster-related indicators. Specifically, light damage images are characterized by a clean scene with no significant damage or only light damage, such as small areas of fallen trees or a few small road signs knocked down. Medium damage images are relatively cluttered and typically include larger or more extensive areas of fallen trees, as well as standing water around the trees. These images may also show more fallen road signs or road closure signs. Heavy damage images are very chaotic, featuring large or extensive areas of fallen trees, flooded roads, and housing trash. These indicators provide a extensible and subjective basis of disaster damage perception, which serves as the reference data for the subsequent cross-view imagery classification and validation."
+        "original_text": "Hurricane IAN formed on September 23, 2022, causing severe storm surges and significant economic losses, making it one of the most devastating hurricanes in the history of Florida, USA. To this end, we have selected the renowned Sanibel Island and its surrounding area in southwest Florida, which was hit devastatingly by Hurricane IAN in 2022, as our case study area and created a novel cross-view dataset, namely CVIAN. VHR Satellite Imagery: VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal, and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures. Street-view Imagery : The street-view images of Hurricane IAN used in our study were collected from the open-source Mapilliry platform, specifically from a mapping campaign conducted by Site Tour 360 in our study area. These images were captured by Site Tour 360 after access was restored post-disaster. Site Tour 360 utilized Mapillary as an mapping tool. The Mapillary platform can rapidly and openly disseminate these high-resolution images, which is crucial for disaster response. This enables rescue organizations and the public to promptly access the latest postdisaster images, aiding in identifying areas in urgent need of assistance and efficiently allocating resources. For downloading and filtering these street-view images, we adopted the ZenSVI tool. ZenSVI can efficiently download, process, and analyze large-scale street-view image data, providing valuable data support for planning postdisaster recovery efforts. In total, we have processed and filtered in total 957,539 SVI records from Mapiliary using geographic extents (i.e., five subareas) and their timestamps (i.e., only after 28th September, 2022), out of which we have selected 1,135 and manually labelled them for the damage perception level with a group of GIS and disaster experts. Damage Perception Reference Data: Based on the aforementioned 1,135 SVI related to Hurricane IAN, we manually categorized them into three damage severity levels - light, medium, and heavy damages - based on a list of quantifiable and disaster-related indicators. Specifically, light damage images are characterized by a clean scene with no significant damage or only light damage, such as small areas of fallen trees or a few small road signs knocked down. Medium damage images are relatively cluttered and typically include larger or more extensive areas of fallen trees, as well as standing water around the trees. These images may also show more fallen road signs or road closure signs. Heavy damage images are very chaotic, featuring large or extensive areas of fallen trees, flooded roads, and housing trash. These indicators provide a extensible and subjective basis of disaster damage perception, which serves as the reference data for the subsequent cross-view imagery classification and validation."
       },
       "confidence": 0.95,
       "name": "CVIAN dataset",
-      "modality": "multimodal",
-      "domain": "geospatial, disaster response"
+      "modality": "image",
+      "domain": "geospatial, disaster mapping"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_6f3498afe2c22b32_d2",
       "evidence": {
-        "section": "3.2.2. Contrastive Learning with Hard Negative Sampling",
-        "original_text": "Given the popularity of cross-view geolocalization, there are mainly three large-scale datasets, namely CVUSA (Workman et al., 2015), CVACT (Liu and Li, 2019), and VIGOR (Zhu et al., 2021), which have been made available to the research community. Different in their data sizes, landscape, and sample density, these three datasets form a good basis for pre-training a cross-view geolocalization model to gain nice general-sense vector representations. In this context, we pre-trained the siameses ConvNeXt network on all three datasets (i.e., CVUSA, CVACT, and VIGOR) by using the contrastive learning objective."
+        "section": "2.3. Cross-view Geolocalization",
+        "original_text": "Workman et al. (2015) showed the superiority of CNN-based features for localizing a wide-ranging dataset with crawled Flickr images across the USA. In subsequent work, they introduced the first cross-view geo-localisation dataset, namely CVUSA Zhai et al. (2017). This dataset leverages street-view images from GSVI all across the US to match them against overhead imagery to locate the streetviews. Since then multiple datasets have arisen with different focuses. CVACT Liu and Li (2019) aimed for a larger test set than CVUSA and included the region of Canberra, Australia, to test for cross-domain generalization. As an alternative to ground-level imagery, University-1652 Zheng et al. (2020) introduced drone views of buildings to match them against overhead imagery. Unlike CVUSA and CVACT, which rely on center-aligned street-view images for matching to satellite imagery, VIGOR Zhu et al. (2021) uses a novel approach. This method allows multiple street view images to be matched to a single satellite image at different positions, allowing precise regression of the exact offset. None of the previously released datasets have specifically addressed cross-view geo-localization in disaster scenarios, which involve unique challenges such as destructed and altered environments."
       },
       "confidence": 0.9,
-      "name": "CVUSA dataset",
-      "modality": "multimodal",
-      "domain": "geospatial"
+      "name": "CVUSA",
+      "modality": "image",
+      "domain": "geospatial, cross-view geolocalization"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_6f3498afe2c22b32_d3",
       "evidence": {
-        "section": "3.2.2. Contrastive Learning with Hard Negative Sampling",
-        "original_text": "Given the popularity of cross-view geolocalization, there are mainly three large-scale datasets, namely CVUSA (Workman et al., 2015), CVACT (Liu and Li, 2019), and VIGOR (Zhu et al., 2021), which have been made available to the research community. Different in their data sizes, landscape, and sample density, these three datasets form a good basis for pre-training a cross-view geolocalization model to gain nice general-sense vector representations. In this context, we pre-trained the siameses ConvNeXt network on all three datasets (i.e., CVUSA, CVACT, and VIGOR) by using the contrastive learning objective."
+        "section": "2.3. Cross-view Geolocalization",
+        "original_text": "CVACT Liu and Li (2019) aimed for a larger test set than CVUSA and included the region of Canberra, Australia, to test for cross-domain generalization."
       },
       "confidence": 0.9,
-      "name": "CVACT dataset",
-      "modality": "multimodal",
-      "domain": "geospatial"
+      "name": "CVACT",
+      "modality": "image",
+      "domain": "geospatial, cross-view geolocalization"
     },
     {
       "type": "dataset",
       "dataset_id": "doc_6f3498afe2c22b32_d4",
       "evidence": {
-        "section": "3.2.2. Contrastive Learning with Hard Negative Sampling",
-        "original_text": "Given the popularity of cross-view geolocalization, there are mainly three large-scale datasets, namely CVUSA (Workman et al., 2015), CVACT (Liu and Li, 2019), and VIGOR (Zhu et al., 2021), which have been made available to the research community. Different in their data sizes, landscape, and sample density, these three datasets form a good basis for pre-training a cross-view geolocalization model to gain nice general-sense vector representations. In this context, we pre-trained the siameses ConvNeXt network on all three datasets (i.e., CVUSA, CVACT, and VIGOR) by using the contrastive learning objective."
+        "section": "2.3. Cross-view Geolocalization",
+        "original_text": "Unlike CVUSA and CVACT, which rely on center-aligned street-view images for matching to satellite imagery, VIGOR Zhu et al. (2021) uses a novel approach. This method allows multiple street view images to be matched to a single satellite image at different positions, allowing precise regression of the exact offset."
       },
       "confidence": 0.9,
-      "name": "VIGOR dataset",
-      "modality": "multimodal",
-      "domain": "geospatial"
+      "name": "VIGOR",
+      "modality": "image",
+      "domain": "geospatial, cross-view geolocalization"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_6f3498afe2c22b32_ds1",
       "evidence": {
         "section": "4.2. Experiment setup for Cross-View Geolocalization",
-        "original_text": "During pre-processing, we made sure that the street-view images were oriented north according to the CVUSA standard. We also cropped the top and bottom of the images to reduce their size and eliminate irrelevant information, thereby streamlining the input data for more efficient processing. As a result, the cross-view imagery pairs are of size 512 × 1024 pixels and 512 × 512 pixels for SVI and satellite imagery, respectively."
+        "original_text": "During pre-processing, we made sure that the street-view images were oriented north according to the CVUSA standard. We also cropped the top and bottom of the images to reduce their size and eliminate irrelevant information, thereby streamlining the input data for more efficient processing. As a result, the cross-view imagery pairs are of size 512 × 1024 pixels and 512 × 512 pixels for SVI and satellite imagery, respectively. As for CVDisaster-Est, we implemented the CGCViT model based on a backbone network of GCViT-Tiny with 20 million parameter pre-trained on ImageNet-1K dataset (Deng et al., 2009). Herein, we used exact the same crossview imagery pairs as in CVDisaster-Geoloc with 512×1024 pixels for SVI and 512 × 512 pixels satellite imagery as a input feature size."
       },
       "confidence": 0.95,
       "spec_type": "format_rule",
-      "description": "Cross-view imagery pairs consisting of street-view and satellite images with specific spatial dimensions"
+      "description": "Cross-view imagery pairs consisting of street-view and satellite images with specific spatial dimensions for model input"
     },
     {
       "type": "data_specification",
@@ -316,39 +353,28 @@
       },
       "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "Manual labeling of street-view images into three damage severity levels based on quantifiable disaster-related indicators"
+      "description": "Damage perception reference data classification criteria based on quantifiable disaster-related indicators"
     },
     {
       "type": "data_specification",
       "ds_id": "doc_6f3498afe2c22b32_ds3",
       "evidence": {
         "section": "4.1. Dataset overview",
-        "original_text": "For downloading and filtering these street-view images, we adopted the ZenSVI[2] tool. ZenSVI can efficiently download, process, and analyze large-scale street-view image data, providing valuable data support for planning post-disaster recovery efforts. In total, we have processed and filtered in total 957,539 SVI records from Mapiliary using geographic extents (i.e., five subareas) and their timestamps (i.e., only after 28th September, 2022), out of which we have selected 1,135 and manually labelled them for the damage perception level with a group of GIS and disaster experts."
+        "original_text": "VHR Satellite Imagery: VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal, and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures. Street-view Imagery : The street-view images of Hurricane IAN used in our study were collected from the open-source Mapilliry platform, specifically from a mapping campaign conducted by Site Tour 360 in our study area. These images were captured by Site Tour 360 after access was restored post-disaster. Site Tour 360 utilized Mapillary as an mapping tool. The Mapillary platform can rapidly and openly disseminate these high-resolution images, which is crucial for disaster response. This enables rescue organizations and the public to promptly access the latest postdisaster images, aiding in identifying areas in urgent need of assistance and efficiently allocating resources. For downloading and filtering these street-view images, we adopted the ZenSVI tool. ZenSVI can efficiently download, process, and analyze large-scale street-view image data, providing valuable data support for planning postdisaster recovery efforts. In total, we have processed and filtered in total 957,539 SVI records from Mapiliary using geographic extents (i.e., five subareas) and their timestamps (i.e., only after 28th September, 2022), out of which we have selected 1,135 and manually labelled them for the damage perception level with a group of GIS and disaster experts."
       },
       "confidence": 0.95,
-      "spec_type": "metadata_standard",
-      "description": "Street-view imagery filtered by geographic extents and post-disaster timestamps"
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_6f3498afe2c22b32_ds4",
-      "evidence": {
-        "section": "4.1. Dataset overview",
-        "original_text": "VHR Satellite Imagery: VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal[1] , and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent."
-      },
-      "confidence": 0.95,
-      "spec_type": "quality_standard",
-      "description": "VHR satellite imagery with specific ground sample distance and acquisition date"
+      "spec_type": "env_requirement",
+      "description": "Data collection environment and source specifications for satellite and street-view imagery"
     },
     {
       "type": "method",
       "method_id": "doc_6f3498afe2c22b32_m1",
       "evidence": {
         "section": "3. Methdology",
-        "original_text": "In this paper, we formulate CVDisaster-Geoloc, the task of cross-view geolocalization, as a imagery retrieval problem, where an image encoder f() is a nonlinear function f(I_i, θ) ∶ ℝ[H×W×3] → ℝ[D], which is parameterized by θ and maps the input image feature space (i.e., spatial dimension of H × W with three RGB bands) into a vector embedding representation of D dimension. Herein, cross-view means that I_i = {L_s[i], L_a[i]} consisting of paired colocated SVI and satellite imagery, so that the corresponding geo-coordinates G_a from satellite imagery can be queried to use as the geographical coordinates of the input SVI. In this setting, two factors are of key importance for a good cross-view geolocalization model, which are the used image encoder f() and the vector embedding representation in the learned feature space ℝ[D]. To build a rock-solid image encoder for both SVI and satellite imagery, we follow the design in Deuser et al. (2023) by using a Siamese network that uses the modernized ConvNeXt as a backbone (Liu et al., 2022). Similar to the classic ResNet(He et al., 2016), ConvNeXt belongs to the Convolution Neural Network (CNN) family, which follows the classic sliding-window, fully convolutional paradigm, but brings in a list of modern neural architecture designs specificity for performance boosting, especially for highresolution input, such as satellite imagery. The key motivation for using ConvNeXt as the image encoder f() is actually intuitive: first, it keeps the simplicity and effectiveness of classic CNN then modernizes the ResNet step by step towards the modern Swin Transformer (Liu et al., 2021) style to ensure performance gain. Figure 3 shows the architecture of the 4-stage ConvNeXt network and highlights a comparison between ConvNeXt and ResNet blocks. Herein, it is necessary to notice the following modification w.r.t a classic ResNet model. Stage Compute Ratio: For classic ResNet, the computation distribution across different stages are decided empirically. For example, ResNet50 is featured with a number of blocks distributed into four stages with a ratio of (3,4,6,3), which makes the convolution operation heavy already in an early stage. One change in Swin Transformer is to reduce the stage compute ratio to 1:1:9:1, which has been introduced to ConvNeXt as well. As a result, the number of blocks in ConvNeXt50 becomes (3,3,9,3). Patchify Layer: As natural images are inherently redundant, a common practice in the classic ResNet family is to use a stem cell for aggressively down-sampling. However, ViT’s patch encoder makes this even more aggressive by adopting a large kernel size and non-overlapping convolution, namely the \"patchify\" layer. Similar designs are adopted in the new ConvNeXt with a 4 × 4 non-overlapped convolution layer to accommodate the network’s multi-stage nature. Inverted Boottleneck and Large Kerner: Following a similar idea in the Transformer block, the ConvNeXt block also uses an inverted bottleneck by keeping the dimension of the hidden layer four times of the input dimension. This idea has been proven to be beneficial in the popular MobileNetV2 (Sandler et al., 2018) and many more advanced CNN models (Koonce and Koonce, 2021). Moreover, the ConvNeXt benefits from its larger kernel-sized convolution design, which brings a significantly better performance based on the Liu et al. (2022). As a prerequisite for a larger kernel, the depthwise convolution layer is placed prior to the dense convolutional layers as shown in the comparison of Figure3. Micro-scale Modification: The modification involves a list of micro-scale improvements, mostly related to the activation function and normalization layer. For instance, the ReLU used in ResNet is replaced by Gaussian Error Linear Unit (GELU) (Hendrycks and Gimpel, 2016), which is in fact a smoother variant of ReLU commonly used in modern transformer models. The Batch Normalization (BN) is replaced by the simpler Layer Normalization (Ba et al., 2016) (LN). Furthermore, the downsampling layers are added only between two different stages which are also inspired by the design of Swin Transformers. Based on this modernized ConvNeXt backbone, we build a siamese network (Figure 3) as our image encoder f() for both SVI and satellite imagery by adapting the network input to different spatial dimensions. Noticeably, although the Siamese network is trained on cross-view imagery, the inference can handle a single input of SVI as a query base."
+        "original_text": "In this paper, we formulate CVDisaster-Geoloc, the task of cross-view geolocalization, as a imagery retrieval problem, where an image encoder f() is a nonlinear function f(Ii, θ) : ℝH×W×3 → ℝD, which is parameterized by θ and maps the input image feature space (i.e., spatial dimension of H × W with three RGB bands) into a vector embedding representation of D dimension. Herein, cross-view means that Ii = {Lsi, Lai} consisting of paired colocated SVI and satellite imagery, so that the corresponding geo-coordinates Ga from satellite imagery can be queried to use as the geographical coordinates of the input SVI. In this setting, two factors are of key importance for a good cross-view geolocalization model, which are the used image encoder f() and the vector embedding representation in the learned feature space ℝD. To build a rock-solid image encoder for both SVI and satellite imagery, we follow the design in Deuser et al. (2023) by using a Siamese network that uses the modernized ConvNeXt as a backbone (Liu et al., 2022). Similar to the classic ResNet(He et al., 2016), ConvNeXt belongs to the Convolution Neural Network (CNN) family, which follows the classic sliding-window, fully convolutional paradigm, but brings in a list of modern neural architecture designs specificity for performance boosting, especially for highresolution input, such as satellite imagery. The key motivation for using ConvNeXt as the image encoder f() is actually intuitive: first, it keeps the simplicity and effectiveness of classic CNN then modernizes the ResNet step by step towards the modern Swin Transformer (Liu et al., 2021) style to ensure performance gain. Figure 3 shows the architecture of the 4-stage ConvNeXt network and highlights a comparison between ConvNeXt and ResNet blocks. Herein, it is necessary to notice the following modification w.r.t a classic ResNet model. Stage Compute Ratio: For classic ResNet, the computation distribution across different stages are decided empirically. For example, ResNet50 is featured with a number of blocks distributed into four stages with a ratio of (3,4,6,3), which makes the convolution operation heavy already in an early stage. One change in Swin Transformer is to reduce the stage compute ratio to 1:1:9:1, which has been introduced to ConvNeXt as well. As a result, the number of blocks in ConvNeXt50 becomes (3,3,9,3). Patchify Layer: As natural images are inherently redundant, a common practice in the classic ResNet family is to use a stem cell for aggressively down-sampling. However, ViT’s patch encoder makes this even more aggressive by adopting a large kernel size and non-overlapping convolution, namely the \"patchify\" layer. Similar designs are adopted in the new ConvNeXt with a 4 × 4 non-overlapped convolution layer to accommodate the network’s multi-stage nature. Inverted Boottleneck and Large Kerner: Following a similar idea in the Transformer block, the ConvNeXt block also uses an inverted bottleneck by keeping the dimension of the hidden layer four times of the input dimension. This idea has been proven to be beneficial in the popular MobileNetV2 (Sandler et al., 2018) and many more advanced CNN models (Koonce and Koonce, 2021). Moreover, the ConvNeXt benefits from its larger kernel-sized convolution design, which brings a significantly better performance based on the Liu et al. (2022). As a prerequisite for a larger kernel, the depthwise convolution layer is placed prior to the dense convolutional layers as shown in the comparison of Figure3. Micro-scale Modification: The modification involves a list of micro-scale improvements, mostly related to the activation function and normalization layer. For instance, the ReLU used in ResNet is replaced by Gaussian Error Linear Unit (GELU) (Hendrycks and Gimpel, 2016), which is in fact a smoother variant of ReLU commonly used in modern transformer models. The Batch Normalization (BN) is replaced by the simpler Layer Normalization (Ba et al., 2016) (LN). Furthermore, the downsampling layers are added only between two different stages which are also inspired by the design of Swin Transformers. Based on this modernized ConvNeXt backbone, we build a siamese network (Figure 3) as our image encoder f() for both SVI and satellite imagery by adapting the network input to different spatial dimensions. Noticeably, although the Siamese network is trained on cross-view imagery, the inference can handle a single input of SVI as a query base."
       },
       "confidence": 0.95,
-      "name": "CVDisaster-Geoloc (cross-view geolocalization via contrastive learning)",
+      "name": "CVDisaster-Geoloc",
       "method_type": "model"
     },
     {
@@ -356,22 +382,22 @@
       "method_id": "doc_6f3498afe2c22b32_m2",
       "evidence": {
         "section": "3. Methdology",
-        "original_text": "The key to cross-view geolocalization is how to train a siamese ConvNeXt so that one can obtain the desired vector embedding representation of I_i = {L_s[i], L_a[i]} in the learned feature space ℝ[D]. Herein, we considered two factors to ensure efficient and effective representation learning in this cross-view setup: 1) contrastive pre-training on large-scale datasets and 2) fine-tuning with new cross-view imagery from the case study area. Given the popularity of cross-view geolocalization, there are mainly three large-scale datasets, namely CVUSA (Workman et al., 2015), CVACT (Liu and Li, 2019), and VIGOR (Zhu et al., 2021), which have been made available to the research community. Different in their data sizes, landscape, and sample density, these three datasets form a good basis for pre-training a cross-view geolocalization model to gain nice general-sense vector representations. In this context, we pre-trained the siameses ConvNeXt network on all three datasets (i.e., CVUSA, CVACT, and VIGOR) by using the contrastive learning objective. Following the \"cluster\" hypothesis that \"closely associated documents tend to be relevant to the same requests\" (Voorhees, 1985), the most common approach of contrastive learning is to simultaneously minimize the distance between the embeddings of the anchor t_a and the positive image t_p while maximizing the distance to the negative sample t_n. Therefore, a simple Triplet loss function looks like the following: Here, f() is the aforementioned image encoder (e.g., ConvNeXt) whose parameter θ will be learned. To prevent the encoder from pushing the negative image without limitation, a rectifier term with margin m is introduced to keep the maximum distance between the anchor and negative smaller than m. Compared to the triplet loss, the InfoNCE (Oord et al., 2018; Radford et al., 2021) loss is often considered more robust as it is able to make use of all available negative samples with the batch. Specifically the InforNCE, in a supervised learning setting, computes categorical cross-entropy loss to identify the positive sample amongst a set of negative samples (Weng, 2021). Given a context vector c, the positive sample is drawn from a conditional distribution p(x|c), where (N −1) negative samples are drawn from the same distribution p(x) but without condition. In this context, the probability of correctly selecting the positive samples can be formulated as follows: Here, N is the total number of samples in a batch, and f(x, c) ∝ p(x|c)/p(x) is the similarity or scoring function between two samples. Then, the InforNCE loss tries to optimize the negative log probability of correcting selecting the positive samples, thus can be calculated as follows: Although InforNCE has been intensively used in unsupervised and self-supervised representation learning (Mai et al., III; Vivanco Cepeda et al., 2024; Guo et al., 2024), it also offers a promising way for supervised representation learning in this cross-view setup. In this paper, we leverage the InforNCE as our contrastive learning loss in both the pretraining and fine-tuning stages for cross-view geolocalization. During the fine-tuning, we take the model weights pretrained on CVUSA data given its relatively large size and geographical closeness, then fine-tune the model on the new cross-view imagery collected from the study area in Sanibel Island (Florida, USA) after the Hurricane IAN. To this end, we also compare the geolocalization performance with and without the fine-tuning stage in Section 4 as an ablation study."
+        "original_text": "Herein, CVDisaster-Est, specifically the task of damage perception estimation, is tackled as a multi-class image classification problem. Similarly to the geolocalization task, we define an image encoder f() as a nonlinear function f(Ii, θ) : ℝH×W×3 → ℝB parameterized by θ and would map the input image feature space (again spatial dimension of H × W with RGB three bands) into a vector embedding representation of B dimension, but following by a softmax classification layer. In this manner, we can use exactly the same cross-view imagery pairs (e.g., Ii = {Lsi, Lai}) to simultaneously estimate the damage perception level of the place when another model is trying to decide where SVI are collected. Although this is a straightforward model design, we argue that this can bring key advantages for CVDisaster against existing disaster mapping approaches (Li et al., 2020; Herfort et al., 2019; Hu et al., 2023b). On the one hand, the data preprocessing is synchronized with zero overhead for preparing two datasets for distinct tasks (i.e., geolocalization and disaster mapping). On the other hand, the cross-view imagery can provide a unique combination of observation angles and opportunities to fasten and automate the traditional post-disaster survey with inherent geolocation metadata immediately available during the survey. This can be extremely helpful in such a time-crucial application scenario. In the rest of this section, we will elaborate on how we tackle the damage perception estimation task in CVDisaster using the modern GeoAI-based imagery classification approach, specifically the couple GCViT model. To tackle this cross-view image classification task, we develop a coupled GCViT model (CGCViT) as depicted in Figure 4) including two separate branches for SVI and satellite imagery, respectively. Unlike the siamese ConvNeXt, the design of CGCViT is driven by two special considerations: first, the appearance of disaster damages from two perspectives (head-view and street-view) differs significantly, therefore, requires highly-distinct image encoders f() or sets of parameter θ; second, CGCViT can benefit from the complementary prediction capabilities learned from cross-view pairs at the same time. Moreover, the inference process also differs as the classification of damage perception level always relies on both views while the geolocalization inference actually uses only SVI imagery to query an existing satellite database. This is also why there is a single weight-shared image encoder designed for the cross-view geolocalization task. As a backbone network, the core idea of GCVit is to advocate short- and long-range spatial dependencies with a multi-resolution architecture where self-attention is still computed in local windows but can reach long-range patch via global tokens (Hatamizadeh et al., 2023). Given a crossview imagery pair Ii = {Lsi, Lai} with the same dimension of ℝH×W×3, the CGCViT consists of two branches of GCViT following by a 2D average pooling layer and a softmax classifier. Each branch will include four stages of local and global self-attention modules similar to ConvNeXt(Liu et al., 2022) and Swin Transformer (Liu et al., 2021), but with an increasing number of channels and decreasing spatial resolutions, both by a factor of 2. Herein, the difference between local and global self-attention modules lies in the access to global queried features from the global query generator. Global Token Generator: As highlighted in Figure 4, the key advantage of GCViT comes from the fact that global attention is able to query long-range perception fields while keeping the local attention window unchanged. Herein, the global query token or so-called global self-attention can be pre-computed between each stage. Specifically, the global attention query Gq starts with a matrix of size B × C × h × w, where B, C, h × w refers to batch size, channels, and spatial dimensional of the local window. In this way, the global query generator will repeat along batch dimension, and then be reshaped and added into multiple heads of local selfattention modules. Global Self-Attention: Based on the global query token, the global self-attention can be formulated as follows: where s, p refers to a scaling factor and a learnable relative position embedding vector. For instance, if the image patch position ranges from [−b+1, b−1] then p will be generated based on spatial positions from a spatial grid of ℝ(2b−1)×(2b−1). In this way, local self-attention has access to even long-range information from imagery regions outside of local windows, which provides an effective way of extending the reception field of self-attention without increasing the computation complexity. In this paper, the CGCViT is able to extend this state-ofthe-art ViT model into a dual branch setting and provide a rock-solid backbone for the cross-view damage classification task."
       },
       "confidence": 0.95,
-      "name": "Contrastive Learning with Hard Negative Sampling",
-      "method_type": "algorithm"
+      "name": "CVDisaster-Est",
+      "method_type": "model"
     },
     {
       "type": "method",
       "method_id": "doc_6f3498afe2c22b32_m3",
       "evidence": {
         "section": "3. Methdology",
-        "original_text": "Herein, CVDisaster-Est, specifically the task of damage perception estimation, is tackled as a multi-class image classification problem. Similarly to the geolocalization task, we define an image encoder f() as a nonlinear function f(I_i, θ) ∶ ℝ[H×W×3] → ℝ[B] parameterized by θ and would map the input image feature space (again spatial dimension of H × W with RGB three bands) into a vector embedding representation of B dimension, but following by a softmax classification layer. In this manner, we can use exactly the same cross-view imagery pairs (e.g., I_i = {L_s[i], L_a[i]}) to simultaneously estimate the damage perception level of the place when another model is trying to decide where SVI are collected. Although this is a straightforward model design, we argue that this can bring key advantages for CVDisaster against existing disaster mapping approaches (Li et al., 2020; Herfort et al., 2019; Hu et al., 2023b). On the one hand, the data preprocessing is synchronized with zero overhead for preparing two datasets for distinct tasks (i.e., geolocalization and disaster mapping). On the other hand, the cross-view imagery can provide a unique combination of observation angles and opportunities to fasten and automate the traditional post-disaster survey with inherent geolocation metadata immediately available during the survey. This can be extremely helpful in such a time-crucial application scenario. In the rest of this section, we will elaborate on how we tackle the damage perception estimation task in CVDisaster using the modern GeoAI-based imagery classification approach, specifically the couple GCViT model. To tackle this cross-view image classification task, we develop a coupled GCViT model (CGCViT) as depicted in Figure 4) including two separate branches for SVI and satellite imagery, respectively. Unlike the siamese ConvNeXt, the design of CGCViT is driven by two special considerations: first, the appearance of disaster damages from two perspectives (head-view and street-view) differs significantly, therefore, requires highly-distinct image encoders f() or sets of parameter θ; second, CGCViT can benefit from the complementary prediction capabilities learned from cross-view pairs at the same time. Moreover, the inference process also differs as the classification of damage perception level always relies on both views while the geolocalization inference actually uses only SVI imagery to query an existing satellite database. This is also why there is a single weight-shared image encoder designed for the cross-view geolocalization task. As a backbone network, the core idea of GCVit is to advocate short- and long-range spatial dependencies with a multi-resolution architecture where self-attention is still computed in local windows but can reach long-range patch via global tokens (Hatamizadeh et al., 2023). Given a crossview imagery pair I_i = {L_s[i], L_a[i]} with the same dimension of ℝ[H×W×3], the CGCViT consists of two branches of GCViT following by a 2D average pooling layer and a softmax classifier. Each branch will include four stages of local and global self-attention modules similar to ConvNeXt(Liu et al., 2022) and Swin Transformer (Liu et al., 2021), but with an increasing number of channels and decreasing spatial resolutions, both by a factor of 2. Herein, the difference between local and global self-attention modules lies in the access to global queried features from the global query generator. Global Token Generator: As highlighted in Figure 4, the key advantage of GCViT comes from the fact that global attention is able to query long-range perception fields while keeping the local attention window unchanged. Herein, the global query token or so-called global self-attention can be pre-computed between each stage. Specifically, the global attention query G_q starts with a matrix of size B × C × h × w, where B, C, h × w refers to batch size, channels, and spatial dimensional of the local window. In this way, the global query generator will repeat along batch dimension, and then be reshaped and added into multiple heads of local selfattention modules. Global Self-Attention: Based on the global query token, the global self-attention can be formulated as follows: where s, p refers to a scaling factor and a learnable relative position embedding vector. For instance, if the image patch position ranges from [−b+1, b−1] then p will be generated based on spatial positions from a spatial grid of ℝ[(2b−1)×(2b−1)]. In this way, local self-attention has access to even long-range information from imagery regions outside of local windows, which provides an effective way of extending the reception field of self-attention without increasing the computation complexity. In this paper, the CGCViT is able to extend this state-ofthe-art ViT model into a dual branch setting and provide a rock-solid backbone for the cross-view damage classification task."
+        "original_text": "The key to cross-view geolocalization is how to train a siamese ConvNeXt so that one can obtain the desired vector embedding representation of Ii = {Lsi, Lai} in the learned feature space ℝD. Herein, we considered two factors to ensure efficient and effective representation learning in this cross-view setup: 1) contrastive pre-training on large-scale datasets and 2) fine-tuning with new cross-view imagery from the case study area. Given the popularity of cross-view geolocalization, there are mainly three large-scale datasets, namely CVUSA (Workman et al., 2015), CVACT (Liu and Li, 2019), and VIGOR (Zhu et al., 2021), which have been made available to the research community. Different in their data sizes, landscape, and sample density, these three datasets form a good basis for pre-training a cross-view geolocalization model to gain nice general-sense vector representations. In this context, we pre-trained the siameses ConvNeXt network on all three datasets (i.e., CVUSA, CVACT, and VIGOR) by using the contrastive learning objective. Following the \"cluster\" hypothesis that \"closely associated documents tend to be relevant to the same requests\" (Voorhees, 1985), the most common approach of contrastive learning is to simultaneously minimize the distance between the embeddings of the anchor ta and the positive image tp while maximizing the distance to the negative sample tn. Therefore, a simple Triplet loss function looks like the following: Here, f() is the aforementioned image encoder (e.g., ConvNeXt) whose parameter θ will be learned. To prevent the encoder from pushing the negative image without limitation, a rectifier term with margin m is introduced to keep the maximum distance between the anchor and negative smaller than m. Compared to the triplet loss, the InfoNCE (Oord et al., 2018; Radford et al., 2021) loss is often considered more robust as it is able to make use of all available negative samples with the batch. Specifically the InforNCE, in a supervised learning setting, computes categorical cross-entropy loss to identify the positive sample amongst a set of negative samples (Weng, 2021). Given a context vector c, the positive sample is drawn from a conditional distribution p(x|c), where (N−1) negative samples are drawn from the same distribution p(x) but without condition. In this context, the probability of correctly selecting the positive samples can be formulated as follows: Here, N is the total number of samples in a batch, and f(x, c) ∝ p(x|c)/p(x) is the similarity or scoring function between two samples. Then, the InforNCE loss tries to optimize the negative log probability of correcting selecting the positive samples, thus can be calculated as follows: Although InforNCE has been intensively used in unsupervised and self-supervised representation learning (Mai et al., 2023; Vivanco Cepeda et al., 2024; Guo et al., 2024), it also offers a promising way for supervised representation learning in this cross-view setup. In this paper, we leverage the InforNCE as our contrastive learning loss in both the pretraining and fine-tuning stages for cross-view geolocalization. During the fine-tuning, we take the model weights pretrained on CVUSA data given its relatively large size and geographical closeness, then fine-tune the model on the new cross-view imagery collected from the study area in Sanibel Island (Florida, USA) after the Hurricane IAN. To this end, we also compare the geolocalization performance with and without the fine-tuning stage in Section 4 as an ablation study."
       },
       "confidence": 0.95,
-      "name": "CVDisaster-Est (damage perception estimation with Coupled Global Context Vision Transformer)",
-      "method_type": "model"
+      "name": "Contrastive Learning with Hard Negative Sampling",
+      "method_type": "algorithm"
     },
     {
       "type": "experiment",
@@ -393,36 +419,61 @@
       },
       "confidence": 0.95,
       "task": "cross-view damage perception estimation experiment",
-      "setup": "CGCViT-Tiny model pre-trained on ImageNet-1K, fine-tuned on CVIAN dataset, AdamW optimizer"
+      "setup": "CGCViT model based on GCViT-Tiny backbone pre-trained on ImageNet-1K, fine-tuned on CVIAN dataset, AdamW optimizer"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_6f3498afe2c22b32_x3",
       "evidence": {
         "section": "4. Experiment",
-        "original_text": "In our evaluation, we start with comparing state-ofthe-art cross-view geolocalization models that were pretrained on the CVUSA data, specifically TransGeo (Zhu et al., 2022), SAIG-D (Zhu et al., 2023), and Sample4Geo (Deuser et al., 2023). First, we directly apply three pretrained models on the CVIAN dataset to serve as a baseline of cross-view geolocalization performance. Next, we compare the fine-tuned model against pre-trained baseline models and conduct an ablation study w.r.t the ratio of train and test samples, ranging from 1:9 to 6:4. Since the CVDisasterGeoloc is formulated as an imagery retrieval task, we consider four Recall@K evaluation metrics, namely, Recall@1, Recall@5, Recall@10, and Recall@1%, where K refers to the top K imagery that given by the query. A higher value (i.e., ranging from 0 to 100) simply means better accuracy. Pre-trained Cross-view Geolocalization : Table 2 show a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing \"warming-up\" contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+        "original_text": "Hurricane IAN formed on September 23, 2022, causing severe storm surges and significant economic losses, making it one of the most devastating hurricanes in the history of Florida, USA. To this end, we have selected the renowned Sanibel Island and its surrounding area in southwest Florida, which was hit devastatingly by Hurricane IAN in 2022, as our case study area and created a novel cross-view dataset, namely CVIAN. VHR Satellite Imagery: VHR satellite imagery provides extremely detailed overhead surface information, which is crucial for assessing disaster impacts, planning rescue operations, and formulating recovery strategies. For Hurricane IAN, the National Oceanic and Atmospheric Administration (NOAA) has collected relevant VHR satellite imagery. Each image is assembled into a mosaic distributed in tiles, with a ground sample distance of approximately 15 to 30 cm per pixel. In this study, we selected VHR imagery from September 30, 2022 from the NOAA open data portal[1] , and divided it into five subareas to support the assessment of Hurricane IAN’s damage extent. These images provide a fine-grained head-view of the study area right after the hurricane, thus enhance our understanding of the impact of the disaster and aid in developing effective response and recovery measures. Street-view Imagery : The street-view images of Hurricane IAN used in our study were collected from the opensource Mapilliry platform, specifically from a mapping campaign conducted by Site Tour 360 in our study area. These images were captured by Site Tour 360 after access was restored post-disaster. Site Tour 360 utilized Mapillary as an mapping tool. The Mapillary platform can rapidly and openly disseminate these high-resolution images, which is crucial for disaster response. This enables rescue organizations and the public to promptly access the latest postdisaster images, aiding in identifying areas in urgent need of assistance and efficiently allocating resources. For downloading and filtering these street-view images, we adopted the ZenSVI[2] tool. ZenSVI can efficiently download, process, and analyze large-scale street-view image data, providing valuable data support for planning postdisaster recovery efforts. In total, we have processed and filtered in total 957,539 SVI records from Mapiliary using geographic extents (i.e., five subareas) and their timestamps (i.e., only after 28th September, 2022), out of which we have selected 1,135 and manually labelled them for the damage perception level with a group of GIS and disaster experts. Damage Perception Reference Data: Based on the aforementioned 1,135 SVI related to Hurricane IAN, we manually categorized them into three damage severity levels - light, medium, and heavy damages - based on a list of quantifiable and disaster-related indicators. Specifically, light damage images are characterized by a clean scene with no significant damage or only light damage, such as small areas of fallen trees or a few small road signs knocked down. Medium damage images are relatively cluttered and typically include larger or more extensive areas of fallen trees, as well as standing water around the trees. These images may also show more fallen road signs or road closure signs. Heavy damage images are very chaotic, featuring large or extensive areas of fallen trees, flooded roads, and housing trash. These indicators provide a extensible and subjective basis of disaster damage perception, which serves as the reference data for the subsequent cross-view imagery classification and validation."
       },
       "confidence": 0.95,
-      "task": "geolocalization performance evaluation",
-      "setup": "comparison of pre-trained models (TransGeo, SAIG-D, Sample4Geo) and fine-tuned CVDisaster-Geoloc on CVIAN dataset"
+      "task": "dataset creation and preparation",
+      "setup": "CVIAN dataset from Hurricane Ian area, includes VHR satellite imagery and Mapillary street-view imagery"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_6f3498afe2c22b32_x4",
       "evidence": {
         "section": "4. Experiment",
-        "original_text": "To evaluate the CVDisaster-Est model on cross-view damage perception estimation, we first compare the CGViT model trained on cross-view imagery pairs with two singleview models (i.e., one trained on SVI and one trained on VHR satellite imagery). Next, we conduct a similar ablation study as in CVDisaster-Geoloc to investigate the effect of fine-tuning ratios on the model performance. In this context, we consider mainly four multi-classification metrics, namely Precision (P), Recall (R), Overall Accuracy (OA), and the F1 score. Cross-view Damage Perception Estimation : Table 4 and 5 compare the performance of our CVDisaster-Est model with two single-view models based on either SVI or VHR satellite imagery. Specifically, Table 4 shows a detailed class-wise evaluation metrics w.r.t three level of damage labelled in the CVIAN dataset (i.e., Light, Medium, and Heavy Damages). A clear pattern is that medium damages are often more challenging (with low F1 scores in all three cases) than light and heavy damages. This can be attributed to how the damage perception levels are classified in the reference dataset (see Figure 5) as medium damages involves both qualitative and quantitative analysis of those damage indicator we considered (as introduced in Section 4.1), thus pose a general challenge to disaster mapping approaches (Dong and Shan, 2013). More importantly, we see a stimulating accuracy improvement when extending single-view to cross-view, for instance, CVDisaster-Est outperforms both SVI and VHR satellite in all three classes in P and F1 score. Nevertheless, Table 5 confirms the advantage of using crossview imagery for disaster perception estimation rather than any single-view models."
+        "original_text": "In our evaluation, we start with comparing state-ofthe-art cross-view geolocalization models that were pretrained on the CVUSA data, specifically TransGeo (Zhu et al., 2022), SAIG-D (Zhu et al., 2023), and Sample4Geo (Deuser et al., 2023). First, we directly apply three pretrained models on the CVIAN dataset to serve as a baseline of cross-view geolocalization performance. Next, we compare the fine-tuned model against pre-trained baseline models and conduct an ablation study w.r.t the ratio of train and test samples, ranging from 1:9 to 6:4. Since the CVDisasterGeoloc is formulated as an imagery retrieval task, we consider four Recall@K evaluation metrics, namely, Recall@1, Recall@5, Recall@10, and Recall@1%, where K refers to the top K imagery that given by the query. A higher value (i.e., ranging from 0 to 100) simply means better accuracy."
+      },
+      "confidence": 0.95,
+      "task": "geolocalization performance evaluation",
+      "setup": "comparison with pre-trained models TransGeo, SAIG-D, Sample4Geo, evaluation using Recall@K metrics"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_6f3498afe2c22b32_x5",
+      "evidence": {
+        "section": "4. Experiment",
+        "original_text": "To evaluate the CVDisaster-Est model on cross-view damage perception estimation, we first compare the CGViT model trained on cross-view imagery pairs with two singleview models (i.e., one trained on SVI and one trained on VHR satellite imagery). Next, we conduct a similar ablation study as in CVDisaster-Geoloc to investigate the effect of fine-tuning ratios on the model performance. In this context, we consider mainly four multi-classification metrics, namely Precision (P), Recall (R), Overall Accuracy (OA), and the F1 score."
       },
       "confidence": 0.95,
       "task": "damage perception estimation performance evaluation",
-      "setup": "comparison of single-view (SVI, VHR satellite) and cross-view (CVDisaster-Est) models on CVIAN dataset"
+      "setup": "comparison with single-view models, evaluation using Precision, Recall, Overall Accuracy, and F1 score"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6f3498afe2c22b32_qr1",
+      "evidence": {
+        "section": "4.3. Geo-localization results",
+        "original_text": "In our evaluation, we start with comparing state-of-the-art cross-view geolocalization models that were pre-trained on the CVUSA data, specifically TransGeo (Zhu et al., 2022), SAIG-D (Zhu et al., 2023), and Sample4Geo (Deuser et al., 2023). First, we directly apply three pre-trained models on the CVIAN dataset to serve as a baseline of cross-view geolocalization performance. Next, we compare the fine-tuned model against pre-trained baseline models and conduct an ablation study w.r.t the ratio of train and test samples, ranging from 1:9 to 6:4. Since the CVDisaster-Geoloc is formulated as an imagery retrieval task, we consider four Recall@K evaluation metrics, namely, Recall@1, Recall@5, Recall@10, and Recall@1%, where K refers to the top K imagery that given by the query. A higher value (i.e., ranging from 0 to 100) simply means better accuracy. Pre-trained Cross-view Geolocalization : Table 2 show a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures."
+      },
+      "confidence": 0.98,
+      "quantity": "Recall@10",
+      "value": 80,
+      "unit": "%",
+      "context": "Pre-trained cross-view geolocalization models (TransGeo, SAIG-D, Sample4Geo) applied directly to unseen CVIAN dataset",
+      "result_type": "baseline"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_6f3498afe2c22b32_p1",
       "evidence": {
-        "section": "Experiment",
-        "original_text": "In our evaluation, we start with comparing state-of-the-art cross-view geolocalization models that were pre-trained on the CVUSA data, specifically TransGeo (Zhu et al., 2022), SAIG-D (Zhu et al., 2023), and Sample4Geo (Deuser et al., 2023). First, we directly apply three pretrained models on the CVIAN dataset to serve as a baseline of cross-view geolocalization performance. Next, we compare the fine-tuned model against pre-trained baseline models and conduct an ablation study w.r.t the ratio of train and test samples, ranging from 1:9 to 6:4. Since the CVDisaster-Geoloc is formulated as an imagery retrieval task, we consider four Recall@K evaluation metrics, namely, Recall@1, Recall@5, Recall@10, and Recall@1%, where K refers to the top K imagery that given by the query. A higher value (i.e., ranging from 0 to 100) simply means better accuracy. Pre-trained Cross-view Geolocalization : Table 2 show a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+        "section": "4.3. Geo-localization results",
+        "original_text": "Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
       },
       "confidence": 0.95,
       "metric": "Recall@K metrics",
@@ -430,88 +481,83 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_6f3498afe2c22b32_qr1",
+      "qr_id": "doc_6f3498afe2c22b32_qr2",
       "evidence": {
-        "section": "Experiment",
-        "original_text": "Pre-trained Cross-view Geolocalization : Table 2 show a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+        "section": "6. Conclusions",
+        "original_text": "A case study on the CVIAN dataset collected from Hurricane IAN confirms the advantages of our CVDisaster framework over classic positioning techniques (e.g.., GPS, Wifi) as well as damage assessment approaches purely based on Very High Resolution (VHR) satellite imagery. We show that one can achieve highly competitive performance (over 80% for geolocalization and 75% for damage perception estimation) with limited fine-tuning efforts by benefiting from state-of-the-art pre-trained vision models, like ConvNeXt and CGCViT. We hope our findings can motivate future cross-view models and applications within a broader GeoAI research community."
       },
-      "confidence": 0.95,
-      "quantity": "Recall@10",
-      "value": 80,
+      "confidence": 0.99,
+      "quantity": "Overall Accuracy",
+      "value": 75,
       "unit": "%",
-      "context": "Pre-trained cross-view geolocalization models (TransGeo, SAIG-D, Sample4Geo) applied on the CVIAN dataset",
-      "result_type": "baseline"
+      "context": "CVDisaster-Est model for cross-view damage perception estimation on CVIAN dataset",
+      "result_type": "main_result"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_6f3498afe2c22b32_p2",
       "evidence": {
-        "section": "Experiment",
-        "original_text": "Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage."
-      },
-      "confidence": 0.95,
-      "metric": "Recall@K metrics",
-      "compared_to": "Pre-trained baseline models"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_6f3498afe2c22b32_p3",
-      "evidence": {
-        "section": "Experiment",
-        "original_text": "As an ablation study, we examine the effect of different train and test ratios on the model performance of CVDisaster-Geoloc. Specifically, we consider two variables here: 1) pre-trained or fine-tuned models, 2) how many samples are used for fine-tuning. Table 3 shows the comparative performance changes w.r.t these two variables. Two key findings deserve extra attention: first, an obvious finding is that more fine-tuning samples lead to generally higher performance boosting with an exception from 5:5 to 6:4, where the fine-tuned model performance start to drop. A potential reason is related to the size of our CVIAN dataset and its relatively small geographical coverage, which can be a future work direction to consolidate the finding here; second, we see already a satisfying performance boosting using limited fine-tuning with up to a few hundred imagery pairs (e.g, 1:9 and 2:8). This provides extra flexibility and reduced deploying time for the proposed framework during a real-world disaster response."
-      },
-      "confidence": 0.95,
-      "metric": "model performance",
-      "compared_to": "different train and test ratios"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_6f3498afe2c22b32_p4",
-      "evidence": {
-        "section": "Experiment",
+        "section": "4.4. Disaster mapping results",
         "original_text": "To evaluate the CVDisaster-Est model on cross-view damage perception estimation, we first compare the CGViT model trained on cross-view imagery pairs with two single-view models (i.e., one trained on SVI and one trained on VHR satellite imagery). Next, we conduct a similar ablation study as in CVDisaster-Geoloc to investigate the effect of fine-tuning ratios on the model performance. In this context, we consider mainly four multi-classification metrics, namely Precision (P), Recall (R), Overall Accuracy (OA), and the F1 score. Cross-view Damage Perception Estimation : Table 4 and 5 compare the performance of our CVDisaster-Est model with two single-view models based on either SVI or VHR satellite imagery. Specifically, Table 4 shows a detailed class-wise evaluation metrics w.r.t three level of damage labelled in the CVIAN dataset (i.e., Light, Medium, and Heavy Damages). A clear pattern is that medium damages are often more challenging (with low F1 scores in all three cases) than light and heavy damages. This can be attributed to how the damage perception levels are classified in the reference dataset (see Figure 5) as medium damages involves both qualitative and quantitative analysis of those damage indicator we considered (as introduced in Section 4.1), thus pose a general challenge to disaster mapping approaches (Dong and Shan, 2013). More importantly, we see a stimulating accuracy improvement when extending single-view to cross-view, for instance, CVDisaster-Est outperforms both SVI and VHR satellite in all three classes in P and F1 score. Nevertheless, Table 5 confirms the advantage of using cross-view imagery for disaster perception estimation rather than any single-view models."
       },
-      "confidence": 0.95,
+      "confidence": 0.97,
       "metric": "Precision (P), Recall (R), Overall Accuracy (OA), and F1 score",
-      "compared_to": "single-view models (SVI only, VHR satellite imagery only)"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_6f3498afe2c22b32_p5",
-      "evidence": {
-        "section": "Experiment",
-        "original_text": "Similarly to CVDisaster-Geoloc, we conduct an ablation study to examine the influence of train and test ratios in the classification performance as listed in Table 6. Herein, one can see that the training process of cross-view damage perception estimation involves more uncertainties when exposed to an increasing number of training samples. Our assumption is that disaster damages are often spatial auto-correlated due to environmental and human factors, thus a random sampling is insufficient to ensure all possible damage types are well-covered. In this context, a possible solution is to explicitly consider the spatial auto-correlation of cross-view imagery early enough in the sampling process, such as using metric auto-correlation (Wang et al., 2024) or locality sensitive sampling (Luo and Shrivastava, 2019)."
-      },
-      "confidence": 0.95,
-      "metric": "classification performance",
-      "compared_to": "different train and test ratios"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_6f3498afe2c22b32_qr2",
-      "evidence": {
-        "section": "Conclusions",
-        "original_text": "A case study on the CVIAN dataset collected from Hurricane IAN confirms the advantages of our CVDisaster framework over classic positioning techniques (e.g.., GPS, Wifi) as well as damage assessment approaches purely based on Very High Resolution (VHR) satellite imagery. We show that one can achieve highly competitive performance (over 80% for geolocalization and 75% for damage perception estimation) with limited fine-tuning efforts by benefiting from state-of-the-art pre-trained vision models, like ConvNeXt and CGCViT. We hope our findings can motivate future cross-view models and applications within a broader GeoAI research community."
-      },
-      "confidence": 0.95,
-      "quantity": "Overall Accuracy",
-      "value": 75,
-      "unit": "%",
-      "context": "CVDisaster framework for cross-view geolocalization and damage perception estimation on the CVIAN dataset",
-      "result_type": "main_result"
+      "compared_to": "single-view models (SVI only, VHR satellite only)"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_6f3498afe2c22b32_qr3",
       "evidence": {
-        "section": "Conclusions",
-        "original_text": "A case study on the CVIAN dataset collected from Hurricane IAN confirms the advantages of our CVDisaster framework over classic positioning techniques (e.g.., GPS, Wifi) as well as damage assessment approaches purely based on Very High Resolution (VHR) satellite imagery. We show that one can achieve highly competitive performance (over 80% for geolocalization and 75% for damage perception estimation) with limited fine-tuning efforts by benefiting from state-of-the-art pre-trained vision models, like ConvNeXt and CGCViT. We hope our findings can motivate future cross-view models and applications within a broader GeoAI research community."
+        "section": "4.3. Geo-localization results",
+        "original_text": "Table 2 shows a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
       },
-      "confidence": 0.95,
-      "quantity": "geolocalization performance",
-      "value": 80,
+      "confidence": 0.96,
+      "quantity": "Recall@1",
+      "value": 61.8,
       "unit": "%",
-      "context": "CVDisaster framework for cross-view geolocalization and damage perception estimation on the CVIAN dataset",
+      "context": "CVDisaster-Geoloc fine-tuned with 30% of CVIAN imagery pairs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6f3498afe2c22b32_qr4",
+      "evidence": {
+        "section": "4.3. Geo-localization results",
+        "original_text": "Table 2 shows a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+      },
+      "confidence": 0.96,
+      "quantity": "Recall@5",
+      "value": 86.0,
+      "unit": "%",
+      "context": "CVDisaster-Geoloc fine-tuned with 30% of CVIAN imagery pairs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6f3498afe2c22b32_qr5",
+      "evidence": {
+        "section": "4.3. Geo-localization results",
+        "original_text": "Table 2 shows a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+      },
+      "confidence": 0.96,
+      "quantity": "Recall@10",
+      "value": 93.0,
+      "unit": "%",
+      "context": "CVDisaster-Geoloc fine-tuned with 30% of CVIAN imagery pairs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_6f3498afe2c22b32_qr6",
+      "evidence": {
+        "section": "4.3. Geo-localization results",
+        "original_text": "Table 2 shows a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+      },
+      "confidence": 0.96,
+      "quantity": "Recall@1%",
+      "value": 99.0,
+      "unit": "%",
+      "context": "CVDisaster-Geoloc fine-tuned with 30% of CVIAN imagery pairs",
       "result_type": "main_result"
     },
     {
@@ -533,11 +579,47 @@
       "confidence": 0.94
     },
     {
+      "type": "claim",
+      "claim_id": "doc_6f3498afe2c22b32_ca3",
+      "evidence": {
+        "section": "Methodology",
+        "original_text": "Given a set of street-view imagery { Ls } and satellite imagery { La } with Ga refers to the geographical locations (e.g., longitude and latitude) of satellite imagery, our objective to learn a cross-view embedding space ℝ CV (e.g., via a non-linear function f ( Ls, La ) → ℝ CV ) in which two tasks are solved simultaneously: 1) each street-view imagery Ls is close to its corresponding satellite imagery La in the embedding space ℝ CV so that the correct geographical location can be retrieved based on their similarities in the embedding space; 2) each pair of street-view and satellite imagery { Ls, La } is close to all other pairs where a similar level of damage perception are observed. Figure 2 shows how we achieve this objective by integrating two GeoAI models (i.e., CVDisaster-Geoloc and CVDisaster-Est), namely the disaster perception estimation model and the cross-view geolocalization model, into a single framework CVDisaster."
+      },
+      "confidence": 0.93
+    },
+    {
       "type": "conclusion",
       "conclusion_id": "doc_6f3498afe2c22b32_cl1",
       "evidence": {
+        "section": "Experiment",
+        "original_text": "In our evaluation, we start with comparing state-of-the-art cross-view geolocalization models that were pre-trained on the CVUSA data, specifically TransGeo (Zhu et al., 2022), SAIG-D (Zhu et al., 2023), and Sample4Geo (Deuser et al., 2023). First, we directly apply three pretrained models on the CVIAN dataset to serve as a baseline of cross-view geolocalization performance. Next, we compare the fine-tuned model against pre-trained baseline models and conduct an ablation study w.r.t the ratio of train and test samples, ranging from 1:9 to 6:4. Since the CVDisaster-Geoloc is formulated as an imagery retrieval task, we consider four Recall@K evaluation metrics, namely, Recall@1, Recall@5, Recall@10, and Recall@1%, where K refers to the top K imagery that given by the query. A higher value (i.e., ranging from 0 to 100) simply means better accuracy. Pre-trained Cross-view Geolocalization : Table 2 show a few interesting findings: 1) all three pre-trained models form a nice baseline of addressing cross-view geolocalization tasks in a completely unseen area with a R@10 around 80%. Noticeably, the pre-training dataset, namely the CVUSA dataset, differs with the CVIAN to a large extend in both SVI (one from GSVI and one from Mapillary) as well as Satellite imagery. These results confirm the promising value of cross-view geolocalization approaches as a pure vision-based alternative to classic positioning techniques (e.g., GPS, Wifi), especially in a disaster response scenario; 2) Given 30% of CVIAN imagery pairs for fine-tuning, CVDisaster-Geoloc achieves significant performance boosting at almost all Recall@K metrics (i.e., except Recall@1%) against three baseline models, with a relatively small improvement compared to Sample4Geo as they shared similar network architectures. This means one can easily adapt pre-trained cross-view geolocalization models to a new case study area with a limited cost of preparing 'warming-up' contrastive learning samples for a much more affordable fine-tuning process than training an entirely new model from scratch, which will be an important feature desired for timely disaster response and geolocalization usage. In short, the preliminary results from implementing CVDisaster-Geoloc model on Hurricane IAN uncovers a promising avenue for leveraging pre-trained cross-view geolocalization techniques for low-cost and weather-resilient location awareness with such a time-critical task."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6f3498afe2c22b32_cl2",
+      "evidence": {
+        "section": "Experiment",
+        "original_text": "Moreover, by visualizing the correct geolocalized imagery pairs in Figure 7 (a) to (f), we see that the CVDisaster-Geoloc model was able to correlate SVI and satellite imagery based on landmarks, such as street, crossroad, building, which is similar to how human will spatially geolocalize themselves in an unknown place. Unlike to existing benchmarks, the CVIANdataset is featured by massive and diverse damages (e.g., for streets, buildings, and vegetation as shown in Figure 6) caused by Hurricane IAN, which pose a unique challenge for our CVDisaster-Geoloc model. Unsurprisingly, the heatmap visualization confirms the robustness of our model in handling such sophisticated structure changes in the built environment at a much affordable cost and additional effort. From our perspective, these results can motivate future works to investigate even spatial-temporal changes in a cross-view setup."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6f3498afe2c22b32_cl3",
+      "evidence": {
+        "section": "Experiment",
+        "original_text": "To evaluate the CVDisaster-Est model on cross-view damage perception estimation, we first compare the CGViT model trained on cross-view imagery pairs with two single-view models (i.e., one trained on SVI and one trained on VHR satellite imagery). Next, we conduct a similar ablation study as in CVDisaster-Geoloc to investigate the effect of fine-tuning ratios on the model performance. In this context, we consider mainly four multi-classification metrics, namely Precision (P), Recall (R), Overall Accuracy (OA), and the F1 score. Cross-view Damage Perception Estimation : Table 4 and 5 compare the performance of our CVDisaster-Est model with two single-view models based on either SVI or VHR satellite imagery. Specifically, Table 4 shows a detailed class-wise evaluation metrics w.r.t three level of damage labelled in the CVIAN dataset (i.e., Light, Medium, and Heavy Damages). A clear pattern is that medium damages are often more challenging (with low F1 scores in all three cases) than light and heavy damages. This can be attributed to how the damage perception levels are classified in the reference dataset (see Figure 5) as medium damages involves both qualitative and quantitative analysis of those damage indicator we considered (as introduced in Section 4.1), thus pose a general challenge to disaster mapping approaches (Dong and Shan, 2013). More importantly, we see a stimulating accuracy improvement when extending single-view to cross-view, for instance, CVDisaster-Est outperforms both SVI and VHR satellite in all three classes in P and F1 score. Nevertheless, Table 5 confirms the advantage of using cross-view imagery for disaster perception estimation rather than any single-view models."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_6f3498afe2c22b32_cl4",
+      "evidence": {
         "section": "Conclusions",
-        "original_text": "In this work, we present a novel framework, namely CVDisaster, to a time-crucial application scenario of disaster mapping, where two types of information are key, which are disaster damage perception and geolocation awareness. To the best of our knowledge, CVDisaster is the first of this kind framework that can simultaneously achieve cross-view geolocalization (CVDisaster-Geoloc) and disaster damage perception estimation (CVDisaster-Est). A case study on the CVIAN dataset collected from Hurricane IAN confirms the advantages of our CVDisaster framework over classic positioning techniques (e.g.., GPS, Wifi) as well as damage assessment approaches purely based on Very High Resolution (VHR) satellite imagery. We show that one can achieve highly competitive performance (over 80% for geolocalization and 75% for damage perception estimation) with limited fine-tuning efforts by benefiting from state-of-the-art pretrained vision models, like ConvNeXt and CGCViT. We hope our findings can motivate future cross-view models and applications within a broader GeoAI research community."
+        "original_text": "In this work, we present a novel framework, namely CVDisaster, to a time-crucial application scenario of disaster mapping, where two types of information are key, which are disaster damage perception and geolocation awareness. To the best of our knowledge, CVDisaster is the first of this kind framework that can simultaneously achieve cross-view geolocalization (CVDisaster-Geoloc) and disaster damage perception estimation (CVDisaster-Est). A case study on the CVIAN dataset collected from Hurricane IAN confirms the advantages of our CVDisaster framework over classic positioning techniques (e.g.., GPS, Wifi) as well as damage assessment approaches purely based on Very High Resolution (VHR) satellite imagery. We show that one can achieve highly competitive performance (over 80% for geolocalization and 75% for damage perception estimation) with limited fine-tuning efforts by benefiting from state-of-the-art pre-trained vision models, like ConvNeXt and CGCViT. We hope our findings can motivate future cross-view models and applications within a broader GeoAI research community."
       },
       "confidence": 0.96
     },
@@ -545,19 +627,46 @@
       "type": "limitation",
       "limitation_id": "doc_6f3498afe2c22b32_lm1",
       "evidence": {
-        "section": "Discussions",
-        "original_text": "Despite the promising results, there are a few limitations that deserve future attention: 1) Though pre-trained geolocalization models offer a good baseline performance for CVDisaster-Geoloc, CVDisaster still requires training efforts mainly to learn and align the classification feature space (CVDisaster-Est) to various damage indicators spotted by human experts. Therefore, a future work direction is to automatically extract and quantify those damage related indicators from SVI, for instance by adopting the Place365 scene classification categories (Figure 9). Of course, it would be great if disaster-related scenes or targets, such as flooding or housing trash, can be added to those pre-training datasets. To this end, we see CVDisaster make a unique contribution towards inspiring a list of integrated cross-view applications with the GeoAI research community. 2) there are still many unsolved challenges in such a cross-view disaster mapping scenario. For example, Figure 10 shows an interesting case where from the VHR satellite imagery that NOAA collected on 30th September 2022 (two days after Hurricane IAN), one can observe massive standing water on the street and cars need to risk for access. However, from the Mapillary SVI taken on 2nd October (four days after Hurricane IAN), water is cleaned with only road signs ('Detour') left as a sign of potential damages. Together with the inherent ambiguity of the damage perception level, the rapid temporal change during the disaster poses another level of difficulty to this task. Future cross-view models should definitely take such temporal changes into considering during the model pretraining."
+        "section": "Experiment",
+        "original_text": "Moreover, the aforementioned statement can be strengthened when we start to visualize the CVDisaster-Est classification results w.r.t where it works and where it fails. Figure 8 demonstrates both correct and incorrect classification cases using the cross-view CVDisaster-Est model. The correct cases (e.g., Figure 8(a) to (c)) basically echo the previous finding where SVI provides major hints based on various damage indicators (e.g., fallen trees, housing trash, etc). As for incorrect examples (e.g., Figure 8 (d) to (f)), one interesting pattern is that though heavy damage might be misclassified as medium damage, there is not a single case that light damage cases are classified as heavy ones. Herein, medium damages remain challenging as they may be confused with both light and heavy damages."
       },
-      "confidence": 0.92
+      "confidence": 0.9
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_6f3498afe2c22b32_lm2",
+      "evidence": {
+        "section": "Experiment",
+        "original_text": "Similarly to CVDisaster-Geoloc, we conduct an ablation study to examine the influence of train and test ratios in the classification performance as listed in Table 6. Herein, one can see that the training process of cross-view damage perception estimation involves more uncertainties when exposed to an increasing number of training samples. Our assumption is that disaster damages are often spatial auto-correlated due to environmental and human factors, thus a random sampling is insufficient to ensure all possible damage types are well-covered. In this context, a possible solution is to explicitly consider the spatial auto-correlation of cross-view imagery early enough in the sampling process, such as using metric auto-correlation (Wang et al., 2024) or locality sensitive sampling (Luo and Shrivastava, 2019)."
+      },
+      "confidence": 0.88
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_6f3498afe2c22b32_lm3",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "Despite the promising results, there are a few limitations that deserve future attention: 1) Though pre-trained geolocalization models offer a good baseline performance for CVDisaster-Geoloc, CVDisaster still requires training efforts mainly to learn and align the classification feature space (CVDisaster-Est) to various damage indicators spotted by human experts. Therefore, a future work direction is to automatically extract and quantify those damage related indicators from SVI, for instance by adopting the Place365 scene classification categories (Figure 9). Of course, it would be great if disaster-related scenes or targets, such as flooding or housing trash, can be added to those pre-training datasets. To this end, we see CVDisaster make a unique contribution towards inspiring a list of integrated cross-view applications with the GeoAI research community. 2) there are still many unsolved challenges in such a cross-view disaster mapping scenario. For example, Figure 10 shows an interesting case where from the VHR satellite imagery that NOAA collected on 30th September 2022 (two days after Hurricane IAN), one can observe massive standing water on the street and cares need to risk for access. However, from the Mapillary SVI taken on 2nd October (four days after Hurricane IAN), water is cleaned with only road signs ('Detour') left as a sign of potential damages. Together with the inherent ambiguity of the damage perception level, the rapid temporal change during the disaster poses another level of difficulty to this task. Future cross-view models should definitely take such temporal changes into considering during the model pretraining."
+      },
+      "confidence": 0.93
     },
     {
       "type": "future_work",
       "future_work_id": "doc_6f3498afe2c22b32_fw1",
       "evidence": {
         "section": "Discussions",
-        "original_text": "Last but not the least, our future work will focus on extending the CVIAN dataset to cover multiple areas and disaster types around the world."
+        "original_text": "Despite the promising results, there are a few limitations that deserve future attention: 1) Though pre-trained geolocalization models offer a good baseline performance for CVDisaster-Geoloc, CVDisaster still requires training efforts mainly to learn and align the classification feature space (CVDisaster-Est) to various damage indicators spotted by human experts. Therefore, a future work direction is to automatically extract and quantify those damage related indicators from SVI, for instance by adopting the Place365 scene classification categories (Figure 9). Of course, it would be great if disaster-related scenes or targets, such as flooding or housing trash, can be added to those pre-training datasets. To this end, we see CVDisaster make a unique contribution towards inspiring a list of integrated cross-view applications with the GeoAI research community. 2) there are still many unsolved challenges in such a cross-view disaster mapping scenario. For example, Figure 10 shows an interesting case where from the VHR satellite imagery that NOAA collected on 30th September 2022 (two days after Hurricane IAN), one can observe massive standing water on the street and cares need to risk for access. However, from the Mapillary SVI taken on 2nd October (four days after Hurricane IAN), water is cleaned with only road signs ('Detour') left as a sign of potential damages. Together with the inherent ambiguity of the damage perception level, the rapid temporal change during the disaster poses another level of difficulty to this task. Future cross-view models should definitely take such temporal changes into considering during the model pretraining."
       },
       "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_6f3498afe2c22b32_fw2",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "Last but not the least, our future work will focus on extending the CVIAN dataset to cover multiple areas and disaster types around the world."
+      },
+      "confidence": 0.95
     }
   ]
 }

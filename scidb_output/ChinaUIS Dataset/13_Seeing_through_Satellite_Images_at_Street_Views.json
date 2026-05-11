@@ -1,28 +1,34 @@
 {
   "metadata": {
-    "doc_id": "doc_63dd0254a82df92c",
+    "doc_id": "doc_82a54eb14fc8a7b0",
     "source_file": "13_Seeing_through_Satellite_Images_at_Street_Views.md",
-    "title": "Sat2Density++: Learning Illumination-Adaptive Neural Radiance Fields for Photorealistic SatStreet-view Synthesis",
+    "title": "Sat2Density++: Photorealistic Street-view Panorama Synthesis from Satellite Images via Illumination-Adaptive Neural Radiance Fields",
     "year": 2026,
     "doi": null,
     "abstract": "**Abstract** —This paper studies the task of SatStreet-view synthesis, which aims to render photorealistic street-view panorama images and videos given a satellite image and specified camera positions or trajectories. Our approach involves learning a satellite image conditioned neural radiance field from paired images captured from both satellite and street viewpoints, which comes to be a challenging learning problem due to the sparse-view nature and the extremely large viewpoint changes between satellite and street-view images. We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks. In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image. Project page is available at https: //qianmingduowan.github.io/sat2density-pp/.",
     "introduction": "R is a core problem in the 3D vision and photogrammetryEconstructing 3D scenes from multiple views of images communities. This problem has been extensively studied in neural rendering [2]–[4], but usually suffers from a high demand of dense input views, often making it a resourceintensive practice, especially for outdoor scenes. In this paper, we focus on the 3D reconstruction of outdoor scenes in neural rendering, but aim to reduce the required number of input views to just two or even one using the wide-coverage characteristics of satellite images. We use a challenging twoview configuration that contains _one satellite image capturing a large-scale scene from a distant location and one street-view panorama capturing the same scene at street level_ , with the goal of learning a feedforward model that captures faithful 3D geometry and renders high-quality street-view videos at any queried bird’s-eye view (BEV) trajectory for the given satellite image. \n\nWe refer to the two-view data as the SatStreetview images, which pose an extremely challenging scenario for the establishment of visual correspondences and the neural rendering, but are viable by mutually and manually checking the context over the image pairs because both the satellite and street-view images are observing the same geographical contents. Thus, we are curious about how we could infer the 3D scene geometry by curating the SatStreet-view image data. We take the novel-view synthesis as the main goal and refer to the task as the SatStreet-view synthesis. \n\n- _M. Qian, X. Zheng, and H. Xiong, are with the State Key Lab. LIESMARS, Wuhan University, Wuhan, 430079, China (e-mail: mingqian@whu.edu.cn; zhengxw@whu.edu.cn; xionghanjiang@whu.edu.cn)._ \n\n- _B. Tan, Q. Wang, Y. Shen, and N. Xue are with Ant Group, Hangzhou, 310013, China (e-mail: tanbin@whu.edu.cn; wangqiuyuu@gmail.com; shenyujun0302@gmail.com; xuenan@ieee.org)._ \n\n- _G.-S. Xia is with the School of Artificial Intelligence, Wuhan University, Wuhan, 430079, China (e-mail: guisong.xia@whu.edu.cn)._ \n\n- _Corresponding author: Xianwei Zheng and Gui-Song Xia._ \n\nThe SatStreet-view synthesis task aims to render photorealistic street-view panorama images and videos given a satellite image and specified camera positions or trajectories, as shown in Fig. 1.[1] The primary challenge of this task stems from the significant viewpoint changes between satellite and street-level perspectives. Satellites capture scenes from a bird’s-eye view, mainly focusing on the tops of buildings, road surfaces, trees, and other geographical features. In contrast, the panorama images provide street-level views from within the scene, offering side perspectives of buildings, detailed road surfaces, the intricate features of tree trunks and branches, _etc._ Additionally, street-view panorama images include elements such as the sky and the view-specific illumination effects, which are beyond the limited scope of satellite imagery. To address these substantial viewpoint changes, we focus on the 3D scene geometry, which is likely invariant to observational perspectives. \n\nA robust 3D representation is essential for models to understand variations in camera viewpoints, thereby improving their ability to generate images more accurately. Shi _et al._ [5] proposed an end-to-end learning approach for height maps as an intermediate 3D geometric representation, demonstrating better results compared to image-toimage translation methods [6], [7] for single image generation. Other works [8]–[10] have circumvented the challenges of learning 3D scenes from SatStreet-view image data by employing off-the-shelf semantic and metric depth maps of satellite images as supervision signals, thereby obtaining 2.5D building voxels to serve as conditions for street-view images generation. All those studies highlighted the necessity of 3D shape representation for SatStreetview synthesis, but they are limited by the accuracy and coherence of the used (or learned) 3D representations. \n\nWe approach the goal of SatStreet-view synthesis by \n\n1. In this paper, all visualized satellite images are oriented with North at the top and West to the left. For the generated 360° panorama images, North aligns with the central axis, South spans the boundary edges, while West and East occupy the left and right quarter sections, respectively. \n\nACCEPTED BY IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE \n\n2 \n\n\n**----- Start of picture text -----**<br>\nInput Sat. Sat2Density++ Sat2Density<br>Geo. & App. Geo.  I2I<br>Modeling Sky Modeling Modeling Translation<br>blending copy-<br>rendering paste prediction<br>projection<br>Illumination Input<br>Generated frames by Sat2Density<br>Input Sat. and Cameras Generated frames by Sat2Density++<br>(a) Comparison of model designs and generated videos<br>**----- End of picture text -----**<br>\n\n\n\n**----- Start of picture text -----**<br>\nInput Sat.  Bird’s Eye View Closed-up visualization of Trees and Buildings<br>(b) Comparison of generated 3D geometry<br>Sat2Density<br>Sat2Density++<br>**----- End of picture text -----**<br>\n\n\nFig. 1: **Comparison of model designs and results between Sat2Density [1] proposed in our conference version and Sat2Density++ (Ours) proposed in this paper.** (a) Overview illustration of model designs and the video results. At the bottom of Fig. 1(a), the colored camera trajectory is shown on the left satellite image, and the corresponding street-view images generated by models are shown on the right. (b) A comparison of the generated geometry, where surfaces are extracted from the density field using Marching Cubes. _Please visit our project page for full video results._ \n\nlearning the radiance field representation [2] with a feedforward neural network from the SatStreet-view image pairs. Along this direction, two main challenges remained to be solved: \n\n- 1) how to effectively learn the neural fields as the primary 3D representation from SatStreet-view image pairs; \n\n- 2) how to handle street-view-specific elements such as the sky, illumination effects, and detailed structures that are not visible to satellites. \n\nOur main idea is based on a holistic viewpoint for these two key challenges using generative adversarial learning to learn the faithful 3D scene representation from the appearance of SatStreet-view image pairs. \n\n**Preliminary Findings and the Limitations.** Our preliminary version presents Sat2Density [1], which takes the density field representation as the 3D representation of the scene geometry and learns the density field from the photometric characteristics of the street-view panoramas. Two key ingredients, the _non-sky opacity loss_ and _illumination modeling_ drive the learning process, and we project color information from the satellite image onto the 3D geometry representation to render the initial street-view images by volume rendering. Because of the copy-pasting scheme of color projection, the initial projected panoramas are often imprecise, and an image-to-image (I2I) translation module built with convolutional neural networks is used for refinement. While Sat2Density successfully learned plausible density fields in suburban scenes, its performance in complex \n\nACCEPTED BY IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE \n\n3 \n\nurban environments was unsatisfactory, as evidenced by both the noisy density fields and the generated street-view videos (see Fig. 1). This shortcoming mainly arises from three factors: the limited expressiveness of a pure density field representation, the inaccuracies introduced during the volume rendering step, and the reliance on a 2D image-toimage refinement process that hinders effective density field learning. As a result, the method struggles to produce multiview consistent street-view videos along a trajectory. \n\n**Method Overview of Sat2Density++.** We extend the Sat2Density to Sat2Density++ in this paper. Compared to Sat2Density [1] that only learned the density field while ignoring color in the common neural field to reduce the complexity of the 3D representation, in our Sat2Density++, we demonstrate that both the scene geometry and the appearance modeling play key roles in modeling complex scenes, thus opt to learn an illumination-adaptive neural radiance field instead of the previously-used density field. This radiance field is capable of maintaining the characteristic hues of satellite imagery under neutral lighting conditions or adjusting the generated color features when explicit illumination information is available. As a result, the density output of the illumination-adaptive neural radiance field is invariant across various lighting scenarios. Building on the joint modeling of scene geometry and the appearance, we simplify the generation of street-view panoramas in two parallel branches: one for the ground scene rendering from the learned neural radiance field and the other for the sky region generation from the illumination-sensitive 2D sky region generation network, and then compose the final street-view panoramas from the output of the two branches. By joint training of all the neural network components with carefully-designed learning objectives, we are able to learn the faithful 3D scene geometry and generate highquality street-view panoramas that are consistent across multiple views and faithful to the satellite image, and thus can consecutively render street-view videos for any queried BEV trajectory. Fig. 1 illustrates the case for the urban scene modeling that is challenging the existing approaches (including our preliminary Sat2Density [1]) for SatStreetview synthesis, in which our proposed Sat2Density++ learns faithful 3D geometry and renders high-fidelity street-view videos at any queried BEV trajectory. \n\nTo the best of our knowledge, our model is the first that can synthesize multi-view consistent street-view videos from input satellite images without relying on 3D annotations for training. Through extensive qualitative and quantitative experiments, we demonstrate that Sat2Density++ outperforms existing single-image generation models in terms of image quality and shows enhanced geometric accuracy and significantly improved video faithfulness, consistency, and quality compared to our conference model. Besides, the predicted satellite view depth, the visualization of interpolated illumination, and the performance on out-of-distribution data further validate the reliability of Sat2Density++.",
     "primary_discipline": {
       "level1": "计算机科学技术",
-      "level2": null,
-      "level3": null
+      "level2": "人工智能",
+      "level3": "计算机视觉"
     },
-    "secondary_disciplines": null,
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": "摄影测量与遥感",
+        "level3": null
+      }
+    ],
     "keywords": [
-      "SatStreet-view synthesis",
-      "Neural radiance field",
-      "3D reconstruction",
-      "Panorama rendering",
-      "Satellite imagery"
+      "Satellite-to-Street-view Synthesis",
+      "Neural Radiance Fields",
+      "3D Reconstruction",
+      "Panorama Rendering",
+      "Multi-view Consistency"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:48:35.019987+00:00",
+      "extraction_timestamp": "2026-05-11T02:09:43.262227+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -31,7 +37,7 @@
   "entries": [
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c1",
+      "concept_id": "doc_82a54eb14fc8a7b0_c1",
       "evidence": {
         "section": "Abstract",
         "original_text": "This paper studies the task of SatStreet-view synthesis, which aims to render photorealistic street-view panorama images and videos given a satellite image and specified camera positions or trajectories. Our approach involves learning a satellite image conditioned neural radiance field from paired images captured from both satellite and street viewpoints, which comes to be a challenging learning problem due to the sparse-view nature and the extremely large viewpoint changes between satellite and street-view images. We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks. In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
@@ -43,336 +49,362 @@
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c2",
+      "concept_id": "doc_82a54eb14fc8a7b0_c2",
       "evidence": {
         "section": "Abstract",
         "original_text": "We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks. In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
       },
-      "confidence": 0.97,
+      "confidence": 0.98,
       "term": "Sat2Density++",
       "normalized": "Sat2Density++",
       "std_label": "Sat2Density++"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c3",
+      "concept_id": "doc_82a54eb14fc8a7b0_c3",
       "evidence": {
         "section": "Abstract",
         "original_text": "Our approach involves learning a satellite image conditioned neural radiance field from paired images captured from both satellite and street viewpoints, which comes to be a challenging learning problem due to the sparse-view nature and the extremely large viewpoint changes between satellite and street-view images."
       },
-      "confidence": 0.96,
+      "confidence": 0.97,
       "term": "neural radiance field",
       "normalized": "神经辐射场",
       "std_label": "NeRF"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c4",
+      "concept_id": "doc_82a54eb14fc8a7b0_c4",
       "evidence": {
-        "section": "Method Overview of Sat2Density++",
-        "original_text": "Compared to Sat2Density [1] that only learned the density field while ignoring color in the common neural field to reduce the complexity of the 3D representation, in our Sat2Density++, we demonstrate that both the scene geometry and the appearance modeling play key roles in modeling complex scenes, thus opt to learn an illumination-adaptive neural radiance field instead of the previously-used density field. This radiance field is capable of maintaining the characteristic hues of satellite imagery under neutral lighting conditions or adjusting the generated color features when explicit illumination information is available. As a result, the density output of the illumination-adaptive neural radiance field is invariant across various lighting scenarios."
+        "section": "3 THE PROPOSED SAT2DENSITY++",
+        "original_text": "In our model, the roles of the satellite image and the sky illumination input are completely decoupled. The satellite image is responsible for generating a learnable implicit 3D representation of outdoor ground scenes. Using the given camera parameters for the satellite or panoramic street view, it can accurately produce the corresponding ground content. In contrast, the infinite sky region is treated as a 2D background panoramic image, which is generated using the sky illumination input. The sky illumination input simulates the effects of varying daylight conditions on photographs in outdoor environments, with different daylight scenarios altering both the sky appearance and impacting the imaging of ground regions. Consequently, in our model, the sky illumination input also influences the appearance of images when rendering the street region from the implicit 3D representation, allowing for dynamic adaptation to different lighting conditions."
       },
-      "confidence": 0.95,
-      "term": "illumination-adaptive neural radiance field",
-      "normalized": "光照自适应神经辐射场",
-      "std_label": "illumination-adaptive NeRF"
-    },
-    {
-      "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c5",
-      "evidence": {
-        "section": "Sky Illumination Modeling from Street-View Image",
-        "original_text": "As our goal is to learn how to synthesize street-view panoramas from satellite images, it is essential to model illumination conditions that are specific to street-level observations. Illumination is closely related to the sky region in street-view images I_str. Therefore, we adopt a statistical approach to model the histogram-based illumination feature from each street-view image, which efficiently encodes color information while maintaining computational simplicity, interpretability, and does not rely on a deep learning process. Lalonde et al. [46] also utilized sky histograms to match global lighting conditions. In detail, for each I_str, we first extract binary sky masks M_sky using an off-the-shelf segmentation model [47]. We then featurize the sky pixels into color distributions to capture illumination characteristics. For this featurization, we adopt a histogram-based representation."
-      },
-      "confidence": 0.94,
+      "confidence": 0.96,
       "term": "sky illumination modeling",
       "normalized": "天空光照建模",
       "std_label": "sky illumination modeling"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c6",
+      "concept_id": "doc_82a54eb14fc8a7b0_c5",
       "evidence": {
-        "section": "Tri-plane Generation from Satellite Image",
-        "original_text": "Given a satellite image I_sat ∈ R^3×256×256 as the input, our Sat2Density++ leverages a neural network Tri-plane Net G_tri, to extract the image features F_img ∈ R^96×256×256. Then, F_img is split and reshaped to form the tri-plane feature maps F_tri = {F_XY, F_ZY, F_XZ} in which the size of each map is 32 × 256 × 256. The tri-plane feature maps are utilized to represent the 3D scene within a tri-plane-based radiance field model [44]. Following the principles of the radiance field [2], [44], [45], given any street-view camera poses, we use bilinear interpolation to query point features f_tri ∈ R^96 from F_tri for the sampled 3D location along each camera ray."
+        "section": "3.1.1 Tri-plane Generation from Satellite Image",
+        "original_text": "Given a satellite image I sat ∈ R[3] ×[256] ×[256] as the input, our Sat2Density++ leverages a neural network Tri-plane Net Gtri , to extract the image features F img ∈ R[96] ×[256] ×[256] by Then, F img is split and reshaped to form the tri-plane feature maps Ftri = {FXY , FZY , FXZ} by in which the size of each map is 32 × 256 × 256. The tri-plane feature maps are utilized to represent the 3D scene within a tri-plane-based radiance field model [44]. Following the principles of the radiance field [2], [44], [45], given any street-view camera poses, we use bilinear interpolation to query point features f tri ∈ R[96] from F tri for the sampled 3D location along each camera ray. These point features are then sent to the illumination-adaptive tri-plane decoder (Sec. 3.1.3) to obtain the density and color values for each point, which are subsequently used to render the ground part of street-view images."
       },
-      "confidence": 0.93,
-      "term": "tri-plane feature maps",
-      "normalized": "三平面特征图",
-      "std_label": "tri-plane features"
+      "confidence": 0.95,
+      "term": "tri-plane representation",
+      "normalized": "三平面表示",
+      "std_label": "tri-plane representation"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c7",
+      "concept_id": "doc_82a54eb14fc8a7b0_c6",
       "evidence": {
-        "section": "Ground Part Generation",
-        "original_text": "Given a camera P, we sample N points along each ray r through each pixel that emanates from the camera location. Let x_i be the i-th sampled point along the ray r, we first compute density value σ_i, and color feature ϕ_i with the illumination-adaptive tri-plane decoder. Then, we use volume rendering [2], [45] to calculate the image feature map Î_F, opacity map Ô, and depth map D̂ along ray r as follows: Î_F(r) = Σ_{i=1}^{N} τ_i (1 - exp(-σ_i δ_i)) ϕ_i, Ô(r) = Σ_{i=1}^{N} τ_i (1 - exp(-σ_i δ_i)), D̂(r) = Σ_{i=1}^{N} τ_i (1 - exp(-σ_i δ_i)) d_i, where d_i is the distance between the camera position and the point position i, and the transmittance τ_i along the ray r is computed as the probability of a photon traversing between the camera center and the i-th point given the length of i-th interval δ_i τ_i = exp(-Σ_{j=1}^{i-1} σ_j δ_j)."
+        "section": "3.1.3 Illumination-Adaptive Tri-Plane Decoder",
+        "original_text": "Given the tri-plane feature f tri for each sampled 3D location, we set up an illumination-adaptive tri-plane decoder for the computation of density value σ ∈ R and the appearance feature ϕ ∈ R[32] by The vanilla tri-plane decoder consists of a two-layer structure formed by multilayer perceptrons (MLPs). In this model, f tri are processed through these MLPs, producing ϕ and σ outputs simultaneously in the final layer. This approach assumes consistent lighting conditions across all viewpoints, providing a straightforward output based solely on triplane features [44]. In contrast, the illumination adaptive tri-plane decoder modifies this structure to address varying lighting conditions more effectively. Instead of using two stacked MLP layers as in the vanilla version, the illumination adaptive version replaces the final layer with two distinct branches for generating density and color, respectively. The density branch utilizes an MLP that takes the output from the first MLP layer as input to produce σ . The color branch also uses an MLP, but it concatenates the output from the first MLP layer with the illumination vector w ill before processing to generate ϕ . This design allows the color features to be adaptively adjusted according to lighting conditions, offering more nuanced control and improving the accuracy and realism of visual representation under different illumination contexts."
       },
-      "confidence": 0.92,
+      "confidence": 0.95,
+      "term": "illumination-adaptive tri-plane decoder",
+      "normalized": "光照自适应三平面解码器",
+      "std_label": "illumination-adaptive tri-plane decoder"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_82a54eb14fc8a7b0_c7",
+      "evidence": {
+        "section": "3.2.1 Ground Part Generation",
+        "original_text": "Given a camera P , we sample N points along each ray r through each pixel that emanates from the camera location. Let xi be the i-th sampled point along the ray r , we first compute density value σi , and color feature ϕi with the illumination-adaptive tri-plane decoder. Then, we use volume rendering [2], [45] to calculate the image feature map I[ˆ] F , opacity map O[ˆ] , and depth map D[ˆ] along ray r as follows: where di is the distance between the camera position and the point position i , and the transmittance τi along the ray r is computed as the probability of a photon traversing between the camera center and the i-th point given the length of i-th interval δi note that, the synthesized raw color I[ˆ] C ( r ) is taken from the first three channels of I[ˆ] F ( r ), the other channels are used for the super-resolution (SR) module."
+      },
+      "confidence": 0.96,
       "term": "volume rendering",
       "normalized": "体渲染",
       "std_label": "volume rendering"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c8",
+      "concept_id": "doc_82a54eb14fc8a7b0_c8",
       "evidence": {
-        "section": "Non-sky Opacity Loss",
-        "original_text": "In Sat2Density++, we aim to learn the 3D representation of the satellite scene, but street-level scenes introduce elements such as the sky, which are not accounted for in satellite images. This challenges the model's ability to recognize and accurately model the geometric structure of scenes captured in satellite imagery. We found that the pseudo sky masks provide a strong inductive basis to regularize the density field in a simple way, thus using a binary cross-entropy (BCE) loss for the supervision: L_opa = BCE(Ô_grd, 1 - M_sky), where M_sky is the ground-truth sky mask, 1 indicates the sky region, and 0 indicates the ground region."
+        "section": "3.4.1 Non-sky Opacity Loss",
+        "original_text": "In Sat2Density++, we aim to learn the 3D representation of the satellite scene, but street-level scenes introduce elements such as the sky, which are not accounted for in satellite images. This challenges the model’s ability to recognize and accurately model the geometric structure of scenes captured in satellite imagery. We found that the pseudo sky masks provide a strong inductive basis to regularize the density field in a simple way, thus using a binary cross-entropy (BCE) loss for the supervision: where M sky is the ground-truth sky mask, 1 indicates the sky region, and 0 indicates the ground region."
       },
-      "confidence": 0.91,
+      "confidence": 0.94,
       "term": "non-sky opacity loss",
       "normalized": "非天空透明度损失",
       "std_label": "L_opa"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c9",
+      "concept_id": "doc_82a54eb14fc8a7b0_c9",
       "evidence": {
-        "section": "Datasets",
+        "section": "4.1 Datasets",
         "original_text": "CVACT [5] and CVUSA [11] for Suburban Scenes. The CVACT and CVUSA datasets consist of one-to-one paired satellite and street-view images. Each street-view image is assumed to be captured from the center of its corresponding satellite image. Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
       },
-      "confidence": 0.9,
-      "term": "CVUSA dataset",
-      "normalized": "CVUSA数据集",
-      "std_label": "CVUSA"
+      "confidence": 0.96,
+      "term": "CVACT dataset",
+      "normalized": "CVACT数据集",
+      "std_label": "CVACT"
     },
     {
       "type": "concept",
-      "concept_id": "doc_63dd0254a82df92c_c10",
+      "concept_id": "doc_82a54eb14fc8a7b0_c10",
       "evidence": {
-        "section": "Datasets",
+        "section": "4.1 Datasets",
         "original_text": "VIGOR for Urban Scenes. The VIGOR dataset significantly differs from CVACT and CVUSA in several key aspects. First, VIGOR comprises urban scenes collected from major cities, including Chicago, New York City, San Francisco, and Seattle. Compared to suburban datasets, the complex structures found in urban environments pose greater challenges to existing methods [1]. Second, each VIGOR data sample consists of one satellite image paired with two to three street-view panoramas, introducing an additional challenge related to viewpoint variations among multiple street-view captures per satellite location. Our method, through precise learning of 3D geometry, effectively addresses both structural complexities and viewpoint variations simultaneously."
       },
-      "confidence": 0.9,
+      "confidence": 0.96,
       "term": "VIGOR dataset",
       "normalized": "VIGOR数据集",
       "std_label": "VIGOR"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r1",
+      "relation_id": "doc_82a54eb14fc8a7b0_r1",
       "evidence": {
         "section": "Abstract",
         "original_text": "We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks. In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
       },
       "confidence": 0.95,
-      "head": "doc_63dd0254a82df92c_c2",
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "enhances",
       "relation_surface": "is capable of rendering",
-      "tail": "doc_63dd0254a82df92c_c1"
+      "tail": "doc_82a54eb14fc8a7b0_c1"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r2",
+      "relation_id": "doc_82a54eb14fc8a7b0_r2",
       "evidence": {
-        "section": "Method Overview of Sat2Density++",
-        "original_text": "Compared to Sat2Density [1] that only learned the density field while ignoring color in the common neural field to reduce the complexity of the 3D representation, in our Sat2Density++, we demonstrate that both the scene geometry and the appearance modeling play key roles in modeling complex scenes, thus opt to learn an illumination-adaptive neural radiance field instead of the previously-used density field. This radiance field is capable of maintaining the characteristic hues of satellite imagery under neutral lighting conditions or adjusting the generated color features when explicit illumination information is available."
+        "section": "Abstract",
+        "original_text": "Our approach involves learning a satellite image conditioned neural radiance field from paired images captured from both satellite and street viewpoints, which comes to be a challenging learning problem due to the sparse-view nature and the extremely large viewpoint changes between satellite and street-view images. We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks."
       },
       "confidence": 0.94,
-      "head": "doc_63dd0254a82df92c_c2",
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "uses",
-      "relation_surface": "opt to learn",
-      "tail": "doc_63dd0254a82df92c_c4"
+      "relation_surface": "built upon",
+      "tail": "doc_82a54eb14fc8a7b0_c3"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r3",
+      "relation_id": "doc_82a54eb14fc8a7b0_r3",
       "evidence": {
-        "section": "Sky Illumination Modeling from Street-View Image",
-        "original_text": "As our goal is to learn how to synthesize street-view panoramas from satellite images, it is essential to model illumination conditions that are specific to street-level observations. Illumination is closely related to the sky region in street-view images I_str. Therefore, we adopt a statistical approach to model the histogram-based illumination feature from each street-view image, which efficiently encodes color information while maintaining computational simplicity, interpretability, and does not rely on a deep learning process."
+        "section": "6 CONCLUSION",
+        "original_text": "Our Sat2Density++ is built upon a deep understanding of SatStreet-view synthesis, devising an effective learning solution by modeling sky regions and street-view illuminations. It approaches the challenging two-view neural field learning problem with a feedforward 3D-aware generation framework for photorealistic streetview panorama synthesis."
       },
       "confidence": 0.93,
-      "head": "doc_63dd0254a82df92c_c2",
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "uses",
-      "relation_surface": "adopt a statistical approach to model",
-      "tail": "doc_63dd0254a82df92c_c5"
+      "relation_surface": "devising an effective learning solution by modeling",
+      "tail": "doc_82a54eb14fc8a7b0_c4"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r4",
+      "relation_id": "doc_82a54eb14fc8a7b0_r4",
       "evidence": {
-        "section": "Tri-plane Generation from Satellite Image",
-        "original_text": "Given a satellite image I_sat ∈ R^3×256×256 as the input, our Sat2Density++ leverages a neural network Tri-plane Net G_tri, to extract the image features F_img ∈ R^96×256×256. Then, F_img is split and reshaped to form the tri-plane feature maps F_tri = {F_XY, F_ZY, F_XZ} in which the size of each map is 32 × 256 × 256. The tri-plane feature maps are utilized to represent the 3D scene within a tri-plane-based radiance field model [44]."
+        "section": "3.1.1 Tri-plane Generation from Satellite Image",
+        "original_text": "Given a satellite image I sat ∈ R[3] ×[256] ×[256] as the input, our Sat2Density++ leverages a neural network Tri-plane Net Gtri , to extract the image features F img ∈ R[96] ×[256] ×[256] by Then, F img is split and reshaped to form the tri-plane feature maps Ftri = {FXY , FZY , FXZ} by in which the size of each map is 32 × 256 × 256. The tri-plane feature maps are utilized to represent the 3D scene within a tri-plane-based radiance field model [44]."
       },
-      "confidence": 0.92,
-      "head": "doc_63dd0254a82df92c_c2",
+      "confidence": 0.95,
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "uses",
-      "relation_surface": "leverages a neural network Tri-plane Net G_tri, to extract",
-      "tail": "doc_63dd0254a82df92c_c6"
+      "relation_surface": "leverages a neural network Tri-plane Net",
+      "tail": "doc_82a54eb14fc8a7b0_c5"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r5",
+      "relation_id": "doc_82a54eb14fc8a7b0_r5",
       "evidence": {
-        "section": "Ground Part Generation",
-        "original_text": "Given a camera P, we sample N points along each ray r through each pixel that emanates from the camera location. Let x_i be the i-th sampled point along the ray r, we first compute density value σ_i, and color feature ϕ_i with the illumination-adaptive tri-plane decoder. Then, we use volume rendering [2], [45] to calculate the image feature map Î_F, opacity map Ô, and depth map D̂ along ray r as follows: Î_F(r) = Σ_{i=1}^{N} τ_i (1 - exp(-σ_i δ_i)) ϕ_i, Ô(r) = Σ_{i=1}^{N} τ_i (1 - exp(-σ_i δ_i)), D̂(r) = Σ_{i=1}^{N} τ_i (1 - exp(-σ_i δ_i)) d_i."
+        "section": "3.1.3 Illumination-Adaptive Tri-Plane Decoder",
+        "original_text": "Given the tri-plane feature f tri for each sampled 3D location, we set up an illumination-adaptive tri-plane decoder for the computation of density value σ ∈ R and the appearance feature ϕ ∈ R[32] by The vanilla tri-plane decoder consists of a two-layer structure formed by multilayer perceptrons (MLPs). In this model, f tri are processed through these MLPs, producing ϕ and σ outputs simultaneously in the final layer. This approach assumes consistent lighting conditions across all viewpoints, providing a straightforward output based solely on triplane features [44]. In contrast, the illumination adaptive tri-plane decoder modifies this structure to address varying lighting conditions more effectively. Instead of using two stacked MLP layers as in the vanilla version, the illumination adaptive version replaces the final layer with two distinct branches for generating density and color, respectively. The density branch utilizes an MLP that takes the output from the first MLP layer as input to produce σ . The color branch also uses an MLP, but it concatenates the output from the first MLP layer with the illumination vector w ill before processing to generate ϕ . This design allows the color features to be adaptively adjusted according to lighting conditions, offering more nuanced control and improving the accuracy and realism of visual representation under different illumination contexts."
       },
-      "confidence": 0.91,
-      "head": "doc_63dd0254a82df92c_c2",
+      "confidence": 0.95,
+      "head": "doc_82a54eb14fc8a7b0_c2",
+      "relation_type": "uses",
+      "relation_surface": "set up an illumination-adaptive tri-plane decoder",
+      "tail": "doc_82a54eb14fc8a7b0_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_82a54eb14fc8a7b0_r6",
+      "evidence": {
+        "section": "3.2.1 Ground Part Generation",
+        "original_text": "Given a camera P , we sample N points along each ray r through each pixel that emanates from the camera location. Let xi be the i-th sampled point along the ray r , we first compute density value σi , and color feature ϕi with the illumination-adaptive tri-plane decoder. Then, we use volume rendering [2], [45] to calculate the image feature map I[ˆ] F , opacity map O[ˆ] , and depth map D[ˆ] along ray r as follows: where di is the distance between the camera position and the point position i , and the transmittance τi along the ray r is computed as the probability of a photon traversing between the camera center and the i-th point given the length of i-th interval δi note that, the synthesized raw color I[ˆ] C ( r ) is taken from the first three channels of I[ˆ] F ( r ), the other channels are used for the super-resolution (SR) module."
+      },
+      "confidence": 0.96,
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "uses",
       "relation_surface": "use volume rendering",
-      "tail": "doc_63dd0254a82df92c_c7"
+      "tail": "doc_82a54eb14fc8a7b0_c7"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r6",
+      "relation_id": "doc_82a54eb14fc8a7b0_r7",
       "evidence": {
-        "section": "Non-sky Opacity Loss",
-        "original_text": "In Sat2Density++, we aim to learn the 3D representation of the satellite scene, but street-level scenes introduce elements such as the sky, which are not accounted for in satellite images. This challenges the model's ability to recognize and accurately model the geometric structure of scenes captured in satellite imagery. We found that the pseudo sky masks provide a strong inductive basis to regularize the density field in a simple way, thus using a binary cross-entropy (BCE) loss for the supervision: L_opa = BCE(Ô_grd, 1 - M_sky), where M_sky is the ground-truth sky mask, 1 indicates the sky region, and 0 indicates the ground region."
+        "section": "3.4.1 Non-sky Opacity Loss",
+        "original_text": "In Sat2Density++, we aim to learn the 3D representation of the satellite scene, but street-level scenes introduce elements such as the sky, which are not accounted for in satellite images. This challenges the model’s ability to recognize and accurately model the geometric structure of scenes captured in satellite imagery. We found that the pseudo sky masks provide a strong inductive basis to regularize the density field in a simple way, thus using a binary cross-entropy (BCE) loss for the supervision: where M sky is the ground-truth sky mask, 1 indicates the sky region, and 0 indicates the ground region."
       },
-      "confidence": 0.9,
-      "head": "doc_63dd0254a82df92c_c2",
+      "confidence": 0.94,
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "uses",
       "relation_surface": "using a binary cross-entropy (BCE) loss for the supervision",
-      "tail": "doc_63dd0254a82df92c_c8"
+      "tail": "doc_82a54eb14fc8a7b0_c8"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r7",
+      "relation_id": "doc_82a54eb14fc8a7b0_r8",
       "evidence": {
-        "section": "Datasets",
-        "original_text": "CVACT [5] and CVUSA [11] for Suburban Scenes. The CVACT and CVUSA datasets consist of one-to-one paired satellite and street-view images. Each street-view image is assumed to be captured from the center of its corresponding satellite image. Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
+        "section": "Abstract",
+        "original_text": "In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
       },
-      "confidence": 0.89,
-      "head": "doc_63dd0254a82df92c_c2",
+      "confidence": 0.93,
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "evaluated_on",
       "relation_surface": "evaluated on both urban and suburban scene datasets",
-      "tail": "doc_63dd0254a82df92c_c9"
+      "tail": "doc_82a54eb14fc8a7b0_c9"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r8",
+      "relation_id": "doc_82a54eb14fc8a7b0_r9",
       "evidence": {
-        "section": "Datasets",
-        "original_text": "VIGOR for Urban Scenes. The VIGOR dataset significantly differs from CVACT and CVUSA in several key aspects. First, VIGOR comprises urban scenes collected from major cities, including Chicago, New York City, San Francisco, and Seattle. Compared to suburban datasets, the complex structures found in urban environments pose greater challenges to existing methods [1]. Second, each VIGOR data sample consists of one satellite image paired with two to three street-view panoramas, introducing an additional challenge related to viewpoint variations among multiple street-view captures per satellite location. Our method, through precise learning of 3D geometry, effectively addresses both structural complexities and viewpoint variations simultaneously."
+        "section": "Abstract",
+        "original_text": "In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
       },
-      "confidence": 0.89,
-      "head": "doc_63dd0254a82df92c_c2",
+      "confidence": 0.93,
+      "head": "doc_82a54eb14fc8a7b0_c2",
       "relation_type": "evaluated_on",
       "relation_surface": "evaluated on both urban and suburban scene datasets",
-      "tail": "doc_63dd0254a82df92c_c10"
+      "tail": "doc_82a54eb14fc8a7b0_c10"
     },
     {
       "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r9",
+      "relation_id": "doc_82a54eb14fc8a7b0_r10",
       "evidence": {
-        "section": "Method Overview of Sat2Density++",
-        "original_text": "Compared to Sat2Density [1] that only learned the density field while ignoring color in the common neural field to reduce the complexity of the 3D representation, in our Sat2Density++, we demonstrate that both the scene geometry and the appearance modeling play key roles in modeling complex scenes, thus opt to learn an illumination-adaptive neural radiance field instead of the previously-used density field. This radiance field is capable of maintaining the characteristic hues of satellite imagery under neutral lighting conditions or adjusting the generated color features when explicit illumination information is available. As a result, the density output of the illumination-adaptive neural radiance field is invariant across various lighting scenarios."
+        "section": "3 THE PROPOSED SAT2DENSITY++",
+        "original_text": "In our model, the roles of the satellite image and the sky illumination input are completely decoupled. The satellite image is responsible for generating a learnable implicit 3D representation of outdoor ground scenes. Using the given camera parameters for the satellite or panoramic street view, it can accurately produce the corresponding ground content. In contrast, the infinite sky region is treated as a 2D background panoramic image, which is generated using the sky illumination input. The sky illumination input simulates the effects of varying daylight conditions on photographs in outdoor environments, with different daylight scenarios altering both the sky appearance and impacting the imaging of ground regions. Consequently, in our model, the sky illumination input also influences the appearance of images when rendering the street region from the implicit 3D representation, allowing for dynamic adaptation to different lighting conditions."
       },
-      "confidence": 0.88,
-      "head": "doc_63dd0254a82df92c_c4",
-      "relation_type": "derives",
-      "relation_surface": "is capable of maintaining the characteristic hues of satellite imagery",
-      "tail": "doc_63dd0254a82df92c_c3"
-    },
-    {
-      "type": "relation",
-      "relation_id": "doc_63dd0254a82df92c_r10",
-      "evidence": {
-        "section": "Sky Illumination Modeling",
-        "original_text": "The sky illumination input, illumination-adaptive tri-plane decoder, and illumination-adaptive 2D sky generation module work together to mitigate the effects of view-specific lighting in street-view images during training, while also enabling controllable illumination synthesis at inference. Tab. 2 summarizes different design choices for modeling illumination in the satellite and street-view branches. Our full model, which uses a null-style vector for satellite-view generation and the valid sky histogram for the street-view illumination input, achieves the best performance. This configuration fully leverages illumination cues from both views, leading to more accurate geometry, better visual quality, and controllable street-view synthesis."
-      },
-      "confidence": 0.87,
-      "head": "doc_63dd0254a82df92c_c5",
+      "confidence": 0.94,
+      "head": "doc_82a54eb14fc8a7b0_c4",
       "relation_type": "enhances",
-      "relation_surface": "enables controllable illumination synthesis at inference",
-      "tail": "doc_63dd0254a82df92c_c1"
+      "relation_surface": "allowing for dynamic adaptation to different lighting conditions",
+      "tail": "doc_82a54eb14fc8a7b0_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_82a54eb14fc8a7b0_r11",
+      "evidence": {
+        "section": "3.1.3 Illumination-Adaptive Tri-Plane Decoder",
+        "original_text": "In contrast, the illumination adaptive tri-plane decoder modifies this structure to address varying lighting conditions more effectively. Instead of using two stacked MLP layers as in the vanilla version, the illumination adaptive version replaces the final layer with two distinct branches for generating density and color, respectively. The density branch utilizes an MLP that takes the output from the first MLP layer as input to produce σ . The color branch also uses an MLP, but it concatenates the output from the first MLP layer with the illumination vector w ill before processing to generate ϕ . This design allows the color features to be adaptively adjusted according to lighting conditions, offering more nuanced control and improving the accuracy and realism of visual representation under different illumination contexts."
+      },
+      "confidence": 0.94,
+      "head": "doc_82a54eb14fc8a7b0_c6",
+      "relation_type": "enhances",
+      "relation_surface": "improving the accuracy and realism of visual representation under different illumination contexts",
+      "tail": "doc_82a54eb14fc8a7b0_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_82a54eb14fc8a7b0_r12",
+      "evidence": {
+        "section": "3.4.1 Non-sky Opacity Loss",
+        "original_text": "In Sat2Density++, we aim to learn the 3D representation of the satellite scene, but street-level scenes introduce elements such as the sky, which are not accounted for in satellite images. This challenges the model’s ability to recognize and accurately model the geometric structure of scenes captured in satellite imagery. We found that the pseudo sky masks provide a strong inductive basis to regularize the density field in a simple way, thus using a binary cross-entropy (BCE) loss for the supervision: where M sky is the ground-truth sky mask, 1 indicates the sky region, and 0 indicates the ground region."
+      },
+      "confidence": 0.93,
+      "head": "doc_82a54eb14fc8a7b0_c8",
+      "relation_type": "enhances",
+      "relation_surface": "regularize the density field",
+      "tail": "doc_82a54eb14fc8a7b0_c1"
     },
     {
       "type": "dataset",
-      "dataset_id": "doc_63dd0254a82df92c_d1",
+      "dataset_id": "doc_82a54eb14fc8a7b0_d1",
       "evidence": {
         "section": "4 EXPERIMENTS",
         "original_text": "CVACT [5] and CVUSA [11] for Suburban Scenes. The CVACT and CVUSA datasets consist of one-to-one paired satellite and street-view images. Each street-view image is assumed to be captured from the center of its corresponding satellite image. Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
       },
       "confidence": 0.95,
       "name": "CVACT dataset",
-      "modality": "tabular",
+      "modality": "image",
       "domain": "computer vision, remote sensing"
     },
     {
       "type": "dataset",
-      "dataset_id": "doc_63dd0254a82df92c_d2",
+      "dataset_id": "doc_82a54eb14fc8a7b0_d2",
       "evidence": {
         "section": "4 EXPERIMENTS",
         "original_text": "CVACT [5] and CVUSA [11] for Suburban Scenes. The CVACT and CVUSA datasets consist of one-to-one paired satellite and street-view images. Each street-view image is assumed to be captured from the center of its corresponding satellite image. Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
       },
       "confidence": 0.95,
       "name": "CVUSA dataset",
-      "modality": "tabular",
+      "modality": "image",
       "domain": "computer vision, remote sensing"
     },
     {
       "type": "dataset",
-      "dataset_id": "doc_63dd0254a82df92c_d3",
+      "dataset_id": "doc_82a54eb14fc8a7b0_d3",
       "evidence": {
         "section": "4 EXPERIMENTS",
         "original_text": "VIGOR for Urban Scenes. The VIGOR dataset significantly differs from CVACT and CVUSA in several key aspects. First, VIGOR comprises urban scenes collected from major cities, including Chicago, New York City, San Francisco, and Seattle. Compared to suburban datasets, the complex structures found in urban environments pose greater challenges to existing methods [1]. Second, each VIGOR data sample consists of one satellite image paired with two to three street-view panoramas, introducing an additional challenge related to viewpoint variations among multiple street-view captures per satellite location. Our method, through precise learning of 3D geometry, effectively addresses both structural complexities and viewpoint variations simultaneously. We preprocess the data samples in VIGOR dataset to SatStreet image pairs for both training and testing. We train our method on 40,733 pairs from Chicago, New York City, and San Francisco. To comprehensively evaluate performance, we establish two protocols: in-domain testing and zero-shot evaluation. For in-domain testing, we utilize 5,000 image pairs from the same cities to assess our model’s effectiveness. Additionally, we perform zero-shot evaluation using 11,875 pairs from Seattle to examine our method’s generalization capability in unseen environments. For accurate street-view image localization, we utilize revised GPS annotations from SliceMatch [56] during data preprocessing."
       },
       "confidence": 0.95,
       "name": "VIGOR dataset",
-      "modality": "tabular",
+      "modality": "image",
       "domain": "computer vision, remote sensing"
     },
     {
       "type": "data_specification",
-      "ds_id": "doc_63dd0254a82df92c_ds1",
+      "ds_id": "doc_82a54eb14fc8a7b0_ds1",
+      "evidence": {
+        "section": "4 EXPERIMENTS",
+        "original_text": "CVACT [5] and CVUSA [11] for Suburban Scenes. The CVACT and CVUSA datasets consist of one-to-one paired satellite and street-view images. Each street-view image is assumed to be captured from the center of its corresponding satellite image. Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Paired satellite and street-view panorama images with one-to-one correspondence"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_82a54eb14fc8a7b0_ds2",
       "evidence": {
         "section": "1 INTRODUCTION",
         "original_text": "In this paper, all visualized satellite images are oriented with North at the top and West to the left. For the generated 360° panorama images, North aligns with the central axis, South spans the boundary edges, while West and East occupy the left and right quarter sections, respectively."
       },
-      "confidence": 0.9,
+      "confidence": 0.95,
       "spec_type": "format_rule",
-      "description": "Satellite images oriented with North at top, West to left; panorama images with North at central axis, South at edges, West/East at left/right quarters"
+      "description": "Satellite images oriented with North at top and West left; street-view panoramas with North at central axis"
     },
     {
       "type": "data_specification",
-      "ds_id": "doc_63dd0254a82df92c_ds2",
+      "ds_id": "doc_82a54eb14fc8a7b0_ds3",
       "evidence": {
-        "section": "4 EXPERIMENTS",
-        "original_text": "We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU. For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
-      },
-      "confidence": 0.95,
-      "spec_type": "env_requirement",
-      "description": "Training requires 8 NVIDIA A100 GPUs with batch size 4 per GPU"
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_63dd0254a82df92c_ds3",
-      "evidence": {
-        "section": "4 EXPERIMENTS",
-        "original_text": "The evaluation metrics used in our experiments comprehensively measure the quality of the generated street-view images and videos, which include FID and KID for realism evaluation and DINOv2 similarity for the high-level consistency, as well as the conventionally used SSIM [58], PSNR [59], and LPIPS [53]. For the evaluation of generated videos, due to the absence of video ground truth, user studies on the CVACT and VIGOR datasets are used to measure the quality, consistency, and faithfulness of videos."
-      },
-      "confidence": 0.95,
-      "spec_type": "quality_standard",
-      "description": "Evaluation metrics include FID, KID, DINOv2 similarity, SSIM, PSNR, LPIPS, and user studies for video quality"
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_63dd0254a82df92c_ds4",
-      "evidence": {
-        "section": "3 THE PROPOSED SAT2DENSITY++",
+        "section": "3.2 Street-View Image Generation",
         "original_text": "The panorama street-view camera utilizes a cylindrical projection model, positioning it horizontally with the camera’s compass heading aligned to true north. In the absence of height data for the street-view camera positions, we assume that all street images are captured at a uniform height above the ground."
       },
       "confidence": 0.9,
       "spec_type": "metadata_standard",
-      "description": "Street-view images are assumed captured at uniform height above ground; camera uses cylindrical projection model aligned to true north"
+      "description": "Street-view images assumed captured at uniform height; camera poses defined with compass heading aligned to true north"
     },
     {
       "type": "data_specification",
-      "ds_id": "doc_63dd0254a82df92c_ds5",
+      "ds_id": "doc_82a54eb14fc8a7b0_ds4",
       "evidence": {
-        "section": "3 THE PROPOSED SAT2DENSITY++",
-        "original_text": "In detail, for each Istr, we first extract binary sky masks Msky using an off-the-shelf segmentation model [47]. We then featurize the sky pixels into color distributions to capture illumination characteristics. For this featurization, we adopt a histogram-based representation. During training, the extraction of color histograms from sky pixels is straightforward. We compute separate histograms for the R, G, and B channels using 90 bins uniformly spanning the range [0,255]. Each histogram is normalized by the total number of pixels, and the three normalized histograms HR˜, HG˜, HB˜ are concatenated in R-G-B order to form the illumination feature fill."
+        "section": "3.1.2 Sky Illumination Modeling from Street-View Image",
+        "original_text": "In detail, for each I_str, we first extract binary sky masks M_sky using an off-the-shelf segmentation model [47]. We then featurize the sky pixels into color distributions to capture illumination characteristics. For this featurization, we adopt a histogram-based representation. During training, the extraction of color histograms from sky pixels is straightforward. We compute separate histograms for the R, G, and B channels using 90 bins uniformly spanning the range [0,255]. Each histogram is normalized by the total number of pixels, and the three normalized histograms H˜_R, H˜_G, H˜_B are concatenated in R-G-B order to form the illumination feature f_ill."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Binary sky masks extracted using off-the-shelf segmentation model for illumination feature extraction"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_82a54eb14fc8a7b0_ds5",
+      "evidence": {
+        "section": "3.1.1 Tri-plane Generation from Satellite Image",
+        "original_text": "Given a satellite image I_sat ∈ R^3×256×256 as the input, our Sat2Density++ leverages a neural network Tri-plane Net G_tri, to extract the image features F_img ∈ R^96×256×256."
       },
       "confidence": 0.95,
-      "spec_type": "quality_standard",
-      "description": "Sky illumination feature extracted from sky pixels using RGB histograms with 90 bins per channel"
+      "spec_type": "format_rule",
+      "description": "Satellite image input size is 256x256 pixels; street-view panorama rendered size is 64x256 before super-resolution"
     },
     {
       "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m1",
+      "method_id": "doc_82a54eb14fc8a7b0_m1",
       "evidence": {
         "section": "3 THE PROPOSED SAT2DENSITY++",
         "original_text": "This section introduces the details of our proposed Sat2Density++, as illustrated in Fig. 2. In our model, the roles of the satellite image and the sky illumination input are completely decoupled. The satellite image is responsible for generating a learnable implicit 3D representation of outdoor ground scenes. Using the given camera parameters for the satellite or panoramic street view, it can accurately produce the corresponding ground content. In contrast, the infinite sky region is treated as a 2D background panoramic image, which is generated using the sky illumination input. The sky illumination input simulates the effects of varying daylight conditions on photographs in outdoor environments, with different daylight scenarios altering both the sky appearance and impacting the imaging of ground regions. Consequently, in our model, the sky illumination input also influences the appearance of images when rendering the street region from the implicit 3D representation, allowing for dynamic adaptation to different lighting conditions."
@@ -383,109 +415,98 @@
     },
     {
       "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m2",
+      "method_id": "doc_82a54eb14fc8a7b0_m2",
       "evidence": {
         "section": "3.1.1 Tri-plane Generation from Satellite Image",
         "original_text": "Given a satellite image I sat ∈ R[3] ×[256] ×[256] as the input, our Sat2Density++ leverages a neural network Tri-plane Net Gtri , to extract the image features F img ∈ R[96] ×[256] ×[256] by Then, F img is split and reshaped to form the tri-plane feature maps Ftri = {FXY , FZY , FXZ} by in which the size of each map is 32 × 256 × 256. The tri-plane feature maps are utilized to represent the 3D scene within a tri-plane-based radiance field model [44]. Following the principles of the radiance field [2], [44], [45], given any street-view camera poses, we use bilinear interpolation to query point features f tri ∈ R[96] from F tri for the sampled 3D location along each camera ray. These point features are then sent to the illumination-adaptive tri-plane decoder (Sec. 3.1.3) to obtain the density and color values for each point, which are subsequently used to render the ground part of street-view images."
       },
       "confidence": 0.95,
-      "name": "Tri-plane Net",
-      "method_type": "model"
+      "name": "Tri-plane Generation from Satellite Image",
+      "method_type": "algorithm"
     },
     {
       "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m3",
-      "evidence": {
-        "section": "3.1.3 Illumination-Adaptive Tri-Plane Decoder",
-        "original_text": "Given the tri-plane feature f tri for each sampled 3D location, we set up an illumination-adaptive tri-plane decoder for the computation of density value σ ∈ R and the appearance feature ϕ ∈ R[32] by The vanilla tri-plane decoder consists of a two-layer structure formed by multilayer perceptrons (MLPs). In this model, f tri are processed through these MLPs, producing ϕ and σ outputs simultaneously in the final layer. This approach assumes consistent lighting conditions across all viewpoints, providing a straightforward output based solely on triplane features [44]. In contrast, the illumination adaptive tri-plane decoder modifies this structure to address varying lighting conditions more effectively. Instead of using two stacked MLP layers as in the vanilla version, the illumination adaptive version replaces the final layer with two distinct branches for generating density and color, respectively. The density branch utilizes an MLP that takes the output from the first MLP layer as input to produce σ . The color branch also uses an MLP, but it concatenates the output from the first MLP layer with the illumination vector w ill before processing to generate ϕ . This design allows the color features to be adaptively adjusted according to lighting conditions, offering more nuanced control and improving the accuracy and realism of visual representation under different illumination contexts."
-      },
-      "confidence": 0.95,
-      "name": "Illumination-adaptive tri-plane decoder",
-      "method_type": "model"
-    },
-    {
-      "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m4",
+      "method_id": "doc_82a54eb14fc8a7b0_m3",
       "evidence": {
         "section": "3.1.2 Sky Illumination Modeling from Street-View Image",
         "original_text": "As our goal is to learn how to synthesize street-view panoramas from satellite images, it is essential to model illumination conditions that are specific to street-level observations. Illumination is closely related to the sky region in street-view images I str. Therefore, we adopt a statistical approach to model the histogram-based illumination feature from each street-view image, which efficiently encodes color information while maintaining computational simplicity, interpretability, and does not rely on a deep learning process. Lalonde et al. [46] also utilized sky histograms to match global lighting conditions. In detail, for each I str, we first extract binary sky masks M sky using an off-the-shelf segmentation model [47]. We then featurize the sky pixels into color distributions to capture illumination characteristics. For this featurization, we adopt a histogram-based representation. During training, the extraction of color histograms from sky pixels is straightforward. We compute separate histograms for the R, G, and B channels using 90 bins uniformly spanning the range [0 , 255]. Each histogram is normalized by the total number of pixels, and the three normalized histograms H˜ R , H˜ G , and H˜ B are concatenated in R-G-B order to form the illumination feature f ill. Formally, this process is expressed as: where H˜ R, H˜ G, H˜ B denote the normalized histograms of the red, green, and blue channels, respectively. In cases where no sky region is detected in the panorama, we set f ill = 0 ."
       },
       "confidence": 0.95,
-      "name": "Sky illumination modeling",
-      "method_type": "protocol"
-    },
-    {
-      "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m5",
-      "evidence": {
-        "section": "3.2.1 Ground Part Generation",
-        "original_text": "Volume Rendering. Given a camera P , we sample N points along each ray r through each pixel that emanates from the camera location. Let xi be the i-th sampled point along the ray r , we first compute density value σi , and color feature ϕi with the illumination-adaptive tri-plane decoder. Then, we use volume rendering [2], [45] to calculate the image feature map Iˆ F , opacity map Oˆ , and depth map Dˆ along ray r as follows: where di is the distance between the camera position and the point position i , and the transmittance τi along the ray r is computed as the probability of a photon traversing between the camera center and the i-th point given the length of i-th interval δi note that, the synthesized raw color Iˆ C ( r ) is taken from the first three channels of Iˆ F ( r ), the other channels are used for the super-resolution (SR) module."
-      },
-      "confidence": 0.95,
-      "name": "Volume rendering",
+      "name": "Sky Illumination Modeling from Street-View Image",
       "method_type": "algorithm"
     },
     {
       "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m6",
+      "method_id": "doc_82a54eb14fc8a7b0_m4",
       "evidence": {
-        "section": "3.2.2 Sky Part Generation and Alpha Blending",
-        "original_text": "We generate the sky part street-view image feature Iˆ F sky ∈ R[32] ×[H] ×[W] from the illumination vector w ill by a 2D sky generator G sky( · ) in In our implementation, the architecture of G sky follows the generator used in StyleGAN-2 [48]. After that, we compute the low-resolution street-view image feature Iˆ F str by alpha blending: Following the strategy used in volume rendering, the synthesized blended street-view raw resolution image color Iˆ C str is the first three layers of Iˆ F str."
+        "section": "3.1.3 Illumination-Adaptive Tri-Plane Decoder",
+        "original_text": "Given the tri-plane feature f tri for each sampled 3D location, we set up an illumination-adaptive tri-plane decoder for the computation of density value σ ∈ R and the appearance feature ϕ ∈ R[32] by The vanilla tri-plane decoder consists of a two-layer structure formed by multilayer perceptrons (MLPs). In this model, f tri are processed through these MLPs, producing ϕ and σ outputs simultaneously in the final layer. This approach assumes consistent lighting conditions across all viewpoints, providing a straightforward output based solely on tri-plane features [44]. In contrast, the illumination adaptive tri-plane decoder modifies this structure to address varying lighting conditions more effectively. Instead of using two stacked MLP layers as in the vanilla version, the illumination adaptive version replaces the final layer with two distinct branches for generating density and color, respectively. The density branch utilizes an MLP that takes the output from the first MLP layer as input to produce σ . The color branch also uses an MLP, but it concatenates the output from the first MLP layer with the illumination vector w ill before processing to generate ϕ . This design allows the color features to be adaptively adjusted according to lighting conditions, offering more nuanced control and improving the accuracy and realism of visual representation under different illumination contexts."
       },
       "confidence": 0.95,
-      "name": "Alpha blending",
+      "name": "Illumination-Adaptive Tri-Plane Decoder",
       "method_type": "algorithm"
     },
     {
       "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m7",
+      "method_id": "doc_82a54eb14fc8a7b0_m5",
       "evidence": {
-        "section": "3.2.2 Sky Part Generation and Alpha Blending",
-        "original_text": "Street-View Super Resolution. Similar to prior works [44], [49]–[51], as a final step, we apply a 2D image superresolution (SR) module U to reduce the computational cost for volume rendering when synthesizing street-view images. We obtain the high-resolution image Iˆ C+ str by feeding low-resolution Iˆ F str into a lightweight SR module U : In summary, our method finally synthesizes street-view images in high resolution Iˆ C+ str ∈ R[3] ×[128] ×[512] by a camera parameter P ."
+        "section": "3.2 Street-View Image Generation",
+        "original_text": "With the illumination-adaptive tri-plane representation, we focus on the generation of street-view panoramas by first leveraging volumetric rendering to yield the ground part and then generating a sky image. An alpha blending of the rendered ground part and the generated sky part produces the final street-view panoramas. Camera Definition. The panorama street-view camera utilizes a cylindrical projection model, positioning it horizontally with the camera’s compass heading aligned to true north. In the absence of height data for the street-view camera positions, we assume that all street images are captured at a uniform height above the ground. Volume Rendering. Given a camera P , we sample N points along each ray r through each pixel that emanates from the camera location. Let xi be the i-th sampled point along the ray r , we first compute density value σi , and color feature ϕi with the illumination-adaptive tri-plane decoder. Then, we use volume rendering [2], [45] to calculate the image feature map Iˆ F , opacity map Oˆ , and depth map Dˆ along ray r as follows: where di is the distance between the camera position and the point position i , and the transmittance τi along the ray r is computed as the probability of a photon traversing between the camera center and the i-th point given the length of i-th interval δi note that, the synthesized raw color Iˆ C ( r ) is taken from the first three channels of Iˆ F ( r ), the other channels are used for the super-resolution (SR) module. Finally, given a street-view camera parameter, the model can generate ground part street-image feature Iˆ F grd ∈ R[32] ×[H]×[W] , image color Iˆ C grd ∈ R[3] ×[H]×[W] , opacity Oˆ grd ∈ R[1] ×[H]×[W] , and depth Dˆ grd ∈ R[1] ×[H]×[W] , the rendered size ( H, W ) depends on the given camera intrinsics, in practice, the rendered size is (64 , 256). Sky Part Generation and Alpha Blending. We generate the sky part street-view image feature Iˆ F sky ∈ R[32] ×[H]×[W] from the illumination vector w ill by a 2D sky generator G sky( · ) in In our implementation, the architecture of G sky follows the generator used in StyleGAN-2 [48]. After that, we compute the low-resolution street-view image feature Iˆ F str by alpha blending: Following the strategy used in volume rendering, the synthesized blended street-view raw resolution image color Iˆ C str is the first three layers of Iˆ F str. Street-View Super Resolution. Similar to prior works [44], [49]–[51], as a final step, we apply a 2D image super-resolution (SR) module U to reduce the computational cost for volume rendering when synthesizing street-view images. We obtain the high-resolution image Iˆ C+ str by feeding low-resolution Iˆ F str into a lightweight SR module U : In summary, our method finally synthesizes street-view images in high resolution Iˆ C+ str ∈ R[3] ×[128]×[512] by a camera parameter P ."
       },
       "confidence": 0.95,
-      "name": "Street-view super resolution",
-      "method_type": "model"
+      "name": "Street-View Image Generation via Volume Rendering and Alpha Blending",
+      "method_type": "algorithm"
     },
     {
       "type": "method",
-      "method_id": "doc_63dd0254a82df92c_m8",
+      "method_id": "doc_82a54eb14fc8a7b0_m6",
       "evidence": {
         "section": "3.3 Training-Time Satellite-View Generation",
-        "original_text": "To enhance the appearance alignment between the learned 3D representation and input I sat, we render the satellite view during training to provide additional supervision. Since existing datasets [5], [11], [52] did not provide satellite camera intrinsics and extrinsics, we approximate the satellite camera as an orthographic camera oriented vertically downward toward the ground. With the camera approximation, we can compute the ray origins and ray directions corresponding to each pixel for the satellite view rendering. Unlike street-view image generation, the sky generation module and SR module are not required when generating satellite-view images. To deal with the absence of streetview grounded illumination, when synthesizing satelliteview images, we substitute the illumination style vector w ill in Eq. (4) with a null-style vector w 0 = 0 , as the triplane feature map F tri is directly derived from input satellite imagery. This null-style vector serves as a fixed placeholder to disable unnecessary style modulation in the generation pipeline. Finally, given satellite camera parameters, the model can generate satellite-view image feature Iˆ F sat, image color Iˆ C sat, depth Dˆ sat by volume rendering."
+        "original_text": "To enhance the appearance alignment between the learned 3D representation and input I sat, we render the satellite view during training to provide additional supervision. Since existing datasets [5], [11], [52] did not provide satellite camera intrinsics and extrinsics, we approximate the satellite camera as an orthographic camera oriented vertically downward toward the ground. With the camera approximation, we can compute the ray origins and ray directions corresponding to each pixel for the satellite view rendering. Unlike street-view image generation, the sky generation module and SR module are not required when generating satellite-view images. To deal with the absence of street-view grounded illumination, when synthesizing satellite-view images, we substitute the illumination style vector w ill in Eq. (4) with a null-style vector w 0 = 0 , as the tri-plane feature map F tri is directly derived from input satellite imagery. This null-style vector serves as a fixed placeholder to disable unnecessary style modulation in the generation pipeline. Finally, given satellite camera parameters, the model can generate satellite-view image feature Iˆ F sat, image color Iˆ C sat, depth Dˆ sat by volume rendering."
       },
       "confidence": 0.95,
-      "name": "Training-time satellite-view generation",
-      "method_type": "protocol"
+      "name": "Training-Time Satellite-View Generation",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_82a54eb14fc8a7b0_m7",
+      "evidence": {
+        "section": "3.4 Learning Objectives",
+        "original_text": "The training data consists of paired satellite and street-view images. We also provide extra binary pseudo sky masks M sky for each street-view image by an off-the-shelf sky segmentation model [47]. In this section, we introduce the learning objectives, including reconstruction, opacity, and discriminator losses. Non-sky Opacity Loss. In Sat2Density++, we aim to learn the 3D representation of the satellite scene, but street-level scenes introduce elements such as the sky, which are not accounted for in satellite images. This challenges the model’s ability to recognize and accurately model the geometric structure of scenes captured in satellite imagery. We found that the pseudo sky masks provide a strong inductive basis to regularize the density field in a simple way, thus using a binary cross-entropy (BCE) loss for the supervision: where M sky is the ground-truth sky mask, 1 indicates the sky region, and 0 indicates the ground region. Reconstruction Loss. We introduce three reconstruction loss terms to supervise the quality of the generated satellite-view image Iˆ C sat, sky image Iˆ C sky, and whole street-view image Iˆ C+ str. For the generated sky image Iˆ C sky, there is no available ground-truth sky image for supervision. We calculate the ℓ 1 loss between the predicted sky image Iˆ C sky and the real street image I str exclusively at the pixel locations specified by the sky mask M sky. This focus ensures that the loss computation targets only the sky regions, allowing the model to prioritize accurate sky reconstruction without being influenced by other parts of the image. The loss function is defined as follows: where the operator ⊙ denotes element-wise multiplication. For the street-view rendering, we combine use the perceptual LPIPS [53] loss and L 1 loss to minimize the reconstruction error between the generated high-resolution panorama Iˆ C+ str and I str by Lastly, we apply a satellite view reconstruction loss to align the generated 3D appearance with the input satellite image I sat . The satellite view reconstruction loss L sat is computed by: The final reconstruction loss is weighted by where λ sat, λ str, and λ sky balance three terms. Besides, to save consumption, when synthesizing satellite view images, we render at one-quarter resolution with random crops during training. Discriminator Loss. The reconstruction loss alone fails to synthesize detailed results from novel viewpoints. Therefore, we use an adversarial loss [54] to enforce renderings to look realistic from rendered viewpoints. Specifically, we have two discriminators D str and D sat for street-view images and satellite-view images, respectively. The D str follows the dual-discrimination design in EG3D [44], discriminates on a 6-channel concatenation of the final image and the raw neural rendering, to maintain consistency between high-resolution final images and view-consistent (but low-resolution) neural renderings. The total adversarial loss is written as follows, where λ Dstr and λ Dsat are hyperparameters for loss weighting, Iˆ C str is the first three layers of blended street-view panorama raw feature Iˆ F str. The non-saturating GAN loss function [54] with R1 regularization [55] is used for L GAN, following the training scheme in StyleGAN2 [48]. Total Loss. Our final learning objective is written as follows:"
+      },
+      "confidence": 0.95,
+      "name": "Learning Objectives (Loss Functions)",
+      "method_type": "algorithm"
     },
     {
       "type": "experiment",
-      "experiment_id": "doc_63dd0254a82df92c_x1",
+      "experiment_id": "doc_82a54eb14fc8a7b0_x1",
       "evidence": {
         "section": "4 EXPERIMENTS",
         "original_text": "In our experiments, we comprehensively evaluate our method on both suburban and urban scenes using three datasets: CVUSA [11], CVACT [5], and VIGOR [52]. CVACT [5] and CVUSA [11] for Suburban Scenes. The CVACT and CVUSA datasets consist of one-to-one paired satellite and street-view images. Each street-view image is assumed to be captured from the center of its corresponding satellite image. Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples. VIGOR for Urban Scenes. The VIGOR dataset significantly differs from CVACT and CVUSA in several key aspects. First, VIGOR comprises urban scenes collected from major cities, including Chicago, New York City, San Francisco, and Seattle. Compared to suburban datasets, the complex structures found in urban environments pose greater challenges to existing methods [1]. Second, each VIGOR data sample consists of one satellite image paired with two to three street-view panoramas, introducing an additional challenge related to viewpoint variations among multiple street-view captures per satellite location. Our method, through precise learning of 3D geometry, effectively addresses both structural complexities and viewpoint variations simultaneously. We preprocess the data samples in VIGOR dataset to SatStreet image pairs for both training and testing. We train our method on 40,733 pairs from Chicago, New York City, and San Francisco. To comprehensively evaluate performance, we establish two protocols: in-domain testing and zero-shot evaluation. For in-domain testing, we utilize 5,000 image pairs from the same cities to assess our model’s effectiveness. Additionally, we perform zero-shot evaluation using 11,875 pairs from Seattle to examine our method’s generalization capability in unseen environments. For accurate street-view image localization, we utilize revised GPS annotations from SliceMatch [56] during data preprocessing."
       },
       "confidence": 0.95,
-      "task": "SatStreet-view synthesis evaluation",
-      "setup": "Datasets CVUSA, CVACT, VIGOR; NVIDIA A100 GPUs"
+      "task": "SatStreet-view synthesis evaluation on suburban and urban datasets",
+      "setup": "CVUSA, CVACT, VIGOR datasets, NVIDIA A100 GPUs"
     },
     {
       "type": "experiment",
-      "experiment_id": "doc_63dd0254a82df92c_x2",
+      "experiment_id": "doc_82a54eb14fc8a7b0_x2",
       "evidence": {
         "section": "4.2 Implementation Details",
-        "original_text": "Our code is built on Carver [57], an efficient PyTorchbased library for training 3D-aware generative models. For hyperparameters, we empirically assign the values of λ Dstr , λ Dsat , λ sat, λ str, λ sky, and λ opa to 1.0, 1.0, 30.0, 10.0, 10.0, and 25.0, respectively. We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU. For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
+        "original_text": "Our code is built on Carver [57], an efficient PyTorch-based library for training 3D-aware generative models. For hyperparameters, we empirically assign the values of λ Dstr , λ Dsat , λ sat, λ str, λ sky, and λ opa to 1.0, 1.0, 30.0, 10.0, 10.0, and 25.0, respectively. We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU. For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
       },
       "confidence": 0.95,
-      "task": "Implementation details",
-      "setup": "PyTorch-based library Carver; 8 NVIDIA A100 GPUs"
+      "task": "Implementation details and training setup",
+      "setup": "PyTorch-based library Carver, 8 NVIDIA A100 GPUs, batch size 4 per GPU"
     },
     {
       "type": "experiment",
-      "experiment_id": "doc_63dd0254a82df92c_x3",
+      "experiment_id": "doc_82a54eb14fc8a7b0_x3",
       "evidence": {
         "section": "4.3 Evaluation Protocols and Metrics",
-        "original_text": "The evaluation metrics used in our experiments comprehensively measure the quality of the generated street-view images and videos, which include FID and KID for realism evaluation and DINOv2 similarity for the high-level consistency, as well as the conventionally used SSIM [58], PSNR [59], and LPIPS [53]. For the evaluation of generated videos, due to the absence of video ground truth, user studies on the CVACT and VIGOR datasets are used to measure the quality, consistency, and faithfulness of videos. FID and KID. Fr´echet Inception Distance (FID) [60] and Kernel Inception Distance (KID) [61] measure the distribution differences between the generated images and the ground truth. Other than the per-image evaluation, the comparisons on distribution differences reflect the overall plausibility of the generated samples. In our experiments, we use these two metrics for realism evaluation, and they are computed using the Clean-FID library [62]. DINOv2 Similarity. Pretrained DINOv2 models [63] have been identified as effective high-level feature representations of images. We use the pretrained DINOv2-L model to extract the N visual tokens { f 1 ,i} N i =1 from a generated image and { f 2 ,i} N i =1 from its ground truth, then compute their average cosine similarities by as the overall similarity of them. SSIM, PSNR, and LPIPS. These three metrics follow the previous works [1], [5] to measure the quality of generated images. SSIM assesses the structural similarity, PSNR gauges the pixel-wise distance, and LPIPS [53] computes the high-level perceptual similarity between two images. For the computation of LPIPS, we utilize the pre-trained AlexNet [64] and SqueezeNet [65] as the feature backbones, referred to as P alex and P squ, respectively. User Studies for Generated Video. Existing datasets consist solely of image collections and lack video data, so we quantitatively compare video results through a user study involving 31 participants and comprising 40 sets of videos. Each set is based on an input satellite image and camera trajectory video and includes videos generated by both our method and Sat2Density. 20 video sets are derived from the CVACT dataset, while the remaining are from the VIGOR dataset. Specifically, we assess the faithfulness of the generated videos to the input satellite images (Faithfulness), the consistency of the videos across multiple views (Consistency), and the overall visual quality exhibited by the generated content (Quality)."
+        "original_text": "The evaluation metrics used in our experiments comprehensively measure the quality of the generated street-view images and videos, which include FID and KID for realism evaluation and DINOv2 similarity for the high-level consistency, as well as the conventionally used SSIM [58], PSNR [59], and LPIPS [53]. For the evaluation of generated videos, due to the absence of video ground truth, user studies on the CVACT and VIGOR datasets are used to measure the quality, consistency, and faithfulness of videos. FID and KID. Fr´echet Inception Distance (FID) [60] and Kernel Inception Distance (KID) [61] measure the distribution differences between the generated images and the ground truth. Other than the per-image evaluation, the comparisons on distribution differences reflect the overall plausibility of the generated samples. In our experiments, we use these two metrics for realism evaluation, and they are computed using the Clean-FID library [62]. DINOv2 Similarity. Pretrained DINOv2 models [63] have been identified as effective high-level feature representations of images. We use the pretrained DINOv2-L model to extract the N visual tokens { f 1 ,i}N i =1 from a generated image and { f 2 ,i}N i =1 from its ground truth, then compute their average cosine similarities by as the overall similarity of them. SSIM, PSNR, and LPIPS. These three metrics follow the previous works [1], [5] to measure the quality of generated images. SSIM assesses the structural similarity, PSNR gauges the pixel-wise distance, and LPIPS [53] computes the high-level perceptual similarity between two images. For the computation of LPIPS, we utilize the pre-trained AlexNet [64] and SqueezeNet [65] as the feature backbones, referred to as P alex and P squ, respectively. User Studies for Generated Video. Existing datasets consist solely of image collections and lack video data, so we quantitatively compare video results through a user study involving 31 participants and comprising 40 sets of videos. Each set is based on an input satellite image and camera trajectory video and includes videos generated by both our method and Sat2Density. 20 video sets are derived from the CVACT dataset, while the remaining are from the VIGOR dataset. Specifically, we assess the faithfulness of the generated videos to the input satellite images (Faithfulness), the consistency of the videos across multiple views (Consistency), and the overall visual quality exhibited by the generated content (Quality)."
       },
       "confidence": 0.95,
       "task": "Evaluation protocols and metrics",
@@ -493,59 +514,34 @@
     },
     {
       "type": "experiment",
-      "experiment_id": "doc_63dd0254a82df92c_x4",
+      "experiment_id": "doc_82a54eb14fc8a7b0_x4",
       "evidence": {
         "section": "4.4 Main Comparisons",
-        "original_text": "We compare Sat2Density++ with both image generation and video generation methods. For image generation methods, we evaluate against Pix2Pix [6], XFork [28], and Shi et al. [5]. For video generation methods, we compare with our preliminary work Sat2Density [1], which synthesizes streetview images from arbitrary camera positions. Note that on the VIGOR dataset, the positions of street-view images are not always centered in the input satellite patch. Therefore, we limit our comparisons with methods [5], [6], [28], which can only synthesize single images at the center of the input satellite images, to the CVACT and CVUSA datasets."
+        "original_text": "We compare Sat2Density++ with both image generation and video generation methods. For image generation methods, we evaluate against Pix2Pix [6], XFork [28], and Shi et al. [5]. For video generation methods, we compare with our preliminary work Sat2Density [1], which synthesizes street-view images from arbitrary camera positions. Note that on the VIGOR dataset, the positions of street-view images are not always centered in the input satellite patch. Therefore, we limit our comparisons with methods [5], [6], [28], which can only synthesize single images at the center of the input satellite images, to the CVACT and CVUSA datasets."
       },
       "confidence": 0.95,
-      "task": "Main comparisons",
-      "setup": "Comparison with Pix2Pix, XFork, Shi et al., Sat2Density"
+      "task": "Main comparisons with image and video generation methods",
+      "setup": "CVACT, CVUSA, VIGOR datasets, comparison with Pix2Pix, XFork, Shi et al., Sat2Density"
     },
     {
       "type": "experiment",
-      "experiment_id": "doc_63dd0254a82df92c_x5",
+      "experiment_id": "doc_82a54eb14fc8a7b0_x5",
       "evidence": {
         "section": "4.6 Ablation Study",
-        "original_text": "In this section, we will discuss the contributions of key components within Sat2Density++. The ablation study was conducted on the VIGOR-OOD test set. We present the quantitative ablation in Tab. 2, Tab. 3, Tab. 4 and qualitative ablation in Fig. 7 and Fig. 8, Fig. 9. Unless otherwise stated, all quantitative comparisons in the ablation study are conducted under the same setting as ’†’ in Tab. 1."
+        "original_text": "In this section, we will discuss the contributions of key components within Sat2Density++. The ablation study was conducted on the VIGOR-OOD test set. We present the quantitative ablation in Tab. 2, Tab. 3, Tab. 4 and qualitative ablation in Fig. 7 and Fig. 8, Fig. 9. Unless otherwise stated, all quantitative comparisons in the ablation study are conducted under the same setting as ’†’ in Tab. 1. Sky Illumination Modeling. The sky illumination input, illumination-adaptive tri-plane decoder, and illumination-adaptive 2D sky generation module work together to mitigate the effects of view-specific lighting in street-view images during training, while also enabling controllable illumination synthesis at inference. Tab. 2 summarizes different design choices for modeling illumination in the satellite and street-view branches. As shown in Tab. 2, the poorest performance occurs when both satellite and street views are generated using random noise, completely ignoring the inherent illumination differences between the two views. The corresponding visual results are shown in the “w/o illu.” column of Fig. 7. Compared to the full model, the predicted geometry from the satellite view shows larger deviations along object boundaries and more angular artifacts in depth, as highlighted in the red box in the first row. This demonstrates that failing to account for differing imaging conditions leads to degraded 3D representations and lower-quality video generation. A slight improvement is observed when using the null-style vector for satellite-view generation, while still using random noise for the street view. In this case, the model becomes aware of cross-view appearance differences, but lacks proper compensation through illumination-aware modeling in the street view. Our full model, which uses a null-style vector for satellite-view generation and the valid sky histogram for the street-view illumination input, achieves the best performance. This configuration fully leverages illumination cues from both views, leading to more accurate geometry, better visual quality, and controllable street-view synthesis."
       },
       "confidence": 0.95,
-      "task": "Ablation study",
-      "setup": "VIGOR-OOD test set"
-    },
-    {
-      "type": "experiment",
-      "experiment_id": "doc_63dd0254a82df92c_x6",
-      "evidence": {
-        "section": "4.7 Applications",
-        "original_text": "To demonstrate the practical utility and robustness of our proposed model, we explore downstream applications. These applications serve to validate the effectiveness of our design and highlight the potential for real-world impact. Illumination-controllable street-view image synthesis. One notable application of our model is illuminationcontrollable street-view image synthesis. As shown in Fig. 12 and Fig. 9, by manipulating the illumination feature, our model enables precise control over the lighting conditions in the synthesized image while preserving the underlying scene semantics. For instance, the sky and color attributes of roads, buildings, and foliage can be varied through different illumination settings while their shapes are preserved unchanged. This capability has potential applications in domains such as virtual reality, gaming, and film production, where fine-grained control over scene lighting is desirable. Mono-depth estimation from satellite imagery. Fig. 13 showcases the ability to predict depth from satellite imagery without explicit metric or relative depth supervision of Sat2Density++. The inferred depth maps reflect the deep understanding of scene structure, building structure, and shape of the trees, etc. This ability to capture the finegrained details of various landscape elements attests to the potential utility in fields such as urban planning and geographical information systems, where depth information gleaned from aerial imagery is invaluable. Out-domain generalization in Seattle City. To assess the generalization capability of our model, we perform a zeroshot evaluation on satellite imagery from Seattle, a city not included in the training data. As shown in Fig. 14, our model maintains multi-view consistency and accurately reproduces the layout of the city, including details such as parking spaces and building architecture. This zeroshot generalization ability highlights the potential for our model to be applied to diverse geographic locations without the need for additional training data, which is particularly valuable for tasks such as autonomous navigation."
-      },
-      "confidence": 0.95,
-      "task": "Applications",
-      "setup": "Illumination-controllable synthesis, mono-depth estimation, out-domain generalization"
+      "task": "Ablation study on key components",
+      "setup": "VIGOR-OOD test set, evaluation of illumination modeling, loss functions, dual branch design"
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr1",
+      "qr_id": "doc_82a54eb14fc8a7b0_qr1",
       "evidence": {
-        "section": "4.2 Implementation Details",
-        "original_text": "For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
+        "section": "Experiments",
+        "original_text": "For hyperparameters, we empirically assign the values of λ Dstr , λ Dsat , λ sat, λ str, λ sky, and λ opa to 1.0, 1.0, 30.0, 10.0, 10.0, and 25.0, respectively. We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU. For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
       },
-      "confidence": 0.99,
-      "quantity": "training iterations",
-      "value": 180000,
-      "unit": "iterations",
-      "context": "CVACT and CVUSA datasets",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr2",
-      "evidence": {
-        "section": "4.2 Implementation Details",
-        "original_text": "For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
-      },
-      "confidence": 0.99,
+      "confidence": 0.98,
       "quantity": "training iterations",
       "value": 360000,
       "unit": "iterations",
@@ -554,26 +550,12 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr3",
+      "qr_id": "doc_82a54eb14fc8a7b0_qr2",
       "evidence": {
-        "section": "4.2 Implementation Details",
-        "original_text": "For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
+        "section": "Experiments",
+        "original_text": "For hyperparameters, we empirically assign the values of λ Dstr , λ Dsat , λ sat, λ str, λ sky, and λ opa to 1.0, 1.0, 30.0, 10.0, 10.0, and 25.0, respectively. We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU. For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
       },
-      "confidence": 0.99,
-      "quantity": "training time",
-      "value": 30,
-      "unit": "hours",
-      "context": "CVACT and CVUSA datasets",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr4",
-      "evidence": {
-        "section": "4.2 Implementation Details",
-        "original_text": "For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
-      },
-      "confidence": 0.99,
+      "confidence": 0.98,
       "quantity": "training time",
       "value": 60,
       "unit": "hours",
@@ -582,329 +564,195 @@
     },
     {
       "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr5",
+      "qr_id": "doc_82a54eb14fc8a7b0_qr3",
       "evidence": {
-        "section": "4.2 Implementation Details",
-        "original_text": "We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU."
+        "section": "Experiments",
+        "original_text": "For hyperparameters, we empirically assign the values of λ Dstr , λ Dsat , λ sat, λ str, λ sky, and λ opa to 1.0, 1.0, 30.0, 10.0, 10.0, and 25.0, respectively. We use 8 NVIDIA A100 GPUs for training, with a batch size of 4 per GPU. For the CVACT and CVUSA datasets, the training involves 180,000 iterations and takes about 30 hours. In contrast, training on the VIGOR dataset involves 360,000 iterations over an extended duration of approximately 60 hours."
       },
-      "confidence": 0.99,
+      "confidence": 0.98,
       "quantity": "batch size",
       "value": 4,
       "unit": "per GPU",
-      "context": "Training on 8 NVIDIA A100 GPUs",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr6",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
-      },
-      "confidence": 0.99,
-      "quantity": "training samples",
-      "value": 26519,
-      "unit": "samples",
-      "context": "CVACT dataset",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr7",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
-      },
-      "confidence": 0.99,
-      "quantity": "testing samples",
-      "value": 6288,
-      "unit": "samples",
-      "context": "CVACT dataset",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr8",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
-      },
-      "confidence": 0.99,
-      "quantity": "training samples",
-      "value": 35532,
-      "unit": "samples",
-      "context": "CVUSA dataset",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr9",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "Following the recommended data splits from [5], the CVACT dataset includes 26,519 training samples and 6,288 testing samples, whereas the CVUSA dataset includes 35,532 training samples and 8,884 testing samples."
-      },
-      "confidence": 0.99,
-      "quantity": "testing samples",
-      "value": 8884,
-      "unit": "samples",
-      "context": "CVUSA dataset",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr10",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "We train our method on 40,733 pairs from Chicago, New York City, and San Francisco."
-      },
-      "confidence": 0.99,
-      "quantity": "training pairs",
-      "value": 40733,
-      "unit": "pairs",
-      "context": "VIGOR dataset (Chicago, NYC, San Francisco)",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr11",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "For in-domain testing, we utilize 5,000 image pairs from the same cities to assess our model’s effectiveness."
-      },
-      "confidence": 0.99,
-      "quantity": "in-domain testing pairs",
-      "value": 5000,
-      "unit": "pairs",
-      "context": "VIGOR dataset (Chicago, NYC, San Francisco)",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr12",
-      "evidence": {
-        "section": "4.1 Datasets",
-        "original_text": "Additionally, we perform zero-shot evaluation using 11,875 pairs from Seattle to examine our method’s generalization capability in unseen environments."
-      },
-      "confidence": 0.99,
-      "quantity": "zero-shot evaluation pairs",
-      "value": 11875,
-      "unit": "pairs",
-      "context": "VIGOR dataset (Seattle)",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr13",
-      "evidence": {
-        "section": "4.3 Evaluation Protocols and Metrics",
-        "original_text": "Existing datasets consist solely of image collections and lack video data, so we quantitatively compare video results through a user study involving 31 participants and comprising 40 sets of videos."
-      },
-      "confidence": 0.99,
-      "quantity": "user study participants",
-      "value": 31,
-      "unit": "participants",
-      "context": "Evaluation of generated videos",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr14",
-      "evidence": {
-        "section": "4.3 Evaluation Protocols and Metrics",
-        "original_text": "Existing datasets consist solely of image collections and lack video data, so we quantitatively compare video results through a user study involving 31 participants and comprising 40 sets of videos."
-      },
-      "confidence": 0.99,
-      "quantity": "video sets",
-      "value": 40,
-      "unit": "sets",
-      "context": "User study for video comparison",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr15",
-      "evidence": {
-        "section": "4.3 Evaluation Protocols and Metrics",
-        "original_text": "20 video sets are derived from the CVACT dataset, while the remaining are from the VIGOR dataset."
-      },
-      "confidence": 0.99,
-      "quantity": "video sets from CVACT",
-      "value": 20,
-      "unit": "sets",
-      "context": "User study for video comparison",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_63dd0254a82df92c_qr16",
-      "evidence": {
-        "section": "4.3 Evaluation Protocols and Metrics",
-        "original_text": "20 video sets are derived from the CVACT dataset, while the remaining are from the VIGOR dataset."
-      },
-      "confidence": 0.99,
-      "quantity": "video sets from VIGOR",
-      "value": 20,
-      "unit": "sets",
-      "context": "User study for video comparison",
+      "context": "training",
       "result_type": "measurement"
     },
     {
       "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p1",
+      "perf_id": "doc_82a54eb14fc8a7b0_p1",
       "evidence": {
-        "section": "4.4 Main Comparisons",
-        "original_text": "The user study in Fig. 5 highlights a clear preference for Sat2Density++ over Sat2Density across both suburban and urban scenarios. On the CVACT dataset, which features suburban environments with roads, trees, and low-density housing (often partially occluded by vegetation), Sat2Density++ achieves approval ratings of 79% for Quality, 82% for Consistency, and 79% for Faithfulness. On the more complex VIGOR dataset, which contains diverse urban scenes with dense buildings and rich textures, these ratings increase significantly to 95% for Quality and Consistency, and 92% for Faithfulness."
+        "section": "Experiments",
+        "original_text": "The user study in Fig. 5 highlights a clear preference for Sat2Density++ over Sat2Density across both suburban and urban scenarios. On the CVACT dataset, which features suburban environments with roads, trees, and lowdensity housing (often partially occluded by vegetation), Sat2Density++ achieves approval ratings of 79% for Quality, 82% for Consistency, and 79% for Faithfulness. On the more complex VIGOR dataset, which contains diverse urban scenes with dense buildings and rich textures, these ratings increase significantly to 95% for Quality and Consistency, and 92% for Faithfulness. These results confirm Sat2Density++ ’s superior performance, particularly in handling complex scenes."
       },
-      "confidence": 0.98,
-      "metric": "user preference ratings",
+      "confidence": 0.95,
+      "metric": "user study preference",
       "compared_to": "Sat2Density"
     },
     {
       "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p2",
+      "perf_id": "doc_82a54eb14fc8a7b0_p2",
       "evidence": {
-        "section": "4.4 Main Comparisons",
-        "original_text": "The quantitative image-level results in Tab. 1 demonstrate the superior performance of our method. Across all four test sets, even when using randomly sampled illumination inputs from the training set (denoted by ‘*’), our approach consistently outperforms existing methods in perceptual, semantic, and realism metrics. Notably, Sat2Density++ achieves greater gains over Sat2Density on the complex urban test sets (VIGOR-OOD and VIGOR) than on the simpler suburban ones, highlighting its improved capability in modeling complex scenes."
+        "section": "Experiments",
+        "original_text": "We compare Sat2Density++ with both image generation and video generation methods. For image generation methods, we evaluate against Pix2Pix [6], XFork [28], and Shi et al. [5]. For video generation methods, we compare with our preliminary work Sat2Density [1], which synthesizes streetview images from arbitrary camera positions. Note that on the VIGOR dataset, the positions of street-view images are not always centered in the input satellite patch. Therefore, we limit our comparisons with methods [5], [6], [28], which can only synthesize single images at the center of the input satellite images, to the CVACT and CVUSA datasets."
       },
-      "confidence": 0.0,
-      "metric": "image-level performance",
-      "compared_to": "existing methods (Pix2Pix, XFork, Shi et al., Sat2Density)"
+      "confidence": 0.9,
+      "metric": "image generation performance",
+      "compared_to": "Pix2Pix, XFork, Shi et al."
     },
     {
       "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p3",
+      "perf_id": "doc_82a54eb14fc8a7b0_p3",
       "evidence": {
-        "section": "4.4 Main Comparisons",
-        "original_text": "While Sat2Density++ shows slightly lower PSNR and SSIM scores than Sat2Density on CVUSA and CVACT, and also underperforms Shi et al. [5] on CVUSA, this does not indicate true performance drops. Instead, it reflects the limitations of low-level metrics, whose sensitivity to appearance variations in homogeneous regions becomes especially problematic in suburban panoramas."
+        "section": "Experiments",
+        "original_text": "To the best of our knowledge, beyond Sat2Density and our proposed Sat2Density++, only Sat2Vid [9] and Sat2Scene [10] aim to generate videos from a satellite image. However, both rely on building height maps and focus primarily on rendering facades and road surfaces, limiting scene diversity. Due to the unavailability of their full datasets and code, we are unable to conduct comparisons. Overall, unlike prior work that focuses narrowly on buildings, our method generates a diverse range of scene elements, including trees, green belts, and landmarks, resulting in videos that are more faithful to satellite inputs and visually realistic. Moreover, Sat2Density++ does not require additional supervision such as height maps or metric depths, making it more versatile and broadly applicable."
       },
-      "confidence": 0.0,
-      "metric": "PSNR and SSIM scores",
-      "compared_to": "Sat2Density, Shi et al."
+      "confidence": 0.9,
+      "metric": "video generation capability",
+      "compared_to": "Sat2Vid, Sat2Scene"
     },
     {
-      "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p4",
+      "type": "quantitative_result",
+      "qr_id": "doc_82a54eb14fc8a7b0_qr4",
       "evidence": {
-        "section": "4.4 Main Comparisons",
-        "original_text": "This is further evidenced by the comparison using real versus random illumination inputs (denoted by ‘†’ in Tab. 1). With real illumination features, perceptual, PSNR, and SSIM scores improve significantly, while realism metrics such as FID and KID remain stable. This demonstrates the sensitivity of low-level metrics to appearance changes, even when scene semantics are preserved."
+        "section": "Experiments",
+        "original_text": "We preprocess the data samples in VIGOR dataset to SatStreet image pairs for both training and testing. We train our method on 40,733 pairs from Chicago, New York City, and San Francisco. To comprehensively evaluate performance, we establish two protocols: in-domain testing and zero-shot evaluation. For in-domain testing, we utilize 5,000 image pairs from the same cities to assess our model’s effectiveness. Additionally, we perform zero-shot evaluation using 11,875 pairs from Seattle to examine our method’s generalization capability in unseen environments."
       },
-      "confidence": 0.0,
-      "metric": "perceptual, PSNR, and SSIM scores",
-      "compared_to": "random illumination vs. ground-truth illumination"
+      "confidence": 0.98,
+      "quantity": "dataset size",
+      "value": 40733,
+      "unit": "pairs",
+      "context": "VIGOR dataset training",
+      "result_type": "measurement"
     },
     {
-      "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p5",
+      "type": "quantitative_result",
+      "qr_id": "doc_82a54eb14fc8a7b0_qr5",
       "evidence": {
-        "section": "4.6 Ablation Study",
-        "original_text": "When these components are removed, the model can be perceived as a vanilla image-conditioned 3D-aware generation model. As shown in Tab. 3, performance scores significantly decrease in comparison to the full model, and the generated street-view videos are inconsistent and of poor quality, as demonstrated on our project page."
+        "section": "Experiments",
+        "original_text": "We preprocess the data samples in VIGOR dataset to SatStreet image pairs for both training and testing. We train our method on 40,733 pairs from Chicago, New York City, and San Francisco. To comprehensively evaluate performance, we establish two protocols: in-domain testing and zero-shot evaluation. For in-domain testing, we utilize 5,000 image pairs from the same cities to assess our model’s effectiveness. Additionally, we perform zero-shot evaluation using 11,875 pairs from Seattle to examine our method’s generalization capability in unseen environments."
       },
-      "confidence": 0.0,
-      "metric": "performance scores",
-      "compared_to": "full model vs. vanilla image-conditioned 3D-aware generation model"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p6",
-      "evidence": {
-        "section": "4.6 Ablation Study",
-        "original_text": "Quantitatively, Tab. 5 shows that removing the satellite-view loss leads to a notable drop in satellite image reconstruction quality on the VIGOR-OOD test set (PSNR decreases from 30.0 to 27.5, and SSIM from 0.56 to 0.21)."
-      },
-      "confidence": 0.0,
-      "metric": "satellite image reconstruction quality",
-      "compared_to": "full model vs. model without satellite-view loss"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_63dd0254a82df92c_p7",
-      "evidence": {
-        "section": "4.6 Ablation Study",
-        "original_text": "As depicted in Tab. 4, omitting the GAN loss results in higher scores on metrics such as PSNR, SSIM, and Palex. However, the realism of the generated images is compromised, as indicated by poorer scores on realism metrics such as FID and KID. As shown in Fig. 9, the generated images appear very blurry."
-      },
-      "confidence": 0.0,
-      "metric": "realism of generated images",
-      "compared_to": "full model vs. model without GAN loss"
+      "confidence": 0.98,
+      "quantity": "zero-shot evaluation dataset size",
+      "value": 11875,
+      "unit": "pairs",
+      "context": "Seattle",
+      "result_type": "measurement"
     },
     {
       "type": "claim",
-      "claim_id": "doc_63dd0254a82df92c_ca1",
+      "claim_id": "doc_82a54eb14fc8a7b0_ca1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "Our approach involves learning a satellite image conditioned neural radiance field from paired images captured from both satellite and street viewpoints, which comes to be a challenging learning problem due to the sparse-view nature and the extremely large viewpoint changes between satellite and street-view images. We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks."
+        "original_text": "This paper studies the task of SatStreet-view synthesis, which aims to render photorealistic street-view panorama images and videos given a satellite image and specified camera positions or trajectories. Our approach involves learning a satellite image conditioned neural radiance field from paired images captured from both satellite and street viewpoints, which comes to be a challenging learning problem due to the sparse-view nature and the extremely large viewpoint changes between satellite and street-view images. We tackle the challenges based on a task-specific observation that street-view specific elements, including the sky and illumination effects, are only visible in street-view panoramas, and present a novel approach, Sat2Density++, to accomplish the goal of photo-realistic street-view panorama rendering by modeling these street-view specific elements in neural networks. In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_82a54eb14fc8a7b0_ca2",
+      "evidence": {
+        "section": "1 INTRODUCTION",
+        "original_text": "We use a challenging two-view configuration that contains one satellite image capturing a large-scale scene from a distant location and one street-view panorama capturing the same scene at street level, with the goal of learning a feedforward model that captures faithful 3D geometry and renders high-quality street-view videos at any queried bird’s-eye view (BEV) trajectory for the given satellite image. We refer to the two-view data as the SatStreet-view images, which pose an extremely challenging scenario for the establishment of visual correspondences and the neural rendering, but are viable by mutually and manually checking the context over the image pairs because both the satellite and street-view images are observing the same geographical contents. Thus, we are curious about how we could infer the 3D scene geometry by curating the SatStreet-view image data. We take the novel-view synthesis as the main goal and refer to the task as the SatStreet-view synthesis."
       },
       "confidence": 0.95
     },
     {
       "type": "claim",
-      "claim_id": "doc_63dd0254a82df92c_ca2",
+      "claim_id": "doc_82a54eb14fc8a7b0_ca3",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "We extend the Sat2Density to Sat2Density++ in this paper. Compared to Sat2Density [1] that only learned the density field while ignoring color in the common neural field to reduce the complexity of the 3D representation, in our Sat2Density++, we demonstrate that both the scene geometry and the appearance modeling play key roles in modeling complex scenes, thus opt to learn an illumination-adaptive neural radiance field instead of the previously-used density field. This radiance field is capable of maintaining the characteristic hues of satellite imagery under neutral lighting conditions or adjusting the generated color features when explicit illumination information is available. As a result, the density output of the illumination-adaptive neural radiance field is invariant across various lighting scenarios. Building on the joint modeling of scene geometry and the appearance, we simplify the generation of street-view panoramas in two parallel branches: one for the ground scene rendering from the learned neural radiance field and the other for the sky region generation from the illumination-sensitive 2D sky region generation network, and then compose the final street-view panoramas from the output of the two branches."
+        "section": "1 INTRODUCTION",
+        "original_text": "We approach the goal of SatStreet-view synthesis by learning the radiance field representation with a feedforward neural network from the SatStreet-view image pairs. Along this direction, two main challenges remained to be solved: 1) how to effectively learn the neural fields as the primary 3D representation from SatStreet-view image pairs; 2) how to handle street-view-specific elements such as the sky, illumination effects, and detailed structures that are not visible to satellites. Our main idea is based on a holistic viewpoint for these two key challenges using generative adversarial learning to learn the faithful 3D scene representation from the appearance of SatStreet-view image pairs."
       },
       "confidence": 0.94
     },
     {
-      "type": "conclusion",
-      "conclusion_id": "doc_63dd0254a82df92c_cl1",
+      "type": "claim",
+      "claim_id": "doc_82a54eb14fc8a7b0_ca4",
       "evidence": {
-        "section": "Abstract",
-        "original_text": "In the experiments, our method is evaluated on both urban and suburban scene datasets, demonstrating that Sat2Density++ is capable of rendering photorealistic street-view panoramas that are consistent across multiple views and faithful to the satellite image."
+        "section": "1 INTRODUCTION",
+        "original_text": "We extend the Sat2Density to Sat2Density++ in this paper. Compared to Sat2Density [1] that only learned the density field while ignoring color in the common neural field to reduce the complexity of the 3D representation, in our Sat2Density++, we demonstrate that both the scene geometry and the appearance modeling play key roles in modeling complex scenes, thus opt to learn an illumination-adaptive neural radiance field instead of the previously-used density field. This radiance field is capable of maintaining the characteristic hues of satellite imagery under neutral lighting conditions or adjusting the generated color features when explicit illumination information is available. As a result, the density output of the illumination-adaptive neural radiance field is invariant across various lighting scenarios. Building on the joint modeling of scene geometry and the appearance, we simplify the generation of street-view panoramas in two parallel branches: one for the ground scene rendering from the learned neural radiance field and the other for the sky region generation from the illumination-sensitive 2D sky region generation network, and then compose the final street-view panoramas from the output of the two branches. By joint training of all the neural network components with carefully-designed learning objectives, we are able to learn the faithful 3D scene geometry and generate high-quality street-view panoramas that are consistent across multiple views and faithful to the satellite image, and thus can consecutively render street-view videos for any queried BEV trajectory."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_82a54eb14fc8a7b0_ca5",
+      "evidence": {
+        "section": "1 INTRODUCTION",
+        "original_text": "To the best of our knowledge, our model is the first that can synthesize multi-view consistent street-view videos from input satellite images without relying on 3D annotations for training. Through extensive qualitative and quantitative experiments, we demonstrate that Sat2Density++ outperforms existing single-image generation models in terms of image quality and shows enhanced geometric accuracy and significantly improved video faithfulness, consistency, and quality compared to our conference model. Besides, the predicted satellite view depth, the visualization of interpolated illumination, and the performance on out-of-distribution data further validate the reliability of Sat2Density++."
       },
       "confidence": 0.96
     },
     {
       "type": "conclusion",
-      "conclusion_id": "doc_63dd0254a82df92c_cl2",
+      "conclusion_id": "doc_82a54eb14fc8a7b0_cl1",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "To the best of our knowledge, our model is the first that can synthesize multi-view consistent street-view videos from input satellite images without relying on 3D annotations for training. Through extensive qualitative and quantitative experiments, we demonstrate that Sat2Density++ outperforms existing single-image generation models in terms of image quality and shows enhanced geometric accuracy and significantly improved video faithfulness, consistency, and quality compared to our conference model. Besides, the predicted satellite view depth, the visualization of interpolated illumination, and the performance on out-of-distribution data further validate the reliability of Sat2Density++."
+        "section": "6 CONCLUSION",
+        "original_text": "In this paper, we studied the task of SatStreet-view synthesis and presented Sat2Density++, a novel approach to synthesize street-view panorama video from a given satellite image as input. Our Sat2Density++ is built upon a deep understanding of SatStreet-view synthesis, devising an effective learning solution by modeling sky regions and street-view illuminations. It approaches the challenging two-view neural field learning problem with a feedforward 3D-aware generation framework for photorealistic street-view panorama synthesis. Extensive experiments on the commonly used suburban scene dataset and the recently proposed urban scene dataset VIGOR demonstrated the effectiveness of our proposed Sat2Density++. To the best of our knowledge, our model is the first that can synthesize multi-view consistent street-view videos from input satellite images, trained without relying on 3D annotations. We hope our proposed method will facilitate 3D representation learning and video generation in outdoor scenes."
       },
-      "confidence": 0.95
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_82a54eb14fc8a7b0_cl2",
+      "evidence": {
+        "section": "4 EXPERIMENTS",
+        "original_text": "The user study in Fig. 5 highlights a clear preference for Sat2Density++ over Sat2Density across both suburban and urban scenarios. On the CVACT dataset, which features suburban environments with roads, trees, and low-density housing (often partially occluded by vegetation), Sat2Density++ achieves approval ratings of 79% for Quality, 82% for Consistency, and 79% for Faithfulness. On the more complex VIGOR dataset, which contains diverse urban scenes with dense buildings and rich textures, these ratings increase significantly to 95% for Quality and Consistency, and 92% for Faithfulness. These results confirm Sat2Density++ ’s superior performance, particularly in handling complex scenes. Qualitative results in Fig. 3 and Fig. 4 further support these findings. We showcase selected video frames from both datasets, with full videos available on our project page. On CVACT, both methods capture major features such as greenways, trees, and landmarks. However, Sat2Density often suffers from inconsistent sky appearance and lower frame quality, while Sat2Density++ maintains visual stability and coherence throughout the sequence. Tree structures in particular appear more consistent in Sat2Density++ ’s outputs during playback. On VIGOR, the advantages of Sat2Density++ are even more apparent. It produces higher-quality frames and better temporal consistency, especially in fine-grained structures like crosswalks and buildings. For instance, as shown in the second image set, crosswalks generated by Sat2Density++ are more faithful to the satellite reference. These improvements are credited to our enhanced architecture and training strategy."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_82a54eb14fc8a7b0_cl3",
+      "evidence": {
+        "section": "4 EXPERIMENTS",
+        "original_text": "The quantitative image-level results in Tab. 1 demonstrate the superior performance of our method. Across all four test sets, even when using randomly sampled illumination inputs from the training set (denoted by ‘*’), our approach consistently outperforms existing methods in perceptual, semantic, and realism metrics. Notably, Sat2Density++ achieves greater gains over Sat2Density on the complex urban test sets (VIGOR-OOD and VIGOR) than on the simpler suburban ones, highlighting its improved capability in modeling complex scenes. These improvements stem from our more effective 3D representation learning design."
+      },
+      "confidence": 0.93
     },
     {
       "type": "limitation",
-      "limitation_id": "doc_63dd0254a82df92c_lm1",
+      "limitation_id": "doc_82a54eb14fc8a7b0_lm1",
       "evidence": {
-        "section": "Discussion & Limitations",
+        "section": "5 DISCUSSION & LIMITATIONS",
         "original_text": "Translating satellite imagery to street views within our conditional 3D generation framework necessitates well-aligned imagery, similar to datasets such as CelebAMask-HQ, AFHQ-cat, and Shapenet-car [66]–[68]. However, satellite images are not always captured from a nadir perspective, and precise pose calibration of street-view images remains challenging. Moreover, the altitude of ground images can vary considerably, for example, when captured from elevated positions such as overpasses, further complicating their placement in both world and camera coordinate systems, a step that is critical for accurately defining the generative space."
       },
       "confidence": 0.92
     },
     {
       "type": "limitation",
-      "limitation_id": "doc_63dd0254a82df92c_lm2",
+      "limitation_id": "doc_82a54eb14fc8a7b0_lm2",
       "evidence": {
-        "section": "Discussion & Limitations",
+        "section": "5 DISCUSSION & LIMITATIONS",
         "original_text": "We acknowledge the potential of enriching illumination inputs with data such as sun position, cloud distribution, or atmospheric radiation to better handle unknown conditions and improve video quality. However, this would deviate from our focus and introduce substantial complexity. Daylight estimation from outdoor imagery is a challenging and ill-posed problem [69]–[72], and relying on existing models may add noise while requiring extra effort for our synthesis framework to interpret. Given the demonstrated effectiveness of the simple sky-region histogram, we defer incorporating richer illumination cues to future work."
       },
-      "confidence": 0.93
+      "confidence": 0.91
     },
     {
       "type": "limitation",
-      "limitation_id": "doc_63dd0254a82df92c_lm3",
+      "limitation_id": "doc_82a54eb14fc8a7b0_lm3",
       "evidence": {
-        "section": "Discussion & Limitations",
+        "section": "5 DISCUSSION & LIMITATIONS",
         "original_text": "We approximate the sky region as the only area in street-view images that extends beyond the satellite scene. Although this approach has proven effective, it lacks precision: areas extending beyond the satellite coverage might also include distant mountains, buildings, and other elements. Accurately distinguishing and modeling these regions is a direction worthy of future exploration, as it would enhance the accuracy of the learned 3D representations."
       },
-      "confidence": 0.91
+      "confidence": 0.9
     },
     {
       "type": "future_work",
-      "future_work_id": "doc_63dd0254a82df92c_fw1",
+      "future_work_id": "doc_82a54eb14fc8a7b0_fw1",
       "evidence": {
-        "section": "Discussion & Limitations",
+        "section": "5 DISCUSSION & LIMITATIONS",
         "original_text": "We acknowledge the potential of enriching illumination inputs with data such as sun position, cloud distribution, or atmospheric radiation to better handle unknown conditions and improve video quality. However, this would deviate from our focus and introduce substantial complexity. Daylight estimation from outdoor imagery is a challenging and ill-posed problem [69]–[72], and relying on existing models may add noise while requiring extra effort for our synthesis framework to interpret. Given the demonstrated effectiveness of the simple sky-region histogram, we defer incorporating richer illumination cues to future work."
       },
       "confidence": 0.93
     },
     {
       "type": "future_work",
-      "future_work_id": "doc_63dd0254a82df92c_fw2",
+      "future_work_id": "doc_82a54eb14fc8a7b0_fw2",
       "evidence": {
-        "section": "Discussion & Limitations",
+        "section": "5 DISCUSSION & LIMITATIONS",
         "original_text": "We approximate the sky region as the only area in street-view images that extends beyond the satellite scene. Although this approach has proven effective, it lacks precision: areas extending beyond the satellite coverage might also include distant mountains, buildings, and other elements. Accurately distinguishing and modeling these regions is a direction worthy of future exploration, as it would enhance the accuracy of the learned 3D representations."
       },
-      "confidence": 0.91
+      "confidence": 0.92
     }
   ]
 }

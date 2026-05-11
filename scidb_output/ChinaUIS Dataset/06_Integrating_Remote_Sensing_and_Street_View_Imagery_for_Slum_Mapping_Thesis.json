@@ -1,0 +1,400 @@
+{
+  "metadata": {
+    "doc_id": "doc_79f2c2e92a587982",
+    "source_file": "06_Integrating_Remote_Sensing_and_Street_View_Imagery_for_Slum_Mapping_Thesis.md",
+    "title": "INTEGRATING REMOTE SENSING AND STREET VIEW IMAGES TO MAP SLUMS USING DEEP LEARNING APPROACH",
+    "year": 2021,
+    "doi": null,
+    "abstract": "The United Nations includes slum upliftment as one of the agenda in the Sustainable Development Goals 11, Target 11.1- \"safe and affordable housing\" to fight against poverty. The information to keep track of target 11.1, such as physical location and size of slums, is lacking or inadequate in governmental documents. Therefore it is vital to map slums in order to comprehend the existing situation and build future slum development policy plans to achieve target 11.1. Remote Sensing (RS)-based approaches have gained much recognition in the slum mapping field in the last few decades due to the availability of Remote Sensing Imagery (RSI) of Very High Resolution (VHR). In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. However, using RSI alone has its limitation, i.e., the absence of ground-level information, making slum identification difficult in the dense urban scene. Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. First is the conceptualization of slums because there is no unique definition of slums, i.e., it varies from institution to institution. Second, extraction of groundlevel information through SVI to identify slums. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI. \n\nThe city of Jakarta was chosen for this study because of two main reasons. First, the presence of kampungs (urban villages) in Jakarta. Around 60% of Jakarta's population lives in kampungs, and the diverse socioeconomic conditions in kampungs make it challenging to identify slums inside kampungs, i.e., the line between slums and non-slums is vague. There are two types of kampungs such as legal and illegal. This research focused on the illegal kampungs called slums. Second, there are various local definitions of slums used in Jakarta, making the conceptualization of slums more difficult. Initially, the western region of Jakarta was chosen for study because of the high density of slum settlements according to the official slum reference map of 2017, but due to data constraints, approximately half of the western region with some part of the northern and central region was selected as a study area. \n\nIn this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. The FCN-DK6 network was trained with RSI alone to map slums in the study area. The Places365-VGG16 network was fine-tuned in the context of Jakarta's slums using  SVI captured in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks. The result shows that the Modified FCN-DK6 outperforms FCN-DK6 and FCN-DK6-i in slum mapping, demonstrating that combining RSI and SVI can achieve higher accuracy because SVI contains useful ground-level information which helps to identify slums in an urban setting than using RSI alone. Furthermore, we describe experimental investigations by combining the extracted SVI features with RSI at different levels in FCN-DK6-i and Modified FCN-DK6, which shows that the combination of RSI and SVI can improve the accuracy obtained from RSI alone, but it also depends on how they are integrated. The Modified FCN-DK6 presented here obtains better results than a direct integration through FCN-DK6-i. \n\ni \n\n**Keywords:** Slum mapping, Remote sensing images, Street view images, Deep learning, Fully convolutional networks, Feature extraction, Spatial interpolation \n\nii",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Slum mapping",
+      "Remote sensing images",
+      "Street view images",
+      "Deep learning",
+      "Fully convolutional networks"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:04:22.826539+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The United Nations includes slum upliftment as one of the agenda in the Sustainable Development Goals 11, Target 11.1- 'safe and affordable housing' to fight against poverty. The information to keep track of target 11.1, such as physical location and size of slums, is lacking or inadequate in governmental documents. Therefore it is vital to map slums in order to comprehend the existing situation and build future slum development policy plans to achieve target 11.1. Remote Sensing (RS)-based approaches have gained much recognition in the slum mapping field in the last few decades due to the availability of Remote Sensing Imagery (RSI) of Very High Resolution (VHR). In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. However, using RSI alone has its limitation, i.e., the absence of ground-level information, making slum identification difficult in the dense urban scene. Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping."
+      },
+      "confidence": 0.99,
+      "term": "slum mapping",
+      "normalized": "贫民窟测绘",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote Sensing (RS)-based approaches have gained much recognition in the slum mapping field in the last few decades due to the availability of Remote Sensing Imagery (RSI) of Very High Resolution (VHR). In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. However, using RSI alone has its limitation, i.e., the absence of ground-level information, making slum identification difficult in the dense urban scene. Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping."
+      },
+      "confidence": 0.98,
+      "term": "Remote Sensing Imagery",
+      "normalized": "遥感影像",
+      "std_label": "RSI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. First is the conceptualization of slums because there is no unique definition of slums, i.e., it varies from institution to institution. Second, extraction of groundlevel information through SVI to identify slums. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI."
+      },
+      "confidence": 0.98,
+      "term": "Street View Imagery",
+      "normalized": "街景影像",
+      "std_label": "SVI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. First is the conceptualization of slums because there is no unique definition of slums, i.e., it varies from institution to institution. Second, extraction of groundlevel information through SVI to identify slums. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI."
+      },
+      "confidence": 0.97,
+      "term": "Fully Convolutional Network",
+      "normalized": "全卷积网络",
+      "std_label": "FCN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The city of Jakarta was chosen for this study because of two main reasons. First, the presence of kampungs (urban villages) in Jakarta. Around 60% of Jakarta's population lives in kampungs, and the diverse socioeconomic conditions in kampungs make it challenging to identify slums inside kampungs, i.e., the line between slums and non-slums is vague. There are two types of kampungs such as legal and illegal. This research focused on the illegal kampungs called slums. Second, there are various local definitions of slums used in Jakarta, making the conceptualization of slums more difficult."
+      },
+      "confidence": 0.96,
+      "term": "kampungs",
+      "normalized": "kampungs（城市村庄）",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The Places365-VGG16 network was fine-tuned in the context of Jakarta's slums using SVI captured in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.95,
+      "term": "feature extraction",
+      "normalized": "特征提取",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_79f2c2e92a587982_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.95,
+      "term": "spatial interpolation",
+      "normalized": "空间插值",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote Sensing (RS)-based approaches have gained much recognition in the slum mapping field in the last few decades due to the availability of Remote Sensing Imagery (RSI) of Very High Resolution (VHR). In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. However, using RSI alone has its limitation, i.e., the absence of ground-level information, making slum identification difficult in the dense urban scene. Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping."
+      },
+      "confidence": 0.94,
+      "head": "doc_79f2c2e92a587982_c2",
+      "relation_type": "uses",
+      "relation_surface": "using RSI alone",
+      "tail": "doc_79f2c2e92a587982_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. The result shows that the Modified FCN-DK6 outperforms FCN-DK6 and FCN-DK6-i in slum mapping, demonstrating that combining RSI and SVI can achieve higher accuracy because SVI contains useful ground-level information which helps to identify slums in an urban setting than using RSI alone."
+      },
+      "confidence": 0.93,
+      "head": "doc_79f2c2e92a587982_c3",
+      "relation_type": "enhances",
+      "relation_surface": "adding ground-level information with RSI can help identify slums more precisely",
+      "tail": "doc_79f2c2e92a587982_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN."
+      },
+      "confidence": 0.92,
+      "head": "doc_79f2c2e92a587982_c4",
+      "relation_type": "uses",
+      "relation_surface": "using FCN for slum mapping",
+      "tail": "doc_79f2c2e92a587982_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI."
+      },
+      "confidence": 0.91,
+      "head": "doc_79f2c2e92a587982_c4",
+      "relation_type": "integrates",
+      "relation_surface": "integrate RSI with SVI using FCN",
+      "tail": "doc_79f2c2e92a587982_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI."
+      },
+      "confidence": 0.91,
+      "head": "doc_79f2c2e92a587982_c4",
+      "relation_type": "integrates",
+      "relation_surface": "integrate RSI with SVI using FCN",
+      "tail": "doc_79f2c2e92a587982_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.9,
+      "head": "doc_79f2c2e92a587982_c6",
+      "relation_type": "uses",
+      "relation_surface": "extract the features from widely dispersed SVI",
+      "tail": "doc_79f2c2e92a587982_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.9,
+      "head": "doc_79f2c2e92a587982_c7",
+      "relation_type": "uses",
+      "relation_surface": "spatially interpolated them to precisely match the spatial resolution of RSI",
+      "tail": "doc_79f2c2e92a587982_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_79f2c2e92a587982_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The city of Jakarta was chosen for this study because of two main reasons. First, the presence of kampungs (urban villages) in Jakarta. Around 60% of Jakarta's population lives in kampungs, and the diverse socioeconomic conditions in kampungs make it challenging to identify slums inside kampungs, i.e., the line between slums and non-slums is vague. There are two types of kampungs such as legal and illegal. This research focused on the illegal kampungs called slums."
+      },
+      "confidence": 0.89,
+      "head": "doc_79f2c2e92a587982_c5",
+      "relation_type": "contains",
+      "relation_surface": "identify slums inside kampungs",
+      "tail": "doc_79f2c2e92a587982_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_79f2c2e92a587982_d1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "The city of Jakarta was chosen for this study because of two main reasons. First, the presence of kampungs (urban villages) in Jakarta. Around 60% of Jakarta's population lives in kampungs, and the diverse socioeconomic conditions in kampungs make it challenging to identify slums inside kampungs, i.e., the line between slums and non-slums is vague. There are two types of kampungs such as legal and illegal. This research focused on the illegal kampungs called slums. Second, there are various local definitions of slums used in Jakarta, making the conceptualization of slums more difficult. Initially, the western region of Jakarta was chosen for study because of the high density of slum settlements according to the official slum reference map of 2017, but due to data constraints, approximately half of the western region with some part of the northern and central region was selected as a study area. In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. The FCN-DK6 network was trained with RSI alone to map slums in the study area. The Places365-VGG16 network was fine-tuned in the context of Jakarta's slums using SVI captured in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.95,
+      "name": "Jakarta slum mapping dataset",
+      "modality": "multimodal",
+      "domain": "urban planning, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_79f2c2e92a587982_d2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Initially, the western region of Jakarta was chosen for study because of the high density of slum settlements according to the official slum reference map of 2017, but due to data constraints, approximately half of the western region with some part of the northern and central region was selected as a study area."
+      },
+      "confidence": 0.85,
+      "name": "Official slum reference map of Jakarta (2017)",
+      "modality": "image",
+      "domain": "urban planning"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_79f2c2e92a587982_ds1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Remote Sensing (RS)-based approaches have gained much recognition in the slum mapping field in the last few decades due to the availability of Remote Sensing Imagery (RSI) of Very High Resolution (VHR). In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Use of Very High Resolution (VHR) Remote Sensing Imagery (RSI) for slum mapping"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_79f2c2e92a587982_ds2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Integration of spatially interpolated Street View Imagery (SVI) features with Remote Sensing Imagery (RSI) for multimodal input"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_79f2c2e92a587982_m1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. However, using RSI alone has its limitation, i.e., the absence of ground-level information, making slum identification difficult in the dense urban scene. Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping. Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. First is the conceptualization of slums because there is no unique definition of slums, i.e., it varies from institution to institution. Second, extraction of groundlevel information through SVI to identify slums. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI."
+      },
+      "confidence": 0.95,
+      "name": "Fully Convolutional Network (FCN)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_79f2c2e92a587982_m2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. The FCN-DK6 network was trained with RSI alone to map slums in the study area."
+      },
+      "confidence": 0.95,
+      "name": "FCN-DK6",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_79f2c2e92a587982_m3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. The Places365-VGG16 network was fine-tuned in the context of Jakarta's slums using SVI captured in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.95,
+      "name": "Places365-VGG16",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_79f2c2e92a587982_m4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks."
+      },
+      "confidence": 0.95,
+      "name": "FCN-DK6-i",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_79f2c2e92a587982_m5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks. The result shows that the Modified FCN-DK6 outperforms FCN-DK6 and FCN-DK6-i in slum mapping, demonstrating that combining RSI and SVI can achieve higher accuracy because SVI contains useful ground-level information which helps to identify slums in an urban setting than using RSI alone."
+      },
+      "confidence": 0.95,
+      "name": "Modified FCN-DK6",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_79f2c2e92a587982_x1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. The FCN-DK6 network was trained with RSI alone to map slums in the study area. The Places365-VGG16 network was fine-tuned in the context of Jakarta's slums using SVI captured in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks. The result shows that the Modified FCN-DK6 outperforms FCN-DK6 and FCN-DK6-i in slum mapping, demonstrating that combining RSI and SVI can achieve higher accuracy because SVI contains useful ground-level information which helps to identify slums in an urban setting than using RSI alone. Furthermore, we describe experimental investigations by combining the extracted SVI features with RSI at different levels in FCN-DK6-i and Modified FCN-DK6, which shows that the combination of RSI and SVI can improve the accuracy obtained from RSI alone, but it also depends on how they are integrated. The Modified FCN-DK6 presented here obtains better results than a direct integration through FCN-DK6-i."
+      },
+      "confidence": 0.95,
+      "task": "slum mapping using integrated remote sensing and street view images",
+      "setup": "Jakarta study area, using four deep neural networks (FCN-DK6, Places365-VGG16, FCN-DK6-i, Modified FCN-DK6) with different datasets (RSI alone, SVI alone, combined RSI and SVI)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_79f2c2e92a587982_qr1",
+      "evidence": {
+        "section": "Abstract/Introduction",
+        "original_text": "The city of Jakarta was chosen for this study because of two main reasons. First, the presence of kampungs (urban villages) in Jakarta. Around 60% of Jakarta's population lives in kampungs, and the diverse socioeconomic conditions in kampungs make it challenging to identify slums inside kampungs, i.e., the line between slums and non-slums is vague. There are two types of kampungs such as legal and illegal. This research focused on the illegal kampungs called slums. Second, there are various local definitions of slums used in Jakarta, making the conceptualization of slums more difficult. Initially, the western region of Jakarta was chosen for study because of the high density of slum settlements according to the official slum reference map of 2017, but due to data constraints, approximately half of the western region with some part of the northern and central region was selected as a study area."
+      },
+      "confidence": 0.95,
+      "quantity": "population living in kampungs",
+      "value": 60,
+      "unit": "%",
+      "context": "Jakarta",
+      "result_type": "baseline"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_79f2c2e92a587982_p1",
+      "evidence": {
+        "section": "Abstract/Introduction",
+        "original_text": "In this research, four deep neural networks are applied with different datasets, i.e., FCN-DK6 used RSI alone, Places365-VGG16 was fine-tuned using SVI, and FCN-DK6-i and Modified FCN-DK6 used a combination of RSI and SVI in the study area. The FCN-DK6 network was trained with RSI alone to map slums in the study area. The Places365-VGG16 network was fine-tuned in the context of Jakarta's slums using SVI captured in the study area. Further, the fine-tuned Places365-VGG16 network was used to extract the features from widely dispersed SVI and spatially interpolated them to precisely match the spatial resolution of RSI, which are combined with RSI for slum mapping using FCN-DK6-i and Modified FCN-DK6 networks. The result shows that the Modified FCN-DK6 outperforms FCN-DK6 and FCN-DK6-i in slum mapping, demonstrating that combining RSI and SVI can achieve higher accuracy because SVI contains useful ground-level information which helps to identify slums in an urban setting than using RSI alone. Furthermore, we describe experimental investigations by combining the extracted SVI features with RSI at different levels in FCN-DK6-i and Modified FCN-DK6, which shows that the combination of RSI and SVI can improve the accuracy obtained from RSI alone, but it also depends on how they are integrated. The Modified FCN-DK6 presented here obtains better results than a direct integration through FCN-DK6-i."
+      },
+      "confidence": 0.9,
+      "metric": "slum mapping accuracy",
+      "compared_to": "FCN-DK6, FCN-DK6-i"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_79f2c2e92a587982_ca1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Remote Sensing (RS)-based approaches have gained much recognition in the slum mapping field in the last few decades due to the availability of Remote Sensing Imagery (RSI) of Very High Resolution (VHR). In RS-based approaches, the Deep Learning (DL) approaches such as Fully Convolutional Network (FCN) have been shown to achieve reasonably higher accuracies for slum mapping than other RS-based approaches. However, using RSI alone has its limitation, i.e., the absence of ground-level information, making slum identification difficult in the dense urban scene. Previous studies show that adding ground-level information with RSI can help identify slums more precisely than using RSI alone, but none of the studies used Street View Imagery (SVI) as the source of ground-level information to compliment RSI in the field of slum mapping. Therefore this research aims to integrate RSI with SVI using FCN for slum mapping."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_79f2c2e92a587982_cl1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "The result shows that the Modified FCN-DK6 outperforms FCN-DK6 and FCN-DK6-i in slum mapping, demonstrating that combining RSI and SVI can achieve higher accuracy because SVI contains useful ground-level information which helps to identify slums in an urban setting than using RSI alone. Furthermore, we describe experimental investigations by combining the extracted SVI features with RSI at different levels in FCN-DK6-i and Modified FCN-DK6, which shows that the combination of RSI and SVI can improve the accuracy obtained from RSI alone, but it also depends on how they are integrated. The Modified FCN-DK6 presented here obtains better results than a direct integration through FCN-DK6-i."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_79f2c2e92a587982_lm1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Implementing FCN has three significant challenges, from which the first challenge is general for all slum mapping approaches, and the remaining two are specifically for the FCN. First is the conceptualization of slums because there is no unique definition of slums, i.e., it varies from institution to institution. Second, extraction of groundlevel information through SVI to identify slums. Third, setting up an FCN pipeline to integrate overhead information with ground-level information, i.e., integrating RSI with extracted features of SVI. The city of Jakarta was chosen for this study because of two main reasons. First, the presence of kampungs (urban villages) in Jakarta. Around 60% of Jakarta's population lives in kampungs, and the diverse socioeconomic conditions in kampungs make it challenging to identify slums inside kampungs, i.e., the line between slums and non-slums is vague. There are two types of kampungs such as legal and illegal. This research focused on the illegal kampungs called slums. Second, there are various local definitions of slums used in Jakarta, making the conceptualization of slums more difficult. Initially, the western region of Jakarta was chosen for study because of the high density of slum settlements according to the official slum reference map of 2017, but due to data constraints, approximately half of the western region with some part of the northern and central region was selected as a study area."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_79f2c2e92a587982_fw1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "The United Nations includes slum upliftment as one of the agenda in the Sustainable Development Goals 11, Target 11.1- 'safe and affordable housing' to fight against poverty. The information to keep track of target 11.1, such as physical location and size of slums, is lacking or inadequate in governmental documents. Therefore it is vital to map slums in order to comprehend the existing situation and build future slum development policy plans to achieve target 11.1."
+      },
+      "confidence": 0.9
+    }
+  ]
+}

@@ -16,13 +16,13 @@
     "keywords": [
       "cross-view retrieval",
       "geo-localization",
-      "Bird's Eye View",
       "panorama",
-      "satellite imagery"
+      "bird's eye view",
+      "image transformation"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:38:14.612876+00:00",
+      "extraction_timestamp": "2026-05-11T02:06:00.542221+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -51,7 +51,7 @@
       "confidence": 0.97,
       "term": "Panorama-BEV Co-Retrieval Network",
       "normalized": "全景-BEV协同检索网络",
-      "std_label": "PBCRN"
+      "std_label": "PBCR Network"
     },
     {
       "type": "concept",
@@ -60,7 +60,7 @@
         "section": "Introduction",
         "original_text": "We observe that, in addition to converting satellite images to street view perspectives, it’s also feasible to transform street view to satellite viewpoints. We transform street view panoramas into explicit Bird’s Eye View (BEV) images using azimuth relationships and ground plane constraints. Compared to polar transformation, transforming street view into satellite viewpoints is more intuitive, resulting in transformed images that are more realistic and highlight cross-view shared local information near the shooting location. On the other hand, since our BEV transformation does not rely on depth and 3D structure estimation, images transformed via BEV can exhibit limited visibility and severe distortion in dense urban scenes where they are obstructed by tall structures like buildings. To tackle this challenge, we designed the Panorama-BEV Co-Retrieval Network, which collaboratively leverages street view panoramas and BEV images for satellite image retrieval. We retain the original street view panorama to satellite retrieval branch to expand the perception range and capture more global layout features, while the BEV to satellite retrieval branch focuses on the details near the street view locations."
       },
-      "confidence": 0.96,
+      "confidence": 0.99,
       "term": "Bird's Eye View",
       "normalized": "鸟瞰视图",
       "std_label": "BEV"
@@ -69,10 +69,10 @@
       "type": "concept",
       "concept_id": "doc_0519367ec6f719ed_c4",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Current cross-view retrieval research primarily utilizes datasets like CVUSA[26] , CVACT [8], and VIGOR[33], with CVUSA achieving top-1 recall rates over 98%, demonstrating the effectiveness of cross-view methods. However, a gap still exists between these datasets and real-world applications. Firstly, existing datasets mainly focus on a single country, limiting evaluations across diverse global scenes. Secondly, challenges with street views lacking metadata extend beyond unknown locations to include uncertain camera orientations and shooting times. Currently, there are few datasets with street views that have uncertain orientations; most approaches simulate random captures by rotating fixed-orientation street view images [17,32]. Additionally, there is a lack of cross-temporal retrieval task evaluations, raising questions about whether current satellite imagery can accurately locate street views captured at unknown times. Furthermore, there have been few attempts to use map data instead of satellite data in the current datasets. Map data has advantages over satellite data, such as easier accessibility and storage. To address these challenges, we introduce a global cross-view retrieval dataset named CVGlobal. This dataset includes cross-regional, cross-temporal, and street view to map retrieval tests, aiming for a comprehensive assessment of algorithmic performance."
+        "section": "Abstract",
+        "original_text": "Cross-view geolocalization identifies the geographic location of street view images by matching them with a georeferenced satellite database. Significant challenges arise due to the drastic appearance and geometry differences between views. In this paper, we propose a new approach for cross-view image geo-localization, i.e., the Panorama-BEV Co-Retrieval Network. Specifically, by utilizing the ground plane assumption and geometric relations, we convert street view panorama images into the BEV view, reducing the gap between street panoramas and satellite imagery. In the existing retrieval of street view panorama images and satellite images, we introduce BEV and satellite image retrieval branches for collaborative retrieval. By retaining the original street view retrieval branch, we overcome the limited perception range issue of BEV representation. Our network enables comprehensive perception of both the global layout and local details around the street view capture locations. Additionally, we introduce CVGlobal, a global cross-view dataset that is closer to real-world scenarios. This dataset adopts a more realistic setup, with street view directions not aligned with satellite images. CVGlobal also includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation of algorithm performance. Our method excels in multiple tests on common cross-view datasets such as CVUSA, CVACT, VIGOR, and our newly introduced CVGlobal, surpassing the current state-of-the-art approaches."
       },
-      "confidence": 0.95,
+      "confidence": 0.96,
       "term": "CVGlobal dataset",
       "normalized": "CVGlobal数据集",
       "std_label": "CVGlobal"
@@ -82,9 +82,9 @@
       "concept_id": "doc_0519367ec6f719ed_c5",
       "evidence": {
         "section": "Methods",
-        "original_text": "In cross-view retrieval task, the goal is to identify the most similar satellite imagery in a database based on the visual features of an input street view panorama query, thereby achieving geolocation of street view data. The primary challenge of this task lies in the significant perspective difference between street and satellite imagery. We address this by employing an explicit panoramic BEV transformation to bridge the gap between the two domains, highlighting crossview information. Furthermore, to overcome the limited observation range of the BEV’s fidelity mapping, we additionally utilize street view panorama branches to access a broader range of global observations. As illustrated in Fig. 3, this paper introduces a novel cross-view retrieval method, Panorama-BEV Co-Retrieval Network. In the BEV branch, street view images are transformed into the satellite perspective through EP-BEV transformation for retrieval (see Section 4.2). Meanwhile, the street view panorama branch directly uses panoramas to search for satellite images. We achieve collaborative retrieval by simultaneously utilizing street view panoramas and BEV images."
+        "original_text": "Traditional Bird’s Eye View (BEV) transformation processes rely on accurate estimation of depth information and camera parameters. In contrast, our proposed method utilizes a geometric back-projection process based on the ground plane assumption, which directly calculates the corresponding positions of points on the BEV plane in the panorama (as shown in Fig. 4). Given our objective to transform street view images into BEV views spatially aligned with satellite imagery, we first define a predetermined BEV plane aligned with the satellite perspective (as shown in Fig. 4 (a)), assuming the camera is located at the center of this BEV plane. Next, utilizing the grid relationship of the plane, i, j, we can determine the coordinates of the required mapping point P (x, y, z = 0) (see Eq. 1). By setting the camera height to H and positioning the camera at Cam (0, 0, H), we establish the spatial coordinate system (as illustrated in Fig. 4 (b)). Using geometric relationships, we can calculate the corresponding pitch angle θ and azimuth angle φ (see Eq. 2). With the equirectangular cylindrical projection characteristic of panoramic images, we can use θ and φ to calculate the respective row and column numbers v, u (see Eq. 3). By mapping the index relationship between i, j and v, u, we achieve the image transformation from the street view perspective to the BEV perspective. More details will be found in the supplementary material."
       },
-      "confidence": 0.94,
+      "confidence": 0.95,
       "term": "Explicit Panoramic BEV Transformation",
       "normalized": "显式全景BEV变换",
       "std_label": "EP-BEV"
@@ -96,7 +96,7 @@
         "section": "Dataset",
         "original_text": "We selected street view satellite data from selected areas of Munich, Toronto, Singapore, S˜ao Paulo, and Brisbane from the year 2023 as our training set. Similar to CVUSA, we used data randomly divided from the same regions as the training set for our validation set. To address real-world application scenarios, we designed multiple experimental evaluation schemes: Cross-regional retrieval. Our cross-regional tests are of two types: one within different areas of the training cities, as illustrated by the blue areas in Fig. 2, and the second using Cape Town and Johannesburg in Africa as test sets, increasing the task’s difficulty. During testing, the satellite image database corresponding to the query images only includes the regional test set."
       },
-      "confidence": 0.92,
+      "confidence": 0.94,
       "term": "cross-regional retrieval",
       "normalized": "跨区域检索",
       "std_label": null
@@ -108,7 +108,7 @@
         "section": "Dataset",
         "original_text": "Cross-temporal retrieval. As mentioned earlier, our model includes Brisbane’s training data from 2023, then tests its cross-temporal performance. We use street view images from Brisbane from the years 2013, 2016, and 2019 as queries, and satellite images from the corresponding locations in 2023 as the database to investigate whether the algorithm performs well across different years. We also combined data from these three years as input to investigate changes in the algorithm’s performance."
       },
-      "confidence": 0.92,
+      "confidence": 0.94,
       "term": "cross-temporal retrieval",
       "normalized": "跨时间检索",
       "std_label": null
@@ -120,7 +120,7 @@
         "section": "Dataset",
         "original_text": "Street view to map retrieval. We replaced the corresponding satellite images with map data for retraining and testing. We employed evaluations consistent with satellite imagery to explore the application potential of map data."
       },
-      "confidence": 0.91,
+      "confidence": 0.93,
       "term": "street view to map retrieval",
       "normalized": "街景到地图检索",
       "std_label": null
@@ -132,7 +132,7 @@
         "section": "Abstract",
         "original_text": "Cross-view geolocalization identifies the geographic location of street view images by matching them with a georeferenced satellite database. Significant challenges arise due to the drastic appearance and geometry differences between views. In this paper, we propose a new approach for cross-view image geo-localization, i.e., the Panorama-BEV Co-Retrieval Network. Specifically, by utilizing the ground plane assumption and geometric relations, we convert street view panorama images into the BEV view, reducing the gap between street panoramas and satellite imagery. In the existing retrieval of street view panorama images and satellite images, we introduce BEV and satellite image retrieval branches for collaborative retrieval. By retaining the original street view retrieval branch, we overcome the limited perception range issue of BEV representation. Our network enables comprehensive perception of both the global layout and local details around the street view capture locations. Additionally, we introduce CVGlobal, a global cross-view dataset that is closer to real-world scenarios. This dataset adopts a more realistic setup, with street view directions not aligned with satellite images. CVGlobal also includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation of algorithm performance. Our method excels in multiple tests on common cross-view datasets such as CVUSA, CVACT, VIGOR, and our newly introduced CVGlobal, surpassing the current state-of-the-art approaches."
       },
-      "confidence": 0.93,
+      "confidence": 0.95,
       "head": "doc_0519367ec6f719ed_c2",
       "relation_type": "enhances",
       "relation_surface": "propose a new approach for",
@@ -142,52 +142,78 @@
       "type": "relation",
       "relation_id": "doc_0519367ec6f719ed_r2",
       "evidence": {
-        "section": "Methods",
-        "original_text": "In cross-view retrieval task, the goal is to identify the most similar satellite imagery in a database based on the visual features of an input street view panorama query, thereby achieving geolocation of street view data. The primary challenge of this task lies in the significant perspective difference between street and satellite imagery. We address this by employing an explicit panoramic BEV transformation to bridge the gap between the two domains, highlighting crossview information. Furthermore, to overcome the limited observation range of the BEV’s fidelity mapping, we additionally utilize street view panorama branches to access a broader range of global observations. As illustrated in Fig. 3, this paper introduces a novel cross-view retrieval method, Panorama-BEV Co-Retrieval Network. In the BEV branch, street view images are transformed into the satellite perspective through EP-BEV transformation for retrieval (see Section 4.2). Meanwhile, the street view panorama branch directly uses panoramas to search for satellite images. We achieve collaborative retrieval by simultaneously utilizing street view panoramas and BEV images."
+        "section": "Introduction",
+        "original_text": "We observe that, in addition to converting satellite images to street view perspectives, it’s also feasible to transform street view to satellite viewpoints. We transform street view panoramas into explicit Bird’s Eye View (BEV) images using azimuth relationships and ground plane constraints. Compared to polar transformation, transforming street view into satellite viewpoints is more intuitive, resulting in transformed images that are more realistic and highlight cross-view shared local information near the shooting location. On the other hand, since our BEV transformation does not rely on depth and 3D structure estimation, images transformed via BEV can exhibit limited visibility and severe distortion in dense urban scenes where they are obstructed by tall structures like buildings. To tackle this challenge, we designed the Panorama-BEV Co-Retrieval Network, which collaboratively leverages street view panoramas and BEV images for satellite image retrieval. We retain the original street view panorama to satellite retrieval branch to expand the perception range and capture more global layout features, while the BEV to satellite retrieval branch focuses on the details near the street view locations."
       },
       "confidence": 0.92,
-      "head": "doc_0519367ec6f719ed_c5",
+      "head": "doc_0519367ec6f719ed_c3",
       "relation_type": "uses",
-      "relation_surface": "employs an explicit panoramic BEV transformation to bridge the gap",
-      "tail": "doc_0519367ec6f719ed_c3"
+      "relation_surface": "transform street view panoramas into explicit Bird's Eye View (BEV) images using",
+      "tail": "doc_0519367ec6f719ed_c2"
     },
     {
       "type": "relation",
       "relation_id": "doc_0519367ec6f719ed_r3",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Current cross-view retrieval research primarily utilizes datasets like CVUSA[26] , CVACT [8], and VIGOR[33], with CVUSA achieving top-1 recall rates over 98%, demonstrating the effectiveness of cross-view methods. However, a gap still exists between these datasets and real-world applications. Firstly, existing datasets mainly focus on a single country, limiting evaluations across diverse global scenes. Secondly, challenges with street views lacking metadata extend beyond unknown locations to include uncertain camera orientations and shooting times. Currently, there are few datasets with street views that have uncertain orientations; most approaches simulate random captures by rotating fixed-orientation street view images [17,32]. Additionally, there is a lack of cross-temporal retrieval task evaluations, raising questions about whether current satellite imagery can accurately locate street views captured at unknown times. Furthermore, there have been few attempts to use map data instead of satellite data in the current datasets. Map data has advantages over satellite data, such as easier accessibility and storage. To address these challenges, we introduce a global cross-view retrieval dataset named CVGlobal. This dataset includes cross-regional, cross-temporal, and street view to map retrieval tests, aiming for a comprehensive assessment of algorithmic performance."
+        "section": "Abstract",
+        "original_text": "Cross-view geolocalization identifies the geographic location of street view images by matching them with a georeferenced satellite database. Significant challenges arise due to the drastic appearance and geometry differences between views. In this paper, we propose a new approach for cross-view image geo-localization, i.e., the Panorama-BEV Co-Retrieval Network. Specifically, by utilizing the ground plane assumption and geometric relations, we convert street view panorama images into the BEV view, reducing the gap between street panoramas and satellite imagery. In the existing retrieval of street view panorama images and satellite images, we introduce BEV and satellite image retrieval branches for collaborative retrieval. By retaining the original street view retrieval branch, we overcome the limited perception range issue of BEV representation. Our network enables comprehensive perception of both the global layout and local details around the street view capture locations. Additionally, we introduce CVGlobal, a global cross-view dataset that is closer to real-world scenarios. This dataset adopts a more realistic setup, with street view directions not aligned with satellite images. CVGlobal also includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation of algorithm performance. Our method excels in multiple tests on common cross-view datasets such as CVUSA, CVACT, VIGOR, and our newly introduced CVGlobal, surpassing the current state-of-the-art approaches."
       },
-      "confidence": 0.9,
+      "confidence": 0.93,
       "head": "doc_0519367ec6f719ed_c4",
       "relation_type": "measures",
-      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation",
-      "tail": "doc_0519367ec6f719ed_c6"
+      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation of algorithm performance",
+      "tail": "doc_0519367ec6f719ed_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_0519367ec6f719ed_r4",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Current cross-view retrieval research primarily utilizes datasets like CVUSA[26] , CVACT [8], and VIGOR[33], with CVUSA achieving top-1 recall rates over 98%, demonstrating the effectiveness of cross-view methods. However, a gap still exists between these datasets and real-world applications. Firstly, existing datasets mainly focus on a single country, limiting evaluations across diverse global scenes. Secondly, challenges with street views lacking metadata extend beyond unknown locations to include uncertain camera orientations and shooting times. Currently, there are few datasets with street views that have uncertain orientations; most approaches simulate random captures by rotating fixed-orientation street view images [17,32]. Additionally, there is a lack of cross-temporal retrieval task evaluations, raising questions about whether current satellite imagery can accurately locate street views captured at unknown times. Furthermore, there have been few attempts to use map data instead of satellite data in the current datasets. Map data has advantages over satellite data, such as easier accessibility and storage. To address these challenges, we introduce a global cross-view retrieval dataset named CVGlobal. This dataset includes cross-regional, cross-temporal, and street view to map retrieval tests, aiming for a comprehensive assessment of algorithmic performance."
+        "section": "Methods",
+        "original_text": "Traditional Bird’s Eye View (BEV) transformation processes rely on accurate estimation of depth information and camera parameters. In contrast, our proposed method utilizes a geometric back-projection process based on the ground plane assumption, which directly calculates the corresponding positions of points on the BEV plane in the panorama (as shown in Fig. 4). Given our objective to transform street view images into BEV views spatially aligned with satellite imagery, we first define a predetermined BEV plane aligned with the satellite perspective (as shown in Fig. 4 (a)), assuming the camera is located at the center of this BEV plane. Next, utilizing the grid relationship of the plane, i, j, we can determine the coordinates of the required mapping point P (x, y, z = 0) (see Eq. 1). By setting the camera height to H and positioning the camera at Cam (0, 0, H), we establish the spatial coordinate system (as illustrated in Fig. 4 (b)). Using geometric relationships, we can calculate the corresponding pitch angle θ and azimuth angle φ (see Eq. 2). With the equirectangular cylindrical projection characteristic of panoramic images, we can use θ and φ to calculate the respective row and column numbers v, u (see Eq. 3). By mapping the index relationship between i, j and v, u, we achieve the image transformation from the street view perspective to the BEV perspective. More details will be found in the supplementary material."
       },
-      "confidence": 0.9,
-      "head": "doc_0519367ec6f719ed_c4",
-      "relation_type": "measures",
-      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation",
-      "tail": "doc_0519367ec6f719ed_c7"
+      "confidence": 0.94,
+      "head": "doc_0519367ec6f719ed_c5",
+      "relation_type": "derives",
+      "relation_surface": "utilizes a geometric back-projection process based on the ground plane assumption",
+      "tail": "doc_0519367ec6f719ed_c3"
     },
     {
       "type": "relation",
       "relation_id": "doc_0519367ec6f719ed_r5",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Current cross-view retrieval research primarily utilizes datasets like CVUSA[26] , CVACT [8], and VIGOR[33], with CVUSA achieving top-1 recall rates over 98%, demonstrating the effectiveness of cross-view methods. However, a gap still exists between these datasets and real-world applications. Firstly, existing datasets mainly focus on a single country, limiting evaluations across diverse global scenes. Secondly, challenges with street views lacking metadata extend beyond unknown locations to include uncertain camera orientations and shooting times. Currently, there are few datasets with street views that have uncertain orientations; most approaches simulate random captures by rotating fixed-orientation street view images [17,32]. Additionally, there is a lack of cross-temporal retrieval task evaluations, raising questions about whether current satellite imagery can accurately locate street views captured at unknown times. Furthermore, there have been few attempts to use map data instead of satellite data in the current datasets. Map data has advantages over satellite data, such as easier accessibility and storage. To address these challenges, we introduce a global cross-view retrieval dataset named CVGlobal. This dataset includes cross-regional, cross-temporal, and street view to map retrieval tests, aiming for a comprehensive assessment of algorithmic performance."
+        "section": "Dataset",
+        "original_text": "We selected street view satellite data from selected areas of Munich, Toronto, Singapore, S˜ao Paulo, and Brisbane from the year 2023 as our training set. Similar to CVUSA, we used data randomly divided from the same regions as the training set for our validation set. To address real-world application scenarios, we designed multiple experimental evaluation schemes: Cross-regional retrieval. Our cross-regional tests are of two types: one within different areas of the training cities, as illustrated by the blue areas in Fig. 2, and the second using Cape Town and Johannesburg in Africa as test sets, increasing the task’s difficulty. During testing, the satellite image database corresponding to the query images only includes the regional test set."
       },
-      "confidence": 0.9,
+      "confidence": 0.91,
       "head": "doc_0519367ec6f719ed_c4",
-      "relation_type": "measures",
-      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation",
+      "relation_type": "includes",
+      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests",
+      "tail": "doc_0519367ec6f719ed_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0519367ec6f719ed_r6",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "Cross-temporal retrieval. As mentioned earlier, our model includes Brisbane’s training data from 2023, then tests its cross-temporal performance. We use street view images from Brisbane from the years 2013, 2016, and 2019 as queries, and satellite images from the corresponding locations in 2023 as the database to investigate whether the algorithm performs well across different years. We also combined data from these three years as input to investigate changes in the algorithm’s performance."
+      },
+      "confidence": 0.91,
+      "head": "doc_0519367ec6f719ed_c4",
+      "relation_type": "includes",
+      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests",
+      "tail": "doc_0519367ec6f719ed_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_0519367ec6f719ed_r7",
+      "evidence": {
+        "section": "Dataset",
+        "original_text": "Street view to map retrieval. We replaced the corresponding satellite images with map data for retraining and testing. We employed evaluations consistent with satellite imagery to explore the application potential of map data."
+      },
+      "confidence": 0.91,
+      "head": "doc_0519367ec6f719ed_c4",
+      "relation_type": "includes",
+      "relation_surface": "includes cross-regional, cross-temporal, and street view to map retrieval tests",
       "tail": "doc_0519367ec6f719ed_c8"
     },
     {
@@ -209,7 +235,7 @@
         "section": "2.3 Cross-view Datasets",
         "original_text": "Several cross-view geolocation datasets have been introduced, including CVUSA [26], CVACT [8], Vo[23], Universities-1652 [31], and VIGOR [33]. The CVUSA dataset features 355,332 ground-to-satellite image pairs from the United States, while CVACT has a similar training/validation volume and a larger test set, CVACT-test. CVUSA and CVACT are the most commonly used cross-view retrieval datasets, employing a one-to-one retrieval setup."
       },
-      "confidence": 0.95,
+      "confidence": 0.9,
       "name": "CVUSA",
       "modality": "image",
       "domain": "computer vision, geolocalization"
@@ -221,7 +247,7 @@
         "section": "2.3 Cross-view Datasets",
         "original_text": "Several cross-view geolocation datasets have been introduced, including CVUSA [26], CVACT [8], Vo[23], Universities-1652 [31], and VIGOR [33]. The CVUSA dataset features 355,332 ground-to-satellite image pairs from the United States, while CVACT has a similar training/validation volume and a larger test set, CVACT-test. CVUSA and CVACT are the most commonly used cross-view retrieval datasets, employing a one-to-one retrieval setup."
       },
-      "confidence": 0.95,
+      "confidence": 0.9,
       "name": "CVACT",
       "modality": "image",
       "domain": "computer vision, geolocalization"
@@ -233,7 +259,7 @@
         "section": "2.3 Cross-view Datasets",
         "original_text": "Several cross-view geolocation datasets have been introduced, including CVUSA [26], CVACT [8], Vo[23], Universities-1652 [31], and VIGOR [33]. The CVUSA dataset features 355,332 ground-to-satellite image pairs from the United States, while CVACT has a similar training/validation volume and a larger test set, CVACT-test. CVUSA and CVACT are the most commonly used cross-view retrieval datasets, employing a one-to-one retrieval setup. The VIGOR dataset includes data from multiple cities and it evaluates the model’s transferability across different geographic regions. In this dataset, street panoramas and satellite images are not centrally aligned. Multiple street-view images cover the same satellite image area, with overlapping regions between different satellite images."
       },
-      "confidence": 0.95,
+      "confidence": 0.9,
       "name": "VIGOR",
       "modality": "image",
       "domain": "computer vision, geolocalization"
@@ -242,23 +268,11 @@
       "type": "dataset",
       "dataset_id": "doc_0519367ec6f719ed_d5",
       "evidence": {
-        "section": "2.3 Cross-view Datasets",
-        "original_text": "Several cross-view geolocation datasets have been introduced, including CVUSA [26], CVACT [8], Vo[23], Universities-1652 [31], and VIGOR [33]. The CVUSA dataset features 355,332 ground-to-satellite image pairs from the United States, while CVACT has a similar training/validation volume and a larger test set, CVACT-test. CVUSA and CVACT are the most commonly used cross-view retrieval datasets, employing a one-to-one retrieval setup. Vo’s research collected paired images from 11 U.S. cities, combining street views with Google Maps satellite photos. Universities-1652 extends the dataset by incorporating drone imagery in addition to street and satellite images."
+        "section": "3.3 Evaluation schemes",
+        "original_text": "We selected street view satellite data from selected areas of Munich, Toronto, Singapore, S˜ao Paulo, and Brisbane from the year 2023 as our training set. Similar to CVUSA, we used data randomly divided from the same regions as the training set for our validation set. To address real-world application scenarios, we designed multiple experimental evaluation schemes: Cross-regional retrieval. Our cross-regional tests are of two types: one within different areas of the training cities, as illustrated by the blue areas in Fig. 2, and the second using Cape Town and Johannesburg in Africa as test sets, increasing the task’s difficulty. During testing, the satellite image database corresponding to the query images only includes the regional test set. Cross-temporal retrieval. As mentioned earlier, our model includes Brisbane’s training data from 2023, then tests its cross-temporal performance. We use street view images from Brisbane from the years 2013, 2016, and 2019 as queries, and satellite images from the corresponding locations in 2023 as the database to investigate whether the algorithm performs well across different years. We also combined data from these three years as input to investigate changes in the algorithm’s performance. Street view to map retrieval. We replaced the corresponding satellite images with map data for retraining and testing. We employed evaluations consistent with satellite imagery to explore the application potential of map data."
       },
-      "confidence": 0.9,
-      "name": "Universities-1652",
-      "modality": "image",
-      "domain": "computer vision, geolocalization"
-    },
-    {
-      "type": "dataset",
-      "dataset_id": "doc_0519367ec6f719ed_d6",
-      "evidence": {
-        "section": "3.1 Dataset collection",
-        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images. Additionally, street views from Brisbane for 2013, 2016, and 2019 were collected to evaluate the algorithm’s cross-temporal retrieval capabilities. Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70m . Map data and satellite imagery share the same coverage area and resolution."
-      },
-      "confidence": 0.95,
-      "name": "CVGlobal (detailed collection)",
+      "confidence": 0.85,
+      "name": "CVGlobal training set",
       "modality": "image",
       "domain": "computer vision, geolocalization"
     },
@@ -267,73 +281,40 @@
       "ds_id": "doc_0519367ec6f719ed_ds1",
       "evidence": {
         "section": "3.1 Dataset collection",
-        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images."
+        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images. Additionally, street views from Brisbane for 2013, 2016, and 2019 were collected to evaluate the algorithm’s cross-temporal retrieval capabilities. Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70m . Map data and satellite imagery share the same coverage area and resolution."
       },
-      "confidence": 0.9,
+      "confidence": 0.95,
       "spec_type": "format_rule",
-      "description": "Street view images collected from Google Street View Download 360 with an average distance of 50m between images."
+      "description": "Street view panorama images and corresponding satellite/map images forming paired datasets for cross-view retrieval."
     },
     {
       "type": "data_specification",
       "ds_id": "doc_0519367ec6f719ed_ds2",
       "evidence": {
-        "section": "3.1 Dataset collection",
-        "original_text": "Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70m ."
+        "section": "2.3 Cross-view Datasets",
+        "original_text": "Firstly, existing datasets mainly focus on a single country, limiting evaluations across diverse global scenes. Secondly, challenges with street views lacking metadata extend beyond unknown locations to include uncertain camera orientations and shooting times. Currently, there are few datasets with street views that have uncertain orientations; most approaches simulate random captures by rotating fixed-orientation street view images [17,32]. Additionally, there is a lack of cross-temporal retrieval task evaluations, raising questions about whether current satellite imagery can accurately locate street views captured at unknown times. Furthermore, there have been few attempts to use map data instead of satellite data in the current datasets. Map data has advantages over satellite data, such as easier accessibility and storage. To address these challenges, we introduce a global cross-view retrieval dataset named CVGlobal. This dataset includes cross-regional, cross-temporal, and street view to map retrieval tests, aiming for a comprehensive assessment of algorithmic performance."
       },
-      "confidence": 0.95,
-      "spec_type": "format_rule",
-      "description": "Satellite images acquired via Google Maps Static API at size 512x512 pixels covering approximately 70m x 70m spatial range."
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Street view images are captured by car-mounted cameras, with non-fixed orientations (not necessarily aligned with north)."
     },
     {
       "type": "data_specification",
       "ds_id": "doc_0519367ec6f719ed_ds3",
       "evidence": {
-        "section": "3.1 Dataset collection",
-        "original_text": "Map data and satellite imagery share the same coverage area and resolution."
-      },
-      "confidence": 0.9,
-      "spec_type": "format_rule",
-      "description": "Map data slices aligned with satellite imagery coverage and resolution."
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_0519367ec6f719ed_ds4",
-      "evidence": {
-        "section": "3.2 Dataset comparison",
-        "original_text": "Covering cities with a wide range of styles allows for an effective assessment of the algorithm’s robustness across various scenarios. Additionally, the orientation of street views is not fixed. The dataset also includes street view data from Brisbane over multiple years, allowing for the evaluation of cross-temporal retrieval tasks. We use street view data from past years as queries and current satellite imagery as references. Retrieving images from different time periods represents a novel endeavor. Moreover, we’ve gathered map data slices aligned with satellite imagery, setting up street view to map slice retrieval tasks to probe their utility in cross-view retrieval."
+        "section": "5.1 Dataset and Evaluation Protocol",
+        "original_text": "Following common experimental setting [15,17,32,35,3,27], we conducted extensive experimental evaluations on three widely used datasets: CVUSA [26], CVACT [8], VIGOR [33] and our proposed CVGlobal dataset, to validate the effectiveness of our model. We utilized the metric of top-k image recall rate to assess model performance. Specifically, given a street view panorama query, if the corresponding closest satellite image is within the top k retrieved images, then the query is considered \"successfully retrieved.\" The percentage of query images that have been correctly localized is referred to as R@K."
       },
       "confidence": 0.95,
       "spec_type": "quality_standard",
-      "description": "CVGlobal dataset includes cross-regional, cross-temporal, and street view to map retrieval tests for comprehensive evaluation."
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_0519367ec6f719ed_ds5",
-      "evidence": {
-        "section": "5.2 Implementation Details",
-        "original_text": "Since CVUSA’s panoramic images are not of regular size, ground images need to be padded to standard dimensions."
-      },
-      "confidence": 0.9,
-      "spec_type": "env_requirement",
-      "description": "CVUSA panoramic images require padding to standard dimensions for processing."
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_0519367ec6f719ed_ds6",
-      "evidence": {
-        "section": "2.3 Cross-view Datasets",
-        "original_text": "To tackle these issues, we introduce CVGlobal, a global cross-view retrieval dataset. It features street views with nonfixed orientations and includes cross-regional, cross-temporal, and street-to-map retrieval tests, aiming for a comprehensive evaluation of algorithm performance."
-      },
-      "confidence": 0.95,
-      "spec_type": "metadata_standard",
-      "description": "CVGlobal dataset features street views with non-fixed orientations and includes cross-regional, cross-temporal, and street-to-map retrieval tests."
+      "description": "Evaluation protocol uses top-k image recall rate (R@K) to assess model performance."
     },
     {
       "type": "method",
       "method_id": "doc_0519367ec6f719ed_m1",
       "evidence": {
         "section": "Methods",
-        "original_text": "In this paper, we propose a new approach for cross-view image geo-localization, i.e., the Panorama-BEV Co-Retrieval Network. Specifically, by utilizing the ground plane assumption and geometric relations, we convert street view panorama images into the BEV view, reducing the gap between street panoramas and satellite imagery. In the existing retrieval of street view panorama images and satellite images, we introduce BEV and satellite image retrieval branches for collaborative retrieval. By retaining the original street view retrieval branch, we overcome the limited perception range issue of BEV representation. Our network enables comprehensive perception of both the global layout and local details around the street view capture locations. As illustrated in Fig. 3, this paper introduces a novel cross-view retrieval method, Panorama-BEV Co-Retrieval Network. In the BEV branch, street view images are transformed into the satellite perspective through EP-BEV transformation for retrieval (see Section 4.2). Meanwhile, the street view panorama branch directly uses panoramas to search for satellite images. We achieve collaborative retrieval by simultaneously utilizing street view panoramas and BEV images (see Section 4.3). We trained two models for the street view and BEV branches using the same contrastive image retrieval objective. During testing, the network will simultaneously apply both branches to retrieve the matching images for a given street view query, and the final decision will be made by combining the similarity scores from both branches."
+        "original_text": "In cross-view retrieval task, the goal is to identify the most similar satellite imagery in a database based on the visual features of an input street view panorama query, thereby achieving geolocation of street view data. The primary challenge of this task lies in the significant perspective difference between street and satellite imagery. We address this by employing an explicit panoramic BEV transformation to bridge the gap between the two domains, highlighting crossview information. Furthermore, to overcome the limited observation range of the BEV’s fidelity mapping, we additionally utilize street view panorama branches to access a broader range of global observations. As illustrated in Fig. 3, this paper introduces a novel cross-view retrieval method, Panorama-BEV Co-Retrieval Network. In the BEV branch, street view images are transformed into the satellite perspective through EP-BEV transformation for retrieval (see Section 4.2). Meanwhile, the street view panorama branch directly uses panoramas to search for satellite images. We achieve collaborative retrieval by simultaneously utilizing street view panoramas and BEV images (see Section 4.3). We trained two models for the street view and BEV branches using the same contrastive image retrieval objective. During testing, the network will simultaneously apply both branches to retrieve the matching images for a given street view query, and the final decision will be made by combining the similarity scores from both branches."
       },
       "confidence": 0.95,
       "name": "Panorama-BEV Co-Retrieval Network",
@@ -344,10 +325,10 @@
       "method_id": "doc_0519367ec6f719ed_m2",
       "evidence": {
         "section": "Methods",
-        "original_text": "Traditional Bird’s Eye View (BEV) transformation processes rely on accurate estimation of depth information and camera parameters. In contrast, our proposed method utilizes a geometric back-projection process based on the ground plane assumption, which directly calculates the corresponding positions of points on the BEV plane in the panorama (as shown in Fig. 4). Given our objective to transform street view images into BEV views spatially aligned with satellite imagery, we first define a predetermined BEV plane aligned with the satellite perspective (as shown in Fig. 4 (a)), assuming the camera is located at the center of this BEV plane. Next, utilizing the grid relationship of the plane, i, j, we can determine the coordinates of the required mapping point P (x, y, z = 0) (see Eq. 1). By setting the camera height to H and positioning the camera at Cam (0, 0, H), we establish the spatial coordinate system (as illustrated in Fig. 4 (b)). Using geometric relationships, we can calculate the corresponding pitch angle θ and azimuth angle φ (see Eq. 2). With the equirectangular cylindrical projection characteristic of panoramic images, we can use θ and φ to calculate the respective row and column numbers v, u (see Eq. 3). By mapping the index relationship between i, j and v, u, we achieve the image transformation from the street view perspective to the BEV perspective. More details will be found in the supplementary material. Through explicit panoramic BEV transformation, we project street view images into a bird’s-eye view without needing depth estimation or camera parameters. Although transformed images lose information on tall objects, like building facades, this information is unique to the ground perspective and not visible from the satellite view. Explicit panoramic BEV transformation effectively minimizes the correspondence gap between the two domains, highlighting information on objects observable in both satellite and street views."
+        "original_text": "Traditional Bird’s Eye View (BEV) transformation processes rely on accurate estimation of depth information and camera parameters. In contrast, our proposed method utilizes a geometric back-projection process based on the ground plane assumption, which directly calculates the corresponding positions of points on the BEV plane in the panorama (as shown in Fig. 4). Given our objective to transform street view images into BEV views spatially aligned with satellite imagery, we first define a predetermined BEV plane aligned with the satellite perspective (as shown in Fig. 4 (a)), assuming the camera is located at the center of this BEV plane. Next, utilizing the grid relationship of the plane, i, j, we can determine the coordinates of the required mapping point P (x, y, z = 0) (see Eq. 1). By setting the camera height to H and positioning the camera at Cam (0, 0, H), we establish the spatial coordinate system (as illustrated in Fig. 4 (b)). Using geometric relationships, we can calculate the corresponding pitch angle θ and azimuth angle φ (see Eq. 2). With the equirectangular cylindrical projection characteristic of panoramic images, we can use θ and φ to calculate the respective row and column numbers v, u (see Eq. 3). By mapping the index relationship between i, j and v, u, we achieve the image transformation from the street view perspective to the BEV perspective. More details will be found in the supplementary material."
       },
       "confidence": 0.95,
-      "name": "Explicit Panoramic BEV Transformation (EP-BEV)",
+      "name": "Explicit panoramic BEV transformation",
       "method_type": "algorithm"
     },
     {
@@ -355,86 +336,75 @@
       "experiment_id": "doc_0519367ec6f719ed_x1",
       "evidence": {
         "section": "Experiments",
-        "original_text": "Following common experimental setting [15,17,32,35,3,27], we conducted extensive experimental evaluations on three widely used datasets: CVUSA [26], CVACT [8], VIGOR [33] and our proposed CVGlobal dataset, to validate the effectiveness of our model. We utilized the metric of top-k image recall rate to assess model performance. Specifically, given a street view panorama query, if the corresponding closest satellite image is within the top k retrieved images, then the query is considered \"successfully retrieved.\" The percentage of query images that have been correctly localized is referred to as R@K. We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1.0 × 10⁻³. The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm. Since CVUSA’s panoramic images are not of regular size, ground images need to be padded to standard dimensions. All comparison methods were implemented according to their publicly available source code settings."
+        "original_text": "Following common experimental setting [15,17,32,35,3,27], we conducted extensive experimental evaluations on three widely used datasets: CVUSA [26], CVACT [8], VIGOR [33] and our proposed CVGlobal dataset, to validate the effectiveness of our model. We utilized the metric of top-k image recall rate to assess model performance. Specifically, given a street view panorama query, if the corresponding closest satellite image is within the top k retrieved images, then the query is considered \"successfully retrieved.\" The percentage of query images that have been correctly localized is referred to as R@K."
       },
       "confidence": 0.95,
       "task": "cross-view image retrieval evaluation",
-      "setup": "CVUSA, CVACT, VIGOR datasets, top-k recall rate metric"
+      "setup": "CVUSA, CVACT, VIGOR, CVGlobal datasets, top-k recall rate metric"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_0519367ec6f719ed_x2",
       "evidence": {
         "section": "Experiments",
-        "original_text": "Following the experimental setups in Samp4G [3] and L2LTR [27], we evaluated the generalization capability of the algorithm, as shown in Table 4. Compared to the settings of VIGOR-cross, CVUSA and CVACT present more challenging tasks due to significant differences in resolution, satellite image size, and the scope of street view imaging. As shown in Table 4, our method scores highly on CVACT, outperforming the current state-of-the-art method by over 10%, demonstrating strong generalizability. Both L2LTR[27] and GeoDTR[30] saw significant generalization improvements with polar transformation. Our method, using only transformed BEV images, also significantly outperformed street-view-only approaches. This is attributed to the embedding of cross-view information like roads through polar and EP-BEV transformations. Direct street-to-satellite retrieval, however, is more affected by variations in observation range and resolution across datasets."
+        "original_text": "We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1.0 × 10⁻³. The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm."
       },
       "confidence": 0.95,
-      "task": "generalization capability test",
-      "setup": "cross-dataset evaluation (CVUSA to CVACT, VIGOR-cross)"
+      "task": "implementation details",
+      "setup": "ConvNeXt-B backbone, AdamW optimizer, 40 epochs, batch size 128"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_0519367ec6f719ed_x3",
       "evidence": {
-        "section": "Experiments",
-        "original_text": "We conducted ablation experiments on the VIGOR dataset to explore the effectiveness of our algorithm, as shown in Table 5. We compared the results of retrieval using each of the two branches independently with the outcomes of our collaborative retrieval that simultaneously employs both branches. The results show that using both street view and BEV queries simultaneously significantly improves recall compared to previously using only street view. This also indicates that using only the BEV branch is not ideal due to the limited observation range compared to satellite images, resulting in a significant loss of global layout information."
+        "section": "Dataset",
+        "original_text": "We selected street view satellite data from selected areas of Munich, Toronto, Singapore, S˜ao Paulo, and Brisbane from the year 2023 as our training set. Similar to CVUSA, we used data randomly divided from the same regions as the training set for our validation set. To address real-world application scenarios, we designed multiple experimental evaluation schemes: Cross-regional retrieval. Our cross-regional tests are of two types: one within different areas of the training cities, as illustrated by the blue areas in Fig. 2, and the second using Cape Town and Johannesburg in Africa as test sets, increasing the task’s difficulty. During testing, the satellite image database corresponding to the query images only includes the regional test set."
       },
       "confidence": 0.95,
-      "task": "ablation experiment",
-      "setup": "VIGOR dataset, comparing single branches vs. co-retrieval"
+      "task": "cross-regional retrieval",
+      "setup": "CVGlobal dataset, training on selected areas, testing on different areas and continents"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_0519367ec6f719ed_x4",
       "evidence": {
-        "section": "Experiments",
-        "original_text": "We selected street view satellite data from selected areas of Munich, Toronto, Singapore, S˜ao Paulo, and Brisbane from the year 2023 as our training set. Similar to CVUSA, we used data randomly divided from the same regions as the training set for our validation set. To address real-world application scenarios, we designed multiple experimental evaluation schemes: Cross-regional retrieval. Our cross-regional tests are of two types: one within different areas of the training cities, as illustrated by the blue areas in Fig. 2, and the second using Cape Town and Johannesburg in Africa as test sets, increasing the task’s difficulty. During testing, the satellite image database corresponding to the query images only includes the regional test set. The experimental results from Table 6 show that the Regional-val, being a randomly divided validation set, provides extensive coverage of the training area, resulting in very ideal results. Meanwhile, the cross-regional evaluation performed on Regional-test, where the city style remains unchanged, demonstrates good algorithm performance. However, in the Cross-continent test, which faces scenes with significant style differences, performance noticeably declines. Compared to existing methods, our approach shows a clear improvement in performance, particularly standing out in challenging scenarios."
+        "section": "Dataset",
+        "original_text": "Cross-temporal retrieval. As mentioned earlier, our model includes Brisbane’s training data from 2023, then tests its cross-temporal performance. We use street view images from Brisbane from the years 2013, 2016, and 2019 as queries, and satellite images from the corresponding locations in 2023 as the database to investigate whether the algorithm performs well across different years. We also combined data from these three years as input to investigate changes in the algorithm’s performance."
       },
       "confidence": 0.95,
-      "task": "CVGlobal dataset cross-regional retrieval",
-      "setup": "CVGlobal dataset, training on selected cities, testing on regional and cross-continent areas"
+      "task": "cross-temporal retrieval",
+      "setup": "CVGlobal dataset, Brisbane street views from 2013, 2016, 2019 as queries, 2023 satellite images as database"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_0519367ec6f719ed_x5",
       "evidence": {
-        "section": "Experiments",
-        "original_text": "Cross-temporal retrieval. As mentioned earlier, our model includes Brisbane’s training data from 2023, then tests its cross-temporal performance. We use street view images from Brisbane from the years 2013, 2016, and 2019 as queries, and satellite images from the corresponding locations in 2023 as the database to investigate whether the algorithm performs well across different years. We also combined data from these three years as input to investigate changes in the algorithm’s performance. As shown in Table 7, we evaluate the model trained on 2023 data for cross-view assessment. We use ground data from 2013, 2016, and 2019, as well as a mix of these three years as queries, with 2023 satellite images as references. Our algorithm demonstrates superior performance in cross-temporal retrieval tasks. The model needs to capture long-term persistent features (e.g., road layouts and building structures) and reduce reliance on transient features (e.g., temporary buildings and vehicles) for this cross-temporal task. We also observe that the closer the data year is to 2023, the more ideal the evaluation results. Meanwhile, mixing data from different years introduces more disturbances to the results, but this scenario is closer to real-world application settings and represents a challenge that needs to be overcome."
+        "section": "Dataset",
+        "original_text": "Street view to map retrieval. We replaced the corresponding satellite images with map data for retraining and testing. We employed evaluations consistent with satellite imagery to explore the application potential of map data."
       },
       "confidence": 0.95,
-      "task": "CVGlobal dataset cross-temporal retrieval",
-      "setup": "CVGlobal dataset, training on 2023 Brisbane data, testing on 2013/2016/2019 street views"
-    },
-    {
-      "type": "experiment",
-      "experiment_id": "doc_0519367ec6f719ed_x6",
-      "evidence": {
-        "section": "Experiments",
-        "original_text": "Street view to map retrieval. We replaced the corresponding satellite images with map data for retraining and testing. We employed evaluations consistent with satellite imagery to explore the application potential of map data. We conducted training and cross-regional evaluations by replacing satellite images with map slice data, with results shown in Table 8. Due to the lack of specific appearance and texture information in map data, the performance of various algorithms was not optimal. However, in the validation set, because of the high quality of map data used for both training and testing and the dense coverage of training data, the top-1 recall using map tiles exceeds 70%, proving the effectiveness of applying map data in cross-view geolocalization tasks."
-      },
-      "confidence": 0.95,
-      "task": "CVGlobal dataset street view to map retrieval",
-      "setup": "CVGlobal dataset, replacing satellite images with map data for training and testing"
+      "task": "street view to map retrieval",
+      "setup": "CVGlobal dataset, map data slices replacing satellite images"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_0519367ec6f719ed_p1",
       "evidence": {
-        "section": "5. Experiments",
+        "section": "5.3 Evaluation results on existing datasets",
         "original_text": "Our method performed optimally on the classic CVUSA and CVACT datasets. On the more challenging VIGOR dataset, our method increased the top-1 recall by 4.32% in the Same-area task and by 10.49% in the Cross-area task, indicating our method's effectiveness for difficult tasks. As visualized in Fig. 5 , we observe a large number of similar images within the VIGOR dataset. This phenomenon allows other methods to perform well in terms of top-10 or top-5 recall rates but show lower performance in top-1 recall. In contrast, the newly added BEV branch in our method substantially enhances the ability to distinguish details in each image and emphasizes crossview information near the shooting location, thereby significantly improving the capability to differentiate between similar images."
       },
       "confidence": 0.95,
       "metric": "top-1 recall rate",
-      "compared_to": "state-of-the-art approaches"
+      "compared_to": "state-of-the-art methods"
     },
     {
       "type": "performance_result",
       "perf_id": "doc_0519367ec6f719ed_p2",
       "evidence": {
-        "section": "5. Experiments",
+        "section": "5.3 Evaluation results on existing datasets",
         "original_text": "Following the experimental setups in Samp4G [3] and L2LTR [27], we evaluated the generalization capability of the algorithm, as shown in Table 4. Compared to the settings of VIGOR-cross, CVUSA and CVACT present more challenging tasks due to significant differences in resolution, satellite image size, and the scope of street view imaging. As shown in Table 4, our method scores highly on CVACT, outperforming the current state-of-the-art method by over 10%, demonstrating strong generalizability. Both L2LTR[27] and GeoDTR[30] saw significant generalization improvements with polar transformation. Our method, using only transformed BEV images, also significantly outperformed street-view-only approaches. This is attributed to the embedding of cross-view information like roads through polar and EP-BEV transformations. Direct street-to-satellite retrieval, however, is more affected by variations in observation range and resolution across datasets."
       },
-      "confidence": 0.95,
+      "confidence": 0.93,
       "metric": "top-1 recall rate",
       "compared_to": "state-of-the-art methods"
     },
@@ -442,54 +412,10 @@
       "type": "performance_result",
       "perf_id": "doc_0519367ec6f719ed_p3",
       "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We conducted ablation experiments on the VIGOR dataset to explore the effectiveness of our algorithm, as shown in Table 5. We compared the results of retrieval using each of the two branches independently with the outcomes of our collaborative retrieval that simultaneously employs both branches. The results show that using both street view and BEV queries simultaneously significantly improves recall compared to previously using only street view. This also indicates that using only the BEV branch is not ideal due to the limited observation range compared to satellite images, resulting in a significant loss of global layout information."
-      },
-      "confidence": 0.95,
-      "metric": "top-1 recall rate",
-      "compared_to": "state-of-the-art methods"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_0519367ec6f719ed_p4",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "The experimental results from Table 6 show that the Regional-val, being a randomly divided validation set, provides extensive coverage of the training area, resulting in very ideal results. Meanwhile, the crossregional evaluation performed on Regional-test, where the city style remains unchanged, demonstrates good algorithm performance. However, in the Crosscontinent test, which faces scenes with significant style differences, performance noticeably declines. Compared to existing methods, our approach shows a clear improvement in performance, particularly standing out in challenging scenarios."
-      },
-      "confidence": 0.95,
-      "metric": "top-1 recall rate",
-      "compared_to": "existing methods"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_0519367ec6f719ed_p5",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "As shown in Table 7, we evaluate the model trained on 2023 data for cross-view assessment. We use ground data from 2013, 2016, and 2019, as well as a mix of these three years as queries, with 2023 satellite images as references. Our algorithm demonstrates superior performance in cross-temporal retrieval tasks. The model needs to capture long-term persistent features (e.g., road layouts and building structures) and reduce reliance on transient features (e.g., temporary buildings and vehicles) for this cross-temporal task. We also observe that the closer the data year is to 2023, the more ideal the evaluation results. Meanwhile, mixing data from different years introduces more disturbances to the results, but this scenario is closer to real-world application settings and represents a challenge that needs to be overcome."
-      },
-      "confidence": 0.95,
-      "metric": "top-1 recall rate",
-      "compared_to": "state-of-the-art"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_0519367ec6f719ed_p6",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We conducted training and cross-regional evaluations by replacing satellite images with map slice data, with results shown in Table 8. Due to the lack of specific appearance and texture information in map data, the performance of various algorithms was not optimal. However, in the validation set, because of the high quality of map data used for both training and testing and the dense coverage of training data, the top-1 recall using map tiles exceeds 70%, proving the effectiveness of applying map data in cross-view geolocalization tasks."
-      },
-      "confidence": 0.95,
-      "metric": "top-1 recall rate",
-      "compared_to": "state-of-the-art"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_0519367ec6f719ed_p7",
-      "evidence": {
-        "section": "6. Conclusion",
+        "section": "6 Conclusion",
         "original_text": "In our work, we use the ground plane assumption and geometric relationships to convert street view panorama images to the satellite perspective, effectively reducing the domain gap between them. Our Panorama-BEV Co-Retrieval Network captures global information and enhances local detail features simultaneously. Our method achieves outstanding results on existing datasets. In the VIGOR-cross testing task, compared to the state-of-the-art methods, our top-1 recall rate increased by 10.49%; in the CVUSA to CVACT task, it increased by 13.75%. At the same time, we introduce a dataset that is closer to real-world scenarios as a benchmark. We also provide various evaluation modes to explore the performance of our method in cross-regional, cross-temporal, and map data retrieval tasks. Our proposed dataset offers a new testing platform for cross-view geographic localization, fostering new research in the field."
       },
-      "confidence": 0.95,
+      "confidence": 0.97,
       "metric": "top-1 recall rate",
       "compared_to": "state-of-the-art methods"
     },
@@ -497,192 +423,66 @@
       "type": "quantitative_result",
       "qr_id": "doc_0519367ec6f719ed_qr1",
       "evidence": {
-        "section": "5. Experiments",
+        "section": "5.3 Evaluation results on existing datasets",
         "original_text": "Our method performed optimally on the classic CVUSA and CVACT datasets. On the more challenging VIGOR dataset, our method increased the top-1 recall by 4.32% in the Same-area task and by 10.49% in the Cross-area task, indicating our method's effectiveness for difficult tasks. As visualized in Fig. 5 , we observe a large number of similar images within the VIGOR dataset. This phenomenon allows other methods to perform well in terms of top-10 or top-5 recall rates but show lower performance in top-1 recall. In contrast, the newly added BEV branch in our method substantially enhances the ability to distinguish details in each image and emphasizes crossview information near the shooting location, thereby significantly improving the capability to differentiate between similar images."
       },
-      "confidence": 0.95,
-      "quantity": "top-1 recall rate improvement",
-      "value": 4.32,
+      "confidence": 0.9,
+      "quantity": "top-1 recall rate",
+      "value": null,
       "unit": "%",
-      "context": "VIGOR dataset Same-area task",
+      "context": "CVUSA dataset",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_0519367ec6f719ed_qr2",
       "evidence": {
-        "section": "5. Experiments",
+        "section": "5.3 Evaluation results on existing datasets",
         "original_text": "Our method performed optimally on the classic CVUSA and CVACT datasets. On the more challenging VIGOR dataset, our method increased the top-1 recall by 4.32% in the Same-area task and by 10.49% in the Cross-area task, indicating our method's effectiveness for difficult tasks. As visualized in Fig. 5 , we observe a large number of similar images within the VIGOR dataset. This phenomenon allows other methods to perform well in terms of top-10 or top-5 recall rates but show lower performance in top-1 recall. In contrast, the newly added BEV branch in our method substantially enhances the ability to distinguish details in each image and emphasizes crossview information near the shooting location, thereby significantly improving the capability to differentiate between similar images."
       },
-      "confidence": 0.95,
-      "quantity": "top-1 recall rate improvement",
-      "value": 10.49,
+      "confidence": 0.9,
+      "quantity": "top-1 recall rate",
+      "value": null,
       "unit": "%",
-      "context": "VIGOR dataset Cross-area task",
+      "context": "CVACT dataset",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_0519367ec6f719ed_qr3",
       "evidence": {
-        "section": "6. Conclusion",
-        "original_text": "In our work, we use the ground plane assumption and geometric relationships to convert street view panorama images to the satellite perspective, effectively reducing the domain gap between them. Our Panorama-BEV Co-Retrieval Network captures global information and enhances local detail features simultaneously. Our method achieves outstanding results on existing datasets. In the VIGOR-cross testing task, compared to the state-of-the-art methods, our top-1 recall rate increased by 10.49%; in the CVUSA to CVACT task, it increased by 13.75%. At the same time, we introduce a dataset that is closer to real-world scenarios as a benchmark. We also provide various evaluation modes to explore the performance of our method in cross-regional, cross-temporal, and map data retrieval tasks. Our proposed dataset offers a new testing platform for cross-view geographic localization, fostering new research in the field."
+        "section": "5.4 Evaluation results on the proposed CVGlobal dataset",
+        "original_text": "The experimental results from Table 6 show that the Regional-val, being a randomly divided validation set, provides extensive coverage of the training area, resulting in very ideal results. Meanwhile, the crossregional evaluation performed on Regional-test, where the city style remains unchanged, demonstrates good algorithm performance. However, in the Crosscontinent test, which faces scenes with significant style differences, performance noticeably declines. Compared to existing methods, our approach shows a clear improvement in performance, particularly standing out in challenging scenarios."
       },
-      "confidence": 0.95,
-      "quantity": "top-1 recall rate improvement",
-      "value": 13.75,
+      "confidence": 0.85,
+      "quantity": "top-1 recall rate",
+      "value": null,
       "unit": "%",
-      "context": "CVUSA to CVACT generalization task",
+      "context": "CVGlobal dataset, Regional-val validation set",
       "result_type": "main_result"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_0519367ec6f719ed_qr4",
       "evidence": {
-        "section": "5. Experiments",
+        "section": "5.4 Evaluation results on the proposed CVGlobal dataset",
         "original_text": "We conducted training and cross-regional evaluations by replacing satellite images with map slice data, with results shown in Table 8. Due to the lack of specific appearance and texture information in map data, the performance of various algorithms was not optimal. However, in the validation set, because of the high quality of map data used for both training and testing and the dense coverage of training data, the top-1 recall using map tiles exceeds 70%, proving the effectiveness of applying map data in cross-view geolocalization tasks."
       },
-      "confidence": 0.95,
+      "confidence": 0.9,
       "quantity": "top-1 recall rate",
-      "value": 70,
+      "value": null,
       "unit": "%",
-      "context": "CVGlobal validation set using map tiles",
+      "context": "CVGlobal dataset, street view to map retrieval validation set",
       "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr5",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1 .0 × 10 − 3 . The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm."
-      },
-      "confidence": 0.95,
-      "quantity": "batch size",
-      "value": 128,
-      "unit": "",
-      "context": "training setup",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr6",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1 .0 × 10 − 3 . The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm."
-      },
-      "confidence": 0.95,
-      "quantity": "training epochs",
-      "value": 40,
-      "unit": "",
-      "context": "training setup",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr7",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1 .0 × 10 − 3 . The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm."
-      },
-      "confidence": 0.95,
-      "quantity": "camera shooting height",
-      "value": 1.5,
-      "unit": "m",
-      "context": "BEV transformation setup",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr8",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1 .0 × 10 − 3 . The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm."
-      },
-      "confidence": 0.95,
-      "quantity": "BEV image size",
-      "value": 512,
-      "unit": "pixels",
-      "context": "BEV transformation setup",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr9",
-      "evidence": {
-        "section": "5. Experiments",
-        "original_text": "We employ the ConvNeXt-B [9] as the backbone network for encoding both ground and satellite images in the two retrieval stages, utilizing the AdamW optimizer with a learning rate set to 1 .0 × 10 − 3 . The temperature parameter τ is a learnable parameter [3]. Our training spans 40 epochs, with a batch size of 128. Following the setup by Yu et al. [16], we set the camera shooting height to 1.5 m, and the BEV plane range is aligned with the satellite imagery range of CVACT, with the image size l set to 512 × 512 and a pixel resolution r of 14cm."
-      },
-      "confidence": 0.95,
-      "quantity": "pixel resolution",
-      "value": 14,
-      "unit": "cm",
-      "context": "BEV transformation setup",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr10",
-      "evidence": {
-        "section": "3. Dataset",
-        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images. Additionally, street views from Brisbane for 2013, 2016, and 2019 were collected to evaluate the algorithm's cross-temporal retrieval capabilities. Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70 textm . Map data and satellite imagery share the same coverage area and resolution."
-      },
-      "confidence": 0.95,
-      "quantity": "number of street view images",
-      "value": 134233,
-      "unit": "",
-      "context": "CVGlobal dataset collection from seven cities in 2023",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr11",
-      "evidence": {
-        "section": "3. Dataset",
-        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images. Additionally, street views from Brisbane for 2013, 2016, and 2019 were collected to evaluate the algorithm's cross-temporal retrieval capabilities. Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70 textm . Map data and satellite imagery share the same coverage area and resolution."
-      },
-      "confidence": 0.95,
-      "quantity": "average distance between images",
-      "value": 50,
-      "unit": "m",
-      "context": "CVGlobal dataset collection",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr12",
-      "evidence": {
-        "section": "3. Dataset",
-        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images. Additionally, street views from Brisbane for 2013, 2016, and 2019 were collected to evaluate the algorithm's cross-temporal retrieval capabilities. Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70 textm . Map data and satellite imagery share the same coverage area and resolution."
-      },
-      "confidence": 0.95,
-      "quantity": "satellite image size",
-      "value": 512,
-      "unit": "pixels",
-      "context": "CVGlobal dataset collection",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_0519367ec6f719ed_qr13",
-      "evidence": {
-        "section": "3. Dataset",
-        "original_text": "We downloaded 134,233 street view images from seven cities globally in 2023 using Google Street View Download 360[1] , including Munich, Toronto, Singapore, S˜ao Paulo, Brisbane, Cape Town, and Johannesburg, with an average distance of 50 m between images. Additionally, street views from Brisbane for 2013, 2016, and 2019 were collected to evaluate the algorithm's cross-temporal retrieval capabilities. Using the Google Maps Static API[2] , we acquired corresponding satellite images and map data based on the latitude and longitude of the street views. The satellite images were at a size of 512 × 512, covering a spatial range of about 70m × 70 textm . Map data and satellite imagery share the same coverage area and resolution."
-      },
-      "confidence": 0.95,
-      "quantity": "satellite image spatial coverage",
-      "value": 70,
-      "unit": "m",
-      "context": "CVGlobal dataset collection",
-      "result_type": "measurement"
     },
     {
       "type": "claim",
       "claim_id": "doc_0519367ec6f719ed_ca1",
       "evidence": {
         "section": "Abstract",
-        "original_text": "In this paper, we propose a new approach for cross-view image geo-localization, i.e., the Panorama-BEV Co-Retrieval Network. Specifically, by utilizing the ground plane assumption and geometric relations, we convert street view panorama images into the BEV view, reducing the gap between street panoramas and satellite imagery. In the existing retrieval of street view panorama images and satellite images, we introduce BEV and satellite image retrieval branches for collaborative retrieval. By retaining the original street view retrieval branch, we overcome the limited perception range issue of BEV representation. Our network enables comprehensive perception of both the global layout and local details around the street view capture locations. Additionally, we introduce CVGlobal, a global cross-view dataset that is closer to real-world scenarios. This dataset adopts a more realistic setup, with street view directions not aligned with satellite images. CVGlobal also includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation of algorithm performance. Our method excels in multiple tests on common cross-view datasets such as CVUSA, CVACT, VIGOR, and our newly introduced CVGlobal, surpassing the current state-of-the-art approaches."
+        "original_text": "In this paper, we propose a new approach for cross-view image geo-localization, i.e., the Panorama-BEV Co-Retrieval Network. Specifically, by utilizing the ground plane assumption and geometric relations, we convert street view panorama images into the BEV view, reducing the gap between street panoramas and satellite imagery. In the existing retrieval of street view panorama images and satellite images, we introduce BEV and satellite image retrieval branches for collaborative retrieval. By retaining the original street view retrieval branch, we overcome the limited perception range issue of BEV representation. Our network enables comprehensive perception of both the global layout and local details around the street view capture locations. Additionally, we introduce CVGlobal, a global cross-view dataset that is closer to real-world scenarios. This dataset adopts a more realistic setup, with street view directions not aligned with satellite images. CVGlobal also includes cross-regional, cross-temporal, and street view to map retrieval tests, enabling a comprehensive evaluation of algorithm performance."
       },
-      "confidence": 0.96
+      "confidence": 0.95
     },
     {
       "type": "conclusion",
@@ -691,23 +491,23 @@
         "section": "Conclusion",
         "original_text": "In our work, we use the ground plane assumption and geometric relationships to convert street view panorama images to the satellite perspective, effectively reducing the domain gap between them. Our Panorama-BEV Co-Retrieval Network captures global information and enhances local detail features simultaneously. Our method achieves outstanding results on existing datasets. In the VIGOR-cross testing task, compared to the state-of-the-art methods, our top-1 recall rate increased by 10.49%; in the CVUSA to CVACT task, it increased by 13.75%. At the same time, we introduce a dataset that is closer to real-world scenarios as a benchmark. We also provide various evaluation modes to explore the performance of our method in cross-regional, cross-temporal, and map data retrieval tasks. Our proposed dataset offers a new testing platform for cross-view geographic localization, fostering new research in the field."
       },
-      "confidence": 0.96
+      "confidence": 0.95
     },
     {
       "type": "limitation",
       "limitation_id": "doc_0519367ec6f719ed_lm1",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "On the other hand, since our BEV transformation does not rely on depth and 3D structure estimation, images transformed via BEV can exhibit limited visibility and severe distortion in dense urban scenes where they are obstructed by tall structures like buildings. To tackle this challenge, we designed the Panorama-BEV Co-Retrieval Network, which collaboratively leverages street view panoramas and BEV images for satellite image retrieval. We retain the original street view panorama to satellite retrieval branch to expand the perception range and capture more global layout features, while the BEV to satellite retrieval branch focuses on the details near the street view locations."
+        "section": "4.2 Explicit panoramic BEV transformation",
+        "original_text": "Through explicit panoramic BEV transformation, we project street view images into a bird’s-eye view without needing depth estimation or camera parameters. Although transformed images lose information on tall objects, like building facades, this information is unique to the ground perspective and not visible from the satellite view. Explicit panoramic BEV transformation effectively minimizes the correspondence gap between the two domains, highlighting information on objects observable in both satellite and street views."
       },
-      "confidence": 0.92
+      "confidence": 0.9
     },
     {
       "type": "limitation",
       "limitation_id": "doc_0519367ec6f719ed_lm2",
       "evidence": {
-        "section": "Dataset",
-        "original_text": "However, map data lacks the texture information present in satellite views, retaining only partial shape information. Particularly in underdeveloped areas, where statistical data is sparse and updates are slow, map data contains very little useful information, posing challenges to the task."
+        "section": "3.2 Dataset comparison",
+        "original_text": "Compared to the high capture and storage costs of high-resolution satellite images, map data is easier to acquire and store. However, map data lacks the texture information present in satellite views, retaining only partial shape information. Particularly in underdeveloped areas, where statistical data is sparse and updates are slow, map data contains very little useful information, posing challenges to the task."
       },
       "confidence": 0.9
     },
@@ -715,10 +515,19 @@
       "type": "future_work",
       "future_work_id": "doc_0519367ec6f719ed_fw1",
       "evidence": {
-        "section": "Conclusion",
-        "original_text": "At the same time, we introduce a dataset that is closer to real-world scenarios as a benchmark. We also provide various evaluation modes to explore the performance of our method in cross-regional, cross-temporal, and map data retrieval tasks. Our proposed dataset offers a new testing platform for cross-view geographic localization, fostering new research in the field."
+        "section": "5.4 Evaluation results on the proposed CVGlobal dataset",
+        "original_text": "We also observe that the closer the data year is to 2023, the more ideal the evaluation results. Meanwhile, mixing data from different years introduces more disturbances to the results, but this scenario is closer to real-world application settings and represents a challenge that needs to be overcome."
       },
-      "confidence": 0.93
+      "confidence": 0.85
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_0519367ec6f719ed_fw2",
+      "evidence": {
+        "section": "5.4 Evaluation results on the proposed CVGlobal dataset",
+        "original_text": "Due to the lack of specific appearance and texture information in map data, the performance of various algorithms was not optimal. However, in the validation set, because of the high quality of map data used for both training and testing and the dense coverage of training data, the top-1 recall using map tiles exceeds 70%, proving the effectiveness of applying map data in cross-view geolocalization tasks."
+      },
+      "confidence": 0.85
     }
   ]
 }

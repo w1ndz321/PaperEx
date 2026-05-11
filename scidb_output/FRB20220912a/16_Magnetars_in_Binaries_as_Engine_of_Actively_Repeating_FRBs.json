@@ -12,17 +12,23 @@
       "level2": null,
       "level3": null
     },
-    "secondary_disciplines": null,
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
     "keywords": [
       "Multispectral satellite images",
       "neural compression",
       "implicit neural representation",
-      "satellite data compression",
+      "onboard satellite system",
       "Fourier modulation"
     ],
     "extraction_info": {
       "extraction_model": "deepseek-v3.2",
-      "extraction_timestamp": "2026-05-10T15:34:30.839287+00:00",
+      "extraction_timestamp": "2026-05-11T02:05:27.498080+00:00",
       "extraction_method": "grouped_serial_5groups",
       "retry_groups": null,
       "failed_groups": null
@@ -37,7 +43,7 @@
         "original_text": "Multispectral satellite images play a vital role in agriculture, fisheries, and environmental monitoring. However, their high dimensionality, large data volumes, and diverse spatial resolutions across multiple channels pose significant challenges for data compression and analysis. This paper presents ImpliSat, a unified framework specifically designed to address these challenges through efficient compression and reconstruction of multispectral satellite data. ImpliSat leverages Implicit Neural Representations (INR) to model satellite images as continuous functions over coordinate space, capturing fine spatial details across varying spatial resolutions. Furthermore, we introduce a Fourier modulation algorithm that dynamically adjusts to the spectral and spatial characteristics of each band, ensuring optimal compression while preserving critical image details."
       },
       "confidence": 0.98,
-      "term": "multispectral satellite imagery",
+      "term": "multispectral satellite images",
       "normalized": "多光谱卫星图像",
       "std_label": "MSI"
     },
@@ -45,49 +51,73 @@
       "type": "concept",
       "concept_id": "doc_5ebce7ee5f2d9fbc_c2",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "We choose to use Implicit Neural Representation (INR) to develop the compression network since it can render continuous spatial data at arbitrary resolutions by representing the data as coordinate-based functions. This property enables efficient compression of high-resolution imagery, making it particularly effective for reconstructing data at varying scales. However, existing INR methods have primarily focused on RGB images [8–10], 3D modeling [11, 12] and signal representation [13] with limited exploration of multispectral satellite data. Unlike RGB or 3D data, MSI is characterized by varying wavelength bands and differing spatial resolutions across channels, presenting unique challenges."
+        "section": "Abstract",
+        "original_text": "This paper presents ImpliSat, a unified framework specifically designed to address these challenges through efficient compression and reconstruction of multispectral satellite data. ImpliSat leverages Implicit Neural Representations (INR) to model satellite images as continuous functions over coordinate space, capturing fine spatial details across varying spatial resolutions. Furthermore, we introduce a Fourier modulation algorithm that dynamically adjusts to the spectral and spatial characteristics of each band, ensuring optimal compression while preserving critical image details."
       },
       "confidence": 0.97,
-      "term": "Implicit Neural Representation",
-      "normalized": "隐式神经表示",
+      "term": "Implicit Neural Representations",
+      "normalized": "隐式神经表征",
       "std_label": "INR"
     },
     {
       "type": "concept",
       "concept_id": "doc_5ebce7ee5f2d9fbc_c3",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "MSI has multiple bands, and each band can have a different ground sample distance (GSD). Consequently, the frequency spectrum varies significantly as shown in Fig. 1. These differences in spatial resolution and spectral characteristics present challenges for efficient data representation and compression."
+        "section": "Abstract",
+        "original_text": "Furthermore, we introduce a Fourier modulation algorithm that dynamically adjusts to the spectral and spatial characteristics of each band, ensuring optimal compression while preserving critical image details."
       },
       "confidence": 0.96,
-      "term": "ground sample distance",
-      "normalized": "地面采样距离",
-      "std_label": "GSD"
+      "term": "Fourier modulation",
+      "normalized": "傅里叶调制",
+      "std_label": null
     },
     {
       "type": "concept",
       "concept_id": "doc_5ebce7ee5f2d9fbc_c4",
       "evidence": {
         "section": "Introduction",
-        "original_text": "Existing INR approaches typically apply fixed Fourier features uniformly across all bands to first map the coordinates into higher-dimensional space. However, the frequency spectrum difference in channels with 10m, 20m, and 60m GSD suggests that it may be beneficial to adapt different Fourier features depending on the GSD. This approach enables a more accurate and efficient representation of the data. In this paper, we introduce ImpliSat, a novel INR-based compression framework specifically designed for MSI. ImpliSat models MSI data as coordinate-based functions, compressing and reconstructing the data while accounting for the differences in spatial resolution and channel information. Additionally, our ImpliSat framework introduces a hypernetwork-based Fourier modulation technique that dynamically generates appropriate Fourier bases tailored to each spectral band resolution. By conditioning the modulation on the unique resolution and channel information of each band, our approach ensures that each spectral channel is represented optimally, enhancing the efficiency of compression and the accuracy of reconstruction."
+        "original_text": "MSI has multiple bands, and each band can have a different ground sample distance (GSD). Consequently, the frequency spectrum varies significantly as shown in Fig. 1. These differences in spatial resolution and spectral characteristics present challenges for efficient data representation and compression. We choose to use Implicit Neural Representation (INR) to develop the compression network since it can render continuous spatial data at arbitrary resolutions by representing the data as coordinate-based functions. This property enables efficient compression of high-resolution imagery, making it particularly effective for reconstructing data at varying scales. However, existing INR methods have primarily focused on RGB images [8–10], 3D modeling [11, 12] and signal representation [13] with limited exploration of multispectral satellite data. Unlike RGB or 3D data, MSI is characterized by varying wavelength bands and differing spatial resolutions across channels, presenting unique challenges."
       },
       "confidence": 0.95,
-      "term": "Fourier modulation",
-      "normalized": "傅里叶调制",
-      "std_label": ""
+      "term": "ground sample distance",
+      "normalized": "地面采样距离",
+      "std_label": "GSD"
     },
     {
       "type": "concept",
       "concept_id": "doc_5ebce7ee5f2d9fbc_c5",
       "evidence": {
         "section": "Introduction",
-        "original_text": "In this paper, we introduce Implicit Neural Representations for Multispectral Satellite Images (ImpliSat), a novel INR-based compression framework specifically designed for MSI. ImpliSat models MSI data as coordinate-based functions, compressing and reconstructing the data while accounting for the differences in spatial resolution and channel information. Additionally, our ImpliSat framework introduces a hypernetwork-based Fourier modulation technique that dynamically generates appropriate Fourier bases tailored to each spectral band resolution. By conditioning the modulation on the unique resolution and channel information of each band, our approach ensures that each spectral channel is represented optimally, enhancing the efficiency of compression and the accuracy of reconstruction."
+        "original_text": "In this paper, we introduce **Impli** cit Neural Representations for Multispectral **Sat** ellite Images ( **ImpliSat** ), a novel INRbased compression framework specifically designed for MSI. ImpliSat models MSI data as coordinate-based functions, compressing and reconstructing the data while accounting for the differences in spatial resolution and channel information. Additionally, our ImpliSat framework introduces a hypernetworkbased Fourier modulation technique that dynamically generates appropriate Fourier bases tailored to each spectral band resolution. By conditioning the modulation on the unique resolution and channel information of each band, our approach ensures that each spectral channel is represented optimally, enhancing the efficiency of compression and the accuracy of reconstruction."
       },
-      "confidence": 0.98,
+      "confidence": 0.99,
       "term": "ImpliSat",
       "normalized": "ImpliSat框架",
-      "std_label": ""
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_5ebce7ee5f2d9fbc_c6",
+      "evidence": {
+        "section": "Proposed Methods",
+        "original_text": "ImpliSat consists of two main components: i) Hypernetwork that generates Fourier modulations based on resolution and channel information, and ii) SIREN-based backbone INR model [8] that uses these modulation vectors to represent each band of the multispectral image. The hypernetwork parameterized by Π in ImpliSat generates Fourier modulations, following the approach introduced in [20], to adapt the INR model to varying resolutions η and channels ψ. Specifically, the hypernetwork takes the following inputs, η and ψ: - **Resolution information** (η): Represents the spatial resolution (GSD) of the input MSI, which can take values η ∈{10,20,60}. - **Channel information** (ψ): Represents one of the 13 different spectral channels in the MSI data, encoded as a one-hot vector."
+      },
+      "confidence": 0.94,
+      "term": "hypernetwork",
+      "normalized": "超网络",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_5ebce7ee5f2d9fbc_c7",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI[2], where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD."
+      },
+      "confidence": 0.93,
+      "term": "PSNR",
+      "normalized": "峰值信噪比",
+      "std_label": null
     },
     {
       "type": "relation",
@@ -96,7 +126,7 @@
         "section": "Abstract",
         "original_text": "This paper presents ImpliSat, a unified framework specifically designed to address these challenges through efficient compression and reconstruction of multispectral satellite data. ImpliSat leverages Implicit Neural Representations (INR) to model satellite images as continuous functions over coordinate space, capturing fine spatial details across varying spatial resolutions. Furthermore, we introduce a Fourier modulation algorithm that dynamically adjusts to the spectral and spatial characteristics of each band, ensuring optimal compression while preserving critical image details."
       },
-      "confidence": 0.96,
+      "confidence": 0.95,
       "head": "doc_5ebce7ee5f2d9fbc_c5",
       "relation_type": "uses",
       "relation_surface": "leverages",
@@ -119,40 +149,53 @@
       "type": "relation",
       "relation_id": "doc_5ebce7ee5f2d9fbc_r3",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "Existing INR approaches typically apply fixed Fourier features uniformly across all bands to first map the coordinates into higher-dimensional space. However, the frequency spectrum difference in channels with 10m, 20m, and 60m GSD suggests that it may be beneficial to adapt different Fourier features depending on the GSD. This approach enables a more accurate and efficient representation of the data. In this paper, we introduce ImpliSat, a novel INR-based compression framework specifically designed for MSI. ImpliSat models MSI data as coordinate-based functions, compressing and reconstructing the data while accounting for the differences in spatial resolution and channel information. Additionally, our ImpliSat framework introduces a hypernetwork-based Fourier modulation technique that dynamically generates appropriate Fourier bases tailored to each spectral band resolution. By conditioning the modulation on the unique resolution and channel information of each band, our approach ensures that each spectral channel is represented optimally, enhancing the efficiency of compression and the accuracy of reconstruction."
+        "section": "Abstract",
+        "original_text": "Furthermore, we introduce a Fourier modulation algorithm that dynamically adjusts to the spectral and spatial characteristics of each band, ensuring optimal compression while preserving critical image details."
       },
-      "confidence": 0.93,
-      "head": "doc_5ebce7ee5f2d9fbc_c4",
+      "confidence": 0.92,
+      "head": "doc_5ebce7ee5f2d9fbc_c3",
       "relation_type": "enhances",
       "relation_surface": "dynamically adjusts to",
-      "tail": "doc_5ebce7ee5f2d9fbc_c3"
+      "tail": "doc_5ebce7ee5f2d9fbc_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_5ebce7ee5f2d9fbc_r4",
       "evidence": {
-        "section": "Introduction",
-        "original_text": "We choose to use Implicit Neural Representation (INR) to develop the compression network since it can render continuous spatial data at arbitrary resolutions by representing the data as coordinate-based functions. This property enables efficient compression of high-resolution imagery, making it particularly effective for reconstructing data at varying scales. However, existing INR methods have primarily focused on RGB images [8–10], 3D modeling [11, 12] and signal representation [13] with limited exploration of multispectral satellite data. Unlike RGB or 3D data, MSI is characterized by varying wavelength bands and differing spatial resolutions across channels, presenting unique challenges."
+        "section": "Preliminary",
+        "original_text": "Unlike standard RGB images, MSI encompasses multiple spectral bands, often exceeding ten. Each spectral band has different pixel value range and covers a specific range of wavelengths with different GSD depending on the sensor (cf. Fig. 1). GSD denotes the actual ground distance between adjacent pixels (10m GSD means 1 pixel in the image represents 10m in the actual distance). The bigger the GSD, the lower the spatial resolution, which means there will be fewer details visible in the image."
       },
-      "confidence": 0.92,
-      "head": "doc_5ebce7ee5f2d9fbc_c2",
-      "relation_type": "enhances",
-      "relation_surface": "enables efficient compression",
+      "confidence": 0.96,
+      "head": "doc_5ebce7ee5f2d9fbc_c4",
+      "relation_type": "measures",
+      "relation_surface": "denotes",
       "tail": "doc_5ebce7ee5f2d9fbc_c1"
     },
     {
       "type": "relation",
       "relation_id": "doc_5ebce7ee5f2d9fbc_r5",
       "evidence": {
-        "section": "Preliminary",
-        "original_text": "Unlike standard RGB images, MSI encompasses multiple spectral bands, often exceeding ten. Each spectral band has different pixel value range and covers a specific range of wavelengths with different GSD depending on the sensor (cf. Fig. 1). GSD denotes the actual ground distance between adjacent pixels (10m GSD means 1 pixel in the image represents 10m in the actual distance). The bigger the GSD, the lower the spatial resolution, which means there will be fewer details visible in the image."
+        "section": "Proposed Methods",
+        "original_text": "ImpliSat consists of two main components: i) Hypernetwork that generates Fourier modulations based on resolution and channel information, and ii) SIREN-based backbone INR model [8] that uses these modulation vectors to represent each band of the multispectral image. The hypernetwork parameterized by Π in ImpliSat generates Fourier modulations, following the approach introduced in [20], to adapt the INR model to varying resolutions η and channels ψ. Specifically, the hypernetwork takes the following inputs, η and ψ: - **Resolution information** (η): Represents the spatial resolution (GSD) of the input MSI, which can take values η ∈{10,20,60}. - **Channel information** (ψ): Represents one of the 13 different spectral channels in the MSI data, encoded as a one-hot vector."
       },
-      "confidence": 0.95,
+      "confidence": 0.97,
+      "head": "doc_5ebce7ee5f2d9fbc_c6",
+      "relation_type": "generates",
+      "relation_surface": "generates Fourier modulations",
+      "tail": "doc_5ebce7ee5f2d9fbc_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_5ebce7ee5f2d9fbc_r6",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI[2], where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD."
+      },
+      "confidence": 0.93,
       "head": "doc_5ebce7ee5f2d9fbc_c3",
-      "relation_type": "measures",
-      "relation_surface": "denotes",
-      "tail": "doc_5ebce7ee5f2d9fbc_c1"
+      "relation_type": "enhances",
+      "relation_surface": "outperforms",
+      "tail": "doc_5ebce7ee5f2d9fbc_c7"
     },
     {
       "type": "dataset",
@@ -162,7 +205,7 @@
         "original_text": "We compile a dataset of five multispectral Sentinel-2 [23] images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty."
       },
       "confidence": 0.95,
-      "name": "Multispectral Sentinel-2 benchmark dataset",
+      "name": "Multispectral Sentinel-2 Images Benchmark Dataset",
       "modality": "image",
       "domain": "remote sensing"
     },
@@ -170,11 +213,11 @@
       "type": "dataset",
       "dataset_id": "doc_5ebce7ee5f2d9fbc_d2",
       "evidence": {
-        "section": "Abstract and Figure caption",
-        "original_text": "Fig. 1. Visualization of Sentinel-2 L1C MSI (London) in spatial and frequency domains. The images include bands at 10m GSD (B2, B8), 20m GSD (B5, B8A), and 60m GSD (B1, B10), illustrating the varying levels of detail captured at different resolutions."
+        "section": "Fig. 1 caption",
+        "original_text": "Visualization of Sentinel-2 L1C MSI (London) in spatial and frequency domains. The images include bands at 10m GSD (B2, B8), 20m GSD (B5, B8A), and 60m GSD (B1, B10), illustrating the varying levels of detail captured at different resolutions."
       },
       "confidence": 0.9,
-      "name": "Sentinel-2 L1C MSI visualization dataset",
+      "name": "Sentinel-2 L1C MSI Visualization Dataset",
       "modality": "image",
       "domain": "remote sensing"
     },
@@ -187,86 +230,119 @@
       },
       "confidence": 0.95,
       "spec_type": "format_rule",
-      "description": "Multispectral satellite images with varying ground sample distances (GSD) across bands"
+      "description": "Multispectral satellite imagery (MSI) with multiple spectral bands, varying ground sample distances (GSD), and different pixel value ranges per band."
     },
     {
       "type": "data_specification",
       "ds_id": "doc_5ebce7ee5f2d9fbc_ds2",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty."
+        "original_text": "We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 [21] in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10× smaller than the original image). We use the Adam optimizer [22] and early stopping."
       },
-      "confidence": 0.9,
-      "spec_type": "metadata_standard",
-      "description": "Geographic coordinates (longitude and latitude) for multispectral satellite image locations"
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "Experimental setup using PyTorch on NVIDIA GPU with specific network architecture parameters."
     },
     {
       "type": "data_specification",
       "ds_id": "doc_5ebce7ee5f2d9fbc_ds3",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 [21] in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10× smaller than the original image). We use the Adam optimizer [22] and early stopping."
+        "original_text": "We compile a dataset of five multispectral Sentinel-2 [23] images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty."
       },
       "confidence": 0.95,
-      "spec_type": "env_requirement",
-      "description": "PyTorch implementation with NVIDIA GPU for training neural compression models"
-    },
-    {
-      "type": "data_specification",
-      "ds_id": "doc_5ebce7ee5f2d9fbc_ds4",
-      "evidence": {
-        "section": "IV. EXPERIMENTS",
-        "original_text": "All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models."
-      },
-      "confidence": 0.9,
-      "spec_type": "quality_standard",
-      "description": "PSNR and MSE metrics for evaluating reconstructed image accuracy against ground truth"
+      "spec_type": "metadata_standard",
+      "description": "Benchmark dataset includes geographical coordinates (longitude and latitude) for each multispectral image location."
     },
     {
       "type": "method",
       "method_id": "doc_5ebce7ee5f2d9fbc_m1",
       "evidence": {
         "section": "III. PROPOSED METHODS",
-        "original_text": "ImpliSat is built based on modulated INR frameworks. Our key contribution is Fourier modulation, a novel modulation technique that leverages spectral information and low-rank adaptation [17–19] to efficiently handle the multi-band and multi-resolution nature of MSI data. The overall architecture is shown in Fig. 2. ImpliSat consists of two main components: i) Hypernetwork that generates Fourier modulations based on resolution and channel information, and ii) SIREN-based backbone INR model [8] that uses these modulation vectors to represent each band of the multispectral image.\n\nThe main INR network of ImpliSat is a multilayer perceptron (MLP) with L layers parameterized by Θ = {θl}[L] l=1[,] which takes spatial coordinates X ∈ R[2] as input and predicts the corresponding pixel value Vgt (X , η, ψ). Each layer of the INR backbone consists of fully connected layers, where the l-th layer is parameterized by θl = {W[l], b[l]}, with W[l] ∈ R[n×n] as the weight matrix and b[l] ∈ R[n] as the bias term. The hidden state at (l+1)-th layer is computed using sinusoidal activations [8] as h[l]+1 = sin(W[l] · h[l] + b[l]), where h[l] is the hidden state at l-th layer. This sinusoidal activation allows the model to learn high-frequency information, which is crucial for representing complex features in MSI data. The whole network is trained end-to-end to minimize the L2 distance between the ground truth pixel values of the MSI Vgt and the predicted reconstruction values Vpred.\n\nThe hypernetwork parameterized by Π in ImpliSat generates Fourier modulations, following the approach introduced in [20], to adapt the INR model to varying resolutions η and channels ψ. Specifically, the hypernetwork takes the following inputs, η and ψ[1]: - Resolution information (η): Represents the spatial resolution (GSD) of the input MSI, which can take values η ∈{10, 20, 60}. - Channel information (ψ): Represents one of the 13 different spectral channels in the MSI data, encoded as a one-hot vector.\nFor each hidden layer of the backbone INR Θ, the hypernetwork first generates Fourier bases as follows: where Ω[l] ∈ R[m×m] and φ[l] ∈ R[m×m] are the Fourier frequency matrix and phase matrix for the l-th layer, respectively. Then, we sample an m-dimensional vector from U(−2π, 2π) and stack it m times to form matrix Z ∈ R[m×m]. Finally, the Fourier modulations can be calculated using a cosine function as follows: where ⊙ denotes element-wise multiplication. As shown in Equation (2), this approach dynamically adapts to different resolutions and bands, ensuring effective representation of multispectral satellite images.\nWe apply the Fourier modulations to the weights of each hidden layer of the backbone INR using the following formula: where W[l] is decomposed into matrix multiplications of Wα[l]∈ R[n×m], fmod[l]∈ R[m×m], and W[l]β∈ R[m×n]. This serves two purposes: 1) It allows us to modulate the backbone INR using the Fourier modulations produced by the hypernetwork. This Fourier modulation technique allows each layer of the backbone INR model to represent the data using Fourier bases adapted to the specific resolution and channel information of the target MSI. 2) It significantly reduces the computational cost by applying low-rank adaptation [17]. We specifically choose m << n, therefore, the only trainable parts of the backbone INR are only low-rank matrices Wα[l] and W[l]β."
+        "original_text": "ImpliSat is built based on modulated INR frameworks. Our key contribution is Fourier modulation, a novel modulation technique that leverages spectral information and low-rank adaptation [17–19] to efficiently handle the multi-band and multi-resolution nature of MSI data. The overall architecture is shown in Fig. 2. ImpliSat consists of two main components: i) Hypernetwork that generates Fourier modulations based on resolution and channel information, and ii) SIREN-based backbone INR model [8] that uses these modulation vectors to represent each band of the multispectral image."
       },
       "confidence": 0.95,
       "name": "ImpliSat",
-      "method_type": "model"
+      "method_type": "framework"
     },
     {
       "type": "method",
       "method_id": "doc_5ebce7ee5f2d9fbc_m2",
       "evidence": {
         "section": "III. PROPOSED METHODS",
-        "original_text": "Our key contribution is Fourier modulation, a novel modulation technique that leverages spectral information and low-rank adaptation [17–19] to efficiently handle the multi-band and multi-resolution nature of MSI data.\nThe hypernetwork parameterized by Π in ImpliSat generates Fourier modulations, following the approach introduced in [20], to adapt the INR model to varying resolutions η and channels ψ. Specifically, the hypernetwork takes the following inputs, η and ψ[1]: - Resolution information (η): Represents the spatial resolution (GSD) of the input MSI, which can take values η ∈{10, 20, 60}. - Channel information (ψ): Represents one of the 13 different spectral channels in the MSI data, encoded as a one-hot vector.\nFor each hidden layer of the backbone INR Θ, the hypernetwork first generates Fourier bases as follows: where Ω[l] ∈ R[m×m] and φ[l] ∈ R[m×m] are the Fourier frequency matrix and phase matrix for the l-th layer, respectively. Then, we sample an m-dimensional vector from U(−2π, 2π) and stack it m times to form matrix Z ∈ R[m×m]. Finally, the Fourier modulations can be calculated using a cosine function as follows: where ⊙ denotes element-wise multiplication. As shown in Equation (2), this approach dynamically adapts to different resolutions and bands, ensuring effective representation of multispectral satellite images.\nWe apply the Fourier modulations to the weights of each hidden layer of the backbone INR using the following formula: where W[l] is decomposed into matrix multiplications of Wα[l]∈ R[n×m], fmod[l]∈ R[m×m], and W[l]β∈ R[m×n]. This serves two purposes: 1) It allows us to modulate the backbone INR using the Fourier modulations produced by the hypernetwork. This Fourier modulation technique allows each layer of the backbone INR model to represent the data using Fourier bases adapted to the specific resolution and channel information of the target MSI. 2) It significantly reduces the computational cost by applying low-rank adaptation [17]. We specifically choose m << n, therefore, the only trainable parts of the backbone INR are only low-rank matrices Wα[l] and W[l]β."
+        "original_text": "The main INR network of ImpliSat is a multilayer perceptron (MLP) with L layers parameterized by Θ = {θl}[L] l =1[,] which takes spatial coordinates X ∈ R[2] as input and predicts the corresponding pixel value Vgt ( X , η, ψ ). Each layer of the INR backbone consists of fully connected layers, where the l - th layer is parameterized by θl = {W[l] , b[l] } , with W[l] ∈ R [n×n] as the weight matrix and b[l] ∈ R [n] as the bias term. The hidden state at ( l + 1)-th layer is computed using sinusoidal activations [8] as h[l]+1 = sin( W[l] · h[l] + b[l] ), where h[l] is the hidden state at l -th layer. This sinusoidal activation allows the model to learn high-frequency information, which is crucial for representing complex features in MSI data. The whole network is trained end-to-end to minimize the L2 distance between the ground truth pixel values of the MSI Vgt and the predicted reconstruction values Vpred ."
       },
       "confidence": 0.95,
-      "name": "Fourier modulation",
+      "name": "INR Networks with Sinusoidal Activation",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_5ebce7ee5f2d9fbc_m3",
+      "evidence": {
+        "section": "III. PROPOSED METHODS",
+        "original_text": "The hypernetwork parameterized by Π in ImpliSat generates Fourier modulations, following the approach introduced in [20], to adapt the INR model to varying resolutions η and channels ψ . Specifically, the hypernetwork takes the following inputs, η and ψ[1] : - Resolution information ( η ): Represents the spatial resolution (GSD) of the input MSI, which can take values η ∈{ 10 , 20 , 60 } . - Channel information ( ψ ): Represents one of the 13 different spectral channels in the MSI data, encoded as a one-hot vector. For each hidden layer of the backbone INR Θ, the hypernetwork first generates Fourier bases as follows: where Ω [l] ∈ R [m×m] and φ[l] ∈ R [m×m] are the Fourier frequency matrix and phase matrix for the l -th layer, respectively. Then, we sample an m -dimensional vector from U ( − 2π, 2π ) and stack it m times to form matrix Z ∈ R [m×m] . Finally, the Fourier modulations can be calculated using a cosine function as follows: where ⊙ denotes element-wise multiplication. As shown in Equation (2), this approach dynamically adapts to different resolutions and bands, ensuring effective representation of multispectral satellite images."
+      },
+      "confidence": 0.95,
+      "name": "Hypernetworks and Fourier Modulations",
       "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_5ebce7ee5f2d9fbc_m4",
+      "evidence": {
+        "section": "III. PROPOSED METHODS",
+        "original_text": "We apply the Fourier modulations to the weights of each hidden layer of the backbone INR using the following formula: where W[l] is decomposed into matrix multiplications of Wα[l]∈ R [n×m] , fmod[l]∈[R] [m×m][,and] [W][ l] β[∈][R] [m×n][.][This][serves][two] purposes: 1) It allows us to modulate the backbone INR using the Fourier modulations produced by the hypernetwork. This Fourier modulation technique allows each layer of the backbone INR model to represent the data using Fourier bases adapted to the specific resolution and channel information of the target MSI. 2) It significantly reduces the computational cost by applying low-rank adaptation [17]. We specifically choose m << n , therefore, the only trainable parts of the backbone INR are only low-rank matrices Wα[l][and] [W][ l] β[.]"
+      },
+      "confidence": 0.95,
+      "name": "INR Networks with Fourier-modulated Weights",
+      "method_type": "model"
     },
     {
       "type": "experiment",
       "experiment_id": "doc_5ebce7ee5f2d9fbc_x1",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "In this section, we demonstrate the performance of the ImpliSat framework using diverse MSI data for compression and reconstruction tasks. Additionally, we explore the results of Fourier modulation across various resolutions.\n_a) Experimental Setups:_ We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 [21] in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10× smaller than the original image). We use the Adam optimizer [22] and early stopping.\n_b) Datasets:_ We compile a dataset of five multispectral Sentinel-2 [23] images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty.\nWe compare our Fourier modulation approach with existing modulation techniques, specifically shift modulation used in [16, 24, 25] and scale modulation proposed in [16]. Shift modulation involves adding a learnable bias term µ to the output of each MLP layer (hl+1 = sin(Wl · hl + bl + µl)) Meanwhile, scale modulation extends the shift modulation by scaling the output of each layer using modulation vector κ (hl+1 = sin(κl ⊙ (Wl · hl + bl))).\nAll approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI[2], where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD. In Fig. 4, we show the PSNR comparison between Fourier modulation and the baseline modulations throughout the training process on the Cairo dataset. Fourier modulation has much better convergence rate, as evidenced by the rapid increase in PSNR, and continues to maintain superior performance as training progresses.\nFig. 5 presents histograms depicting the density distribution of the frequency components (Ω⊙Z) for 10m, 20m, and 60m GSD. The distribution of Fourier modulation frequencies varies notably with different resolutions. For 10m GSD (cf. Fig. 5(a)), the values are more concentrated near zero, indicating that precise modulation has been applied to effectively represent high-resolution bands. In contrast, the 60m GSD (cf. Fig. 5(c)) distribution is broader, suggesting that a more variable modulation strategy has been adopted to accommodate the characteristics of low-resolution bands. These results suggest that the hypernetwork successfully adjusts the frequency content of the Fourier modulations according to the resolution-specific needs of the data. This adaptive capability highlights the flexibility of the Fourier modulation approach, enabling ImpliSat to address the diverse challenges of multispectral satellite imagery."
+        "original_text": "In this section, we demonstrate the performance of the ImpliSat framework using diverse MSI data for compression and reconstruction tasks. Additionally, we explore the results of Fourier modulation across various resolutions. a) Experimental Setups: We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 [21] in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10 × smaller than the original image). We use the Adam optimizer [22] and early stopping. b) Datasets: We compile a dataset of five multispectral Sentinel-2 [23] images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty."
       },
       "confidence": 0.95,
-      "task": "compression and reconstruction of multispectral satellite images",
-      "setup": "ImpliSat framework implemented in PyTorch on NVIDIA RTX 3090 GPU, benchmark dataset of five Sentinel-2 images"
+      "task": "compression and reconstruction performance evaluation",
+      "setup": "ImpliSat framework and baselines implemented using PyTorch 2.3.1 on a single NVIDIA RTX 3090 GPU"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_5ebce7ee5f2d9fbc_x2",
+      "evidence": {
+        "section": "IV. EXPERIMENTS",
+        "original_text": "We compare our Fourier modulation approach with existing modulation techniques, specifically shift modulation used in [16, 24, 25] and scale modulation proposed in [16]. Shift modulation involves adding a learnable bias term µ to the output of each MLP layer ( hl +1 = sin( Wl · hl + bl + µl )) Meanwhile, scale modulation extends the shift modulation by scaling the output of each layer using modulation vector κ ( hl +1 = sin( κl ⊙ ( Wl · hl + bl ))). All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI[2] , where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD. In Fig. 4, we show the PSNR comparison between Fourier modulation and the baseline modulations throughout the training process on the Cairo dataset. Fourier modulation has much better convergence rate, as evidenced by the rapid increase in PSNR, and continues to maintain superior performance as training progresses."
+      },
+      "confidence": 0.95,
+      "task": "comparison with existing modulated INRs",
+      "setup": "PSNR and MSE evaluation against shift modulation and scale modulation baselines"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_5ebce7ee5f2d9fbc_x3",
+      "evidence": {
+        "section": "IV. EXPERIMENTS",
+        "original_text": "Fig. 5 presents histograms depicting the density distribution of the frequency components (Ω ⊙Z ) for 10m, 20m, and 60m GSD. The distribution of Fourier modulation frequencies varies notably with different resolutions. For 10m GSD (cf. Fig. 5(a)), the values are more concentrated near zero, indicating that precise modulation has been applied to effectively represent high-resolution bands. In contrast, the 60m GSD (cf. Fig. 5(c)) distribution is broader, suggesting that a more variable modulation strategy has been adopted to accommodate the characteristics of low-resolution bands. These results suggest that the hypernetwork successfully adjusts the frequency content of the Fourier modulations according to the resolutionspecific needs of the data. This adaptive capability highlights the flexibility of the Fourier modulation approach, enabling ImpliSat to address the diverse challenges of multispectral satellite imagery."
+      },
+      "confidence": 0.95,
+      "task": "analysis on Fourier modulations",
+      "setup": "histogram analysis of frequency component density distribution for different spatial resolutions"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_5ebce7ee5f2d9fbc_qr1",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI, where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD."
+        "original_text": "We compile a dataset of five multispectral Sentinel-2 images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10× smaller than the original image). We use the Adam optimizer and early stopping. We compare our Fourier modulation approach with existing modulation techniques, specifically shift modulation used in [16, 24, 25] and scale modulation proposed in [16]. All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models."
       },
       "confidence": 0.95,
       "quantity": "PSNR",
       "value": null,
       "unit": null,
-      "context": "Comparison of Fourier modulation method against baseline shift and scale modulation methods on multispectral satellite images (London, Seoul, Merapi, Hawaii, Cairo)",
+      "context": "ImpliSat framework compression and reconstruction of multispectral Sentinel-2 images across five locations (London, Seoul, Merapi, Hawaii, Cairo)",
       "result_type": "main_result"
     },
     {
@@ -274,7 +350,7 @@
       "perf_id": "doc_5ebce7ee5f2d9fbc_p1",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI, where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD."
+        "original_text": "We compare our Fourier modulation approach with existing modulation techniques, specifically shift modulation used in [16, 24, 25] and scale modulation proposed in [16]. Shift modulation involves adding a learnable bias term µ to the output of each MLP layer (hl+1 = sin(Wl · hl + bl + µl)). Meanwhile, scale modulation extends the shift modulation by scaling the output of each layer using modulation vector κ (hl+1 = sin(κl ⊙ (Wl · hl + bl))). All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI, where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD."
       },
       "confidence": 0.95,
       "metric": "PSNR",
@@ -285,95 +361,39 @@
       "qr_id": "doc_5ebce7ee5f2d9fbc_qr2",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "In Fig. 4, we show the PSNR comparison between Fourier modulation and the baseline modulations throughout the training process on the Cairo dataset. Fourier modulation has much better convergence rate, as evidenced by the rapid increase in PSNR, and continues to maintain superior performance as training progresses."
+        "original_text": "We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10× smaller than the original image). We use the Adam optimizer and early stopping. We compile a dataset of five multispectral Sentinel-2 images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty."
       },
-      "confidence": 0.9,
-      "quantity": "PSNR",
-      "value": null,
+      "confidence": 0.98,
+      "quantity": "trainable parameters",
+      "value": 200000,
       "unit": null,
-      "context": "Comparison of PSNR across iterations for Shift, Scale, and Fourier (ours) methods on Cairo dataset",
-      "result_type": "main_result"
-    },
-    {
-      "type": "performance_result",
-      "perf_id": "doc_5ebce7ee5f2d9fbc_p2",
-      "evidence": {
-        "section": "IV. EXPERIMENTS",
-        "original_text": "In Fig. 4, we show the PSNR comparison between Fourier modulation and the baseline modulations throughout the training process on the Cairo dataset. Fourier modulation has much better convergence rate, as evidenced by the rapid increase in PSNR, and continues to maintain superior performance as training progresses."
-      },
-      "confidence": 0.9,
-      "metric": "PSNR convergence rate",
-      "compared_to": "shift modulation, scale modulation"
+      "context": "ImpliSat model training setup",
+      "result_type": "measurement"
     },
     {
       "type": "quantitative_result",
       "qr_id": "doc_5ebce7ee5f2d9fbc_qr3",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth. As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models."
-      },
-      "confidence": 0.95,
-      "quantity": "performance improvement",
-      "value": 20,
-      "unit": "%",
-      "context": "Complex areas such as Seoul",
-      "result_type": "main_result"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_5ebce7ee5f2d9fbc_qr4",
-      "evidence": {
-        "section": "IV. EXPERIMENTS",
-        "original_text": "We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10 × smaller than the original image). We use the Adam optimizer and early stopping."
-      },
-      "confidence": 0.98,
-      "quantity": "trainable parameters",
-      "value": 200,
-      "unit": "K",
-      "context": "ImpliSat framework implementation",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_5ebce7ee5f2d9fbc_qr5",
-      "evidence": {
-        "section": "IV. EXPERIMENTS",
-        "original_text": "We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10 × smaller than the original image). We use the Adam optimizer and early stopping."
+        "original_text": "All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10× smaller than the original image). We use the Adam optimizer and early stopping. We compile a dataset of five multispectral Sentinel-2 images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB. The Table I provides the geographical coordinates (longitude and latitude) of each location. Those locations are chosen to evaluate the ability of ImpliSat framework to compress MSI with various complexity and difficulty. We compare our Fourier modulation approach with existing modulation techniques, specifically shift modulation used in [16, 24, 25] and scale modulation proposed in [16]. All approaches are evaluated using PSNR and MSE to measure the accuracy of reconstructed images against the ground truth."
       },
       "confidence": 0.98,
       "quantity": "model checkpoint size",
       "value": 1,
       "unit": "MB",
-      "context": "ImpliSat framework implementation",
+      "context": "ImpliSat compression ratio relative to original multispectral Sentinel-2 image size",
       "result_type": "measurement"
     },
     {
-      "type": "quantitative_result",
-      "qr_id": "doc_5ebce7ee5f2d9fbc_qr6",
+      "type": "performance_result",
+      "perf_id": "doc_5ebce7ee5f2d9fbc_p2",
       "evidence": {
         "section": "IV. EXPERIMENTS",
-        "original_text": "We compile a dataset of five multispectral Sentinel-2 images, each capturing diverse environments: London (UK), Seoul (South Korea), Merapi (Indonesia), Hawaii (USA), Cairo (Egypt). Each MSI has a size of 9.4MB."
+        "original_text": "As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI, where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD. In Fig. 4, we show the PSNR comparison between Fourier modulation and the baseline modulations throughout the training process on the Cairo dataset. Fourier modulation has much better convergence rate, as evidenced by the rapid increase in PSNR, and continues to maintain superior performance as training progresses."
       },
-      "confidence": 0.98,
-      "quantity": "original image size",
-      "value": 9.4,
-      "unit": "MB",
-      "context": "Multispectral Sentinel-2 images dataset",
-      "result_type": "measurement"
-    },
-    {
-      "type": "quantitative_result",
-      "qr_id": "doc_5ebce7ee5f2d9fbc_qr7",
-      "evidence": {
-        "section": "IV. EXPERIMENTS",
-        "original_text": "We implement our ImpliSat framework and other baselines using PYTORCH 2.3.1 in a single NVIDIA RTX 3090 GPU. We set L = 6, n = 256, and m = 32. The hypernetwork Π is also an MLP, with 3 layers and 64 neurons. All models are trained for 10,000 iterations with approximately 200 K trainable parameters (1MB per model checkpoint, around 10 × smaller than the original image). We use the Adam optimizer and early stopping."
-      },
-      "confidence": 0.98,
-      "quantity": "training iterations",
-      "value": 10000,
-      "unit": null,
-      "context": "ImpliSat framework training",
-      "result_type": "measurement"
+      "confidence": 0.95,
+      "metric": "performance improvement",
+      "compared_to": "baseline models (shift and scale modulation)"
     },
     {
       "type": "claim",
@@ -389,18 +409,9 @@
       "claim_id": "doc_5ebce7ee5f2d9fbc_ca2",
       "evidence": {
         "section": "Introduction",
-        "original_text": "MSI has multiple bands, and each band can have a different ground sample distance (GSD). Consequently, the frequency spectrum varies significantly as shown in Fig. 1. These differences in spatial resolution and spectral characteristics present challenges for efficient data representation and compression. We choose to use Implicit Neural Representation (INR) to develop the compression network since it can render continuous spatial data at arbitrary resolutions by representing the data as coordinate-based functions. This property enables efficient compression of high-resolution imagery, making it particularly effective for reconstructing data at varying scales. However, existing INR methods have primarily focused on RGB images [8–10], 3D modeling [11, 12] and signal representation [13] with limited exploration of multispectral satellite data. Unlike RGB or 3D data, MSI is characterized by varying wavelength bands and differing spatial resolutions across channels, presenting unique challenges. Existing INR approaches typically apply fixed Fourier features uniformly across all bands to first map the coordinates into higher-dimensional space. However, the frequency spectrum difference in channels with 10m, 20m, and 60m GSD suggests that it may be beneficial to adapt different Fourier features depending on the GSD. This approach enables a more accurate and efficient representation of the data."
+        "original_text": "In this paper, we introduce Impli cit Neural Representations for Multispectral Sat ellite Images (ImpliSat), a novel INR-based compression framework specifically designed for MSI. ImpliSat models MSI data as coordinate-based functions, compressing and reconstructing the data while accounting for the differences in spatial resolution and channel information. Additionally, our ImpliSat framework introduces a hypernetwork-based Fourier modulation technique that dynamically generates appropriate Fourier bases tailored to each spectral band resolution. By conditioning the modulation on the unique resolution and channel information of each band, our approach ensures that each spectral channel is represented optimally, enhancing the efficiency of compression and the accuracy of reconstruction."
       },
       "confidence": 0.95
-    },
-    {
-      "type": "claim",
-      "claim_id": "doc_5ebce7ee5f2d9fbc_ca3",
-      "evidence": {
-        "section": "Introduction",
-        "original_text": "In this paper, we introduce **Impli** cit Neural Representations for Multispectral **Sat** ellite Images ( **ImpliSat** ), a novel INRbased compression framework specifically designed for MSI. ImpliSat models MSI data as coordinate-based functions, compressing and reconstructing the data while accounting for the differences in spatial resolution and channel information. Additionally, our ImpliSat framework introduces a hypernetworkbased Fourier modulation technique that dynamically generates appropriate Fourier bases tailored to each spectral band resolution. By conditioning the modulation on the unique resolution and channel information of each band, our approach ensures that each spectral channel is represented optimally, enhancing the efficiency of compression and the accuracy of reconstruction."
-      },
-      "confidence": 0.96
     },
     {
       "type": "conclusion",
@@ -410,24 +421,6 @@
         "original_text": "In this paper, we present ImpliSat, a framework that uses Fourier-modulated INR to compress and reconstruct multispectral satellite images. By dynamically adjusting Fourier bases to match band-specific resolutions and spectral properties, ImpliSat outperforms traditional modulation methods, particularly in high-resolution and complex environments. The experimental results demonstrate the effectiveness of this approach for efficient MSI data compression while maintaining the original quality."
       },
       "confidence": 0.96
-    },
-    {
-      "type": "conclusion",
-      "conclusion_id": "doc_5ebce7ee5f2d9fbc_cl2",
-      "evidence": {
-        "section": "Experiments",
-        "original_text": "As shown in Table II, Fourier modulation consistently outperforms both shift and scale modulation. Notably, in complex areas such as Seoul, our approach demonstrates a 20% performance improvement over the baseline models. Fig. 3 presents a visualization comparison for each MSI[2] , where the rows (top to bottom) correspond to Cairo, Merapi, London, Seoul, and Hawaii. The first and second rows show bands with 10m GSD, the third and fourth rows show bands with 20m GSD, and the last one is a band with 60m GSD. These results further illustrate that our Fourier modulation captures sharper and more detailed structures in complex areas, such as the bridges and buildings visible in the Seoul B8A and segmentation between land patches in London B7. Unlike shift and scale modulation, which tend to blur fine details, our approach preserves clear edges and sharp features, leading to significantly better reconstructions regardless of the GSD."
-      },
-      "confidence": 0.94
-    },
-    {
-      "type": "conclusion",
-      "conclusion_id": "doc_5ebce7ee5f2d9fbc_cl3",
-      "evidence": {
-        "section": "Experiments",
-        "original_text": "Fig. 5 presents histograms depicting the density distribution of the frequency components (Ω _⊙Z_ ) for 10m, 20m, and 60m GSD. The distribution of Fourier modulation frequencies varies notably with different resolutions. For 10m GSD (cf. Fig. 5(a)), the values are more concentrated near zero, indicating that precise modulation has been applied to effectively represent high-resolution bands. In contrast, the 60m GSD (cf. Fig. 5(c)) distribution is broader, suggesting that a more variable modulation strategy has been adopted to accommodate the characteristics of low-resolution bands. These results suggest that the hypernetwork successfully adjusts the frequency content of the Fourier modulations according to the resolutionspecific needs of the data. This adaptive capability highlights the flexibility of the Fourier modulation approach, enabling ImpliSat to address the diverse challenges of multispectral satellite imagery."
-      },
-      "confidence": 0.93
     },
     {
       "type": "limitation",
@@ -452,9 +445,9 @@
       "future_work_id": "doc_5ebce7ee5f2d9fbc_fw1",
       "evidence": {
         "section": "Introduction",
-        "original_text": "MSI has multiple bands, and each band can have a different ground sample distance (GSD). Consequently, the frequency spectrum varies significantly as shown in Fig. 1. These differences in spatial resolution and spectral characteristics present challenges for efficient data representation and compression. We choose to use Implicit Neural Representation (INR) to develop the compression network since it can render continuous spatial data at arbitrary resolutions by representing the data as coordinate-based functions. This property enables efficient compression of high-resolution imagery, making it particularly effective for reconstructing data at varying scales. However, existing INR methods have primarily focused on RGB images [8–10], 3D modeling [11, 12] and signal representation [13] with limited exploration of multispectral satellite data. Unlike RGB or 3D data, MSI is characterized by varying wavelength bands and differing spatial resolutions across channels, presenting unique challenges. Existing INR approaches typically apply fixed Fourier features uniformly across all bands to first map the coordinates into higher-dimensional space. However, the frequency spectrum difference in channels with 10m, 20m, and 60m GSD suggests that it may be beneficial to adapt different Fourier features depending on the GSD. This approach enables a more accurate and efficient representation of the data."
+        "original_text": "Satellite data is essential for research and applications such as climate change [1, 2] and marine ecosystem monitoring [3]. In particular, multispectral satellite imagery (MSI) enables a detailed analysis of soil conditions [4], vegetation distribution [5, 6], and natural resource management [7], as it contains information collected in various wavelength bands. In order to collect MSI, satellites are deployed to orbit Earth at a certain altitude and operate via ground stations. As the satellite orbits, it gathers data from Earth’s surface using broad ranges of sensor and stores them in its onboard computer storage. This data is then transmitted back to the ground station for further processing. However, communication between the satellite and the ground station is limited to the orbital pass of the satellite, i.e. periods when the satellite is within the line of sight of the ground station. Consequently, satellites must limit data collection to ensure it can be fully transmitted within the available communication window. Any excess data may need to be discarded to free up storage for new observations or held for transmission during a subsequent orbital pass. This motivates us to develop a specific compression algorithm for remote sensing image data."
       },
-      "confidence": 0.92
+      "confidence": 0.94
     }
   ]
 }
