@@ -164,14 +164,29 @@ def parse_md_metadata(text: str, md_path: Path) -> dict:
             year = int(m.group(1))
 
     abstract = _extract_section(text, "Abstract")
+    # 宽松匹配：非标题行的 Abstract 标记（如 **Abstract.**, _Abstract_— 等）
+    if not abstract:
+        m = re.search(r"(?:^|\n)\*?\*?_?\*?\*?\s*Abstract[:.\s]?[\s—–\-]*(.*?)(?=\n\s*\n|\n##|\n# )", text, re.DOTALL | re.IGNORECASE)
+        if m:
+            candidate = m.group(0).strip()
+            if len(candidate) > 100:
+                abstract = candidate
+    # 最终兜底：取第一段超过200字符的非标题行
     if not abstract:
         for line in text.split("\n"):
             ls = line.strip()
             if len(ls) > 200 and not ls.startswith("#"): abstract = ls; break
 
     introduction = None
-    for h in ["Introduction", "INTRODUCTION", "1 Introduction", "1. Introduction", "1\tIntroduction"]:
+    for h in ["Introduction", "INTRODUCTION", "I. INTRODUCTION", "I. Introduction", "I Introduction",
+              "1. Introduction", "1 Introduction", "1\tIntroduction", "I.\tINTRODUCTION",
+              "1. INTRODUCTION", "1.\tINTRODUCTION", "INTRODUCTION.", "1.0 Introduction"]:
         if (introduction := _extract_section(text, h)): break
+    # 如果还是没找到，尝试宽松匹配：任意 ## 行包含 Introduction
+    if not introduction:
+        m = re.search(r"^#{1,2}\s+\*?\*?\s*[IVX0-9.]*\s*Introduction[:.]?\*?\*?\s*\n(.*?)(?=\n##|\Z)", text, re.DOTALL | re.IGNORECASE)
+        if m:
+            introduction = m.group(1).strip()
 
     keywords = None
     kw_raw = _extract_section(text, "Keywords")
