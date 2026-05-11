@@ -1,0 +1,682 @@
+{
+  "metadata": {
+    "doc_id": "doc_ae460cf856520ece",
+    "source_file": "10_devCCNP_longitudinal_resource_for_population_neuroscience_in_China.md",
+    "title": "DaTa DeSCRIPToR",
+    "year": 2023,
+    "doi": "10.1038/s41597-023-02377-8",
+    "abstract": "**During the past decade, cognitive neuroscience has been calling for population diversity to address the challenge of validity and generalizability, ushering in a new era of population neuroscience. The developing Chinese Color Nest Project (devCCNP, 2013–2022), the first ten-year stage of the lifespan CCNP (2013–2032), is a two-stages project focusing on brainmind development. the project aims to create and share a large-scale, longitudinal and multimodal dataset of typically developing children and adolescents (ages 6.0–17.9 at enrolment) in the Chinese population. The devCCNP houses not only phenotypes measured by demographic, biophysical, psychological and behavioural, cognitive, affective, and oculartracking assessments but also neurotypes measured with magnetic resonance imaging (MRI) of brain morphometry, resting-state function, naturalistic viewing function and diffusion structure. This Data Descriptor introduces the first data release of devCCNP including a total of 864 visits from 479 participants. Herein, we provided details of the experimental design, sampling strategies, and technical validation of the devCCNP resource. We demonstrate and discuss the potential of a multicohort longitudinal design to depict normative brain growth curves from the perspective of developmental population neuroscience. the devCCNP resource is shared as part of the “Chinese Data-sharing Warehouse for** _**In-vivo**_ **Imaging Brain” in the** _**Chinese Color Nest Project (CCNP) – Lifespan Brain-Mind Development Data Community**_ **(https://ccnp.scidb.cn) at the Science Data Bank.**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "生物学",
+      "level2": "神经科学",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "计算机科学技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "population neuroscience",
+      "developmental neuroscience",
+      "multimodal dataset",
+      "brain imaging",
+      "longitudinal study"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:08:01.443253+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_ae460cf856520ece_c1",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "During the past decade, cognitive neuroscience has been calling for population diversity to address the challenge of validity and generalizability, ushering in a new era of population neuroscience. The developing Chinese Color Nest Project (devCCNP, 2013–2022), the first ten-year stage of the lifespan CCNP (2013–2032), is a two-stages project focusing on brainmind development. the project aims to create and share a large-scale, longitudinal and multimodal dataset of typically developing children and adolescents (ages 6.0–17.9 at enrolment) in the Chinese population. The devCCNP houses not only phenotypes measured by demographic, biophysical, psychological and behavioural, cognitive, affective, and oculartracking assessments but also neurotypes measured with magnetic resonance imaging (MRI) of brain morphometry, resting-state function, naturalistic viewing function and diffusion structure. This Data Descriptor introduces the first data release of devCCNP including a total of 864 visits from 479 participants. Herein, we provided details of the experimental design, sampling strategies, and technical validation of the devCCNP resource. We demonstrate and discuss the potential of a multicohort longitudinal design to depict normative brain growth curves from the perspective of developmental population neuroscience. the devCCNP resource is shared as part of the “Chinese Data-sharing Warehouse for In-vivo Imaging Brain” in the Chinese Color Nest Project (CCNP) – Lifespan Brain-Mind Development Data Community (https://ccnp.scidb.cn) at the Science Data Bank."
+      },
+      "confidence": 0.98,
+      "term": "population neuroscience",
+      "normalized": "群体神经科学",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae460cf856520ece_c2",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "The Chinese Color Nest Project (CCNP, 2013–2032) is an early representative effort, likely the first in China, investigating brain growth during the transition period from childhood to adolescence. CCNP has built and accumulated rich and valuable experiences as a pilot study to accelerate the pace of initiating related brain-mind development cohort studies in the China Brain Project. CCNP is devoted to collecting nationwide data on brain structure and function across different stages of human lifespan development (6–85 years old). The long-term goal of this work is to create neurobiologically sound developmental curves for the brain to characterize phenomenological changes associated with the onset of various forms of mental health and learning disorders, as well as to predict the developmental status (i.e., age-expected values) of an individual brain’s structure or function. The developmental component of CCNP (devCCNP), also known as “Growing Up in China”, has established follow-up cohorts in Chongqing and Beijing, China. With the collection of longitudinal brain images and psychobehavioural samples from school-age children and adolescents (6–18 years) in multiple cohorts, devCCNP has constructed a full set of school-age brain templates, morphological growth curves and functional connectivity gradients for the Chinese Han population as well as related (although preliminary) differences in brain development between Chinese and American school-age children. The project has contributed to charting human brain development across the lifespan (0–100 years) in an international teamwork led by the Lifespan Brain Chart Consortium (LBCC)."
+      },
+      "confidence": 0.99,
+      "term": "Chinese Color Nest Project",
+      "normalized": "中国色彩巢项目",
+      "std_label": "CCNP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae460cf856520ece_c3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The first stage of devCCNP aimed to establish an ALD cohort. The cohort consisted of 480 participants with typical development, who were evenly divided into age-specific groups. Each age cohort contain 20 boys and 20 girls (Fig. 1a). We conducted data collection in two regions in China with distinct geographic and socioeconomic profiles, the Beibei District of Chongqing (devCCNP-CKG Sample) and the Chaoyang District of Beijing(devCCNP-PEK Sample), to capture a more representative sample of the Chinese population and its diverse characteristics. The devCCNP-CKG Sample was collected from March 2013 to January 2017, and the devCCNP-PEK Sample was collected from September 2017 to December 2022. Participants underwent assessment three times in total, referred to as three “waves” of visits. To account for season effects, there was a 15-month time gap between each wave (Fig. 1b). A repeated protocol was applied, which was adjusted based on the participants’ age. The total time for each assessment was approximately 10–12 hours, including preparation time and short breaks. The time duration of each visit is listed in Supplementary Table S1."
+      },
+      "confidence": 0.97,
+      "term": "accelerated longitudinal design",
+      "normalized": "加速纵向设计",
+      "std_label": "ALD"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae460cf856520ece_c4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "MRI data of CKG Sample were collected using a 3.0-T Siemens Trio MRI scanner (sequencing order: rfMRI→T1-weighted→rfMRI→T2-tse/tirm) at the Center for Brain Imaging, Southwest University. The PEK Sample were imaged on a 3.0-T GE Discovery MR750 scanner at the Magnetic Resonance Imaging Research Center of the Institute of Psychology, Chinese Academy of Sciences (sequencing order: rfMRI→T1-weighted→rfMRI→T2-weighted→ns-fMRI→DTI). Imaging sequences remained the same across all waves at each site but were different between the two sites and optimized for similar space and time resolutions. Minimal adjustments to sequencing order would occur as necessary. To avoid introducing cognitive content or emotional states into the resting-state condition, the rfMRI scans were always conducted before movie-watching. The detailed acquisition parameters in both samples are presented in Table 2. T2 imaging details are not listed here as it usually used for detecting organic brain disease, which is a complementary setup in our data collection enrolling typically developing participants only. MRI procedure was performed within one session, small breaks were allowed and instructions were given before starting each sequence. During data collection there were no software or hardware upgrades that would affect the MRI scanning performance."
+      },
+      "confidence": 0.98,
+      "term": "magnetic resonance imaging",
+      "normalized": "磁共振成像",
+      "std_label": "MRI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_ae460cf856520ece_c5",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Growth charts on height, weight and head circumference are a cornerstone of paediatric health care. A similar tool has been recently generated for lifespan development of human brain morphology by LBCC (https://github.com/brainchart/lifespan). While promising for characterizing the neurodevelopmental milestones and neuropsychiatric disorders, these charts need more diverse samples to enhance their utility in practice. Here, we employed the devCCNP Sample and the NKI-Rockland Sample (NKI-RS) for Longitudinal Discovery of Brain Development Trajectories to upgrade the LBCC charts. All the preprocessed T1-weighted MRI images from devCCNP and NKI-RS were subjected to the same manual quality control procedure from the same raters at each site. Specifically, the maximum likelihood method was used to estimate sample-specific or site-specific statistical offsets (random effects, i.e., mean μ, variance σ, and skewness υ) from the age- and sex-appropriate epoch of the normative brain growth trajectory modelling through the Generalized Additive Models for Location, Scale and Shape (GAMLSS: see details of the site-specific growth chart modeling in Fig. 5 from the LBCC original work). Out-of-sample centile scores for each participant from the devCCNP and the NKI-RS site benchmarked against the offset trajectory were estimated. The normative growth trajectories were estimated for not only global neurotypes including total cortical grey matter volume (GMV), total white matter volume (WMV), total subcortical grey matter volume (sGMV), global mean cortical thickness (CT) and total surface area (SA) but also regional neurotypes, including the summation volumes of the corresponding 34 cortical areas of the two hemispheres, according to the Desikon-Killiany (DK) parcellation."
+      },
+      "confidence": 0.96,
+      "term": "brain growth charts",
+      "normalized": "大脑生长曲线图",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae460cf856520ece_r1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The first stage of devCCNP aimed to establish an ALD cohort. The cohort consisted of 480 participants with typical development, who were evenly divided into age-specific groups. Each age cohort contain 20 boys and 20 girls (Fig. 1a). We conducted data collection in two regions in China with distinct geographic and socioeconomic profiles, the Beibei District of Chongqing (devCCNP-CKG Sample) and the Chaoyang District of Beijing(devCCNP-PEK Sample), to capture a more representative sample of the Chinese population and its diverse characteristics. The devCCNP-CKG Sample was collected from March 2013 to January 2017, and the devCCNP-PEK Sample was collected from September 2017 to December 2022. Participants underwent assessment three times in total, referred to as three “waves” of visits. To account for season effects, there was a 15-month time gap between each wave (Fig. 1b). A repeated protocol was applied, which was adjusted based on the participants’ age. The total time for each assessment was approximately 10–12 hours, including preparation time and short breaks. The time duration of each visit is listed in Supplementary Table S1."
+      },
+      "confidence": 0.95,
+      "head": "doc_ae460cf856520ece_c2",
+      "relation_type": "uses",
+      "relation_surface": "aims to create and share",
+      "tail": "doc_ae460cf856520ece_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae460cf856520ece_r2",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "The devCCNP houses not only phenotypes measured by demographic, biophysical, psychological and behavioural, cognitive, affective, and oculartracking assessments but also neurotypes measured with magnetic resonance imaging (MRI) of brain morphometry, resting-state function, naturalistic viewing function and diffusion structure. This Data Descriptor introduces the first data release of devCCNP including a total of 864 visits from 479 participants. Herein, we provided details of the experimental design, sampling strategies, and technical validation of the devCCNP resource. We demonstrate and discuss the potential of a multicohort longitudinal design to depict normative brain growth curves from the perspective of developmental population neuroscience. the devCCNP resource is shared as part of the “Chinese Data-sharing Warehouse for In-vivo Imaging Brain” in the Chinese Color Nest Project (CCNP) – Lifespan Brain-Mind Development Data Community (https://ccnp.scidb.cn) at the Science Data Bank."
+      },
+      "confidence": 0.97,
+      "head": "doc_ae460cf856520ece_c2",
+      "relation_type": "measures",
+      "relation_surface": "houses not only phenotypes measured by ... but also neurotypes measured with",
+      "tail": "doc_ae460cf856520ece_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae460cf856520ece_r3",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Growth charts on height, weight and head circumference are a cornerstone of paediatric health care. A similar tool has been recently generated for lifespan development of human brain morphology by LBCC (https://github.com/brainchart/lifespan). While promising for characterizing the neurodevelopmental milestones and neuropsychiatric disorders, these charts need more diverse samples to enhance their utility in practice. Here, we employed the devCCNP Sample and the NKI-Rockland Sample (NKI-RS) for Longitudinal Discovery of Brain Development Trajectories to upgrade the LBCC charts. All the preprocessed T1-weighted MRI images from devCCNP and NKI-RS were subjected to the same manual quality control procedure from the same raters at each site. Specifically, the maximum likelihood method was used to estimate sample-specific or site-specific statistical offsets (random effects, i.e., mean μ, variance σ, and skewness υ) from the age- and sex-appropriate epoch of the normative brain growth trajectory modelling through the Generalized Additive Models for Location, Scale and Shape (GAMLSS: see details of the site-specific growth chart modeling in Fig. 5 from the LBCC original work). Out-of-sample centile scores for each participant from the devCCNP and the NKI-RS site benchmarked against the offset trajectory were estimated. The normative growth trajectories were estimated for not only global neurotypes including total cortical grey matter volume (GMV), total white matter volume (WMV), total subcortical grey matter volume (sGMV), global mean cortical thickness (CT) and total surface area (SA) but also regional neurotypes, including the summation volumes of the corresponding 34 cortical areas of the two hemispheres, according to the Desikon-Killiany (DK) parcellation."
+      },
+      "confidence": 0.94,
+      "head": "doc_ae460cf856520ece_c2",
+      "relation_type": "enhances",
+      "relation_surface": "contributed to charting",
+      "tail": "doc_ae460cf856520ece_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_ae460cf856520ece_r4",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "During the past decade, cognitive neuroscience has been calling for population diversity to address the challenge of validity and generalizability, ushering in a new era of population neuroscience. The developing Chinese Color Nest Project (devCCNP, 2013–2022), the first ten-year stage of the lifespan CCNP (2013–2032), is a two-stages project focusing on brainmind development. the project aims to create and share a large-scale, longitudinal and multimodal dataset of typically developing children and adolescents (ages 6.0–17.9 at enrolment) in the Chinese population. The devCCNP houses not only phenotypes measured by demographic, biophysical, psychological and behavioural, cognitive, affective, and oculartracking assessments but also neurotypes measured with magnetic resonance imaging (MRI) of brain morphometry, resting-state function, naturalistic viewing function and diffusion structure. This Data Descriptor introduces the first data release of devCCNP including a total of 864 visits from 479 participants. Herein, we provided details of the experimental design, sampling strategies, and technical validation of the devCCNP resource. We demonstrate and discuss the potential of a multicohort longitudinal design to depict normative brain growth curves from the perspective of developmental population neuroscience. the devCCNP resource is shared as part of the “Chinese Data-sharing Warehouse for In-vivo Imaging Brain” in the Chinese Color Nest Project (CCNP) – Lifespan Brain-Mind Development Data Community (https://ccnp.scidb.cn) at the Science Data Bank."
+      },
+      "confidence": 0.93,
+      "head": "doc_ae460cf856520ece_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "ushering in a new era of",
+      "tail": "doc_ae460cf856520ece_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_ae460cf856520ece_d1",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "The developing Chinese Color Nest Project (devCCNP, 2013–2022), the first ten-year stage of the lifespan CCNP (2013–2032), is a two-stages project focusing on brainmind development. the project aims to create and share a large-scale, longitudinal and multimodal dataset of typically developing children and adolescents (ages 6.0–17.9 at enrolment) in the Chinese population. The devCCNP houses not only phenotypes measured by demographic, biophysical, psychological and behavioural, cognitive, affective, and oculartracking assessments but also neurotypes measured with magnetic resonance imaging (MRI) of brain morphometry, resting-state function, naturalistic viewing function and diffusion structure. This Data Descriptor introduces the first data release of devCCNP including a total of 864 visits from 479 participants. Herein, we provided details of the experimental design, sampling strategies, and technical validation of the devCCNP resource. We demonstrate and discuss the potential of a multicohort longitudinal design to depict normative brain growth curves from the perspective of developmental population neuroscience. the devCCNP resource is shared as part of the “Chinese Data-sharing Warehouse for In-vivo Imaging Brain” in the Chinese Color Nest Project (CCNP) – Lifespan Brain-Mind Development Data Community (https://ccnp.scidb.cn) at the Science Data Bank."
+      },
+      "confidence": 0.95,
+      "name": "developmental Chinese Color Nest Project (devCCNP)",
+      "modality": "multimodal",
+      "domain": "population neuroscience, developmental cognitive neuroscience"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_ae460cf856520ece_d2",
+      "evidence": {
+        "section": "Data Records",
+        "original_text": "devCCNP Full. This release contains the full measurements of devCCNP protocol. MRI data have been deposited into the Science Data Bank (https://doi.org/10.57760/sciencedb.07478). The full dataset will be accessible upon requests submitted according to the instructions described below. A sample of the longitudinal data from a participant is fully accessible through FigShare (https://doi.org/10.6084/m9.figshare.22323691.v1) to demonstrate the data structure. Note that T2-tes/tirm in CKG Sample, which has only 30 slices used for detecting organic brain disease, was not uploaded. As it is not frequently used in scientific research. Any application for this part of data would be transferred case-by-case."
+      },
+      "confidence": 0.9,
+      "name": "devCCNP Full",
+      "modality": "multimodal",
+      "domain": "population neuroscience, developmental cognitive neuroscience"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_ae460cf856520ece_d3",
+      "evidence": {
+        "section": "Data Records",
+        "original_text": "devCCNP Lite. This release version contains only basic demographics (sex, age and handedness), T1-weighted MRI, rfMRI and diffusion tensor MRI data of devCCNP. No cognitive or behavioural information is included. The devCCNP Lite will be accessible upon the requests according to the instructions described below. Data have been deposited into the Science Data Bank (https://doi.org/10.57760/sciencedb.07860)."
+      },
+      "confidence": 0.9,
+      "name": "devCCNP Lite",
+      "modality": "tabular",
+      "domain": "population neuroscience, developmental cognitive neuroscience"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae460cf856520ece_ds1",
+      "evidence": {
+        "section": "Data Records",
+        "original_text": "All data files are organized according to the Brain Imaging Directory Structure (BIDS) standards. An example of the MRI data storage structure is presented in Fig. 2. Under the top-level project folder “devCCNP/“, CKG and PEK Sample are organized separately. Each participant’s folder “sub-CCNP*/” may contain several subfolders depending on how many waves have been completed to date (i.e., if all waves are finished, the folder would include three “/ses-*” subfolders). Imaging data (“.nii.gz”) and metadata (“.json”) are organized into modality-specific directories “/anat/”, “/func/” and “/dwi/”. Note that in the PEK Sample, Diffusion Tension Imaging (DTI) data files are stored under “/dwi/” folders with the datatype name “*_dwi.*“. All demographic and behavioural data are structured under the “/beh/” folder (“.tsv”). Detailed parameters of each psychological behaviour task/test are provided in the “json” file attached."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "MRI data organized according to Brain Imaging Data Structure (BIDS) standards"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae460cf856520ece_ds2",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Structural MR imaging. Structural MRI images were first anonymized to remove all facial information from the raw MRI data. We obscured the facial information using the face-masking tool customized with the Chinese paediatric templates. The anonymized images were then denoised by spatially adaptive nonlocal means and corrected for intensity normalization in the Connectome Computation System (CCS). To extract individual brains, we trained a deep learning method using a small set of semiautomatically extracted brains in the CKG Sample, and then applied it to all the devCCNP samples. The preprocessed brain volumes were all in the native space and fed into the FreeSurfer (version 6.0) pipeline to obtain general morphological measurements of different brain morphometry. All the preprocessing are accomplished through Connectome Computation System (module H1), scripts can be found at github (https://github.com/zuoxinian/CCS/tree/master/H1). We visually inspected the quality of the T1-weighted images, and two raters were trained to rate the quality using a 3-class framework, with “0” denoting images that suffered from gross artefacts and were considered unusable, “1” with some artefacts, but that were still considered usable, and “2” free from visible artefacts. Images with an average score lower than “2” across the two raters were excluded. A total of 761 (91.9%) images passed the quality control, with 436 (94.8%) images in the CKG Sample and 325 (88.3%) images in the PEK Sample. The intra-class correlation coefficient of the two raters was 0.532."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "MRI data quality control procedures including visual inspection rating and motion exclusion"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae460cf856520ece_ds3",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Functional MR imaging. Resting state fMRI(rs-fMRI) data preprocessing included the following steps: (1) dropping the first 10 (5 TRs) for the equilibrium of the magnetic field; (2) correcting head motion; (3) slice timing; (4) despiking for the time series; (5) estimating head motion parameters; (6) aligning functional images to high resolution T1 images using boundary-based registration; (7) mitigating nuisance effects such as ICA-AROMA-derived, CSF and white matter signals; (8) removing linear and quadratic trends of the time series; (9) projecting volumetric time series to fsaverage5 cortical surface space; and (10) 6-mm spatial smoothing (we also provide a version of preprocessing results without smoothing). All preprocessing scripts of the above steps are available on github (https://github.com/zuoxinian/CCS/tree/master/H1). Scans with a mean FD greater than 0.5 were excluded. A total of 452 (98.3%) scans in the CKG Sample and 328 (92.4%) scans in the PEK Sample had at least one rfMRI passed the quality control in each session."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Resting-state fMRI preprocessing pipeline and quality control based on framewise displacement"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae460cf856520ece_ds4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Magnetic resonance imaging. MRI data of CKG Sample were collected using a 3.0-T Siemens Trio MRI scanner (sequencing order: rfMRI→T1-weighted→rfMRI→T2-tse/tirm) at the Center for Brain Imaging, Southwest University. The PEK Sample were imaged on a 3.0-T GE Discovery MR750 scanner at the Magnetic Resonance Imaging Research Center of the Institute of Psychology, Chinese Academy of Sciences (sequencing order: rfMRI→T1-weighted→rfMRI→T2-weighted→ns-fMRI→DTI). Imaging sequences remained the same across all waves at each site but were different between the two sites and optimized for similar space and time resolutions. Minimal adjustments to sequencing order would occur as necessary. To avoid introducing cognitive content or emotional states into the resting-state condition, the rfMRI scans were always conducted before movie-watching. The detailed acquisition parameters in both samples are presented in Table 2. T2 imaging details are not listed here as it usually used for detecting organic brain disease, which is a complementary setup in our data collection enrolling typically developing participants only. MRI procedure was performed within one session, small breaks were allowed and instructions were given before starting each sequence. During data collection there were no software or hardware upgrades that would affect the MRI scanning performance."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "MRI scanning protocol parameters for different scanners and sequences"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_ae460cf856520ece_ds5",
+      "evidence": {
+        "section": "Data Records",
+        "original_text": "All demographic and behavioural data are structured under the “/beh/” folder (“.tsv”). Detailed parameters of each psychological behaviour task/test are provided in the “json” file attached."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Phenotypic data includes detailed metadata in JSON files for each psychological behaviour task/test"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "All participants aged 6–17.9 were given the Wechsler Intelligence Scale for Children-IV-Chinese Version (WISC-IV) during each wave’s assessment. Ten core subtests and 4 supplementary subtests were combined to estimate Full Scale Intelligence Quotient (FSIQ) with 4 indices: Verbal Comprehension Index (VCI), Perceptual Reasoning Index (PRI), Working Memory Index (WMI) and Processing Speed Index (PSI). Participants aged above 18 years completed the Chinese Version of Wechsler Adult Intelligence Scale (WAIS-IV)."
+      },
+      "confidence": 0.95,
+      "name": "Wechsler Intelligence Scale for Children-IV-Chinese Version (WISC-IV)",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The classic Attention Network Test (ANT) was applied to assess the three attention networks: alerting, orienting and executive attention. During the experiment, small cartoon images of “fish” were presented on the centre of the computer screen for a very short time. Participants were asked to determine as soon and as correctly as possible whether the head of the centre “fish” pointed the left or right (we use images of cartoon fish to replace the “arrow” in the classic ANT paradigm for high preference in children and adolescents). Response times (RTs) and accuracy were measured for each trial. Preprocessed outcome variables include accuracy of all trials (%), alerting (ms), orienting (ms), and control (ms). (Note all the details on outcome variables are described in the data supplementary “json” files.)"
+      },
+      "confidence": 0.95,
+      "name": "Attention Network Test (ANT)",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task was introduced to assess an individual’s bottom-up attention capture and top-down inhibitory control. A fixation point was presented on the screen at the beginning and end of each experimental trial. Five short vertical lines were then presented on the screen, and one of the lines was red while the remaining were black. The next task stimulus, a vertical arrow, randomly appeared at the top or bottom of the screen. Participants were asked to respond to the direction of the arrow as quickly and correctly as possible. Preprocessed outcome variables include response time and accuracy of each “congruent” or “incongruent” trail."
+      },
+      "confidence": 0.95,
+      "name": "Singleton Stroop Task",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "In this experiment participants were asked to make judgements as soon and as correctly as possible between two different types of digit categorization: whether the presented digit was greater or less than 5 and whether the present digit was odd or even. RTs and accuracy were measured for each trial. Preprocessed outcome variables include mean reaction time of accuract “repeat” or “switch” trails, and switch cost which represent reaction time difference between switch and repeat."
+      },
+      "confidence": 0.95,
+      "name": "Task-Switch Paradigm",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m5",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This paradigm was used with two levels: 1-back and 2-back. Participants were asked to judge as soon and as correctly as possible whether each stimulus in a sequence, which consisted of nine random digits from 1 to 9, matched the stimulus that appeared N items ago. To be specific, participants would determine whether the currently presented digit was the same as the one (i.e., 1-back) or second one (i.e., 2-back) presented before. RTs and accuracy were measured for each trial. Preprocessed outcome variables include accuracy of trails, and mean reaction time of accuract “1-back” or “2-back” trails."
+      },
+      "confidence": 0.95,
+      "name": "Digit N-back Task",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m6",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task was conducted to assess the influence of networks on the emergence of cooperation. Before the formal experiment, participants were instructed that there were four blocks of games. Two of them are social partner blocks, in which their partners in each round are peer children and would be paid according to the final outcome. In contrast, in two blocks of nonsocial partner blocks, the partner’s choice was randomly given by computer. In the experiment, first, a fixation point was presented on the screen. Then, a payoff matrix that lists the payoff when the participant and the partner choose to “cooperate” or “betray” is created. Participants were instructed, “You need to choose “cooperate” or “betray” without knowing your partner’s choice. You will then present your partner’s choice and therefore respective benefits based on bilateral choices.” Finally, participants were asked to assess their emotional response towards the choices. Before participating in the social decision-making study, both prisoner’s dilemma and ultimatum game introduced next, the participants were asked to describe themselves in a self-introduction, including their age, upbringing, education, personality, and hobbies. The participants were informed that their self-introduction would be anonymously presented to a group of peers who would participate in the same experiments. Those peers acted as their partners in the experiment. Each of those peer partners independently made a choice after reading the participants’ self-introduction and their choices were preprogrammed in the experiment computer and displayed to them in the experiment."
+      },
+      "confidence": 0.95,
+      "name": "Prisoner’s Dilemma",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m7",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task was designed to explore whether and how social comparisons with third parties affect individual preferences for fair decision-making. Before the formal experiment, participants were told that there are two blocks of games. One of them would be under the “gain” context, which means that players in the game are together to distribute gain. The other would be under the “loss” context, which means that players in the game are together to distribute loss suffering. In the formal experiment, an allocation of gain/loss would be offered, and participants needed to decide to accept or reject the offer and report how satisfied they felt about their final rewards/suffering."
+      },
+      "confidence": 0.95,
+      "name": "Ultimatum Game",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m8",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To explore reward evaluation and impulsivity characteristics, in this task, participants were asked to make a series of choices to receive a certain value of fictitious funds immediately, or to wait for a period of time (i.e., a day, a week, a month, three months, or six months) before receiving a larger amount. For example, choosing between “Get ¥100 tomorrow” and “Get ¥50 today”. The reward amount was presented on the screen immediately after each decision was made."
+      },
+      "confidence": 0.95,
+      "name": "Delay Discounting Task",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m9",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task was designed as an interactive, sequential gambling game to probe the neural correlates of risk taking and risk avoidance during sensation seeking. Participants were instructed to play a roulette game with a certain amount principal at the beginning. After deciding whether to participate in the gamble or not depending on the situation introduced (the odds of winning the jeton), rewards (gain or loss) were presented. Each decision had to be made in 4 seconds. After each trial participants were asked to evaluate and report whether they had made the right choice."
+      },
+      "confidence": 0.95,
+      "name": "Risky Decision Task",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m10",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task was introduced to examine children’s reading ability and to determine potential developmental issues in the process of reading acquisition. Participants under 12 years old were asked to read a list of 150 Chinese characters (increasing difficulty from front to back) one by one. The score was calculated from the number of characters reading correctly."
+      },
+      "confidence": 0.95,
+      "name": "Chinese Character Reading Test: Chinese Character Naming Task",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m11",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task used the semantic priming paradigm to examine mental representations of word meanings and their relationships. Critical words consisted of real word targets following a thematic prime (e.g., eat-lunch) or a categorical prime (e.g., apple-banana). Additionally, filler words consisting of nonword targets (e.g., eat-unch) were also added. The words (both the prime and target words) were consecutively presented on the screen and after the presentation of each word, participants were asked to judge whether the word was a real word or not. RTs and accuracy were recorded."
+      },
+      "confidence": 0.95,
+      "name": "Lexical Identification",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m12",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task examined the integration of visual and auditory word information. In each trial, participants were visually presented with one Chinese character on the screen and presented with a word pronunciation at the same time. The character was either audiovisually congruent (where the character and the pronunciation were matching) or incongruent (where the character and the pronunciation were nonmatching). Participants were instructed to judge whether the auditory word pronunciation matched the visual word form. RTs and accuracy were recorded."
+      },
+      "confidence": 0.95,
+      "name": "Audiovisual Integration of Words",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m13",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This test was used to evaluate an individual’s recognition of facial expressions. Participants were first presented with a 200 fixation point in the centre of the screen, and then randomly presented with a picture of a model’s emotional expression for 200 ms. Ten models (six women and four men) were selected from the Ekman database. Participants were asked to judge the expression presented from two options within the limited time (200 ms), or they would automatically skip to the next image. Failed to select an expression was marked as wrong. There were 30 sets of facial expressions made up of six different facial emotions (happiness, sadness, fear, disgust, surprise, and anger)."
+      },
+      "confidence": 0.95,
+      "name": "Brief Affect Recognition Test",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m14",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To evaluate an individual’s characteristics on time perception, participants were required to learn two time intervals to strengthen their memory of long and short time intervals. These time intervals were defined as the presenting a 2 cm × 2 cm black squares was presented. For short duration, the black squares were presented for 400 ms, for long duration, the black squares were presented for 1600 ms. After the training procedure, participants were instructed to judge the length of the test time intervals (rating intervals as “long” or “short”) according to the previously learned time intervals. Black squares were randomly presented 20 times for 400,600,800,1000,1200,1400, or 1600 ms interval."
+      },
+      "confidence": 0.95,
+      "name": "Temporal Bisection Paradigm",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m15",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To assess participants’ susceptibility to perceptual illusions, participants were instructed to view a screen with a grey background. A probe circle and a reference circle were presented on the left and right sides of the central fixation point. The probe circle was always surrounded by a group of smaller circles. The reference circle, which was fixed in size, was surrounded by larger circles. The perceptual sizes of the probe circle and reference circle were not the same. The task was to adjust the size of the probe circle with up or down arrow key to match that of the reference circle. A chinrest was used to help minimize head movement. The illusion size was measured by (size of test circle - size of reference circle)/size of reference circle."
+      },
+      "confidence": 0.95,
+      "name": "Ebbinghaus Illusion",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m16",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To evaluate sensory eye dominance, participants were instructed to view two orthogonal sinewave grating disks (±45° from vertical) dichoptically through a pair of shutter Goggles (NVIDIA 3D Vision2 glasses). A chinrest was used to minimize head motion. The gratings were displayed in the centre of the visual field and were surrounded by a checkerboard frame that promoted stable binocular alignment. Participants were required to report whether they perceived one of the two gratings or the mix of them by holding down one of the three keys (Left, Right, or Down arrows) on the keyboard. If a key was not pressed within a predetermined period of time, there would be an audible alarm for the participants."
+      },
+      "confidence": 0.95,
+      "name": "Binocular Rivalry",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m17",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This task examines basic visuomotor ability by measuring ocular-tracking performance, as previously described. This task was based on the classic Rashbass step-ramp paradigm modified to accommodate a random sampling of the polar angles from 2° to 358° in 4° increments around the clock face without replacement using 90 trials. Each trial began with a cartoon character (Donald Duck or Daisy, 0.64° H × 0.64° V) in the centre of a black background on a computer screen. Participants were asked to fixate on the central character and initiated the trial by pressing a mouse button. After a random delay drawn from a truncated exponential distribution (mean: 700 ms; minimum: 200 ms; maximum: 5,000 ms), the character would jump in the range of 3.2° to 4.8° away from the fixation point and immediately move back at a constant speed randomly sampled from 16°/s to 24°/s towards the centre of the screen and then onwards for a random amount of time from 700 to 1,000 ms before disappearing. To minimize the likelihood of an initial catch-up saccade, the character always crossed the centre of the screen at 200 ms after its motion onset. Both the character speed and moving direction were randomly sampled to minimize expectation effects. Participants were instructed to keep their eyes on the character without blinking once they initiated the trial and then to use their eyes to track the character’s motion as best as they could until it disappeared on the screen. Preprocessed outcome variables include latency, open-loop acceleration, steady-state gain, proportion smooth, saccadic rate, saccadic amplitude, saccadic precision, eye response precision, anisotropy, asymmetry, speed noise and responsiveness."
+      },
+      "confidence": 0.95,
+      "name": "Ocular-tracking Task",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m18",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This test was used to assess individuals’ binaural integration, attention allocation, and auditory/speech working memory ability. A different set of digits (2 or 3 digits) was presented simultaneously to the participant’s left and right ears with an output intensity set to 50 dB HL. Participants were asked to listen carefully and repeat the digits heard from right ear to left ear during half of the trials, and from left ear to right ear during the other half of the trials. The orders were counterbalanced between participants. Preprocessed outcome variables include accuracy of four trials in reported in either left of right ear."
+      },
+      "confidence": 0.95,
+      "name": "Dichotic Digit Test",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m19",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This test was introduced to examine auditory selective attention and the ability to inhibit irrelevant utterance interference during speech recognition. Two simple Chinese sentences with the same syntactic structure but different contents (7 words with 4 key words, e.g., “the turtle/swims slower/ than/the whale” (“乌龟/比/鲸鱼/游得慢”)) were presented simultaneously to the left and right ears. Participants were asked to listen carefully and repeat the content in the attended ear (i.e., the output intensity of the attended ear was 35 dB HL while the nonattended side was 50 dB HL) at the end of the sentence. The attended ear was left on half of the trial and right on the other half. The orders were counterbalanced between participants. Preprocessed outcome variables include averaged accuracy for each ear."
+      },
+      "confidence": 0.95,
+      "name": "Competing Sentences",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m20",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "This test was used to assess speech recognition ability in a noisy environment. A simple Chinese target sentence (15 sentences of 10 Chinese syllables each, e.g., “He drew a tiger with a brush” (“他用画笔画了一只老虎”)) was presented by the frontal speaker, and speech spectrum noise was simultaneously played by the frontal or lateral (90° apart) speaker. The noise intensity was constant at 65 dB SPL, and the starting signal-to-noise ratio (SNR) was 0 dB for the front noise speaker and − 5 dB for the side noise speaker. Participants were required to listen carefully and repeat the sentence at the end. The SNR threshold at which participants correctly reported 50% of syllables in the sentence was recorded as the speech recognition threshold (SRT)."
+      },
+      "confidence": 0.95,
+      "name": "Mandarin Hearing in Noise Test for Children",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m21",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The verbal fluency test was used to evaluate strategic search and retrieval processes from the lexicon and semantic memory. Participants in each trial were required to speak nonrepeated words based on one given category within 1 minute. There were two trials for semantic fluency and two for phonemic fluency. Semantic fluency required participants to say as many words as possible belonging to a particular semantic category (fruit, animal). Phonemic fluency required the participants to say as many different words as possible (excluding proper names) beginning with a Mandarin initial consonant (/d/ and /y/) but not repeating the first vowel and tone. Preprocessed outcome variables include the number of unique answers belonging to each trail. The last four behaviour tests were performed in a soundproof room in one session, and normal hearing in both ears (average hearing threshold ≤20 dB HL from 250 to 8000 Hz) was required."
+      },
+      "confidence": 0.95,
+      "name": "Verbal Fluency",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m22",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "In the preparation stage for MRI scans during PEK sampling, mock scanning was performed to improve participant compliance by alleviating anxiety and psychological distress, and to facilitate the success of scans, especially for participants under 12 years old (i.e., primary education stage). The mock scanner room was built in a child-friendly atmosphere (e.g., child-style decorations, toys or books for different ages, etc) which provided a relaxed buffer zone. A real-size mock scanner built by PST (Psychology Software Tools, Inc.) using a 1:1 model of the GE MR750 3 T MRI scanner in use at the PEK site, allowed participants an experience faithful to the actual MRI scanning procedure. Participants were guided to lie still on the bed listening to the recorded MRI scanning sounds and watching the screen through the mirror attached to the model head coil. Three imaging scenarios were performed: resting-state fMRI (rfMRI), morphometric MRI and natural stimulus fMRI (ns-fMRI) which refers to the movie-watching state in this sample. Each scenario lasted at least five and a half minutes. The instructions were consistent with the actual MRI scan, except the movie clip played during the natural stimulus was replaced by additional resources. Head motion data were automatically acquired with the MoTrack Head Motion Tracking System (PST-100722)."
+      },
+      "confidence": 0.95,
+      "name": "MRI mock scan",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_ae460cf856520ece_m23",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "MRI data of CKG Sample were collected using a 3.0-T Siemens Trio MRI scanner (sequencing order: rfMRI→T1-weighted→rfMRI→T2-tse/tirm) at the Center for Brain Imaging, Southwest University. The PEK Sample were imaged on a 3.0-T GE Discovery MR750 scanner at the Magnetic Resonance Imaging Research Center of the Institute of Psychology, Chinese Academy of Sciences (sequencing order: rfMRI→T1-weighted→rfMRI→T2-weighted→ns-fMRI→DTI). Imaging sequences remained the same across all waves at each site but were different between the two sites and optimized for similar space and time resolutions. Minimal adjustments to sequencing order would occur as necessary. To avoid introducing cognitive content or emotional states into the resting-state condition, the rfMRI scans were always conducted before movie-watching. The detailed acquisition parameters in both samples are presented in Table 2. T2 imaging details are not listed here as it usually used for detecting organic brain disease, which is a complementary setup in our data collection enrolling typically developing participants only. MRI procedure was performed within one session, small breaks were allowed and instructions were given before starting each sequence. During data collection there were no software or hardware upgrades that would affect the MRI scanning performance."
+      },
+      "confidence": 0.95,
+      "name": "Magnetic resonance imaging",
+      "method_type": "instrument"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae460cf856520ece_x1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The first stage of devCCNP aimed to establish an ALD cohort. The cohort consisted of 480 participants with typical development, who were evenly divided into age-specific groups. Each age cohort contain 20 boys and 20 girls (Fig. 1a). We conducted data collection in two regions in China with distinct geographic and socioeconomic profiles, the Beibei District of Chongqing (devCCNP-CKG Sample) and the Chaoyang District of Beijing(devCCNP-PEK Sample), to capture a more representative sample of the Chinese population and its diverse characteristics. The devCCNP-CKG Sample was collected from March 2013 to January 2017, and the devCCNP-PEK Sample was collected from September 2017 to December 2022. Participants underwent assessment three times in total, referred to as three “waves” of visits. To account for season effects, there was a 15-month time gap between each wave (Fig. 1b). A repeated protocol was applied, which was adjusted based on the participants’ age. The total time for each assessment was approximately 10–12 hours, including preparation time and short breaks. The time duration of each visit is listed in Supplementary Table S1."
+      },
+      "confidence": 0.95,
+      "task": "Accelerated Longitudinal Design cohort establishment",
+      "setup": "480 participants divided into age cohorts, three waves of visits with 15-month intervals, data collection in Chongqing and Beijing"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae460cf856520ece_x2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The devCCNP project focused on enrolling typically developing school-age Chinese children and adolescents. The CKG Sample was included one primary school and one junior high school in Chongqing. The participants were recruited through face-to-face communications between parents, schools, and CCNP program staff. In the case of the PEK Sample, recruitment took place in Beijing, where community-based recruitment was initially accomplished through various science popularization activities and online advertisements. We provided a series of activities for the families to experience educational neuroscience, including lectures on the brain, neuroimaging, cognitive neuroscience, and facility tours to experience MRI mock scanning, to make them interested and familiar with the entire procedure. Because the project gradually gained a good reputation, word of mouth recruitment became a major source of participants. To accommodate each participant’s after-school schedule, the experimental procedures for one wave were conducted in 2 to 4 separate visits as shown in Table 1. A 1-month time window was given for completing all the experimental protocols in one wave, allowing for flexibility in scheduling. During the COVID-19 pandemic, relevant to the PEK Sample only, the time window was extended to three months to ensure that participants were able to complete the study. In addition, we offered modest monetary compensation and a variety of educational toys to the participants. The primary strategies to promote retention are listed below. Personal development report. After each wave’s data collection, every participant was provided with a well-designed personal development report containing feedback on various aspects of physiological characteristics (e.g. height, weight, blood pressure, and heart rate), cognitive ability (e.g. intelligence quotient or IQ), social-emotional development (e.g. social anxiety, depression, stress perception and behavioural problems), personality, and brain development. The brain development report included measurements of global and network morphology (i.e., 7 large-scale brain network organizations). Additionally, the report compared 2 or 3 wave performances to highlight development changes over time. Percentiles or norm-referenced scores were given to guide the interpretation of developmental behaviours. Practical advice or recommendations for enhancing the performance were provided only for reference. Brain science popularization. The enrolled participants and their guardians were regularly invited to attend talks popularizing brain science organized by the program staff. The talks were focused on providing an intuitive understanding of the personal development report and promoting extensive knowledge of brain science. During the progress, we emphasized the scientific significance of establishing longitudinal datasets for Chinese children and adolescents, with the aim of encouraging retention in the project. A featured program Localization of Frontiers for Young Minds articles (https://kids.frontiersin.org/articles) was launched in July 2019 with weekly neuroscience popularization articles promoted through various social media platforms, such as the WeChat Official Accounts Platform. Teenagers volunteered to be part of the translation team and were supervised by the CCNP Science Mentors. This initiative widely popularized background knowledge to school-age students, and improved acceptance of the project among the target population."
+      },
+      "confidence": 0.95,
+      "task": "Recruitment and retention of participants",
+      "setup": "School-based and community-based recruitment strategies, personal development reports, brain science popularization"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae460cf856520ece_x3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Screening & registration. A prescreening phone interview inquired about each participant’s health history, family history of disease, and any potential risk or side effect associated with the MRI procedure. After a detailed introduction, any necessary explanations and an assessment of those who were willing to participate, individuals meeting inclusion criteria without any reason for exclusion were invited to preregistration. Both participants and their guardians were invited to be confirmed on site, and signed the informed consent form before official participation. The inclusion criteria were as follows: - Male or female native Chinese speakers aged 6.0–17.9 years at enrolment. Note that some participants under 6 years old were also enrolled as a preexperiment on younger individuals. - Must have the capacity to provide assent, guardian must have the capacity to sign informed consent. The exclusion criteria were as follows: - Guardians unable to provide developmental and/or biological family histories (e.g., some instances of adoption). - • Serious neurological (specific or focal) disorders. - • History of significant traumatic brain injury. - History or family history (first-degree relatives) of neuropsychiatric disorders, such as ASD, ADHD, bipolar disorder, or schizophrenia. - Contraindication for MRI scanning, such as metal implants, or pacemakers. Ethical approval. This project was approved by the Institutional Review Board of the Institute of Psychology, Chinese Academy of Sciences (The Ethical Approval Number: H18017). Prior to conducting the research, written informed consent was obtained from one of the participants’ legal guardians, and written assent was obtained from the participants. Participants who became adults in the longitudinal follow-up provided written consent once becoming 18 years old."
+      },
+      "confidence": 0.95,
+      "task": "Participant screening and registration",
+      "setup": "Prescreening phone interview, inclusion/exclusion criteria, ethical approval"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae460cf856520ece_x4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Demographics & characteristics. Demographic information (e.g., age, sex and handedness) and characteristics of both participants (e.g., educational level) and their families (e.g., number of children) were collected at the beginning of each wave through self-designed parental questionnaires. The hand preference of the participant was assessed by the Annett Hand Preference Questionnaire (AHPQ) in the CGK Sample and was classified into 5 subgroups: strong right preference (RR), mixed with right tendencies (MR), mixed (M), mixed with left tendencies (ML), and strong left preference (LL). In the PEK Sample, the Chinese version of Edinburgh Handedness Inventory (EHI) was applied and participants were classified into 7 subgroups; two additional subgroups compared with the CKG Sample were right preference (R) and left preference (L). Parent-reported Child Behavior Check List (CBCL) was applied with Version: Ages 4–16 (1991 version) in the CKG Sample and Version: Ages 6–18 (2001 version) in PEK Sample. To capture participants’ family characteristics to achieve better population classification, a self-designed parent-reported Subjective Social Status questionnaire using a 10-point self-anchoring scale was additionally conducted in the process of PEK sampling. Additionally, in the PEK Sample, Music Training History Questionnaire for Children was completed by parents to collect information about the participants’ previous training or acquisition of music-related knowledge/skills. Biophysical measures. Objective biophysical measurements include height, weight, head circumference, and biomarkers of cardiovascular health (i.e., blood pressure and heart rate). The blood pressure assessment was performed immediately after the participant’s MRI scan, and the data provided were related to this specific time point. Visual acuity (naked eyesight in general, corrected eyesight as optional if the participant had ametropia) and Pure Tone Audiometry (PTA) were specifically measured in the PEK Sample. Even though PTA is a relatively basic and important hearing test, and was conducted in a sound-proof room, we note that the results might be affected by other factors, such as the psychological status of the participant. Therefore, we emphasized that the participant’s biophysical characteristics were only related to the physical and emotional state of the moment."
+      },
+      "confidence": 0.95,
+      "task": "Demographic and biophysical data collection",
+      "setup": "Self-designed questionnaires, Annett Hand Preference Questionnaire, Edinburgh Handedness Inventory, Child Behavior Check List, Subjective Social Status questionnaire, Music Training History Questionnaire"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_ae460cf856520ece_x5",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Physical fitness measures. Grip strength, standing broad jump and 15-metre shuttle run were tested to measure the muscle strength and cardiopulmonary endurance of the participants. After watching the procedure demonstrations, the test method and details were explained to the participants, and they were required to warm up sufficiently. The 15-metre shuttle run was conducted at the end, and the number of completed laps was recorded as the result. Rating of Perceived Exertion (RPE) was measured immediately after the shuttle run to evaluate exercise intensity."
+      },
+      "confidence": 0.95,
+      "task": "Physical fitness measurement",
+      "setup": "Grip strength, standing broad jump, 15-metre shuttle run, Rating of Perceived Exertion"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae460cf856520ece_qr1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "A total of 479 participants completed baseline visits, 247 (51.6%) completed the second wave data collection, and 138 (28.9%) completed the third wave (i.e., final protocol) as of December 2022. There were 648 (75.0%) measurements completed by participants twelve years old or younger. The number of participants who completed visits in each age cohort are shown in Table 4, and age and sex composition are presented in Fig. 1c,d. Demographic and enrolment data for both the CKG Sample (enrolled in 2013–2017) and the PEK (enrolled in 2018–2022) Sample are listed in Table 5. As mentioned above, the overall design has a longitudinal follow-up interval of 15 months, to which the CKG Sample consistently adhered; however, during the PEK sampling, the intervals were prolonged. For instance, inevitable practical situations affected community-based recruitment, primarily the COVID-19 pandemic. Please note that during COVID-19, data collection was suspended from January to August 2020. We designed questionnaires to assess participants’ learning and daily life status[12]. Each participant’s sampling age and corresponding intervals are presented in Fig. 1e–h. For all of the measurement intervals, 122 (32.1%) were achieved by design."
+      },
+      "confidence": 0.98,
+      "quantity": "total participants",
+      "value": 479,
+      "unit": null,
+      "context": "baseline visits completed in devCCNP project",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae460cf856520ece_qr2",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "We visually inspected the quality of the T1-weighted images, and two raters were trained to rate the quality using a 3-class framework[79], with “0” denoting images that suffered from gross artefacts and were considered unusable, “1” with some artefacts, but that were still considered usable, and “2” free from visible artefacts. Images with an average score lower than “2” across the two raters were excluded. A total of 761 (91.9%) images passed the quality control, with 436 (94.8%) images in the CKG Sample and 325 (88.3%) images in the PEK Sample. The intra-class correlation coefficient of the two raters was 0.532."
+      },
+      "confidence": 0.95,
+      "quantity": "MRI images quality control pass rate",
+      "value": 91.9,
+      "unit": "%",
+      "context": "T1-weighted images visual inspection using 3-class framework",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae460cf856520ece_qr3",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Scans with a mean FD greater than 0.5 were excluded. A total of 452 (98.3%) scans in the CKG Sample and 328 (92.4%) scans in the PEK Sample had at least one rfMRI passed the quality control in each session. Resting state fMRI(rs-fMRI) data preprocessing[78] included the following steps: (1) dropping the first 10 (5 TRs) for the equilibrium of the magnetic field; (2) correcting head motion; (3) slice timing; (4) despiking for the time series; (5) estimating head motion parameters; (6) aligning functional images to high resolution T1 images using boundary-based registration; (7) mitigating nuisance effects such as ICA-AROMA-derived, CSF and white matter signals; (8) removing linear and quadratic trends of the time series; (9) projecting volumetric time series to fsaverage5 cortical surface space; and (10) 6-mm spatial smoothing (we also provide a version of preprocessing results without smoothing). All preprocessing scripts of the above steps are available on github (https://github.com/zuoxinian/CCS/tree/master/H1)[78]."
+      },
+      "confidence": 0.95,
+      "quantity": "resting-state fMRI scans quality control pass rate",
+      "value": 98.3,
+      "unit": "%",
+      "context": "CKG Sample scans with mean FD greater than 0.5 excluded",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_ae460cf856520ece_qr4",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Mental health assessed by CBCL scores demonstrated that the majority of participants were in the normal range (Fig. 3b) with only 12 participants (1.77%) exhibiting CBCL total problem scores ≥70. We performed preliminary statistical analysis of several common-used cognitive and behavioural measures and present their accuracy rates in Fig. 3c. Distributions of FSIQ and four indices are shown in Fig. 3a. We summarize the median, mean and standard deviation for each Sample. As shown in Table 3, the Shapiro-Wilk test suggests that the sample data commonly disobey a Gaussian distribution. We believe that this is a common situation that arises when recruiting from the local community (PEK sample), as the program tends to attract parents with high levels of education who place greater emphasis on education. Better education conditions could result in higher IQ. Furthermore, the IQ scores were normalized based on the normative model of Chinese children established in 2008[34], which may be out of time. Additionally, there was a significant difference between the FSIQ, WMI, PRI and VCI performance of the two samples as identified by the rank-sum test."
+      },
+      "confidence": 0.9,
+      "quantity": "CBCL total problem scores abnormal rate",
+      "value": 1.77,
+      "unit": "%",
+      "context": "participants exhibiting CBCL total problem scores ≥70",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae460cf856520ece_p1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "According to the lifespan WMV trajectory from the LBCC seminal work[18] (i.e., rapid growth from mid-gestation to early childhood, peaking in young adulthood at 28.7 years), we presented the growth curves of WMV for devCCNP-CKG, deveCCNP-PEK and NKI-RS (Fig. 4). These curves indicated rapid increases in WMV from childhood to adolescence consistent with the LBCC findings. To better illustrate the growth curve differences between populations, we depicted site- and sex-specific (adjusted) growth curves of WMV in Fig. 4 (top). WMV is made up of the connections between neurons for cortical communications via neural information flow, and thus, its growth reflects underlying microstructural plasticity during school-age neurodevelopment[84] (e.g., language performance and training effects during learning[85]). In our analyses, the study-specific variability (e.g., imaging or sample bias) was adjusted by the GAMLSS modelling method. Therefore, the findings we detected are more reproducible and generalizable across devCCNP and NKI-RS samples. Specifically, as shown in Fig. 4, boys had larger WMV than girls, whereas the CKG participants (bottom, right) exhibited relatively smaller WMV than the participants from PEK (bottom, middle) and NKI-RS (bottom, left). Brain growth curves are included in the Supplementary Information (GMV, Figure S1; sGMV, Figure S2; TCV, Figure S3; mean CT, Figure S4; TSA, Figure S5)."
+      },
+      "confidence": 0.92,
+      "metric": "white matter volume growth",
+      "compared_to": "boys vs girls, CKG vs PEK vs NKI-RS"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_ae460cf856520ece_p2",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "To quantitatively estimate the diversity in brain growth attributable to ethnicity (referring between devCCNP to NKI-RS) and geographics (referring between devCCNP-CKG to devCCNP-PEK), we computed the normalized variance (NV)[16] of regional volume for each DK-parcel with the following equation NV = δ(V)/μ(V), where V is a vector referring to the parcel volume and δ referrs to the standard deviation. In other words, NV indicates the degree of curve shape dispersion between two growth curves across ages (we use 0.1 year as the sample age). δ is normalized by the mean volume of parcels across two samples, denoted as μ. The results are illustrated in Fig. 5 (first row). A small NV indicates that two brain growth curves share similar shapes, and vice versa. The sex-specific lifespan brain charts of regional volume (unit: ml) specific to one high NV (Pars Orbitalis; second row) and one low NV (Paracentral Lobule; third row) were depicted to illustrate the differences. As shown in Fig. 5 (bottom), we matched the 34 parcellated regions to the 8 large-scale functional networks[86] for an intuitive sense of the growth chart differences at the network level. We present the NV rank for comparisons between NKI-RS and devCCNP as well as between devCCNP-CKG and devCCNP-PEK in Fig. 5 (forth row). As done in the LBCC paper[18], we built normative growth charts of a brain parcel by GAMLSS modelling on the total volume of the parcel as the sum of its two homotopic areas in the two hemispheres. The NV and its rank maps were rendered onto both lateral and medial cortical surfaces of the left hemisphere for visualization purposes. Details of NV are listed in Supplementary Table S2 and S3 according to their ranking orders. Individual differences in growth charts of cortical volumes between devCCNP and NKI-RS are much larger than those between CKG and PEK. Such differences are spatially ranked in a consistent order among populations, indicating more diverse growth curves among individuals in high-order associative (frontoparietal or cognitive control, ventral attention, default mode and language) areas than those in primary areas."
+      },
+      "confidence": 0.93,
+      "metric": "regional brain growth curve similarity",
+      "compared_to": "devCCNP vs NKI-RS, devCCNP-CKG vs devCCNP-PEK"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_ae460cf856520ece_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "During the past decade, cognitive neuroscience has been calling for population diversity to address the challenge of validity and generalizability, ushering in a new era of population neuroscience. The developing Chinese Color Nest Project (devCCNP, 2013–2022), the first ten-year stage of the lifespan CCNP (2013–2032), is a two-stages project focusing on brainmind development. the project aims to create and share a large-scale, longitudinal and multimodal dataset of typically developing children and adolescents (ages 6.0–17.9 at enrolment) in the Chinese population. The devCCNP houses not only phenotypes measured by demographic, biophysical, psychological and behavioural, cognitive, affective, and oculartracking assessments but also neurotypes measured with magnetic resonance imaging (MRI) of brain morphometry, resting-state function, naturalistic viewing function and diffusion structure. This Data Descriptor introduces the first data release of devCCNP including a total of 864 visits from 479 participants. Herein, we provided details of the experimental design, sampling strategies, and technical validation of the devCCNP resource. We demonstrate and discuss the potential of a multicohort longitudinal design to depict normative brain growth curves from the perspective of developmental population neuroscience. the devCCNP resource is shared as part of the “Chinese Data-sharing Warehouse for In-vivo Imaging Brain” in the Chinese Color Nest Project (CCNP) – Lifespan Brain-Mind Development Data Community (https://ccnp.scidb.cn) at the Science Data Bank."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_ae460cf856520ece_cl1",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "CCNP is devoted to collecting nationwide data on brain structure and function across different stages of human lifespan development (6–85 years old). The long-term goal of this work is to create neurobiologically sound developmental curves for the brain to characterize phenomenological changes associated with the onset of various forms of mental health and learning disorders, as well as to predict the developmental status (i.e., age-expected values) of an individual brain’s structure or function. The developmental component of CCNP (devCCNP), also known as “Growing Up in China”, has established follow-up cohorts in Chongqing and Beijing, China. With the collection of longitudinal brain images and psychobehavioural samples from school-age children and adolescents (6–18 years) in multiple cohorts, devCCNP has constructed a full set of school-age brain templates, morphological growth curves and functional connectivity gradients for the Chinese Han population as well as related (although preliminary) differences in brain development between Chinese and American school-age children. The project has contributed to charting human brain development across the lifespan (0–100 years) in an international teamwork led by the Lifespan Brain Chart Consortium (LBCC)."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_ae460cf856520ece_lm1",
+      "evidence": {
+        "section": "Summarizing lessons learned",
+        "original_text": "School-based Strategy: Support of flexible schoolwork arrangements matched with the sampling schedule can greatly ensure the quantity and quality of data collection for junior and senior high school participants. With the help and encouragement from coordinators in school, recruitment efforts could be reduced. However, for these same reasons, the participants’ motivation could be compromised, as they may not be primarily driven by their interest in the project or may lack a clear understanding of the value and the contribution of participation. Meanwhile selecting recruiting schools may also, to some extent, reduce the sample representativeness of the target population. Community-based Strategy: Younger participants are undoubtedly easier to recruit in the community, but the number of pubertal-age participants is limited especially for longitudinal studies. Self-enrolled participants recruited at the community level or their guardian typically possess relevant knowledge and understand the value of participating in the project; therefore they are strongly motivated and tend to cooperate better. However, this also biases the sample to families with higher levels of education, or with some uncertain developmental problems. Especially with word of mouth spreading and popularizing, the similarity between participants’ families (e.g., social status, economic background) and/or their characteristics would be higher, which might diminish the individual differences between the participants."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_ae460cf856520ece_lm2",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "As shown in Table 3, the Shapiro-Wilk test suggests that the sample data commonly disobey a Gaussian distribution. We believe that this is a common situation that arises when recruiting from the local community (PEK sample), as the program tends to attract parents with high levels of education who place greater emphasis on education. Better education conditions could result in higher IQ. Furthermore, the IQ scores were normalized based on the normative model of Chinese children established in 2008, which may be out of time. Additionally, there was a significant difference between the FSIQ, WMI, PRI and VCI performance of the two samples as identified by the rank-sum test."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_ae460cf856520ece_fw1",
+      "evidence": {
+        "section": "Summarizing lessons learned",
+        "original_text": "Charting the typical developmental trajectories of individuals (with respect to physical, psychological and morphological development) through longitudinal design greatly contributes to uncovering the complex relationship between the brain and behaviour. As a long-term project, it is important not only to assess the full range of participants’ current state at a single time point of data collection, but also to capture what important life or social events occur during the follow-up period. These events include, but are not limited to, a family event (e.g., death of a family member, divorce of guardians), the birth of siblings, sudden illness, a significant social or public health event, and others. Future projects could employ regular questionnaires or scales (e.g., monthly) to collect related information during follow-up intervals, so that relevant details could be recorded. Alternatively, participants could be asked to retrospectively report the events at each time point of data collection, but this may miss the ability to capture their physiological or psychological experiences at the time of the event."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_ae460cf856520ece_fw2",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "To expand available resources for investigating population diversity while recognizing and addressing the issues of sampling bias, and inclusion barriers within developmental population neuroscience, we describe and share the brain-mind datasets of devCCNP here. We offer a comprehensive outline of the devCCNP protocol, along with recommendations to ensure that devCCNP can be scaled up to facilitate access to more diverse populations in the future. We provide all the anonymized raw data adhering to Brain Imaging Data Structure (BIDS) standards. In summary, this dataset comprises ample tasks addressing neurodevelopmental milestones of both primary and higher-order cognitive functions. The dataset holds the potential to deepen our understanding of brain development in various dimensions, and augments assessments of cultural diversity among the existing datasets using accelerated longitudinal designs (ALD) (see Table 1 from the cohort profile on CCNP for a nonexhaustive list of normative developmental samples obtained by ALD). In addition, we hope that the devCCNP will provide a resource to explore potential regional differences due to multisite sampling, and their impacts on brain development."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

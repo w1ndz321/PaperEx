@@ -1,0 +1,656 @@
+{
+  "metadata": {
+    "doc_id": "doc_f70d09c589ac1c16",
+    "source_file": "17_FAST_polarization_catalog_FRB_20240114A.md",
+    "title": "FAST Polarization Catalog of FRB 20240114A",
+    "year": 2026,
+    "doi": null,
+    "abstract": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N _≥_ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees ( _L/I_ , _V/I_ ), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by _∼_ 200 rad m _[−]_[2] over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 _±_ 1.2 pc cm _[−]_[3] . The linear polarization fraction is generally high, with the 3 _σ_ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having _|V |/I ≥_ 10%. We perform a power-law fit between _|V |/I_ and _|_ RM _|_ , which yields an index of _−_ 2 _._ 98 _±_ 0 _._ 80. It is found that the combined 2D distribution of _L/I_ versus _V/I_ remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments. \n\n_Keywords:_ High energy astrophysics (739), Radio transient source (2008), Polarimetry (1278), Catalogs (205)",
+    "introduction": "Fast radio bursts (FRBs) represent one of the most energetic and enigmatic phenomena in the transient universe (B. Zhang 2023). Since their discovery (D. R. Lorimer et al. 2007; D. Thornton et al. 2013), the identification of repeating sources (L. G. Spitler et al. 2016; CHIME/FRB Collaboration et al. 2019) has provided a crucial path toward understanding their progenitors. Among the various observational tools, radio polarimetry has proven to be exceptionally powerful. Measurements of the linear polarization and the Faraday rotation measure (RM) offer a direct probe into the magneto-ionic environment surrounding the FRB source, potentially revealing the presence of a supernova remnant, a pulsar wind nebula, or a binary companion’s wind (D. Michilli et al. 2018; Y.-P. Yang et al. 2020; F. Y. Wang et al. 2022; Y. Qu & B. Zhang 2023). Furthermore, the temporal evolution of these properties can shed light on the dynamics of this local environment (G. H. Hilmarsson et al. 2021; H. Xu et al. 2022). While individual case studies of bright bursts are valuable, a comprehensive statistical understanding of an FRB’s behavior requires large, uniform samples of bursts observed with a single, stable instrument. Such datasets mitigate instrumental biases and allow for the robust investigation of burst-to-burst variations, energy distributions, and longterm temporal evolution. \n\nRecent years have also seen the emergence of systematic FRB polarization catalogs from multiple instruments. For non-repeating FRBs, polarimetric catalogs have been presented for samples detected with DSA-110 (M. B. Sherman et al. 2024), CHIME/FRB (A. Pandhi et al. 2024), and ASKAP (D. R. Scott et al. 2025). For repeating sources, recent CHIME/FRB studies have established the largest source-level polarization catalogs to date (R. Mckinven et al. 2023a; C. Ng et al. 2025), enabling comparative studies across repeater populations. In this context, the present work is complementary: rather than a source-level census, we provide a large burst-level, time-resolved polarization catalog for a single exceptionally active repeating FRB, making it possible to investigate burst-to-burst variations and long-term temporal evolution within one source. \n\n> _∗_ These authors contributed equally to this work. \n\n3 \n\nThe repeating FRB 20240114A, discovered shortly after its initial activity, has established itself as one of the most prolific known sources (K. Shin et al. 2025; J. Tian et al. 2024; U. Panda et al. 2025; J.-T. Xie et al. 2025; J.-S. Zhang et al. 2025; D. Zhou et al. 2025a; L.-X. Zhang et al. 2025).Its sustained high burst rate over an extended period makes it an ideal target for amassing a large catalog of bursts. The Five-hundred-meter Aperture Spherical radio Telescope (FAST, R. Nan et al. 2011), with its unparalleled sensitivity, is uniquely capable of detecting the faint end of the burst energy distribution with a fluence completeness threshold of 0.026 Jy ms from such a source (J.-S. Zhang et al. 2025), thereby providing a complete and unbiased sample. This extreme sensitivity also makes FAST a powerful platform for high-precision polarimetry. Previous FAST observations have revealed diverse polarization-angle swings, frequency-dependent polarization behavior, extreme circular polarization, and temporal evolution of the local magneto-ionic environment in repeating FRBs (R. Luo et al. 2020; H. Xu et al. 2022; J.-C. Jiang et al. 2022; R. Anna-Thomas et al. 2023a; J. R. Niu et al. 2024; J. C. Jiang et al. 2024; D. Zhou et al. 2025b; Y. Feng et al. 2025; Y. Li et al. 2026), demonstrating that polarimetric measurements can serve as a sensitive probe of their extreme and dynamic environments. Building on these results, the present work provides a systematic polarimetric catalog and time-resolved statistical analysis of FRB 20240114A based on a much larger burst sample. \n\nThis paper is the first in a series devoted to unveiling the polarization nature of FRB 20240114A through FAST observations. Herein, we focus exclusively on the presentation and public release of the polarization catalog. We describe our 16-month observations from 2024 to 2025, the detailed data reduction pipeline, and the calibration procedures that underpin this dataset. The resulting catalog comprises over 6000 bursts, each with measured time of arrival (TOA), dispersion measure (DM), RM, and linear and circular polarization fractions. \n\nWe explicitly state that the comprehensive scientific analysis of this catalog, including the search for periodicity, the detailed modeling of RM evolution, and the investigation of burst sub-populations, will be the focus of subsequent publications in this series. The purpose of this paper is to establish the data product itself, ensuring its reliability and making it available to the broader community for independent analysis. \n\nThis paper is organized as follows. In Section 2, we describe the FAST observations and the data processing procedures, including burst search and parameter measurements. The catalog of bursts is presented in Section 3, providing a detailed description of the catalog. In Section 4, we analyze the data quality and global properties of the bursts, including parameter distributions and correlations. Section 5 is dedicated to a discussion of the possible origins of the RM evolution and the complex and variable geometry of the emission region. Finally, a summary and information on data access are provided in Section 6.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": "高能天体物理学"
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Fast Radio Bursts",
+      "Polarimetry",
+      "Faraday Rotation Measure",
+      "Radio Astronomy",
+      "Catalog"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:08:54.862032+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.99,
+      "term": "fast radio bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.98,
+      "term": "Faraday rotation measure",
+      "normalized": "法拉第旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.98,
+      "term": "dispersion measure",
+      "normalized": "色散量",
+      "std_label": "DM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The repeating FRB 20240114A, discovered shortly after its initial activity, has established itself as one of the most prolific known sources (K. Shin et al. 2025; J. Tian et al. 2024; U. Panda et al. 2025; J.-T. Xie et al. 2025; J.-S. Zhang et al. 2025; D. Zhou et al. 2025a; L.-X. Zhang et al. 2025).Its sustained high burst rate over an extended period makes it an ideal target for amassing a large catalog of bursts. The Five-hundred-meter Aperture Spherical radio Telescope (FAST, R. Nan et al. 2011), with its unparalleled sensitivity, is uniquely capable of detecting the faint end of the burst energy distribution with a fluence completeness threshold of 0.026 Jy ms from such a source (J.-S. Zhang et al. 2025), thereby providing a complete and unbiased sample. This extreme sensitivity also makes FAST a powerful platform for high-precision polarimetry. Previous FAST observations have revealed diverse polarization-angle swings, frequency-dependent polarization behavior, extreme circular polarization, and temporal evolution of the local magneto-ionic environment in repeating FRBs (R. Luo et al. 2020; H. Xu et al. 2022; J.-C. Jiang et al. 2022; R. Anna-Thomas et al. 2023a; J. R. Niu et al. 2024; J. C. Jiang et al. 2024; D. Zhou et al. 2025b; Y. Feng et al. 2025; Y. Li et al. 2026), demonstrating that polarimetric measurements can serve as a sensitive probe of their extreme and dynamic environments. Building on these results, the present work provides a systematic polarimetric catalog and time-resolved statistical analysis of FRB 20240114A based on a much larger burst sample."
+      },
+      "confidence": 0.97,
+      "term": "Five-hundred-meter Aperture Spherical radio Telescope",
+      "normalized": "五百米口径球面射电望远镜",
+      "std_label": "FAST"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.99,
+      "term": "FRB 20240114A",
+      "normalized": "快速射电暴20240114A",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.97,
+      "term": "polarization fraction",
+      "normalized": "偏振度",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.97,
+      "term": "intrinsic polarization angle",
+      "normalized": "固有偏振角",
+      "std_label": "PA0"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.96,
+      "term": "magneto-ionic environment",
+      "normalized": "磁离子环境",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c9",
+      "evidence": {
+        "section": "Observations and Data Processing",
+        "original_text": "We applied the RM synthesis method to all 6,384 bursts with S/N ≥ 20, searching for rotation measures over the range from −2000 to 2000 rad m−2 (M. A. Brentjens & A. G. de Bruyn 2005). The adopted range was chosen as a conservative symmetric interval, comfortably wider than the RMs actually measured for FRB 20240114A. For the present FAST L-band channelization, intrachannel depolarization would become important only at much larger |RM|, and therefore does not limit the current RM measurements. To ensure data reliability, we examined each burst for potential saturation effects in the FAST receiver. By inspecting the four polarization components (XX, YY, X∗Y, Y∗X) and identifying data points at the critical thresholds, we flagged and subsequently excluded bursts exhibiting genuine saturation signatures. This screening removed 253 bursts from the initial sample with S/N ≥ 20, leaving a final sample of 6,131 nonsaturated bursts with reliable RM measurements for the polarization analysis (see Appendix A for details)."
+      },
+      "confidence": 0.95,
+      "term": "RM synthesis",
+      "normalized": "RM合成",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c10",
+      "evidence": {
+        "section": "Observations and Data Processing",
+        "original_text": "We additionally conducted a systematic search for Faraday conversion across all bursts. Faraday conversion is a propagation effect in a magnetized plasma with a perpendicular magnetic field, converting linear polarization into circular polarization. Combined with Faraday rotation, if the Faraday conversion is observed, the detection would constrain plasma properties and magnetic field geometry along the line of sight (W.-Y. Wang et al. 2025). Our analysis found no significant evidence of conversion in any of the bursts in our sample, consistent with the results of P. A. Uttarkar et al. (2026a), indicating that the observed circular polarization is likely intrinsic to the emission mechanism rather than being generated by propagation effects."
+      },
+      "confidence": 0.95,
+      "term": "Faraday conversion",
+      "normalized": "法拉第转换",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f70d09c589ac1c16_c11",
+      "evidence": {
+        "section": "Data Quality and Global Properties",
+        "original_text": "Having characterized the parameter distributions and correlations for FRB 20240114A, we next examine the frequency-dependent depolarization to explore the burst’s magneto-ionic environment. A random magnetic field component within the Faraday rotating screen would cause frequency-dependent depolarization, characterized by a decrease in the observed linear polarization fraction (L/I) towards lower frequencies. In the classical B. J. Burn (1966) framework for depolarization by Faraday dispersion, the fractional reduction in linear polarization can be written as where fRM scattering is the fractional reduction in the linear polarization amplitude, σRM is the standard deviation of RM and λ is the wavelength. This formalism has since been applied to FRBs by Y. Feng et al. (2022b), P. A. Uttarkar et al. (2026b), and A. Pandhi et al. (2026). To test for this effect, we selected 18 bright bursts with high signal-to-noise ratio and broad bandwidth. The dynamic spectra and polarization profiles of these 18 bursts are shown in Figure 6. Each bursts’ band was subdivided into several frequency sub-bands. We independently performed RM synthesis and measured L/I within each sub-band. As shown in Figure 6, the derived L/I values for all sub-bands across all selected bursts cluster near 100%, with no systematic trend as a function of frequency. To better illustrate whether the L/I varies significantly with frequency, we plotted the L/I distribution of slices for each burst (left panel of Figure 6). To avoid overlap, the bursts were randomly divided into three groups. If the L/I distribution of a burst exhibits significant broadening, it would indicate a pronounced frequency evolution of the L/I, whereas a concentrated distribution implies that the L/I is nearly independent of frequency. The results show that the L/I distributions of all 18 bursts are relatively concentrated, indicating that the L/I remains nearly constant across frequency. This absence of significant depolarization allows us to place an upper limit on any random magnetic field component (often quantified as σRM) within the main Faraday screen. Based on our Bayesian analysis of 18 bursts, we derive a 95% upper limit of σRM < 0.51 rad m−2.This suggests that the main Faraday screen is largely ordered and exhibits minimal internal Faraday dispersion, at least for the selected bursts analysed here."
+      },
+      "confidence": 0.94,
+      "term": "frequency-dependent depolarization",
+      "normalized": "频率依赖性退偏振",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f70d09c589ac1c16_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.96,
+      "head": "doc_f70d09c589ac1c16_c1",
+      "relation_type": "measures",
+      "relation_surface": "detected",
+      "tail": "doc_f70d09c589ac1c16_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f70d09c589ac1c16_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.95,
+      "head": "doc_f70d09c589ac1c16_c2",
+      "relation_type": "measures",
+      "relation_surface": "probe",
+      "tail": "doc_f70d09c589ac1c16_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f70d09c589ac1c16_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.95,
+      "head": "doc_f70d09c589ac1c16_c5",
+      "relation_type": "belongs_to",
+      "relation_surface": "resides in",
+      "tail": "doc_f70d09c589ac1c16_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f70d09c589ac1c16_r4",
+      "evidence": {
+        "section": "Observations and Data Processing",
+        "original_text": "We applied the RM synthesis method to all 6,384 bursts with S/N ≥ 20, searching for rotation measures over the range from −2000 to 2000 rad m−2 (M. A. Brentjens & A. G. de Bruyn 2005). The adopted range was chosen as a conservative symmetric interval, comfortably wider than the RMs actually measured for FRB 20240114A. For the present FAST L-band channelization, intrachannel depolarization would become important only at much larger |RM|, and therefore does not limit the current RM measurements. To ensure data reliability, we examined each burst for potential saturation effects in the FAST receiver. By inspecting the four polarization components (XX, YY, X∗Y, Y∗X) and identifying data points at the critical thresholds, we flagged and subsequently excluded bursts exhibiting genuine saturation signatures. This screening removed 253 bursts from the initial sample with S/N ≥ 20, leaving a final sample of 6,131 nonsaturated bursts with reliable RM measurements for the polarization analysis (see Appendix A for details)."
+      },
+      "confidence": 0.94,
+      "head": "doc_f70d09c589ac1c16_c9",
+      "relation_type": "uses",
+      "relation_surface": "employed",
+      "tail": "doc_f70d09c589ac1c16_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f70d09c589ac1c16_r6",
+      "evidence": {
+        "section": "Data Quality and Global Properties",
+        "original_text": "Having characterized the parameter distributions and correlations for FRB 20240114A, we next examine the frequency-dependent depolarization to explore the burst’s magneto-ionic environment. A random magnetic field component within the Faraday rotating screen would cause frequency-dependent depolarization, characterized by a decrease in the observed linear polarization fraction (L/I) towards lower frequencies. In the classical B. J. Burn (1966) framework for depolarization by Faraday dispersion, the fractional reduction in linear polarization can be written as where fRM scattering is the fractional reduction in the linear polarization amplitude, σRM is the standard deviation of RM and λ is the wavelength. This formalism has since been applied to FRBs by Y. Feng et al. (2022b), P. A. Uttarkar et al. (2026b), and A. Pandhi et al. (2026). To test for this effect, we selected 18 bright bursts with high signal-to-noise ratio and broad bandwidth. The dynamic spectra and polarization profiles of these 18 bursts are shown in Figure 6. Each bursts’ band was subdivided into several frequency sub-bands. We independently performed RM synthesis and measured L/I within each sub-band. As shown in Figure 6, the derived L/I values for all sub-bands across all selected bursts cluster near 100%, with no systematic trend as a function of frequency. To better illustrate whether the L/I varies significantly with frequency, we plotted the L/I distribution of slices for each burst (left panel of Figure 6). To avoid overlap, the bursts were randomly divided into three groups. If the L/I distribution of a burst exhibits significant broadening, it would indicate a pronounced frequency evolution of the L/I, whereas a concentrated distribution implies that the L/I is nearly independent of frequency. The results show that the L/I distributions of all 18 bursts are relatively concentrated, indicating that the L/I remains nearly constant across frequency. This absence of significant depolarization allows us to place an upper limit on any random magnetic field component (often quantified as σRM) within the main Faraday screen. Based on our Bayesian analysis of 18 bursts, we derive a 95% upper limit of σRM < 0.51 rad m−2.This suggests that the main Faraday screen is largely ordered and exhibits minimal internal Faraday dispersion, at least for the selected bursts analysed here."
+      },
+      "confidence": 0.94,
+      "head": "doc_f70d09c589ac1c16_c11",
+      "relation_type": "measures",
+      "relation_surface": "examine",
+      "tail": "doc_f70d09c589ac1c16_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f70d09c589ac1c16_r7",
+      "evidence": {
+        "section": "Summary and Data Access",
+        "original_text": "The global analysis of this catalog reveals several key characteristics of the source: - Dynamic Rotation Measure : The RM exhibits a remarkable two-phase temporal evolution: an initial period of relative stability around a mean value, followed by a rapid, near-linear decay of approximately 200 rad m−2 over about 200 days. This evolution manifests as a bimodal distribution in the RM histogram. The joint RM–DM temporal analysis indicates that the RM variation is dominated by changes in the line-of-sight magnetic field strength rather than electron column density, implying a dynamically evolving magnetized environment in the immediate vicinity of the source. - Stable Dispersion Measure : In contrast to the RM, the DM remains remarkably stable throughout the entire observing campaign, indicating a constant integrated electron density along the line-of-sight."
+      },
+      "confidence": 0.96,
+      "head": "doc_f70d09c589ac1c16_c3",
+      "relation_type": "compares",
+      "relation_surface": "stable in contrast to",
+      "tail": "doc_f70d09c589ac1c16_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f70d09c589ac1c16_d1",
+      "evidence": {
+        "section": "ABSTRACT, 3. THE CATALOG DESCRIPTION",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments. The primary product of this work is a machine-readable catalog containing the measured parameters for the 6,131 bursts detected from FRB 20240114A. The catalog is structured as a table, with each row representing a single burst and each column a specific measured parameter, and the detailed description of the catalog columns is presented in Table 1. An abridged version of the catalog is presented in Table 2 for illustration. The full catalog is available in online in CSV formats."
+      },
+      "confidence": 0.95,
+      "name": "FAST Polarization Catalog of FRB 20240114A",
+      "modality": "tabular",
+      "domain": "astronomy, radio astrophysics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f70d09c589ac1c16_d2",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "An observation campaign of FRB 20240114A was conducted using the FAST telescope for over sixteen months, from 2024 January 28 to 2025 May 30. The initial observations employed the position reported by the Canadian Hydrogen Intensity Mapping Experiment (CHIME) (RA = 21h 27m 39s .888, Dec = +04◦ 21′ 0′′ .36). Starting from 15 February 2024 (UT), the pointing was updated to the refined location (RA = 21h 27m 39s .84, Dec = +04◦ 19′ 46′′ .3) localized by MeerKAT. The observing campaign comprised 97 sessions, totaling 57.99 hours of exposure time. Observations covered the 1.0–1.5 GHz band using the central beam of the 19-beam receiver in the tracking mode. Most data were recorded in the 8-bit PSRFITS format, providing full Stokes polarization information, 4096 frequency channels with a frequency resolution of 0.1221 MHz and a time resolution of 49.152 µs. We performed single-pulse searches on the FAST data using the PRESTO software package, which employs a matched-filtering technique that applies boxcar functions of varying widths to the dedispersed time series to identify pulses across a range of timescales. The pipeline was described in D. Li et al. (2025). To evaluate the completeness of the burst search, we also cross-checked the PRESTO results using two additional search approaches: DRAFTS, a deep-learning-based radio fast transient search pipeline, and the AI-aided pipeline described in P. Wang et al. (2024). In the present work, PRESTO serves as the primary burst-search pipeline, while these two methods are used as auxiliary cross-verification tools rather than as independent parallel catalog-building pipelines. By comparing their candidate lists with the PRESTO detections on the same data set, we verified that there is no obvious population of missed bursts in the final sample. This process identified 17,356 bursts exceeding our detection threshold, defined by a fluence signal-to-noise ratio of SNRf ≥ 12, where SNRf denotes the signal-to-noise ratio of the burst fluence, i.e., the integrated burst flux over its duration, rather than the peak-flux signal-to-noise ratio."
+      },
+      "confidence": 0.9,
+      "name": "FAST observations of FRB 20240114A (raw data)",
+      "modality": "time_series",
+      "domain": "astronomy, radio astrophysics"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f70d09c589ac1c16_ds1",
+      "evidence": {
+        "section": "3. THE CATALOG DESCRIPTION",
+        "original_text": "The primary product of this work is a machine-readable catalog containing the measured parameters for the 6,131 bursts detected from FRB 20240114A. The catalog is structured as a table, with each row representing a single burst and each column a specific measured parameter, and the detailed description of the catalog columns is presented in Table 1. An abridged version of the catalog is presented in Table 2 for illustration. The full catalog is available in online in CSV formats."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Catalog structured as a table with rows for bursts and columns for measured parameters, available in CSV format."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f70d09c589ac1c16_ds2",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING, A. POLARIZATION CALIBRATION",
+        "original_text": "This process identified 17,356 bursts exceeding our detection threshold, defined by a fluence signal-to-noise ratio of SNRf ≥ 12, where SNRf denotes the signal-to-noise ratio of the burst fluence, i.e., the integrated burst flux over its duration, rather than the peak-flux signal-to-noise ratio. From this sample, we selected 6,384 bursts with S/N ≥ 20 for polarization analysis. To ensure data reliability, we examined each burst for potential saturation effects in the FAST receiver. By inspecting the four polarization components (XX, YY, X∗Y, Y∗X) and identifying data points at the critical thresholds, we flagged and subsequently excluded bursts exhibiting genuine saturation signatures. This screening removed 253 bursts from the initial sample with S/N ≥ 20, leaving a final sample of 6,131 nonsaturated bursts with reliable RM measurements for the polarization analysis."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Burst detection threshold defined by fluence SNRf ≥ 12; polarization analysis restricted to bursts with S/N ≥ 20 after saturation screening."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f70d09c589ac1c16_ds3",
+      "evidence": {
+        "section": "ABSTRACT, 3. THE CATALOG DESCRIPTION",
+        "original_text": "In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). The primary product of this work is a machine-readable catalog containing the measured parameters for the 6,131 bursts detected from FRB 20240114A. The catalog is structured as a table, with each row representing a single burst and each column a specific measured parameter, and the detailed description of the catalog columns is presented in Table 1."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Catalog columns include arrival time (MJDtopo), DM, burst width, bandwidth, RM, linear/circular polarization degrees, intrinsic polarization angle."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f70d09c589ac1c16_ds4",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "An observation campaign of FRB 20240114A was conducted using the FAST telescope for over sixteen months, from 2024 January 28 to 2025 May 30. Observations covered the 1.0–1.5 GHz band using the central beam of the 19-beam receiver in the tracking mode. Most data were recorded in the 8-bit PSRFITS format, providing full Stokes polarization information, 4096 frequency channels with a frequency resolution of 0.1221 MHz and a time resolution of 49.152 µs."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Observations conducted with FAST telescope in 1.0–1.5 GHz band, using central beam of 19-beam receiver in tracking mode, data recorded in 8-bit PSRFITS format."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f70d09c589ac1c16_ds5",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING, B. RM SYNTHESIS, C. CORRECTION FOR IONOSPHERIC FARADAY ROTATION",
+        "original_text": "We applied the RM synthesis method to all 6,384 bursts with S/N ≥ 20, searching for rotation measures over the range from −2000 to 2000 rad m−2. The adopted range was chosen as a conservative symmetric interval, comfortably wider than the RMs actually measured for FRB 20240114A. The RM uncertainty is estimated empirically from the width of the RM-synthesis peak. Specifically, after identifying the RM corresponding to the maximum of the RM spectrum, we determine the left and right peak widths using the points where the spectrum drops below the midpoint between its maximum and minimum values, and divide these widths by the burst S/N. This yields asymmetric RM uncertainties when the RM-synthesis peak is not perfectly symmetric. The Earth ionosphere contributes an additive, time-variable component to the observed RM. To quantify and remove this effect, we calculate the ionospheric RM for each observing session using a Python code IonFR and global ionospheric map (GIM) products. All RM values presented in the final catalog have been corrected by subtracting the ionospheric RM for the corresponding MJD."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "RM synthesis performed over range -2000 to +2000 rad m^-2; RM uncertainty estimated from peak width and S/N; ionospheric RM correction applied."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f70d09c589ac1c16_ds6",
+      "evidence": {
+        "section": "A. POLARIZATION CALIBRATION, B. RM SYNTHESIS",
+        "original_text": "The polarization of the detected bursts was calibrated by correcting for differential gains and phases, using separate measurements of a noise diode injected at an angle of 45◦ from the linear receiver. This was done with the software package PSRCHIVE. Due to the quadrature summation L = √Q^2 + U^2, the probability density function of L is non-Gaussian. In addition, there exists a positive bias in the measured values at low L, which means the linear polarization can be subject to overestimation when noise is present. To remove the bias and calculate the true value of linear polarization, we employ the following equation to de-bias: L_debiased = √(L^2 - σ_I^2) if L > σ_I, otherwise L_debiased = 0."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Polarization calibration using noise diode injection at 45°, debiasing applied to linear polarization measurements."
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m1",
+      "evidence": {
+        "section": "2.1. FAST Observations and Burst Search",
+        "original_text": "We performed single-pulse searches on the FAST data using the PRESTO software package (S. M. Ransom 2001), which employs a matched-filtering technique that applies boxcar functions of varying widths to the dedispersed time series to identify pulses across a range of timescales. The pipeline was described in D. Li et al. (2025). To evaluate the completeness of the burst search, we also cross-checked the PRESTO results using two additional search approaches: DRAFTS, a deep-learning-based radio fast transient search pipeline (Y.-K. Zhang et al. 2025), and the AI-aided pipeline described in P. Wang et al. (2024). In the present work, PRESTO serves as the primary burst-search pipeline, while these two methods are used as auxiliary cross-verification tools rather than as independent parallel catalog-building pipelines. By comparing their candidate lists with the PRESTO detections on the same data set, we verified that there is no obvious population of missed bursts in the final sample."
+      },
+      "confidence": 0.95,
+      "name": "PRESTO",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m2",
+      "evidence": {
+        "section": "2.2. Parameter Measurement",
+        "original_text": "The dispersion measure (DM) of each burst was refined using the DM-power package (H.-H. Lin et al. 2022). Unlike the traditional approach of maximizing the peak signal-to-noise ratio (S/N) of the frequency-summed profile, which can be biased by complex sub-burst drifting and frequency-dependent morphology, DM-power optimizes the DM in the Fourier domain. The method decomposes the dynamic spectrum into Fourier components along the time axis and measures the DM independently at different Doppler (Fourier) frequencies. Since short-timescale structures are more sensitive to residual dispersive delays, the algorithm effectively weights information across multiple timescales, yielding a more robust and high-precision DM measurement. For bursts exhibiting ambiguous morphology in the dynamic spectrum or relatively low S/N, the multi-component optimization may become unstable and lead to overfitting. In such cases, we adopt the daily averaged DM values to ensure consistency across the sample."
+      },
+      "confidence": 0.95,
+      "name": "DM-power",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m3",
+      "evidence": {
+        "section": "2.2. Parameter Measurement",
+        "original_text": "We applied the RM synthesis method to all 6,384 bursts with S/N ≥ 20, searching for rotation measures over the range from −2000 to 2000 rad m⁻² (M. A. Brentjens & A. G. de Bruyn 2005). The adopted range was chosen as a conservative symmetric interval, comfortably wider than the RMs actually measured for FRB 20240114A. For the present FAST L-band channelization, intrachannel depolarization would become important only at much larger |RM|, and therefore does not limit the current RM measurements. To ensure data reliability, we examined each burst for potential saturation effects in the FAST receiver. By inspecting the four polarization components (XX, YY, X∗Y, Y∗X) and identifying data points at the critical thresholds, we flagged and subsequently excluded bursts exhibiting genuine saturation signatures. This screening removed 253 bursts from the initial sample with S/N ≥ 20, leaving a final sample of 6,131 nonsaturated bursts with reliable RM measurements for the polarization analysis (see Appendix A for details)."
+      },
+      "confidence": 0.95,
+      "name": "RM synthesis",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m4",
+      "evidence": {
+        "section": "2.2. Parameter Measurement",
+        "original_text": "The burst frequency boundaries were determined using the CDF-based method proposed by J.-T. Xie et al. (2025). For each burst, the spectrum was first constructed by integrating the on-pulse flux density over time for each frequency channel. The cumulative distribution function (CDF) of the spectrum was then calculated and smoothed using the asymmetrically reweighted penalized least squares (arPLS) algorithm to suppress noise fluctuations. The lower and upper frequency limits were defined as the frequencies where the first derivative of the normalized CDF rises above and subsequently falls below thresholds determined by the signal-to-noise ratio (S/N), specifically 1/(S/N) for the rising edge and 1–1/(S/N) for the falling edge. This procedure identifies the dominant emission band based on significant spectral power gradients rather than assuming a Gaussian spectral shape, and is therefore not equivalent to Gaussian fitting."
+      },
+      "confidence": 0.95,
+      "name": "CDF-based method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m5",
+      "evidence": {
+        "section": "2.2. Parameter Measurement",
+        "original_text": "The observed RMs include a contribution from the Earth’s ionosphere, which adds a time-variable component to the intrinsic RM. Using the IonFR Python code and global ionospheric map (GIM) products (C. Sotomayor-Beltran et al. 2013), we calculated the ionospheric RM for each observing session and corrected the RM values (see Appendix C for details)."
+      },
+      "confidence": 0.95,
+      "name": "IonFR",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m6",
+      "evidence": {
+        "section": "A. POLARIZATION CALIBRATION",
+        "original_text": "The polarization of the detected bursts was calibrated by correcting for differential gains and phases, using separate measurements of a noise diode injected at an angle of 45◦ from the linear receiver. This was done with the software package PSRCHIVE (A. W. Hotan et al. 2004). The circular polarization of most bursts is consistent with noise, being less than a few percent of the total intensity, in agreement with the findings of D. Michilli et al. (2018)."
+      },
+      "confidence": 0.95,
+      "name": "PSRCHIVE",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f70d09c589ac1c16_m7",
+      "evidence": {
+        "section": "D. ENERGY DISTANCE",
+        "original_text": "Energy distance is a statistical metric that quantifies the discrepancy between two multi-variate probability distributions. It operates directly on the moments of inter-point distances, offering a non-parametric and geometrically intuitive measure of distributional difference (G. Szekely & M. Rizzo 2004; G. J. Sz´ekely & M. L. Rizzo 2013a). Definition. Let X and X′ be independent and identically distributed (i.i.d.) random vectors from distribution P, and let Y and Y′ be i.i.d. from distribution Q, all defined on Rᵈ with finite first moments. The energy distance DE(P, Q) is defined as (G. Szekely & M. Rizzo 2004; G. J. Sz´ekely & M. L. Rizzo 2013a): DE(P, Q) = 2E∥X − Y∥ − E∥X − X′∥ − E∥Y − Y′∥, where E denotes the expectation and ∥· ∥ is the Euclidean norm (or, more generally, a suitable metric). Key Properties. The energy distance satisfies the following essential properties (G. Szekely & M. Rizzo 2004; G. J. Sz´ekely & M. L. Rizzo 2013a,b): 1. Non-negativity & Identity: DE(P, Q) ≥ 0, and DE(P, Q) = 0 if and only if P = Q almost everywhere. This makes it a proper statistical distance or metric. 2. Equivalence via Characteristic Functions: An alternative, powerful characterization links it to the characteristic functions ϕP(t) and ϕQ(t) of the distributions (G. Szekely & M. Rizzo 2004; G. J. Sz´ekely & M. L. Rizzo 2013a): DE(P, Q) = (1/cᵈ) ∫Rᵈ |ϕP(t) − ϕQ(t)|² / |t|ᵈ⁺¹ dt, where cᵈ is a dimensional constant. This formulation shows that DE measures the weighted L²-difference between the characteristic functions. 3. Sample Estimator: Given empirical samples {xᵢ}ⁿᵢ=₁ ∼P and {yᵢ}ᵐᵢ=₁ ∼Q, DE can be estimated unbiasedly from inter-point distances, making it applicable to real-world data (G. J. Sz´ekely & M. L. Rizzo 2013a). Applications. In statistical and machine learning contexts, energy distance is widely used for two-sample hypothesis testing (the energy test), assessing the convergence of generative models, and as a loss function in domain adaptation (G. Szekely & M. Rizzo 2004; G. J. Sz´ekely & M. L. Rizzo 2013a; D. Sejdinovic et al. 2013). Its primary advantages are its metric properties, sensitivity to all moments, and computational feasibility for moderate sample sizes. Note. In the main text, we use the energy distance to quantify the difference between the joint distributions of the linear and circular polarization fractions of cumulative bursts in consecutive observing sessions over different time-scales. Specifically, each burst is represented as a two-dimensional vector, xᵢ = (Lᵢ/Iᵢ, Vᵢ/Iᵢ), where Lᵢ/Iᵢ and Vᵢ/Iᵢ denote the linear and circular polarization fractions, respectively. For two samples X = {xᵢ}ᵐᵢ=₁ and Y = {yᵢ}ⁿᵢ=₁ from two observing sessions, we compute the sample energy distance as E(X, Y) = (2/(mn)) Σᵢ Σᵢ ∥xᵢ − yᵢ∥ − (1/m²) Σᵢ Σᵢ ∥xᵢ − xᵢ∥ − (1/n²) Σᵢ Σᵢ ∥yᵢ − yᵢ∥, where ∥· ∥ is the Euclidean distance in the two-dimensional polarization-fraction space. A larger value of E indicates a greater discrepancy between the two joint distributions."
+      },
+      "confidence": 0.95,
+      "name": "Energy Distance",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f70d09c589ac1c16_x1",
+      "evidence": {
+        "section": "2.1. FAST Observations and Burst Search",
+        "original_text": "An observation campaign of FRB 20240114A was conducted using the FAST telescope for over sixteen months, from 2024 January 28 to 2025 May 30. The initial observations employed the position reported by the Canadian Hydrogen Intensity Mapping Experiment (CHIME) (K. Shin et al. 2025) (RA = 21[h] 27[m] 39[s] .888, Dec = +04◦ 21′ 0′′ .36). Starting from 15 February 2024 (UT), the pointing was updated to the refined location (RA = 21[h] 27[m] 39[s] .84, Dec = +04◦ 19′ 46′′ .3) localized by MeerKAT (J. Tian et al. 2024). The observing campaign comprised 97 sessions, totaling 57.99 hours of exposure time. Observations covered the 1.0–1.5 GHz band using the central beam of the 19-beam receiver in the tracking mode. Most data were recorded in the 8-bit PSRFITS format, providing full Stokes polarization information, 4096 frequency channels with a frequency resolution of 0.1221 MHz and a time resolution of 49.152 µs."
+      },
+      "confidence": 0.95,
+      "task": "FAST observation campaign of FRB 20240114A",
+      "setup": "FAST telescope, 1.0–1.5 GHz band, central beam of 19-beam receiver, tracking mode, 4096 frequency channels, 0.1221 MHz resolution, 49.152 µs time resolution"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f70d09c589ac1c16_x2",
+      "evidence": {
+        "section": "4. DATA QUALITY AND GLOBAL PROPERTIES",
+        "original_text": "To test for this effect, we selected 18 bright bursts with high signal-to-noise ratio and broad bandwidth. The dynamic spectra and polarization profiles of these 18 bursts are shown in Figure 6. Each bursts’ band was subdivided into several frequency sub-bands. We independently performed RM synthesis and measured L/I within each sub-band. As shown in Figure 6, the derived L/I values for all sub-bands across all selected bursts cluster near 100%, with no systematic trend as a function of frequency. To better illustrate whether the L/I varies significantly with frequency, we plotted the L/I distribution of slices for each burst (left panel of Figure 6). To avoid overlap, the bursts were randomly divided into three groups. If the L/I distribution of a burst exhibits significant broadening, it would indicate a pronounced frequency evolution of the L/I, whereas a concentrated distribution implies that the L/I is nearly independent of frequency. The results show that the L/I distributions of all 18 bursts are relatively concentrated, indicating that the L/I remains nearly constant across frequency. This absence of significant depolarization allows us to place an upper limit on any random magnetic field component (often quantified as σRM) within the main Faraday screen. Based on our Bayesian analysis of 18 bursts, we derive a 95% upper limit of σRM < 0.51 rad m⁻²."
+      },
+      "confidence": 0.95,
+      "task": "Frequency-dependent depolarization test",
+      "setup": "18 bright bursts with high S/N and broad bandwidth, subdivided frequency bands, RM synthesis and L/I measurement per sub-band"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f70d09c589ac1c16_x3",
+      "evidence": {
+        "section": "5.1. The Origin of RM Evolution",
+        "original_text": "To quantify the significance of this decline, we performed a Monte Carlo test using the burst-level RM measurements from sessions I–IV as the null hypothesis of a stable RM distribution. Specifically, we combined all RM values from these four sessions and used their sample mean and standard deviation to define the parent distribution. We then generated 10,000 mock samples, each containing the same number of bursts as observed in sessions V–VI, by drawing random values from this null distribution. For each mock sample, we calculated its mean RM and compared the resulting distribution of simulated means with the observed mean RM of sessions V–VI. The observed value lies far below the simulated distribution, and none of the 10,000 realizations reproduces such a low mean, implying p < 10⁻⁴ under the null hypothesis of no RM evolution."
+      },
+      "confidence": 0.95,
+      "task": "Monte Carlo test for RM evolution significance",
+      "setup": "Burst-level RM measurements from sessions I–IV as null hypothesis, 10,000 mock samples drawn from null distribution"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr1",
+      "evidence": {
+        "section": "Abstract, 2.2, 4.1",
+        "original_text": "We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m^{-2} over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm^{-3}. The DM distribution peaks at approximately 528.9 pc cm^{-3}, consistent with previously reported values for this source (K. Shin et al. 2025). The narrow spread of the distribution demonstrates the stability of the line-of-sight integrated electron density over the 16-month observing campaign. The derived DMs have a median value of 529.3 pc cm^{-3} with a standard deviation of 1.2 pc cm^{-3}, consistent with the measurement reported by CHIME/FRB (K. Shin et al. 2025)."
+      },
+      "confidence": 0.98,
+      "quantity": "dispersion measure",
+      "value": 529.3,
+      "unit": "pc cm^{-3}",
+      "context": "FRB 20240114A bursts detected by FAST between 2024 January 28 and 2025 May 30",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr2",
+      "evidence": {
+        "section": "Abstract, 4.1, 5.1",
+        "original_text": "We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m^{-2} over 200 days, forming a bimodal distribution. The RM distribution exhibits a complex, non-Gaussian structure. The primary peak is located near 362.2 rad m^{-2}, corresponding to the initial stable phase of the source. A secondary, smaller but visually distinct peak is present at a lower RM of approximately 229.8 rad m^{-2}. This bimodality directly reflects the significant temporal evolution of the RM. The RM undergoes a highly significant, monotonic decay of approximately 200 rad m^{-2}. The shift in the RM distribution peak between sessions is visually clear. To quantify the significance of this decline, we performed a Monte Carlo test using the burst-level RM measurements from sessions I–IV as the null hypothesis of a stable RM distribution. The observed value lies far below the simulated distribution, and none of the 10,000 realizations reproduces such a low mean, implying p < 10^{-4} under the null hypothesis of no RM evolution."
+      },
+      "confidence": 0.97,
+      "quantity": "rotation measure",
+      "value": null,
+      "unit": "rad m^{-2}",
+      "context": "FRB 20240114A bursts detected by FAST between 2024 January 28 and 2025 May 30, showing temporal evolution",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr3",
+      "evidence": {
+        "section": "Abstract, 4.1",
+        "original_text": "The linear polarization fraction is generally high, with the 3 σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. The linear polarization fractions are systematically high, with a 3 σ lower bound of 76%, a behavior commonly seen among repeating FRBs and suggestive of a magnetically ordered emission region."
+      },
+      "confidence": 0.96,
+      "quantity": "linear polarization fraction lower bound",
+      "value": 76,
+      "unit": "%",
+      "context": "FRB 20240114A bursts detected by FAST between 2024 January 28 and 2025 May 30",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr4",
+      "evidence": {
+        "section": "Abstract, 4.2",
+        "original_text": "The linear polarization fraction is generally high, with the 3 σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V |/I ≥ 10%. In addition to the above parameters, we also calculated the proportion of bursts exhibiting significant circular polarization (degree of circular polarization, |V |/I ≥ 10%) in our sample. For FRB 20240114A, 1,157 out of 17,356 detected bursts met this criterion, yielding a proportion of 6.67%."
+      },
+      "confidence": 0.95,
+      "quantity": "significant circular polarization proportion",
+      "value": 6.67,
+      "unit": "%",
+      "context": "FRB 20240114A bursts detected by FAST between 2024 January 28 and 2025 May 30",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr5",
+      "evidence": {
+        "section": "Abstract, 4.2",
+        "original_text": "We perform a power-law fit between |V |/I and |RM|, which yields an index of −2.98 ± 0.80. A power-law fit to our updated sample yields an index of −2.98 ± 0.80. With this fit, the associated uncertainty envelope encompasses the data points for FRB 20190520B and FRB 20121102A (Y.-K. Zhang et al. 2023; Y. Feng et al. 2022a), while those for FRB 20220912A and FRB 20201124A (Y.-K. Zhang et al. 2023) lie significantly outside of it."
+      },
+      "confidence": 0.95,
+      "quantity": "power-law index",
+      "value": -2.98,
+      "unit": null,
+      "context": "Relationship between |V|/I and |RM| for FRB 20240114A",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr6",
+      "evidence": {
+        "section": "4.2",
+        "original_text": "To test for this effect, we selected 18 bright bursts with high signal-to-noise ratio and broad bandwidth. The dynamic spectra and polarization profiles of these 18 bursts are shown in Figure 6. Each bursts’ band was subdivided into several frequency sub-bands. We independently performed RM synthesis and measured L/I within each sub-band. As shown in Figure 6, the derived L/I values for all sub-bands across all selected bursts cluster near 100%, with no systematic trend as a function of frequency. This absence of significant depolarization allows us to place an upper limit on any random magnetic field component (often quantified as σ_RM) within the main Faraday screen. Based on our Bayesian analysis of 18 bursts, we derive a 95% upper limit of σ_RM < 0.51 rad m^{-2}. This suggests that the main Faraday screen is largely ordered and exhibits minimal internal Faraday dispersion, at least for the selected bursts analysed here."
+      },
+      "confidence": 0.94,
+      "quantity": "σ_RM upper limit",
+      "value": 0.51,
+      "unit": "rad m^{-2}",
+      "context": "Frequency-dependent depolarization analysis of 18 bright, broadband bursts from FRB 20240114A",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr7",
+      "evidence": {
+        "section": "5.1",
+        "original_text": "To quantify the additional burst-to-burst DM scatter beyond the formal fitting uncertainties, we compared the burst-level DMs with the corresponding daily-average reference DM values and wrote the observed daily scatter as σ_obs^2, daily = σ_measure^2 + σ_sys^2 + σ_int^2, where σ_measure is the formal measurement contribution, σ_sys represents the morphology-related excess variance, and σ_int denotes any intrinsic day-scale DM variation. For our sample, we obtain σ_obs, daily = 1.10 pc cm^{-3} and σ_measure = 0.84 pc cm^{-3}, implying (σ_sys^2 + σ_int^2)^{1/2} ≈ 0.70 pc cm^{-3}. Under the practical assumption that σ_int = 0, this yields an upper limit of σ_sys ≲ 0.70 pc cm^{-3}."
+      },
+      "confidence": 0.93,
+      "quantity": "daily DM scatter",
+      "value": 1.1,
+      "unit": "pc cm^{-3}",
+      "context": "Burst-to-burst DM scatter analysis for FRB 20240114A",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr8",
+      "evidence": {
+        "section": "5.1",
+        "original_text": "The evolution of the line-of-sight magnetic field component ⟨B∥⟩ can be quantitatively estimated from the changes in RM and DM, which is given by ⟨B∥⟩≃ 1.2 × ∆RM / ∆DM μG, where ∆RM and ∆DM are the differences in RM and DM between different sessions. Applying this to the significant RM decay observed between activity sessions, we find that the nominal values of ⟨B∥⟩ vary in a manner qualitatively consistent with the RM evolution (Figure 7, panel d). However, the uncertainties are large, and the current data do not provide statistically significant evidence for a departure from a constant temporal evolution of ⟨B∥⟩. For FRB 20240114A, our session-based estimates span from values consistent with zero at early times to tens and up to ∼ 10^2 μG at later epochs, with nominal values ranging from about -168 to +54 μG (i.e., ∼ 0.05-0.17 mG in magnitude)."
+      },
+      "confidence": 0.92,
+      "quantity": "⟨B∥⟩ range",
+      "value": null,
+      "unit": "μG",
+      "context": "Session-based estimates for FRB 20240114A from RM and DM evolution",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f70d09c589ac1c16_qr9",
+      "evidence": {
+        "section": "5.2",
+        "original_text": "Using the reduced-χ^2 of a constant-PA fit to the derotated time-resolved PA profiles, we find that 67.2% of bursts satisfy χ^2_ν < 5. However, χ^2_ν ≥ 5 does not necessarily imply a prominent PA swing; if we additionally require the difference between the maximum and minimum PA within a burst to exceed 40°, the fraction of bursts with clear intraburst PA swings is 17.6%. For bursts with variable PA profiles, PA0 should therefore be regarded as a representative value rather than a complete description of the full intraburst PA evolution."
+      },
+      "confidence": 0.94,
+      "quantity": "bursts with stable PA profiles proportion",
+      "value": 67.2,
+      "unit": "%",
+      "context": "Intraburst polarization angle analysis for FRB 20240114A",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_f70d09c589ac1c16_p1",
+      "evidence": {
+        "section": "5.1",
+        "original_text": "The coherent, large-scale decay in both RM and the inferred ⟨B∥⟩ points to a global evolution of the magneto-ionic environment surrounding the FRB source. This could be due to the expansion of a magnetized shell (e.g., a supernova remnant or a pulsar wind nebula (D. Michilli et al. 2018)), the traversal of the source through a gradient in a large-scale magnetic field, or the secular evolution of a magnetized stellar wind from a binary companion (H. Xu et al. 2022). A useful phenomenological comparison is FRB 20180916B, whose RM evolution also exhibits an initially relatively stable phase followed by a more secular change (R. Mckinven et al. 2023c). In that sense, FRB 20240114A does not appear to be an isolated case, but may belong to a subset of repeaters whose magneto-ionic environments evolve smoothly over month-to-year timescales rather than through purely stochastic fluctuations. At the same time, the detailed amplitudes, durations, and possible reversals of the RM evolution differ between sources, indicating diversity in the underlying environments and evolutionary drivers."
+      },
+      "confidence": 0.93,
+      "metric": "RM evolution",
+      "compared_to": "FRB 20180916B"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_f70d09c589ac1c16_p2",
+      "evidence": {
+        "section": "5.1",
+        "original_text": "This inferred local line-of-sight magnetic field can also be compared with similar estimates discussed for other repeating FRBs. For FRB 20240114A, our session-based estimates span from values consistent with zero at early times to tens and up to ∼ 10^2 μG at later epochs, with nominal values ranging from about -168 to +54 μG (i.e., ∼ 0.05-0.17 mG in magnitude). This places FRB 20240114A below the more strongly magnetized mG-class environments inferred for FRB 20121102A (D. Michilli et al. 2018), FRB 20190520B (R. Anna-Thomas et al. 2023b), FRB 20190417A (A. M. Moroianu et al. 2026), and FRB 20220529A (A. Pandhi et al. 2026), and also somewhat below FRB 20240619D (O. S. Ould-Boukattine et al. 2026). In this sense, FRB 20240114A appears less extreme than highly magnetized systems, while still indicating a dynamically evolving magneto-ionic environment. More broadly, it is comparable to the class of repeaters for which RM and DM evolution imply a local environment that is clearly magnetized but not as extreme as the most strongly Faraday-active sources."
+      },
+      "confidence": 0.92,
+      "metric": "⟨B∥⟩ magnitude",
+      "compared_to": "FRB 20121102A, FRB 20190520B, FRB 20190417A, FRB 20220529A, FRB 20240619D"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_f70d09c589ac1c16_p3",
+      "evidence": {
+        "section": "5.2",
+        "original_text": "Unlike FRB 20180916B, which shows remarkably stable burst-to-burst PAs indicative of a highly stable magnetic field geometry at the emission site (S. Bethapudi et al. 2025), FRB 20240114A exhibits large burst-to-burst PA variation (Figure 8). The broad distribution of PA0, even for bursts with stable intra-burst PA profiles (blue histogram in Figure 8), and the significant scatter of the session-averaged PA0 (red error bars in Figure 8, left) suggest that the bursts originate from a spatially complex or temporally fast-evolving magnetospheric environment. The lack of a stable, globally preferred PA challenges models where emission is strictly confined to a fixed magnetic pole."
+      },
+      "confidence": 0.94,
+      "metric": "PA stability",
+      "compared_to": "FRB 20180916B"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_f70d09c589ac1c16_ca1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Polarization measurements of fast radio bursts (FRBs) probe the magnetized plasma surrounding their central engines. FRB 20240114A is an exceptionally active repeating source, with 17,356 bursts detected between 2024 January 28 and 2025 May 30 by FAST, enabling studies of the temporal evolution of its polarization properties. In this work, we present a polarimetric catalog of 6,131 bright bursts (with a signal-to-noise ratio S/N ≥ 20, 35.3% of the total sample), including arrival time (MJDtopo), dispersion measure (DM), burst width (Weff), bandwidth, Faraday rotation measure (RM), linear and circular polarization degrees (L/I, V/I), and intrinsic polarization angle (PA0). We confirm a clear temporal evolution of RM: after an initial stable phase, it decreases linearly by ∼ 200 rad m−2 over 200 days, forming a bimodal distribution, whereas DM remains stable at 529.3 ± 1.2 pc cm−3. The linear polarization fraction is generally high, with the 3σ lower bound around 76%, while circular polarization is low, with 1,157 of 17,356 bursts (6.67%) having |V|/I ≥ 10%. We perform a power-law fit between |V|/I and |RM|, which yields an index of −2.98 ± 0.80. It is found that the combined 2D distribution of L/I versus V/I remains stable, implying that the emission mechanism is largely invariant. Our PA0 measurements show a broad, non-uniform distribution, implying a complex emission geometry. These results suggest that FRB 20240114A resides in a dynamically evolving magneto-ionic environment. This catalog provides a foundation for studies of repeating FRB progenitors and their environments."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_f70d09c589ac1c16_cl1",
+      "evidence": {
+        "section": "6. SUMMARY AND DATA ACCESS",
+        "original_text": "In this paper, we present a large-scale polarization catalog for the repeating FRB 20240114A, resulting from an extensive monitoring campaign with the FAST telescope between 2024 January 28 and 2025 May 30. The core of this work is the detection and parameterization of 6,131 bursts. We have detailed the comprehensive data processing pipeline, from initial data acquisition and pre-processing to sophisticated polarization calibration and RM synthesis. The key deliverables of this pipeline are precise measurements for each burst, including the topocentric arrival time (MJD), DM, pulse width, bandwidth (BW), RM, and the degrees of linear and circular polarization. The global analysis of this catalog reveals several key characteristics of the source: - Dynamic Rotation Measure: The RM exhibits a remarkable two-phase temporal evolution: an initial period of relative stability around a mean value, followed by a rapid, near-linear decay of approximately 200 rad m−2 over about 200 days. This evolution manifests as a bimodal distribution in the RM histogram. The joint RM–DM temporal analysis indicates that the RM variation is dominated by changes in the line-of-sight magnetic field strength rather than electron column density, implying a dynamically evolving magnetized environment in the immediate vicinity of the source. - Stable Dispersion Measure: In contrast to the RM, the DM remains remarkably stable throughout the entire observing campaign, indicating a constant integrated electron density along the line-of-sight. - High Degree of Polarization: The linear polarization fraction is generally high, while the circular polarization is typically low. The relationship between linear and circular polarization for the vast majority of bursts adheres to the theoretical physical limit, with outliers primarily attributed to low-SNR measurements. The intrinsic polarization position angle distribution is broad and centered near 10◦ with a non-Gaussian excess, but shows no stable, singular preferred orientation over time. - Stable Polarization Fraction Distributions: Despite the dramatic evolution in RM, the combined two-dimensional distribution of linear versus circular polarization fractions remains statistically stable across the entire observing period. This suggests that the underlying emission mechanism and the net ordered magnetic field geometry in the immediate emission region are largely invariant. - Absence of Frequency-Dependent Depolarization: Analysis of bright, broadband bursts shows no systematic decrease of linear polarization fraction with frequency, arguing against significant random magnetic fields (σRM) within the main Faraday rotating screen. - Absence of Faraday Conversion: No significant Faraday conversion is detected at any epoch. This non-detection indicates that the polarization data probe only the line-of-sight magnetic field component. The perpendicular component remains unconstrained. Future ultra–wideband and higher-sensitivity observations may detect conversion. This would enable joint tracking of the perpendicular and parallel magnetic field components, and allow reconstruction of the time-varying three-dimensional magnetic field in the source vicinity."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_f70d09c589ac1c16_lm1",
+      "evidence": {
+        "section": "4. DATA QUALITY AND GLOBAL PROPERTIES",
+        "original_text": "We additionally searched for signatures of Faraday conversion in bursts with sufficient S/N and frequency coverage. Specifically, we examined whether the circular polarization fraction exhibits any systematic frequency- or wavelengthdependent evolution within individual bursts. We do not find any clear or definitive evidence for such behavior in the present sample. This is also consistent with the result of P. A. Uttarkar et al. (2026a). A broader population-level test based on burst central frequency, bandwidth, and L/I would be valuable, but is not yet sufficiently robust for the present data set because our current CDF-based bandwidth measurements do not always yield reliable central-frequency estimates, particularly for bursts truncated by the band edges. In addition, for multi-component bursts, differences in L/I among distinct temporal or spectral components may contaminate a depolarization search by introducing apparent frequency-dependent behavior that does not arise from a single, uniform Faraday screen."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_f70d09c589ac1c16_lm2",
+      "evidence": {
+        "section": "5. DISCUSSION",
+        "original_text": "The evolution of the line-of-sight magnetic field component ⟨B∥⟩ can be quantitatively estimated from the changes in RM and DM, which is given by ⟨B∥⟩≃ 1.2 × ∆RM/∆DM µG, where ∆RM and ∆DM are the differences in RM and DM between different sessions. Applying this to the significant RM decay observed between activity sessions, we find that the nominal values of ⟨B∥⟩ vary in a manner qualitatively consistent with the RM evolution (Figure 7, panel d). However, the uncertainties are large, and the current data do not provide statistically significant evidence for a departure from a constant temporal evolution of ⟨B∥⟩. The uncertainties of ⟨B∥⟩ are derived from error propagation of the measurement errors in RM and DM. The stable standard deviation of DM over time (Figure 7, panel a) argues against the injection of new, clumpy plasma, supporting the interpretation that the changing RM and ⟨B∥⟩ stem from the evolution of an existing magneto-ionic environment."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_f70d09c589ac1c16_fw1",
+      "evidence": {
+        "section": "5. DISCUSSION",
+        "original_text": "The possible quasi-periodic modulation of burst activity in FRB 20240114A reported by P. A. Uttarkar et al. (2026a), introduces an additional layer of complexity to the understanding of this source. Using Murriyang observations, they proposed a timescale of approximately 70 days and interpreted it as evidence for plasma lensing due to extreme scattering events. D. Zhou et al. (2025a) have also identified periodicities in FAST observations of this source, with periods of 143.40 ± 7.19 days (5.2σ significance) and 73.60 ± 2.45 days (3.3σ significance). Notably, periodic phenomena are not unique to FRB 20240114A. Several well-studied repeating FRBs have been reported to exhibit periodicities in either their burst activity or environmental properties, including FRB 20180916B, which shows a 16.35-day activity period ( CHIME/FRB Collaboration et al. 2020). In this context, any potential activity periodicity in FRB 20240114A would place it among a small but growing group of repeaters with long-term activity modulation. The diversity of reported activity-modulation timescales among repeaters suggests that multiple physical mechanisms may be at play. The interpretation of any potential periodicity in FRB 20240114A thus remains an open question, necessitating further monitoring and multi-wavelength observations to distinguish between intrinsic and environmental origins."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_f70d09c589ac1c16_fw2",
+      "evidence": {
+        "section": "6. SUMMARY AND DATA ACCESS",
+        "original_text": "The absence of Faraday conversion: No significant Faraday conversion is detected at any epoch. This non-detection indicates that the polarization data probe only the line-of-sight magnetic field component. The perpendicular component remains unconstrained. Future ultra–wideband and higher-sensitivity observations may detect conversion. This would enable joint tracking of the perpendicular and parallel magnetic field components, and allow reconstruction of the time-varying three-dimensional magnetic field in the source vicinity."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

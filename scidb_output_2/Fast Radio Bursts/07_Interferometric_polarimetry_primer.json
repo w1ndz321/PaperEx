@@ -1,0 +1,364 @@
+{
+  "metadata": {
+    "doc_id": "doc_7b03c3226c20179a",
+    "source_file": "07_Interferometric_polarimetry_primer.md",
+    "title": "Interferometric Polarimetry: A primer",
+    "year": 2006,
+    "doi": null,
+    "abstract": "• The polarization ellipse (black) can be decomposed into an X-component of amplitude 2, and a Y- component of amplitude 1 which lags by ¼ turn. • It can alternatively be decomposed into a counterclockwise (RCP) rotating vector of length 1.5 (red), and a clockwise rotating (LCP) vector of length 0.5 (blue).",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "物理学",
+      "level2": "光学",
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "polarimetry",
+      "polarization ellipse",
+      "interferometry",
+      "electromagnetic waves",
+      "optical measurement"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:03:45.938933+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c1",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Polarimetry refers to the characteristics of these two components. Their amplitudes, and the phase relation between them. Why do we care about polarization? Because various physical processes emit radiation which is partially polarized. Measuring the polarization gives us additional information into the physical processes at play."
+      },
+      "confidence": 0.99,
+      "term": "polarimetry",
+      "normalized": "偏振测量",
+      "std_label": "Polarimetry"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c2",
+      "evidence": {
+        "section": "Stokes Parameters -- Definition",
+        "original_text": "The Stokes Parameters (named for George Stokes, 1842) are now commonly used to describe astronomical signal polarization. They have units of spectral power, or brightness. I describes the brightness (‘total power’). Q and U describe the linear polarization: +Q => vertical EVPA, -Q => horizontal EVPA +U => EVPA at 45deg, -U => EVPA at -45 deg EVPA: χ= 0.5arctan( U / Q ) • V describes circular polarization: +V => Right CP, -V => Left CP In general, the signal is a mixture of Q, U, and V."
+      },
+      "confidence": 0.98,
+      "term": "Stokes Parameters",
+      "normalized": "斯托克斯参数",
+      "std_label": "Stokes Parameters"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c3",
+      "evidence": {
+        "section": "Interferometric Polarimetry",
+        "original_text": "The description of polarization usually begins with utilizing the ‘quasimonochromatic approximation’. Here we imagine analysis of radiation passed through a very narrow filter – say 1 Hz wide. The characteristics of the field are then quasi-stable for ~1 second. Maxwell’s equations then tell us the electric field describes an ellipse. In general, three parameters are needed to describe the ellipse. A x – X-axis amplitude max Ay – Y-axis amplitude max a = atan(Ay/Ax) – an angle describing the orientation If the E vector is rotating (as seen by the observer): Clockwise, the wave is Left Elliptically Polarized: Anti-clockwise, the wave is Right . Elliptically Polarized"
+      },
+      "confidence": 0.97,
+      "term": "interferometric polarimetry",
+      "normalized": "干涉偏振测量",
+      "std_label": "Interferometric Polarimetry"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c4",
+      "evidence": {
+        "section": "Jones Matrix Algebra",
+        "original_text": "The analysis of how a real interferometer, comprising real antennas and real electronics, is greatly facilitated through use of Jones matrices. In this, we break up our general system into a series of 4-port components, each of which is presumed to be linear. Chain them all together, and represent the telescope as: And write: Or, in shorthand V’ = JV • The four G components of the Jones matrix describe the linkages within the ‘grey box’."
+      },
+      "confidence": 0.96,
+      "term": "Jones matrices",
+      "normalized": "琼斯矩阵",
+      "std_label": "Jones matrices"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c5",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Examples: Synchrotron radiation – orientation and strength of magnetic fields."
+      },
+      "confidence": 0.99,
+      "term": "synchrotron radiation",
+      "normalized": "同步辐射",
+      "std_label": "Synchrotron radiation"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c6",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Examples: Zeeman splitting – strength of fields."
+      },
+      "confidence": 0.99,
+      "term": "Zeeman splitting",
+      "normalized": "塞曼分裂",
+      "std_label": "Zeeman splitting"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c7",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Examples: Faraday rotation (of linear polarization due to magnetic fields)"
+      },
+      "confidence": 0.99,
+      "term": "Faraday rotation",
+      "normalized": "法拉第旋转",
+      "std_label": "Faraday rotation"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c8",
+      "evidence": {
+        "section": "Stokes Visibilities for Interferometry",
+        "original_text": "Define the Stokes Visibilities I , Q , U , and V , to be the Fourier Transforms of these brightness distributions. Then, the relations between these are: I I, Q Q, U U, V V • Stokes Visibilities are complex functions of (u,v), while the Stokes Images are real functions of (l,m). All Stokes visibilities are Hermitian (V(u,v) = V*(-u,-v)) Our task is now to measure these Stokes visibilities."
+      },
+      "confidence": 0.97,
+      "term": "Stokes Visibilities",
+      "normalized": "斯托克斯可见度",
+      "std_label": "Stokes Visibilities"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c9",
+      "evidence": {
+        "section": "Antennas are Polarized!",
+        "original_text": "The choice of basis for the description is useful, since antenna/receiver systems are themselves naturally polarized. They are designed to output signals (voltages) proportional to the amplitude and phase of either the linear, or circular, components. • They provide two simultaneous voltage signals whose values are (ideally) representations of the electric field components – either in a circular or linear basis."
+      },
+      "confidence": 0.98,
+      "term": "antenna polarization",
+      "normalized": "天线偏振",
+      "std_label": "Antenna polarization"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_7b03c3226c20179a_c10",
+      "evidence": {
+        "section": "Crossed-Hand Phase",
+        "original_text": "Parallel-hand calibration treats each polarization independently. For amplitudes, this is appropriate. But for phases, there remains one unknown variable – the cross-hand phase of the reference antenna. This is because phases are not absolute – interferometers measure the phase difference between antenna signals, so an arbitrary phase offset between the parallel hand channels will remain. This offset has interesting implications in polarimetry: For Circular systems, the effect is to rotate the EVPA of the observed linearly polarization by twice the phase offset – the rotation is about the V axis in the Poincare sphere. For Linear systems, the effect is rotate Q, U, and V about an axis in the (Q,U) plane. For an equatorial antenna, the rotation is about the Q axis in the Poincare sphere."
+      },
+      "confidence": 0.96,
+      "term": "cross-hand phase",
+      "normalized": "交叉相位",
+      "std_label": "Cross-hand phase"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7b03c3226c20179a_r1",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Why do we care about polarization? Because various physical processes emit radiation which is partially polarized. Measuring the polarization gives us additional information into the physical processes at play. Examples: Synchrotron radiation – orientation and strength of magnetic fields."
+      },
+      "confidence": 0.95,
+      "head": "doc_7b03c3226c20179a_c1",
+      "relation_type": "measures",
+      "relation_surface": "Measuring the polarization gives us additional information into",
+      "tail": "doc_7b03c3226c20179a_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7b03c3226c20179a_r2",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Why do we care about polarization? Because various physical processes emit radiation which is partially polarized. Measuring the polarization gives us additional information into the physical processes at play. Examples: Zeeman splitting – strength of fields."
+      },
+      "confidence": 0.95,
+      "head": "doc_7b03c3226c20179a_c1",
+      "relation_type": "measures",
+      "relation_surface": "Measuring the polarization gives us additional information into",
+      "tail": "doc_7b03c3226c20179a_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7b03c3226c20179a_r3",
+      "evidence": {
+        "section": "Polarimetry – Why Do It?",
+        "original_text": "Why do we care about polarization? Because various physical processes emit radiation which is partially polarized. Measuring the polarization gives us additional information into the physical processes at play. Examples: Faraday rotation (of linear polarization due to magnetic fields)"
+      },
+      "confidence": 0.95,
+      "head": "doc_7b03c3226c20179a_c1",
+      "relation_type": "measures",
+      "relation_surface": "Measuring the polarization gives us additional information into",
+      "tail": "doc_7b03c3226c20179a_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_7b03c3226c20179a_r8",
+      "evidence": {
+        "section": "Not as Simple as it Seems …",
+        "original_text": "And – to heap insult upon insult – Real antennas are differentially spatially polarized – their polarization is a function of angle on the sky. Bottom line here is that the antenna output labelled (say) ‘R’ is not wholly ‘R’, but contains a little bit of ‘L’. This is an issue of design, and of the software needed to correct for the contamination."
+      },
+      "confidence": 0.94,
+      "head": "doc_7b03c3226c20179a_c9",
+      "relation_type": "affects",
+      "relation_surface": "must be removed from data to enable",
+      "tail": "doc_7b03c3226c20179a_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7b03c3226c20179a_d1",
+      "evidence": {
+        "section": "I and Q Visibilities for Mars at 23 GHz",
+        "original_text": "I and Q Visibilities for Mars at 23 GHz. VLA, 23 GHz, ‘D’ Configuration, January 2006. Amplitude: |I| is close to a J0 Bessel function. Zero crossing at 20kl tells us Mars diameter ~ 10 arcsec. |Q| amplitude ~0 at zero baseline. |Q| zero at 30 k polarization structures ~ 8 arcsec scale. Phase: I phase alternates between 0 and π. Q phase = both 0 and π in the ‘main lobe’ – this tells us there are both positive and negative structures, at different PA."
+      },
+      "confidence": 0.85,
+      "name": "Mars Stokes I and Q visibilities at 23 GHz",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7b03c3226c20179a_d2",
+      "evidence": {
+        "section": "Example Images: Moon, Venus, Mars",
+        "original_text": "Example Images: Moon, Venus, Mars. Theory tells us that thermal radiation emitted from underneath the surface of a solid planet must be radially polarized, reaching about 30% near the limb. The maximum polarization depends on the dielectric constant of the material. We can use the observed position angle to calibrate our instruments. Moon at 1.02 GHz, Venus at 3.24 GHz, Mars at 8.49 GHz. 30 arcmin diameter, 30 arcsec, 5 arcsec. Limb darkening due to primary beam attenuation. Cold regions are elevated terrain (Ovda and Thetis Regio)."
+      },
+      "confidence": 0.85,
+      "name": "Moon, Venus, Mars polarization images",
+      "modality": "image",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7b03c3226c20179a_d3",
+      "evidence": {
+        "section": "Imaging – Polarization of the Moon",
+        "original_text": "Imaging – Polarization of the Moon. Shown here are the total intensity (I), polarized intensity (P), and Q and U images at 1040 MHz. The apparent elliptical brightness shape (in both I and P) is real – observations were taken in June (sun at high dec, moon was low). The edge-brightened polarization maximum is exactly as expected. See Perley & Butler, ApJSupl, 206, 16 (2013) for details. The Q and U images tell us right away that the EVPAs are very nearly radial (as expected)."
+      },
+      "confidence": 0.9,
+      "name": "Moon polarization images at 1040 MHz",
+      "modality": "image",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7b03c3226c20179a_d4",
+      "evidence": {
+        "section": "VLA’s I and V beams – all 8 bands",
+        "original_text": "VLA’s I and V beams – all 8 bands. L, S, C, X, U, K, A, Q bands. I and V beam patterns for all eight JVLA bands. I beams (scaled) are all very similar. V beams rotate according to the position angle of the offset feed. V>0 => Red = RCP, V< 0 => Purple = LCP. I and V beams at 1.5 GHz, 3.0 GHz, 6 GHz, 10 GHz, 15 GHz, 23 GHz, 34 GHz, 45 GHz."
+      },
+      "confidence": 0.85,
+      "name": "VLA polarized beam patterns across eight bands",
+      "modality": "image",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_7b03c3226c20179a_d5",
+      "evidence": {
+        "section": "A picture is worth 1000 words …",
+        "original_text": "A picture is worth 1000 words … So, what does these errors do to a polarimetric image? Use the Moon as an example. (MeerKAT data at 867 MHz). Correct Orientation and Phasing, Correct Orientation Reversed Phasing, Correct Phasing Reversed Orientation, Reversed Phasing Reversed Orientation."
+      },
+      "confidence": 0.8,
+      "name": "MeerKAT Moon polarization data at 867 MHz",
+      "modality": "image",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7b03c3226c20179a_ds1",
+      "evidence": {
+        "section": "Stokes Parameters -- Definition",
+        "original_text": "The Stokes Parameters (named for George Stokes, 1842) are now commonly used to describe astronomical signal polarization. They have units of spectral power, or brightness. I describes the brightness (‘total power’). Q and U describe the linear polarization: +Q => vertical EVPA, -Q => horizontal EVPA, +U => EVPA at 45deg, -U => EVPA at -45 deg, EVPA: χ = 0.5arctan( U / Q ). V describes circular polarization: +V => Right CP, -V => Left CP. In general, the signal is a mixture of Q, U, and V."
+      },
+      "confidence": 0.0,
+      "spec_type": "format_rule",
+      "description": "Stokes parameters (I, Q, U, V) as standard descriptors for astronomical signal polarization"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7b03c3226c20179a_ds2",
+      "evidence": {
+        "section": "Stokes Visibilities for Interferometry",
+        "original_text": "You will all know that the Visibility Function, V(u,v), is related to the sky brightness by Fourier Transform: V(u,v) ↔ I(l,m) (a Fourier Transform Pair). In basic derivations, ‘I’ referred to a single polarization (like ‘H’ of ‘V’). We will now be more formal, and consider the Stokes brightness distributions for I, Q, U, and V. Define the Stokes Visibilities Ĩ, Q̃, Ũ, and Ṽ, to be the Fourier Transforms of these brightness distributions. Then, the relations between these are: Ĩ ↔ I, Q̃ ↔ Q, Ũ ↔ U, Ṽ ↔ V. Stokes Visibilities are complex functions of (u,v), while the Stokes Images are real functions of (l,m). All Stokes visibilities are Hermitian (V(u,v) = V*(-u,-v))."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Stokes visibilities as Fourier transforms of Stokes brightness distributions"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7b03c3226c20179a_ds3",
+      "evidence": {
+        "section": "Jones Matrix Algebra",
+        "original_text": "The analysis of how a real interferometer, comprising real antennas and real electronics, is greatly facilitated through use of Jones matrices. In this, we break up our general system into a series of 4-port components, each of which is presumed to be linear. Chain them all together, and represent the telescope as: V'R = GRR ER + GLR EL, V'L = GRL ER + GLL EL. Or, in shorthand V' = JV. The four G components of the Jones matrix describe the linkages within the ‘grey box’."
+      },
+      "confidence": 0.85,
+      "spec_type": "format_rule",
+      "description": "Jones matrix formalism for representing telescope polarization response"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7b03c3226c20179a_ds4",
+      "evidence": {
+        "section": "Calibration of Polarimetric Data",
+        "original_text": "While it’s easy to write down these equations, it’s not so simple to determine the necessary calibration constants. For ‘perfect’ polarizers, we have a number of calibration parameters to determine: The parallel-hand gain amplitudes, The parallel-hand phases (w.r.t. a reference antenna), The parallel-hand delays (w.r.t. a reference antenna), The cross-hand phases. By far the simplest approach is to utilize unpolarized calibrators! But, most calibrators are polarized, so we must deal … In fact, circular polarization is very low for most calibrators, (<< 1%), so circular systems have a decided edge! For linearly polarized systems, must know, or be able to derive, the linear polarization of the calibrators as part of the calibration regimen."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Calibration using unpolarized calibrators and known polarized calibrators for cross-hand phase"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_7b03c3226c20179a_ds5",
+      "evidence": {
+        "section": "Calibrating the cross-hand phase",
+        "original_text": "The best way is to design the electronics so that the phase differential between the signal channels (R-L, or V-H) is continuously measured. These values can then be fed to the software, which makes the necessary adjustments. Sadly, the VLA has no such on-board calibration system. So, for VLA polarimetry, one must solve for the residual cross-hand phase by observation of a polarized calibrator source with known EVPA. For linear systems, without functioning monitoring, the procedure is a bit more difficult. One can show that, (see EVLA Memo 219) in the presence of a cross-hand phase, the apparent Stokes’ visibilities are: I' = I, Q' = Q cos2ΨP + U sin2ΨP, U' = (-Q sin2ΨP + U cos2ΨP) cosφ + V sinφ, V' = (Q sin2ΨP - U cos2ΨP) sinφ + V cosφ."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Method to determine cross-hand phase using polarized calibrator with known EVPA"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7b03c3226c20179a_m1",
+      "evidence": {
+        "section": "Stokes Parameters -- Definition",
+        "original_text": "The Stokes Parameters (named for George Stokes, 1842) are now commonly used to describe astronomical signal polarization. They have units of spectral power, or brightness. I describes the brightness (‘total power’). Q and U describe the linear polarization: +Q => vertical EVPA, -Q => horizontal EVPA +U => EVPA at 45deg, -U => EVPA at -45 deg EVPA: χ= 0.5arctan( U / Q ) V describes circular polarization: +V => Right CP, -V => Left CP In general, the signal is a mixture of Q, U, and V. Always, I² = Q² + U² + V². Three parameters are sufficient to describe the monochromatic EM wave properties. It is most convenient to have the three parameters share the same units, and have easily grasped physical meanings. It is standard in radio astronomy to utilize the parameters defined by George Stokes (1852), and introduced to astronomy by Chandrasekhar (1946): I describes the total flux Q and U describe linear poln V describes circular poln"
+      },
+      "confidence": 0.95,
+      "name": "Stokes Parameters",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_7b03c3226c20179a_m2",
+      "evidence": {
+        "section": "Jones Matrix Algebra",
+        "original_text": "The analysis of how a real interferometer, comprising real antennas and real electronics, is greatly facilitated through use of Jones matrices. In this, we break up our general system into a series of 4-port components, each of which is presumed to be linear. Chain them all together, and represent the telescope as: V'R = GRR ER + GLR EL V'L = GRL ER + GLL EL And write: V' = J V Or, in shorthand V’ = JV The four G components of the Jones matrix describe the linkages within the ‘grey box’. For an array with the same parallactic angle for each element, ignoring the gains, an alternate form can be written: RR = I + V RL = Q + iU LR = Q - iU LL = I - V The D’s are (unimaginatively) called the ‘D-terms’, and describe the amplitude and phase of the cross-over signals from R to L, and L to R. Main Point: The effect of an impure polarizer is to couple all four of the Stokes visibilities to all four cross-products. If the ‘D’ terms are known in advance, this matrix equation can be easily inverted, to solve for the Stokes visibilities in terms of the measured Rs, and the known Ds."
+      },
+      "confidence": 0.95,
+      "name": "Jones Matrix Algebra",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7b03c3226c20179a_x1",
+      "evidence": {
+        "section": "Example Images: Moon, Venus, Mars",
+        "original_text": "Theory tells us that thermal radiation emitted from underneath the surface of a solid planet must be radially polarized, reaching about 30% near the limb. The maximum polarization depends on the dielectric constant of the material. We can use the observed position angle to calibrate our instruments. Moon at 1.02 GHz Venus at 3.24 GHz Mars at 8.49 GHz 30 arcmin diameter 30 arcsec 5 arcsec Limb darkening due to primary beam Cold regions are elevated terrain attenuation. (Ovda and Thetis Regio) Shown here are the total intensity (I), polarized intensity (P), and Q and U images at 1040 MHz. The apparent elliptical brightness shape (in both I and P) is real – observations were taken in June (sun at high dec, moon was low) The edge-brightened polarization maximum is exactly as expected. See Perley & Butler, ApJSupl, 206, 16 (2013) for details. The Q and U images tell us right away that the EVPAs are very nearly radial (as expected)."
+      },
+      "confidence": 0.95,
+      "task": "imaging polarization of celestial bodies",
+      "setup": "radio interferometry observations of Moon, Venus, Mars"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_7b03c3226c20179a_x2",
+      "evidence": {
+        "section": "Calibration of Polarimetric Data",
+        "original_text": "While it’s easy to write down these equations, it’s not so simple to determine the necessary calibration constants. For ‘perfect’ polarizers, we have a number of calibration parameters to determine: The parallel-hand gain amplitudes The parallel-hand phases (w.r.t. a reference antenna). The parallel-hand delays (w.r.t. a reference antenna). The cross-hand phases. By far the simplest approach is to utilize unpolarized calibrators! But, most calibrators are polarized, so we must deal … In fact, circular polarization is very low for most calibrators, (<< 1%), so circular systems have a decided edge! For linearly polarized systems, must know, or be able to derive, the linear polarization of the calibrators as part of the calibration regimen. The best way is to design the electronics so that the phase differential between the signal channels (R-L, or V-H) is continuously measured. These values can then be fed to the software, which makes the necessary adjustments. Sadly, the VLA has no such on-board calibration system. So, for VLA polarimetry, one must solve for the residual cross-hand phase by observation of a polarized calibrator source with known EVPA."
+      },
+      "confidence": 0.95,
+      "task": "polarimetric calibration using unpolarized and polarized calibrators",
+      "setup": "radio interferometry observations with known calibrator sources"
+    }
+  ]
+}

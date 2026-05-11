@@ -1,0 +1,590 @@
+{
+  "metadata": {
+    "doc_id": "doc_9b038e7c76ea90d9",
+    "source_file": "08_Polarization_with_radio_interferometers.md",
+    "title": "Polarization with radio interferometers",
+    "year": 2018,
+    "doi": null,
+    "abstract": "where 𝐴 and 𝐴 𝑋 𝑌 are the Cartesian amplitude components of the E-field, and 𝛿 𝐴 and 𝐴 𝑋𝑌 is the phase lag between them, and 𝑅 𝐿 are the opposite 𝛿 circular amplitude components of the E-field, and 𝑅𝐿 the phase lag between them.",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "物理学",
+      "level2": "天体物理学",
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "polarization",
+      "radio interferometers",
+      "E-field",
+      "amplitude components",
+      "phase lag"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:05:06.536419+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c1",
+      "evidence": {
+        "section": "Plane Electromagnetic (EM) Wave",
+        "original_text": "Vector fields describe EM waves. Applying Maxwell’s equations for plane monochromatic waves (far field): wave vector: 𝑘= 𝐸× 𝐵. By convention 𝑘 points at us. Can measure 𝐸 and 𝐵 ; typically one or the other. Typically easiest to measure the field intensity of 𝐸."
+      },
+      "confidence": 0.98,
+      "term": "plane electromagnetic wave",
+      "normalized": "平面电磁波",
+      "std_label": "EM wave"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c2",
+      "evidence": {
+        "section": "Stokes Parameters – Monochromatic Case",
+        "original_text": "We utilize in radio astronomy the parameters defined by George Stokes (1852; 𝐴𝐵𝐶𝐷 ), and introduced to astronomy by Chandrasekhar 𝐼 𝐼 𝑈𝑉. Units of power: Jy, or Jy/beam where 𝐴 and 𝐴 𝑋 𝑌 are the Cartesian amplitude components of the E-field, and 𝛿 𝐴 and 𝐴 𝑋𝑌 is the phase lag between them, and 𝑅 𝐿 are the opposite 𝛿 circular amplitude components of the E-field, and 𝑅𝐿 the phase lag between them. Monochromatic radiation is 100% polarized."
+      },
+      "confidence": 0.99,
+      "term": "Stokes parameters",
+      "normalized": "斯托克斯参数",
+      "std_label": "Stokes I, Q, U, V"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c3",
+      "evidence": {
+        "section": "Polarimetry with Interferometers",
+        "original_text": "Polarimetry with Interferometers. Stokes Visibilities. Interferometer Response to Polarized Emission. Combining the complex fields at antennas1 and 2, the Stokes visibilities can be written as. The script symbols **I, Q, U, V** remind us that these Stokes Visibilities are complex numbers, related to the (real) source brightness through Fourier transform, e.g.: ℐ 𝑢, 𝑣= ׬ 𝐼𝑒[+2𝜋𝑖𝜐(𝑢𝑙+𝑣𝑚)/𝑐] d𝑙d𝑚 . 𝑙𝑚."
+      },
+      "confidence": 0.97,
+      "term": "interferometer",
+      "normalized": "干涉仪",
+      "std_label": "Radio interferometer"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c4",
+      "evidence": {
+        "section": "Jones Matrix Algebra",
+        "original_text": "From now assume all systems linear: ′ 𝒆 𝒆 𝑖 = 𝑱𝑖 𝑖. 𝑱𝑖 (2x2) is called **Jones matrix** ′ ′ ′† • = Cross correlation: 𝑬 𝒆 𝒆 𝑖𝑗 𝑖 𝑗 † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑱𝑗 𝑗 † † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑗 𝑱𝑗 † = 𝑱𝑖𝑬𝑖𝑗𝑱𝑗. This is the . measurement equation • Invertible! ′ −1 ′ †−1 𝑬𝑖𝑗 = 𝑱𝑖 𝑬𝑖𝑗𝑱𝑗."
+      },
+      "confidence": 0.96,
+      "term": "Jones matrix",
+      "normalized": "琼斯矩阵",
+      "std_label": "Jones matrix"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c5",
+      "evidence": {
+        "section": "Theory meets real-world",
+        "original_text": "Recovering the Stokes Visibilities. Polarization Calibration of Real Interferometers. Correction of the X/Y or R/L response for the ‘leakage’ is important, since the D-term amplitude is comparable to the fractional polarization. There are two standard ways to proceed (circular base): 1. Observe a calibrator source of known polarization (preferably zero!) 2. Observe a calibrator of unknown polarization over an extended period."
+      },
+      "confidence": 0.95,
+      "term": "polarization calibration",
+      "normalized": "偏振校准",
+      "std_label": "Polarization calibration"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c6",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Synchrotron Emission. Generates polarized emission. Main emission mechanism at cm-m wavelength. Up to 80% linearly polarized (no circular pol.). < 𝐸source >⊥ 𝐵source. Polarimetry provides: B-field direction. Turbulence. Indirectly: B-field strength."
+      },
+      "confidence": 0.98,
+      "term": "synchrotron emission",
+      "normalized": "同步辐射",
+      "std_label": "Synchrotron emission"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c7",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Zeeman splitting. Generates polarized emission. Only in spectral lines. If magnetic moment: e.g. HI, OH, CN, H2O. B-field splits RCP and LCP. Separation: 2.8 Hz/mG. Polarimetry provides (if detectable) B-field strength at source."
+      },
+      "confidence": 0.97,
+      "term": "Zeeman splitting",
+      "normalized": "塞曼分裂",
+      "std_label": "Zeeman splitting"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9b038e7c76ea90d9_c8",
+      "evidence": {
+        "section": "Faraday rotation",
+        "original_text": "Faraday rotation. Process. Modifies polarization state. Delay between LCP and RCP. Rotates linear pol. Angle. Δ𝜒= 𝜒0 + 𝜙𝜆[2] here 𝑛 𝐵∙𝑑𝑙[Ԧ] 𝑒 𝜙= 0.812 න there. Polarimetry provides: Source plasma properties. Intervening plasma properties. Rare cases: 3D tomography."
+      },
+      "confidence": 0.98,
+      "term": "Faraday rotation",
+      "normalized": "法拉第旋转",
+      "std_label": "Faraday rotation"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r1",
+      "evidence": {
+        "section": "Plane Electromagnetic (EM) Wave & Stokes Parameters – Monochromatic Case",
+        "original_text": "Vector fields describe EM waves. Applying Maxwell’s equations for plane monochromatic waves (far field): wave vector: 𝑘= 𝐸× 𝐵. By convention 𝑘 points at us. Can measure 𝐸 and 𝐵 ; typically one or the other. Typically easiest to measure the field intensity of 𝐸. We utilize in radio astronomy the parameters defined by George Stokes (1852; 𝐴𝐵𝐶𝐷 ), and introduced to astronomy by Chandrasekhar 𝐼 𝐼 𝑈𝑉. Units of power: Jy, or Jy/beam where 𝐴 and 𝐴 𝑋 𝑌 are the Cartesian amplitude components of the E-field, and 𝛿 𝐴 and 𝐴 𝑋𝑌 is the phase lag between them, and 𝑅 𝐿 are the opposite 𝛿 circular amplitude components of the E-field, and 𝑅𝐿 the phase lag between them."
+      },
+      "confidence": 0.92,
+      "head": "doc_9b038e7c76ea90d9_c1",
+      "relation_type": "describes",
+      "relation_surface": "Vector fields describe",
+      "tail": "doc_9b038e7c76ea90d9_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r2",
+      "evidence": {
+        "section": "Polarimetry with Interferometers",
+        "original_text": "Polarimetry with Interferometers. Stokes Visibilities. Interferometer Response to Polarized Emission. Combining the complex fields at antennas1 and 2, the Stokes visibilities can be written as. The script symbols **I, Q, U, V** remind us that these Stokes Visibilities are complex numbers, related to the (real) source brightness through Fourier transform, e.g.: ℐ 𝑢, 𝑣= ׬ 𝐼𝑒[+2𝜋𝑖𝜐(𝑢𝑙+𝑣𝑚)/𝑐] d𝑙d𝑚 . 𝑙𝑚."
+      },
+      "confidence": 0.94,
+      "head": "doc_9b038e7c76ea90d9_c3",
+      "relation_type": "measures",
+      "relation_surface": "Stokes visibilities can be written as",
+      "tail": "doc_9b038e7c76ea90d9_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r3",
+      "evidence": {
+        "section": "Jones Matrix Algebra & Measuring Cross-Polarization Terms",
+        "original_text": "From now assume all systems linear: ′ 𝒆 𝒆 𝑖 = 𝑱𝑖 𝑖. 𝑱𝑖 (2x2) is called **Jones matrix** ′ ′ ′† • = Cross correlation: 𝑬 𝒆 𝒆 𝑖𝑗 𝑖 𝑗 † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑱𝑗 𝑗 † † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑗 𝑱𝑗 † = 𝑱𝑖𝑬𝑖𝑗𝑱𝑗. This is the . measurement equation • Invertible! ′ −1 ′ †−1 𝑬𝑖𝑗 = 𝑱𝑖 𝑬𝑖𝑗𝑱𝑗. Correction of the X/Y or R/L response for the ‘leakage’ is important, since the D-term amplitude is comparable to the fractional polarization. There are two standard ways to proceed (circular base): 1. Observe a calibrator source of known polarization (preferably zero!) 2. Observe a calibrator of unknown polarization over an extended period."
+      },
+      "confidence": 0.93,
+      "head": "doc_9b038e7c76ea90d9_c4",
+      "relation_type": "models",
+      "relation_surface": "is called Jones matrix",
+      "tail": "doc_9b038e7c76ea90d9_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r4",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Synchrotron Emission. Generates polarized emission. Main emission mechanism at cm-m wavelength. Up to 80% linearly polarized (no circular pol.). < 𝐸source >⊥ 𝐵source. Polarimetry provides: B-field direction. Turbulence. Indirectly: B-field strength."
+      },
+      "confidence": 0.91,
+      "head": "doc_9b038e7c76ea90d9_c6",
+      "relation_type": "generates",
+      "relation_surface": "Generates polarized emission",
+      "tail": "doc_9b038e7c76ea90d9_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r5",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Zeeman splitting. Generates polarized emission. Only in spectral lines. If magnetic moment: e.g. HI, OH, CN, H2O. B-field splits RCP and LCP. Separation: 2.8 Hz/mG. Polarimetry provides (if detectable) B-field strength at source."
+      },
+      "confidence": 0.91,
+      "head": "doc_9b038e7c76ea90d9_c7",
+      "relation_type": "generates",
+      "relation_surface": "Generates polarized emission",
+      "tail": "doc_9b038e7c76ea90d9_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r6",
+      "evidence": {
+        "section": "Faraday rotation",
+        "original_text": "Faraday rotation. Process. Modifies polarization state. Delay between LCP and RCP. Rotates linear pol. Angle. Δ𝜒= 𝜒0 + 𝜙𝜆[2] here 𝑛 𝐵∙𝑑𝑙[Ԧ] 𝑒 𝜙= 0.812 න there. Polarimetry provides: Source plasma properties. Intervening plasma properties. Rare cases: 3D tomography."
+      },
+      "confidence": 0.92,
+      "head": "doc_9b038e7c76ea90d9_c8",
+      "relation_type": "modifies",
+      "relation_surface": "Modifies polarization state",
+      "tail": "doc_9b038e7c76ea90d9_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9b038e7c76ea90d9_r7",
+      "evidence": {
+        "section": "Real Fields, Real Physics & Stokes Parameters – quasi-monochromatic",
+        "original_text": "Real wideband signals comprise emission from an uncountable number of distant radiators, and are statistical in nature. 100% polarization is not possible with such systems. For analysis, we employ the ‘quasi-monochromatic’ representation: Restrict attention to a very narrow slice of frequency of width Δ𝜐 , for which the fields are described by a single amplitude and phase for a period t~1/ Δ𝜐. Since the integration time 𝑇≫𝑡 , average the short-duration statistical measures to derive the Stokes parameters for timescales of interest. Monochromatic radiation does not exist. Narrow slices of frequency width Δ𝜐 , for which fields are described by a 1 single amplitude and phase for a period of t~ Δ𝜐[.] Averaging time 𝜏≫Δ𝜐[−1]. Note in this case: (100% polarization is not possible). Fractional pol.: linear 𝑝= 𝑄[2] + 𝑈[2] /𝐼≤1 ; circular: 𝑣= 𝑉/𝐼≤1."
+      },
+      "confidence": 0.9,
+      "head": "doc_9b038e7c76ea90d9_c3",
+      "relation_type": "uses",
+      "relation_surface": "employ the ‘quasi-monochromatic’ representation",
+      "tail": "doc_9b038e7c76ea90d9_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9b038e7c76ea90d9_d1",
+      "evidence": {
+        "section": "I and Q Visibilities for Mars at 23 GHz",
+        "original_text": "I and Q Visibilities for Mars at 23 GHz Amplitude |I| is close to a 𝐽0 Bessel function. Zero crossing at 20 k 𝜆 tells that Mars is diameter ~10”. |Q| amplitude ~0 at zero baseline 𝜆 means |Q| zero at 30 k pol. Structures ~8“ scale. VLA, 23 GHz, ‘D’ config. (Jan. 2006) Phase I phase alternates between 0 & 𝜋 Q phase = both 0 and 𝜋 in the ‘main lobe’ – this tells us there are both positive and negative structures, at different PA. ‘main lobe’ – this tells us there Mars emits in the radio as a black body. Shown are false-color coded I,Q,U,P images. V is not shown – all noise – no circular polarization. Resolution is 3.5”, Mars’ diameter is ~10” From the Q and U images alone, we can deduce the polarization is radial, around the limb."
+      },
+      "confidence": 0.9,
+      "name": "Mars polarization visibilities",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9b038e7c76ea90d9_d2",
+      "evidence": {
+        "section": "VLA Moon – linear system",
+        "original_text": "VLA Moon – linear system Dirty Stokes I Image of the Moon at ~350 MHz Polarization of the Moon"
+      },
+      "confidence": 0.85,
+      "name": "VLA Moon polarization data",
+      "modality": "image",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9b038e7c76ea90d9_d3",
+      "evidence": {
+        "section": "Pulsars",
+        "original_text": "Pulsars Polarization Position Angle Total intensity Linear Pol. Circular Pol. LWA1; Dike, Taylor, Stovall (2017) Pulsars are highly magnetized => strong polarized emission Study of which provides insights into the poorly understood emission mechanism of Pulsars."
+      },
+      "confidence": 0.85,
+      "name": "Pulsar polarization data",
+      "modality": "time_series",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9b038e7c76ea90d9_d4",
+      "evidence": {
+        "section": "Polarization from Quasar jet",
+        "original_text": "Polarization from Quasar jet Credit: Jorstad/Marscher/NASA/DOE/Fermi LAT Collaboration"
+      },
+      "confidence": 0.8,
+      "name": "Quasar jet polarization data",
+      "modality": "image",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9b038e7c76ea90d9_d5",
+      "evidence": {
+        "section": "Polarized Radio Emission Zeeman splitting –Vlemmings, Diamond, & van Lengevelde (2001)",
+        "original_text": "Zeeman splitting –Vlemmings, Diamond, & van Lengevelde (2001) Total Power The brightest H2O maser feature around S Per. The dashed line is the fit of the synthetic circularly polarized spectrum to the observed spectrum. Circular Pol. Also shown are the observed (dashed) and expected (solid) positions of the minimum and maximum of the circular polarization spectrum."
+      },
+      "confidence": 0.9,
+      "name": "Zeeman splitting H2O maser spectrum",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9b038e7c76ea90d9_d6",
+      "evidence": {
+        "section": "Faraday rotation",
+        "original_text": "Faraday rotation Process Modifies polarization state Delay between LCP and RCP Rotates linear pol. Angle Δ𝜒= 𝜒0 + 𝜙𝜆[2] here 𝑛 𝐵∙𝑑𝑙[Ԧ] 𝑒 𝜙= 0.812 න there Polarimetry provides Source plasma properties Intervening plasma properties Graphs of polarization angle against wavelength squared for polarized extragalactic sources in the field (Haverkorn, Katgert, & de Bruyn 2003). Rare cases: 3D tomography"
+      },
+      "confidence": 0.9,
+      "name": "Faraday rotation polarization angle vs wavelength squared",
+      "modality": "tabular",
+      "domain": "radio astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9b038e7c76ea90d9_ds1",
+      "evidence": {
+        "section": "Stokes Parameters – quasi-monochromatic",
+        "original_text": "Stokes Parameters – quasi-monochromatic Monochromatic radiation does not exist Narrow slices of frequency width Δ𝜐 , for which fields are described by a 1 single amplitude and phase for a period of t~ Δ𝜐[.] Averaging time 𝜏≫Δ𝜐[−1] Note in this case: (100% polarization is not possible) Fractional pol.: linear 𝑝= 𝑄[2] + 𝑈[2] /𝐼≤1 ; circular: 𝑣= 𝑉/𝐼≤1"
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Stokes parameters representation for quasi-monochromatic radiation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9b038e7c76ea90d9_ds2",
+      "evidence": {
+        "section": "Stokes Visibilities",
+        "original_text": "Stokes Visibilities Combining the complex fields at antennas1 and 2, the Stokes visibilities can be written as The script symbols **I, Q, U, V** remind us that these Stokes Visibilities are complex numbers, related to the (real) source brightness through Fourier transform, e.g.: ℐ 𝑢, 𝑣= ׬ 𝐼𝑒[+2𝜋𝑖𝜐(𝑢𝑙+𝑣𝑚)/𝑐] d𝑙d𝑚 . 𝑙𝑚 **I** I, **Q** Q, **U** U, **V** V"
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Stokes visibilities as complex numbers derived from cross-correlations"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9b038e7c76ea90d9_ds3",
+      "evidence": {
+        "section": "Summary",
+        "original_text": "Summary Polarimetry is a little complicated, but do not be afraid! The polarized state of EM radiation gives valuable insights into the physics of the emission. Well designed systems are stable, and have low cross-polarization, making correction relatively straightforward. Such systems easily allow estimation of polarization to an accuracy of the order 1 part in 10000. Beam-induced polarization can be corrected in software – development . is under way (ask Preshanth Jagannathan about Full Mueller imaging) Understanding polarization improves calibration and imaging even in the unpolarized case."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standard for polarization measurement accuracy in well-designed systems"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9b038e7c76ea90d9_ds4",
+      "evidence": {
+        "section": "Jones Matrix Algebra",
+        "original_text": "Jones Matrix Algebra From now assume all systems linear: ′ 𝒆 𝒆 𝑖 = 𝑱𝑖 𝑖 𝑱𝑖 (2x2) is called **Jones matrix** ′ ′ ′† • = Cross correlation: 𝑬 𝒆 𝒆 𝑖𝑗 𝑖 𝑗 † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑱𝑗 𝑗 † † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑗 𝑱𝑗 † = 𝑱𝑖𝑬𝑖𝑗𝑱𝑗 This is the . measurement equation • Invertible! ′ −1 ′ †−1 𝑬𝑖𝑗 = 𝑱𝑖 𝑬𝑖𝑗𝑱𝑗 Example Jones Matrices Perfect instrument: Polarization leakage: Time delay: Parallactic angle or feed rotation XY: Receiver gain: Parallactic angle or feed rotation RL: Each component of the overall system, including propagation effects, can be represented by a Jones matrix and multiplied to obtain a ‘system Jones’ matrix."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Jones matrix algebra representation for system calibration"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9b038e7c76ea90d9_ds5",
+      "evidence": {
+        "section": "Measuring Cross-Polarization Terms",
+        "original_text": "Measuring Cross-Polarization Terms Correction of the X/Y or R/L response for the ‘leakage’ is important, since the D-term amplitude is comparable to the fractional polarization. There are two standard ways to proceed (circular base): 1. Observe a calibrator source of known polarization (preferably zero!) 2. Observe a calibrator of unknown polarization over an extended period. Case 1: Calibrator source known to have zero polarization Single observation should suffice to measure leakage terms. Note: In this approximation, only 2Nant-1 terms can be determined. One must be assumed (usually = 0). All the others are referred to this, thus ‘relative’ D terms. Case 2: Calibrator with significant (or unknown) polarization. You can determine both the (relative) D terms and the calibrator polarizations for an alt-az antenna by observing over a wide range of parallactic angle. (Conway and Kronberg first used this method.) As time passes 𝜓𝑝 changes in a known way. The source polarization term then rotates w.r.t. the antenna leakage term, allowing a separation. Source polarization rotates with parallactic angle Leakage term is fixed"
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Cross-polarization leakage measurement protocol using calibrator sources"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9b038e7c76ea90d9_ds6",
+      "evidence": {
+        "section": "Circular vs. Linear",
+        "original_text": "Circular vs. Linear Both systems provide straightforward derivation of the Stokes’ visibilities from the four correlations. Deriving useable information from differences of large values requires both good stability and good calibration. Hence: To do good circular polarization using circular system, or good linear polarization with a linear system, we need special care and special methods to ensure good calibration. There are practical reasons to use linear: Antenna polarizers are natively linear – extra components are needed to produce circular. This hurts performance. These extra components are also generally of narrower bandwidth – it’s harder to build circular systems with really wide bandwidth. At mm wavelengths, the needed phase shifters are not available. One important practical reason favoring circular: Calibrator sources are often significantly linearly polarized, but have imperceptible circular polarization. Gain calibration is much simpler with circular feeds, especially for ‘snapshot’ style observations."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Observation requirements for polarization calibration with linear vs circular systems"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9b038e7c76ea90d9_m1",
+      "evidence": {
+        "section": "Review of Definitions",
+        "original_text": "We utilize in radio astronomy the parameters defined by George Stokes (1852; 𝐴𝐵𝐶𝐷 ), and introduced to astronomy by Chandrasekhar 𝐼 𝐼 𝑈𝑉 (1946; 𝑙 𝑟 ): Units of power: Jy, or Jy/beam where 𝐴 and 𝐴 𝑋 𝑌 are the Cartesian amplitude components of the E-field, and 𝛿 𝐴 and 𝐴 𝑋𝑌 is the phase lag between them, and 𝑅 𝐿 are the opposite 𝛿 circular amplitude components of the E-field, and 𝑅𝐿 the phase lag between them. Monochromatic radiation is 100% polarized:"
+      },
+      "confidence": 0.95,
+      "name": "Stokes parameters",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9b038e7c76ea90d9_m2",
+      "evidence": {
+        "section": "Polarization Calibration of Real Interferometers",
+        "original_text": "From now assume all systems linear: ′ 𝒆 𝒆 𝑖 = 𝑱𝑖 𝑖 𝑱𝑖 (2x2) is called Jones matrix ′ ′ ′† • = Cross correlation: 𝑬 𝒆 𝒆 𝑖𝑗 𝑖 𝑗 † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑱𝑗 𝑗 † † = 𝒆 𝒆 𝑱𝑖 𝑖 𝑗 𝑱𝑗 † = 𝑱𝑖𝑬𝑖𝑗𝑱𝑗 This is the measurement equation. • Invertible! ′ −1 ′ †−1 𝑬𝑖𝑗 = 𝑱𝑖 𝑬𝑖𝑗𝑱𝑗"
+      },
+      "confidence": 0.95,
+      "name": "Jones matrix algebra",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9b038e7c76ea90d9_m3",
+      "evidence": {
+        "section": "Polarimetry with Interferometers",
+        "original_text": "Combining the complex fields at antennas1 and 2, the Stokes visibilities can be written as The script symbols I, Q, U, V remind us that these Stokes Visibilities are complex numbers, related to the (real) source brightness through Fourier transform, e.g.: ℐ 𝑢, 𝑣= ׬ 𝐼𝑒[+2𝜋𝑖𝜐(𝑢𝑙+𝑣𝑚)/𝑐] d𝑙d𝑚 . 𝑙𝑚 I I, Q Q, U U, V V"
+      },
+      "confidence": 0.95,
+      "name": "Stokes visibilities",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9b038e7c76ea90d9_m4",
+      "evidence": {
+        "section": "Review of Definitions",
+        "original_text": "An analytic signal is in signal theory a complex function of time, which imaginary part is the Hilbert transform of the real part. We denote the analytic Electric field with script letter E The (real) Stokes parameters are thus: The relations are valid for a single antenna. All derived values are real. How about interferometry?"
+      },
+      "confidence": 0.95,
+      "name": "Analytic signal representation",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9b038e7c76ea90d9_m5",
+      "evidence": {
+        "section": "Real Fields, Real Physics",
+        "original_text": "The monochromatic case is useful for visualizing the definitions, but is not realistic in astronomy. Real wideband signals comprise emission from an uncountable number of distant radiators, and are statistical in nature 100% polarization is not possible with such systems For analysis, we employ the quasi-monochromatic representation: Restrict attention to a very narrow slice of frequency of width Δ𝜐 , for which the fields are described by a single amplitude and phase for a period t~1/ Δ𝜐 Since the integration time 𝑇≫𝑡 , average the short-duration statistical measures to derive the Stokes parameters for timescales of interest."
+      },
+      "confidence": 0.95,
+      "name": "Quasi-monochromatic representation",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x1",
+      "evidence": {
+        "section": "Theory meets real-world",
+        "original_text": "I and Q Visibilities for Mars at 23 GHz Amplitude |I| is close to a 𝐽0 Bessel function. Zero crossing at 20 k 𝜆 tells that Mars is diameter ~10. |Q| amplitude ~0 at zero baseline 𝜆 means |Q| zero at 30 k pol. Structures ~8 scale. VLA, 23 GHz, D config. (Jan. 2006) Phase I phase alternates between 0 & 𝜋 Q phase = both 0 and 𝜋 in the main lobe this tells us there are both positive and negative structures, at different PA. main lobe this tells us there Mars emits in the radio as a black body. Shown are false-color coded I,Q,U,P images. V is not shown all noise no circular polarization. Resolution is 3.5, Mars diameter is ~10 From the Q and U images alone, we can deduce the polarization is radial, around the limb."
+      },
+      "confidence": 0.95,
+      "task": "polarization measurement of Mars",
+      "setup": "VLA, 23 GHz, D configuration"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x2",
+      "evidence": {
+        "section": "Theory meets real-world",
+        "original_text": "VLA Moon linear system Dirty Stokes I Image of the Moon at ~350 MHz Polarization of the Moon"
+      },
+      "confidence": 0.95,
+      "task": "polarization measurement of the Moon",
+      "setup": "VLA, ~350 MHz"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x3",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Zeeman splitting Vlemmings, Diamond, & van Lengevelde (2001) Total Power The brightest H2O maser feature around S Per. The dashed line is the fit of the synthetic circularly polarized spectrum to the observed spectrum. Circular Pol. Also shown are the observed (dashed) and expected (solid) positions of the minimum and maximum of the circular polarization spectrum."
+      },
+      "confidence": 0.95,
+      "task": "Zeeman splitting observation of H2O maser",
+      "setup": "spectral line observation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x4",
+      "evidence": {
+        "section": "Polarization Calibration of Real Interferometers",
+        "original_text": "Measuring Cross-Polarization Terms Correction of the X/Y or R/L response for the leakage is important, since the D-term amplitude is comparable to the fractional polarization. There are two standard ways to proceed (circular base): 1. Observe a calibrator source of known polarization (preferably zero!) 2. Observe a calibrator of unknown polarization over an extended period. Case 1: Calibrator source known to have zero polarization Single observation should suffice to measure leakage terms. Note: In this approximation, only 2Nant-1 terms can be determined. One must be assumed (usually = 0). All the others are referred to this, thus relative D terms. Case 2: Calibrator with significant (or unknown) polarization. You can determine both the (relative) D terms and the calibrator polarizations for an alt-az antenna by observing over a wide range of parallactic angle. (Conway and Kronberg first used this method.) As time passes 𝜓𝑝 changes in a known way. The source polarization term then rotates w.r.t. the antenna leakage term, allowing a separation. Source polarization rotates with parallactic angle Leakage term is fixed"
+      },
+      "confidence": 0.95,
+      "task": "polarization calibration using calibrator source",
+      "setup": "observation over extended period or with known zero-polarization source"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x5",
+      "evidence": {
+        "section": "Polarization Calibration of Real Interferometers",
+        "original_text": "RL Delays/Phase real examples Instrumental delay between polarizations due to e.g. differences in signal path lengths. Derived delays of parallel hands with respect to each other (one held at zero). Derived RL phase corrections"
+      },
+      "confidence": 0.95,
+      "task": "RL delays/phase measurement",
+      "setup": "instrumental delay measurement between polarizations"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x6",
+      "evidence": {
+        "section": "Polarization Calibration of Real Interferometers",
+        "original_text": "Examples VLA D-terms Real VLA S-band D-term amplitudes. Significant frequency structure (2-4 MHz scale). Antenna polarization ~8-10% for this particular VLA antenna w.r.t. the reference antenna."
+      },
+      "confidence": 0.95,
+      "task": "VLA D-term amplitude measurement",
+      "setup": "S-band observation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9b038e7c76ea90d9_x7",
+      "evidence": {
+        "section": "Theory meets real-world",
+        "original_text": "Pulsars Polarization Position Angle Total intensity Linear Pol. Circular Pol. LWA1; Dike, Taylor, Stovall (2017) Pulsars are highly magnetized => strong polarized emission Study of which provides insights into the poorly understood emission mechanism of Pulsars."
+      },
+      "confidence": 0.95,
+      "task": "pulsar polarization observation",
+      "setup": "LWA1 observation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9b038e7c76ea90d9_qr1",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Zeeman splitting generates polarized emission only in spectral lines. If magnetic moment: e.g., HI, OH, CN, H2O. B-field splits RCP and LCP. Separation: 2.8 Hz/mG. Polarimetry provides (if detectable) B-field strength at source. Zeeman splitting –Vlemmings, Diamond, & van Lengevelde (2001) shows total power and circular pol. spectra for the brightest H2O maser feature around S Per. The dashed line is the fit of the synthetic circularly polarized spectrum to the observed spectrum. Also shown are the observed (dashed) and expected (solid) positions of the minimum and maximum of the circular polarization spectrum."
+      },
+      "confidence": 0.95,
+      "quantity": "Zeeman splitting separation",
+      "value": 2.8,
+      "unit": "Hz/mG",
+      "context": "Zeeman splitting process in spectral lines (e.g., HI, OH, CN, H2O) due to magnetic moment",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9b038e7c76ea90d9_qr2",
+      "evidence": {
+        "section": "Real Sensors",
+        "original_text": "Real sensors are imperfectly polarized. Typically, the cross-polarization for circularly polarized systems is ~5% (better with linear). Misaligned with the sky frame. Alt-Az antennas rotate w.r.t. the sky frame as they track a celestial source. The angle describing the misalignment is called the ‘parallactic angle’. Equatorial antennas are fixed w.r.t the sky, but there will be a (small) misalignment of the feed system with the sky. How do these imperfections affect the polarimetry? Start with Antenna rotation (it’s easier). For perfectly circularly polarized antennas, when both antennas are rotated by an angle 𝜓𝑃. The effect of antenna rotation is to simply rotate the RL and LR visibilities. Parallel hand visibilities are unaffected. Q and U require only the cross-hand correlations. I and V require only the parallel hand correlations."
+      },
+      "confidence": 0.9,
+      "quantity": "cross-polarization",
+      "value": 5,
+      "unit": "%",
+      "context": "Typical cross-polarization for circularly polarized systems in radio interferometers",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9b038e7c76ea90d9_qr3",
+      "evidence": {
+        "section": "Examples VLA D-terms",
+        "original_text": "Real VLA S-band D-term amplitudes show significant frequency structure (2-4 MHz scale). Antenna polarization ~8-10% for this particular VLA antenna w.r.t. the reference antenna. Beam polarization for VLA: Grasp8 calculation by Walter Brisken (EVLA Memo #58, 2003). Contour intervals: V/I = 4%, Q/I, U/I= 0.2%. Very large V/I polarization is due to the VLA’s offset feeds. The more modest linear polarization is due to the parabolic antenna. The beam polarizations can be removed in software – if antenna patterns are known – at considerable computational cost."
+      },
+      "confidence": 0.85,
+      "quantity": "antenna polarization",
+      "value": 8,
+      "unit": "%",
+      "context": "VLA antenna polarization amplitude relative to reference antenna at S-band",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_9b038e7c76ea90d9_p1",
+      "evidence": {
+        "section": "Summary",
+        "original_text": "Polarimetry is a little complicated, but do not be afraid! The polarized state of EM radiation gives valuable insights into the physics of the emission. Well designed systems are stable, and have low cross-polarization, making correction relatively straightforward. Such systems easily allow estimation of polarization to an accuracy of the order 1 part in 10000. Beam-induced polarization can be corrected in software – development is under way (ask Preshanth Jagannathan about Full Mueller imaging). Understanding polarization improves calibration and imaging even in the unpolarized case. Thanks to Rick Perley & Michiel Brentjens from whom I extensively borrowed presented materials."
+      },
+      "confidence": 0.92,
+      "metric": "polarization measurement accuracy",
+      "compared_to": "ideal system"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_9b038e7c76ea90d9_p2",
+      "evidence": {
+        "section": "Circular vs Linear",
+        "original_text": "One of the ongoing debates is the advantages and disadvantages of Linear and Circular systems, e.g., VLA mostly circular vs. ALMA linear. Point of principle: For full polarization imaging, both systems must provide the same results. Advantages/disadvantages of each are based on points of practicalities. For both, Stokes ‘I’ is the sum of the parallel-hands. Stokes ‘V’ is the difference of the crossed hand responses for linear (good) and is the difference of the parallel-hand responses for circular (bad). Stokes ‘Q’ and ‘U’ are differences of cross-hand responses for circular (good), and differences of parallel hands for linear (bad). Both systems provide straightforward derivation of the Stokes’ visibilities from the four correlations. Deriving useable information from differences of large values requires both good stability and good calibration. Hence: To do good circular polarization using circular system, or good linear polarization with a linear system, we need special care and special methods to ensure good calibration."
+      },
+      "confidence": 0.88,
+      "metric": "linear polarization measurement",
+      "compared_to": "circular polarization measurement"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_9b038e7c76ea90d9_ca1",
+      "evidence": {
+        "section": "Polarized Radio Emission",
+        "original_text": "Polarimetry provides B-field direction, turbulence, indirectly: B-field strength. Zeeman splitting generates polarized emission only in spectral lines. If magnetic moment: e.g. HI, OH, CN, H2O. B-field splits RCP and LCP. Separation: 2.8 Hz/mG. Polarimetry provides (if detectable) B-field strength at source. Faraday rotation modifies polarization state. Delay between LCP and RCP. Rotates linear pol. Angle. Δ𝜒= 𝜒0 + 𝜙𝜆^2. Polarimetry provides source plasma properties, intervening plasma properties. Graphs of polarization angle against wavelength squared for polarized extragalactic sources in the field (Haverkorn, Katgert, & de Bruyn 2003). Rare cases: 3D tomography."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_9b038e7c76ea90d9_cl1",
+      "evidence": {
+        "section": "Summary",
+        "original_text": "Polarimetry is a little complicated, but do not be afraid! The polarized state of EM radiation gives valuable insights into the physics of the emission. Well designed systems are stable, and have low cross-polarization, making correction relatively straightforward. Such systems easily allow estimation of polarization to an accuracy of the order 1 part in 10000. Beam-induced polarization can be corrected in software – development is under way (ask Preshanth Jagannathan about Full Mueller imaging). Understanding polarization improves calibration and imaging even in the unpolarized case."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9b038e7c76ea90d9_lm1",
+      "evidence": {
+        "section": "Real Sensors",
+        "original_text": "Sadly real sensors are: Imperfectly polarized. Typically, the cross-polarization for circularly polarized systems is ~5% (better with linear). Misaligned with the sky frame. Alt-Az antennas rotate w.r.t. the sky frame as they track a celestial source. The angle describing the misalignment is called the ‘parallactic angle’. Equatorial antennas are fixed w.r.t the sky, but there will be a (small) misalignment of the feed system with the sky. How do these imperfections affect the polarimetry? Start with Antenna rotation (it’s easier)."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_9b038e7c76ea90d9_fw1",
+      "evidence": {
+        "section": "Summary",
+        "original_text": "Beam-induced polarization can be corrected in software – development is under way (ask Preshanth Jagannathan about Full Mueller imaging). Understanding polarization improves calibration and imaging even in the unpolarized case."
+      },
+      "confidence": 0.9
+    }
+  ]
+}

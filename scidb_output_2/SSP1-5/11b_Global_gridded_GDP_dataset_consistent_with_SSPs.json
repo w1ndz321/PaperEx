@@ -1,0 +1,520 @@
+{
+  "metadata": {
+    "doc_id": "doc_c362e9c1c23d47b1",
+    "source_file": "11b_Global_gridded_GDP_dataset_consistent_with_SSPs.md",
+    "title": "A first set of comparable spatially explicit global gridded GDP projections consistent with the shared socioeconomic pathways",
+    "year": 2022,
+    "doi": "10.1038/s41597-022-01300-x",
+    "abstract": "**The vulnerability, exposure and resilience of socioeconomic activities to future climate extremes call for high-resolution gridded GDP in climate change adaptation and mitigation research. While global socioeconomic projections are provided mainly at the national level, and downscaling approaches using nighttime light (NtL) images or gridded population data can increase the uncertainty due to limitations. Therefore, we adopt an NTL-population-based approach, which exhibits higher accuracy in socioeconomic disaggregation. Gross regional product of over 800 provinces, which covering over 60% of the global land surface and accounted for more than 80% of GDP in 2005, were used as input. We present a first set of comparable spatially explicit global gridded GDP projections with fine spatial resolutions of 30 arc-seconds and 0.25 arc-degrees for the historical period of 2005 and for 2030–2100 at 10-year intervals under the five SSPs, accounting for the two-child policy in China. This gridded GDP projection dataset can broaden the applicability of GDP data, the availability of which is necessary for socioeconomic and climate change research.**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "统计学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "经济学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "gridded GDP",
+      "shared socioeconomic pathways",
+      "nighttime light",
+      "socioeconomic disaggregation",
+      "climate change research"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:06:51.126526+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_c362e9c1c23d47b1_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The vulnerability, exposure and resilience of socioeconomic activities to future climate extremes call for high-resolution gridded GDP in climate change adaptation and mitigation research. While global socioeconomic projections are provided mainly at the national level, and downscaling approaches using nighttime light (NtL) images or gridded population data can increase the uncertainty due to limitations. Therefore, we adopt an NTL-population-based approach, which exhibits higher accuracy in socioeconomic disaggregation. Gross regional product of over 800 provinces, which covering over 60% of the global land surface and accounted for more than 80% of GDP in 2005, were used as input. We present a first set of comparable spatially explicit global gridded GDP projections with fine spatial resolutions of 30 arc-seconds and 0.25 arc-degrees for the historical period of 2005 and for 2030–2100 at 10-year intervals under the five SSPs, accounting for the two-child policy in China. This gridded GDP projection dataset can broaden the applicability of GDP data, the availability of which is necessary for socioeconomic and climate change research."
+      },
+      "confidence": 0.99,
+      "term": "gridded GDP",
+      "normalized": "网格化GDP",
+      "std_label": "GDP_grid"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c362e9c1c23d47b1_c2",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "The shared socioeconomic pathways (SSPs), which qualitatively and quantitatively describe possible future patterns of global socioeconomic development under different challenges to climate change mitigation and adaptation[1] , are of vital importance in global scientific assessment reports[2][,][3] and the current literature[4][,][5] . The widely used Scenario Model Intercomparison Project (ScenarioMIP) was formed based on different SSPs corresponding to specific representative concentration pathways (RCPs) within Phase Six of the Coupled Model Intercomparison Project (CMIP6)[4] . Future socioeconomic impacts on climate change are built upon socioeconomic projections and require gridded gross domestic product (GDP) data of a higher resolution for future scenarios[4][,][5] ."
+      },
+      "confidence": 0.98,
+      "term": "shared socioeconomic pathways",
+      "normalized": "共享社会经济路径",
+      "std_label": "SSPs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c362e9c1c23d47b1_c3",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "Gridded GDP estimates can be obtained using a spatially explicit gridded population dataset and/or satellite-derived nighttime light (NTL) images to better support current research[8][,][12][–][15] . However, the GDP proportional to population estimates are based on the assumption that GDP per capita is uniformly distributed within an administrative boundary and are often biased at smaller scales[9] . The Defense Meteorological Satellite Program’s Operational Linescan System (DMSP-OLS) NTL images have been widely used in GDP downscaling for 1992–2013. However, these gridded GDP estimates are highly dependent on the NTL values and are often underestimated in urban centers and overestimated in rural regions due to the saturation problem[16] . Fortunately, this can be mitigated to a certain extent when incorporating gridded populations[17][,][18] . In contrast, the global Soumi National Polar-Orbiting Partnership Visible Infrared Imaging Radiometer Suite (NPP-VIIRS) NTL . images address this saturation problem and provide a more accurate proxy for GDP downscaling after 2012[12]"
+      },
+      "confidence": 0.97,
+      "term": "nighttime light images",
+      "normalized": "夜间灯光影像",
+      "std_label": "NTL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c362e9c1c23d47b1_c4",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "Studies have shown that the saturation problem in the DMSP-OLS NTL images has resulted in overestimation for large urban areas and underestimation for rural and distant regions[16][–][18] . Zhao _et_ _al_ .[18] improved the accuracy of GDP disaggregation by combining NTL images with gridded population data using a function in which GDP is proportional to NTL luminosity and population count and named it the LitPop approach. Eberenz _et_ _al_ .[17] further improved this method by filling in the nonilluminated cells with population counts and the depopulated zones with NTL values, providing a better proxy for the spatial disaggregation of economic indicators. The LitPop images were first produced by multiplying the data from the NTL images with data from the Landscan population dataset (Eq. 3), assuming that the values in the nonilluminated grids are equal to 1 to ensure that nonilluminated but populated grid cells are not assigned a value of zero and that illuminated but unpopulated areas are not assigned a value other than zero. The LitPop images were then used (Eq. 4) for GDP downscaling (denoted GDPLitPop) across the globe."
+      },
+      "confidence": 0.96,
+      "term": "LitPop approach",
+      "normalized": "LitPop方法",
+      "std_label": "LitPop"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_c362e9c1c23d47b1_c5",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "The implementation of the two-child policy in 2016 will no doubt have a substantial effect on the demographic and socioeconomic projections for China in the long run. In addition, the clear differences among the drivers (e.g., population distribution by age, sex, and educational enrollment in the historical period) between the census data in China and the United Nations (UN) estimations[27] require revisions and updates to the Chinese population and GDP projections for the five SSPs. Jiang _et_ _al_ .[25][,][26] employed data from the China Statistical Yearbook and the Sixth National Population Census and made projections for 2020–2100 based on assumptions about future education, fertility, mortality, and migration for the five SSPs. Their projections account for the two-child policy. Using a parameterized multidimensional model, population projections by age, sex, education, and the economy are developed for China up to the year 2100 under the framework of the SSPs but are revised based on regional characteristics. The provincial demographic projections are further downscaled and provided at a 0.5-degree resolution for the five SSPs."
+      },
+      "confidence": 0.95,
+      "term": "two-child policy",
+      "normalized": "二孩政策",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c362e9c1c23d47b1_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The vulnerability, exposure and resilience of socioeconomic activities to future climate extremes call for high-resolution gridded GDP in climate change adaptation and mitigation research. While global socioeconomic projections are provided mainly at the national level, and downscaling approaches using nighttime light (NtL) images or gridded population data can increase the uncertainty due to limitations. Therefore, we adopt an NTL-population-based approach, which exhibits higher accuracy in socioeconomic disaggregation. Gross regional product of over 800 provinces, which covering over 60% of the global land surface and accounted for more than 80% of GDP in 2005, were used as input. We present a first set of comparable spatially explicit global gridded GDP projections with fine spatial resolutions of 30 arc-seconds and 0.25 arc-degrees for the historical period of 2005 and for 2030–2100 at 10-year intervals under the five SSPs, accounting for the two-child policy in China. This gridded GDP projection dataset can broaden the applicability of GDP data, the availability of which is necessary for socioeconomic and climate change research."
+      },
+      "confidence": 0.94,
+      "head": "doc_c362e9c1c23d47b1_c1",
+      "relation_type": "requires",
+      "relation_surface": "call for",
+      "tail": "doc_c362e9c1c23d47b1_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c362e9c1c23d47b1_r2",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "Gridded GDP estimates can be obtained using a spatially explicit gridded population dataset and/or satellite-derived nighttime light (NTL) images to better support current research[8][,][12][–][15] . However, the GDP proportional to population estimates are based on the assumption that GDP per capita is uniformly distributed within an administrative boundary and are often biased at smaller scales[9] . The Defense Meteorological Satellite Program’s Operational Linescan System (DMSP-OLS) NTL images have been widely used in GDP downscaling for 1992–2013. However, these gridded GDP estimates are highly dependent on the NTL values and are often underestimated in urban centers and overestimated in rural regions due to the saturation problem[16] . Fortunately, this can be mitigated to a certain extent when incorporating gridded populations[17][,][18] . In contrast, the global Soumi National Polar-Orbiting Partnership Visible Infrared Imaging Radiometer Suite (NPP-VIIRS) NTL . images address this saturation problem and provide a more accurate proxy for GDP downscaling after 2012[12]"
+      },
+      "confidence": 0.93,
+      "head": "doc_c362e9c1c23d47b1_c1",
+      "relation_type": "uses",
+      "relation_surface": "using",
+      "tail": "doc_c362e9c1c23d47b1_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c362e9c1c23d47b1_r3",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "Studies have shown that the saturation problem in the DMSP-OLS NTL images has resulted in overestimation for large urban areas and underestimation for rural and distant regions[16][–][18] . Zhao _et_ _al_ .[18] improved the accuracy of GDP disaggregation by combining NTL images with gridded population data using a function in which GDP is proportional to NTL luminosity and population count and named it the LitPop approach. Eberenz _et_ _al_ .[17] further improved this method by filling in the nonilluminated cells with population counts and the depopulated zones with NTL values, providing a better proxy for the spatial disaggregation of economic indicators. The LitPop images were first produced by multiplying the data from the NTL images with data from the Landscan population dataset (Eq. 3), assuming that the values in the nonilluminated grids are equal to 1 to ensure that nonilluminated but populated grid cells are not assigned a value of zero and that illuminated but unpopulated areas are not assigned a value other than zero. The LitPop images were then used (Eq. 4) for GDP downscaling (denoted GDPLitPop) across the globe."
+      },
+      "confidence": 0.92,
+      "head": "doc_c362e9c1c23d47b1_c4",
+      "relation_type": "improves",
+      "relation_surface": "improved the accuracy",
+      "tail": "doc_c362e9c1c23d47b1_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_c362e9c1c23d47b1_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The vulnerability, exposure and resilience of socioeconomic activities to future climate extremes call for high-resolution gridded GDP in climate change adaptation and mitigation research. While global socioeconomic projections are provided mainly at the national level, and downscaling approaches using nighttime light (NtL) images or gridded population data can increase the uncertainty due to limitations. Therefore, we adopt an NTL-population-based approach, which exhibits higher accuracy in socioeconomic disaggregation. Gross regional product of over 800 provinces, which covering over 60% of the global land surface and accounted for more than 80% of GDP in 2005, were used as input. We present a first set of comparable spatially explicit global gridded GDP projections with fine spatial resolutions of 30 arc-seconds and 0.25 arc-degrees for the historical period of 2005 and for 2030–2100 at 10-year intervals under the five SSPs, accounting for the two-child policy in China. This gridded GDP projection dataset can broaden the applicability of GDP data, the availability of which is necessary for socioeconomic and climate change research."
+      },
+      "confidence": 0.91,
+      "head": "doc_c362e9c1c23d47b1_c1",
+      "relation_type": "accounts_for",
+      "relation_surface": "accounting for",
+      "tail": "doc_c362e9c1c23d47b1_c5"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d1",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "We present a first set of comparable spatially explicit global gridded GDP projections with fine spatial resolutions of 30 arc-seconds and 0.25 arc-degrees for the historical period of 2005 and for 2030–2100 at 10-year intervals under the five SSPs, accounting for the two-child policy in China. This gridded GDP projection dataset can broaden the applicability of GDP data, the availability of which is necessary for socioeconomic and climate change research."
+      },
+      "confidence": 0.95,
+      "name": "Global gridded GDP projection dataset consistent with the Shared Socioeconomic Pathways (SSPs)",
+      "modality": "tabular",
+      "domain": "economics, climate change"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d2",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "GRP in current PPP USD for over 800 provinces (states) in 48 countries (35 OECD countries plus 13 non-OECD countries) were obtained from OECD data at https://stats.oecd.org/Index.aspx?DatasetCode=SNA_TABLE1. However, GRP data for Egypt (http://hdr.undp.org/sites/default/files/2008_egypt_nhdr_en.pdf) and Kenya (http://hdr.undp.org/sites/default/files/kenya_2006_en.pdf) were found in the Human Development Reports from the United Nations Development Programme since GRP (PPP) and GRP per capita (PPP) in 2005 were provided. These 50 countries cover over 60% of the global land surface and accounted for more than 80% of global GDP in 2005."
+      },
+      "confidence": 0.95,
+      "name": "Gross Regional Product (GRP) data for over 800 provinces (states)",
+      "modality": "tabular",
+      "domain": "economics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d3",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "Moreover, GRP at a more explicit county-level was obtained for China (2160 counties with valid data in 2005 from the China County Statistical Yearbook 2006) and the U.S. (3071 out of 3145 counties from the U.S. Bureau of Economic Analysis (https://www.bea.gov/data)) for validation purposes. The Chinese figures were converted to USD using the conversion factors provided by the World Bank."
+      },
+      "confidence": 0.95,
+      "name": "County-level GRP data for China and the U.S.",
+      "modality": "tabular",
+      "domain": "economics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d4",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "Hence, we obtained the gridded population projections developed by Jones and O'Neill[4], who further extended these national totals and produced a scenario-based gridded population dataset that is qualitatively consistent with the assumptions in the SSP narratives regarding spatial development patterns at a spatial resolution of 1/8° (approximately 7.5 arc-minutes at the equator). The GRUMP population dataset from 2000 was used as the base map. Using a parameterized gravity-based downscaling model, the demographic drivers, namely, current fertility, income, urbanization, and international migration, are explicitly included in the population projections corresponding to each SSP to produce gridded population projections for all five SSPs that are quantitatively consistent with national population and urbanization projections."
+      },
+      "confidence": 0.9,
+      "name": "Gridded population projections dataset consistent with SSPs",
+      "modality": "tabular",
+      "domain": "demographics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d5",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "Jiang et al.[25,26] employed data from the China Statistical Yearbook and the Sixth National Population Census and made projections for 2020–2100 based on assumptions about future education, fertility, mortality, and migration for the five SSPs. Their projections account for the two-child policy. Using a parameterized multidimensional model, population projections by age, sex, education, and the economy are developed for China up to the year 2100 under the framework of the SSPs but are revised based on regional characteristics. The provincial demographic projections are further downscaled and provided at a 0.5-degree resolution for the five SSPs."
+      },
+      "confidence": 0.9,
+      "name": "Chinese population projections under the two-child policy",
+      "modality": "tabular",
+      "domain": "demographics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d6",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "The widely used version 4 of the DMSP-OLS stable NTL images in 2005 and 2012 were obtained from the National Oceanic and Atmospheric Administration's National Geophysical Data Center (NGDC) at https://www.ngdc.noaa.gov/eog/dmsp/downloadV4composites.html. These data have a spatial resolution of 30 arc-seconds and latitudinal and longitudinal ranges of 75°N to 65°S and 180°W to 180°E. The values for the DMSP-OLS stable NTL data range from 0 to 63, and the saturation problem (value of 63) is significant, mainly in large city centers and other brightly lit zones."
+      },
+      "confidence": 0.95,
+      "name": "DMSP-OLS stable nighttime light (NTL) images",
+      "modality": "image",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d7",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "In addition, the Suomi-NPP-VIIRS Day/Night Band (DNB) images (https://eogdata.mines.edu/download_dnb_composites.html) from 2015 were obtained. These images have a higher resolution of 15 arc-seconds. To ensure the same cell size, NPP-VIIRS NTL images were resampled to a spatial resolution of 30 arc-seconds. In addition, the DMSP-OLS images in 2012 were used to eliminate the negative values in the NPP-VIIRS DNB images."
+      },
+      "confidence": 0.95,
+      "name": "Suomi-NPP-VIIRS Day/Night Band (DNB) images",
+      "modality": "image",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d8",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "The LandScan Global Population database from the Urban Oak Ridge National Laboratory, USA, was chosen due to its relatively higher accuracy at the county scale (Figure S2), its best census and geographic data in terms of availability, and remote sensing imagery analysis techniques within a multivariate dasymetric modeling framework to disaggregate census counts within an administrative boundary."
+      },
+      "confidence": 0.95,
+      "name": "LandScan Global Population database",
+      "modality": "tabular",
+      "domain": "demographics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d9",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "We therefore obtained the GDP of 195 countries from Geiger et al.[6,9], which mainly comes from PWT8.1, in 2005 PPP USD, which is consistent with the SSP projections, and data for missing countries are taken from PWT9.0 and the WB-WDI after rescaling from 2011 to 2005 PPP USD."
+      },
+      "confidence": 0.95,
+      "name": "GDP data in 2005 PPP USD for 195 countries",
+      "modality": "tabular",
+      "domain": "economics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_c362e9c1c23d47b1_d10",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "As recommended by the SSP database, GDP projections in 2005 PPP USD were obtained from the OECD[33] for 184 countries up to the end of the 21st century under the five SSP scenarios at https://tntcat.iiasa.ac.at/SspDb. Then, national GDP growth rate projections relative to 2005 can be calculated using these figures. Projections in the remaining missing countries were filled in by using supranational GDP growth rate projections."
+      },
+      "confidence": 0.95,
+      "name": "SSP database GDP projections",
+      "modality": "tabular",
+      "domain": "economics, climate change"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c362e9c1c23d47b1_ds1",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "This global gridded GDP dataset is provided in \"GeoTIFF\" format with two spatial resolutions: 30 arc-seconds and 0.25 arc-degrees. Global GDP is disaggregated within administrative boundaries, and therefore, Antarctica, oceans and some desert or wilderness areas (nonilluminated and depopulated zones) are assigned a value of 0. The spatial ranges are 60°S-90°N and 180°E-180°W in the standard WGS84 coordinate system."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "GeoTIFF format with spatial resolutions of 30 arc-seconds and 0.25 arc-degrees, covering 60°S-90°N and 180°E-180°W in WGS84 coordinate system."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c362e9c1c23d47b1_ds2",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "GDP in 2005 PPP USD for the 50 countries mentioned above was replaced by the GRP of over 800 provinces (states) after being converted to 2005 PPP USD. Following the LitPop procedure, the NTL-based approach, and the population-based disaggregation method, 2005 GDP and GRP (in 2005 PPP USD) for countries across the globe were spatially linked to the corresponding GIS-based administrative boundaries (https://www.diva-gis.org/) and then disaggregated into 1 km×1 km grids using the DMSP-OLS NTL images and the Landscan population dataset for 2005."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "GDP values are in 2005 PPP USD to ensure consistency with SSP projections."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c362e9c1c23d47b1_ds3",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "The LitPop images were first produced by multiplying the data from the NTL images with data from the Landscan population dataset (Eq. 3), assuming that the values in the nonilluminated grids are equal to 1 to ensure that nonilluminated but populated grid cells are not assigned a value of zero and that illuminated but unpopulated areas are not assigned a value other than zero. The LitPop images were then used (Eq. 4) for GDP downscaling (denoted GDPLitPop) across the globe."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "The dataset is produced using the LitPop approach which combines NTL images and gridded population data to mitigate the limitations of each individual method."
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_c362e9c1c23d47b1_ds4",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "In this research, we produced a set of comparable spatially explicit global GDP estimates, which, to the best of our knowledge, is the first dataset to present substantial long-term changes in global GDP (in 2005 PPP USD) between the historical period (with 2005 as a representative) and 2030–2100 under all five SSPs while accounting for the two-child policy in China."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Dataset includes historical data for 2005 and projections for 2030–2100 at 10-year intervals under all five SSP scenarios."
+    },
+    {
+      "type": "method",
+      "method_id": "doc_c362e9c1c23d47b1_m1",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "The NTL-population-based approach. Studies have shown that the saturation problem in the DMSP-OLS NTL images has resulted in overestimation for large urban areas and underestimation for rural and distant regions[16][–][18] . Zhao et al.[18] improved the accuracy of GDP disaggregation by combining NTL images with gridded population data using a function in which GDP is proportional to NTL luminosity and population count and named it the LitPop approach. Eberenz et al.[17] further improved this method by filling in the nonilluminated cells with population counts and the depopulated zones with NTL values, providing a better proxy for the spatial disaggregation of economic indicators. The LitPop images were first produced by multiplying the data from the NTL images with data from the Landscan population dataset (Eq. 3), assuming that the values in the nonilluminated grids are equal to 1 to ensure that nonilluminated but populated grid cells are not assigned a value of zero and that illuminated but unpopulated areas are not assigned a value other than zero. The LitPop images were then used (Eq. 4) for GDP downscaling (denoted GDPLitPop) across the globe."
+      },
+      "confidence": 0.95,
+      "name": "LitPop approach",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_c362e9c1c23d47b1_m2",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "Population-based GDP disaggregation method. A broad literature has emphasized the key role of human capital as a driver of socioeconomic growth and population is the central link between human capital and economic growth in almost all econometric models[32][,][33][,][35] . Shiogama et al.[36] suggested the robustness of an ensemble learning-based downscaling approach, which is defined by (baseline variable) × (control variable) in accordance with distribution weights. GDP can thus be proportionally disaggregated to match population counts based on the assumption that GDP per capita is uniformly distributed within a given administrative boundary. This population-based GDP disaggregation (denoted GDPpop) can be described as follows: where Poppixel is the population count in each grid, which acts as the baseline variable, and Pcapi (GDP per capita within a given administrative boundary i) acts as the control variable."
+      },
+      "confidence": 0.95,
+      "name": "Population-based GDP disaggregation method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_c362e9c1c23d47b1_m3",
+      "evidence": {
+        "section": "Data and Method",
+        "original_text": "NTL-based GDP disaggregation method. NTL images have served as a useful proxy for socioeconomic development and have been widely used to improve the quality of socioeconomic data, especially in many developing countries given their high spatial resolution[8][,][14][,][16] . There are two separate annual stable light images derived from two satellites (F14 and F15, working simultaneously to collect global NTL information) in DMSP-OLS, and average visible, stable light, and cloud free coverage products are provided for 2005. The stable light product from F15, which contains a composite of all available cloud-free data with a spatial resolution of 1 km, was chosen since newer sensors have less degradation in their data quality and have been utilized to disaggregate global GDP into 1 km × 1 km grids. The NPP-VIIRS products have several demonstrated improvements over the DMSP-OLS NTL images, e.g., resolving the saturation problem and improving their calibration with a higher spatial resolution of 15 arc-seconds. Given their public availability and regular updates, global NTL images from two satellites have proven to be a useful source of information and are the most commonly used proxy in socioeconomic and climate change research. Based on the statistical linear relationship between GDP and the luminosity in NTL images, GDP is directly redistributed to each grid in proportion to the values within a given administrative boundary. Thus, the NTL-based GDP (denoted GDPLit) can be described as: where GDPi is a GDP total, SLi is the sum of the values from NTL images of administrative unit i, and GDPper_light is a constant within this administrative unit i."
+      },
+      "confidence": 0.95,
+      "name": "NTL-based GDP disaggregation method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_c362e9c1c23d47b1_x1",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "To examine the performance of the three GDP disaggregation approaches described above, namely, GDPPop, GDPLit, and GDPLitPop, we first used national 2005 GDP for 203 countries only and spatialized the data into 1 km × 1 km grids based on each of the three approaches. The GRPs for over 800 provinces (states) in 50 countries and 5231 counties (in the USA and China) were used to evaluate these approaches by assessing their ability to disaggregate national GDP to the subnational level. The national comparison yields a high degree of accuracy, with all R[2] values approaching 1.0 and very small RMSE values, which is to be expected since the national totals are inputs in each of these three methods. At the provincial (state) and county scales, the performance of GDPLitPop is superior to that of GDPPop and GDPLit, with clear advantages in terms of slope, R[2] and RMSE. Specifically, GDPLitPop is more accurate in identifying the spatial allocation of GDP at a fine scale, with R[2] values reaching 0.97, 0.90, and 0.80 and RMSE values of 24.28 billion, 4.67 billion, and 7.44 billion at the provincial (state) scale across the globe (Fig. 4a) and at the county scale for China (Fig. 4b) and the U.S. (Fig. 4c), respectively. However, the R[2] values are only 0.75, 0.62, and 0.46, and RMSE values reach as high as 69.55 billion, 7.12 billion, and 13.88 billion, respectively, when using the GDPLit approach, exhibiting relatively large bias due to the saturation problem in the DMSP-OLS NTL images. In addition, GDPPop also identifies GDP redistributions at a fine scale well, with R[2] and RMSE values close to but less accurate than those of GDPLitPop. It should be mentioned that the GRP values are in current prices, which would lead to additional bias if used directly or converted roughly to 2005 PPP USD."
+      },
+      "confidence": 0.95,
+      "task": "technical validation of GDP disaggregation approaches",
+      "setup": "comparison of GDPPop, GDPLit, and GDPLitPop methods using national, provincial, and county-level GRP data"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_c362e9c1c23d47b1_x2",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "The NTL images from NPP-VIIRS instead of those from DMSP-OLS in 2015 and the Landscan population dataset are used for the disaggregation of future GDP projections. To assess the performance of each approach in GDP downscaling, GRP figures for 737 provinces (states) and 2270 counties in China and 2996 counties in the U.S. from 2015 were obtained and used as another case for technical validation. The national GDP in 2015 in 2011 PPP international dollars for 199 countries from the WB-WDI were used for the GDP downscaling and then reaggregated into gridded GDP estimates at the provincial and county scales. Similar results to those for 2005 can be obtained for 2015 (Fig. 5). The comparisons show that GDPLitPop outperforms the other methods with slightly higher R[2] values of 0.83, 0.85, and 0.75 at the provincial (Fig. 5a), and county scales in China (Fig. 5b) and the U.S. (Fig. 5c). The RMSE values are thus the smallest at 43.92 billion, 16.92 billion, and 9.49 billion when compared with those for GDPLit (58.00 billion, 24.46 billion, and 13.97 billion) and GDPPop (47.12 billion, 28.76 billion, and 10.63 billion). This not only shows the superiority of the LitPop approach for GDP downscaling but also ensures the availability of gridded GDP projections by including the NPP-VIIRS NTL images from 2015 when building the LitPop base map for future SSPs."
+      },
+      "confidence": 0.95,
+      "task": "validation of GDP downscaling for 2015",
+      "setup": "assessment using GRP data from 737 provinces and 2270 counties in China and 2996 counties in the U.S."
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_c362e9c1c23d47b1_x3",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "We also compared and assessed the performance of the gridded GDP datasets from Murakami and Yamagata[24] , which include GDP estimates for 1980–2100 at 10-year intervals, through two scenarios using the LitPop approach for 2010 (Fig. 7). National GDP data from the WB-WDI were obtained and downscaled into 1-km grids using the LitPop approach. LandScan population data for 2010 and NTL images for 2010 and 2005 were used to generate two LitPop images: one with 2010 population and NTL images as a historical case (denoted GDPL10P10), and another with 2010 population and 2005 NTL images (denoted GDPL05P10) as a specious future scenario since fixed NTL images were used for the SSPs. Comparisons between GRP and gridded GDP in 304 provinces (states) (Fig. 7a) and 1996 counties with valid figures in each gridded dataset for the U.S. (Fig. 7b) show the superiority of our gridded GDP using the LitPop approach compared with that of Murakami and Yamagata[24] . The R[2] values are much higher (over 0.95 vs. 0.56 at the county scale), and the RMSE values are approximately half as large (less than 50 billion vs. 106 billion USD at the provincial scale and approximately 8 billion vs. 16.2 billion at the county scale in the U.S.) (Fig. 7). This comparison also indicates that using NTL images from the historical period can induce additional bias in the future scenarios, and societal development could intensify the spatial differences across grids."
+      },
+      "confidence": 0.95,
+      "task": "comparison with existing gridded GDP dataset",
+      "setup": "comparison of LitPop-based estimates with Murakami and Yamagata dataset using GRP and county-level data"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c362e9c1c23d47b1_qr1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "At the provincial (state) and county scales, the performance of GDPLitPop is superior to that of GDPPop and GDPLit, with clear advantages in terms of slope, R² and RMSE. Specifically, GDPLitPop is more accurate in identifying the spatial allocation of GDP at a fine scale, with R² values reaching 0.97, 0.90, and 0.80 and RMSE values of 24.28 billion, 4.67 billion, and 7.44 billion at the provincial (state) scale across the globe (Fig. 4a) and at the county scale for China (Fig. 4b) and the U.S. (Fig. 4c), respectively. However, the R² values are only 0.75, 0.62, and 0.46, and RMSE values reach as high as 69.55 billion, 7.12 billion, and 13.88 billion, respectively, when using the GDPLit approach, exhibiting relatively large bias due to the saturation problem in the DMSP-OLS NTL images. In addition, GDPPop also identifies GDP redistributions at a fine scale well, with R² and RMSE values close to but less accurate than those of GDPLitPop. It should be mentioned that the GRP values are in current prices, which would lead to additional bias if used directly or converted roughly to 2005 PPP USD."
+      },
+      "confidence": 0.95,
+      "quantity": "R²",
+      "value": 0.97,
+      "unit": null,
+      "context": "GDPLitPop approach for GDP disaggregation at provincial (state) scale in 2005",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c362e9c1c23d47b1_qr2",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "At the provincial (state) and county scales, the performance of GDPLitPop is superior to that of GDPPop and GDPLit, with clear advantages in terms of slope, R² and RMSE. Specifically, GDPLitPop is more accurate in identifying the spatial allocation of GDP at a fine scale, with R² values reaching 0.97, 0.90, and 0.80 and RMSE values of 24.28 billion, 4.67 billion, and 7.44 billion at the provincial (state) scale across the globe (Fig. 4a) and at the county scale for China (Fig. 4b) and the U.S. (Fig. 4c), respectively. However, the R² values are only 0.75, 0.62, and 0.46, and RMSE values reach as high as 69.55 billion, 7.12 billion, and 13.88 billion, respectively, when using the GDPLit approach, exhibiting relatively large bias due to the saturation problem in the DMSP-OLS NTL images. In addition, GDPPop also identifies GDP redistributions at a fine scale well, with R² and RMSE values close to but less accurate than those of GDPLitPop. It should be mentioned that the GRP values are in current prices, which would lead to additional bias if used directly or converted roughly to 2005 PPP USD."
+      },
+      "confidence": 0.95,
+      "quantity": "RMSE",
+      "value": 24.28,
+      "unit": "billion USD",
+      "context": "GDPLitPop approach for GDP disaggregation at provincial (state) scale in 2005",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_c362e9c1c23d47b1_p1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "At the provincial (state) and county scales, the performance of GDPLitPop is superior to that of GDPPop and GDPLit, with clear advantages in terms of slope, R² and RMSE. Specifically, GDPLitPop is more accurate in identifying the spatial allocation of GDP at a fine scale, with R² values reaching 0.97, 0.90, and 0.80 and RMSE values of 24.28 billion, 4.67 billion, and 7.44 billion at the provincial (state) scale across the globe (Fig. 4a) and at the county scale for China (Fig. 4b) and the U.S. (Fig. 4c), respectively. However, the R² values are only 0.75, 0.62, and 0.46, and RMSE values reach as high as 69.55 billion, 7.12 billion, and 13.88 billion, respectively, when using the GDPLit approach, exhibiting relatively large bias due to the saturation problem in the DMSP-OLS NTL images. In addition, GDPPop also identifies GDP redistributions at a fine scale well, with R² and RMSE values close to but less accurate than those of GDPLitPop. It should be mentioned that the GRP values are in current prices, which would lead to additional bias if used directly or converted roughly to 2005 PPP USD."
+      },
+      "confidence": 0.95,
+      "metric": "R² and RMSE",
+      "compared_to": "GDPPop, GDPLit"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c362e9c1c23d47b1_qr3",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Similar results to those for 2005 can be obtained for 2015 (Fig. 5). The comparisons show that GDPLitPop outperforms the other methods with slightly higher R² values of 0.83, 0.85, and 0.75 at the provincial (Fig. 5a), and county scales in China (Fig. 5b) and the U.S. (Fig. 5c). The RMSE values are thus the smallest at 43.92 billion, 16.92 billion, and 9.49 billion when compared with those for GDPLit (58.00 billion, 24.46 billion, and 13.97 billion) and GDPPop (47.12 billion, 28.76 billion, and 10.63 billion). This not only shows the superiority of the LitPop approach for GDP downscaling but also ensures the availability of gridded GDP projections by including the NPP-VIIRS NTL images from 2015 when building the LitPop base map for future SSPs."
+      },
+      "confidence": 0.95,
+      "quantity": "R²",
+      "value": 0.83,
+      "unit": null,
+      "context": "GDPLitPop approach for GDP disaggregation at provincial (state) scale in 2015",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c362e9c1c23d47b1_qr4",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Similar results to those for 2005 can be obtained for 2015 (Fig. 5). The comparisons show that GDPLitPop outperforms the other methods with slightly higher R² values of 0.83, 0.85, and 0.75 at the provincial (Fig. 5a), and county scales in China (Fig. 5b) and the U.S. (Fig. 5c). The RMSE values are thus the smallest at 43.92 billion, 16.92 billion, and 9.49 billion when compared with those for GDPLit (58.00 billion, 24.46 billion, and 13.97 billion) and GDPPop (47.12 billion, 28.76 billion, and 10.63 billion). This not only shows the superiority of the LitPop approach for GDP downscaling but also ensures the availability of gridded GDP projections by including the NPP-VIIRS NTL images from 2015 when building the LitPop base map for future SSPs."
+      },
+      "confidence": 0.95,
+      "quantity": "RMSE",
+      "value": 43.92,
+      "unit": "billion USD",
+      "context": "GDPLitPop approach for GDP disaggregation at provincial (state) scale in 2015",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_c362e9c1c23d47b1_p2",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Similar results to those for 2005 can be obtained for 2015 (Fig. 5). The comparisons show that GDPLitPop outperforms the other methods with slightly higher R² values of 0.83, 0.85, and 0.75 at the provincial (Fig. 5a), and county scales in China (Fig. 5b) and the U.S. (Fig. 5c). The RMSE values are thus the smallest at 43.92 billion, 16.92 billion, and 9.49 billion when compared with those for GDPLit (58.00 billion, 24.46 billion, and 13.97 billion) and GDPPop (47.12 billion, 28.76 billion, and 10.63 billion). This not only shows the superiority of the LitPop approach for GDP downscaling but also ensures the availability of gridded GDP projections by including the NPP-VIIRS NTL images from 2015 when building the LitPop base map for future SSPs."
+      },
+      "confidence": 0.95,
+      "metric": "R² and RMSE",
+      "compared_to": "GDPLit, GDPPop"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_c362e9c1c23d47b1_qr5",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "We further assessed the performance of our gridded GDP estimates for 2005 by incorporating over 800 provincial (state) values into the downscaling procedure (Fig. 6). Estimates were obtained from the LitPop approach, the NTL-based approach, and the population-based disaggregation method. The performance of GDPLitPop exceeded that of other two, with higher R² values of 0.95 and 0.97 for China and the U.S., respectively. In addition, the RMSE values were smaller of 4.62 billion and 7.04 billion in China and the U.S., compared with the values of 5.41 billion and 12.40 billion for GDPLit and 4.98 billion and 7.48 billion for GDPPop (Fig. 6). This again shows that GDPLitPop better identifies GDP redistributions at a fine scale. Moreover, the gridded GDP estimates at the provincial (state) scales are clearly excellent, with all R² values approximately equal to 1.0, and the RMSE values decrease drastically to 0.14 billion, 0.32 billion, and 0.13 billion USD, respectively, indicating high accuracy when these provincial (state) GRP data are incorporated into the GDP downscaling. Additionally, the accuracy of the gridded GDP estimates at the county scale in China (Figs. 4b, 6a) and the U.S. (Figs. 4c, 6b) is also improved with much higher R² values and smaller RMSE values for all three downscaling methods. This shows the high accuracy and credibility of both the LitPop approach and our gridded GDP dataset."
+      },
+      "confidence": 0.95,
+      "quantity": "R²",
+      "value": 0.95,
+      "unit": null,
+      "context": "GDPLitPop approach for GDP disaggregation incorporating provincial GRP data at county scale in China in 2005",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_c362e9c1c23d47b1_p3",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "We further assessed the performance of our gridded GDP estimates for 2005 by incorporating over 800 provincial (state) values into the downscaling procedure (Fig. 6). Estimates were obtained from the LitPop approach, the NTL-based approach, and the population-based disaggregation method. The performance of GDPLitPop exceeded that of other two, with higher R² values of 0.95 and 0.97 for China and the U.S., respectively. In addition, the RMSE values were smaller of 4.62 billion and 7.04 billion in China and the U.S., compared with the values of 5.41 billion and 12.40 billion for GDPLit and 4.98 billion and 7.48 billion for GDPPop (Fig. 6). This again shows that GDPLitPop better identifies GDP redistributions at a fine scale. Moreover, the gridded GDP estimates at the provincial (state) scales are clearly excellent, with all R² values approximately equal to 1.0, and the RMSE values decrease drastically to 0.14 billion, 0.32 billion, and 0.13 billion USD, respectively, indicating high accuracy when these provincial (state) GRP data are incorporated into the GDP downscaling. Additionally, the accuracy of the gridded GDP estimates at the county scale in China (Figs. 4b, 6a) and the U.S. (Figs. 4c, 6b) is also improved with much higher R² values and smaller RMSE values for all three downscaling methods. This shows the high accuracy and credibility of both the LitPop approach and our gridded GDP dataset."
+      },
+      "confidence": 0.0,
+      "metric": "R² and RMSE",
+      "compared_to": "GDPLit, GDPPop"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_c362e9c1c23d47b1_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The vulnerability, exposure and resilience of socioeconomic activities to future climate extremes call for high-resolution gridded GDP in climate change adaptation and mitigation research. While global socioeconomic projections are provided mainly at the national level, and downscaling approaches using nighttime light (NtL) images or gridded population data can increase the uncertainty due to limitations. Therefore, we adopt an NTL-population-based approach, which exhibits higher accuracy in socioeconomic disaggregation. Gross regional product of over 800 provinces, which covering over 60% of the global land surface and accounted for more than 80% of GDP in 2005, were used as input. We present a first set of comparable spatially explicit global gridded GDP projections with fine spatial resolutions of 30 arc-seconds and 0.25 arc-degrees for the historical period of 2005 and for 2030–2100 at 10-year intervals under the five SSPs, accounting for the two-child policy in China. This gridded GDP projection dataset can broaden the applicability of GDP data, the availability of which is necessary for socioeconomic and climate change research."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_c362e9c1c23d47b1_cl1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Above all, the LitPop approach has clear advantages for GDP disaggregation, especially at finer spatial scales, when compared with the population-based or NTL-based approaches. This was in line with many studies on overcoming the limitations of using either gridded population estimates based on the assumption of a uniform GDP per capita distribution across a given administrative unit or DMSP-OLS NTL images, which are subject to saturation problems. Our gridded GDP dataset is recommended for use across disciplines due to its relatively high accuracy and credibility."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_c362e9c1c23d47b1_lm1",
+      "evidence": {
+        "section": "Usage Notes",
+        "original_text": "To be clear, this GDP dataset is bound to input data from various sources and to the approaches used, including the use of a uniform GDP growth rate within administrative boundaries, the use of NPP-VIIRS data from 2015 as a fixed NTL image, and the use of the population distribution patterns from LandScan as a base map for future population downscaling. Moreover, the disaggregated GDP values may be underestimated in some underdeveloped areas where nonilluminated cells or unpopulated zones are located when using the LitPop approach. Therefore, these GDP projections fail to capture the spatial variation caused by migration and urban development in the future scenarios. In addition, the GDP projections with a 1-km resolution are produced based on the assumption that there is no population mobility across grids when disaggregating the population projections from 1/8 degree to 1-km grids and then using them to build a future LitPop base map. In addition, the national and supranational GDP projections from the SSP database contain large amounts of uncertainty, as explained in Riahi et al., and should be treated with caution. The effects of financial crises, policy changes, technological progress, political and societal factors, climate system feedback, etc., are also not considered in this gridded GDP dataset."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_c362e9c1c23d47b1_fw1",
+      "evidence": {
+        "section": "Usage Notes",
+        "original_text": "To be clear, this GDP dataset is bound to input data from various sources and to the approaches used, including the use of a uniform GDP growth rate within administrative boundaries, the use of NPP-VIIRS data from 2015 as a fixed NTL image, and the use of the population distribution patterns from LandScan as a base map for future population downscaling. Moreover, the disaggregated GDP values may be underestimated in some underdeveloped areas where nonilluminated cells or unpopulated zones are located when using the LitPop approach. Therefore, these GDP projections fail to capture the spatial variation caused by migration and urban development in the future scenarios. In addition, the GDP projections with a 1-km resolution are produced based on the assumption that there is no population mobility across grids when disaggregating the population projections from 1/8 degree to 1-km grids and then using them to build a future LitPop base map. In addition, the national and supranational GDP projections from the SSP database contain large amounts of uncertainty, as explained in Riahi et al., and should be treated with caution. The effects of financial crises, policy changes, technological progress, political and societal factors, climate system feedback, etc., are also not considered in this gridded GDP dataset."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

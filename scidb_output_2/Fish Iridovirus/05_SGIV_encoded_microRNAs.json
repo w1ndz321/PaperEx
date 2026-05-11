@@ -1,0 +1,856 @@
+{
+  "metadata": {
+    "doc_id": "doc_885c3528473afa56",
+    "source_file": "05_SGIV_encoded_microRNAs.md",
+    "title": "Identification of a Novel Marine Fish Virus, Singapore Grouper Iridovirus-Encoded MicroRNAs Expressed in Grouper Cells by Solexa Sequencing",
+    "year": 2011,
+    "doi": "10.1371/journal.pone.0019148",
+    "abstract": "Background: MicroRNAs (miRNAs) are ubiquitous non-coding RNAs that regulate gene expression at the posttranscriptional level. An increasing number of studies has revealed that viruses can also encode miRNAs, which are proposed to be involved in viral replication and persistence, cell-mediated antiviral immune response, angiogenesis, and cell cycle regulation. Singapore grouper iridovirus (SGIV) is a pathogenic iridovirus that has severely affected grouper aquaculture in China and Southeast Asia. Comprehensive knowledge about the related miRNAs during SGIV infection is helpful for understanding the infection and the pathogenic mechanisms. \n\nMethodology/Principal Findings: To determine whether SGIV encoded miRNAs during infection, a small RNA library derived from SGIV-infected grouper (GP) cells was constructed and sequenced by Illumina/Solexa deep-sequencing technology. We recovered 6,802,977 usable reads, of which 34,400 represented small RNA sequences encoded by SGIV. Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses. Generally, these 16 miRNAs are dispersed throughout the SGIV genome, whereas three are located within the ORF057L region. Some SGIV-encoded miRNAs showed marked sequence and length heterogeneity at their 39 and/or 59 end that could modulate their functions. Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells. \n\nConclusions: Our study provided a genome-wide view of miRNA production for iridoviruses and identified 16 novel viral miRNAs. To the best of our knowledge, this is the first experimental demonstration of miRNAs encoded by aquatic animal viruses. The results provide a useful resource for further in-depth studies on SGIV infection and iridovirus pathogenesis. \n\nCitation: Yan Y, Cui H, Jiang S, Huang Y, Huang X, et al. (2011) Identification of a Novel Marine Fish Virus, Singapore Grouper Iridovirus-Encoded MicroRNAs Expressed in Grouper Cells by Solexa Sequencing. PLoS ONE 6(4): e19148. doi:10.1371/journal.pone.0019148 \n\nEditor: Jianming Qiu, University of Kansas Medical Center, United States of America \n\nReceived January 25, 2011; Accepted March 18, 2011; Published April 29, 2011 \n\nCopyright: � 2011 Yan et al. This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited. \n\nFunding: This work was supported by the grants from the Natural Science Foundation of China (30725027, 30930070), the Knowledge Innovation Program of Chinese Academy of Sciences (KZCX2-YW-BR-08, KZCX2-EW-Q213) and the National Basic Research Program of China (973)(2006CB101802). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript. \n\nCompeting Interests: The authors have declared that no competing interests exist. \n\n* E-mail: qinqw@scsio.ac.cn",
+    "introduction": "Iridoviruses are large-genome DNA viruses infecting only invertebrates and poikilothermic vertebrates [1]. In recent years, iridoviruses have gained more attention because of the high mortality and serious systemic diseases that they cause in aquaculture. Since the first discovery of iridovirus in 1954, more than 100 iridoviruses have been isolated and classified into five genera [1,2]. Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae [3,4]. SGIV has caused significant economic losses to grouper aquaculture in China and Southeast Asia. The SGIV genome sequence has been determined [5], and the whole genome transcriptional profiles of SGIV have also been \n\nmapped in virus-infected grouper spleen cells and in virus-infected grouper spleen tissues [6]. However, information about SGIVencoded gene function and molecular mechanisms of viral pathogenesis is still limited [7–10]. Ranaviruses, such as frog virus 3 (FV3), the typical species of the genus Ranavirus, have been reported to initiate the first stage of genome replication in the nucleus and then finish self-assembly in the cytoplasm [1]. Similar to FV3, SGIV could replicate and propagate well in established fish cell lines [3]. Therefore, the features of SGIV raise the possibility to study the contribution of viral microRNAs (miRNAs) to promote SGIV pathogenesis both in vitro and in vivo. However, whether miRNAs exist in the SGIV genome remains largely unknown. \n\nmiRNAs represent a class of ,22-nucleotide (nt) small RNA molecules that can regulate mRNA expression at the post- \n\n\nPLoS ONE | www.plosone.org \n\nApril 2011 | Volume 6 | Issue 4 | e19148 \n\n1 \n\nIdentification of SGIV miRNAs by Solexa Sequencing \n\ntranscriptional level by degradation or translational repression [11]. miRNAs are encoded by a diverse range of metazoan eukaryotes and plant species, and play important roles in a wide spectrum of biological processes such as embryonic development, cell differentiation, apoptosis, and oncogenesis [12]. To date, miRNAs are also known to be produced by several viruses. Except for miRNAs in human immunodeficiency virus 1 [13], attention is increasingly being focused on miRNAs derived from DNA viruses [14–18]. They are mainly from the herpesvirus family, including Marek’s disease virus [19,20], herpes simplex virus (HSV)-1 and HSV-2 [21,22], human and murine cytomegalovirus (hCMV and mCMV) [23–25], Kaposi’s sarcoma-associated herpesvirus (KSHV) [26,27] and Epstein-Barr virus (EBV) [28,29], and also from simian polyomaviruses [30], as well as human adenovirus [31]. However, information about exact function of most viral miRNAs is very limited. They are characterized in facilitating virus propagation and pathogenesis by suppressing the expression of viral or cellular genes [16,18]. \n\nTo date, several studies have found that viral transcripts are regulated by viral miRNAs through perfect or imperfect matches. For example, hCMV-encoded miR-UL112-1 is capable of targeting viral immediate-early gene 1, which indicates that miR-UL112-1 plays an essential role in maintenance of the latency infection state [32]. Another instance arises from HSV-2-encoded miRNAs, which help to establish the latent viral infection state via inhibition of expression of HSV-2 ICP34.5 and ICP0 [22,33]. In addition to targeting viral transcripts, recent studies have shown that virus-encoded miRNAs can also regulate cellular mRNA expression to evade host antiviral immune responses. The first recognized cellular mRNA targeted by EBV miR-BART5 is the mRNA of p53 upregulated modulator of apoptosis (PUMA), and inhibition of PUMA by miR-BART5 can protect EBV-infected cells from apoptosis [34]. Above all, viral miRNAs are capable of targeting viral or cellular transcripts to establish a beneficial environment for virus reproduction. Therefore, we hypothesize that blocking the viral miRNAs might enhance the host immune response to virus infection, which suggests that viral miRNAs might be applied as candidate therapeutic targets. \n\nRecently, the second-generation sequencing platform has been developed, and the new high-throughput sequencing strategies have been used to uncover novel viral miRNAs [19,35–37]. Compared with the traditional methods, the next generation sequencing strategies have been revolutionized to permit investigation of low-abundance and non-conserved novel miRNAs in a wide spectrum. In the present study, to gain further insights into the roles that miRNAs played during SGIV infection, we applied Solexa deep-sequencing technology, combined with computational techniques, to identify novel miRNAs encoded by SGIV, and the candidate viral miRNAs were further validated by stem-loop quantitative RT-PCR and luciferase reporter assay. To the best of our knowledge, the present study provides a first comprehensive genome-wide view of miRNA production for aquatic animal viruses, and these data could contribute to understanding the mechanism of iridovirus pathogenesis.",
+    "primary_discipline": {
+      "level1": "生物学",
+      "level2": "微生物学",
+      "level3": "病毒学"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "水产学",
+        "level2": "水产养殖学",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Singapore grouper iridovirus",
+      "microRNA",
+      "Solexa sequencing",
+      "aquaculture",
+      "virus pathogenesis"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:09:35.528297+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "MicroRNAs (miRNAs) are ubiquitous non-coding RNAs that regulate gene expression at the posttranscriptional level. An increasing number of studies has revealed that viruses can also encode miRNAs, which are proposed to be involved in viral replication and persistence, cell-mediated antiviral immune response, angiogenesis, and cell cycle regulation."
+      },
+      "confidence": 0.99,
+      "term": "microRNAs (miRNAs)",
+      "normalized": "微小RNA",
+      "std_label": "miRNA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Singapore grouper iridovirus (SGIV) is a pathogenic iridovirus that has severely affected grouper aquaculture in China and Southeast Asia. Comprehensive knowledge about the related miRNAs during SGIV infection is helpful for understanding the infection and the pathogenic mechanisms."
+      },
+      "confidence": 0.99,
+      "term": "Singapore grouper iridovirus (SGIV)",
+      "normalized": "新加坡石斑鱼虹彩病毒",
+      "std_label": "SGIV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To determine whether SGIV encoded miRNAs during infection, a small RNA library derived from SGIV-infected grouper (GP) cells was constructed and sequenced by Illumina/Solexa deep-sequencing technology. We recovered 6,802,977 usable reads, of which 34,400 represented small RNA sequences encoded by SGIV."
+      },
+      "confidence": 0.98,
+      "term": "Solexa deep-sequencing technology",
+      "normalized": "Solexa深度测序技术",
+      "std_label": "Solexa sequencing"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.98,
+      "term": "stem-loop quantitative RT-PCR",
+      "normalized": "茎环定量RT-PCR",
+      "std_label": "stem-loop qRT-PCR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.98,
+      "term": "luciferase reporter assay",
+      "normalized": "荧光素酶报告基因检测",
+      "std_label": "luciferase assay"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses. Generally, these 16 miRNAs are dispersed throughout the SGIV genome, whereas three are located within the ORF057L region."
+      },
+      "confidence": 0.99,
+      "term": "SGIV-encoded miRNAs",
+      "normalized": "SGIV编码的miRNA",
+      "std_label": "SGIV miRNAs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses."
+      },
+      "confidence": 0.98,
+      "term": "HSV2-miR-H4-5p",
+      "normalized": "HSV2-miR-H4-5p",
+      "std_label": "HSV2-miR-H4-5p"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To determine whether SGIV encoded miRNAs during infection, a small RNA library derived from SGIV-infected grouper (GP) cells was constructed and sequenced by Illumina/Solexa deep-sequencing technology."
+      },
+      "confidence": 0.99,
+      "term": "SGIV-infected GP cells",
+      "normalized": "SGIV感染的GP细胞",
+      "std_label": "SGIV-infected GP cells"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses. Generally, these 16 miRNAs are dispersed throughout the SGIV genome, whereas three are located within the ORF057L region."
+      },
+      "confidence": 0.98,
+      "term": "ORF057L",
+      "normalized": "ORF057L",
+      "std_label": "ORF057L"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Singapore grouper iridovirus (SGIV) is a pathogenic iridovirus that has severely affected grouper aquaculture in China and Southeast Asia."
+      },
+      "confidence": 0.99,
+      "term": "grouper aquaculture",
+      "normalized": "石斑鱼养殖",
+      "std_label": "grouper aquaculture"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c11",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae."
+      },
+      "confidence": 0.99,
+      "term": "Ranavirus",
+      "normalized": "蛙病毒属",
+      "std_label": "Ranavirus"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c12",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae."
+      },
+      "confidence": 0.99,
+      "term": "Iridoviridae",
+      "normalized": "虹彩病毒科",
+      "std_label": "Iridoviridae"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c13",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae."
+      },
+      "confidence": 0.99,
+      "term": "Epinephelus tauvina",
+      "normalized": "褐点石斑鱼",
+      "std_label": "Epinephelus tauvina"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c14",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Ranaviruses, such as frog virus 3 (FV3), the typical species of the genus Ranavirus, have been reported to initiate the first stage of genome replication in the nucleus and then finish self-assembly in the cytoplasm."
+      },
+      "confidence": 0.99,
+      "term": "frog virus 3 (FV3)",
+      "normalized": "蛙病毒3",
+      "std_label": "FV3"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c15",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Therefore, the features of SGIV raise the possibility to study the contribution of viral microRNAs (miRNAs) to promote SGIV pathogenesis both in vitro and in vivo."
+      },
+      "confidence": 0.98,
+      "term": "viral pathogenesis",
+      "normalized": "病毒致病机制",
+      "std_label": "viral pathogenesis"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c16",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Previous studies have shown that viral miRNA biogenesis, like cellular miRNAs, also initiates transcription of primary miRNAs in the nucleus, followed by sequential processing under two RNase IIIs Drosha and Dicer to produce an ,22-nt RNA duplex."
+      },
+      "confidence": 0.98,
+      "term": "miRNA biogenesis",
+      "normalized": "miRNA生物合成",
+      "std_label": "miRNA biogenesis"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c17",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Previous studies have shown that viral miRNA biogenesis, like cellular miRNAs, also initiates transcription of primary miRNAs in the nucleus, followed by sequential processing under two RNase IIIs Drosha and Dicer to produce an ,22-nt RNA duplex."
+      },
+      "confidence": 0.98,
+      "term": "Drosha",
+      "normalized": "Drosha",
+      "std_label": "Drosha"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c18",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Previous studies have shown that viral miRNA biogenesis, like cellular miRNAs, also initiates transcription of primary miRNAs in the nucleus, followed by sequential processing under two RNase IIIs Drosha and Dicer to produce an ,22-nt RNA duplex."
+      },
+      "confidence": 0.98,
+      "term": "Dicer",
+      "normalized": "Dicer",
+      "std_label": "Dicer"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c19",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Finally, only one strand of the viral original duplex is incorporated into RNA-induced silencing complexes to direct the cleavage or translational inhibition of target mRNA."
+      },
+      "confidence": 0.98,
+      "term": "RNA-induced silencing complexes",
+      "normalized": "RNA诱导的沉默复合体",
+      "std_label": "RISC"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c20",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "To the best of our knowledge, miRNAs encoded by aquatic animal viruses have not been experimentally identified yet."
+      },
+      "confidence": 0.99,
+      "term": "aquatic animal viruses",
+      "normalized": "水生动物病毒",
+      "std_label": "aquatic animal viruses"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c21",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "In the present study, the identified SGIV miRNAs exhibit sequence variations frequently, and two classes of variants that comprised of 59 and 39 terminal variability were found, as with isomiR."
+      },
+      "confidence": 0.98,
+      "term": "isomiR",
+      "normalized": "isomiR",
+      "std_label": "isomiR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c22",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Our studies revealed that SGIV miRNA sequences showed high homogenicity in their 59 ends but common heterogeneity at their 39 ends, which is consistent with those found in KSHV and EBV miRNAs."
+      },
+      "confidence": 0.98,
+      "term": "Kaposi’s sarcoma-associated herpesvirus (KSHV)",
+      "normalized": "卡波西肉瘤相关疱疹病毒",
+      "std_label": "KSHV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c23",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Our studies revealed that SGIV miRNA sequences showed high homogenicity in their 59 ends but common heterogeneity at their 39 ends, which is consistent with those found in KSHV and EBV miRNAs."
+      },
+      "confidence": 0.98,
+      "term": "Epstein-Barr virus (EBV)",
+      "normalized": "EB病毒",
+      "std_label": "EBV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c24",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "However, between closely related EBV and Rhesus lymphocryptovirus (rLCV), eight miRNAs are conserved at the level of mature miRNA sequences."
+      },
+      "confidence": 0.98,
+      "term": "Rhesus lymphocryptovirus (rLCV)",
+      "normalized": "恒河猴淋巴隐病毒",
+      "std_label": "rLCV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c25",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "For instance, SGIV-miR-13 was found to lie in the opposite transcriptional orientation of ORF072R, which encodes the major capsid protein."
+      },
+      "confidence": 0.98,
+      "term": "major capsid protein",
+      "normalized": "主要衣壳蛋白",
+      "std_label": "major capsid protein"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c26",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "SGIV-miR-homoHSV was embedded in ORF136R in the opposite transcriptional orientation, which has been recently designated as the viral lipopolysaccharide-induced TNF-a factor (LITAF), and reported to contribute to virus replication by exploitation of cell apoptosis and regulation of host immune responses."
+      },
+      "confidence": 0.98,
+      "term": "viral lipopolysaccharide-induced TNF-a factor (LITAF)",
+      "normalized": "病毒脂多糖诱导的TNF-a因子",
+      "std_label": "LITAF"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_885c3528473afa56_c27",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Furthermore, until now, several anti-microRNA oligonucleotides with some modifications, such as 29-O-methyl-substituted RNA oligonucleotides and mixed locked nucleic acid-DNA, have been presumed to be novel diagnostic and therapeutic agents."
+      },
+      "confidence": 0.98,
+      "term": "anti-microRNA oligonucleotides",
+      "normalized": "抗miRNA寡核苷酸",
+      "std_label": "anti-miRNA oligonucleotides"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses."
+      },
+      "confidence": 0.99,
+      "head": "doc_885c3528473afa56_c2",
+      "relation_type": "encodes",
+      "relation_surface": "encoded miRNAs",
+      "tail": "doc_885c3528473afa56_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "MicroRNAs (miRNAs) are ubiquitous non-coding RNAs that regulate gene expression at the posttranscriptional level. An increasing number of studies has revealed that viruses can also encode miRNAs, which are proposed to be involved in viral replication and persistence, cell-mediated antiviral immune response, angiogenesis, and cell cycle regulation."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "regulates",
+      "relation_surface": "regulate gene expression",
+      "tail": "doc_885c3528473afa56_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Singapore grouper iridovirus (SGIV) is a pathogenic iridovirus that has severely affected grouper aquaculture in China and Southeast Asia."
+      },
+      "confidence": 0.99,
+      "head": "doc_885c3528473afa56_c2",
+      "relation_type": "affects",
+      "relation_surface": "severely affected",
+      "tail": "doc_885c3528473afa56_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae."
+      },
+      "confidence": 0.99,
+      "head": "doc_885c3528473afa56_c2",
+      "relation_type": "belongs_to",
+      "relation_surface": "characterized as a novel member of the genus Ranavirus, family Iridoviridae",
+      "tail": "doc_885c3528473afa56_c11"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae."
+      },
+      "confidence": 0.99,
+      "head": "doc_885c3528473afa56_c2",
+      "relation_type": "isolated_from",
+      "relation_surface": "isolated from the diseased brown-spotted grouper",
+      "tail": "doc_885c3528473afa56_c13"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Singapore grouper iridovirus (SGIV) was first isolated from the diseased brown-spotted grouper, Epinephelus tauvina, and was characterized as a novel member of the genus Ranavirus, family Iridoviridae."
+      },
+      "confidence": 0.99,
+      "head": "doc_885c3528473afa56_c11",
+      "relation_type": "belongs_to",
+      "relation_surface": "genus Ranavirus, family Iridoviridae",
+      "tail": "doc_885c3528473afa56_c12"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Ranaviruses, such as frog virus 3 (FV3), the typical species of the genus Ranavirus, have been reported to initiate the first stage of genome replication in the nucleus and then finish self-assembly in the cytoplasm. Similar to FV3, SGIV could replicate and propagate well in established fish cell lines."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c2",
+      "relation_type": "similar_to",
+      "relation_surface": "Similar to FV3",
+      "tail": "doc_885c3528473afa56_c14"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "similar_to",
+      "relation_surface": "shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p",
+      "tail": "doc_885c3528473afa56_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses. Generally, these 16 miRNAs are dispersed throughout the SGIV genome, whereas three are located within the ORF057L region."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "located_in",
+      "relation_surface": "located within the ORF057L region",
+      "tail": "doc_885c3528473afa56_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To determine whether SGIV encoded miRNAs during infection, a small RNA library derived from SGIV-infected grouper (GP) cells was constructed and sequenced by Illumina/Solexa deep-sequencing technology. We recovered 6,802,977 usable reads, of which 34,400 represented small RNA sequences encoded by SGIV. Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "identified_by",
+      "relation_surface": "identified by a computational pipeline",
+      "tail": "doc_885c3528473afa56_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r11",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "examined_by",
+      "relation_surface": "examined by stem-loop quantitative RT-PCR and luciferase reporter assay",
+      "tail": "doc_885c3528473afa56_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r12",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "examined_by",
+      "relation_surface": "examined by stem-loop quantitative RT-PCR and luciferase reporter assay",
+      "tail": "doc_885c3528473afa56_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r13",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.99,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "present_in",
+      "relation_surface": "present and functional in SGIV-infected GP cells",
+      "tail": "doc_885c3528473afa56_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r14",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Therefore, the features of SGIV raise the possibility to study the contribution of viral microRNAs (miRNAs) to promote SGIV pathogenesis both in vitro and in vivo."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "promotes",
+      "relation_surface": "contribution of viral microRNAs (miRNAs) to promote SGIV pathogenesis",
+      "tail": "doc_885c3528473afa56_c15"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r15",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "In the present study, the identified SGIV miRNAs exhibit sequence variations frequently, and two classes of variants that comprised of 59 and 39 terminal variability were found, as with isomiR."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "similar_to",
+      "relation_surface": "sequence variations frequently, and two classes of variants that comprised of 59 and 39 terminal variability were found, as with isomiR",
+      "tail": "doc_885c3528473afa56_c21"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r16",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Our studies revealed that SGIV miRNA sequences showed high homogenicity in their 59 ends but common heterogeneity at their 39 ends, which is consistent with those found in KSHV and EBV miRNAs."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "consistent_with",
+      "relation_surface": "consistent with those found in KSHV and EBV miRNAs",
+      "tail": "doc_885c3528473afa56_c22"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r17",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Our studies revealed that SGIV miRNA sequences showed high homogenicity in their 59 ends but common heterogeneity at their 39 ends, which is consistent with those found in KSHV and EBV miRNAs."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "consistent_with",
+      "relation_surface": "consistent with those found in KSHV and EBV miRNAs",
+      "tail": "doc_885c3528473afa56_c23"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_885c3528473afa56_r20",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Furthermore, until now, several anti-microRNA oligonucleotides with some modifications, such as 29-O-methyl-substituted RNA oligonucleotides and mixed locked nucleic acid-DNA, have been presumed to be novel diagnostic and therapeutic agents. Therapeutics based on SGIV-encoded miRNAs could help to deal with SGIV-caused fish viral disease."
+      },
+      "confidence": 0.98,
+      "head": "doc_885c3528473afa56_c6",
+      "relation_type": "targeted_by",
+      "relation_surface": "anti-microRNA oligonucleotides",
+      "tail": "doc_885c3528473afa56_c27"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_885c3528473afa56_d1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "To identify the miRNAs encoded by SGIV, a small RNA library derived from SGIV-infected GP cells was constructed and sequenced using Solexa deep-sequencing technology. A total of 7,246,099 reads were obtained, of which 6,802,977 high-quality reads were detected, which indicated 5,884,103 small RNAs. Solexa raw data and processed data are available at the NCBI GEO database under accession number GSE26909. The size distribution of sequence reads peaked at 23 nt (Fig. 1), which was consistent with the ideal size of genuine miRNAs. Subsequently, the usable reads were aligned against the zebrafish genome with perfect match, which resulted in 3,717,379 reads matched to zebrafish genome, which indicated 18,105 unique small RNAs. These mapped small RNAs could be divided into different categories after BLAST searches against Rfam 9.0 and Genbank database, including putative fragments of rRNA, tRNA, snRNA and snoRNA (Table 2). Another fraction was derived from highly repeated elements named repeat-associated small RNAs. All of these small RNAs were abandoned, which distinguished them from the remaining RNAs for further analysis. To identify the conserved miRNAs between grouper and zebrafish, the remaining RNAs were blasted against the miRNA database, and 3,457,140 reads matched perfectly to known zebrafish miRNAs. The major fractions were attributable to the let-7 family, which consisted of let-7a, let-7b, let-7c and let-7f, among others. Among the 5,884,103 small RNAs obtained from deep sequencing, 34,400 reads were perfectly matched to the SGIV genome, which contained 11,144 unique small RNAs. These small RNAs were blasted against known miRNAs deposited at miRBase, and a similar sequence to HSV2-miR-H4-5p was identified (Fig. 2). We designated it SGIV-miR-homoHSV as one novel viral miRNA. After that, the SGIV genome was scanned to identify the potential hairpin region of each small RNA that was perfectly matched to the SGIV genome, using software MIREAP, and finally, a total of 15 candidate miRNAs (excepted SGIV-miR-homoHSV) derived from 14 imperfect fold-back structure precursors were identified. According to the prediction by Mfold, all the SGIV sequences flanking each candidate miRNA could be readily folded into characteristic stable hairpin structures (Fig. 3). All the above identified 15 miRNAs were designated as SGIV-miR-1 to 14, among which the miRNAs derived from the 59 and 39 arms of SGIV-miR-1 precursor were designated as SGIV-miR-1-5p and -3p, respectively (Table 3). Some of the SGIV miRNA sequences obtained above exhibited terminal heterogeneity at the 39 and/or 59 ends (Fig. 4A). Sequence terminal variation analysis revealed that the frequency of 59 end length heterogeneity of SGIV miRNAs was approximately 12% with ,3 nt deletion or extension. Conversely, the 39 end length variation was .60% and ranged from minus 5 nt to plus 5 nt (Fig. 4B)."
+      },
+      "confidence": 0.95,
+      "name": "SGIV-infected GP cells small RNA sequencing dataset",
+      "modality": "tabular",
+      "domain": "virology, genomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_885c3528473afa56_d2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "To validate the authenticity of SGIV miRNAs obtained from Solexa deep sequencing, stem-loop quantitative RT-PCR was performed, using uninfected GP cells as the negative controls. Most of the candidate SGIV miRNAs could be detected in SGIV-infected cells, except SGIV-miR-3, -4, -8, -11 and -12 (Fig. 6A). However, in the negative controls, no fluorescence signal was observed. For some reason, SGIV-miR14 prevented the design of primers to detect it by stem-loop quantitative RT-PCR, as reported by Umbach et al. [45]. Compared to the expression level of let-7f that was used as the positive control, SGIV-miR-6 showed the highest expression level among all SGIV miRNAs, followed by a higher expression level of SGIV-miR-2 and SGIV-miR-5. Meanwhile, stem-loop quantitative RT-PCR results revealed that other viral miRNAs were present at different but easily detectable levels (Fig. 6C). The sensitivity of the miRNA quantification scheme was also evaluated. The data illustrated good linearity between the log of template concentration at different dilutions versus the corresponding cycle threshold, and some of the amplification standard curves were selectively shown in Fig. 6B. To determine whether the identified viral miRNAs were indeed functional, 11 miRNA-expressing plasmids and 12 dual-luciferase reporter vectors were selectively constructed based on stem-loop quantitative RT-PCR results, and used for luciferase reporter assay. Broad expression of mature miRNAs that originated from the indicated recombinant pLL3.7-miR vectors was observed, and some amplification curves are selectively listed in Fig. 7A. Coincident with the downregulated luciferase activity of the positive control miRNA, SV40-miR-s1, all of the SGIV miRNAs that passed the validation of stem-loop quantitative RT-PCR were able to suppress the luciferase activity (.25–50%) (Fig. 7B). SGIV-miR-2 and SGIV-miR-10 significantly repressed Renilla luciferase activity and exerted an approximately 2-fold inhibitory effect compared to separate negative controls. In addition, SGIV-miR14 was also able to inhibit its corresponding reporter activity by 27%. Combined with the feature that SGIV-miR14 precursor can be folded into a characteristic hairpin secondary structure, we considered it as an authentic miRNA, although we could not detect it by stem-loop quantitative RT-PCR. As noted above, the results of luciferase reporter assay were consistent with those from stem-loop quantitative RT-PCR; both of which contributed to assessment of the credibility of novel SGIV miRNAs."
+      },
+      "confidence": 0.9,
+      "name": "SGIV miRNA expression validation dataset",
+      "modality": "tabular",
+      "domain": "virology, molecular biology"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_885c3528473afa56_ds1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "GP cells were inoculated into three cell culture flasks (25 cm[2] ) at 25uC. After allowing the cells to adhere for 18 h to 80% confluence, they were infected with SGIV at an MOI of ,0.1. At 6 h, 24 h and 48 h post infection (p.i.), SGIV-infected cell cultures were harvested and pooled. Total RNA was extracted using TRIzol reagent (Invitrogen), according to the manufacturer’s protocol, with a little modification. After addition of isopropanol, the RNA extract was u incubated at 220 C for 2 h to acquire more low-molecular-weight RNAs. The isolated RNA was digested with TURBO DNase[TM] (Ambion, Austin, TX, USA) to discard the DNA contaminant, according to the manufacturer’s protocol. The quality and integrity of the total RNA was evaluated by electrophoresis on 1.2% agarose gel and Agilent 2100 BioAnalyzer (Agilent Technologies, Santa Clara, CA, USA). The sequencing procedure was carried out as previously described [39]. Total RNA was electrophoresed on 15% polyacrylamide–8 M urea gel, and small RNAs with ,30 nt were extracted from the gel and purified. Sequentially, a pair of Solexa proprietary adaptors was ligated to their 59 and 39 ends, followed by reverse transcription and amplification by PCR using a pair of primers complementary to the linker sequences. The generated cDNA library was utilized for sequencing analysis using the Illumina Genome Analyzer (Illumina, San Diego, CA, USA), according to the manufacturer’s instructions."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "RNA isolation protocol for small RNA sequencing with DNase treatment and quality assessment"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_885c3528473afa56_ds2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Raw sequencing data were filtered by eliminating low quality reads and adaptor contaminants to generate usable reads with size $18 nt. The raw data and processed data were deposited into the NCBI Gene Expression Omnibus (GEO) database. A large number of small RNAs were cellular in origin, therefore, the Solexa data was aligned against zebrafish genome using SOAP v1.11 (Short Oligonucleotide Alignment Program) (http://soap. genomics.org.cn) [40], which was downloaded from the UCSC Genome Browser Database. Selecting zebrafish as a reference was attributable to the fact that zebrafish, being a model vertebrate with a sequenced genome, has a closer evolutionary relationship to grouper, compared with other model species. Sequences with perfect match were utilized for further analysis. To discard unique sequences that originated from rRNA, tRNA, small nuclear RNA (snRNA) and small nucleolar RNA (snoRNA), the retained sequences were mapped to Rfam 9.0 and NCBI Genbank database. Moreover, small RNAs derived from highly repeated elements were annotated as repeat-associated small RNAs. To identify conserved miRNAs between grouper and zebrafish, the unique small RNA sequences were analyzed by BLAST search against miRBase v12.0 (http://www.mirbase.org/). Only sequences with perfect match were considered to be conserved miRNAs. After analysis of the cellular small RNAs, all of the clean small RNAs were aligned against the SGIV genome using SOAP v1.11, which was also downloaded from the UCSC Genome Browser Database. Only sequences that perfectly matched the SGIV genome along their entire length were considered for further analysis. The mapped sequences were blasted against known miRNAs deposited at miRBase to find conserved miRNAs. Subsequently, to understand better the secondary structures of the potential small RNAs, ,100 nt of genomic DNA sequence flanking each side of these small RNA sequences were selected, and the ability to form characteristic hairpin structures were predicted using Mfold [41] and analyzed by MIREAP (http:// sourceforge.net/projects/mireap/). Stem-loop hairpins that met the following criteria were considered typical precursors: dominant mature sequences ranging from 20 to 24 nt; secondary structures of hairpins with free-folding energy lower than 218 kcal/mol and a minimum of 14 paired, as well as not more than five asymmetry within the miR/miR* duplex. Only the sequences that fulfilled all of the criteria described above were determined as putative candidate novel viral miRNAs."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Bioinformatic pipeline for miRNA identification including alignment, filtering, and hairpin structure prediction"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_885c3528473afa56_ds3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Reverse transcriptase reactions. Total RNA was extracted from SGIV-infected GP cells (6, 24 and 48 h p.i.) and corresponding uninfected cells by TRIzol reagent (Invitrogen). After that, the isolated RNA was digested with TURBO DNase[TM] (Ambion) to discard the DNA contaminants. The RNA concentration was quantified by Nanodrop 2000 Spectrophotometer (Thermo Scientific, Wilmington, DE, USA). Custom reverse transcriptase (RT) primers for detection of each miRNA, with a stem-loop sequence to enhance the binding specificity for mature miRNA, were designed by Applied Biosystems (Foster City, CA, USA) against the most common isoform. Each RT reaction contained 500 ng total RNA, 3 ml 56 RT primer, 0.15 ml dNTPs (100 mM), 1 ml MultiScribe[TM] Reverse Transcriptase (50 U/ml), 1.5 ml 106 Reverse Transcription Buffer, 0.19 ml RNase inhibitor (20 U/ml), and sterilized RNase-free water was used to adjust the total volume of the reaction mix to 15 ml. Reactions were incubated in a Bio-Rad Thermocycler (Bio-Rad, Hercules, CA, USA) at 16uC for 30 min, 42uC for 30 min, 85uC for 5 min, and then held at 4uC. The reversetranscribed cDNA of each reaction was diluted 5-fold with sterile water and used as template in real-time quantitative PCR reactions. Stem-loop quantitative PCR. To validate the expression of viral miRNAs in SGIV-infected samples, real-time quantitative PCR based on TaqMan MicroRNA assay was performed using the LightCyclerH 480 Detection System (Roche, Basel, Switzerland) using TaqManH microRNA Assays kit (Applied Biosystems). Each reaction consisted of 0.665 ml of product from the diluted RT reaction, 16 TaqManH Universal PCR Master Mix, 0.5 ml 206 TaqManH Small RNA Assay and sterile water. The mixture was incubated in a 384-well plate at 95uC for 10 min, followed by 40 cycles of 95uC for 15 s and 60uC for 1 min. For relative quantification of each miRNA, the typical 2[2][DD][Ct] method was employed [42], and all experimental data were normalized to the U6 gene. All reactions including no-template and RT minus controls for each miRNA were run in triplicate. All experimental data were expressed as means 6 SD from three separate biological experiments. The sensitivity of the miRNA quantification scheme was also evaluated using diluted products of miRNA amplification as the template. Following serially 10-fold dilution of the templates over five orders of magnitude, real-time quantitative PCR was performed with a separate TaqManH Small RNA Assay kit."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Stem-loop quantitative RT-PCR protocol for miRNA validation with U6 normalization and triplicate measurements"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_885c3528473afa56_ds4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Transient transfection was performed using Lipofectamine 2000 reagent (Invitrogen), according to the manufacturer’s protocol. FHM cells cultured in 96-well plates for 16–18 h were transiently transfected with 120 ng miRNA-expression plasmid or pLL3.7 empty vector, along with 40 ng corresponding sensor vector. Cells that were co-transfected by pLL3.7-SV40-miR-S1 and its corresponding sensor plasmid were used as positive controls; both of which sequences were chosen as reported by Sullivan [30]. In addition, stem-loop quantitative RT-PCR was also employed to determine the expression of each miRNA derived from recombinant pLL3.7-miR vectors, using separate TaqManH microRNA Assays kit (Applied Biosystems) on the LightCyclerH 480 Detection System (Roche). At 48 h post-transfection, cells were harvested and lysed. Firefly and Renilla luciferase activities were measured consecutively with the Dual-Luciferase Reporter Assay system (Promega) on PerkinElmer 2030 Multilabel Reader (PerkinElmer Life and Analytical Science, Turku, Finland), according to manufacturer’s instructions. Renilla luciferase activities were normalized to the constitutively expressed Firefly luciferase activity in all cases, and expressed as the fold stimulation relative to that of pLL3.7 empty vector transfected cells."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Luciferase reporter assay protocol for miRNA functional validation with dual-luciferase system and normalization"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_885c3528473afa56_m1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To determine whether SGIV encoded miRNAs during infection, a small RNA library derived from SGIV-infected grouper (GP) cells was constructed and sequenced by Illumina/Solexa deep-sequencing technology. We recovered 6,802,977 usable reads, of which 34,400 represented small RNA sequences encoded by SGIV. Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses. Generally, these 16 miRNAs are dispersed throughout the SGIV genome, whereas three are located within the ORF057L region. Some SGIV-encoded miRNAs showed marked sequence and length heterogeneity at their 39 and/or 59 end that could modulate their functions. Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.95,
+      "name": "Illumina/Solexa deep-sequencing technology",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_885c3528473afa56_m2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "After analysis of the cellular small RNAs, all of the clean small RNAs were aligned against the SGIV genome using SOAP v1.11, which was also downloaded from the UCSC Genome Browser Database. Only sequences that perfectly matched the SGIV genome along their entire length were considered for further analysis. The mapped sequences were blasted against known miRNAs deposited at miRBase to find conserved miRNAs. Subsequently, to understand better the secondary structures of the potential small RNAs, ,100 nt of genomic DNA sequence flanking each side of these small RNA sequences were selected, and the ability to form characteristic hairpin structures were predicted using Mfold [41] and analyzed by MIREAP (http:// sourceforge.net/projects/mireap/). Stem-loop hairpins that met the following criteria were considered typical precursors: dominant mature sequences ranging from 20 to 24 nt; secondary structures of hairpins with free-folding energy lower than 218 kcal/mol and a minimum of 14 paired, as well as not more than five asymmetry within the miR/miR* duplex. Only the sequences that fulfilled all of the criteria described above were determined as putative candidate novel viral miRNAs."
+      },
+      "confidence": 0.95,
+      "name": "computational pipeline",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_885c3528473afa56_m3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Reverse transcriptase reactions. Total RNA was extracted from SGIV-infected GP cells (6, 24 and 48 h p.i.) and corresponding uninfected cells by TRIzol reagent (Invitrogen). After that, the isolated RNA was digested with TURBO DNase[TM] (Ambion) to discard the DNA contaminants. The RNA concentration was quantified by Nanodrop 2000 Spectrophotometer (Thermo Scientific, Wilmington, DE, USA). Custom reverse transcriptase (RT) primers for detection of each miRNA, with a stem-loop sequence to enhance the binding specificity for mature miRNA, were designed by Applied Biosystems (Foster City, CA, USA) against the most common isoform. Each RT reaction contained 500 ng total RNA, 3 ml 56 RT primer, 0.15 ml dNTPs (100 mM), 1 ml MultiScribe[TM] Reverse Transcriptase (50 U/ml), 1.5 ml 106 Reverse Transcription Buffer, 0.19 ml RNase inhibitor (20 U/ml), and sterilized RNase-free water was used to adjust the total volume of the reaction mix to 15 ml. Reactions were incubated in a Bio-Rad Thermocycler (Bio-Rad, Hercules, CA, USA) at 16uC for 30 min, 42uC for 30 min, 85uC for 5 min, and then held at 4uC. The reversetranscribed cDNA of each reaction was diluted 5-fold with sterile water and used as template in real-time quantitative PCR reactions."
+      },
+      "confidence": 0.95,
+      "name": "stem-loop quantitative RT-PCR",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_885c3528473afa56_m4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Sensor plasmid construction. To investigate whether these viral miRNAs were indeed functional, a dual-luciferase reporter vector, which had four tandem repeats of a sequence perfectly complementary to each miRNA in the 39 untranslated region (UTR) of the Renilla gene, was constructed. The dual-luciferase reporter control vector, termed as modified psiCHECK-2 (psiCHECK-2M), was made based on the psiCHECK[TM] -2 vector (Promega, Madison, WI, USA) following the method described by Voorhoeve et al. [44]. Each sensor vector was constructed by four oligonucleotides called sense1 (s1), antisense1 (as1), sense2 (s2) and antisense2 (as2) (Table S1), of which s1 and s2 both contained two copies of a sequence that was perfectly complementary to the indicated miRNA and one or two linker sequences, whereas as1 and as2 contained complementary sequences to s1 and s2, respectively. s1/as1 and s2/as2 were annealed individually after phosphorylation of s2 and as1, followed by conjunction with each other by T4 DNA ligase (Takara). The conjunct fragments were subcloned into the psiCHECK-2M in which BamHI and XhoI sites were introduced so that the combined sequences were unidirectionally inserted downstream of the Renilla luciferase gene. All of the recombinant plasmids were transformed into Escherichia coli DH5a and subjected to nucleotide sequencing."
+      },
+      "confidence": 0.95,
+      "name": "dual-luciferase reporter assay",
+      "method_type": "protocol"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_885c3528473afa56_x1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "GP cells were inoculated into three cell culture flasks (25 cm[2] ) at 25uC. After allowing the cells to adhere for 18 h to 80% confluence, they were infected with SGIV at an MOI of ,0.1. At 6 h, 24 h and 48 h post infection (p.i.), SGIV-infected cell cultures were harvested and pooled. Total RNA was extracted using TRIzol reagent (Invitrogen), according to the manufacturer’s protocol, with a little modification. After addition of isopropanol, the RNA extract was u incubated at 220 C for 2 h to acquire more low-molecular-weight RNAs. The isolated RNA was digested with TURBO DNase[TM] (Ambion, Austin, TX, USA) to discard the DNA contaminant, according to the manufacturer’s protocol. The quality and integrity of the total RNA was evaluated by electrophoresis on 1.2% agarose gel and Agilent 2100 BioAnalyzer (Agilent Technologies, Santa Clara, CA, USA). The sequencing procedure was carried out as previously described [39]. Total RNA was electrophoresed on 15% polyacrylamide–8 M urea gel, and small RNAs with ,30 nt were extracted from the gel and purified. Sequentially, a pair of Solexa proprietary adaptors was ligated to their 59 and 39 ends, followed by reverse transcription and amplification by PCR using a pair of primers complementary to the linker sequences. The generated cDNA library was utilized for sequencing analysis using the Illumina Genome Analyzer (Illumina, San Diego, CA, USA), according to the manufacturer’s instructions."
+      },
+      "confidence": 0.95,
+      "task": "SGIV infection and RNA isolation",
+      "setup": "GP cells infected with SGIV at MOI ~0.1, RNA extracted at 6, 24, 48 h post infection"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_885c3528473afa56_x2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Stem-loop quantitative PCR. To validate the expression of viral miRNAs in SGIV-infected samples, real-time quantitative PCR based on TaqMan MicroRNA assay was performed using the LightCyclerH 480 Detection System (Roche, Basel, Switzerland) using TaqManH microRNA Assays kit (Applied Biosystems). Each reaction consisted of 0.665 ml of product from the diluted RT reaction, 16 TaqManH Universal PCR Master Mix, 0.5 ml 206 TaqManH Small RNA Assay and sterile water. The mixture was incubated in a 384-well plate at 95uC for 10 min, followed by 40 cycles of 95uC for 15 s and 60uC for 1 min. For relative quantification of each miRNA, the typical 2[2][DD][Ct] method was employed [42], and all experimental data were normalized to the U6 gene. All reactions including no-template and RT minus controls for each miRNA were run in triplicate. All experimental data were expressed as means 6 SD from three separate biological experiments. The sensitivity of the miRNA quantification scheme was also evaluated using diluted products of miRNA amplification as the template. Following serially 10-fold dilution of the templates over five orders of magnitude, real-time quantitative PCR was performed with a separate TaqManH Small RNA Assay kit."
+      },
+      "confidence": 0.95,
+      "task": "validation of SGIV miRNAs by stem-loop quantitative RT-PCR",
+      "setup": "SGIV-infected GP cells, uninfected GP cells as negative control, U6 normalization"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_885c3528473afa56_x3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Luciferase reporter assay. Transient transfection was performed using Lipofectamine 2000 reagent (Invitrogen), according to the manufacturer’s protocol. FHM cells cultured in 96-well plates for 16–18 h were transiently transfected with 120 ng miRNA-expression plasmid or pLL3.7 empty vector, along with 40 ng corresponding sensor vector. Cells that were co-transfected by pLL3.7-SV40-miR-S1 and its corresponding sensor plasmid were used as positive controls; both of which sequences were chosen as reported by Sullivan [30]. In addition, stem-loop quantitative RT-PCR was also employed to determine the expression of each miRNA derived from recombinant pLL3.7-miR vectors, using separate TaqManH microRNA Assays kit (Applied Biosystems) on the LightCyclerH 480 Detection System (Roche). At 48 h post-transfection, cells were harvested and lysed. Firefly and Renilla luciferase activities were measured consecutively with the Dual-Luciferase Reporter Assay system (Promega) on PerkinElmer 2030 Multilabel Reader (PerkinElmer Life and Analytical Science, Turku, Finland), according to manufacturer’s instructions. Renilla luciferase activities were normalized to the constitutively expressed Firefly luciferase activity in all cases, and expressed as the fold stimulation relative to that of pLL3.7 empty vector transfected cells."
+      },
+      "confidence": 0.95,
+      "task": "luciferase reporter assay for miRNA function",
+      "setup": "FHM cells co-transfected with miRNA-expressing plasmid and sensor plasmid, dual-luciferase measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_885c3528473afa56_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "To identify the miRNAs encoded by SGIV, a small RNA library derived from SGIV-infected GP cells was constructed and sequenced using Solexa deep-sequencing technology. A total of 7,246,099 reads were obtained, of which 6,802,977 high-quality reads were detected, which indicated 5,884,103 small RNAs. Solexa raw data and processed data are available at the NCBI GEO database under accession number GSE26909. The size distribution of sequence reads peaked at 23 nt (Fig. 1), which was consistent with the ideal size of genuine miRNAs. Subsequently, the usable reads were aligned against the zebrafish genome with perfect match, which resulted in 3,717,379 reads matched to zebrafish genome, which indicated 18,105 unique small RNAs. These mapped small RNAs could be divided into different categories after BLAST searches against Rfam 9.0 and Genbank database, including putative fragments of rRNA, tRNA, snRNA and snoRNA (Table 2). Another fraction was derived from highly repeated elements named repeat-associated small RNAs. All of these small RNAs were abandoned, which distinguished them from the remaining RNAs for further analysis. To identify the conserved miRNAs between grouper and zebrafish, the remaining RNAs were blasted against the miRNA database, and 3,457,140 reads matched perfectly to known zebrafish miRNAs. The major fractions were attributable to the let-7 family, which consisted of let-7a, let-7b, let-7c and let-7f, among others. In consideration of the higher abundance of let-7f, we utilized it as positive control in our subsequent studies."
+      },
+      "confidence": 0.98,
+      "quantity": "usable reads",
+      "value": 6802977,
+      "unit": null,
+      "context": "small RNA library derived from SGIV-infected GP cells sequenced by Solexa deep-sequencing technology",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_885c3528473afa56_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Among the 5,884,103 small RNAs obtained from deep sequencing, 34,400 reads were perfectly matched to the SGIV genome, which contained 11,144 unique small RNAs. These small RNAs were blasted against known miRNAs deposited at miRBase, and a similar sequence to HSV2-miR-H4-5p was identified (Fig. 2). We designated it SGIV-miR-homoHSV as one novel viral miRNA. After that, the SGIV genome was scanned to identify the potential hairpin region of each small RNA that was perfectly matched to the SGIV genome, using software MIREAP, and finally, a total of 15 candidate miRNAs (excepted SGIV-miR-homoHSV) derived from 14 imperfect fold-back structure precursors were identified. According to the prediction by Mfold, all the SGIV sequences flanking each candidate miRNA could be readily folded into characteristic stable hairpin structures (Fig. 3). All the above identified 15 miRNAs were designated as SGIV-miR-1 to 14, among which the miRNAs derived from the 59 and 39 arms of SGIV-miR-1 precursor were designated as SGIV-miR-1-5p and -3p, respectively (Table 3). Some of the SGIV miRNA sequences obtained above exhibited terminal heterogeneity at the 39 and/or 59 ends (Fig. 4A). Sequence terminal variation analysis revealed that the frequency of 59 end length heterogeneity of SGIV miRNAs was approximately 12% with ,3 nt deletion or extension. Conversely, the 39 end length variation was .60% and ranged from minus 5 nt to plus 5 nt (Fig. 4B)."
+      },
+      "confidence": 0.97,
+      "quantity": "SGIV-encoded small RNA reads",
+      "value": 34400,
+      "unit": null,
+      "context": "small RNAs perfectly matched to SGIV genome from Solexa sequencing of SGIV-infected GP cells",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_885c3528473afa56_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Among the 5,884,103 small RNAs obtained from deep sequencing, 34,400 reads were perfectly matched to the SGIV genome, which contained 11,144 unique small RNAs. These small RNAs were blasted against known miRNAs deposited at miRBase, and a similar sequence to HSV2-miR-H4-5p was identified (Fig. 2). We designated it SGIV-miR-homoHSV as one novel viral miRNA. After that, the SGIV genome was scanned to identify the potential hairpin region of each small RNA that was perfectly matched to the SGIV genome, using software MIREAP, and finally, a total of 15 candidate miRNAs (excepted SGIV-miR-homoHSV) derived from 14 imperfect fold-back structure precursors were identified. According to the prediction by Mfold, all the SGIV sequences flanking each candidate miRNA could be readily folded into characteristic stable hairpin structures (Fig. 3). All the above identified 15 miRNAs were designated as SGIV-miR-1 to 14, among which the miRNAs derived from the 59 and 39 arms of SGIV-miR-1 precursor were designated as SGIV-miR-1-5p and -3p, respectively (Table 3). Some of the SGIV miRNA sequences obtained above exhibited terminal heterogeneity at the 39 and/or 59 ends (Fig. 4A). Sequence terminal variation analysis revealed that the frequency of 59 end length heterogeneity of SGIV miRNAs was approximately 12% with ,3 nt deletion or extension. Conversely, the 39 end length variation was .60% and ranged from minus 5 nt to plus 5 nt (Fig. 4B)."
+      },
+      "confidence": 0.98,
+      "quantity": "SGIV miRNAs identified",
+      "value": 16,
+      "unit": null,
+      "context": "SGIV-infected GP cells via Solexa sequencing and computational pipeline",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_885c3528473afa56_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "To validate the authenticity of SGIV miRNAs obtained from Solexa deep sequencing, stem-loop quantitative RT-PCR was performed, using uninfected GP cells as the negative controls. Most of the candidate SGIV miRNAs could be detected in SGIV-infected cells, except SGIV-miR-3, -4, -8, -11 and -12 (Fig. 6A). However, in the negative controls, no fluorescence signal was observed. For some reason, SGIV-miR14 prevented the design of primers to detect it by stem-loop quantitative RT-PCR, as reported by Umbach et al. [45]. Compared to the expression level of let-7f that was used as the positive control, SGIV-miR-6 showed the highest expression level among all SGIV miRNAs, followed by a higher expression level of SGIV-miR-2 and SGIV-miR-5. Meanwhile, stem-loop quantitative RT-PCR results revealed that other viral miRNAs were present at different but easily detectable levels (Fig. 6C). The sensitivity of the miRNA quantification scheme was also evaluated. The data illustrated good linearity between the log of template concentration at different dilutions versus the corresponding cycle threshold, and some of the amplification standard curves were selectively shown in Fig. 6B."
+      },
+      "confidence": 0.96,
+      "quantity": "SGIV miRNAs validated by stem-loop quantitative RT-PCR",
+      "value": 11,
+      "unit": null,
+      "context": "SGIV-infected GP cells using stem-loop quantitative RT-PCR",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_885c3528473afa56_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Among the 5,884,103 small RNAs obtained from deep sequencing, 34,400 reads were perfectly matched to the SGIV genome, which contained 11,144 unique small RNAs. These small RNAs were blasted against known miRNAs deposited at miRBase, and a similar sequence to HSV2-miR-H4-5p was identified (Fig. 2). We designated it SGIV-miR-homoHSV as one novel viral miRNA. After that, the SGIV genome was scanned to identify the potential hairpin region of each small RNA that was perfectly matched to the SGIV genome, using software MIREAP, and finally, a total of 15 candidate miRNAs (excepted SGIV-miR-homoHSV) derived from 14 imperfect fold-back structure precursors were identified. According to the prediction by Mfold, all the SGIV sequences flanking each candidate miRNA could be readily folded into characteristic stable hairpin structures (Fig. 3). All the above identified 15 miRNAs were designated as SGIV-miR-1 to 14, among which the miRNAs derived from the 59 and 39 arms of SGIV-miR-1 precursor were designated as SGIV-miR-1-5p and -3p, respectively (Table 3). Some of the SGIV miRNA sequences obtained above exhibited terminal heterogeneity at the 39 and/or 59 ends (Fig. 4A). Sequence terminal variation analysis revealed that the frequency of 59 end length heterogeneity of SGIV miRNAs was approximately 12% with ,3 nt deletion or extension. Conversely, the 39 end length variation was .60% and ranged from minus 5 nt to plus 5 nt (Fig. 4B)."
+      },
+      "confidence": 0.95,
+      "metric": "sequence identity",
+      "compared_to": "HSV2-miR-H4-5p"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_885c3528473afa56_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "To determine whether the identified viral miRNAs were indeed functional, 11 miRNA-expressing plasmids and 12 dual-luciferase reporter vectors were selectively constructed based on stem-loop quantitative RT-PCR results, and used for luciferase reporter assay. Broad expression of mature miRNAs that originated from the indicated recombinant pLL3.7-miR vectors was observed, and some amplification curves are selectively listed in Fig. 7A. Coincident with the downregulated luciferase activity of the positive control miRNA, SV40-miR-s1, all of the SGIV miRNAs that passed the validation of stem-loop quantitative RT-PCR were able to suppress the luciferase activity (.25–50%) (Fig. 7B). SGIV-miR-2 and SGIV-miR-10 significantly repressed Renilla luciferase activity and exerted an approximately 2-fold inhibitory effect compared to separate negative controls. In addition, SGIV-miR14 was also able to inhibit its corresponding reporter activity by 27%. Combined with the feature that SGIV-miR14 precursor can be folded into a characteristic hairpin secondary structure, we considered it as an authentic miRNA, although we could not detect it by stem-loop quantitative RT-PCR. As noted above, the results of luciferase reporter assay were consistent with those from stem-loop quantitative RT-PCR; both of which contributed to assessment of the credibility of novel SGIV miRNAs."
+      },
+      "confidence": 0.95,
+      "metric": "luciferase activity suppression",
+      "compared_to": "SV40-miR-s1 positive control"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_885c3528473afa56_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "MicroRNAs (miRNAs) are ubiquitous non-coding RNAs that regulate gene expression at the posttranscriptional level. An increasing number of studies has revealed that viruses can also encode miRNAs, which are proposed to be involved in viral replication and persistence, cell-mediated antiviral immune response, angiogenesis, and cell cycle regulation. Singapore grouper iridovirus (SGIV) is a pathogenic iridovirus that has severely affected grouper aquaculture in China and Southeast Asia. Comprehensive knowledge about the related miRNAs during SGIV infection is helpful for understanding the infection and the pathogenic mechanisms. To determine whether SGIV encoded miRNAs during infection, a small RNA library derived from SGIV-infected grouper (GP) cells was constructed and sequenced by Illumina/Solexa deep-sequencing technology. We recovered 6,802,977 usable reads, of which 34,400 represented small RNA sequences encoded by SGIV. Sixteen novel SGIV-encoded miRNAs were identified by a computational pipeline, including a miRNA that shared a similar sequence to herpesvirus miRNA HSV2-miR-H4-5p, which suggests miRNAs are conserved in far related viruses. Generally, these 16 miRNAs are dispersed throughout the SGIV genome, whereas three are located within the ORF057L region. Some SGIV-encoded miRNAs showed marked sequence and length heterogeneity at their 39 and/or 59 end that could modulate their functions. Expression levels and potential biological activities of these viral miRNAs were examined by stem-loop quantitative RT-PCR and luciferase reporter assay, respectively, and 11 of these viral miRNAs were present and functional in SGIV-infected GP cells."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_885c3528473afa56_cl1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Our study provided a genome-wide view of miRNA production for iridoviruses and identified 16 novel viral miRNAs. To the best of our knowledge, this is the first experimental demonstration of miRNAs encoded by aquatic animal viruses. The results provide a useful resource for further in-depth studies on SGIV infection and iridovirus pathogenesis."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_885c3528473afa56_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "However, none was detected by northern blotting (data not shown). This might have been due to the low level of spontaneous expression of these virus-encoded miRNAs, which was consistent with the low percentage of sequenced viral small RNAs divided by total small RNA reads. In addition, .100 conserved miRNAs of cellular origin in grouper and zebrafish were detected after BLAST search in the miRBase, which contributed to exploring how cellular miRNAs influence viral resistance and pathogenesis through regulation of viral or cellular gene expression. In the present study, the identified SGIV miRNAs exhibit sequence variations frequently, and two classes of variants that comprised of 59 and 39 terminal variability were found, as with isomiR [27,50]. It is well known that the target mRNA is recognized by miRNA via its 59 seed sequence, and the 59 end length heterogeneity can greatly affect the ability of an miRNA to target corresponding mRNAs. In contrast, the role of the 39 end in target discrimination is less important. Our studies revealed that SGIV miRNA sequences showed high homogenicity in their 59 ends but common heterogeneity at their 39 ends, which is consistent with those found in KSHV and EBV miRNAs [27,35]. While for SGIV-miR-1-3p, -6, and -13, the 59 end variation might be able to affect the selection of the mRNAs targeted by these viral miRNAs. Generally, the length variation for all SGIV miRNAs revealed that the frequency of 59 end length heterogeneity was ,12% with ,3 nt deletion or extension. Conversely, the 39 end length variation was .60% and ranged from 25 to +5 nt. It has been proposed that this phenomenon arises from the distinct cleavage by Drosha and/or Dicer, and is not due to artifacts created from sequencing [50]. In contrast to cellular miRNAs, viral miRNAs do not share a high level of homology, which could be due to the higher mutation rate and faster evolution compared with their vertebrate counterparts [51]. However, between closely related EBV and Rhesus lymphocryptovirus (rLCV), eight miRNAs are conserved at the level of mature miRNA sequences [52]. In addition, some hCMV pre- and mature miRNAs sequences, identified by bioinformatic prediction without experimental validation, also share homology with miRNAs of chimpanzee CMV [18]. In our study, a novel SGIV-encoded miRNA (SGIV-miR-homoHSV) was found to be similar to HSV2-miR-H4-5p, with mature sequences with 12 out of 18 nucleotide identity. Compared to the 48% sequence identity of miR-H4-5p between closely related HSV-1 and HSV-2, SGIV-miR-homoHSV shared 57% overall sequence identity with HSV2-miR-H4-5p. Of note, this miRNA was validated experimentally by stem-loop quantitative RT-PCR and confirmed by luciferase reporter assay, which suggests that viral miRNA conservation might exist in evolutionarily distant viral species."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_885c3528473afa56_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "To date, it is much easier to identify the viral gene target of a viral miRNA, partly because viral miRNA transcribed from the opposite strand of a viral coding gene makes an obvious target. Most reported viral miRNAs are located antisense to the protein coding genes, which results in a perfect match between miRNA and mRNA, which has implications for regulation of viral mRNA expression [17,18]. For instance, SV40 miR-s1 targets viral early transcript T antigen with perfect matches, which results in decreased susceptibility of SV40-infected cells to cytotoxic T lymphocyte killing [30]. Barth et al. have reported EBV miRBART2, exhibiting antisense to EBV DNA polymerase BALF5, degraded BALF5 production and might be capable of maintaining EBV latent infection [53]. In our study, nine out of 16 SGIVencoded miRNAs were located in opposite strands to the coding genes. For instance, SGIV-miR-13 was found to lie in the opposite transcriptional orientation of ORF072R, which encodes the major capsid protein, and SGIV-miR-homoHSV was embedded in ORF136R in the opposite transcriptional orientation, which has been recently designated as the viral lipopolysaccharide-induced TNF-a factor (LITAF), and reported to contribute to virus replication by exploitation of cell apoptosis and regulation of host immune responses [7]. Previous studies have shown that three EBV-encoded miRNAs target EBV latent membrane protein 1 (LMP1), which inhibits cell growth by increasing cellular sensitivity to apoptotic stimuli. This results in attenuation of the proapoptotic effect of LMP1, which ensures cell survival [28]. Whether the SGIV-miR-homoHSV plays a similar anti-apoptotic role to that proposed for EBV miRNAs needs further investigation. Furthermore, until now, several anti-microRNA oligonucleotides with some modifications, such as 29-O-methyl-substituted RNA oligonucleotides and mixed locked nucleic acid-DNA, have been presumed to be novel diagnostic and therapeutic agents [51]. Therapeutics based on SGIV-encoded miRNAs could help to deal with SGIV-caused fish viral disease."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

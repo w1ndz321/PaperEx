@@ -1,0 +1,505 @@
+{
+  "metadata": {
+    "doc_id": "doc_f742b1d254eaaa5a",
+    "source_file": "Full cycle rice growth monitoring with dual-pol SAR data and interpretable deep learning.md",
+    "title": "A novel dual-pol SAR rice growth monitoring method using crop growth index and interpretable deep learning architecture",
+    "year": 2024,
+    "doi": "10.1080/17538947.2024.2445639",
+    "abstract": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Initially, radar vegetation indices, polarimetric decomposition parameters, and backscattering coefficients characterize rice growth in multiple dimensions. Subsequently, a CGI is designed, combining fractional vegetation cover and leaf chlorophyll content to accurately depict rice growth status, capturing both the structural and physiological activity of rice. Finally, an interpretable DL architecture incorporating a feature selection explainer and a featureaware enhanced segmentation model is introduced. This architecture incorporates feature-wise variable learning networks, interprets the importance of individual features, and optimizes the feature composition, significantly enhancing the interpretability of the DL model. This architecture is also applicable to other neural networks. The method is applied in Suihua City, Heilongjiang Province, China, using Sentinel-1 dualpol data from 2022 and 2023. Experiments indicate that the proposed method achieves an overall accuracy of 90.57% in the test set and a generalization accuracy of 90.43%. The integration of CGI and the interpretable DL architecture enhances the reliability of rice growth monitoring results.",
+    "introduction": "Rice serves as the principal sustenance for over half the global population and is widely grown worldwide (Kuenzer and Knauer 2013). The use of advanced technology for comprehensive monitoring of rice growth holds the potential to establish a sustainable food production system, ensure food security, and promote sustainable agricultural development. \n\nConventional crop growth monitoring, which is conducted through field inspections and lab analyses, is tedious and laborious and does not permit rapid access to crop growth information (Wang et al. 2019). In contrast, the extraction of vegetation descriptors from optical satellite \n\n**CONTACT** Hong Zhang zhanghong@radi.ac.cn; Wenjiang Huang huangwj@aircas.ac.cn Key Laboratory of Digital Earth Science, Aerospace Information Research Institute, Chinese Academy of Sciences, Beijing 100094, People’s Republic of China \n\n> © 2024 The Author(s). Published by Informa UK Limited, trading as Taylor & Francis Group This is an Open Access article distributed under the terms of the Creative Commons Attribution License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited. The terms on which this article has been published allow the posting of the Accepted Manuscript in a repository by the author(s) or with their consent. \n\n2 J. GE ET AL. \n\nimagery facilitates convenient and detailed monitoring of crops, supporting agricultural decisionmaking (Dong et al. 2020; Wu et al. 2014). However, due to weather influences, optical data often fail to capture information consistently (Whitcraft et al. 2015). Synthetic Aperture Radar (SAR), minimally affected by weather conditions, offers high temporal resolution and extensive coverage. Its sensitivity to the geometric structure and dielectric properties of crops not only facilitates the monitoring of farmland biophysical characteristics (Sun et al. 2023), but also holds significant potential for full-cycle crop growth monitoring. \n\nThe free access to the dual-pol SAR dataset from the Sentinel-1 mission has significantly advanced research in crop monitoring (Bontemps et al. 2020). With its high temporal resolution, the dataset is well-suited for long-term agricultural monitoring, and has demonstrated remarkable capabilities in crop classification (Dong and Xiao 2016; Ioannidou et al. 2022), biomass estimation (David, Rosser, and Donoghue 2022; Periasamy 2018), and vegetation representation (Bao et al. 2023; Mandal, Kumar, et al. 2020). \n\nTo fully leverage the rich polarimetric information available in SAR data and to expand the observational dimensions, various types of SAR image feature parameters beyond backscattering coefficients have been derived to improve monitoring of crop growth. SAR polarimetric decomposition (PD) techniques depict the observed scattering matrix in terms of different physical scattering mechanisms, which are crucial for deciphering vegetation scattering behaviors (Zhao et al. 2022). For dual-pol SAR data, H-a decomposition (Cloude, Goodenough, and Chen 2011) is extensively employed for monitoring crop growth. Nasirzadehdizaji et al. (2019) showed a high correlation of a decomposition parameters with early growth stages of wheat and corn. Salma, Keerthana, and Dodamani (2022) identified various crop growth stages using H-a decomposition. Dave et al. (2023) examined the potential of dual-pol Sentinel-1 polarimetric decomposition parameters, including entropy, anisotropy, and the a angle, in monitoring the biophysical parameters of rice. Tian et al. (2024) analyzed the sensitivity of the H-a decomposition to changes in rice growth. \n\nFurthermore, research has demonstrated a correlation between the radar vegetation index (RVI) and crop canopy biophysical parameters, enabling its use in monitoring vegetation development (Huang et al. 2015; Kim et al. 2011). Multiple vegetation descriptors based on dual-pol SAR data have been developed and utilized. Trudel, Charbonneau, and Leconte (2012) employed the fully polarized RVI for dual-pol SAR data. Periasamy (2018) proposed a Dual-Pol SAR Vegetation Index (DPSVI). Ratha et al. (2019) introduced the Generalized Radar Vegetation Index (GRVI) for monitoring the biophysical parameters of wheat and soybeans. Mandal, Ratha, et al. (2020) created a Compact-pol Radar Vegetation Index (CpRVI) for monitoring soybean growth. Using only the backscattering intensity of Sentinel-1 data, Bhogapurapu et al. (2022) developed a dual-pol radar vegetation index for GRD data (DpRVIc). Considering polarization characteristics, Chang, Shoshany, and Oh (2018) introduced the Polarimetric Radar Vegetation Index (PRVI), while Mandal, Kumar, et al. (2020) derived the Dual-Pol Radar Vegetation Index (DpRVI). Additionally, to fully leverage the polarization scattering information from Sentinel-1 data, Bhogapurapu et al. (2021) and Bao et al. (2023) each introduced three vegetation descriptors for crop growth assessment. \n\nThe SAR image features mentioned above focus on different aspects, and relying exclusively on one type of feature for growth assessment can result in a one-dimensional evaluation, failing to simultaneously consider both the morphological structure and physiological activity characteristics of crops. Therefore, the integration of multiple types of features into a multidimensional dataset enables more comprehensive monitoring of crop growth. However, the common practice of comparing current data with historical data for growth monitoring involves significant manual intervention and may not be well-suited to multidimensional datasets (Huang et al. 2010; Wu et al. 2014). In recent years, deep learning (DL) models, noted for their robust data learning capabilities and performance, have achieved significant results in SAR image applications and are increasingly being applied to crop growth monitoring (Nomura and Oki 2021; Roßberg and Schmitt 2023). \n\nINTERNATIONAL JOURNAL OF DIGITAL EARTH 3 \n\nHowever, as DL applications proliferate across various fields, their interpretability and the credibility of their results have attracted significant attention (Irrgang et al. 2021). The use of DL interpretation methods to assess feature importance not only enhances the interpretability and credibility of the models but also effectively supports agricultural decision-making. \n\nCurrently, DL interpretation methods are primarily categorized into post-hoc interpretation methods and model-intrinsic interpretation methods (Saleem et al. 2022). Post-hoc interpretation methods provide insights into feature importance but do not inherently modify the model’s structure or behavior (Lundberg and Lee 2017; Ribeiro, Singh, and Guestrin 2016). Conversely, model-intrinsic interpretation methods embed the interpretation module into the model’s architecture, enabling the model to optimize based on the interpretation (Ge, Zhang, Xu, Sun, Duan, et al. 2023). A commonality among these methods is their provision of explanations regarding feature importance. Understanding which features are most relevant to the model’s output or results is a vital step in enhancing the applicability and interpretability of DL models (Panda, Srinivas Kancheti, and Balasubramanian 2021; Yoon, Jordon, and van der Schaar 2018). In SAR multidimensional datasets, redundant features can hinder model performance (Singh et al. 2023). Post-hoc interpretation methods, due to their lower coupling with DL models, necessitate additional steps in practical applications. Therefore, it is imperative to design feature importance interpretation methods that are tightly coupled with DL models to enhance the interpretability and credibility of results. \n\nIn response to the aforementioned problems, a novel method for monitoring full-cycle crop growth is proposed, integrating dual-pol SAR data with an interpretable DL architecture. The method initially characterizes the crop growth status by constructing a multidimensional dataset with multiple SAR features, and then combines Fractional Vegetation Cover (FVCRVI) and Leaf Chlorophyll Content (LCC) to generate Crop Growth Index (CGI) as the growth labels, reflecting the crop community structure and physiological activity characteristics. Finally, an interpretable DL architecture featuring a feature selection explainer and a feature-aware enhanced segmentation model is designed to accomplish reliable and trustworthy full-cycle crop growth assessment.",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Synthetic aperture radar",
+      "crop growth",
+      "interpretable deep learning",
+      "feature selection"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:12:22.014472+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_f742b1d254eaaa5a_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. The free access to the dual-pol SAR dataset from the Sentinel-1 mission has significantly advanced research in crop monitoring. With its high temporal resolution, the dataset is well-suited for long-term agricultural monitoring, and has demonstrated remarkable capabilities in crop classification, biomass estimation, and vegetation representation. Experiments are conducted using 27scenes of Sentinel-1 dual-pol Single Look Complex (SLC) data from 2022 and 2023, with data acquisition periods covering the major developmental stages of rice."
+      },
+      "confidence": 0.98,
+      "term": "dual-pol SAR",
+      "normalized": "双极化合成孔径雷达",
+      "std_label": "dual-pol SAR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f742b1d254eaaa5a_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Finally, an interpretable DL architecture incorporating a feature selection explainer and a feature-aware enhanced segmentation model is introduced. This architecture incorporates feature-wise variable learning networks, interprets the importance of individual features, and optimizes the feature composition, significantly enhancing the interpretability of the DL model. This architecture is also applicable to other neural networks. The integration of CGI and the interpretable DL architecture enhances the reliability of rice growth monitoring results."
+      },
+      "confidence": 0.97,
+      "term": "interpretable deep learning",
+      "normalized": "可解释深度学习",
+      "std_label": "interpretable DL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f742b1d254eaaa5a_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Initially, radar vegetation indices, polarimetric decomposition parameters, and backscattering coefficients characterize rice growth in multiple dimensions. Subsequently, a CGI is designed, combining fractional vegetation cover and leaf chlorophyll content to accurately depict rice growth status, capturing both the structural and physiological activity of rice. The integration of CGI and the interpretable DL architecture enhances the reliability of rice growth monitoring results."
+      },
+      "confidence": 0.96,
+      "term": "crop growth index",
+      "normalized": "作物生长指数",
+      "std_label": "CGI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f742b1d254eaaa5a_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Finally, an interpretable DL architecture incorporating a feature selection explainer and a feature-aware enhanced segmentation model is introduced. This architecture incorporates feature-wise variable learning networks, interprets the importance of individual features, and optimizes the feature composition, significantly enhancing the interpretability of the DL model. The feature selection explainer serves as the primary source of model interpretability. In the explainer, first pixel-level d-dimensional rice feature data x = [ x 1, x 2, x 3, . . . , x d ] is input into an explainer network, the explainer outputs a selection probability vector and samples this vector to obtain the feature mask vector s = S ( x ) [ {0, 1} d , where si = 1 means the i th feature variable is selected, otherwise it is unselected. The feature mask is then multiplied by the original input feature vector for feature selection."
+      },
+      "confidence": 0.95,
+      "term": "feature selection explainer",
+      "normalized": "特征选择解释器",
+      "std_label": "feature selection explainer"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_f742b1d254eaaa5a_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. The method is applied in Suihua City, Heilongjiang Province, China, using Sentinel-1 dual-pol data from 2022 and 2023. Experiments indicate that the proposed method achieves an overall accuracy of 90.57% in the test set and a generalization accuracy of 90.43%. The integration of CGI and the interpretable DL architecture enhances the reliability of rice growth monitoring results."
+      },
+      "confidence": 0.99,
+      "term": "rice growth monitoring",
+      "normalized": "水稻生长监测",
+      "std_label": "rice growth monitoring"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f742b1d254eaaa5a_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Synthetic Aperture Radar (SAR), minimally affected by weather conditions, offers high temporal resolution and extensive coverage. Its sensitivity to the geometric structure and dielectric properties of crops not only facilitates the monitoring of farmland biophysical characteristics, but also holds significant potential for full-cycle crop growth monitoring. The free access to the dual-pol SAR dataset from the Sentinel-1 mission has significantly advanced research in crop monitoring. With its high temporal resolution, the dataset is well-suited for long-term agricultural monitoring, and has demonstrated remarkable capabilities in crop classification, biomass estimation, and vegetation representation."
+      },
+      "confidence": 0.94,
+      "head": "doc_f742b1d254eaaa5a_c1",
+      "relation_type": "enhances",
+      "relation_surface": "facilitates",
+      "tail": "doc_f742b1d254eaaa5a_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f742b1d254eaaa5a_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Finally, an interpretable DL architecture incorporating a feature selection explainer and a feature-aware enhanced segmentation model is introduced. This architecture incorporates feature-wise variable learning networks, interprets the importance of individual features, and optimizes the feature composition, significantly enhancing the interpretability of the DL model. This architecture is also applicable to other neural networks. The integration of CGI and the interpretable DL architecture enhances the reliability of rice growth monitoring results."
+      },
+      "confidence": 0.93,
+      "head": "doc_f742b1d254eaaa5a_c2",
+      "relation_type": "enhances",
+      "relation_surface": "enhances the reliability",
+      "tail": "doc_f742b1d254eaaa5a_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f742b1d254eaaa5a_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Subsequently, a CGI is designed, combining fractional vegetation cover and leaf chlorophyll content to accurately depict rice growth status, capturing both the structural and physiological activity of rice. Crop growth monitoring needs to consider crop community morphological structure and physiological activity characteristics. The former mainly refers to the development of crop geometry, typically expressed as FVC or LAI. Among them, FVC describes the vertical projection of vegetation cover across the landscape area. It is a fundamental phenotypic indicator characterizing vegetation’s spatial pattern. The latter refers to the nutritional health of the crop, and is commonly expressed as LCC or VWC, etc. Among them, LCC is the key indicator of vegetation physiological status. To transcend limited assessment dimensions, this study introduced the CGI, utilized both as a measure of crop growth and as a basis for model learning."
+      },
+      "confidence": 0.92,
+      "head": "doc_f742b1d254eaaa5a_c3",
+      "relation_type": "measures",
+      "relation_surface": "designed, combining fractional vegetation cover and leaf chlorophyll content to accurately depict",
+      "tail": "doc_f742b1d254eaaa5a_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_f742b1d254eaaa5a_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Finally, an interpretable DL architecture incorporating a feature selection explainer and a feature-aware enhanced segmentation model is introduced. This architecture incorporates feature-wise variable learning networks, interprets the importance of individual features, and optimizes the feature composition, significantly enhancing the interpretability of the DL model. The feature selection explainer serves as the primary source of model interpretability. In the explainer, first pixel-level d-dimensional rice feature data x = [ x 1, x 2, x 3, . . . , x d ] is input into an explainer network, the explainer outputs a selection probability vector and samples this vector to obtain the feature mask vector s = S ( x ) [ {0, 1} d , where si = 1 means the i th feature variable is selected, otherwise it is unselected. The feature mask is then multiplied by the original input feature vector for feature selection."
+      },
+      "confidence": 0.91,
+      "head": "doc_f742b1d254eaaa5a_c4",
+      "relation_type": "enhances",
+      "relation_surface": "significantly enhancing the interpretability",
+      "tail": "doc_f742b1d254eaaa5a_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f742b1d254eaaa5a_d1",
+      "evidence": {
+        "section": "3.1. SAR feature extraction and dataset construction",
+        "original_text": "Consequently, a representative set of features, including the VH, VV backscattering coefficients and their ratios (s⁰_VH/s⁰_VV), DpRVI, PRVI, DpRVIc, and entropy (H), α angle of the H-α decomposition, are extracted to construct a multidimensional dataset. DpRVI is calculated based on eigenvalues and the degree of polarization, which are extracted from the eigendecomposition of the dual-pol covariance matrix. It demonstrates a strong correlation with various biophysical parameters of vegetation, including PAI, VWC, and dry biomass. The calculation method is described as follows: DpRVI = 1 - (λ₁ / Tr(C₂)) where C₂ represents the covariance matrix. The operations Tr and | · | stand for the trace and the determinant of the matrix, respectively. λ₁, a non-negative eigenvalue, quantifies the scattering’s dominance. DpRVIc is derived from the backscattering intensity ratio q = s⁰_VH/s⁰_VV, and is sensitive to crop canopy and vegetation biomass. The definition is provided below: DpRVIc = 1 - (m_c * β_c) The product of the co-polarization purity parameter m_c and the normalized co-polarization intensity parameter β_c represents the overall purity of the co-polarization component. Subtracting this value from unity yields an effective measure of scattering randomness. Soil or non-vegetated areas exhibit very low values, whereas croplands demonstrate higher numerical values. PRVI has been proposed on the basis of volume scattering theoretical model and semi-empirical model with high correlation with vegetation biomass. Its derivation formula is as follows: PRVI = (s⁰_VV - s⁰_VH) / (s⁰_VV + s⁰_VH) For dual-pol data, a commonly used decomposition method is the H-α decomposition, which is widely applied in crop research to provide accurate crop information. Similar to full-polarization H-α decomposition, a given coherence matrix T₂ can be decomposed as follows: T₂ = U₂ Λ₂ U₂^H Based on T₂, the scattering entropy H and the average scattering angle α are defined as follows: H = Σ_i (P_i log₂ P_i) where P_i = λ_i / Σ λ_i α = Σ_i P_i α_i The scattering entropy H ranges from 0 to 1 and describes the randomness of the scattering medium, transitioning from isotropic scattering (H = 0) to completely random scattering (H = 1). The scattering angle α represents the average scattering mechanism from surface scattering to even-order scattering, ranging from 0° to 90°. It describes the continuous transition of the scattering mechanism from odd scattering (or surface scattering) to dipole scattering (or volumetric scattering), and finally to even scattering (or bidirectional scattering)."
+      },
+      "confidence": 0.95,
+      "name": "SAR multidimensional dataset for rice growth monitoring",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f742b1d254eaaa5a_d2",
+      "evidence": {
+        "section": "3.2. Crop growth index",
+        "original_text": "To transcend limited assessment dimensions, this study introduced the CGI, utilized both as a measure of crop growth and as a basis for model learning. The definition of CGI is as follows: CGI = FVCRVI × LCC Where FVCRVI represents the community structure and is computed by means of the pixel dichotomy model. Given the correlation between RVI and NDVI (Kim et al. 2015; Kumar, Rao, and Sharma 2013), as well as the intermittent nature of NDVI acquisitions, the combination of the more temporally continuous RVI and the pixel dichotomy model (Gao et al. 2020) is employed to obtain FVCRVI: FVCRVI = (RVI - RVI_soil) / (RVI_veg - RVI_soil) RVI_soil takes the 5% percentile pixel value in the RVI image, and RVI_veg takes the 95% percentile pixel value in the RVI image. To qualitatively represent the crop growth condition, the CGI is divided into three levels based on equal percentile intervals: good (>66.66%), normal (>33.33% and <66.66%), and fair (<33.33%). ‘Good’ indicates an ideal growth state compared to crops in the same period; ‘normal’ suggests average growth during the contemporaneous period; ‘fair’ implies that the crop’s growth is relatively low, necessitating attention and intervention. This approach provides a simple and intuitive display of the crop’s relative growth, minimizes human intervention and ensuring class balance for DL models."
+      },
+      "confidence": 0.9,
+      "name": "Rice growth monitoring dataset with CGI labels",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f742b1d254eaaa5a_d3",
+      "evidence": {
+        "section": "2.2. Sentinel-1 SAR data",
+        "original_text": "Experiments are conducted using 27 scenes of Sentinel-1 dual-pol Single Look Complex (SLC) data from 2022 and 2023, with data acquisition periods covering the major developmental stages of rice, and detailed data information is provided in Table 1. The study area encompasses five counties in Suihua City, located in the northern part of the Songnen Plain and the central-southern region of Heilongjiang Province, China (124°53′ E ∼ 128°35′ E, 45°10′ N ∼ 48°05′ N), as depicted in Figure 1. The climate features long, dry winters, with an average temperature of –20.2°C in January and humid summers, with a maximum temperature of 22.5°C in July, and an annual average temperature of 3.3°C. Precipitation typically peaks in July and August. Due to its flat terrain, excellent soil quality, ample sunlight, and relatively abundant rainfall, the study area supports the widespread cultivation of three main crops: rice, soybeans, and corn. Typically, rice planting begins in mid-April, transplanting occurs in mid-May, and the crop matures by late September, and harvesting is completed in mid-October (Zhang, Zhang, and Tian 2023)."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-1 dual-pol SAR data for Suihua City",
+      "modality": "image",
+      "domain": "agriculture, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_f742b1d254eaaa5a_d4",
+      "evidence": {
+        "section": "2.3. Field survey data and auxiliary data",
+        "original_text": "To obtain precise information on rice distribution and growth, the research team conducted multiple field surveys in Suihua City, with the distribution of survey locations and some survey images depicted in Figure 1 and Figure 2. The auxiliary data include the rice area map of Suihua, LCC products, and Climate Hazards Group InfraRed Precipitation with Station (CHIRPS) data. Field surveys were conducted from August 1–6 and September 6-10, 2023. The survey gathered information on crop types, plant height (PH) values, and phenological data. The PH value is defined as the distance from the ground to the highest point of the rice plants in their natural state. The average height measured for each plot (100 cm × 100 cm) was recorded as the PH value for that area to an accuracy of 0.1 centimeters. The rice area map is generated using the U-Net model, which achieved a verification accuracy of 98.7% (Jiang et al. 2023). The LCC products are produced from Sentinel-2 data and utilize the chlorophyll sensitivity index (CSI) method (Zhang et al. 2022). Compared with existing products, it offers higher accuracy and more significant phenological characteristics and can better reflect changes in the physiological activity characteristics of crops. Furthermore, the CHIRPS data constitute a quasi-global rainfall dataset spanning over 35 years (Funk et al. 2015), utilized to verify the response of the proposed method’s response to changes in the actual crop growth environment."
+      },
+      "confidence": 0.9,
+      "name": "Field survey dataset for rice growth parameters",
+      "modality": "tabular",
+      "domain": "agriculture"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f742b1d254eaaa5a_ds1",
+      "evidence": {
+        "section": "2.3. Field survey data and auxiliary data",
+        "original_text": "Field surveys were conducted from August 1–6 and September 6-10, 2023. The survey gathered information on crop types, plant height (PH) values, and phenological data. The PH value is defined as the distance from the ground to the highest point of the rice plants in their natural state. The average height measured for each plot (100 cm × 100 cm) was recorded as the PH value for that area to an accuracy of 0.1 centimeters."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized field survey protocol for plant height measurement"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f742b1d254eaaa5a_ds2",
+      "evidence": {
+        "section": "2.3. Field survey data and auxiliary data",
+        "original_text": "The rice area map is generated using the U-Net model, which achieved a verification accuracy of 98.7% (Jiang et al. 2023)."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized rice area mapping protocol using U-Net model"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f742b1d254eaaa5a_ds3",
+      "evidence": {
+        "section": "2.3. Field survey data and auxiliary data",
+        "original_text": "The LCC products are produced from Sentinel-2 data and utilize the chlorophyll sensitivity index (CSI) method (Zhang et al. 2022). Compared with existing products, it offers higher accuracy and more significant phenological characteristics and can better reflect changes in the physiological activity characteristics of crops."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Standardized LCC product generation protocol using CSI method from Sentinel-2"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f742b1d254eaaa5a_ds4",
+      "evidence": {
+        "section": "3.2. Crop growth index",
+        "original_text": "To qualitatively represent the crop growth condition, the CGI is divided into three levels based on equal percentile intervals: good (>66.66%), normal (>33.33% and <66.66%), and fair (<33.33%). ‘Good’ indicates an ideal growth state compared to crops in the same period; ‘normal’ suggests average growth during the contemporaneous period; ‘fair’ implies that the crop’s growth is relatively low, necessitating attention and intervention. This approach provides a simple and intuitive display of the crop’s relative growth, minimizes human intervention and ensuring class balance for DL models."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "CGI classification standard into three levels based on equal percentile intervals"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_f742b1d254eaaa5a_ds5",
+      "evidence": {
+        "section": "3.4. Accuracy assessment",
+        "original_text": "The performance of the proposed method is evaluated using metrics derived from the confusion matrix, such as overall accuracy (OA), precision (P), recall (R), F1-score, and Kappa. The mean values of Precision and Recall, mP and mR, serve as average performance indicator across different classes. These metrics are defined as follows: OA = Σ_i TP_i / N P_i = TP_i / (TP_i + FP_i) R_i = TP_i / (TP_i + FN_i) F1_i = 2 * (P_i * R_i) / (P_i + R_i) Kappa = (OA - Pe) / (1 - Pe) where Pe = Σ_i (a_i * b_i) / N² N represents the total number of samples, i represents a specific category, and n is the total number of categories. TP_i denotes the number of samples in category i that are correctly identified; FP_i is the number of samples incorrectly classified as category i; and FN_i is the number of samples in category i that are incorrectly categorized as other categories. Pe denotes the expected accuracy, where a_i denotes the actual number of samples in category i, and b_i is the number of samples that are predicted to be in category i."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Accuracy assessment metrics for model performance evaluation"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f742b1d254eaaa5a_m1",
+      "evidence": {
+        "section": "3. Methodology",
+        "original_text": "The proposed method is detailed in Figure 3. Initially, a multidimensional dataset is assembled from Sentinel-1 dual-pol SLC data, encompassing both multi-temporal and multi-feature components, followed by the production of CGI labels through the fusion of FVCRVI, characterizing the community structure of crops, and LCC, representing the physiological activities of crops. Finally, an interpretable DL architecture is developed. Within this architecture, a feature selection explainer coupled with DL models is employed, following the actor-critic approach, to learn subsets of features strongly correlated with rice growth, and a feature-aware enhanced segmentation model is applied to monitor rice growth."
+      },
+      "confidence": 0.95,
+      "name": "SAR multidimensional dataset construction",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f742b1d254eaaa5a_m2",
+      "evidence": {
+        "section": "3.2. Crop growth index",
+        "original_text": "Crop growth monitoring needs to consider crop community morphological structure and physiological activity characteristics. The former mainly refers to the development of crop geometry, typically expressed as FVC or LAI. Among them, FVC describes the vertical projection of vegetation cover across the landscape area. It is a fundamental phenotypic indicator characterizing vegetation’s spatial pattern. The latter refers to the nutritional health of the crop, and is commonly expressed as LCC or VWC, etc. Among them, LCC is the key indicator of vegetation physiological status. To transcend limited assessment dimensions, this study introduced the CGI, utilized both as a measure of crop growth and as a basis for model learning. The definition of CGI is as follows: CGI = FVCRVI × LCC Where FVCRVI represents the community structure and is computed by means of the pixel dichotomy model. Given the correlation between RVI and NDVI (Kim et al. 2015; Kumar, Rao, and Sharma 2013), as well as the intermittent nature of NDVI acquisitions, the combination of the more temporally continuous RVI and the pixel dichotomy model (Gao et al. 2020) is employed to obtain FVCRVI: FVCRVI = (RVI − RVIsoil)/(RVIveg − RVIsoil) RVIsoil takes the 5% percentile pixel value in the RVI image, and RVIveg takes the 95% percentile pixel value in the RVI image. To qualitatively represent the crop growth condition, the CGI is divided into three levels based on equal percentile intervals: good (>66.66%), normal (>33.33% and <66.66%), and fair (<33.33%). ‘Good’ indicates an ideal growth state compared to crops in the same period; ‘normal’ suggests average growth during the contemporaneous period; ‘fair’ implies that the crop’s growth is relatively low, necessitating attention and intervention. This approach provides a simple and intuitive display of the crop’s relative growth, minimizes human intervention and ensuring class balance for DL models."
+      },
+      "confidence": 0.95,
+      "name": "Crop Growth Index (CGI)",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f742b1d254eaaa5a_m3",
+      "evidence": {
+        "section": "3.3. Interpretable deep learning model architecture",
+        "original_text": "As illustrated in Figure 4, the interpretable DL architecture comprises two parts: the feature selection explainer and the semantic segmentation model. The explainer is structured around an actor-critic reinforcement learning framework, incorporating an explainer network, a predictor network, and a baseline network. Among them, the role of the explainer network is to select features, while the predictor network and the baseline network evaluate the selected features and feedback to the explainer network until the optimal feature set for crop growth monitoring is selected, and the selection probability of each feature is offered as an explanation of its importance. The data of the optimal feature subset is then fed into the semantic segmentation model for large-scale crop growth monitoring."
+      },
+      "confidence": 0.95,
+      "name": "Interpretable deep learning architecture",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f742b1d254eaaa5a_m4",
+      "evidence": {
+        "section": "3.3.2. Feature-wise variable learning network",
+        "original_text": "Given that the feature selection explainer needs to train three networks simultaneously, the use of a complex network structure will consume a lot of computational resources. To improve the learning ability of the data, and ensure the lightweight of the model structure, the MLP-Mixer-based (Tolstikhin et al. 2021) feature-wise variable learning network is introduced to be used as a predictor network and a baseline network for fine feature learning. The network structure is illustrated in Figure 5. The core idea is to extract features by reusing MLP on different dimensions of the data. Following expansion of the input features through fully connected layers, N Mixer layers are utilized for feature extraction. In the Mixer layer, the input data first passes through the token mixing MLP module, which mixes and refines information across different instance features, before proceeding to the channel mixing MLP module, which further mixes and refines information between features. This alternating process promotes the interaction of information across different dimensions, enhancing feature learning, with results subsequently outputted through the global average pooling and a fully-connected layer."
+      },
+      "confidence": 0.95,
+      "name": "Feature-wise variable learning network",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_f742b1d254eaaa5a_m5",
+      "evidence": {
+        "section": "3.3.3. Feature-aware enhanced segmentation network",
+        "original_text": "The feature selection explainer processes data solely in the pixel dimension, neglecting spatially distributed features and fail to meet the needs of large-scale applications. Consequently, a feature-aware enhanced network is designed for crop growth grading assessment, as illustrated in Figure 6. The model adopts the encoder-decoder structure. The encoder incorporates the optimized MobileNetV2 (Sandler et al. 2018) backbone network and Atrous Spatial Pyramid Pooling (ASPP) (Chen et al. 2017). The backbone network performs feature extraction, while the ASPP performs multi-scale feature fusion. The analysis of the interpretation of the normalized structure of the model shows that the importance of the Layer Norm (LN) method is higher in the shallow stage of the segmentation model (Ge, Zhang, Xu, Sun, and Wang 2023). Consequently, the LN method with higher importance is used in the shallow stage of MobileNetV2 to enhance feature perception and accelerate feature alignment, while in the deep part of the network, the commonly used BN method is used as a way to improve the feature perception of the model. The decoder is based on the deep abstract features and multi-scale fusion features spliced and up-sampled to reduce to the original size and output the final result."
+      },
+      "confidence": 0.95,
+      "name": "Feature-aware enhanced segmentation network",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f742b1d254eaaa5a_x1",
+      "evidence": {
+        "section": "3.1. SAR feature extraction and dataset construction",
+        "original_text": "In crop research, the features of SAR imagery are typically categorized into three types: radar backscatter coefficients (σ0), RVIs, and PD parameters. Radar backscatter coefficients are notably sensitive to crop phenology and morphological development, and have proven highly effective in estimating LAI and other canopy variables, such as biomass (Inoue, Sakaiya, and Wang 2014), thereby making them widely used in crop monitoring. RVIs, crucial for indicating vegetation distribution and growth status in SAR images, are sensitive to VWC, leaf area, and dry biomass (Kim and Zyl 2009). PD relies on realistic physical constraints to decompose the polarimetric data into parameters with practical physical significance, thereby facilitating the analysis of the scattering process of the target. Unlike σ0 and RVIs, PD parameters precisely represent the geometric structural characteristics of the targets (Cloude and Pottier 1996). Consequently, a representative set of features, including the VH, VV backscattering coefficients and their ratios (σ0_VH/σ0_VV), DpRVI, PRVI, DpRVIc, and entropy (H), α angle of the H-α decomposition, are extracted to construct a multidimensional dataset."
+      },
+      "confidence": 0.95,
+      "task": "SAR feature extraction and dataset construction",
+      "setup": "Sentinel-1 dual-pol SLC data, radar vegetation indices, polarimetric decomposition parameters, backscattering coefficients"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f742b1d254eaaa5a_x2",
+      "evidence": {
+        "section": "4.1. The interpretability of the model",
+        "original_text": "The proposed interpretable DL framework coupled with neural networks calculates the selection probability of each feature in multidimensional data as feature importance interpretation, which improves the interpretability of the DL model and the user’s understanding of the model decisions. To confirm the interpretability of the proposed method, the feature importance of each phenological period of rice is output as model interpretation. It is well known that the International Rice Research Institute categorizes the growth of rice into three stages: vegetative, reproductive, and ripening (Kuenzer and Knauer 2013). This study focuses particularly on nine critical phenological stages of rice growth: transplanting, reviving, tillering, elongation, booting, heading, milk-ripe, maturation, and harvesting (Wang et al. 2022). The correspondence between the rice growth stage, phenological phase and image imaging date is detailed in Table 2. Based on the rice field information obtained from the field survey data, precise pixel-level rice samples for each period are generated and the feature selection explainer is used to accurately extract the important features that are closely related to rice growth in different periods, as shown in Figure 7."
+      },
+      "confidence": 0.95,
+      "task": "Interpretability assessment of the model",
+      "setup": "Feature selection explainer, rice samples from nine phenological stages"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f742b1d254eaaa5a_x3",
+      "evidence": {
+        "section": "4.2. Ablation experiments of model structures",
+        "original_text": "Interpretable DL architecture selects the optimal feature combination based on the feature importance of multidimensional data to realize credible and reliable rapid monitoring of crop growth. Ablation experiments are conducted to demonstrate the superiority of the interpretable architecture. During the experiments, the proposed model is compared with a ‘black box’ model, which is a segmentation network without the feature selection explainer. The proposed method autonomously selects and predicts feature combinations during its operation, whereas the black box model directly utilizes the original, complete set of features. The accuracy comparisons are summarized in Table 3. Figure 8 shows the corresponding normalized confusion matrices. As shown in Table 3, the OA of the interpretable model for crop growth monitoring has been improved by 5.87%. This demonstrates the capability of the proposed method to extract feature combinations intimately related to crop growth, significantly enhancing the black-box model’s performance. Furthermore, the most significant F1-score improvement of 6.45% is achieved for the normal category, indicating that the model has become increasingly precise in assessing rice crops under standard growth conditions, which is relevant to most real-world scenarios. This increased precision is beneficial for the efficient allocation of field management resources, thereby facilitating the implementation of more accurate agricultural interventions."
+      },
+      "confidence": 0.95,
+      "task": "Ablation experiments of model structures",
+      "setup": "Interpretable DL architecture vs. black-box segmentation network, dataset from 2022"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f742b1d254eaaa5a_x4",
+      "evidence": {
+        "section": "4.3. Ablation experiment of crop growth index",
+        "original_text": "The proposed method utilizes CGI to assess crop growth in terms of both crop community structure and physiological activity. Ablation experiments are conducted to verify that the proposed method outperforms the use of FVCRVI or LCC alone, with the results presented in Table 4 and Figure 10. It is observed that, compared to using FVCRVI or LCC individually, CGI exhibited higher accuracy in growth monitoring, with an OA increase of 2.32% and 2.78%, respectively. This indicates that CGI is a more effective representation of the actual ground conditions of crop growth. A total of 600 sampling points is randomly selected from the model prediction results, and the discriminative capability of CGI regarding crop community structure and physiological activities is visually assessed, as depicted in Figure 11. The distribution of CGI samples along the FVCRVI and LCC dimensions is clearly segmented into three categories: good, normal, and fair. This segmentation effectively demonstrates that CGI can capture both quantitative and qualitative changes in crops, thereby confirming the efficacy of the proposed CGI in coordinating the structural and physiological characteristics of crop communities, and subsequently enhancing the interpretability and applicability of CGI in growth assessment."
+      },
+      "confidence": 0.0,
+      "task": "Ablation experiment of crop growth index",
+      "setup": "CGI vs. FVCRVI vs. LCC as labels, 600 random sampling points"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_f742b1d254eaaa5a_x5",
+      "evidence": {
+        "section": "4.4. Performance of model generalization",
+        "original_text": "To validate the generalization performance and application value of the proposed method, intra-2022 generalization and inter-2023 generalization is conducted. The intra-year generalization experiment conducted in 2022 involved dividing images from various growth stages into training and testing groups. The model is training with the training group, and the testing group is utilized to assess the model’s intra-year generalization capability. The experimental results, as summarized in Table 5 and Figure 12, indicate that the proposed method, with limited data availability, can effectively perform near real-time monitoring of rice growth within the same growth stage in the same year, achieving an average OA of 90.43%. It is worth noting that this method achieves its highest accuracy in monitoring growth during the reproductive stage, reaching 92.66%. In comparison, accuracy during the vegetative and ripening stages is slightly lower. This difference is understandable. The vegetative stage includes transplanting, where differences in transplanting times across regions lead to significant variations in SAR image features, resulting in decreased accuracy. Similarly, the ripening stage includes the harvesting period, where variations in harvesting times slightly reduce accuracy. To illustrate the inter-annual generalization performance of the method, the model trained with data from 2022 is weight-transferred to 2023, and the experimental results are shown in Figures 13 and 14."
+      },
+      "confidence": 0.95,
+      "task": "Performance of model generalization",
+      "setup": "Intra-year (2022) and inter-year (2023) generalization experiments, Sentinel-1 data, Suihua City"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f742b1d254eaaa5a_qr1",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "Experiments are conducted utilizing Sentinel-1 dual-pol data from 2022 and 2023 in Suihua City, Heilongjiang Province, China. The results reveal that the OA of growth monitoring using the proposed method reached 90.57%, with a generalization accuracy of 90.43%. Notably, the performance of the black-box model is significantly enhanced by the feature selection explainer. Furthermore, the interannual transfer experiments conducted in 2022 and 2023 not only underscores the practicality of our method but also unveils a substantial correlation between rice growth assessment and monthly rainfall. This finding indicates that the proposed method accurately captures the influence of climate on crop growth. Moreover, ablation experiments employing CGI, FVCRVI, and LCC as labels demonstrated the superiority of CGI, highlighting the importance of utilizing a comprehensive index that encompasses various dimensions of crop growth. The proposed method offers excellent interpretability and insights into the importance of features associated with the actual growth state of rice. This helps users in comprehending the model's decision-making process and enhances the reliability and credibility of the results."
+      },
+      "confidence": 0.98,
+      "quantity": "overall accuracy",
+      "value": 90.57,
+      "unit": "%",
+      "context": "Test set performance of proposed method for rice growth monitoring",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f742b1d254eaaa5a_qr2",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "The intra-year generalization experiment conducted in 2022 involved dividing images from various growth stages into training and testing groups. The model is training with the training group, and the testing group is utilized to assess the model's intra-year generalization capability. The experimental results, as summarized in Table 5 and Figure 12, indicate that the proposed method, with limited data availability, can effectively perform near real-time monitoring of rice growth within the same growth stage in the same year, achieving an average OA of 90.43%. It is worth noting that this method achieves its highest accuracy in monitoring growth during the reproductive stage, reaching 92.66%. In comparison, accuracy during the vegetative and ripening stages is slightly lower. This difference is understandable. The vegetative stage includes transplanting, where differences in transplanting times across regions lead to significant variations in SAR image features, resulting in decreased accuracy. Similarly, the ripening stage includes the harvesting period, where variations in harvesting times slightly reduce accuracy."
+      },
+      "confidence": 0.97,
+      "quantity": "generalization accuracy",
+      "value": 90.43,
+      "unit": "%",
+      "context": "Intra-year generalization performance of proposed method",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_f742b1d254eaaa5a_p1",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "Ablation experiments are conducted to demonstrate the superiority of the interpretable architecture. During the experiments, the proposed model is compared with a 'black box' model, which is a segmentation network without the feature selection explainer. The proposed method autonomously selects and predicts feature combinations during its operation, whereas the black box model directly utilizes the original, complete set of features. The accuracy comparisons are summarized in Table 3. Figure 8 shows the corresponding normalized confusion matrices. As shown in Table 3, the OA of the interpretable model for crop growth monitoring has been improved by 5.87%. This demonstrates the capability of the proposed method to extract feature combinations intimately related to crop growth, significantly enhancing the black-box model's performance. Furthermore, the most significant F1-score improvement of 6.45% is achieved for the normal category, indicating that the model has become increasingly precise in assessing rice crops under standard growth conditions, which is relevant to most real-world scenarios. This increased precision is beneficial for the efficient allocation of field management resources, thereby facilitating the implementation of more accurate agricultural interventions."
+      },
+      "confidence": 0.96,
+      "metric": "overall accuracy",
+      "compared_to": "black-box model"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f742b1d254eaaa5a_qr3",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "As shown in Table 3, the OA of the interpretable model for crop growth monitoring has been improved by 5.87%. This demonstrates the capability of the proposed method to extract feature combinations intimately related to crop growth, significantly enhancing the black-box model's performance. Furthermore, the most significant F1-score improvement of 6.45% is achieved for the normal category, indicating that the model has become increasingly precise in assessing rice crops under standard growth conditions, which is relevant to most real-world scenarios. This increased precision is beneficial for the efficient allocation of field management resources, thereby facilitating the implementation of more accurate agricultural interventions. Additionally, a comparison of the loss variation curves of the two models (in Figure 9) reveals that the black-box model exhibits greater amplitude in validation loss, with the final loss also exceeding 0.4. In contrast, the interpretable DL architecture, which includes a feature selection explainer, converges more rapidly, with training loss dropping below 0.6 in fewer than 10 epochs, and a smaller amplitude of oscillation in validation loss. Under the same number of training epochs (100), the final loss falls below 0.4, significantly outperforming the black-box model."
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy improvement",
+      "value": 5.87,
+      "unit": "%",
+      "context": "OA improvement of interpretable model over black-box model",
+      "result_type": "comparison"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_f742b1d254eaaa5a_p2",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "The proposed method utilizes CGI to assess crop growth in terms of both crop community structure and physiological activity. Ablation experiments are conducted to verify that the proposed method outperforms the use of FVCRVI or LCC alone, with the results presented in Table 4 and Figure 10. It is observed that, compared to using FVCRVI or LCC individually, CGI exhibited higher accuracy in growth monitoring, with an OA increase of 2.32% and 2.78%, respectively. This indicates that CGI is a more effective representation of the actual ground conditions of crop growth. A total of 600 sampling points is randomly selected from the model prediction results, and the discriminative capability of CGI regarding crop community structure and physiological activities is visually assessed, as depicted in Figure 11. The distribution of CGI samples along the FVCRVI and LCC dimensions is clearly segmented into three categories: good, normal, and fair. This segmentation effectively demonstrates that CGI can capture both quantitative and qualitative changes in crops, thereby confirming the efficacy of the proposed CGI in coordinating the structural and physiological characteristics of crop communities, and subsequently enhancing the interpretability and applicability of CGI in growth assessment."
+      },
+      "confidence": 0.95,
+      "metric": "accuracy",
+      "compared_to": "FVCRVI alone, LCC alone"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f742b1d254eaaa5a_qr4",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "Ablation experiments are conducted to verify that the proposed method outperforms the use of FVCRVI or LCC alone, with the results presented in Table 4 and Figure 10. It is observed that, compared to using FVCRVI or LCC individually, CGI exhibited higher accuracy in growth monitoring, with an OA increase of 2.32% and 2.78%, respectively. This indicates that CGI is a more effective representation of the actual ground conditions of crop growth. A total of 600 sampling points is randomly selected from the model prediction results, and the discriminative capability of CGI regarding crop community structure and physiological activities is visually assessed, as depicted in Figure 11. The distribution of CGI samples along the FVCRVI and LCC dimensions is clearly segmented into three categories: good, normal, and fair. This segmentation effectively demonstrates that CGI can capture both quantitative and qualitative changes in crops, thereby confirming the efficacy of the proposed CGI in coordinating the structural and physiological characteristics of crop communities, and subsequently enhancing the interpretability and applicability of CGI in growth assessment."
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy improvement",
+      "value": 2.32,
+      "unit": "%",
+      "context": "OA improvement of CGI over FVCRVI alone",
+      "result_type": "comparison"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f742b1d254eaaa5a_qr5",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "Ablation experiments are conducted to verify that the proposed method outperforms the use of FVCRVI or LCC alone, with the results presented in Table 4 and Figure 10. It is observed that, compared to using FVCRVI or LCC individually, CGI exhibited higher accuracy in growth monitoring, with an OA increase of 2.32% and 2.78%, respectively. This indicates that CGI is a more effective representation of the actual ground conditions of crop growth. A total of 600 sampling points is randomly selected from the model prediction results, and the discriminative capability of CGI regarding crop community structure and physiological activities is visually assessed, as depicted in Figure II. The distribution of CGI samples along the FVCRVI and LCC dimensions is clearly segmented into three categories: good, normal, and fair. This segmentation effectively demonstrates that CGI can capture both quantitative and qualitative changes in crops, thereby confirming the efficacy of the proposed CGI in coordinating the structural and physiological characteristics of crop communities, and subsequently enhancing the interpretability and applicability of CGI in growth assessment."
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy improvement",
+      "value": 2.78,
+      "unit": "%",
+      "context": "OA improvement of CGI over LCC alone",
+      "result_type": "comparison"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_f742b1d254eaaa5a_qr6",
+      "evidence": {
+        "section": "Experimental results and analysis",
+        "original_text": "The intra-year generalization experiment conducted in 2022 involved dividing images from various growth stages into training and testing groups. The model is training with the training group, and the testing group is utilized to assess the model's intra-year generalization capability. The experimental results, as summarized in Table 5 and Figure 12, indicate that the proposed method, with limited data availability, can effectively perform near real-time monitoring of rice growth within the same growth stage in the same year, achieving an average OA of 90.43%. It is worth noting that this method achieves its highest accuracy in monitoring growth during the reproductive stage, reaching 92.66%. In comparison, accuracy during the vegetative and ripening stages is slightly lower. This difference is understandable. The vegetative stage includes transplanting, where differences in transplanting times across regions lead to significant variations in SAR image features, resulting in decreased accuracy. Similarly, the ripening stage includes the harvesting period, where variations in harvesting times slightly reduce accuracy."
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 92.66,
+      "unit": "%",
+      "context": "Highest accuracy achieved during reproductive stage of rice growth",
+      "result_type": "main_result"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_f742b1d254eaaa5a_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Addressing challenges in crop growth monitoring, such as limited assessment dimensions, incomplete coverage of growth cycles, and limited deep learning (DL) interpretability, a novel dual-pol SAR rice growth monitoring method using a new crop growth index (CGI) and an interpretable DL architecture is proposed. Initially, radar vegetation indices, polarimetric decomposition parameters, and backscattering coefficients characterize rice growth in multiple dimensions. Subsequently, a CGI is designed, combining fractional vegetation cover and leaf chlorophyll content to accurately depict rice growth status, capturing both the structural and physiological activity of rice. Finally, an interpretable DL architecture incorporating a feature selection explainer and a feature-aware enhanced segmentation model is introduced. This architecture incorporates feature-wise variable learning networks, interprets the importance of individual features, and optimizes the feature composition, significantly enhancing the interpretability of the DL model. This architecture is also applicable to other neural networks. The method is applied in Suihua City, Heilongjiang Province, China, using Sentinel-1 dual-pol data from 2022 and 2023. Experiments indicate that the proposed method achieves an overall accuracy of 90.57% in the test set and a generalization accuracy of 90.43%. The integration of CGI and the interpretable DL architecture enhances the reliability of rice growth monitoring results."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_f742b1d254eaaa5a_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "To address the challenges of incomplete coverage of the entire crop growth cycle, limited evaluation dimensions, and lack of interpretability in DL models in crop growth monitoring, this study introduces a novel method for monitoring rice growth, leveraging dual-pol SAR data and an interpretable DL architecture. Initially, a SAR multidimensional dataset is constructed using RVIs, PD parameters, and backscattering coefficients to comprehensively represent the crop growth conditions. A CGI is proposed to evaluate the growth status of crop communities from both morphological characteristics and physiological activities, and is used as a label for the DL model’s growth assessment. Finally, an interpretable DL architecture is constructed, combining optimized features with a feature-aware enhanced segmentation model to achieve crop growth monitoring. Experiments are conducted utilizing Sentinel-1 dual-pol data from 2022 and 2023 in Suihua City, Heilongjiang Province, China. The results reveal that the OA of growth monitoring using the proposed method reached 90.57%, with a generalization accuracy of 90.43%. Notably, the performance of the black-box model is significantly enhanced by the feature selection explainer. Furthermore, the interannual transfer experiments conducted in 2022 and 2023 not only underscores the practicality of our method but also unveils a substantial correlation between rice growth assessment and monthly rainfall. This finding indicates that the proposed method accurately captures the influence of climate on crop growth. Moreover, ablation experiments employing CGI, FVCRVI, and LCC as labels demonstrated the superiority of CGI, highlighting the importance of utilizing a comprehensive index that encompasses various dimensions of crop growth. The proposed method offers excellent interpretability and insights into the importance of features associated with the actual growth state of rice. This helps users in comprehending the model’s decision-making process and enhances the reliability and credibility of the results."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_f742b1d254eaaa5a_lm1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Future work will involve utilizing data from more phenological stages to explore the impact of different phenological periods on rice growth, expanding the scope of this method to encompass more crop types and extensive study regions, as well as assessing the importance of additional features in crop growth."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_f742b1d254eaaa5a_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Future work will involve utilizing data from more phenological stages to explore the impact of different phenological periods on rice growth, expanding the scope of this method to encompass more crop types and extensive study regions, as well as assessing the importance of additional features in crop growth."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

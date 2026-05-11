@@ -1,0 +1,482 @@
+{
+  "metadata": {
+    "doc_id": "doc_d6917789894b38ed",
+    "source_file": "12_Addressing_fairness_in_AI_for_medical_imaging.md",
+    "title": "Addressing fairness in artificial intelligence for medical imaging",
+    "year": 2022,
+    "doi": "10.1038/s41467-022-32186-3",
+    "abstract": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead.",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "临床医学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "fairness",
+      "artificial intelligence",
+      "medical imaging",
+      "bias",
+      "healthcare"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:07:41.995119+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead. With the exponential growth in the development of artificial intelligence (AI) systems for the analysis of medical images, hospitals and medical centers have started to deploy such tools in clinical practice[1] . These systems are typically powered by a particular type of machine learning (ML) technique known as deep learning (DL). DL methods learn complex data representations by employing multiple layers of processing with different levels of abstraction, which are useful to solve a wide spectrum of tasks. In the context of medical image computing (MIC), examples of such tasks include pathology classification, anatomical segmentation, lesion delineation, image reconstruction, synthesis, registration and super-resolution, among many others[2] . While the number of scientific publications related to DL methods applied to different MIC problems in laboratory conditions has grown exponentially, clinical trials aimed at evaluating medical AI systems have only recently started to gain momentum. In fact, according to the American College of Radiology, to date less than 200 AI medical products related to radiology and other imaging domains have been cleared by the United States Food and Drug Administration[3] ."
+      },
+      "confidence": 0.99,
+      "term": "artificial intelligence",
+      "normalized": "人工智能",
+      "std_label": "AI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead. Recently, the research community of fairness in ML has highlighted that ML systems can be biased against certain sub-populations, in the sense that they present disparate performance for different subgroups defined by protected attributes such as age, race/ethnicity, sex or gender, socioeconomic status, among others[4][,][5] . In the field of healthcare, the potential unequal behavior of algorithms towards different population sub-groups could even be considered to go against the principles of bioethics: justice, autonomy, beneficence and non-maleficence[6] . In this context, fostering fairness in MIC becomes essential. However, this is far from being a simple task: ensuring equity in ML deployments requires tackling different and multiple aspects along the whole design, development and implementation pathway. While the implications of fairness in ML for the broad field of healthcare have recently been surveyed and discussed[7] , in this comment we focus on the sub-field of medical imaging. Indeed, when it comes to biases in ML systems that can benefit certain subpopulations in detriment of others, the field of medical imaging is not the exception[8][,][9] . In what follows we will comment on recent workin the field and highlight valuable unexplored areas of research, discussing potential challenges and available strategies."
+      },
+      "confidence": 0.98,
+      "term": "fairness",
+      "normalized": "公平性",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead. With the exponential growth in the development of artificial intelligence (AI) systems for the analysis of medical images, hospitals and medical centers have started to deploy such tools in clinical practice[1] . These systems are typically powered by a particular type of machine learning (ML) technique known as deep learning (DL). DL methods learn complex data representations by employing multiple layers of processing with different levels of abstraction, which are useful to solve a wide spectrum of tasks. In the context of medical image computing (MIC), examples of such tasks include pathology classification, anatomical segmentation, lesion delineation, image reconstruction, synthesis, registration and super-resolution, among many others[2] . While the number of scientific publications related to DL methods applied to different MIC problems in laboratory conditions has grown exponentially, clinical trials aimed at evaluating medical AI systems have only recently started to gain momentum. In fact, according to the American College of Radiology, to date less than 200 AI medical products related to radiology and other imaging domains have been cleared by the United States Food and Drug Administration[3] ."
+      },
+      "confidence": 0.99,
+      "term": "medical imaging",
+      "normalized": "医学影像",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Recently, the research community of fairness in ML has highlighted that ML systems can be biased against certain sub-populations, in the sense that they present disparate performance for different subgroups defined by protected attributes such as age, race/ethnicity, sex or gender, socioeconomic status, among others[4][,][5] . In the field of healthcare, the potential unequal behavior of algorithms towards different population sub-groups could even be considered to go against the principles of bioethics: justice, autonomy, beneficence and non-maleficence[6] . In this context, fostering fairness in MIC becomes essential. However, this is far from being a simple task: ensuring equity in ML deployments requires tackling different and multiple aspects along the whole design, development and implementation pathway. While the implications of fairness in ML for the broad field of healthcare have recently been surveyed and discussed[7] , in this comment we focus on the sub-field of medical imaging. Indeed, when it comes to biases in ML systems that can benefit certain subpopulations in detriment of others, the field of medical imaging is not the exception[8][,][9] . In what follows we will comment on recent workin the field and highlight valuable unexplored areas of research, discussing potential challenges and available strategies."
+      },
+      "confidence": 0.97,
+      "term": "protected attributes",
+      "normalized": "受保护属性",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c5",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "Let us start by considering this question in the context of patient subgroups defined by skin tone or race/ethnicity, where a number of recent articles have compared the performance of MIC systems for suspected ophthalmologic, thoracic and/or cardiac pathologies. For example, when it comes to diagnosing diabetic retinopathy, a severe imbalance in the data used to train a model may result in a strong gap in the diagnostic accuracy (73% vs. 60.5%) for light-skinned vs. darkskinned subjects[10] . In the same vein, it has been detected that models fed with chest radiography for pathology classification have a higher rate of underdiagnosis for under-served sub-populations, including Black patients[9] , so that the use of these tools could increase the probability of those patients being sent home without receiving the care they need. Lower performance of AI models designed for cardiac MRI segmentation (in terms of Dice coefficient) in this group has also been found[11] , which may result in compound biases if any further diagnostic analysis were required to be done on the automatically delineated silhouette. After reading these examples, we immediately and automatically recognize these situations as unfair. However, establishing a criterion to determine whether an algorithm can be called fair is actually a thorny issue. In the previous paragraph we have purposely mentioned examples where different metrics were employed in each case. Indeed, the first issue one encounters is that a large number of candidate measures exist. One can for instance evaluate fairness by comparing standard ML performance metrics across different sub-groups, such as accuracy[10][,][12][–][16] , or AUC ROC (the area under the receiver operating characteristic curve)[8][–][10][,][14][–][22] , among others. Alternatively, one can choose to employ one of the (no less than ten) different fairnessspecific criteria formulated by the community[23] in order to audit the presence of bias in a given model[16][,][18] . To complicate matters further, even if one carries out a multi-dimensional study by simultaneously employing multiple metrics[9][,][10][,][14][–][16][,][20][,][21][,][24] , which model to select at the end in a given setting might be no trivial matter and additional information will in general be required."
+      },
+      "confidence": 0.98,
+      "term": "bias",
+      "normalized": "偏见",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c6",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "Along these lines, on those occasions when the prevalence of the target condition is different between sub-groups (Fig. 1, top row), special care must be taken in the selection of the fairness definition to be used[25] . For example, the demographic parity criterion (Fig. 1, bottom row, right side) which requires equal chances of positive predictions in each group, would here suggest the algorithm is unfair for presenting a higher probability of a positive result for the sub-group with a greater target condition prevalence. This criterion assumes that the prediction of an algorithm is independent of the protected attribute that defines each sub-group, so it may be suitable in settings such as loan eligibility prediction or hiring for job vacancies, but not for disease prediction cases where the prevalence depends on the aforementioned attribute. In these cases, it would be more appropriate to resort to definitions such as the equal opportunity criterion (Fig. 1, bottom row, right side), which will compare the equality of true positive rates between sub-groups whose computation is independent of the pre-test probability. Overall, it becomes clear that a one-size-fits-all definition of fairness in MIC will not exist."
+      },
+      "confidence": 0.96,
+      "term": "demographic parity",
+      "normalized": "人口统计平等",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c7",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "Along these lines, on those occasions when the prevalence of the target condition is different between sub-groups (Fig. 1, top row), special care must be taken in the selection of the fairness definition to be used[25] . For example, the demographic parity criterion (Fig. 1, bottom row, right side) which requires equal chances of positive predictions in each group, would here suggest the algorithm is unfair for presenting a higher probability of a positive result for the sub-group with a greater target condition prevalence. This criterion assumes that the prediction of an algorithm is independent of the protected attribute that defines each sub-group, so it may be suitable in settings such as loan eligibility prediction or hiring for job vacancies, but not for disease prediction cases where the prevalence depends on the aforementioned attribute. In these cases, it would be more appropriate to resort to definitions such as the equal opportunity criterion (Fig. 1, bottom row, right side), which will compare the equality of true positive rates between sub-groups whose computation is independent of the pre-test probability. Overall, it becomes clear that a one-size-fits-all definition of fairness in MIC will not exist."
+      },
+      "confidence": 0.96,
+      "term": "equal opportunity",
+      "normalized": "机会平等",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c8",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] . Finally, after training, model outcomes can be post-processed so as to calibrate the predictions across the different sub-groups. These methods focus on the second reason behind biased systems we mentioned before, namely models."
+      },
+      "confidence": 0.97,
+      "term": "bias mitigation strategies",
+      "normalized": "偏见缓解策略",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c9",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] . Finally, after training, model outcomes can be post-processed so as to calibrate the predictions across the different sub-groups. These methods focus on the second reason behind biased systems we mentioned before, namely models."
+      },
+      "confidence": 0.96,
+      "term": "data augmentation",
+      "normalized": "数据增强",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_d6917789894b38ed_c10",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] . Finally, after training, model outcomes can be post-processed so as to calibrate the predictions across the different sub-groups. These methods focus on the second reason behind biased systems we mentioned before, namely models."
+      },
+      "confidence": 0.96,
+      "term": "adversarial training",
+      "normalized": "对抗训练",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead. With the exponential growth in the development of artificial intelligence (AI) systems for the analysis of medical images, hospitals and medical centers have started to deploy such tools in clinical practice[1] . These systems are typically powered by a particular type of machine learning (ML) technique known as deep learning (DL). DL methods learn complex data representations by employing multiple layers of processing with different levels of abstraction, which are useful to solve a wide spectrum of tasks. In the context of medical image computing (MIC), examples of such tasks include pathology classification, anatomical segmentation, lesion delineation, image reconstruction, synthesis, registration and super-resolution, among many others[2] . While the number of scientific publications related to DL methods applied to different MIC problems in laboratory conditions has grown exponentially, clinical trials aimed at evaluating medical AI systems have only recently started to gain momentum. In fact, according to the American College of Radiology, to date less than 200 AI medical products related to radiology and other imaging domains have been cleared by the United States Food and Drug Administration[3] ."
+      },
+      "confidence": 0.95,
+      "head": "doc_d6917789894b38ed_c1",
+      "relation_type": "enhances",
+      "relation_surface": "beginning to be increasingly adopted",
+      "tail": "doc_d6917789894b38ed_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead. Recently, the research community of fairness in ML has highlighted that ML systems can be biased against certain sub-populations, in the sense that they present disparate performance for different subgroups defined by protected attributes such as age, race/ethnicity, sex or gender, socioeconomic status, among others[4][,][5] . In the field of healthcare, the potential unequal behavior of algorithms towards different population sub-groups could even be considered to go against the principles of bioethics: justice, autonomy, beneficence and non-maleficence[6] . In this context, fostering fairness in MIC becomes essential. However, this is far from being a simple task: ensuring equity in ML deployments requires tackling different and multiple aspects along the whole design, development and implementation pathway. While the implications of fairness in ML for the broad field of healthcare have recently been surveyed and discussed[7] , in this comment we focus on the sub-field of medical imaging. Indeed, when it comes to biases in ML systems that can benefit certain subpopulations in detriment of others, the field of medical imaging is not the exception[8][,][9] . In what follows we will comment on recent workin the field and highlight valuable unexplored areas of research, discussing potential challenges and available strategies."
+      },
+      "confidence": 0.94,
+      "head": "doc_d6917789894b38ed_c1",
+      "relation_type": "causes",
+      "relation_surface": "can systematically and unfairly be biased",
+      "tail": "doc_d6917789894b38ed_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Recently, the research community of fairness in ML has highlighted that ML systems can be biased against certain sub-populations, in the sense that they present disparate performance for different subgroups defined by protected attributes such as age, race/ethnicity, sex or gender, socioeconomic status, among others[4][,][5] . In the field of healthcare, the potential unequal behavior of algorithms towards different population sub-groups could even be considered to go against the principles of bioethics: justice, autonomy, beneficence and non-maleficence[6] . In this context, fostering fairness in MIC becomes essential. However, this is far from being a simple task: ensuring equity in ML deployments requires tackling different and multiple aspects along the whole design, development and implementation pathway. While the implications of fairness in ML for the broad field of healthcare have recently been surveyed and discussed[7] , in this comment we focus on the sub-field of medical imaging. Indeed, when it comes to biases in ML systems that can benefit certain subpopulations in detriment of others, the field of medical imaging is not the exception[8][,][9] . In what follows we will comment on recent workin the field and highlight valuable unexplored areas of research, discussing potential challenges and available strategies."
+      },
+      "confidence": 0.93,
+      "head": "doc_d6917789894b38ed_c4",
+      "relation_type": "measures",
+      "relation_surface": "defined by",
+      "tail": "doc_d6917789894b38ed_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r4",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "Along these lines, on those occasions when the prevalence of the target condition is different between sub-groups (Fig. 1, top row), special care must be taken in the selection of the fairness definition to be used[25] . For example, the demographic parity criterion (Fig. 1, bottom row, right side) which requires equal chances of positive predictions in each group, would here suggest the algorithm is unfair for presenting a higher probability of a positive result for the sub-group with a greater target condition prevalence. This criterion assumes that the prediction of an algorithm is independent of the protected attribute that defines each sub-group, so it may be suitable in settings such as loan eligibility prediction or hiring for job vacancies, but not for disease prediction cases where the prevalence depends on the aforementioned attribute. In these cases, it would be more appropriate to resort to definitions such as the equal opportunity criterion (Fig. 1, bottom row, right side), which will compare the equality of true positive rates between sub-groups whose computation is independent of the pre-test probability. Overall, it becomes clear that a one-size-fits-all definition of fairness in MIC will not exist."
+      },
+      "confidence": 0.92,
+      "head": "doc_d6917789894b38ed_c6",
+      "relation_type": "compares",
+      "relation_surface": "requires equal chances of positive predictions",
+      "tail": "doc_d6917789894b38ed_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r5",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "Along these lines, on those occasions when the prevalence of the target condition is different between sub-groups (Fig. 1, top row), special care must be taken in the selection of the fairness definition to be used[25] . For example, the demographic parity criterion (Fig. 1, bottom row, right side) which requires equal chances of positive predictions in each group, would here suggest the algorithm is unfair for presenting a higher probability of a positive result for the sub-group with a greater target condition prevalence. This criterion assumes that the prediction of an algorithm is independent of the protected attribute that defines each sub-group, so it may be suitable in settings such as loan eligibility prediction or hiring for job vacancies, but not for disease prediction cases where the prevalence depends on the aforementioned attribute. In these cases, it would be more appropriate to resort to definitions such as the equal opportunity criterion (Fig. 1, bottom row, right side), which will compare the equality of true positive rates between sub-groups whose computation is independent of the pre-test probability. Overall, it becomes clear that a one-size-fits-all definition of fairness in MIC will not exist."
+      },
+      "confidence": 0.92,
+      "head": "doc_d6917789894b38ed_c7",
+      "relation_type": "compares",
+      "relation_surface": "compare the equality of true positive rates",
+      "tail": "doc_d6917789894b38ed_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r6",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] . Finally, after training, model outcomes can be post-processed so as to calibrate the predictions across the different sub-groups. These methods focus on the second reason behind biased systems we mentioned before, namely models."
+      },
+      "confidence": 0.94,
+      "head": "doc_d6917789894b38ed_c9",
+      "relation_type": "uses",
+      "relation_surface": "such as the use of",
+      "tail": "doc_d6917789894b38ed_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_d6917789894b38ed_r7",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] . Finally, after training, model outcomes can be post-processed so as to calibrate the predictions across the different sub-groups. These methods focus on the second reason behind biased systems we mentioned before, namely models."
+      },
+      "confidence": 0.94,
+      "head": "doc_d6917789894b38ed_c10",
+      "relation_type": "uses",
+      "relation_surface": "such as the use of",
+      "tail": "doc_d6917789894b38ed_c8"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d6917789894b38ed_d1",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Firstly, so far algorithmic justice analysis has mostly been carried out in four medical imaging specialties: radiology[8,9,16,18–22], dermatology[12,13,17,19,24], ophthalmology[10,14,15] and cardiology[11]. We believe that this uneven coverage is partly due to the limited availability of MI databases with demographic information on the population (Table 1), something which has been highlighted in several previous studies[8,17]. The absence of this information may be related to the trade-off between data utility and privacy when releasing public databases, in the sense that including sensitive attributes useful for bias audit may go against the privacy of the individuals. To overcome these limitations, the implementation of technical solutions to simultaneously address the demands for data protection and utilization becomes extremely important[30]. Moreover, it must be noted that the subset of sensitive attributes either directly reported or estimated varies from dataset to dataset. The currently most widely reported characteristics are age and sex or gender[16,20,31–38], followed by skin tone or race/ethnicity[13,16,20,33,34,37,38], and to a lesser extent socioeconomic characteristics[33,38]. In some cases, where protected attributes are not available, estimates can be computed using image processing methods[12,13,15,19,24], and eventually manual labeling by professionals can be used[10,13]. These strategies bring with them however an additional level of complexity and subtlety in their implementation which can limit reproducibility and comparison of results across sub-groups."
+      },
+      "confidence": 0.95,
+      "name": "Medical imaging databases with demographic information",
+      "modality": "tabular",
+      "domain": "medical imaging"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d6917789894b38ed_d2",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Table 1 | Databases commonly used in fairness in MIC studies. aAccording to the World Health Organization, sex refers to different biological and physiological characteristics of males and females, while gender refers to the socially constructed characteristics of women and men such as norms, roles and relationships of and between groups of women and men. Databases tend to report one or the other. bWe include both the term race and ethnicity since the cited studies make use of both denominations. We group analyses across different skin tones in this category as well. Race and ethnicity are social constructs with complex and dynamic definitions (see ref. 47)."
+      },
+      "confidence": 0.9,
+      "name": "Databases commonly used in fairness in MIC studies",
+      "modality": "tabular",
+      "domain": "medical imaging"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_d6917789894b38ed_d3",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "In this regard, initiatives such as the All of Us Research Program, which invite participants from different sub-groups in the United States to create a more diverse health database, hope to promote and improve biomedical research, as well as medical care[44]. Efforts such as this one, currently focused on an individual country, could be replicated and lay the groundwork for a collaborative enterprise that transcends geographic barriers."
+      },
+      "confidence": 0.85,
+      "name": "All of Us Research Program database",
+      "modality": "tabular",
+      "domain": "healthcare"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d6917789894b38ed_ds1",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Moreover, it must be noted that the subset of sensitive attributes either directly reported or estimated varies from dataset to dataset. The currently most widely reported characteristics are age and sex or gender[16,20,31–38], followed by skin tone or race/ethnicity[13,16,20,33,34,37,38], and to a lesser extent socioeconomic characteristics[33,38]. In some cases, where protected attributes are not available, estimates can be computed using image processing methods[12,13,15,19,24], and eventually manual labeling by professionals can be used[10,13]. These strategies bring with them however an additional level of complexity and subtlety in their implementation which can limit reproducibility and comparison of results across sub-groups."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Standard for reporting demographic information in medical imaging databases"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d6917789894b38ed_ds2",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "This matter is also addressed by the FUTURE-AI Guidelines[39], which include principles and consensus recommendations for trustworthy AI in medical imaging, and not only focus on fairness but also cover other fundamental dimensions like universality, traceability, usability, robustness and explainability. In that sense, we believe the FUTURE-AI guidelines may constitute a practical tool to improve the publication practices of our community."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "FUTURE-AI Guidelines for trustworthy AI in medical imaging"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_d6917789894b38ed_ds3",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Increasing diversity in database construction. As researchers working in Latin America, we want to stress the importance of widening geographic representation in the building of publicly available MI datasets. It has been acknowledged by several studies that the vast majority of MI databases employed for AI developments originate from high income countries, mostly in Europe and North America[40–42]. This introduces a clear selection bias since the demographics of these countries do not match that of other areas like Africa, Asia or Latin America. This fact, combined with experimental studies suggesting that race/ethnicity imbalance in MI databases may be one of the reasons behind unequal performance[11], calls for action towards building truly international databases which include patients from low income countries."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Requirements for building truly international medical imaging databases"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d6917789894b38ed_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "With the exponential growth in the development of artificial intelligence (AI) systems for the analysis of medical images, hospitals and medical centers have started to deploy such tools in clinical practice[1] . These systems are typically powered by a particular type of machine learning (ML) technique known as deep learning (DL). DL methods learn complex data representations by employing multiple layers of processing with different levels of abstraction, which are useful to solve a wide spectrum of tasks. In the context of medical image computing (MIC), examples of such tasks include pathology classification, anatomical segmentation, lesion delineation, image reconstruction, synthesis, registration and super-resolution, among many others[2] . While the number of scientific publications related to DL methods applied to different MIC problems in laboratory conditions has grown exponentially, clinical trials aimed at evaluating medical AI systems have only recently started to gain momentum. In fact, according to the American College of Radiology, to date less than 200 AI medical products related to radiology and other imaging domains have been cleared by the United States Food and Drug Administration[3] ."
+      },
+      "confidence": 0.95,
+      "name": "deep learning",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d6917789894b38ed_m2",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "After reading these examples, we immediately and automatically recognize these situations as unfair. However, establishing a criterion to determine whether an algorithm can be called fair is actually a thorny issue. In the previous paragraph we have purposely mentioned examples where different metrics were employed in each case. Indeed, the first issue one encounters is that a large number of candidate measures exist. One can for instance evaluate fairness by comparing standard ML performance metrics across different sub-groups, such as accuracy[10][,][12][–][16] , or AUC ROC (the area under the receiver operating characteristic curve)[8][–][10][,][14][–][22] , among others. Alternatively, one can choose to employ one of the (no less than ten) different fairness-specific criteria formulated by the community[23] in order to audit the presence of bias in a given model[16][,][18] . To complicate matters further, even if one carries out a multi-dimensional study by simultaneously employing multiple metrics[9][,][10][,][14][–][16][,][20][,][21][,][24] , which model to select at the end in a given setting might be no trivial matter and additional information will in general be required."
+      },
+      "confidence": 0.95,
+      "name": "fairness-specific criteria",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d6917789894b38ed_m3",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] ."
+      },
+      "confidence": 0.95,
+      "name": "data augmentation",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_d6917789894b38ed_m4",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] ."
+      },
+      "confidence": 0.95,
+      "name": "adversarial training",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d6917789894b38ed_x1",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "Let us start by considering this question in the context of patient subgroups defined by skin tone or race/ethnicity, where a number of recent articles have compared the performance of MIC systems for suspected ophthalmologic, thoracic and/or cardiac pathologies. For example, when it comes to diagnosing diabetic retinopathy, a severe imbalance in the data used to train a model may result in a strong gap in the diagnostic accuracy (73% vs. 60.5%) for light-skinned vs. dark-skinned subjects[10] . In the same vein, it has been detected that models fed with chest radiography for pathology classification have a higher rate of underdiagnosis for under-served sub-populations, including Black patients[9] , so that the use of these tools could increase the probability of those patients being sent home without receiving the care they need. Lower performance of AI models designed for cardiac MRI segmentation (in terms of Dice coefficient) in this group has also been found[11] , which may result in compound biases if any further diagnostic analysis were required to be done on the automatically delineated silhouette. After reading these examples, we immediately and automatically recognize these situations as unfair. However, establishing a criterion to determine whether an algorithm can be called fair is actually a thorny issue. In the previous paragraph we have purposely mentioned examples where different metrics were employed in each case. Indeed, the first issue one encounters is that a large number of candidate measures exist. One can for instance evaluate fairness by comparing standard ML performance metrics across different sub-groups, such as accuracy[10][,][12][–][16] , or AUC ROC (the area under the receiver operating characteristic curve)[8][–][10][,][14][–][22] , among others. Alternatively, one can choose to employ one of the (no less than ten) different fairness-specific criteria formulated by the community[23] in order to audit the presence of bias in a given model[16][,][18] . To complicate matters further, even if one carries out a multi-dimensional study by simultaneously employing multiple metrics[9][,][10][,][14][–][16][,][20][,][21][,][24] , which model to select at the end in a given setting might be no trivial matter and additional information will in general be required."
+      },
+      "confidence": 0.95,
+      "task": "fairness audit in medical imaging",
+      "setup": "analysis of AI systems across different medical specialties using various fairness metrics"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_d6917789894b38ed_x2",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "Several studies in recent years have proposed solutions to mitigate bias and develop fairer algorithms[10][,][11][,][14][–][17][,][19][,][20][,][24] . There are three main stages at which bias mitigation strategies can be adopted[11] : before, during and after training. Before training, one would ideally seek to rebalance datasets by collecting more representative data (Fig. 2①). However, in the medical context this is far from trivial as this process requires patients giving consent to their data being used for research purposes as well as the involvement of specialists analyzing each case and providing ground truth labels. Moreover, the low prevalence of certain conditions might hinder finding sufficient examples. In this sense, a compromise solution involves removing features linked to sensitive information, or the use of data resampling strategies. During training, several alternatives exist to mitigate model biases (Fig. 2②), such as the use of data augmentation[10][,][14][,][19] and adversarial training[17][,][20][,][24] , with the combination of both having even been employed[15] . The use of generative methods as a way to augment the dataset, for instance, has proven effective in reducing the disparity in the diagnostic accuracy of diabetic retinopathy between light-skinned and dark-skinned individuals[10] . On the other hand, adversarial schemes have been shown to reduce biases in skin lesion classification[24] . In this case, adversarial methods intend to increase the performance of a primary model on the target variable while minimizing the ability of a second (adversarial) model to predict the protected attribute from the features learned by the primary model[23] . Finally, after training, model outcomes can be post-processed so as to calibrate the predictions across the different sub-groups. These methods focus on the second reason behind biased systems we mentioned before, namely models."
+      },
+      "confidence": 0.95,
+      "task": "bias mitigation strategy evaluation",
+      "setup": "comparison of pre-training, during-training, and post-training interventions across multiple studies"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d6917789894b38ed_qr1",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "For example, when it comes to diagnosing diabetic retinopathy, a severe imbalance in the data used to train a model may result in a strong gap in the diagnostic accuracy (73% vs. 60.5%) for light-skinned vs. dark-skinned subjects[10]. In the same vein, it has been detected that models fed with chest radiography for pathology classification have a higher rate of underdiagnosis for under-served sub-populations, including Black patients[9], so that the use of these tools could increase the probability of those patients being sent home without receiving the care they need. Lower performance of AI models designed for cardiac MRI segmentation (in terms of Dice coefficient) in this group has also been found[11], which may result in compound biases if any further diagnostic analysis were required to be done on the automatically delineated silhouette."
+      },
+      "confidence": 0.95,
+      "quantity": "diagnostic accuracy gap",
+      "value": "73% vs. 60.5%",
+      "unit": null,
+      "context": "diabetic retinopathy diagnosis for light-skinned vs. dark-skinned subjects",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d6917789894b38ed_p1",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "For example, when it comes to diagnosing diabetic retinopathy, a severe imbalance in the data used to train a model may result in a strong gap in the diagnostic accuracy (73% vs. 60.5%) for light-skinned vs. dark-skinned subjects[10]. In the same vein, it has been detected that models fed with chest radiography for pathology classification have a higher rate of underdiagnosis for under-served sub-populations, including Black patients[9], so that the use of these tools could increase the probability of those patients being sent home without receiving the care they need. Lower performance of AI models designed for cardiac MRI segmentation (in terms of Dice coefficient) in this group has also been found[11], which may result in compound biases if any further diagnostic analysis were required to be done on the automatically delineated silhouette."
+      },
+      "confidence": 0.95,
+      "metric": "diagnostic accuracy",
+      "compared_to": "light-skinned vs. dark-skinned subjects"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_d6917789894b38ed_qr2",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "In this case, as a consequence of the difference in disease frequency, the model would not fulfill the demographic parity criterion (bottom row, right side) since the positive prediction rates vary between sub-groups : 40% (8 positive predictions over 20 cases) for the blue sub-group vs. 20% (4 positive predictions over 20 cases) for the red sub-group. On the other hand, the model would fulfill the equal opportunity criterion, as true positive rates match for both sub-groups reaching the value of 100%: 8 true positives out of 8 positive ground truth cases for the blue sub-group and 4 true positives out of 4 positive ground truth cases for the red sub-group . FN false negatives, FP false positives, TN true negatives, TP true positives."
+      },
+      "confidence": 0.95,
+      "quantity": "positive prediction rates",
+      "value": "40% vs. 20%",
+      "unit": null,
+      "context": "disease classification toy-example with two sub-populations (blue vs. red) having different disease prevalence (40% and 20%)",
+      "result_type": "threshold"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d6917789894b38ed_p2",
+      "evidence": {
+        "section": "What does it mean for an algorithm to be fair?",
+        "original_text": "In this case, as a consequence of the difference in disease frequency, the model would not fulfill the demographic parity criterion (bottom row, right side) since the positive prediction rates vary between sub-groups : 40% (8 positive predictions over 20 cases) for the blue sub-group vs. 20% (4 positive predictions over 20 cases) for the red sub-group. On the other hand, the model would fulfill the equal opportunity criterion, as true positive rates match for both sub-groups reaching the value of 100%: 8 true positives out of 8 positive ground truth cases for the blue sub-group and 4 true positives out of 4 positive ground truth cases for the red sub-group . FN false negatives, FP false positives, TN true negatives, TP true positives."
+      },
+      "confidence": 0.95,
+      "metric": "positive prediction rates",
+      "compared_to": "blue sub-group vs. red sub-group"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_d6917789894b38ed_p3",
+      "evidence": {
+        "section": "Bias mitigation strategies",
+        "original_text": "It must be noted, however, that methods designed to improve algorithmic fairness may lead in practice to different outcomes. In the best-case scenario, applying bias mitigation strategies increases the performance of the algorithm for all sub-groups[14], posing no additional constraints. At the other end of the spectrum, a reduction in the performance for all sub-groups may result from trying to achieve algorithmic fairness[17]. Indeed, interventions to achieve group fairness may result in tensions with the primary goal of the algorithms, requiring a compromise solution. This outcome poses a dilemma in healthcare settings, since it could be interpreted to violate the principles of bioethics, specifically that of non-maleficence. These two extremes are however rare, and a frequent outcome observed in the existing MIC fairness studies analyzed in this article, is performance improvement for the disadvantaged group at the expense of a reduction for another group or groups[11]. This trade-off is also not free of controversies, and once again we find ourselves in a situation where the decision of what is acceptable in a given setting requires careful human consideration."
+      },
+      "confidence": 0.95,
+      "metric": "algorithm fairness outcomes",
+      "compared_to": "different bias mitigation strategies"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_d6917789894b38ed_ca1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A plethora of work has shown that AI systems can systematically and unfairly be biased against certain populations in multiple scenarios. The field of medical imaging, where AI systems are beginning to be increasingly adopted, is no exception. Here we discuss the meaning of fairness in this area and comment on the potential sources of biases, as well as the strategies available to mitigate them. Finally, we analyze the current state of the field, identifying strengths and highlighting areas of vacancy, challenges and opportunities that lie ahead. With the exponential growth in the development of artificial intelligence (AI) systems for the analysis of medical images, hospitals and medical centers have started to deploy such tools in clinical practice. These systems are typically powered by a particular type of machine learning (ML) technique known as deep learning (DL). DL methods learn complex data representations by employing multiple layers of processing with different levels of abstraction, which are useful to solve a wide spectrum of tasks. In the context of medical image computing (MIC), examples of such tasks include pathology classification, anatomical segmentation, lesion delineation, image reconstruction, synthesis, registration and super-resolution, among many others. While the number of scientific publications related to DL methods applied to different MIC problems in laboratory conditions has grown exponentially, clinical trials aimed at evaluating medical AI systems have only recently started to gain momentum. In fact, according to the American College of Radiology, to date less than 200 AI medical products related to radiology and other imaging domains have been cleared by the United States Food and Drug Administration. Recently, the research community of fairness in ML has highlighted that ML systems can be biased against certain sub-populations, in the sense that they present disparate performance for different subgroups defined by protected attributes such as age, race/ethnicity, sex or gender, socioeconomic status, among others. In the field of healthcare, the potential unequal behavior of algorithms towards different population sub-groups could even be considered to go against the principles of bioethics: justice, autonomy, beneficence and non-maleficence. In this context, fostering fairness in MIC becomes essential. However, this is far from being a simple task: ensuring equity in ML deployments requires tackling different and multiple aspects along the whole design, development and implementation pathway. While the implications of fairness in ML for the broad field of healthcare have recently been surveyed and discussed, in this comment we focus on the sub-field of medical imaging. Indeed, when it comes to biases in ML systems that can benefit certain subpopulations in detriment of others, the field of medical imaging is not the exception."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_d6917789894b38ed_cl1",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Overall there is no denying that the nascent field of fairness in ML studies for MIC still presents important vacancies both in terms of medical specialties and in terms of the types problems being tackled, which will require increased efforts from the community. However, the rapid growth of the field, the development of new guidelines, and the gain of attention reported here, are highly positive and encourage the MIC community to increase its effort to contribute towards delivering a more equitable standard of care."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_d6917789894b38ed_lm1",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Firstly, so far algorithmic justice analysis has mostly been carried out in four medical imaging specialties: radiology, dermatology, ophthalmology and cardiology. We believe that this uneven coverage is partly due to the limited availability of MI databases with demographic information on the population, something which has been highlighted in several previous studies. The absence of this information may be related to the trade-off between data utility and privacy when releasing public databases, in the sense that including sensitive attributes useful for bias audit may go against the privacy of the individuals. To overcome these limitations, the implementation of technical solutions to simultaneously address the demands for data protection and utilization becomes extremely important. Moreover, it must be noted that the subset of sensitive attributes either directly reported or estimated varies from dataset to dataset. The currently most widely reported characteristics are age and sex or gender, followed by skin tone or race/ethnicity, and to a lesser extent socioeconomic characteristics. In some cases, where protected attributes are not available, estimates can be computed using image processing methods, and eventually manual labeling by professionals can be used. These strategies bring with them however an additional level of complexity and subtlety in their implementation which can limit reproducibility and comparison of results across sub-groups. Secondly, important vacancies exist regarding the MIC task to be tackled. The vast majority of studies conducted to date deal with pathology classification tasks. The study of fairness in the context of segmentation is however rare, and those of regression, registration, synthesis and super-resolution are rarer still, leaving entire areas to be explored."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_d6917789894b38ed_fw1",
+      "evidence": {
+        "section": "Challenges and outlook for fairness studies in MIC",
+        "original_text": "Incorporating fairness audits as common practice in MIC studies. As highlighted by a recent article which analyzed the common practices when reporting results for diagnostic algorithms in one of the major conferences on MIC, demographics are rarely mentioned, and disaggregated results are infrequently discussed by scientific publications in this domain. This matter is also addressed by the FUTURE-AI Guidelines, which include principles and consensus recommendations for trustworthy AI in medical imaging, and not only focus on fairness but also cover other fundamental dimensions like universality, traceability, usability, robustness and explainability. In that sense, we believe the FUTURE-AI guidelines may constitute a practical tool to improve the publication practices of our community. Increasing diversity in database construction. As researchers working in Latin America, we want to stress the importance of widening geographic representation in the building of publicly available MI datasets. It has been acknowledged by several studies that the vast majority of MI databases employed for AI developments originate from high income countries, mostly in Europe and North America. This introduces a clear selection bias since the demographics of these countries do not match that of other areas like Africa, Asia or Latin America. This fact, combined with experimental studies suggesting that race/ethnicity imbalance in MI databases may be one of the reasons behind unequal performance, calls for action towards building truly international databases which include patients from low income countries. This issue becomes even more relevant in the light of recent findings which confirm that AI can trivially predict protected attributes from medical images, even in a setting where clinical experts cannot like race/ethnicity in chest X-ray and ancestry in histologic images. While this fact by itself does not immediately mean that systems will be biased, in combination with a greedy optimization scheme in a setting with strong data imbalance, it may provide a direct vector for the reproduction of pre-existing racial disparities. In this regard, initiatives such as the All of Us Research Program, which invite participants from different sub-groups in the United States to create a more diverse health database, hope to promote and improve biomedical research, as well as medical care. Efforts such as this one, currently focused on an individual country, could be replicated and lay the groundwork for a collaborative enterprise that transcends geographic barriers. Rethinking fairness in the context of medical image analysis. For some time now, research on fairness in ML has been carried out in decision-making scenarios such as loan applications, hiring systems, criminal behavior reexamination, among others. However, the field of healthcare in general, and medical imaging in particular, exhibit unique characteristics that require adapting the notion of fairness to this context. Take chest X-ray images for example: particular diagnostic tasks could be easier in one sub-population than the other due to anatomical differences. How to ensure fairness across subpopulations in this case is far from obvious."
+      },
+      "confidence": 0.92
+    }
+  ]
+}

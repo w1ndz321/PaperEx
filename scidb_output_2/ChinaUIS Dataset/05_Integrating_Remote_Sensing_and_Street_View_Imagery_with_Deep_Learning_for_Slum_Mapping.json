@@ -1,0 +1,541 @@
+{
+  "metadata": {
+    "doc_id": "doc_4f1c298df576dd98",
+    "source_file": "05_Integrating_Remote_Sensing_and_Street_View_Imagery_with_Deep_Learning_for_Slum_Mapping.md",
+    "title": "Integrating Remote Sensing and Street View Imagery with Deep Learning for Urban Slum Mapping: A Case Study from Bandung City",
+    "year": 2025,
+    "doi": "10.3390/app15148044",
+    "abstract": "Academic Editor: Mauro Lo Brutto \n\nReceived: 19 May 2025 Revised: 11 July 2025 Accepted: 17 July 2025 Published: 19 July 2025 \n\n**Citation:** Sijabat, K.R.; Aufaristama, M.; Wirawan Arief, M.C.; Dharmawan, I.A. Integrating Remote Sensing and Street View Imagery with Deep Learning for Urban Slum Mapping: A Case Study from Bandung City. _Appl. Sci._ **2025** , _15_ , 8044. https://doi.org/ 10.3390/app15148044 \n\n**Copyright:** © 2025 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/ licenses/by/4.0/). \n\nIn pursuit of the Sustainable Development Goals (SDGs)’s objective of eliminating slum cities, the government of Indonesia has initiated a survey-based slum mapping program. Unfortunately, recent observations have highlighted considerable inconsistencies in the mapping process. These inconsistencies can be attributed to various factors, including variations in the expertise of surveyors and the intricacies of the indicators employed to characterize slum conditions. Consequently, reliable data is lacking, which poses a significant barrier to effective monitoring of slum upgrading programs. Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The city of Bandung is a pertinent case study, as it is facing a considerable increase in population density. These slums collectively encompass approximately one-tenth of Bandung City’s population as of 2020. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study. \n\n_Appl. Sci._ **2025** , _15_ , 8044 \n\nhttps://doi.org/10.3390/app15148044 \n\n_Appl. Sci._ **2025** , _15_ , 8044 \n\n2 of 24 \n\n**Keywords:** urban slum mapping; remote sensing; street view imagery; deep learning; data fusion",
+    "introduction": "Bandung, being Indonesia’s most populous city, is the dynamic urban centre and capital of West Java Province, which is located on the western part of Java Island. The city is renowned for its natural beauty, vibrant culture, and economic potential. However, the stark contrast between the rapid urbanization and the presence of slums in this metropolitan city is indicative of a significant socio-economic disparity. A significant proportion of Bandung’s population inhabits slums and squatter settlements, characterized by substandard living conditions and constrained access to fundamental infrastructure and utilities. \n\nThe expansion of housing and slums in Bandung City is an inevitable consequence of the city’s rapid population growth. As of 2023, the population of Bandung City comprised 2,569,107 people with a population density of 15,355/km[2] [1]. Consequently, the necessity for adequate and secure housing and settlements is also rising, while the capacity of local and central governments to deliver infrastructure and utility facilities has not been able to keep pace. The government’s capacity to prevent and alleviate slum housing and settlements are constrained by the division of authority. According to Regulation of the Minister of Public Works and Housing Number 14/PRT/M/2018 of 2018 on Prevention and Quality Improvement of Slum Housing and Slum Settlements, the authority of the city government extends to slum areas with an area of less than 10 hectares, while those with an area between 10 and 15 hectares come under the jurisdiction of the provincial government. However, slum areas with an area of more than 15 hectares fall under the purview of the central government [2]. \n\nThe assessment of slum areas in Indonesia, particularly in Bandung City, is predominantly the responsibility of local governments, which categorize these areas into “light slum” and “Medium Slum.” This classification is crucial for understanding the varying degrees of challenges faced by these communities. According to the Regulation of the Minister of Public Works and Housing Number 14/PRT/M/2018, light slums are identified by their substandard housing and infrastructure, which require basic improvements. In contrast, medium slums face more severe issues such as overcrowding and limited access to essential services, necessitating more comprehensive interventions [2]. \n\nA comprehensive understanding of slums is imperative for policymakers, researchers, and residents alike, as it facilitates the identification and resolution of the numerous challenges associated with slums. It is evident that there are common features observable in populations that are increasing in number, yet this is not being matched by an adequate supply of housing, land, or poor infrastructure. In many cases, residents often have no access to basic infrastructure and services. The classification of slum areas is delineated by the Regulation Number 14/2018 about the Prevention and Quality Improvement of Slum Housing and Slum Settlements promulgated by the Minister of Public Works and Public Housing. This classification is divided into three categories: light, medium, and heavy. The assessment is based on seven indicators, which are scored as follows: building, environmental, roads, drinking water supply, environmental drainage, wastewater management, waste management, and availability of fire protection. The categorization of slum districts as light, medium or heavy is predicated on infrastructural deficiencies, the gravity of the issue, and the infrastructure’s critical or vulnerable state. The classification of settlements as light slums denote the necessity for repairs to be conducted on basic infrastructure elements that are already in existence but are not adequately maintained. In the case of medium \n\n_Appl. Sci._ **2025** , _15_ , 8044 \n\n3 of 24 \n\nslums, the requirement is for the revitalization of settlements. Finally, in instances classified as heavy slums, the necessity arises for either relocation or reorganization through the intervention of government-sponsored programs. \n\nThe challenges confronting slum dwellers are manifold, encompassing housing and infrastructure that are vulnerable to flooding and other environmental hazards, resulting in unstable living conditions. Moreover, there is a paucity of clean water and proper and safe sanitation facilities. In addition, there are gaps in health services, limited educational opportunities, and economic disparities. \n\nSlum mapping methodologies can be classified into three primary categories: surveybased, participatory, and remote sensing (RS)-based approaches [3]. While both surveybased and participatory methods demand significant human resources for effective implementation, RS-based techniques are less resource intensive in terms of fieldwork; however, they necessitate specialized expertise in remote sensing for accurate image interpretation [4]. The advantages of utilizing RS data include the ability to conduct regular updates and the capacity to gather information from aerial perspectives, which are particularly beneficial for areas that are otherwise difficult to access on the ground [5]. \n\nIn recent years, high-resolution remote sensing technology has seen widespread application in the field of mapping and analyzing changes in land cover, as evidenced by numerous research studies [6]. This land cover change has been identified as a key indicator in the assessment of remote sensing slum mapping techniques, as the previous researchers have extensively explored its potential [3]. A conventional approach that has been employed is visual image interpretation, wherein experts manually delineate slums. While this method has been shown to produce highly accurate slum maps [7], it is inherently time consuming and its accuracy is dependent on the subjective perspectives of the experts involved. Consequently, disparities in boundary identification may emerge among different experts [8]. In instances where official delineations of slum areas are deemed to be obsolete or incompatible with contemporary realities, visual interpretation is frequently utilized as a means to validate boundaries defined by alternative methods. \n\nAn alternative to manual delineation is the Automatic Machine Learning (ML) method, which offers a systematic approach to defining slum boundaries using remote sensing imagery (RSI). Within this framework, Object-Based Image Analysis (OBIA) represents a specific subset of ML techniques designed for slum mapping [9]. This process begins with the segmentation of images, wherein adjacent pixels are clustered into ‘objects’ that correspond to significant features within the imagery, such as buildings and vegetation. Each object is characterized by attributes like size and shape, which are instrumental in identifying slum areas through a predefined set of rules [10,11]. However, the formulation of these rule sets poses challenges, as the morphological characteristics of slums can vary significantly both between and within urban areas [12]. \n\nIt is evident that contemporary deep learning (DL) methodologies have become a prevailing trend within the domain of image classification, encompassing applications in the field of slum mapping. These advanced techniques utilize artificial neural networks to automatically learn features from data, with the potential to improve the accuracy and efficiency of slum identification in comparison to traditional methods. The integration of DL with existing ML approaches, such as Random Forest (RF), enables researchers to enhance the classification of image objects in complex urban landscapes. This combination of methodologies has been demonstrated to enhance the accuracy of slum mapping, while also circumventing the limitations frequently associated with rule-based OBIA techniques. Consequently, this approach provides a more robust solution for urban analysis [9,13]. \n\nRemote sensing imagery offers a broad perspective of a region but falls short in conveying intricate details that are essential for a comprehensive understanding of slum \n\n_Appl. Sci._ **2025** , _15_ , 8044 \n\n4 of 24 \n\nenvironments. It lacks the capacity to reveal specific characteristics such as the materials used in the wall construction, the number of stories in buildings, or the existence of open drainage systems within the community. To acquire this nuanced information, it is essential to conduct ground-level investigations through methods such as field surveys, interviews, focus groups, or by utilizing street view images (SVIs), which capture photographs from the ground perspective. Despite their potential, the application of SVIs in slum identification remains limited, as noted by [14]. \n\nFurthermore, the inherent limitations of SVIs must be acknowledged, as they primarily provide localized data or insights along well-traveled streets, thereby failing to generate comprehensive spatial representations of slum areas. For instance, in scenarios where access is restricted to pedestrian pathways, relying solely on SVIs becomes impractical, given that these images are typically captured from vehicles navigating the area. This constraint underscores the necessity for a multifaceted approach to data collection that encompasses various methodologies to accurately map and understand the complexities of slum regions accurately. \n\nMeanwhile, Bandung City, characterized by a confluence of population pressure, economic inequality, inadequate governance of land and housing legality, and its basin geography, harbors a high degree of vulnerability to annual encroachment of slum areas. Bandung City Government has hitherto determined slum areas on a quinquennial basis through the utilization of a gradual field survey method. Nevertheless, given the potential for slum areas to expand on an annual basis, there is a need for more inclusive urban governance. Consequently, this research recommends the periodic and inclusive compilation of spatial data inventories to facilitate the effective targeting of slum upgrading initiatives. This inventory can be conducted using an integrated and regular method with a multiresolution texture analysis method. This method has been developed to identify slums in remote sensing images [15]. Furthermore, the integration of remote sensing networks and street view imagery (SVI) for slum mapping in Jakarta City has been enhanced by employing deep learning networks, including the VGG method [16]. VGG is a convolutional neural network (CNN) that has become synonymous with its deep architecture, which consists of multiple layers. The efficacy of the system is particularly pronounced in image classification tasks, a phenomenon that can be attributed to its capacity to capture intricate features through the utilization of multiple convolutional layers [16,17]. The efficacy of remote sensing and the incorporation of street view imagery as a tool for mapping slums in Bandung City will be assessed through a comparative analysis with field survey results in several areas of the city in 2024. \n\nThe conditions described above were the catalyst for the author’s research on the spatial mapping inventory of potential slum areas in Bandung City with remote sensing and street view imagery and a comparative analysis of the effectiveness of this method as opposed to field surveys.",
+    "primary_discipline": {
+      "level1": "测绘科学技术",
+      "level2": "摄影测量与遥感",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "计算机科学技术",
+        "level2": "人工智能",
+        "level3": null
+      },
+      {
+        "level1": "土木建筑工程",
+        "level2": "城市规划",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "urban slum mapping",
+      "remote sensing",
+      "street view imagery",
+      "deep learning",
+      "data fusion"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:08:13.182554+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In pursuit of the Sustainable Development Goals (SDGs)’s objective of eliminating slum cities, the government of Indonesia has initiated a survey-based slum mapping program. Unfortunately, recent observations have highlighted considerable inconsistencies in the mapping process. These inconsistencies can be attributed to various factors, including variations in the expertise of surveyors and the intricacies of the indicators employed to characterize slum conditions. Consequently, reliable data is lacking, which poses a significant barrier to effective monitoring of slum upgrading programs. Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The city of Bandung is a pertinent case study, as it is facing a considerable increase in population density. These slums collectively encompass approximately one-tenth of Bandung City’s population as of 2020. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.98,
+      "term": "urban slum mapping",
+      "normalized": "城市贫民窟测绘",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.97,
+      "term": "remote sensing imagery",
+      "normalized": "遥感影像",
+      "std_label": "RSI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.97,
+      "term": "street view imagery",
+      "normalized": "街景影像",
+      "std_label": "SVI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.96,
+      "term": "deep learning",
+      "normalized": "深度学习",
+      "std_label": "DL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c5",
+      "evidence": {
+        "section": "3.2. Methodology",
+        "original_text": "The chosen deep learning framework is a Fully Convolutional Network (FCN), selected on the basis that it is considered to be appropriate for the available dataset. The FCN framework is capable of processing images of various dimensions, with no limitation to a specific dimension. The primary function of this model is to perform segmentation and generate predictions at the pixel level. This render is highly suitable for the segmentation of urban areas based on the Sentinel imagery [19,20]. Furthermore, the FCN model is distinguished by its comparatively modest parameter count, a feature that stands in contrast to architectures such as fully connected networks. This design choice is intended to guarantee the model’s enhanced efficiency and processing speed."
+      },
+      "confidence": 0.95,
+      "term": "Fully Convolutional Network",
+      "normalized": "全卷积网络",
+      "std_label": "FCN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c6",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "Persello and Stein developed a Fully Convolutional Neural Network with a Dilated Kernel (FCN-DK) specifically for the purpose of slum mapping [23]. Among the various models within this network framework, the Fully Convolutional Network (FCN) has demonstrated a higher level of effectiveness relative to its counterparts. Consequently, the FCN model is employed for the identification of slum areas utilizing remote sensing imagery (RSI) alongside a combination of RSI and street view imagery (SVI). Prior studies have investigated urban land use classification by merging RSI with SVI through the FCN-VGG16 architecture; however, this approach is hindered by significant computational demands when compared to the standard FCN [14]. Therefore, this research focuses exclusively on the implementation of FCN and FCN-DK models. The FCN-DK architecture employs a dilated convolution method, which effectively broadens the receptive field while simultaneously reducing the number of learnable parameters, thus mitigating the risk of over-fitting [24]. This characteristic makes FCN-DK particularly appealing for applications that require efficient learning from complex datasets. Despite its advantages, the application of FCN-DK in integrating datasets from varying perspectives—specifically, aerial views from RSI and ground-level images from SVI—remains under-explored."
+      },
+      "confidence": 0.95,
+      "term": "Fully Convolutional Neural Network with a Dilated Kernel",
+      "normalized": "扩张核全卷积神经网络",
+      "std_label": "FCN-DK"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The city of Bandung is a pertinent case study, as it is facing a considerable increase in population density. These slums collectively encompass approximately one-tenth of Bandung City’s population as of 2020. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.96,
+      "term": "field survey",
+      "normalized": "实地调查",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4f1c298df576dd98_c8",
+      "evidence": {
+        "section": "4. Results",
+        "original_text": "The performance metrics for the four slum classification networks utilized in this research are detailed in Table 3. The findings for the various models were tested using Equations (1)–(3), the results of which indicated that a model utilizing solely remote sensing imagery (RSI), specifically the Fully Convolutional Network (FCN), attained an intersection over union (IoU) of 57.28. In contrast, the FCN with Deep Kernel (FCN DK) recorded an IoU of 54.47, while the network that combines both RSI and street view imagery (SVI), referred to as FCN-DK, attained an IoU of 86.01, and the standard FCN reached an IoU of 78.89. Notably, the FCN-DK model, which integrates both types of imagery, demonstrated superior accuracy relative to the FCN alone, achieving the highest F1 score and IoU. This enhancement in performance can be attributed to a 1.83% increase in recall when comparing the FCN-DK to the FCN. Concurrently, the field survey results were subjected to testing using decision tree modeling. The results of the model evaluation on the 2024 survey data demonstrated outstanding classification performance, attaining perfect accuracy. As demonstrated by the confusion matrix, the 435 samples classified as ‘light slum’ and the 27 samples designated as ‘medium slum’ were accurately identified, with no errors observed in the prediction process. This finding underscores the survey’s high reliability, even when evaluated on unseen data."
+      },
+      "confidence": 0.95,
+      "term": "slum classification",
+      "normalized": "贫民窟分类",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4f1c298df576dd98_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The city of Bandung is a pertinent case study, as it is facing a considerable increase in population density. These slums collectively encompass approximately one-tenth of Bandung City’s population as of 2020. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.94,
+      "head": "doc_4f1c298df576dd98_c2",
+      "relation_type": "enhances",
+      "relation_surface": "have emerged as a highly effective and accurate method for identifying",
+      "tail": "doc_4f1c298df576dd98_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4f1c298df576dd98_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.93,
+      "head": "doc_4f1c298df576dd98_c3",
+      "relation_type": "enhances",
+      "relation_surface": "integration enhances the precision",
+      "tail": "doc_4f1c298df576dd98_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4f1c298df576dd98_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.92,
+      "head": "doc_4f1c298df576dd98_c4",
+      "relation_type": "uses",
+      "relation_surface": "employing deep learning (DL) techniques",
+      "tail": "doc_4f1c298df576dd98_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4f1c298df576dd98_r4",
+      "evidence": {
+        "section": "4. Results",
+        "original_text": "The performance metrics for the four slum classification networks utilized in this research are detailed in Table 3. The findings for the various models were tested using Equations (1)–(3), the results of which indicated that a model utilizing solely remote sensing imagery (RSI), specifically the Fully Convolutional Network (FCN), attained an intersection over union (IoU) of 57.28. In contrast, the FCN with Deep Kernel (FCN DK) recorded an IoU of 54.47, while the network that combines both RSI and street view imagery (SVI), referred to as FCN-DK, attained an IoU of 86.01, and the standard FCN reached an IoU of 78.89. Notably, the FCN-DK model, which integrates both types of imagery, demonstrated superior accuracy relative to the FCN alone, achieving the highest F1 score and IoU. This enhancement in performance can be attributed to a 1.83% increase in recall when comparing the FCN-DK to the FCN. Concurrently, the field survey results were subjected to testing using decision tree modeling. The results of the model evaluation on the 2024 survey data demonstrated outstanding classification performance, attaining perfect accuracy. As demonstrated by the confusion matrix, the 435 samples classified as ‘light slum’ and the 27 samples designated as ‘medium slum’ were accurately identified, with no errors observed in the prediction process. This finding underscores the survey’s high reliability, even when evaluated on unseen data."
+      },
+      "confidence": 0.91,
+      "head": "doc_4f1c298df576dd98_c6",
+      "relation_type": "enhances",
+      "relation_surface": "demonstrates enhanced performance",
+      "tail": "doc_4f1c298df576dd98_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4f1c298df576dd98_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The city of Bandung is a pertinent case study, as it is facing a considerable increase in population density. These slums collectively encompass approximately one-tenth of Bandung City’s population as of 2020. The present investigation evaluates the mapping results obtained from four distinct deep learning (DL) networks: The first category comprises FCN, which utilizes RSI exclusively, and FCN-DK, which also employs RSI as its sole input. The second category consists of two networks that integrate RSI and SVI, namely FCN and FCN-DK. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.94,
+      "head": "doc_4f1c298df576dd98_c7",
+      "relation_type": "compares",
+      "relation_surface": "compare its accuracy with a field survey",
+      "tail": "doc_4f1c298df576dd98_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4f1c298df576dd98_d1",
+      "evidence": {
+        "section": "3.1.1. Slum Reference Map",
+        "original_text": "Bandung City Government has undertaken a systematic mapping of areas classified as slum housing and settlements, adhering to the criteria established in the Ministry of Public Works and Public Housing Regulation Number 14 of 2018, which focuses on the prevention and improvement of the quality of slum housing. The Mayor of Bandung’s Decree Number: 648/Kep.1227-DPKP3/2020 delineates specific locations of slum housing, revealing a diverse range of conditions across the city. Notably, light slum areas encompass approximately 474.0809 hectares across 44 urban villages, while medium slum areas account for 17.865 hectares within 19 urban villages. The Sukahaji urban village in the Babakan Ciparay sub-district has been identified as the largest slum area, covering 30.85 hectares, underscoring the persistent challenges that the Bandung City Government must navigate in its efforts to address slum conditions effectively. Additionally, a detailed inventory of slum areas has been compiled and is available as per the Mayor’s Decree. The 2020 slum mapping data depicted in Figure 2, which is based on Bandung’s mayor’s regulation, is used in the slum classification modeling process. This data consists of two main categories: ‘light slum’ and ‘medium slum.’ Of the available data, 859 subdistricts fall into the ‘light slum’ category, while only 44 fall into the ‘medium slum’ category. In addition, we integrated key slum indicators developed by governmental bodies and academic sources to establish a comprehensive definition of slum areas, along with a corresponding set of indicators. Additionally, the official reference map was adjusted in accordance with this definition, as elaborated in the subsequent Data Preparation Section. This modified map served as a benchmark for evaluating the accuracy of slum maps generated through remote sensing imagery and street view imagery utilizing a deep learning network."
+      },
+      "confidence": 0.95,
+      "name": "Bandung City Slum Reference Map (2020)",
+      "modality": "tabular",
+      "domain": "urban geography, remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4f1c298df576dd98_d2",
+      "evidence": {
+        "section": "3.1.2. Remote Sensing Imagery",
+        "original_text": "Sentinel-2 is a remote sensing satellite system that comprises two satellites, Sentinel-2A and Sentinel-2B, which operate in a synchronized 180-degree orbit. These satellites are equipped with a Multispectral Instrument (MSI), a sophisticated sensor capable of capturing data across 13 spectral bands, spanning the visible, near-infrared, and shortwave infrared regions of the electromagnetic spectrum (European Space Agency, 2023). A significant benefit of the Sentinel-2 system is its impressive spatial resolution, achieving 10 m for the blue, green, and red bands, and 20 m for the near-infrared and shortwave infrared bands. The imagery produced by the Sentinel-2A MSI provides a detailed representation of urban areas, characterized by high pixel resolution that enhances clarity. To maximize the effectiveness of this imagery, a smoothing process is employed, utilizing the original image from the Sentinel-2A MSI. This process is crucial for refining the visual quality of the built-up land observed, as the high pixel values in the Sentinel-2A MSI image facilitate a clearer depiction of urban landscapes. The classification of slum areas in Bandung City using Sentinel-2A imagery was facilitated by the efficacy of several spectral indices, a consequence of the city’s diverse land cover, which includes vegetation, buildings, and tributaries. The Normalized Difference Built-up Index (NDBI) has been identified as a reliable indicator of residential areas, while the Normalized Difference Vegetation Index (NDVI) has been shown to be a valid metric for assessing vegetation cover, particularly in contexts where vegetation is sparse, as is often the case in slum areas. The Normalized Difference Water Index (NDWI) and the Modified NDWI (MNDWI) have been demonstrated to be significant in the identification of water bodies in proximity to slum areas, with the MNDWI exhibiting superior accuracy in urban contexts. The Enhanced Vegetation Index (EVI) and Soil-Adjusted Vegetation Index (SAVI) have been utilized to differentiate between slum and non-slum areas, with the former being particularly effective in discerning these distinctions based on soil brightness. In conclusion, the Urban Index (UI) is employed to map urban areas and building density. The integration of these indices with machine learning algorithms has the potential to enhance the precision of slum classification, thereby facilitating urban planning initiatives."
+      },
+      "confidence": 0.9,
+      "name": "Sentinel-2A Remote Sensing Imagery for Bandung City",
+      "modality": "image",
+      "domain": "remote sensing, urban mapping"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4f1c298df576dd98_d3",
+      "evidence": {
+        "section": "3.1.3. Ancillary Data",
+        "original_text": "Supplemental datasets cover the road network, the footprint of buildings, and zoning information, which are available in the shape file format on the official website of the city of Bandung government. It is important to clarify that these datasets were utilized to enhance the reference data rather than serving as direct inputs for the deep learning algorithm employed in the analysis. The first of these additional datasets pertains to the road network derived from the neighbourhood road database as of 2021. This dataset includes a shape file accompanied by attribute tables that provide detailed information on road length, width, condition, type, and section codes. The insights gained from road condition data are instrumental in identifying suitable locations for SVI downloads and facilitating the slum classification assessment process. The second dataset focuses on the density of the buildings as described in The Spatial Planning and Detailed Plans of Bandung City. This shape file provides critical information regarding the area of each building, the total number of buildings, and the density expressed in units per square meter. These data are essential to compare the density of the buildings with the official 2020 slum reference map, which has been validated by the West Java Regional Settlement Infrastructure Agency. The third piece of supporting evidence derives from a survey conducted in 2024, which focused on potential housing and slum areas, adhering to the indicators and procedures established for slum verification as outlined in Indonesian regulations. Specifically, this includes the Regulation of the Minister of Public Works and Public Housing Number 14 of 2018 and the Circular Letter of the Minister of Public Works and Public Housing Number 41 of 2021. The data obtained from this survey were instrumental in refining the slum reference layer, thereby delineating zones characterized by illegal occupancy. Consequently, residential structures within these designated areas often develop informally, contributing to the expansion of larger slum environments."
+      },
+      "confidence": 0.9,
+      "name": "Ancillary Data for Bandung City (Road Network, Building Footprint, Zoning)",
+      "modality": "tabular",
+      "domain": "urban planning, geospatial"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4f1c298df576dd98_d4",
+      "evidence": {
+        "section": "3.1.4. Street View Imagery",
+        "original_text": "A systematic grid was established to catalog latitude and longitude in meters, facilitating the retrieval of street view imagery (SVI). By employing these geographic coordinates, images were sourced from the Google Street View Static API, capturing visuals in all four cardinal directions: north, south, east, and west. Figure 3 illustrates the SVI acquired from one of the slum regions in Bandung City, as referenced in the official slum map for the year 2025. Random points were created along the network of minor and branch roads, ensuring a roughly equal distribution between slum and non-slum regions based on the modified slum reference data, utilizing the “random points along line” function in QGIS. To maintain clarity in deep learning classification, points located at the interface of slum and non-slum areas were omitted. This exclusion specifically pertained to points associated with priority slums identified in SVI images, which included slum areas exceeding 10 hectares. These encompassed urban villages such as Sukaraja, Ciumbuleuit, Sukahaji, Pajajaran, Cijerah, Babakan, Babakan Ciparay, Kopo, Pasirwangi, Jamika, Sukabungah, Kebon Jayanti, Sadang Serang, Cibangkong, and Babakan Asih. Ultimately, the dataset comprised 2904 random points for slum areas and 420 for the database of neighborhood roads throughout Bandung City that were developed to prevent the growth of housing and slum areas, as depicted in Figure 3. The collection of these randomly generated point locations is referred to as Google street view (GSV) locations. In total, 2904 images were acquired for slum areas, while 420 images were obtained for neighborhood roads in Bandung City residential area, although some GSV locations yielded no images. Each SVI was meticulously reviewed for any anomalies, with images that were excessively dark or captured from within buildings being excluded from the dataset. The final compilation thus included 3324 images representing both slum and non-slum areas."
+      },
+      "confidence": 0.9,
+      "name": "Google Street View Imagery (SVI) Dataset for Bandung City Slum Areas",
+      "modality": "image",
+      "domain": "urban mapping, computer vision"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4f1c298df576dd98_d5",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "The 2024 slum survey yielded 435 points, categorized as ‘light slum’, and 27 points, categorized as ‘medium slum’. The total area encompassed by these points was 248.38 ha, dispersed across 27 sub-districts, 72 urban villages, and 142 areas. Following the survey, the data will undergo a rigorous process of evaluation and validation, with reference to the 2020 slum reference map of Bandung City, to ensure the accuracy and integrity of the results."
+      },
+      "confidence": 0.85,
+      "name": "2024 Field Survey Slum Classification Dataset",
+      "modality": "tabular",
+      "domain": "urban planning, social survey"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4f1c298df576dd98_ds1",
+      "evidence": {
+        "section": "3.1.1. Slum Reference Map",
+        "original_text": "Bandung City Government has undertaken a systematic mapping of areas classified as slum housing and settlements, adhering to the criteria established in the Ministry of Public Works and Public Housing Regulation Number 14 of 2018, which focuses on the prevention and improvement of the quality of slum housing. The Mayor of Bandung’s Decree Number: 648/Kep.1227-DPKP3/2020 delineates specific locations of slum housing, revealing a diverse range of conditions across the city. Notably, light slum areas encompass approximately 474.0809 hectares across 44 urban villages, while medium slum areas account for 17.865 hectares within 19 urban villages. The Sukahaji urban village in the Babakan Ciparay sub-district has been identified as the largest slum area, covering 30.85 hectares, underscoring the persistent challenges that the Bandung City Government must navigate in its efforts to address slum conditions effectively. Additionally, a detailed inventory of slum areas has been compiled and is available as per the Mayor’s Decree. The 2020 slum mapping data depicted in Figure 2, which is based on Bandung’s mayor’s regulation, is used in the slum classification modeling process. This data consists of two main categories: ‘light slum’ and ‘medium slum.’ Of the available data, 859 subdistricts fall into the ‘light slum’ category, while only 44 fall into the ‘medium slum’ category."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Slum classification criteria based on Indonesian ministerial regulation and local government decree"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4f1c298df576dd98_ds2",
+      "evidence": {
+        "section": "3.2.1. Identification Stage",
+        "original_text": "The characteristics of slums were delineated through an extensive examination of the existing literature and regulatory frameworks pertaining to slum housing and conditions. This examination encompassed the identification of indicators established by various governmental bodies at global, national (specifically Indonesia), and local (Bandung City) levels, aimed at defining slum characteristics. Furthermore, the academic literature focused on the local context of Bandung City was reviewed to gain insights into the specific definitions of slums as they pertain to the unique attributes of different areas within the city. Additionally, this research incorporated interviews with stakeholders, possessing significant local knowledge which greatly enhanced the understanding of slum characteristics within the Bandung context. Drawing from these findings and the insights gained from local experts, a comprehensive overview of identifiable slum characteristics was developed, utilizing the Remote Sensing Imagery (RSI), Street View Imagery (SVI), and supplementary data. These identified characteristics serve as a foundation to conceptualize the notion of slums for the purposes of this study. The subsequent Table 1 illustrates the transformation of the selected slum characteristics into relevant mapping indicators."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Slum mapping indicators derived from literature, regulations, and stakeholder interviews"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4f1c298df576dd98_ds3",
+      "evidence": {
+        "section": "3.1.3. Ancillary Data",
+        "original_text": "Supplemental datasets cover the road network, the footprint of buildings, and zoning information, which are available in the shape file format on the official website of the city of Bandung government. It is important to clarify that these datasets were utilized to enhance the reference data rather than serving as direct inputs for the deep learning algorithm employed in the analysis. The first of these additional datasets pertains to the road network derived from the neighbourhood road database as of 2021. This dataset includes a shape file accompanied by attribute tables that provide detailed information on road length, width, condition, type, and section codes. The insights gained from road condition data are instrumental in identifying suitable locations for SVI downloads and facilitating the slum classification assessment process. The second dataset focuses on the density of the buildings as described in The Spatial Planning and Detailed Plans of Bandung City. This shape file provides critical information regarding the area of each building, the total number of buildings, and the density expressed in units per square meter. These data are essential to compare the density of the buildings with the official 2020 slum reference map, which has been validated by the West Java Regional Settlement Infrastructure Agency."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Ancillary data format: shape files with attribute tables for road network and building footprint"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4f1c298df576dd98_ds4",
+      "evidence": {
+        "section": "3.1.4. Street View Imagery",
+        "original_text": "A systematic grid was established to catalog latitude and longitude in meters, facilitating the retrieval of street view imagery (SVI). By employing these geographic coordinates, images were sourced from the Google Street View Static API, capturing visuals in all four cardinal directions: north, south, east, and west. Figure 3 illustrates the SVI acquired from one of the slum regions in Bandung City, as referenced in the official slum map for the year 2025. Random points were created along the network of minor and branch roads, ensuring a roughly equal distribution between slum and non-slum regions based on the modified slum reference data, utilizing the “random points along line” function in QGIS. To maintain clarity in deep learning classification, points located at the interface of slum and non-slum areas were omitted. This exclusion specifically pertained to points associated with priority slums identified in SVI images, which included slum areas exceeding 10 hectares. These encompassed urban villages such as Sukaraja, Ciumbuleuit, Sukahaji, Pajajaran, Cijerah, Babakan, Babakan Ciparay, Kopo, Pasirwangi, Jamika, Sukabungah, Kebon Jayanti, Sadang Serang, Cibangkong, and Babakan Asih. Ultimately, the dataset comprised 2904 random points for slum areas and 420 for the database of neighborhood roads throughout Bandung City that were developed to prevent the growth of housing and slum areas, as depicted in Figure 3."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "SVI collection protocol using Google Street View Static API with systematic grid and cardinal direction capture"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4f1c298df576dd98_ds5",
+      "evidence": {
+        "section": "3.1.4. Street View Imagery",
+        "original_text": "The collection of these randomly generated point locations is referred to as Google street view (GSV) locations. In total, 2904 images were acquired for slum areas, while 420 images were obtained for neighborhood roads in Bandung City residential area, although some GSV locations yielded no images. Each SVI was meticulously reviewed for any anomalies, with images that were excessively dark or captured from within buildings being excluded from the dataset. The final compilation thus included 3324 images representing both slum and non-slum areas."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "SVI data quality control: exclusion of excessively dark images or images captured from within buildings"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4f1c298df576dd98_ds6",
+      "evidence": {
+        "section": "3.1.3. Ancillary Data",
+        "original_text": "The third piece of supporting evidence derives from a survey conducted in 2024, which focused on potential housing and slum areas, adhering to the indicators and procedures established for slum verification as outlined in Indonesian regulations. Specifically, this includes the Regulation of the Minister of Public Works and Public Housing Number 14 of 2018 and the Circular Letter of the Minister of Public Works and Public Housing Number 41 of 2021. The data obtained from this survey were instrumental in refining the slum reference layer, thereby delineating zones characterized by illegal occupancy. Consequently, residential structures within these designated areas often develop informally, contributing to the expansion of larger slum environments."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Field survey protocol adhering to Indonesian ministerial regulation and circular letter for slum verification"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4f1c298df576dd98_m1",
+      "evidence": {
+        "section": "3.2. Methodology",
+        "original_text": "The chosen deep learning framework is a Fully Convolutional Network (FCN), selected on the basis that it is considered to be appropriate for the available dataset. The FCN framework is capable of processing images of various dimensions, with no limitation to a specific dimension. The primary function of this model is to perform segmentation and generate predictions at the pixel level. This render is highly suitable for the segmentation of urban areas based on the Sentinel imagery [19,20]. Furthermore, the FCN model is distinguished by its comparatively modest parameter count, a feature that stands in contrast to architectures such as fully connected networks. This design choice is intended to guarantee the model’s enhanced efficiency and processing speed."
+      },
+      "confidence": 0.95,
+      "name": "Fully Convolutional Network (FCN)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4f1c298df576dd98_m2",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "Persello and Stein developed a Fully Convolutional Neural Network with a Dilated Kernel (FCN-DK) specifically for the purpose of slum mapping [23]. Among the various models within this network framework, the Fully Convolutional Network (FCN) has demonstrated a higher level of effectiveness relative to its counterparts. Consequently, the FCN model is employed for the identification of slum areas utilizing remote sensing imagery (RSI) alongside a combination of RSI and street view imagery (SVI). Prior studies have investigated urban land use classification by merging RSI with SVI through the FCN-VGG16 architecture; however, this approach is hindered by significant computational demands when compared to the standard FCN [14]. Therefore, this research focuses exclusively on the implementation of FCN and FCN-DK models. The FCN-DK architecture employs a dilated convolution method, which effectively broadens the receptive field while simultaneously reducing the number of learnable parameters, thus mitigating the risk of over-fitting [24]. This characteristic makes FCN-DK particularly appealing for applications that require efficient learning from complex datasets."
+      },
+      "confidence": 0.95,
+      "name": "Fully Convolutional Neural Network with a Dilated Kernel (FCN-DK)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4f1c298df576dd98_m3",
+      "evidence": {
+        "section": "3.1.2. Remote Sensing Imagery",
+        "original_text": "Sentinel-2 is a remote sensing satellite system that comprises two satellites, Sentinel-2A and Sentinel-2B, which operate in a synchronized 180-degree orbit. These satellites are equipped with a Multispectral Instrument (MSI), a sophisticated sensor capable of capturing data across 13 spectral bands, spanning the visible, near-infrared, and shortwave infrared regions of the electromagnetic spectrum (European Space Agency, 2023). A significant benefit of the Sentinel-2 system is its impressive spatial resolution, achieving 10 m for the blue, green, and red bands, and 20 m for the near-infrared and shortwave infrared bands [21]. The imagery produced by the Sentinel-2A MSI provides a detailed representation of urban areas, characterized by high pixel resolution that enhances clarity. To maximize the effectiveness of this imagery, a smoothing process is employed, utilizing the original image from the Sentinel-2A MSI. This process is crucial for refining the visual quality of the built-up land observed, as the high pixel values in the Sentinel-2A MSI image facilitate a clearer depiction of urban landscapes."
+      },
+      "confidence": 0.95,
+      "name": "Sentinel-2A Multispectral Instrument (MSI)",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4f1c298df576dd98_m4",
+      "evidence": {
+        "section": "3.1.4. Street View Imagery",
+        "original_text": "A systematic grid was established to catalog latitude and longitude in meters, facilitating the retrieval of street view imagery (SVI). By employing these geographic coordinates, images were sourced from the Google Street View Static API, capturing visuals in all four cardinal directions: north, south, east, and west. Figure 3 illustrates the SVI acquired from one of the slum regions in Bandung City, as referenced in the official slum map for the year 2025. Random points were created along the network of minor and branch roads, ensuring a roughly equal distribution between slum and non-slum regions based on the modified slum reference data, utilizing the “random points along line” function in QGIS. To maintain clarity in deep learning classification, points located at the interface of slum and non-slum areas were omitted. This exclusion specifically pertained to points associated with priority slums identified in SVI images, which included slum areas exceeding 10 hectares. These encompassed urban villages such as Sukaraja, Ciumbuleuit, Sukahaji, Pajajaran, Cijerah, Babakan, Babakan Ciparay, Kopo, Pasirwangi, Jamika, Sukabungah, Kebon Jayanti, Sadang Serang, Cibangkong, and Babakan Asih. Ultimately, the dataset comprised 2904 random points for slum areas and 420 for the database of neighborhood roads throughout Bandung City that were developed to prevent the growth of housing and slum areas, as depicted in Figure 3."
+      },
+      "confidence": 0.95,
+      "name": "Google Street View Static API",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4f1c298df576dd98_m5",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "To classify urban scenes from street view imagery in Bandung City, a pre-trained CNN model was adapted. The adaptation involved freezing the first five convolutional layers and fine-tuning only the final classification layer. The Early Stopping technique was used to monitor validation accuracy during ten epochs of training. Training a CNN from scratch requires significant time and access to extensive datasets, making pre-training and adaptation a more resource-efficient approach."
+      },
+      "confidence": 0.95,
+      "name": "Convolutional Neural Network (CNN)",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_4f1c298df576dd98_x1",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "The FCN-DK model was trained using randomly selected initial weights and a maximum of 100 epochs. Validation accuracy was monitored using the Early Stopping technique with a patience of 10 epochs. This means that if there was no improvement in validation accuracy over the previous 10 epochs, training would stop. However, the model continued to run for the full 100 epochs, as the validation accuracy did not remain constant for 10 consecutive epochs. Detailed information regarding the network configuration parameters for training the FCN-DK model can be seen in Table 2."
+      },
+      "confidence": 0.95,
+      "task": "slum classification using only remote sensing imagery (RSI)",
+      "setup": "FCN-DK model training with Sentinel-2A imagery, random initial weights, 100 epochs, Early Stopping with patience of 10 epochs"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_4f1c298df576dd98_x2",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "In this study, the authors adopt a methodology that merges data obtained from Google street view (GSV) images with remote sensing imagery (RSI) to create a spatially continuous feature map, similar to the work conducted by previous researchers in a different context within Jakarta City [16]. The initial phase involves extracting features from GSV images through a tailored Convolutional Neural Network (CNN). While prior studies have indicated that Principal Component Analysis (PCA) can be advantageous for reducing the dimensionality of the extracted features [16], the authors caution that an overly limited selection of principal components may inadvertently discard valuable information. Thus, it is crucial to carefully determine the appropriate number of principal components, as slum indicators encompass not only road conditions, but also various other factors, including drainage, sanitation, waste management, and fire safety. Subsequently, new data points were generated in the cardinal directions—north, south, east, and west—surrounding each GSV location, leading to the creation of distinct feature maps. The final step involved integrating these synthesized feature maps with RSI, culminating in a holistic representation of the urban environment. This approach effectively harnesses the detailed insights provided by GSV imagery while capitalizing on the extensive spatial coverage afforded by RSI, thereby yielding significant contributions to urban environmental analysis."
+      },
+      "confidence": 0.95,
+      "task": "slum classification using integration of street view imagery (SVI) with remote sensing imagery (RSI)",
+      "setup": "Feature extraction from GSV images via CNN, PCA dimensionality reduction, generation of feature maps in cardinal directions, integration with RSI"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_4f1c298df576dd98_x3",
+      "evidence": {
+        "section": "3.2.2. Implementation Stage Data Preparation",
+        "original_text": "In this research, slum classification is conducted using field surveys to identify slums, which involves assessing various indicators such as housing quality, infrastructure, and living conditions. The field survey is based on an existing guideline to evaluate and improve settlements to enhance living standards and prevent further slum development, namely the Minister of Public Works and Housing Regulation Number 14/2018. The 2024 slum survey yielded 435 points, categorized as ‘light slum’, and 27 points, categorized as ‘medium slum’. The total area encompassed by these points was 248.38 ha, dispersed across 27 sub-districts, 72 urban villages, and 142 areas. Following the survey, the data will undergo a rigorous process of evaluation and validation, with reference to the 2020 slum reference map of Bandung City, to ensure the accuracy and integrity of the results."
+      },
+      "confidence": 0.95,
+      "task": "slum classification using field survey",
+      "setup": "Field survey based on Minister of Public Works and Housing Regulation Number 14/2018, assessing housing quality, infrastructure, and living conditions across 27 sub-districts"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_4f1c298df576dd98_x4",
+      "evidence": {
+        "section": "3.2.3. Accuracy Evaluation",
+        "original_text": "In this research, the effectiveness of a model was assessed through a range of metrics, including recall, precision, F1 score, intersection over union (IoU), overall accuracy (OA), and the kappa coefficient. However, it was determined that the kappa coefficient and OA were insufficient for accurately measuring model performance in contexts such as image classification and slum mapping [25], primarily due to inherent limitations. Consequently, the investigation prioritized the evaluation of model outcomes through recall, precision, F1 score, and IoU, with accompanying equations provided to illustrate the calculation of these metrics. Furthermore, the accuracy was analyzed for each category of slum identified in the revised slum reference data. The research particularly highlighted the significance of the F1 score and IoU, as the F1 score effectively integrates both precision and recall, while IoU serves as a widely recognized accuracy metric in the realm of computer vision challenges [26]. Note: P: precision, R: recall, TP: true positive, FP: false positive, and FN: false negative. Integrating spectral indices with deep learning can improve classification accuracy. The effectiveness of the models can be evaluated using metrics like precision, recall, F1 score, and intersection over union (IoU). High precision indicates a strong ability to correctly identify positive classifications, while high recall shows the model’s capacity to detect relevant instances. An acceptable F1 score (above 0.7) and IoU (above 0.5) further validate the model’s performance in accurately classifying slum areas. This combination enhances classification accuracy and aids in urban planning and policy development for slum improvement."
+      },
+      "confidence": 0.95,
+      "task": "accuracy evaluation of slum classification models",
+      "setup": "Evaluation using recall, precision, F1 score, intersection over union (IoU), overall accuracy (OA), and kappa coefficient"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_4f1c298df576dd98_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The performance metrics for the four slum classification networks utilized in this research are detailed in Table 3. The findings for the various models were tested using Equations (1)–(3), the results of which indicated that a model utilizing solely remote sensing imagery (RSI), specifically the Fully Convolutional Network (FCN), attained an intersection over union (IoU) of 57.28. In contrast, the FCN with Deep Kernel (FCN DK) recorded an IoU of 54.47, while the network that combines both RSI and street view imagery (SVI), referred to as FCN-DK, attained an IoU of 86.01, and the standard FCN reached an IoU of 78.89. Notably, the FCN-DK model, which integrates both types of imagery, demonstrated superior accuracy relative to the FCN alone, achieving the highest F1 score and IoU. This enhancement in performance can be attributed to a 1.83% increase in recall when comparing the FCN-DK to the FCN."
+      },
+      "confidence": 0.98,
+      "quantity": "IoU",
+      "value": 86.01,
+      "unit": null,
+      "context": "FCN-DK network integrating RSI and SVI for slum classification",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_4f1c298df576dd98_qr2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.95,
+      "quantity": "accuracy",
+      "value": 86.25,
+      "unit": "%",
+      "context": "FCN-DK network integrating RSI and SVI for slum mapping in Bandung City",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_4f1c298df576dd98_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The comparative performance chart (Figure 9) illustrates the effectiveness of various Fully Convolutional Network (FCN) configurations in detecting slum areas against field survey results. The FCN with remote sensing imagery (RSI) identified 1647 light slum and 55 medium slum areas, achieving a recall rate of 64.13%. The FCN-DK with RSI demonstrated enhanced performance, detecting 1545 light slum and 37 medium slum areas with a recall of 72.83%. The incorporation of street view imagery (SVI) into the RSI framework led to a substantial enhancement in the performance of the FCN model, resulting in the identification of 569 light slum and 12 medium slum areas, with a recall rate of 97.93%. The FCN-DK with both RSI and SVI achieved the highest detection results, identifying 2283 light slum and 40 medium slum areas with a remarkable 99.74% recall, closely aligning with field survey results, which documented 435 light slum and 27 medium slum areas with 100% recall. This progression underscores the efficacy of the FCN-DK architecture in conjunction with both RSI and SVI, demonstrating its capacity to achieve the most precise automated slum detection and efficacious processing of larger geographical areas."
+      },
+      "confidence": 0.97,
+      "quantity": "recall",
+      "value": 99.74,
+      "unit": "%",
+      "context": "FCN-DK model integrating RSI and SVI for detecting slum areas",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_4f1c298df576dd98_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The performance metrics for the four slum classification networks utilized in this research are detailed in Table 3. The findings for the various models were tested using Equations (1)–(3), the results of which indicated that a model utilizing solely remote sensing imagery (RSI), specifically the Fully Convolutional Network (FCN), attained an intersection over union (IoU) of 57.28. In contrast, the FCN with Deep Kernel (FCN DK) recorded an IoU of 54.47, while the network that combines both RSI and street view imagery (SVI), referred to as FCN-DK, attained an IoU of 86.01, and the standard FCN reached an IoU of 78.89. Notably, the FCN-DK model, which integrates both types of imagery, demonstrated superior accuracy relative to the FCN alone, achieving the highest F1 score and IoU. This enhancement in performance can be attributed to a 1.83% increase in recall when comparing the FCN-DK to the FCN."
+      },
+      "confidence": 0.98,
+      "metric": "IoU",
+      "compared_to": "FCN (RSI only), FCN-DK (RSI only), FCN (RSI+SVI)"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_4f1c298df576dd98_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "The comparative performance chart (Figure 9) illustrates the effectiveness of various Fully Convolutional Network (FCN) configurations in detecting slum areas against field survey results. The FCN with remote sensing imagery (RSI) identified 1647 light slum and 55 medium slum areas, achieving a recall rate of 64.13%. The FCN-DK with RSI demonstrated enhanced performance, detecting 1545 light slum and 37 medium slum areas with a recall of 72.83%. The incorporation of street view imagery (SVI) into the RSI framework led to a substantial enhancement in the performance of the FCN model, resulting in the identification of 569 light slum and 12 medium slum areas, with a recall rate of 97.93%. The FCN-DK with both RSI and SVI achieved the highest detection results, identifying 2283 light slum and 40 medium slum areas with a remarkable 99.74% recall, closely aligning with field survey results, which documented 435 light slum and 27 medium slum areas with 100% recall. This progression underscores the efficacy of the FCN-DK architecture in conjunction with both RSI and SVI, demonstrating its capacity to achieve the most precise automated slum detection and efficacious processing of larger geographical areas."
+      },
+      "confidence": 0.97,
+      "metric": "recall",
+      "compared_to": "FCN (RSI only), FCN-DK (RSI only), FCN (RSI+SVI), field survey"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_4f1c298df576dd98_p3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "A comparison of the confusion matrix of FCN-DK (RSI + SVI) model results with field survey results in Figure 5 reveals that the former processed a substantially larger dataset of 2323 samples in comparison to the 462 samples utilized in the field survey. In the context of slum classification, the FCN-DK model demonstrated a 99.5% accuracy rate by accurately categorising 2283 light slum areas, with a mere 11 misclassifications as medium slum areas. In contrast, the field survey exhibited a perfect classification of all 435 light slum areas, attaining 100% accuracy. For medium slum classification, the FCN-DK model correctly identified 29 medium slum areas with no misclassification, while the field survey identified 27 medium slum areas, also with no misclassification. Both methodologies demonstrate impressive efficacy in accurately identifying medium slum areas, achieving a remarkable zero false negatives, meaning that there were no instances where medium slum areas were incorrectly classified as light slum in either approach. This indicates a high level of precision in the classification process."
+      },
+      "confidence": 0.96,
+      "metric": "classification accuracy",
+      "compared_to": "field survey"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_4f1c298df576dd98_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Remote sensing (RS)-based approaches, particularly those employing deep learning (DL) techniques, have emerged as a highly effective and accurate method for identifying slum areas. However, the reliance on RS alone is likely to encounter challenges in complex urban environments. A substantial body of research has previously identified the merits of integrating land surface data with RS. Therefore, this study seeks to combine remote sensing imagery (RSI) with street view imagery (SVI) for the purpose of slum mapping and compare its accuracy with a field survey conducted in 2024. The findings indicate that the integration of RSI and SVI enhances the precision of slum mapping in Bandung City, particularly when employing the FCN-DK network, achieving an accuracy of 86.25%. The results of the mapping process employing a combination of the FCN-DK network, which utilizes the RSI and SVI, indicate the presence of 2294 light slum points and 29 medium slum points. It should be noted that the outcomes are contingent upon the methodological approach employed, the accessibility of the dataset, and the training data that mirrors the distribution of slums in 2020 and the specific degree of its integration within the FCN network. The FCN-DK model, which integrates RSI and SVI, demonstrates enhanced performance in comparison to the other models examined in this study."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_4f1c298df576dd98_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Significant progress has been made in detecting and mapping slums. The resulting data is invaluable to policymakers in designing urban improvement initiatives. However, the physical information obtained from RSI has limitations in describing the overall condition of the urban environment, such as building size, population density, roofing material type, and street network pattern. Moreover, other parameters related to the quality of residential areas, such as the type of building material and drainage system, are crucial for identifying slums, but are difficult to measure using RSI. To address this shortcoming, street view imagery (SVI) can serve as an effective complement, especially if these two data sources are integrated. In the Bandung City case study, the integration of RSI and SVI data demonstrated better results compared to the use of either data separately. Our experiment also revealed that dataset quality and network architecture play an important role in improving the accuracy of the analysis. The FCN-DK network used in this study showed significant improvement in recall, F1 score, and intersection over union (IoU) metrics. Furthermore, further research is needed to explore more efficient dataset collection and integration methods, as well as to find effective ways to interpolate the SVI classification information into the broader spatial coverage provided by RSI."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_4f1c298df576dd98_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "The coverage of the SVI does not always include all slum areas, as many areas may not be represented in the SVI. This limitation arises because the SVI can only capture information along main roads [14], while small streets or alleys are often omitted or unavailable in Google SVI. This research utilizes IDW interpolation to generate SVI feature maps, so unified images can represent multiple locations. Slum areas are also detected in areas with alleys or small roads whose images are not available in Google SVI, but this is overcome by utilizing the 2021 Bandung City neighborhood road database. Further research could explore more accurate and advanced methods to address this issue of inconsistent coverage. Methods for future research could include techniques that specifically address missing data or additional data, such as street networks and city blocks that are available on OpenStreetMap to spatially improve SVI interpolation [28]. The SVI featured map was prepared by collecting imagery through the Google Application Programming Interface (API), focusing on 15 urban villages with an area of more than 10 Ha. The area selection was based on the authority of the provincial and central governments in accordance with the applicable regulation, namely the Regulation of the Minister of Public Works and Housing Number 14/PRT/M/2018 of 2018 on Prevention and Quality Improvement of Slum Housing and Slum Settlements. The limitation of using the Google API meant that not all SVIs in Bandung City could be accessed. Therefore, programmed data collection focused on priority areas, resulting in 2904 images which were then combined with neighborhood road imagery from the Bandung City Government in 2021 as additional data. The obtained images and components covered only 33% of the total required SVIs, and the existing SVIs were integrated as layers in FCN-DK. Future research is expected to explore methods to generate feature maps that are able to capture more information from SVIs without being hampered by Google API access limitations. In addition, it is also expected to produce SVIs that are easier to integrate into FCN-DK without requiring many spatial layers [16]."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_4f1c298df576dd98_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "A key area for future research is the optimizing the incorporation of a more diverse and pertinent set of variables or features. Such features may include the socio-economic data of the population, the availability of fundamental infrastructure, and environmental conditions surrounding residential areas. It is hypothesized that these variables have the potential to make a greater contribution in distinguishing the level of slum-ness in a more in-depth and comprehensive manner. Furthermore, the utilization of more sophisticated classification algorithms, such as XGBoost, Light-GBM, or ensemble stacking, could also be a viable option to explore, as they are adept at handling imbalanced data and high feature complexity with competitive performance. It is recommended that future research explore the application of data balancing methods, such as SMOTE or ADASYN, to address imbalances between classes [27]. For instance, this could help to mitigate the dominance of ‘light slum’ over ‘medium slum’. A further concern pertains to the paucity of data from the minority category, designated here as the ‘medium slum’. This deficiency may have ramifications for long-term prediction, specifically the potential alteration of its stability, should there be any modification in the future class distribution. Consequently, it is imperative that efforts are made to collect more balanced and representative data in future surveys. It is anticipated that these developments will enhance the reliability and precision of the classification model, thereby ensuring its efficacy in providing decision support for the dynamic conditions of residential areas in Bandung City. Despite the merging of SVI and RSI showing significant potential in slum classification, further research is needed to optimize this integration. This is particularly due to the lack of direct representation of more detailed slum criteria, such as safe access to drinking water, domestic waste management, waste management, and the availability of fire protection."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

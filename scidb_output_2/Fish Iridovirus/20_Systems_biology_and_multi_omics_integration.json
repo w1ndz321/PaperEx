@@ -1,0 +1,921 @@
+{
+  "metadata": {
+    "doc_id": "doc_9c9617b20771d34b",
+    "source_file": "20_Systems_biology_and_multi_omics_integration.md",
+    "title": "Systems Biology and Multi-Omics Integration: Viewpoints from the Metabolomics Research Community",
+    "year": 2019,
+    "doi": "10.3390/metabo9040076",
+    "abstract": "© 2019 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/), which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.",
+    "introduction": "Systems biology is an interdisciplinary research field that requires the combined contribution of chemists, biologists, mathematicians, physicists, and engineers to untangle the biology of complex living \n\n_Metabolites_ **2019** , _9_ , 76; doi:10.3390/metabo9040076 \n\nwww.mdpi.com/journal/metabolites \n\n_Metabolites_ **2019** , _9_ , 76 \n\n2 of 31 \n\nsystems by integrating multiple types of quantitative molecular measurements with well-designed mathematical models [1,2]. The premise and promise of systems biology has provided a powerful motivation for scientists to combine the data generated from multiple omics approaches (e.g., genomics, transcriptomics, proteomics, and metabolomics) to create a more holistic understanding of cells, organisms, and communities, relating to their growth, adaptation, development, and progression to disease [3–12]. \n\nOver the past decade technological advancements in next-generation DNA sequencing [13], SNP-chip profiling [14], transcriptome measurements via RNA-seq [15], SWATH-based proteomics [16], and metabolomics via UPLC-MS and GC-MS techniques [17,18] have greatly increased the ease, and significantly reduced the cost, of collecting rich, multi-omics data. As a result, many researchers are now conducting comprehensive multi-omics experiments, and more data scientists are attempting to integrate these data sets to create new and meaningful biological knowledge [19–25]. In a clinical setting, a growing number of private companies (e.g., www.arrivale.com, www.viome.com, www.molecularyou.com) are now also using the same low-cost, high throughput technologies to offer multi-omics and precision health assessments. \n\nWhile large-scale omics data are becoming more accessible, and multi-omics studies are becoming much more frequent—real multi-omics integration remains very challenging. This is because many of the specific analytical tools and experimental designs traditionally used for individual omics disciplines (e.g., genomics, transcriptomics, and proteomics) are not sufficiently well-suited to permit proper comparisons or intelligent integration across multiple omics disciplines. For instance, the preferred collection methods, storage techniques, required quantity and choice of biological samples used for genomics studies are often not suited for metabolomics, proteomics or transcriptomics. Similarly, qualitative methods commonly used in transcriptomics and proteomics are not suited to the quantitative methods used in genomics. While transcriptomics and proteomics are increasingly more quantitative (i.e., RNA-seq in transcriptomics and stable labeled isotope tagging in proteomics), it is increasingly pertinent to compare the applicability and accuracy/precision of quantification strategies (e.g., absolute vs. relative quantification). Furthermore, carefully integrated multi-omics data must be ‘deconstructed’ into single data sets before being deposited into omics-specific databases in order to make it publicly available. These issues underline the fact that high-quality multi-omics studies require: 1) proper experimental design, 2) thoughtful selection, preparation, and storage of appropriate biological samples, 3) careful collection of quantitative multi-omics data and associated meta-data, 4) better tools for integration and interpretation of the data, 5) agreed minimum standards for multi-omics methods and meta-data, and 6) new resources for the deposition of intact multi-omics data sets. \n\nInterestingly, many of the experimental, analytical and data integration requirements that are essential for metabolomics studies are actually fully compatible with genomics, transcriptomics and proteomics studies. In other words, due to its closeness to cellular or tissue phenotypes, metabolomics can provide a ‘common denominator’ to the design and analysis of many multi-omics experiments. It also provides broadly useful guidelines for sampling, handling and processing. Therefore, a greater awareness of metabolomics by other omics researchers or by researchers performing multi-omics experiments could significantly improve the quality and utility of integrated-omics research. To take this integration a step further, it will be critical to be able to associate integrated omics data with the meta-data in the context of the studies being undertaken. For instance, data from host-associated microbiomes can also now be integrated with the exometabolome data to better understand the mechanistic bases of their associations [26]. \n\nDuring the most recent Australian and New Zealand Metabolomics Conference (ANZMET 2018) held in Auckland, New Zealand (from 30 August to 1 September, 2018), the listed authors participated in a peer session on ‘systems biology and multi-omics integration’. The peer session was attended by >20 senior researchers and early to mid-career scientists actively working in the field of metabolomics as well as other omics disciplines. This article summarizes many of the viewpoints raised by those who attended the conference and participated in the peer session. It also provides some guidance on how \n\n_Metabolites_ **2019** , _9_ , 76 \n\n3 of 31 \n\nexperimental designs, methods and analytical tools used in metabolomics can facilitate multi-omics studies and data integration.",
+    "primary_discipline": {
+      "level1": "生物学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "systems biology",
+      "multi-omics",
+      "metabolomics",
+      "data integration",
+      "biological systems"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:24:08.093769+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Systems biology is an interdisciplinary research field that requires the combined contribution of chemists, biologists, mathematicians, physicists, and engineers to untangle the biology of complex living systems by integrating multiple types of quantitative molecular measurements with well-designed mathematical models [1,2]. The premise and promise of systems biology has provided a powerful motivation for scientists to combine the data generated from multiple omics approaches (e.g., genomics, transcriptomics, proteomics, and metabolomics) to create a more holistic understanding of cells, organisms, and communities, relating to their growth, adaptation, development, and progression to disease [3–12]."
+      },
+      "confidence": 0.98,
+      "term": "systems biology",
+      "normalized": "系统生物学",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The use of multiple omics techniques (i.e., genomics, transcriptomics, proteomics, and metabolomics) is becoming increasingly popular in all facets of life science. Omics techniques provide a more holistic molecular perspective of studied biological systems compared to traditional approaches. However, due to their inherent data differences, integrating multiple omics platforms remains an ongoing challenge for many researchers. As metabolites represent the downstream products of multiple interactions between genes, transcripts, and proteins, metabolomics, the tools and approaches routinely used in this field could assist with the integration of these complex multi-omics data sets. The question is, how? Here we provide some answers (in terms of methods, software tools and databases) along with a variety of recommendations and a list of continuing challenges as identified during a peer session on multi-omics integration that was held at the recent ‘Australian and New Zealand Metabolomics Conference’ (ANZMET 2018) in Auckland, New Zealand (Sept. 2018). We envisage that this document will serve as a guide to metabolomics researchers and other members of the community wishing to perform multi-omics studies. We also believe that these ideas may allow the full promise of integrated multi-omics research and, ultimately, of systems biology to be realized."
+      },
+      "confidence": 0.97,
+      "term": "multi-omics integration",
+      "normalized": "多组学整合",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "As metabolites represent the downstream products of multiple interactions between genes, transcripts, and proteins, metabolomics, the tools and approaches routinely used in this field could assist with the integration of these complex multi-omics data sets. The question is, how? Here we provide some answers (in terms of methods, software tools and databases) along with a variety of recommendations and a list of continuing challenges as identified during a peer session on multi-omics integration that was held at the recent ‘Australian and New Zealand Metabolomics Conference’ (ANZMET 2018) in Auckland, New Zealand (Sept. 2018). We envisage that this document will serve as a guide to metabolomics researchers and other members of the community wishing to perform multi-omics studies. We also believe that these ideas may allow the full promise of integrated multi-omics research and, ultimately, of systems biology to be realized."
+      },
+      "confidence": 0.98,
+      "term": "metabolomics",
+      "normalized": "代谢组学",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The use of multiple omics techniques (i.e., genomics, transcriptomics, proteomics, and metabolomics) is becoming increasingly popular in all facets of life science. Omics techniques provide a more holistic molecular perspective of studied biological systems compared to traditional approaches. However, due to their inherent data differences, integrating multiple omics platforms remains an ongoing challenge for many researchers. As metabolites represent the downstream products of multiple interactions between genes, transcripts, and proteins, metabolomics, the tools and approaches routinely used in this field could assist with the integration of these complex multi-omics data sets. The question is, how? Here we provide some answers (in terms of methods, software tools and databases) along with a variety of recommendations and a list of continuing challenges as identified during a peer session on multi-omics integration that was held at the recent ‘Australian and New Zealand Metabolomics Conference’ (ANZMET 2018) in Auckland, New Zealand (Sept. 2018). We envisage that this document will serve as a guide to metabolomics researchers and other members of the community wishing to perform multi-omics studies. We also believe that these ideas may allow the full promise of integrated multi-omics research and, ultimately, of systems biology to be realized."
+      },
+      "confidence": 0.96,
+      "term": "omics techniques",
+      "normalized": "组学技术",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c5",
+      "evidence": {
+        "section": "2. Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "A high quality, well-thought-out experimental design is the key to success for any multi-omics study. As mentioned above, this includes careful consideration of the samples or sample types, the selection or choice of controls, the level of control over external variables, the required quantities (biomass) of the sample(s), the number of biological and technical replicates, and the preparation and storage of the samples. Additionally, other important factors that need to be considered while designing good multi-omics experiments are the meta-information collected about the samples, the selection of omics methods used and the requirements for data storage, bioinformatics, and computing capabilities. Lastly, it is of utmost importance to ensure that sufficient time and financial resources are available to carry out the experiments."
+      },
+      "confidence": 0.95,
+      "term": "experimental design",
+      "normalized": "实验设计",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c6",
+      "evidence": {
+        "section": "6. Conclusions",
+        "original_text": "Most of the data generated over the past 25 years by various omics platforms have been qualitative or semi-quantitative in nature. While qualitative data can be used to compare similar variables across samples within a single lab (using a single measurement platform), they do not support comparisons across labs or across platforms. Likewise, qualitative measurements do not allow for consistent and accurate integration of multi-omics data where measurements typically have to be done on multiple platforms, across multiple laboratories, over extended time periods. Careful quantitation of omics data allows much more accurate comparison to reference values, more consistent inter-laboratory comparisons, greater reproducibility, improved interpretability, and far simpler data integration. Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]."
+      },
+      "confidence": 0.97,
+      "term": "quantitative omics data",
+      "normalized": "定量组学数据",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c7",
+      "evidence": {
+        "section": "3. Multi-omics Data Integration",
+        "original_text": "Data integration has been characterized as the key bottleneck to all multi-omics studies [33]. This is because data integration requires input and interpretation by a diverse range of scientists or specialists, as previously described. Some of these specialists are needed to evaluate the quality and validity of the study (experimental) design, as well as the quality of the data acquired from the instrument. Assuming that the data obtained are of high quality and are properly validated (see Section 2), a number of approaches can be followed for analyzing and interpreting multi-omics data. These include: (1) post-analysis data integration, (2) integrated data analysis, and (3) systems modeling techniques. Post-analysis data integration and integrated data analysis are primarily discovery tools or hypothesis generators that are intended to reveal new insights or provide some high-level mechanistic understanding. Systems modeling techniques are primarily interpretive or hypothesis testing tools intended to describe mechanistic insight mathematically. Systems modeling can also be used to predict system-wide responses or even treatments (e.g., identifying interventions). Here we briefly summarize these three approaches for multi-omics data integration and the methodologies and tools associated with them."
+      },
+      "confidence": 0.96,
+      "term": "data integration approaches",
+      "normalized": "数据整合方法",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c8",
+      "evidence": {
+        "section": "3.3. Systems Modeling",
+        "original_text": "In addition to post-analysis data integration and integrated data analysis techniques, the third approach to data integration is also available—namely systems modeling. Systems modeling and simulation techniques are valuable tools for understanding and even predicting the details of complex biological systems [54]. Model-based integration methods rely on a well-defined understanding of the system being investigated in order to compare new experimental findings against modeled predictions. Such an understanding is often based on having comprehensive, pre-existing genomic, transcriptomics and/or metabolomics data on the system being studied. These modeling systems may incorporate dynamic/kinetic models that solve systems of differential, or partial differential equations [55], agent-based kinetic models [56], or Petri-Net models [57] or they may involve steady state models, such as flux-balance models [58]. Interestingly, almost all of these systems modeling approaches are anchored with metabolic reactions and extensive metabolomics data."
+      },
+      "confidence": 0.97,
+      "term": "systems modeling",
+      "normalized": "系统建模",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c9",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "Biswapriya et al. [92] recently reviewed different tools available for multi-omics data integration in detail. This work highlights the fact that numerous databases, software tools, and approaches are now freely accessible to assist with integrating multi-omics data sets, regardless of the multi-omics data integration approach. As listed in Table 3, a number of context-specific databases and tools have been developed (i.e., targeted towards the integration of omics data from specific animal models, medical and clinical studies, and selected plant species) and are in use. While most available databases are fairly general, there is a range of databases with a specific focus [93]. For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few. There are also extensive databases on humans that contain rich data on the human genome, proteome, metagenome and/or metabolome. These include the Human Metabolome Database or HMDB [102], Recon 2 [12], Recon3D [80] and the Virtual Metabolic Human database [82]. In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "term": "software tools and databases",
+      "normalized": "软件工具与数据库",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_9c9617b20771d34b_c10",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "Meaningful biological interpretation of multi-omics data requires a constant evolution of databases and data analysis tools. Analytical and data analysis platforms have improved substantially over the past decade, however, multiple challenges still exist [139]. Here, we identify and discuss some of the key pitfalls and challenges that appear to be hindering the progress in multi-omics integration and systems biology research. However, we acknowledge that some of these challenges might be solved in the near future while new challenges may arise with time."
+      },
+      "confidence": 0.96,
+      "term": "challenges in multi-omics integration",
+      "normalized": "多组学整合面临的挑战",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Systems biology is an interdisciplinary research field that requires the combined contribution of chemists, biologists, mathematicians, physicists, and engineers to untangle the biology of complex living systems by integrating multiple types of quantitative molecular measurements with well-designed mathematical models [1,2]. The premise and promise of systems biology has provided a powerful motivation for scientists to combine the data generated from multiple omics approaches (e.g., genomics, transcriptomics, proteomics, and metabolomics) to create a more holistic understanding of cells, organisms, and communities, relating to their growth, adaptation, development, and progression to disease [3–12]."
+      },
+      "confidence": 0.94,
+      "head": "doc_9c9617b20771d34b_c1",
+      "relation_type": "uses",
+      "relation_surface": "requires the combined contribution of chemists, biologists, mathematicians, physicists, and engineers to untangle the biology of complex living systems by integrating multiple types of quantitative molecular measurements with well-designed mathematical models",
+      "tail": "doc_9c9617b20771d34b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "As metabolites represent the downstream products of multiple interactions between genes, transcripts, and proteins, metabolomics, the tools and approaches routinely used in this field could assist with the integration of these complex multi-omics data sets. The question is, how? Here we provide some answers (in terms of methods, software tools and databases) along with a variety of recommendations and a list of continuing challenges as identified during a peer session on multi-omics integration that was held at the recent ‘Australian and New Zealand Metabolomics Conference’ (ANZMET 2018) in Auckland, New Zealand (Sept. 2018). We envisage that this document will serve as a guide to metabolomics researchers and other members of the community wishing to perform multi-omics studies. We also believe that these ideas may allow the full promise of integrated multi-omics research and, ultimately, of systems biology to be realized."
+      },
+      "confidence": 0.93,
+      "head": "doc_9c9617b20771d34b_c3",
+      "relation_type": "enhances",
+      "relation_surface": "could assist with the integration of these complex multi-omics data sets",
+      "tail": "doc_9c9617b20771d34b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r3",
+      "evidence": {
+        "section": "2. Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "A high quality, well-thought-out experimental design is the key to success for any multi-omics study. As mentioned above, this includes careful consideration of the samples or sample types, the selection or choice of controls, the level of control over external variables, the required quantities (biomass) of the sample(s), the number of biological and technical replicates, and the preparation and storage of the samples. Additionally, other important factors that need to be considered while designing good multi-omics experiments are the meta-information collected about the samples, the selection of omics methods used and the requirements for data storage, bioinformatics, and computing capabilities. Lastly, it is of utmost importance to ensure that sufficient time and financial resources are available to carry out the experiments."
+      },
+      "confidence": 0.92,
+      "head": "doc_9c9617b20771d34b_c5",
+      "relation_type": "enhances",
+      "relation_surface": "is the key to success for any multi-omics study",
+      "tail": "doc_9c9617b20771d34b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r4",
+      "evidence": {
+        "section": "6. Conclusions",
+        "original_text": "Most of the data generated over the past 25 years by various omics platforms have been qualitative or semi-quantitative in nature. While qualitative data can be used to compare similar variables across samples within a single lab (using a single measurement platform), they do not support comparisons across labs or across platforms. Likewise, qualitative measurements do not allow for consistent and accurate integration of multi-omics data where measurements typically have to be done on multiple platforms, across multiple laboratories, over extended time periods. Careful quantitation of omics data allows much more accurate comparison to reference values, more consistent inter-laboratory comparisons, greater reproducibility, improved interpretability, and far simpler data integration. Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]."
+      },
+      "confidence": 0.94,
+      "head": "doc_9c9617b20771d34b_c6",
+      "relation_type": "enhances",
+      "relation_surface": "Careful quantitation of omics data allows much more accurate comparison to reference values, more consistent inter-laboratory comparisons, greater reproducibility, improved interpretability, and far simpler data integration",
+      "tail": "doc_9c9617b20771d34b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r5",
+      "evidence": {
+        "section": "3. Multi-omics Data Integration",
+        "original_text": "Data integration has been characterized as the key bottleneck to all multi-omics studies [33]. This is because data integration requires input and interpretation by a diverse range of scientists or specialists, as previously described. Some of these specialists are needed to evaluate the quality and validity of the study (experimental) design, as well as the quality of the data acquired from the instrument. Assuming that the data obtained are of high quality and are properly validated (see Section 2), a number of approaches can be followed for analyzing and interpreting multi-omics data. These include: (1) post-analysis data integration, (2) integrated data analysis, and (3) systems modeling techniques. Post-analysis data integration and integrated data analysis are primarily discovery tools or hypothesis generators that are intended to reveal new insights or provide some high-level mechanistic understanding. Systems modeling techniques are primarily interpretive or hypothesis testing tools intended to describe mechanistic insight mathematically. Systems modeling can also be used to predict system-wide responses or even treatments (e.g., identifying interventions). Here we briefly summarize these three approaches for multi-omics data integration and the methodologies and tools associated with them."
+      },
+      "confidence": 0.95,
+      "head": "doc_9c9617b20771d34b_c8",
+      "relation_type": "belongs_to",
+      "relation_surface": "the third approach to data integration is also available—namely systems modeling",
+      "tail": "doc_9c9617b20771d34b_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r6",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "Biswapriya et al. [92] recently reviewed different tools available for multi-omics data integration in detail. This work highlights the fact that numerous databases, software tools, and approaches are now freely accessible to assist with integrating multi-omics data sets, regardless of the multi-omics data integration approach. As listed in Table 3, a number of context-specific databases and tools have been developed (i.e., targeted towards the integration of omics data from specific animal models, medical and clinical studies, and selected plant species) and are in use. While most available databases are fairly general, there is a range of databases with a specific focus [93]. For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few. There are also extensive databases on humans that contain rich data on the human genome, proteome, metagenome and/or metabolome. These include the Human Metabolome Database or HMDB [102], Recon 2 [12], Recon3D [80] and the Virtual Metabolic Human database [82]. In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.93,
+      "head": "doc_9c9617b20771d34b_c9",
+      "relation_type": "enhances",
+      "relation_surface": "numerous databases, software tools, and approaches are now freely accessible to assist with integrating multi-omics data sets",
+      "tail": "doc_9c9617b20771d34b_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_9c9617b20771d34b_r7",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "Meaningful biological interpretation of multi-omics data requires a constant evolution of databases and data analysis tools. Analytical and data analysis platforms have improved substantially over the past decade, however, multiple challenges still exist [139]. Here, we identify and discuss some of the key pitfalls and challenges that appear to be hindering the progress in multi-omics integration and systems biology research. However, we acknowledge that some of these challenges might be solved in the near future while new challenges may arise with time."
+      },
+      "confidence": 0.92,
+      "head": "doc_9c9617b20771d34b_c10",
+      "relation_type": "inhibits",
+      "relation_surface": "multiple challenges still exist",
+      "tail": "doc_9c9617b20771d34b_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d1",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "There are also extensive databases on humans that contain rich data on the human genome, proteome, metagenome and/or metabolome. These include the Human Metabolome Database or HMDB [102], Recon 2 [12], Recon3D [80] and the Virtual Metabolic Human database [82]. In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "Human Metabolome Database (HMDB)",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d2",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "Mouse Genome Database (MGD)",
+      "modality": "tabular",
+      "domain": "genomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d3",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "E. coli metabolome database (ECMDB)",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d4",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "Yeast metabolome database (YMDB)",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d5",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "Plant Metabolic Network (PMN)",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d6",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "MetaboLights",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d7",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "Lipid Maps",
+      "modality": "tabular",
+      "domain": "lipidomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d8",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "PRIDE",
+      "modality": "tabular",
+      "domain": "proteomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d9",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "KEGG",
+      "modality": "tabular",
+      "domain": "pathway"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d10",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "Reactome",
+      "modality": "tabular",
+      "domain": "pathway"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d11",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "MetaCyc",
+      "modality": "tabular",
+      "domain": "pathway"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d12",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "There are also extensive databases on humans that contain rich data on the human genome, proteome, metagenome and/or metabolome. These include the Human Metabolome Database or HMDB [102], Recon 2 [12], Recon3D [80] and the Virtual Metabolic Human database [82]. In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "Virtual Metabolic Human database",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d13",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "There are also extensive databases on humans that contain rich data on the human genome, proteome, metagenome and/or metabolome. These include the Human Metabolome Database or HMDB [102], Recon 2 [12], Recon3D [80] and the Virtual Metabolic Human database [82]. In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "Recon 2",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d14",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "There are also extensive databases on humans that contain rich data on the human genome, proteome, metagenome and/or metabolome. These include the Human Metabolome Database or HMDB [102], Recon 2 [12], Recon3D [80] and the Virtual Metabolic Human database [82]. In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "Recon3D",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d15",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "GenBank",
+      "modality": "tabular",
+      "domain": "genomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d16",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "UniProt",
+      "modality": "tabular",
+      "domain": "proteomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d17",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "In addition to these species-specific resources, there are also general multi-species resources on genes and proteins, such as GenBank and UniProt [103,104], multi-species collections on metabolites, such as ChEBI [105], and MetaboLights [106], multi-species collections on lipids, such as Lipid Maps [107], multi-species collections on proteomics or protein expression data, such as PRIDE [108], and multi-species pathway databases, such as KEGG [109], Reactome [110] and MetaCyc [111]. Additional details on these databases are provided in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "ChEBI",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d18",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "FlyBase",
+      "modality": "tabular",
+      "domain": "genomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d19",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "WormBase",
+      "modality": "tabular",
+      "domain": "genomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d20",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "EcoCyc database",
+      "modality": "tabular",
+      "domain": "metabolomics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_9c9617b20771d34b_d21",
+      "evidence": {
+        "section": "3.4. Software Tools, Databases and Approaches for Multi-Omics Integration",
+        "original_text": "For instance, certain species-specific databases are now publicly available that include data on the genome, transcriptome, proteome and/or metabolome of several model organisms. These include the mouse genome database or MGD [94], FlyBase (Drosophila spp) [95], WormBase (Caenorhabditis elegans and helminth) [96], the E. coli metabolome database or ECMDB [97], the EcoCyc database [98], the Yeast metabolome data or YMDB [99], the Plant Metabolic Network or PMN [100] and the Saccharomyces genome database or SGD [101], just to name a few."
+      },
+      "confidence": 0.95,
+      "name": "Saccharomyces genome database (SGD)",
+      "modality": "tabular",
+      "domain": "genomics"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds1",
+      "evidence": {
+        "section": "5. Recommendations",
+        "original_text": "Adopt the sample collection, preparation and measurement standards used in metabolomics studies. This would ensure high-quality data collection in most multi-omics studies; Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration; Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories; Perform power analyses, where possible, prior to conducting large scale multi-omics studies; and, Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies (please see [106,158–160])."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Adopt metabolomics standards for sample collection, preparation and measurement to ensure high-quality data in multi-omics studies"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds2",
+      "evidence": {
+        "section": "5. Recommendations",
+        "original_text": "Adopt the sample collection, preparation and measurement standards used in metabolomics studies. This would ensure high-quality data collection in most multi-omics studies; Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration; Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories; Perform power analyses, where possible, prior to conducting large scale multi-omics studies; and, Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies (please see [106,158–160])."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds3",
+      "evidence": {
+        "section": "5. Recommendations",
+        "original_text": "Adopt the sample collection, preparation and measurement standards used in metabolomics studies. This would ensure high-quality data collection in most multi-omics studies; Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration; Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories; Perform power analyses, where possible, prior to conducting large scale multi-omics studies; and, Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies (please see [106,158–160])."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds4",
+      "evidence": {
+        "section": "5. Recommendations",
+        "original_text": "Adopt the sample collection, preparation and measurement standards used in metabolomics studies. This would ensure high-quality data collection in most multi-omics studies; Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration; Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories; Perform power analyses, where possible, prior to conducting large scale multi-omics studies; and, Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies (please see [106,158–160])."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Perform power analyses prior to conducting large scale multi-omics studies"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds5",
+      "evidence": {
+        "section": "5. Recommendations",
+        "original_text": "Adopt the sample collection, preparation and measurement standards used in metabolomics studies. This would ensure high-quality data collection in most multi-omics studies; Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration; Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories; Perform power analyses, where possible, prior to conducting large scale multi-omics studies; and, Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies (please see [106,158–160])."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds6",
+      "evidence": {
+        "section": "2. Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "For example, samples intended for metabolomics studies must be stored at −80° C (to prevent enzymatic degradation of the metabolites and also to stop ongoing metabolic activities). This storage protocol for samples also ensures that RNA and protein integrity is maintained for transcriptomics and proteomics studies [28]. The sample processing times for metabolomics must be relatively quick (minutes) due to the rapid metabolism of metabolites in most bio-samples [28]. Rapid sample processing times are also required for transcriptomics and modestly rapid sample processing times are required for proteomics studies. Adhering to metabolomics processing times ensures that all other samples being used in a multi-omics study will not be compromised."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Samples intended for metabolomics studies must be stored at −80° C to prevent enzymatic degradation of metabolites and maintain RNA and protein integrity"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds7",
+      "evidence": {
+        "section": "2. Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "For example, samples intended for metabolomics studies must be stored at −80° C (to prevent enzymatic degradation of the metabolites and also to stop ongoing metabolic activities). This storage protocol for samples also ensures that RNA and protein integrity is maintained for transcriptomics and proteomics studies [28]. The sample processing times for metabolomics must be relatively quick (minutes) due to the rapid metabolism of metabolites in most bio-samples [28]. Rapid sample processing times are also required for transcriptomics and modestly rapid sample processing times are required for proteomics studies. Adhering to metabolomics processing times ensures that all other samples being used in a multi-omics study will not be compromised."
+      },
+      "confidence": 0.9,
+      "spec_type": "env_requirement",
+      "description": "Sample processing times for metabolomics must be relatively quick (minutes) due to rapid metabolism of metabolites, which also benefits transcriptomics and proteomics"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds8",
+      "evidence": {
+        "section": "4.1. The Nature of the Omics Data Sets",
+        "original_text": "Precisely measured, quantitative data that is calibrated to standard reference materials, checked against authentic standards, assessed with quality controls and measured with universal standard operating protocols (SOPs) is what is needed for robust, reproducible multi-omics integration. This type of high quality, quantitative data are actually obtainable via genomics, metabolomics, and proteomics. They are potentially obtainable via transcriptomics [146] and meta-genomics [147]. When quantitative data are available, it is possible to perform multi-omics integration. It is also possible to perform robust intra- and inter-lab comparisons (i.e., ring trials). Examples of this can be seen with the impressive results described in the systems modeling section (see Section 3.1) where essentially all of the baseline data sets used for modeling were obtained from open-source quantitative data repositories."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Precisely measured, quantitative data calibrated to standard reference materials, checked against authentic standards, assessed with quality controls and measured with universal standard operating protocols (SOPs) is needed for robust, reproducible multi-omics integration"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds9",
+      "evidence": {
+        "section": "4.1. The Nature of the Omics Data Sets",
+        "original_text": "The lack of sufficient meta-data is another key hurdle to the successful integration of multi-omics data sets [89]. Often considerable time, money and effort may go into the collection of molecular omics data, while very little effort goes into collecting the meta-data about the samples, organisms or patients. Meta-data are information about the data, which typically includes where, when and how the data were collected as well as information about the observable phenotypes of the samples. Meta-data are important to enabling reproducibility and biologically relevant interpretation of omics results. For example, in the case of plant multi-omics analysis information about the soil type, soil composition, watering conditions, temperature trends, relative humidity, plant age, season, light levels and plant breed can have a significant impact on metabolite, protein and transcriptome measurements. For cell or tissue culture multi-omics analyses, important meta-data could include information about the cell types, cell sex, cell growth media, cell oxygenation levels, and cell generation. For animal studies, meta-data could include information about age, sex, weight, feeding levels, feed composition, strain or breed, cage location, light conditions, activity, diurnal cycle, health status and proximity to other animals. For human studies, meta-information including age, sex, job type, ethnicity, marital status, BMI, smoking/drinking habits, lifestyle, exercise, diet, health status, drug intake, diurnal cycle, menstrual cycle, and ethnicity should be collected, as they could also affect omics measurements."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Meta-data are information about the data, which typically includes where, when and how the data were collected as well as information about the observable phenotypes of the samples"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_9c9617b20771d34b_ds10",
+      "evidence": {
+        "section": "4.2. Dispersed Data Sets and Non-Interoperable Tools",
+        "original_text": "Lack of interoperability is another frequently cited problem with bioinformatics tools, not just multi-omics tools. Different bioinformatics and cheminformatics databases have different formats, many of which are non-standard. Similarly, different programs may also require their input data to be in non-standard formats and will output data in a format that is incompatible with other programs. This can make it difficult to create a multi-program or a multi-database workflow and may require users to spend their time writing scripts to convert and reconvert data so that it can be read by other programs. The movement to FAIR (findable, accessible, interoperable, and re-usable) data standards in bioinformatics software and databases could potentially alleviate these challenges [149]."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Adherence to FAIR (findable, accessible, interoperable, and re-usable) data standards in bioinformatics software and databases could alleviate interoperability challenges"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9c9617b20771d34b_m1",
+      "evidence": {
+        "section": "3.2. Integrated Data Analysis Approaches",
+        "original_text": "Table 2 provides a list of tools that are currently available and can be used in integrated omics data analysis. For instance, methods, such as orthogonal two-way projection to latent structures (O2PLS) and its variant O _n_ PLS, were developed to extract systematic variation that is common to two (or multiple) sets of omics data [42–45]. In clinical science, these methods have been used to evaluate combine metabolomics and proteomic data in a xenograft model of human prostate cancer [46], or to interrogate biological interactions between six different omics data sets in asthma [47]. In environmental science, the same techniques have been used to characterize stress responses or adaptations to different day lengths in poplars [48,49] or to investigate marine sediments [50,51]. Other methods for investigating ecosystem homeostasis with multi-omics approaches have been recently reviewed [52]. Furthermore, the web-based platform 3Omics enables the integration of human transcriptomics, proteomics and metabolomics data [36]. In particular, 3Omics generates inter-omics correlation network to aid data visualization. In addition, this “one-click” platform also assists in statistical analyses of the integrated omics data and is able to perform pathway and gene ontology enrichment. Another popular web-based platform for integrated omics data analysis is “MetaboAnalyst” [53]. As shown in Table 2, this tool is able to integrate and analyze metabolomics data with transcriptomics, proteomics, and genomics data and can be used for data generated for a wide range of biological samples including human, animal, plants and microorganisms."
+      },
+      "confidence": 0.95,
+      "name": "orthogonal two-way projection to latent structures (O2PLS)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9c9617b20771d34b_m2",
+      "evidence": {
+        "section": "3.3. Systems Modeling",
+        "original_text": "Some of the most impressive examples of multi-omics integration and many of the most compelling successes in systems biology have been achieved through systems modeling methods. For example, in the 1990s Palsson and co-workers quantitatively predicted growth and byproduct secretion in _E. coli_ by modeling cellular metabolism and developed the concept of flux balance modeling [59–62]. Subsequently, the first successful attempt to model a living cell kinetically was the E-cell project led by Masanori Tomita in 1999 [63,64]. This project focused on modeling the kinetic dynamics of metabolic pathways and the control of enzyme production through gene expression of _Mycoplasma genitalium_ . This single cell model integrated experimental metabolomics data with genomics, transcriptomics and proteomics data. The E-cell concept was later extended to modeling human erythrocyte metabolism [65,66]. Several practical outcomes have been achieved with the E-cell erythrocyte model including an improved understanding of erythrocyte hypoxic responses [66], enhanced blood storage methods [67], and the development of a new nucleo-base solution for extended blood storage [68]. By the mid-2000s particularly impressive simulation work was being done with modeling _E. coli_ [69]. This led to the successful prediction of dozens of conditionally essential genes in _E. coli_ [70] through metabolic flux-balance modeling. Similar work using Petri-Net models led to the identification of key protein and gene regulators in _E. coli_ glycogen metabolism [71]. These activities inspired the development of a variety of open source tools and mark-up languages for system modeling, such as the Systems Biology Markup Language or SBML [72], CellML [73], Cell System Markup Language or CSML [74] as well as modeling tools, such as Cell Illustrator [74]."
+      },
+      "confidence": 0.95,
+      "name": "flux balance modeling",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_9c9617b20771d34b_m3",
+      "evidence": {
+        "section": "3.3. Systems Modeling",
+        "original_text": "Extensions from single cells to multi-cellular systems and multi-organ systems started to occur around 2013 with the appearance of Recon 2, a community based global reconstruction of human metabolism [12]. This comprehensive model incorporates cell and tissue-specific metabolomics data, proteomic data and gene expression data for the human body and its many cell types. Through Recon 2 and its later derivatives, it has been possible to model the effects of common drugs on human metabolism [75] to predict the effects of disease-gene mutations [76] and to model disease conditions, such as inflammatory bowel disease [77]. Of particular note is the development of the COBRA (Constraint-Based Reconstruction and Analysis) system for working with Recon 2. COBRA permits integrated modeling of metabolism and macromolecular expression (proteome or transcriptome) at a genome-scale [78,79]. Over the past three years, the COBRA modeling system has been used to create a 3D model of gene variation in human metabolism—Recon3D [80]. COBRA has also been used as a tool to develop models in order to subsequently predict dietary supplements for treating Crohn’s disease [81] and to integrate human and gut microbiome metabolism with nutrition and disease in the Virtual Metabolic Human database [82]. The extension of systems modeling to microbiome studies (where metabolomics is integrated with metagenomics) is becoming particularly popular. For example, Noecker et al. [83] integrated taxonomic and metabolomics data to predict the effects of community ecology on metabolite concentrations. These predictions were evaluated with measured metabolome profiles from the vaginal microbiome and it was concluded that predicted species composition correlated with identified putative metabolic mechanisms [83]. The availability of previously published data on the vaginal microbiome and its metagenomics data were key to the success of this model [84–88]."
+      },
+      "confidence": 0.95,
+      "name": "COBRA (Constraint-Based Reconstruction and Analysis)",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9c9617b20771d34b_x1",
+      "evidence": {
+        "section": "3.1. Post-Analysis Data Integration Approaches",
+        "original_text": "In a post-analysis data integration approach, different omics data sets are first analyzed in isolation, and then key features are “networked” or stitched together through the synthesis of significant features at joint nodes in an overall model pathway (Figure 3). This approach has been used in a diverse range of studies, including the assessment of biological wastewater treatment systems [22], the exploration of microbial resistance of marine sediments after an oil spill [39] and studying the permafrost microbial ecosystem [40]. Post-analysis data integration is also used by some precision health or precision nutrition companies to generate client-specific interpretations."
+      },
+      "confidence": 0.95,
+      "task": "multi-omics integration experiment",
+      "setup": "post-analysis data integration approach, different omics data sets analyzed in isolation then networked through significant features at joint nodes"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9c9617b20771d34b_x2",
+      "evidence": {
+        "section": "3.2. Integrated Data Analysis Approaches",
+        "original_text": "In contrast to post-analysis data integration, the integrated data analysis approach employs specialized tools to merge different omics data sets prior to undertaking any further data analysis and interpretation [41]. This enables the shared similarities between each omics approach and platform to be statistically derived, as opposed to relying on human interpretation or human biases (Figure 3). Table 2 provides a list of tools that are currently available and can be used in integrated omics data analysis. For instance, methods, such as orthogonal two-way projection to latent structures (O2PLS) and its variant O _n_ PLS, were developed to extract systematic variation that is common to two (or multiple) sets of omics data [42–45]. In clinical science, these methods have been used to evaluate combine metabolomics and proteomic data in a xenograft model of human prostate cancer [46], or to interrogate biological interactions between six different omics data sets in asthma [47]. In environmental science, the same techniques have been used to characterize stress responses or adaptations to different day lengths in poplars [48,49] or to investigate marine sediments [50,51]. Other methods for investigating ecosystem homeostasis with multi-omics approaches have been recently reviewed [52]. Furthermore, the web-based platform 3Omics enables the integration of human transcriptomics, proteomics and metabolomics data [36]. In particular, 3Omics generates inter-omics correlation network to aid data visualization. In addition, this “one-click” platform also assists in statistical analyses of the integrated omics data and is able to perform pathway and gene ontology enrichment. Another popular web-based platform for integrated omics data analysis is “MetaboAnalyst” [53]. As shown in Table 2, this tool is able to integrate and analyze metabolomics data with transcriptomics, proteomics, and genomics data and can be used for data generated for a wide range of biological samples including human, animal, plants and microorganisms."
+      },
+      "confidence": 0.95,
+      "task": "multi-omics integration experiment",
+      "setup": "integrated data analysis approach, specialized tools to merge different omics data sets prior to analysis"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_9c9617b20771d34b_x3",
+      "evidence": {
+        "section": "3.3. Systems Modeling",
+        "original_text": "In addition to post-analysis data integration and integrated data analysis techniques, the third approach to data integration is also available—namely systems modeling. Systems modeling and simulation techniques are valuable tools for understanding and even predicting the details of complex biological systems [54]. Model-based integration methods rely on a well-defined understanding of the system being investigated in order to compare new experimental findings against modeled predictions. Such an understanding is often based on having comprehensive, pre-existing genomic, transcriptomics and/or metabolomics data on the system being studied. These modeling systems may incorporate dynamic/kinetic models that solve systems of differential, or partial differential equations [55], agent-based kinetic models [56], or Petri-Net models [57] or they may involve steady state models, such as flux-balance models [58]. Interestingly, almost all of these systems modeling approaches are anchored with metabolic reactions and extensive metabolomics data."
+      },
+      "confidence": 0.95,
+      "task": "systems modeling experiment",
+      "setup": "model-based integration methods relying on comprehensive pre-existing omics data, incorporating dynamic/kinetic models or steady state models"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Over the past decade technological advancements in next-generation DNA sequencing [13], SNP-chip profiling [14], transcriptome measurements via RNA-seq [15], SWATH-based proteomics [16], and metabolomics via UPLC-MS and GC-MS techniques [17,18] have greatly increased the ease, and significantly reduced the cost, of collecting rich, multi-omics data. As a result, many researchers are now conducting comprehensive multi-omics experiments, and more data scientists are attempting to integrate these data sets to create new and meaningful biological knowledge [19–25]. In a clinical setting, a growing number of private companies (e.g., www.arrivale.com, www.viome.com, www.molecularyou.com) are now also using the same low-cost, high throughput technologies to offer multi-omics and precision health assessments."
+      },
+      "confidence": 0.95,
+      "quantity": "cost reduction",
+      "value": null,
+      "unit": null,
+      "context": "collecting rich, multi-omics data over the past decade due to technological advancements",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr2",
+      "evidence": {
+        "section": "Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "For example, samples intended for metabolomics studies must be stored at −80° C (to prevent enzymatic degradation of the metabolites and also to stop ongoing metabolic activities). This storage protocol for samples also ensures that RNA and protein integrity is maintained for transcriptomics and proteomics studies [28]. The sample processing times for metabolomics must be relatively quick (minutes) due to the rapid metabolism of metabolites in most bio-samples [28]. Rapid sample processing times are also required for transcriptomics and modestly rapid sample processing times are required for proteomics studies. Adhering to metabolomics processing times ensures that all other samples being used in a multi-omics study will not be compromised."
+      },
+      "confidence": 0.98,
+      "quantity": "sample storage temperature",
+      "value": -80,
+      "unit": "°C",
+      "context": "samples intended for metabolomics studies to prevent enzymatic degradation of metabolites and stop ongoing metabolic activities",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr3",
+      "evidence": {
+        "section": "Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "For example, the number of samples/patients needed to fully identify, understand or model a simple monogenic disorder such a phenylketonuria (PKU) is on the order of one or two [36], while the number of samples/patients needed to fully identify, understand or model a complex disease, such as schizophrenia, may be on the order of hundreds of thousands [27,37]. Power calculations can be a useful tool to help estimate sample numbers. However, the information on effect size needed for this is often not known until a good body of pilot multi-omics data has already been collected."
+      },
+      "confidence": 0.95,
+      "quantity": "number of samples/patients",
+      "value": 1,
+      "unit": null,
+      "context": "needed to fully identify, understand or model a simple monogenic disorder such a phenylketonuria (PKU)",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr4",
+      "evidence": {
+        "section": "Designing Experiments Suitable for Multi-Omics Integration",
+        "original_text": "For example, the number of samples/patients needed to fully identify, understand or model a simple monogenic disorder such a phenylketonuria (PKU) is on the order of one or two [36], while the number of samples/patients needed to fully identify, understand or model a complex disease, such as schizophrenia, may be on the order of hundreds of thousands [27,37]. Power calculations can be a useful tool to help estimate sample numbers. However, the information on effect size needed for this is often not known until a good body of pilot multi-omics data has already been collected."
+      },
+      "confidence": 0.95,
+      "quantity": "number of samples/patients",
+      "value": 100000,
+      "unit": null,
+      "context": "needed to fully identify, understand or model a complex disease, such as schizophrenia",
+      "result_type": "threshold"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_9c9617b20771d34b_p1",
+      "evidence": {
+        "section": "Challenges in Multi-Omics Integration",
+        "original_text": "Omics data are inherently highly variable and noisy. Furthermore, most omics data are only qualitative in nature, making it very hard to reproduce and even harder to compare. When only qualitative data are available, multi-omics integration, particularly from multiple sources, becomes difficult, if not almost impossible [90,140,141]. While DNA sequence data are often very accurate and highly reproducible (error rates of <0.001%), they are widely considered qualitative with a large number of false positives based on the sheer number of reads obtained: transcriptomic, proteomic, metagenomics and the majority of metabolomics data are highly qualitative and poorly reproducible, as reflected in reported false discovery rates (FDR) and adjusted p-values [26,142–145]. Many of the difficulties that these omics techniques have are inherent to the practices or measurement methods adopted by many platform users. For example, most proteomics researchers do not use well-defined peptide reference standards or isotopically labeled peptide standards for identification or quantification. Likewise, many microarray/transcriptome researchers use inherently qualitative microarray technologies and do not use universal reference materials with precisely known numbers of transcripts. Similarly, most metagenomics labs do not employ standard OTU definitions or standardized 16S-RNA to consistently identify microbes. It is now well-accepted by the microbiome community now that even RNA-Seq counts are not the actual counts, rather they represent relative abundances of those transcripts. Similarly, the vast majority (>80%) of published metabolomics studies are also qualitative, with little or no use of multiple reaction monitoring (MRM) or well-defined metabolite reference standards or isotopically labeled metabolite standards. As a result, omics labs that analyze exactly the same material using similar or identical omics technologies (i.e., comparing one metabolomics/proteomics approach to another comparable metabolomics/proteomics approach) will often get wildly different results [26,142–145], so much so that in some instances upward trends in one data set, could become downward trends in another."
+      },
+      "confidence": 0.97,
+      "metric": "data quality and reproducibility",
+      "compared_to": "qualitative vs quantitative omics data"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_9c9617b20771d34b_p2",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]. In addition to the importance of generating quantitative omics data, it is also important to make use of publicly available data sets, where omics-specific reporting and higher quality data standards have been followed. Such an approach will benefit the scientific community and reduce the amount of repeated work amongst different groups."
+      },
+      "confidence": 0.96,
+      "metric": "translational success to clinic",
+      "compared_to": "quantitative proteomics/transcriptomics assays vs quantitative metabolite measurements vs quantitative genotyping"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr5",
+      "evidence": {
+        "section": "Challenges in Multi-Omics Integration",
+        "original_text": "While DNA sequence data are often very accurate and highly reproducible (error rates of <0.001%), they are widely considered qualitative with a large number of false positives based on the sheer number of reads obtained: transcriptomic, proteomic, metagenomics and the majority of metabolomics data are highly qualitative and poorly reproducible, as reflected in reported false discovery rates (FDR) and adjusted p-values [26,142–145]. Many of the difficulties that these omics techniques have are inherent to the practices or measurement methods adopted by many platform users. For example, most proteomics researchers do not use well-defined peptide reference standards or isotopically labeled peptide standards for identification or quantification. Likewise, many microarray/transcriptome researchers use inherently qualitative microarray technologies and do not use universal reference materials with precisely known numbers of transcripts. Similarly, most metagenomics labs do not employ standard OTU definitions or standardized 16S-RNA to consistently identify microbes. It is now well-accepted by the microbiome community now that even RNA-Seq counts are not the actual counts, rather they represent relative abundances of those transcripts. Similarly, the vast majority (>80%) of published metabolomics studies are also qualitative, with little or no use of multiple reaction monitoring (MRM) or well-defined metabolite reference standards or isotopically labeled metabolite standards."
+      },
+      "confidence": 0.98,
+      "quantity": "error rates",
+      "value": 0.001,
+      "unit": "%",
+      "context": "DNA sequence data",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr6",
+      "evidence": {
+        "section": "Challenges in Multi-Omics Integration",
+        "original_text": "Similarly, the vast majority (>80%) of published metabolomics studies are also qualitative, with little or no use of multiple reaction monitoring (MRM) or well-defined metabolite reference standards or isotopically labeled metabolite standards. As a result, omics labs that analyze exactly the same material using similar or identical omics technologies (i.e., comparing one metabolomics/proteomics approach to another comparable metabolomics/proteomics approach) will often get wildly different results [26,142–145], so much so that in some instances upward trends in one data set, could become downward trends in another."
+      },
+      "confidence": 0.95,
+      "quantity": "percentage of published metabolomics studies",
+      "value": 80,
+      "unit": "%",
+      "context": "that are qualitative",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr7",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]. In addition to the importance of generating quantitative omics data, it is also important to make use of publicly available data sets, where omics-specific reporting and higher quality data standards have been followed. Such an approach will benefit the scientific community and reduce the amount of repeated work amongst different groups."
+      },
+      "confidence": 0.96,
+      "quantity": "number of translated proteomic assays",
+      "value": 1,
+      "unit": null,
+      "context": "to the clinic due to widespread lack of quantification",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr8",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]. In addition to the importance of generating quantitative omics data, it is also important to make use of publicly available data sets, where omics-specific reporting and higher quality data standards have been followed. Such an approach will benefit the scientific community and reduce the amount of repeated work amongst different groups."
+      },
+      "confidence": 0.96,
+      "quantity": "number of translated transcriptomics assays",
+      "value": 5,
+      "unit": null,
+      "context": "to the clinic due to widespread lack of quantification",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr9",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]. In addition to the importance of generating quantitative omics data, it is also important to make use of publicly available data sets, where omics-specific reporting and higher quality data standards have been followed. Such an approach will benefit the scientific community and reduce the amount of repeated work amongst different groups."
+      },
+      "confidence": 0.96,
+      "quantity": "number of translated chemical tests",
+      "value": 300,
+      "unit": null,
+      "context": "to the clinic enabled by quantitative metabolite measurements",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_9c9617b20771d34b_qr10",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]. In addition to the importance of generating quantitative omics data, it is also important to make use of publicly available data sets, where omics-specific reporting and higher quality data standards have been followed. Such an approach will benefit the scientific community and reduce the amount of repeated work amongst different groups."
+      },
+      "confidence": 0.96,
+      "quantity": "number of developed genetic tests",
+      "value": 75000,
+      "unit": null,
+      "context": "due to the use of quantitative genotyping",
+      "result_type": "measurement"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_9c9617b20771d34b_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The use of multiple omics techniques (i.e., genomics, transcriptomics, proteomics, and metabolomics) is becoming increasingly popular in all facets of life science. Omics techniques provide a more holistic molecular perspective of studied biological systems compared to traditional approaches. However, due to their inherent data differences, integrating multiple omics platforms remains an ongoing challenge for many researchers. As metabolites represent the downstream products of multiple interactions between genes, transcripts, and proteins, metabolomics, the tools and approaches routinely used in this field could assist with the integration of these complex multi-omics data sets. The question is, how? Here we provide some answers (in terms of methods, software tools and databases) along with a variety of recommendations and a list of continuing challenges as identified during a peer session on multi-omics integration that was held at the recent ‘Australian and New Zealand Metabolomics Conference’ (ANZMET 2018) in Auckland, New Zealand (Sept. 2018). We envisage that this document will serve as a guide to metabolomics researchers and other members of the community wishing to perform multi-omics studies. We also believe that these ideas may allow the full promise of integrated multi-omics research and, ultimately, of systems biology to be realized."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_9c9617b20771d34b_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Most of the data generated over the past 25 years by various omics platforms have been qualitative or semi-quantitative in nature. While qualitative data can be used to compare similar variables across samples within a single lab (using a single measurement platform), they do not support comparisons across labs or across platforms. Likewise, qualitative measurements do not allow for consistent and accurate integration of multi-omics data where measurements typically have to be done on multiple platforms, across multiple laboratories, over extended time periods. Careful quantitation of omics data allows much more accurate comparison to reference values, more consistent inter-laboratory comparisons, greater reproducibility, improved interpretability, and far simpler data integration. Indeed, because of the widespread lack of quantification, only one single proteomic assay and only five transcriptomics assays have ever been translated into the clinic [161,162]. On the other hand, quantitative metabolite measurements have enabled the translation of more than 300 chemical tests to the clinic [163], while the use of quantitative genotyping has led to the development of about 75,000 genetic tests [164]. In addition to the importance of generating quantitative omics data, it is also important to make use of publicly available data sets, where omics-specific reporting and higher quality data standards have been followed. Such an approach will benefit the scientific community and reduce the amount of repeated work amongst different groups. The description of a given domain can be represented in any format, but the use of common ontologies makes it easier to compare, integrate and interpret data from similar domains, multiple omics platforms as it facilitates the integration, computational processing and comprehensive interpretation of that data [165]. Lastly, there is a greater need for cross-talk among the different omics communities. This is especially true given the insular or “silo-ed” approach that most omics researchers have traditionally adopted in publishing or presenting their work. There is a tremendous amount that can be learned from shared interactions, particularly from those omics areas that are developing comparatively faster than others. Webinars could be one approach that could inexpensively facilitate such conversations. Likewise, the formation of professional societies whose central aim is integrating multi-omics data could also help break down some of the existing barriers and improve collaboration between the existing professional omics societies and systems biology societies. It could be achieved by, for example, establishing mutual education programs, creating common data standards, forming common task groups and developing cross-omics engagement guidelines that address authorship policies and promote the advancement of early to mid-career researchers. Furthermore, greater connectivity and collaboration between the respective scientific conferences could be encouraged through shared/mutually supported conference sessions."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9c9617b20771d34b_lm1",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "Omics data are inherently highly variable and noisy. Furthermore, most omics data are only qualitative in nature, making it very hard to reproduce and even harder to compare. When only qualitative data are available, multi-omics integration, particularly from multiple sources, becomes difficult, if not almost impossible [90,140,141]. While DNA sequence data are often very accurate and highly reproducible (error rates of <0.001%), they are widely considered qualitative with a large number of false positives based on the sheer number of reads obtained: transcriptomic, proteomic, metagenomics and the majority of metabolomics data are highly qualitative and poorly reproducible, as reflected in reported false discovery rates (FDR) and adjusted p-values [26,142–145]. Many of the difficulties that these omics techniques have are inherent to the practices or measurement methods adopted by many platform users. For example, most proteomics researchers do not use well-defined peptide reference standards or isotopically labeled peptide standards for identification or quantification. Likewise, many microarray/transcriptome researchers use inherently qualitative microarray technologies and do not use universal reference materials with precisely known numbers of transcripts. Similarly, most metagenomics labs do not employ standard OTU definitions or standardized 16S-RNA to consistently identify microbes. It is now well-accepted by the microbiome community now that even RNA-Seq counts are not the actual counts, rather they represent relative abundances of those transcripts. Similarly, the vast majority (>80%) of published metabolomics studies are also qualitative, with little or no use of multiple reaction monitoring (MRM) or well-defined metabolite reference standards or isotopically labeled metabolite standards. As a result, omics labs that analyze exactly the same material using similar or identical omics technologies (i.e., comparing one metabolomics/proteomics approach to another comparable metabolomics/proteomics approach) will often get wildly different results [26,142–145], so much so that in some instances upward trends in one data set, could become downward trends in another. Even if the problems with the omics technologies could be controlled or managed through improved availability and use of reference standards and standardized operating protocols, there still remains a problem with significant inter-laboratory variations in sample storage, extraction and handling protocols. These issues are often related to the skills, organization, and patience of individual technicians or researchers. Sample-specific factors, such as the population structure in the sample, the cell or tissue composition, inherent sampling biases, batch effects, and other technical artifacts can add further heterogeneity to omics measurements as does the way in which different classes of biomolecules behave and interact (e.g., response time, stability, half-life, regulation). Precisely measured, quantitative data that is calibrated to standard reference materials, checked against authentic standards, assessed with quality controls and measured with universal standard operating protocols (SOPs) is what is needed for robust, reproducible multi-omics integration. This type of high quality, quantitative data are actually obtainable via genomics, metabolomics, and proteomics. They are potentially obtainable via transcriptomics [146] and meta-genomics [147]. When quantitative data are available, it is possible to perform multi-omics integration. It is also possible to perform robust intra- and inter-lab comparisons (i.e., ring trials). Examples of this can be seen with the impressive results described in the systems modeling section (see Section 3.1) where essentially all of the baseline data sets used for modeling were obtained from open-source quantitative data repositories."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9c9617b20771d34b_lm2",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "The lack of sufficient meta-data is another key hurdle to the successful integration of multi-omics data sets [89]. Often considerable time, money and effort may go into the collection of molecular omics data, while very little effort goes into collecting the meta-data about the samples, organisms or patients. Meta-data are information about the data, which typically includes where, when and how the data were collected as well as information about the observable phenotypes of the samples. Meta-data are important to enabling reproducibility and biologically relevant interpretation of omics results. For example, in the case of plant multi-omics analysis information about the soil type, soil composition, watering conditions, temperature trends, relative humidity, plant age, season, light levels and plant breed can have a significant impact on metabolite, protein and transcriptome measurements. For cell or tissue culture multi-omics analyses, important meta-data could include information about the cell types, cell sex, cell growth media, cell oxygenation levels, and cell generation. For animal studies, meta-data could include information about age, sex, weight, feeding levels, feed composition, strain or breed, cage location, light conditions, activity, diurnal cycle, health status and proximity to other animals. For human studies, meta-information including age, sex, job type, ethnicity, marital status, BMI, smoking/drinking habits, lifestyle, exercise, diet, health status, drug intake, diurnal cycle, menstrual cycle, and ethnicity should be collected, as they could also affect omics measurements. Meta-data could also be considered in the form of ionomics or metallomics data from the cells or tissues being investigated. Without taking into account these confounders, it is often difficult to identify clear signals in the molecular data or signals may be misinterpreted (e.g., one may misidentify a molecular trend that is simply due to an age difference). If these meta-data are not captured, the collection of large data sets is required to mitigate the sources of variation [148], which may greatly increase the cost of a multi-omics study."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9c9617b20771d34b_lm3",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "There is no shortage of data tools and software available for multi-omics integration, as clearly demonstrated by the size and scope of Table 2. Often, the available multi-omics databases are of very high quality and exceptionally well curated and many of the software tools are well designed and maintained. However, it is clear that researchers (including many of the authors of this manuscript) may be unaware of all of these tools and what they may offer. This problem may be due to the sheer number of resources (now numbering hundreds) or the lack of a central repository which catalogs, links and rates or summarizes these tools. A third reason may be the tendency of researchers to ‘stick with what they know’. This leads to a bias among scientists to treat every problem as a nail that has to be hit with the same hammer. This could be partly caused by the user-unfriendliness of many multi-omics programs. Some are difficult to install, others have limited operating system compatibilities, while others have enormously steep learning curves. Increasing researcher awareness and accessibility to tools (e.g., through central repositories and making tools available over the web or converting them to web-servers) will improve their use and uptake. Lack of interoperability is another frequently cited problem with bioinformatics tools, not just multi-omics tools. Different bioinformatics and cheminformatics databases have different formats, many of which are non-standard. Similarly, different programs may also require their input data to be in non-standard formats and will output data in a format that is incompatible with other programs. This can make it difficult to create a multi-program or a multi-database workflow and may require users to spend their time writing scripts to convert and reconvert data so that it can be read by other programs. The movement to FAIR (findable, accessible, interoperable, and re-usable) data standards in bioinformatics software and databases could potentially alleviate these challenges [149]."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9c9617b20771d34b_lm4",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "While there are many excellent tools for multi-omics integration and visualization (see Table 2), there is clearly still room for improvement. One area where significant work is needed lies in the scope and availability of pathway databases. Pathway databases provide biological context while at the same time providing clear links between genes, proteins, and metabolites. KEGG [109], MetaCyc [111] and Reactome [110] are freely available and widely used pathway databases, however, they limited in portraying what is known about biological pathways or molecular processes. While all three databases emphasize metabolic pathways, they were all developed before the advent of metabolomics (or even proteomics) and thus lack some of the new insights that these technologies bring. It is important to remember that many other kinds of pathways are also important in biology, including: protein signaling, metabolite signaling, gene activation, protein and metabolite transport, disease, drug action and drug or xenobiotic metabolism pathways, as well as many more. Although some of these pathways are captured in commercial resources, such as the Ingenuity Pathway Analysis (IPA) system produced by Qiagen, the high cost, closed nature of the database, and the lack of compatibility with many other bioinformatics software tools makes such commercial tools difficult to integrate into multi-omics pipelines. Certainly, the creation of far more extensive, open access pathway databases with suitable rendering functions and machine-readable features, would make multi-omics integration much easier and far more user-friendly. As in the case of open platforms of open-source R-packages, R-based multi-omics packages can be encouraged through collaborations internationally. Construction and visualization of network models is another challenging aspect of multi-omics integration. The use of metabolic network models, generated via metabolomics, has greatly facilitated the integration of multi-omics data [150]. These metabolic network models have been extended to genetic regulatory networks, protein-protein interaction network models and metabolic-reaction network models [12,151]. However, these models remain ‘insular’ in that they only allow the modeling a single omics network. Clearly, if network models could be extended to more clearly illustrate or connect multi-omics data, this would greatly enhance visualization and interpretation of multi-omics data. Recently, multi-layer networks—which can be defined as networks formed by multiple omics layers—have been created that allow the rendering of specific interactions between different omics layers [152,153]."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9c9617b20771d34b_lm5",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "Multi-omics studies potentially represent the pinnacle of achievement in molecular characterization. However, there are questions around their real value and utility. For example, is a multi-omics signature for diabetes or obesity really useful if the same diagnosis can be made by a simple blood glucose test or having someone step on a weight scale? Likewise, if a single, carefully interpreted, metabolomics study provides just as much information as a comprehensive multi-omics study, is anything useful gained? Currently, many published multi-omics studies appear to simply demonstrate that they are feasible and modestly informative. Some have demonstrated a post-hoc rationale for what was long known or commonly observed while others have provided some new useful mechanistic insights but have not led to new drugs, new therapies, new diagnostics or new biotechnologies. As yet no truly significant or ‘groundbreaking’ results have emerged from multi-omics studies. That is not to say that these types of studies will not have an impact, but for multi-omics research to gain traction with the public and with funding agencies, it will need to demonstrate clear utility and highlight novel insights. Currently, the most tangible and useful applications for multi-omics studies are in the areas of precision medicine, personalized health, or precision nutrition [154–156]. These appear modestly useful, and certainly, if larger population studies could be performed, their utility could grow significantly. Useful/practical applications are also appearing in environmental protection and environmental adaptation/resilience, especially after significant and ongoing contamination events or natural disasters [39,50,51,157]."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_9c9617b20771d34b_lm6",
+      "evidence": {
+        "section": "4. Challenges in Multi-Omics Integration",
+        "original_text": "Multi-omics research can be expensive, and access to multiple analytical instrumentations and multidisciplinary specialists requires a considerable level of research funding. Indeed, a robust multi-omics study on a human research population can easily cost in excess of US$500,000. Therefore, the availability of sufficient funding is often the central limiting factor for any multi-omics study. Traditionally, most research funding has been allocated to genomic, metagenomics and transcriptomics studies while proteomics, in most jurisdictions around the world, is only funded at about 10% of the level of genomics and, in most countries, metabolomics funding is usually at about 2% of the funding level of genomics. As a result, most multi-omics studies in humans involve combined genomics and transcriptomics studies or combined genomics and metagenomics/microbiome studies. Multi-omics studies involving metabolomics are relatively rare, yet they are consistently among the most informative or most highly cited [75–77]. Clearly, if true multi-omics research is going to be conducted, a re-balancing of research funding is needed. As emphasized throughout this document, we believe that the metabolomics field has a great deal to offer to multi-omics researchers and that metabolomics methods should lie at the core of any truly multi-omics research study."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_9c9617b20771d34b_fw1",
+      "evidence": {
+        "section": "5. Recommendations",
+        "original_text": "Based on the challenges identified above along with some of the potential solutions (achieved by us and others) we have produced a list of recommendations to consider when designing or contemplating a multi-omics study. These are: Adopt the sample collection, preparation and measurement standards used in metabolomics studies. This would ensure high-quality data collection in most multi-omics studies; Measure multi-omics data in a robust, quantitative manner to ensure reproducibility, enforce comparability and permit facile integration; Use reference standards, quality control (QC) samples, and universal standardized operating protocols (SOPs) to enable consistent multi-omics measurements across laboratories; Perform power analyses, where possible, prior to conducting large scale multi-omics studies; and, Collect and record comprehensive meta-data to guide and inform well-designed multi-omics studies (please see [106,158–160]). We have also identified the following as key requirements to support the multi-omics community in its efforts to carry out truly integrated, systems biology research: Create centralized data repositories, curated or reviewed software lists and improved software/database interoperability (adherence to FAIR data standards) to improve multi-omics integration; Improve or develop more comprehensive open source pathway databases and network visualization tools; Increase levels of funding and increase awareness of the need for metabolomics in multi-omics studies; Demonstrate clear utility of multi-omics studies to both the public and funding agencies; and, Undertake more community-driven activities to lead to the creation of multi-omics tools and resources better suited to the community’s needs. In addition to these above recommendations, we also encourage software developers to take more initiative to develop more user-friendly omics integration of web tools and software. Advancements in machine learning approaches would also be highly beneficial for the integration and interpretation of multi-omics data. Moreover, successful researchers should ensure to pass on their successes or share their stories of multi-omics integration to a much broader audience. Communicating successes or discoveries to the popular press raises awareness and shows both the public and scientific funding agencies that multi-omics research can have a real social impact. The use of social media is changing how we conduct social communication, it could and should change how we conduct our scientific communication too."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

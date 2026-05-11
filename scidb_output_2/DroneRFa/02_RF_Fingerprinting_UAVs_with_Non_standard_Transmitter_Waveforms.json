@@ -1,0 +1,716 @@
+{
+  "metadata": {
+    "doc_id": "doc_a2cebe5b8edd0b6c",
+    "source_file": "02_RF_Fingerprinting_UAVs_with_Non_standard_Transmitter_Waveforms.md",
+    "title": "RF Fingerprinting Unmanned Aerial Vehicles with Non-standard Transmitter Waveforms",
+    "year": 2020,
+    "doi": null,
+    "abstract": "_**Abstract**_ **—The universal availability of unmanned aerial vehicles (UAVs) has resulted in many applications where the same make/model can be deployed by multiple parties. Thus, identifying a specific UAV in a given swarm, in a manner that cannot be spoofed by software methods, becomes important. We propose RF fingerprinting for this purpose, where a neural network learns subtle imperfections present in the transmitted waveform. For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data. The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training. Importantly, our approach permits RF fingerprinting on manufacturer-proprietary waveforms that cannot be decoded or altered by the end-user. Results reveal a near two-fold accuracy in UAV classification through our multi-classifier method over the single-classifier case, with an overall accuracy of 95% when tested with data under unseen channel. Our multi-classifier scheme also improves new UAV detection accuracy to a near perfect 99%, up from 68% for a single neural network approach.**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "电子、通信与自动控制技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "RF fingerprinting",
+      "unmanned aerial vehicles",
+      "neural network",
+      "wireless channel",
+      "data augmentation"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:19:40.045476+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose RF fingerprinting for this purpose, where a neural network learns subtle imperfections present in the transmitted waveform. For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.98,
+      "term": "RF fingerprinting",
+      "normalized": "射频指纹识别",
+      "std_label": "RF fingerprinting"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The universal availability of unmanned aerial vehicles (UAVs) has resulted in many applications where the same make/model can be deployed by multiple parties. Thus, identifying a specific UAV in a given swarm, in a manner that cannot be spoofed by software methods, becomes important."
+      },
+      "confidence": 0.99,
+      "term": "unmanned aerial vehicles (UAVs)",
+      "normalized": "无人机",
+      "std_label": "UAV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose RF fingerprinting for this purpose, where a neural network learns subtle imperfections present in the transmitted waveform. For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.97,
+      "term": "deep neural networks",
+      "normalized": "深度神经网络",
+      "std_label": "DNN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training."
+      },
+      "confidence": 0.98,
+      "term": "multi-classifier scheme",
+      "normalized": "多分类器方案",
+      "std_label": "multi-classifier scheme"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training."
+      },
+      "confidence": 0.98,
+      "term": "data augmentation",
+      "normalized": "数据增强",
+      "std_label": "DA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.97,
+      "term": "hovering motion",
+      "normalized": "悬停运动",
+      "std_label": "hovering motion"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.96,
+      "term": "wireless channel variations",
+      "normalized": "无线信道变化",
+      "std_label": "channel variations"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Importantly, our approach permits RF fingerprinting on manufacturer-proprietary waveforms that cannot be decoded or altered by the end-user."
+      },
+      "confidence": 0.98,
+      "term": "proprietary waveform",
+      "normalized": "专有波形",
+      "std_label": "proprietary waveform"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c9",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "We form a dataset by flying 7 identical DJI M100 UAVs inside an RF anechoic chamber, at different distances from a receiver that collects I/Q samples from DJI’s non-standard, proprietary waveform. Thus, the setup captures real-world signal variations, as would be seen in practical deployments."
+      },
+      "confidence": 0.97,
+      "term": "I/Q samples",
+      "normalized": "I/Q样本",
+      "std_label": "I/Q samples"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_a2cebe5b8edd0b6c_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Our multi-classifier scheme also improves new UAV detection accuracy to a near perfect 99%, up from 68% for a single neural network approach."
+      },
+      "confidence": 0.98,
+      "term": "new UAV detection",
+      "normalized": "新无人机检测",
+      "std_label": "new UAV detection"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose RF fingerprinting for this purpose, where a neural network learns subtle imperfections present in the transmitted waveform. For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.95,
+      "head": "doc_a2cebe5b8edd0b6c_c1",
+      "relation_type": "addresses",
+      "relation_surface": "propose for",
+      "tail": "doc_a2cebe5b8edd0b6c_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.96,
+      "head": "doc_a2cebe5b8edd0b6c_c6",
+      "relation_type": "causes",
+      "relation_surface": "raises a key challenge",
+      "tail": "doc_a2cebe5b8edd0b6c_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data."
+      },
+      "confidence": 0.95,
+      "head": "doc_a2cebe5b8edd0b6c_c7",
+      "relation_type": "degrades",
+      "relation_surface": "performs poorly",
+      "tail": "doc_a2cebe5b8edd0b6c_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training."
+      },
+      "confidence": 0.94,
+      "head": "doc_a2cebe5b8edd0b6c_c4",
+      "relation_type": "improves",
+      "relation_surface": "addresses this problem by proposing",
+      "tail": "doc_a2cebe5b8edd0b6c_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training."
+      },
+      "confidence": 0.94,
+      "head": "doc_a2cebe5b8edd0b6c_c5",
+      "relation_type": "enhances",
+      "relation_surface": "increase neural network robustness",
+      "tail": "doc_a2cebe5b8edd0b6c_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training."
+      },
+      "confidence": 0.94,
+      "head": "doc_a2cebe5b8edd0b6c_c4",
+      "relation_type": "extends",
+      "relation_surface": "extending the multiclassifier scheme for",
+      "tail": "doc_a2cebe5b8edd0b6c_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose RF fingerprinting for this purpose, where a neural network learns subtle imperfections present in the transmitted waveform."
+      },
+      "confidence": 0.95,
+      "head": "doc_a2cebe5b8edd0b6c_c1",
+      "relation_type": "uses",
+      "relation_surface": "learns subtle imperfections",
+      "tail": "doc_a2cebe5b8edd0b6c_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Importantly, our approach permits RF fingerprinting on manufacturer-proprietary waveforms that cannot be decoded or altered by the end-user."
+      },
+      "confidence": 0.94,
+      "head": "doc_a2cebe5b8edd0b6c_c1",
+      "relation_type": "works_on",
+      "relation_surface": "permits RF fingerprinting on",
+      "tail": "doc_a2cebe5b8edd0b6c_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_a2cebe5b8edd0b6c_r9",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "We form a dataset by flying 7 identical DJI M100 UAVs inside an RF anechoic chamber, at different distances from a receiver that collects I/Q samples from DJI’s non-standard, proprietary waveform. Thus, the setup captures real-world signal variations, as would be seen in practical deployments."
+      },
+      "confidence": 0.93,
+      "head": "doc_a2cebe5b8edd0b6c_c1",
+      "relation_type": "based_on",
+      "relation_surface": "collects I/Q samples",
+      "tail": "doc_a2cebe5b8edd0b6c_c9"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_a2cebe5b8edd0b6c_d1",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "In an RF anechoic chamber, we collect signals from 7 identical DJI M100 UAVs as transmitters. An Ettus USRP X310 [30] equipped with an UBX 160 USRP daughterboard is used to capture signals at the receiver side. We fly the UAVs one at a time at different distances of 6, 9, 12, and 15 feet from the receiver, while they transmit. The receiver collects I/Q samples only in the downlink 10 MHz channel where the UAV is transmitting, as described in Section III-A2. At each distance, we collect I/Q samples for ∼ 2 seconds, pause for ∼ 10 seconds, and then repeat this process 3 more times. The ∼ 10-second intervals of time partition the overall received signals into 4 non-overlapping bursts, each containing ∼ 140 interleaved short periods of data and noise. A high-level overview of the sequence collected at the receiver side for each UAV at a given distance is shown in Figure 3. To complete the dataset, the procedure shown in Figure 3 is collected from all the 7 UAVs, flying at 4 different distances from the receiver. The average calculated SNRs are approximately 33, 31, 28, and 26 dB for distances of 6, 9, 12, and 15, respectively. To prepare the sequences for our deep learning framework, we extract the portions containing data and separate them from interleaved noise periods to form ∼ 140 sequences per burst. From here on, we refer to these non-overlapping data sequences as examples. With 7 UAVs, each having 4 distances, each distance having 4 bursts, and each burst having ∼ 140 examples, we have more than 13k examples with average length of ∼ 92k I/Q samples in the dataset. This complete UAV dataset is released for future investigations[1]."
+      },
+      "confidence": 0.95,
+      "name": "UAV RF fingerprinting dataset",
+      "modality": "tabular",
+      "domain": "wireless communications, RF fingerprinting"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_a2cebe5b8edd0b6c_ds1",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "At each distance, we collect I/Q samples for ∼ 2 seconds, pause for ∼ 10 seconds, and then repeat this process 3 more times. The ∼ 10-second intervals of time partition the overall received signals into 4 non-overlapping bursts, each containing ∼ 140 interleaved short periods of data and noise. A high-level overview of the sequence collected at the receiver side for each UAV at a given distance is shown in Figure 3. To prepare the sequences for our deep learning framework, we extract the portions containing data and separate them from interleaved noise periods to form ∼ 140 sequences per burst. From here on, we refer to these non-overlapping data sequences as examples. With 7 UAVs, each having 4 distances, each distance having 4 bursts, and each burst having ∼ 140 examples, we have more than 13k examples with average length of ∼ 92k I/Q samples in the dataset."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Dataset composed of I/Q samples from UAV transmissions, partitioned into bursts and examples"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_a2cebe5b8edd0b6c_ds2",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "In an RF anechoic chamber, we collect signals from 7 identical DJI M100 UAVs as transmitters. An Ettus USRP X310 [30] equipped with an UBX 160 USRP daughterboard is used to capture signals at the receiver side. We fly the UAVs one at a time at different distances of 6, 9, 12, and 15 feet from the receiver, while they transmit. The receiver collects I/Q samples only in the downlink 10 MHz channel where the UAV is transmitting, as described in Section III-A2. At each distance, we collect I/Q samples for ∼ 2 seconds, pause for ∼ 10 seconds, and then repeat this process 3 more times. The ∼ 10-second intervals of time partition the overall received signals into 4 non-overlapping bursts, each containing ∼ 140 interleaved short periods of data and noise. The average calculated SNRs are approximately 33, 31, 28, and 26 dB for distances of 6, 9, 12, and 15, respectively."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Data collected in RF anechoic chamber with controlled distances and SNR measurements"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_a2cebe5b8edd0b6c_d2",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "Since the UAVs used in this paper transmit Lightbridge proprietary waveforms, we use software defined radios (SDRs) transmitting standard WiFi to study the estimated channel in two different cases. We generate a waveform with standard protocol of IEEE WiFi 802.11a with 5 MHz bandwidth, using MATLAB WLAN toolbox. We transmit the waveform over the air using an Ettus USRP X310 radio as the transmitter hardware, in two different situations described below: 1) Static Tx: We place the transmitter statically on the ground. 2) Hovering Tx: We mount the transmitter on an M100 UAV, fly the UAV and transmit signals as the UAV hovers in its place. For both cases, we use an Ettus USRP X310 radio placed on the ground, as the downlink receiver, to collect I/Q samples and estimate the channel. With FFT size 64, if we eliminate the guardband subcarriers, we have 52 channel coefficients for each WiFi packet. We calculate the magnitude of channel coefficients for each packet at three different instants of 0, 1.9 ms, and 596 ms in Figure 5. It is observed that in case of a static transmitter, the channel does not change much during 596 ms. However, in case of a hovering UAV, channel changes drastically from the starting instant 0 to the 596 ms mark."
+      },
+      "confidence": 0.85,
+      "name": "Static vs hovering transmitter channel dataset",
+      "modality": "tabular",
+      "domain": "wireless communications, channel estimation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_a2cebe5b8edd0b6c_ds3",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "For both cases, we use an Ettus USRP X310 radio placed on the ground, as the downlink receiver, to collect I/Q samples and estimate the channel. With FFT size 64, if we eliminate the guardband subcarriers, we have 52 channel coefficients for each WiFi packet. We calculate the magnitude of channel coefficients for each packet at three different instants of 0, 1.9 ms, and 596 ms in Figure 5."
+      },
+      "confidence": 0.85,
+      "spec_type": "format_rule",
+      "description": "Channel estimation dataset with FFT size 64 and 52 channel coefficients per packet"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_a2cebe5b8edd0b6c_ds4",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "We form our training, validation, and test sets based on the strategies explained in the next subsection. When the sets are formed, we calculate mean µ and standard deviation σ of the training set, in a preprocessing step, and use them later for normalizing the training and test batches. We train the neural network in a per-slice basis. Slices are overlapping portions of examples and contain consecutive raw I/Q samples. We choose the slice size as l = 200 and feed the training set to the neural network as batches of slices. The training batches are prepared by Data Generator, a special class in Keras library [31]. Every time a batch is to be formed, a random set of training examples are loaded to the memory and from them, a number of random slices are selected. This random selection of examples and slices, is the equivalent of shuffling the training set, without loading all of them to the memory. It helps the neural network see the training data in a different order in every epoch, which contributes to training more robust models. For each batch, a number of slices equal to “batch size” are selected from different examples to form a batch. Therefore, each batch is a tensor with dimensions (batch size, l, 2), with I and Q coming in two separate channels in the last dimension. Each batch is normalized with respect to the previously recorded mean µ and standard deviation σ of the training set, using (1) before being fed to the neural network."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Dataset partitioning into training, validation, and test sets based on burst separation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_a2cebe5b8edd0b6c_ds5",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "In our method of DA, first we normalize the training batch X according to mean µ, and standard deviation σ of the complete training set using (1). Next, the normalized batch passes through the DA block before being fed to the neural network (See Figure 9). The block contains a multitap complex FIR filter that is convolved with the data batch passing through it. The convolution happens in “same” mode, which means each slice is zero padded before passing through the filter, and the dimensions of the data batch do not change after filtering. The filter taps are independent and chosen from the same distribution. For the purpose of this paper, we choose an 11-tap FIR filter and we draw its coefficients from complex Gaussian distribution with mean µh=0 and standard deviation σh=0.125. However, FIR parameters such as number of taps, mean, and standard deviation can be varied for different datasets to optimize the method and achieve the best results. In each epoch, when each data batch is loaded by Keras Data Generator [31], a new set of filter coefficients are drawn from the distribution. In this way, the augmentation block provides extensive variety to the training set over epochs. The resulting trained model is less likely to over-fit, and it is more robust compared to a model obtained from classical training without DA."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Data augmentation using complex FIR filter with Gaussian coefficients"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We propose RF fingerprinting for this purpose, where a neural network learns subtle imperfections present in the transmitted waveform. For UAVs, the constant hovering motion raises a key challenge, which remains a fundamental problem in previous works on RF fingerprinting: Since the wireless channel changes constantly, the network trained with a previously collected dataset performs poorly on the test data. The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training. Importantly, our approach permits RF fingerprinting on manufacturer-proprietary waveforms that cannot be decoded or altered by the end-user."
+      },
+      "confidence": 0.95,
+      "name": "RF fingerprinting",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m2",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "Specifically, our approach is composed of increasing robustness in the training pipeline and combining test outputs of multiple trained deep neural networks, each being trained on a different portion of a large training set."
+      },
+      "confidence": 0.95,
+      "name": "multi-classifier scheme",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m3",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "In this section, we introduce our multi-classifier approach with a score-based two-level aggregation method that returns a fused decision for each test example. Additionally, we describe a data augmentation method to increase robustness during training. For a robust detection of new hovering UAVs, we combine the new device detection algorithm with the multischeme."
+      },
+      "confidence": 0.95,
+      "name": "two-step score-based aggregation method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m4",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "Data augmentation (DA) is a means to expand the training set by modifying the original training samples in a principled manner [37], [38]. While collecting more training data that contains all the variations is expensive, DA can artificially create those variations in the original training set. Moreover, our DA method obviates the need of storing a large and varied training set on disk, since the variation injection happens on the flight in the training pipeline. In our method of DA, first we normalize the training batch X according to mean µ, and standard deviation σ of the complete training set using (1). Next, the normalized batch passes through the DA block before being fed to the neural network (See Figure 9). The block contains a multitap complex FIR filter that is convolved with the data batch passing through it. The convolution happens in “same” mode, which means each slice is zero padded before passing through the filter, and the dimensions of the data batch do not change after filtering. The filter taps are independent and chosen from the same distribution. For the purpose of this paper, we choose an 11-tap FIR filter and we draw its coefficients from complex Gaussian distribution with mean µh=0 and standard deviation σh=0.125. However, FIR parameters such as number of taps, mean, and standard deviation can be varied for different datasets to optimize the method and achieve the best results. In each epoch, when each data batch is loaded by Keras Data Generator [31], a new set of filter coefficients are drawn from the distribution. In this way, the augmentation block provides extensive variety to the training set over epochs. The resulting trained model is less likely to over-fit, and it is more robust compared to a model obtained from classical training without DA."
+      },
+      "confidence": 0.95,
+      "name": "data augmentation",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m5",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "If a trained network is tested with an example from a new UAV, it classifies the example as one of the known classes, inevitably. To discriminate this prediction from a “correct” old device prediction, we use the statistics obtained from a test set of known old devices –as also used for standard WiFi in [17]– to label each unknown test example as “old” or “new”. Overview of the Approach: Our algorithm in [17] was originally used for new device detection in datasets where the training and test sets are non-overlapping, but share a common distribution. To use the algorithm for new UAV detection, after the network is trained on the legitimate (old) UAVs, an intermediate test set containing signals from only these trained (in-library) devices with known true labels are fed to it. Assume the test set has M examples each indexed with m = {0,1,. . . , M − 1}. The example m is classified using Majority Vote method as the predicted old class C(m), and two thresholds are recorded: 1. Probability threshold θP (u): For each specific UAV u, we gather the probability vectors of all the slices classified as C(m), across all examples, in a set Pu. Then a statistic mapping function, χ(A), is applied to set Pu, to obtain the probability threshold for device u, represented as θP(u). This process is repeated for all the old UAVs to achieve separate probability thresholds for each UAV. 2. Ratio threshold θR (u): For each specific UAV u, we gather the ratio of slices classified as C(m) in all the examples, in a set Ru. Then, the same statistic mapping χ(A) is applied to generate the ratio threshold for UAV u, represented as θR(u). Again, this process is repeated for all the old UAVs. At this point, two thresholds are calculated for each old UAV. We now form a final unseen test set of old and new UAVs, with B examples in total, each being indexed with b = {0,1,. . . , B − 1}. If slices from a given example b, whether new or old, are fed to the neural network, the example will be classified inevitably as one of the old UAVs. The predicted class for example b, noted as yˆ(b) is called the “best guess”. In order to decide whether example b is from an old or a new device, we calculate two metrics: Metric 1. Transmission prediction probability p˜(b): We collect the probability vectors from all the slices in example b classified as the best guess in a set P˜(b). The set P˜(b) is mapped to the metric transmission prediction probability p˜(b), using the statistical mapping function χ. Metric 2. Estimated correct slice ratio r˜(b): We divide the number of best guess slices by the total number of slices in example b, for the metric estimated correct slice ratio r˜(b). Finally, example b is labeled as new or old using (2)."
+      },
+      "confidence": 0.95,
+      "name": "new device detection algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m6",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "For the neural networks, we use 1D modified versions of AlexNet [32] (abbreviated as AlexNet1D) with ∼1.1 million parameters, and ResNet50 [33] (abbreviated as ResNet1D) with ∼16 million parameters. These architectures were previously successful in RF fingerprinting and modulation classification [14], [34]. Our version of AlexNet1D is a forward convolutional neural network (CNN) with 5 blocks stacked together. Each block consists of (i) a 1D convolutional layer with 128 filters of size of 7, followed by (ii) a 1D convolutional layer with 128 filters of size of 5, followed by (iii) a MaxPooling layer. The 5 blocks are followed by 2 fully connected (FC) layers of sizes 256 and 128, respectively. The final layer is a FC-softmax layer with the same size as the number of classes."
+      },
+      "confidence": 0.95,
+      "name": "AlexNet1D",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_a2cebe5b8edd0b6c_m7",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "Our version of ResNet1D is a combination of Projection blocks and Identity blocks stacked together. More details about both AlexNet1D and ResNet1D are visually depicted in Figure 4."
+      },
+      "confidence": 0.95,
+      "name": "ResNet1D",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x1",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "In an RF anechoic chamber, we collect signals from 7 identical DJI M100 UAVs as transmitters. An Ettus USRP X310 [30] equipped with an UBX 160 USRP daughterboard is used to capture signals at the receiver side. We fly the UAVs one at a time at different distances of 6, 9, 12, and 15 feet from the receiver, while they transmit. The receiver collects I/Q samples only in the downlink 10 MHz channel where the UAV is transmitting, as described in Section III-A2. At each distance, we collect I/Q samples for ∼2 seconds, pause for ∼10 seconds, and then repeat this process 3 more times. The ∼10-second intervals of time partition the overall received signals into 4 non-overlapping bursts, each containing ∼140 interleaved short periods of data and noise. A high-level overview of the sequence collected at the receiver side for each UAV at a given distance is shown in Figure 3. To complete the dataset, the procedure shown in Figure 3 is collected from all the 7 UAVs, flying at 4 different distances from the receiver. The average calculated SNRs are approximately 33, 31, 28, and 26 dB for distances of 6, 9, 12, and 15, respectively."
+      },
+      "confidence": 0.95,
+      "task": "UAV dataset collection",
+      "setup": "RF anechoic chamber, 7 DJI M100 UAVs, Ettus USRP X310 receiver, distances 6, 9, 12, 15 feet"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x2",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "We form our training, validation, and test sets based on the strategies explained in the next subsection. When the sets are formed, we calculate mean µ and standard deviation σ of the training set, in a preprocessing step, and use them later for normalizing the training and test batches. We train the neural network in a per-slice basis. Slices are overlapping portions of examples and contain consecutive raw I/Q samples. We choose the slice size as l = 200 and feed the training set to the neural network as batches of slices. The training batches are prepared by Data Generator, a special class in Keras library [31]. Every time a batch is to be formed, a random set of training examples are loaded to the memory and from them, a number of random slices are selected. This random selection of examples and slices, is the equivalent of shuffling the training set, without loading all of them to the memory. It helps the neural network see the training data in a different order in every epoch, which contributes to training more robust models. For each batch, a number of slices equal to “batch size” are selected from different examples to form a batch. Therefore, each batch is a tensor with dimensions (batch size, l, 2), with I and Q coming in two separate channels in the last dimension. Each batch is normalized with respect to the previously recorded mean µ and standard deviation σ of the training set, using (1) before being fed to the neural network. As this is a multi-class classification problem where among multiple UAVs, a single UAV is to be selected as the transmitter, we use categorical cross entropy loss. We train the neural network using Adam optimizer [35] with learning rate = 0.0001. At the end of each epoch, we test the network on the validation set. We stop training when the validation accuracy does not improve for 3 consecutive epochs. When the training is done, we test the trained network with the test set. Similar to the training process, we test the neural network on a per-slice basis. In the test phase, each example with length LL, is sliced with a stride=1. Consequently, each example is fed to the neural network as a tensor with dimensions (LL − l + 1, l, 2). Test batches are also normalized with respect to mean µ and standard deviation σ of the training set, as in (1)."
+      },
+      "confidence": 0.95,
+      "task": "training and testing neural network",
+      "setup": "slice size l=200, categorical cross entropy loss, Adam optimizer learning rate=0.0001, Keras Data Generator"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x3",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "To empirically show the effect of imperfect hovering on the received UAV fingerprint, we introduce two scenarios of training and testing the neural network. We use AlexNet1D architecture, unless specified otherwise. 1) Train on all bursts, test on all bursts: For each UAV, each distance and each burst, we shuffle the examples and partition the sequences by 60%, 20% and 20% for training, validation and test, respectively. We observe a test accuracy of 97%. In this scenario, other examples before/after the unseen test example may be present in the training set. As a result, the neural network performs well, although this procedure cannot be applied for realtime UAV classification. 2) Train on bursts 1, 2, and 3 Test on burst 4: For each UAV, each distance, and bursts 1, 2, and 3, we shuffle examples and choose 90% and 10% for training and validation, respectively. We test the trained network on the unseen burst 4. In this scenario of training on first examples and testing on last ones, we get 49% accuracy with AlexNet1D. A deeper architecture like ResNet1D also yields marginal improvement with 50% accuracy. This drop in accuracy compared to the former scenario shows the effect of slight UAV movements while hovering. When the transmitting UAV hovers, the received signals are impacted over time due to the continuous channel variations. Since the channel effect is non-negligible, both AlexNet1D and ResNet1D are unable to classify UAVs from unseen (future) bursts with high accuracy."
+      },
+      "confidence": 0.95,
+      "task": "preliminary experiments on UAV classification",
+      "setup": "AlexNet1D and ResNet1D architectures, training on bursts 1,2,3 and testing on burst 4"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x4",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "Among the 7 UAVs, without loss of generality, we choose UAV4 as the new device and other 6 UAVs as old devices. To simulate the real-world situation where the new UAV signal appears in the future burst 4, we form our training/validation sets using old UAV examples in bursts 1, 2, and 3. We shuffle the examples and use 90% of them as training set and 10% as validation set. We train a single AlexNet1D on the training set, and use the validation set as the old device intermediate test set to record thresholds. We form the new device test set using examples from UAV4 in burst 4, so that similar to the real case scenario, the new UAV is also from an unseen burst. In this case, the new UAV detection accuracy is defined as the number of examples with yex(b) labeled as “new”, divided by the total number examples in the new device test set. Our results show a new UAV detection accuracy of 68% with AlexNet1D, meaning a single neural network is not able to detect new UAVs from an unseen burst, with high accuracy."
+      },
+      "confidence": 0.95,
+      "task": "preliminary experiments on new UAV detection",
+      "setup": "UAV4 as new device, 6 UAVs as old devices, AlexNet1D trained on bursts 1,2,3, tested on UAV4 burst 4"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x5",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "Since the UAVs used in this paper transmit Lightbridge proprietary waveforms, we use software defined radios (SDRs) transmitting standard WiFi to study the estimated channel in two different cases. We generate a waveform with standard protocol of IEEE WiFi 802.11a with 5 MHz bandwidth, using MATLAB WLAN toolbox. We transmit the waveform over the air using an Ettus USRP X310 radio as the transmitter hardware, in two different situations described below: 1) Static Tx: We place the transmitter statically on the ground. 2) Hovering Tx: We mount the transmitter on an M100 UAV, fly the UAV and transmit signals as the UAV hovers in its place. For both cases, we use an Ettus USRP X310 radio placed on the ground, as the downlink receiver, to collect I/Q samples and estimate the channel. With FFT size 64, if we eliminate the guardband subcarriers, we have 52 channel coefficients for each WiFi packet. We calculate the magnitude of channel coefficients for each packet at three different instants of 0, 1.9 ms, and 596 ms in Figure 5. It is observed that in case of a static transmitter, the channel does not change much during 596 ms. However, in case of a hovering UAV, channel changes drastically from the starting instant 0 to the 596 ms mark."
+      },
+      "confidence": 0.95,
+      "task": "channel variation experiment",
+      "setup": "Ettus USRP X310 transmitter, WiFi 802.11a waveform, static vs hovering transmitter, USRP X310 receiver"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x6",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "As explained in Section IV-B, the proposed sub-ex voting is an aggregation method for determining the prediction for an example within one neural network. To compare the sub-ex voting method with previously existing aggregation methods for a single neural network, we train two different architectures of AlexNet1D and ResNet1D on bursts 1,2 and 3 and we test them on burst 4. For combining the probability vectors at the output of each neural network, we compare three methods of 1) Probability Sum, 2) Majority Vote, and the proposed 3) sub-ex voting. Figure 11a shows that the results of Probability Sum and Majority Vote are in the same range of ∼50% for this dataset. Compared to these methods, our proposed sub-ex voting, improves the accuracy to 61% and 63% for a single AlexNet1D and ResNet1D, respectively."
+      },
+      "confidence": 0.95,
+      "task": "performance evaluation of sub-example voting",
+      "setup": "AlexNet1D and ResNet1D trained on bursts 1,2,3, tested on burst 4, comparing Probability Sum, Majority Vote, sub-ex voting"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x7",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "To use the method described in Section IV-C for our UAV dataset, we leave aside burst 4 which is our final test set, to prevent information leakage from this burst into the process of determining J. Bursts 1 and 2 which are the first arriving bursts serve as initial training set, and burst 3 which is collected after them, serves as the intermediate test set. In round 1, we create 2 sets, containing complete burst 1 and burst 2, respectively. We train 2 separate neural networks on the two sets and test them on the unseen burst 3. We use the two level aggregation method to calculate the final multi-classifier accuracy. Individual and multi-classifier accuracies for this round are shown in Table Ia. In round 2, we create 4 sets by dividing each previous set into two parts. The 4 sets contain first half of burst 1, second half of burst 1, first half of burst 2, and second half of burst 2, respectively. Consequently, we train 4 neural network on these sets and test them on burst 3. Individual and multi-classifier accuracies for round 2 are shown in Table Ib. In round 3, we create 8 sets again by dividing each previous set into two parts. Therefore, 8 neural networks are trained on the 8 sets ranging from the first quarter of burst 1 to the fourth quarter of burst 2. The test results on the unseen burst 3 in round 3 are shown in Table Ic. The splitting process stops when accuracy improvement diminishes to 2% after 3 rounds and the final J is calculated as 8. At this point, each of bursts 1 and 2 are partitioned into 4 sets. For the final training/testing, we bring burst 3 into the training scheme, so that we have more sets and larger number of classifiers. Same as bursts 1 and 2, burst 3 is also partitioned into 4 sets, which yields 12 sets in total. The final outcome of dataset partitioning flow is shown in Figure 6, where we train J = 12 independent but identical classifiers on different portions of bursts 1, 2, and 3. We finally test all of the networks on the unseen burst 4."
+      },
+      "confidence": 0.95,
+      "task": "determining size of multi-NN scheme",
+      "setup": "bursts 1,2 as training, burst 3 as intermediate test, AlexNet1D, dataset partitioning algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x8",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "As explained in Section V-B, for the multi-classifier scheme, we train 12 identical AlexNet1Ds (less complex network in Figure 4a) in parallel. At test time, we feed each example to all the 12 trained neural networks, and use three methods to combine their results: As the first level of aggregation, we combine results of sub-examples, using Probability Sum. At the second level, we use Majority Vote among the 12 neural networks in the scheme. We use Majority Vote in both levels of aggregation, for combining both sub-example results and multi-classifier results. We use the proposed two-level aggregation method to combine the results. Figure 11b shows the numerical results for these three cases. The combination of Probability Sum and Majority Vote is shown as “PM” (45% accuracy), Majority Vote at both levels as “MM” (46% accuracy), and the two-level aggregation as “2level” (91% accuracy). The two-level aggregation improves the accuracy for multi-classifier scheme by more than 100%. Moreover, our score-based multi-classifier improves the accuracy of single classifiers using Probability Sum or Majority Vote (Figure 11a). This improvement is 85% and 82% for AlexNet1D and ResNet1D, respectively."
+      },
+      "confidence": 0.95,
+      "task": "multi-classifier with two levels of aggregation",
+      "setup": "12 AlexNet1Ds trained on partitioned bursts 1,2,3, tested on burst 4, comparing PM, MM, and 2level aggregation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x9",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "To show the contribution of DA towards improving the accuracy of individual neural networks, we independently retrain each of the 12 classifiers on sets shown in Figure 6, with the DA block included in the training pipeline. We train the neural networks for 50 epochs to ensure sufficient variations of training data is provided to the network. In the test phase, we use the FIR ensemble method to test the classifiers on the unseen burst 4, and calculate individual accuracies, as well as the multi-classifier accuracy using the twolevel aggregation method. The individual accuracies without and with augmentation block, and their corresponding multiclassifier accuracies can be seen in Table III. It is observed that DA improves the overall accuracy from 91% to 95%. Figure 12 further shows the confusion matrices for four different cases of (a) a single AlexNet1D being trained on bursts 1, 2, 3 and tested on burst 4 using Probability Sum for per-example accuracy (49% accuracy), (b) same case with DA in the pipeline (56% accuracy), (c) multi-classifier scheme with two levels of aggregation (91% accuracy), and (d) same case with DA in the pipeline (95% accuracy)."
+      },
+      "confidence": 0.95,
+      "task": "data augmentation performance evaluation",
+      "setup": "12 classifiers retrained with DA block (11-tap FIR filter), FIR ensemble method in test, burst 4 test"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_a2cebe5b8edd0b6c_x10",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "To implement the new UAV detection method along with multi-classifier scheme, as explained in Section IV-E, we choose UAV4 as the new UAV, and other 6 UAVs as the old ones (same as Section III-E). We exclude signals of UAV4 from sets shown in Figure 6, and use 90% of each set as training set, and 10% as validation set. We train J = 12 networks on the old UAV training sets and test them on the old UAV validation sets to record thresholds, as explained in Section III-E1. We form the new UAV test set using examples from UAV4 in burst 4, so that the new UAV signal is also from an unseen burst. After comparing the ratios with the thresholds, we obtain individual accuracies for new UAV detection, shown in Table III. As shown in this table, the multiclassifier accuracy for new UAV detection equals 99%. To show how the new UAV detection algorithm performs when an old UAV is fed to it, we do another experiment. We choose UAV6 in burst 4 as an old device in the unseen burst, and we feed its signals to the 12 neural networks trained in this subsection. We repeat the step of comparing ratios and thresholds for each neural network to decide whether the input comes from a new UAV or an old one. Then we use the aggregation method to calculate the multi-classifier accuracy. It should be noted that the old UAV is from the unseen burst 4, which adds to the difficulty of the task. The results shown in Table III illustrate that 11% of examples from the old UAV are incorrectly categorized as new UAV examples. Even though the true negative rate of our new UAV detection algorithm is 89%, the high 99% rate of true positives can effectively detect signals from outlier (new) UAVs."
+      },
+      "confidence": 0.95,
+      "task": "new UAV detection with multi-classifier",
+      "setup": "UAV4 as new UAV, 6 UAVs as old, 12 networks trained on old UAV sets, UAV4 burst 4 test"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_a2cebe5b8edd0b6c_qr1",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "Train on bursts 1, 2, and 3 Test on burst 4: For each UAV, each distance, and bursts 1, 2, and 3, we shuffle examples and choose 90% and 10% for training and validation, respectively. We test the trained network on the unseen burst 4. In this scenario of training on first examples and testing on last ones, we get 49% accuracy with AlexNet1D. A deeper architecture like ResNet1D also yields marginal improvement with 50% accuracy. This drop in accuracy compared to the former scenario shows the effect of slight UAV movements while hovering. When the transmitting UAV hovers, the received signals are impacted over time due to the continuous channel variations. Since the channel effect is non-negligible, both AlexNet1D and ResNet1D are unable to classify UAVs from unseen (future) bursts with high accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "classification accuracy",
+      "value": 49,
+      "unit": "%",
+      "context": "AlexNet1D trained on bursts 1, 2, and 3, tested on unseen burst 4, using Probability Sum or Majority Vote aggregation",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_a2cebe5b8edd0b6c_qr2",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "Figure 11a shows that the results of Probability Sum and Majority Vote are in the same range of ∼50% for this dataset. Compared to these methods, our proposed sub-ex voting, improves the accuracy to 61% and 63% for a single AlexNet1D and ResNet1D, respectively."
+      },
+      "confidence": 0.98,
+      "quantity": "classification accuracy",
+      "value": 61,
+      "unit": "%",
+      "context": "Single AlexNet1D trained on bursts 1,2,3, tested on burst 4, using proposed sub-example voting aggregation",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_a2cebe5b8edd0b6c_qr3",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "Figure 11b shows the numerical results for these three cases. The combination of Probability Sum and Majority Vote is shown as “PM” (45% accuracy), Majority Vote at both levels as “MM” (46% accuracy), and the two-level aggregation as “2level” (91% accuracy). The two-level aggregation improves the accuracy for multi-classifier scheme by more than 100%. Moreover, our score-based multi-classifier improves the accuracy of single classifiers using Probability Sum or Majority Vote (Figure 11a). This improvement is 85% and 82% for AlexNet1D and ResNet1D, respectively."
+      },
+      "confidence": 0.99,
+      "quantity": "classification accuracy",
+      "value": 91,
+      "unit": "%",
+      "context": "Multi-classifier scheme with 12 AlexNet1Ds trained on partitioned bursts 1,2,3, tested on burst 4, using proposed two-level score-based aggregation",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_a2cebe5b8edd0b6c_qr4",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "The individual accuracies without and with augmentation block, and their corresponding multi-classifier accuracies can be seen in Table III. It is observed that DA improves the overall accuracy from 91% to 95%. Figure 12 further shows the confusion matrices for four different cases of (a) a single AlexNet1D being trained on bursts 1, 2, 3 and tested on burst 4 using Probability Sum for per-example accuracy (49% accuracy), (b) same case with DA in the pipeline (56% accuracy), (c) multi-classifier scheme with two levels of aggregation (91% accuracy), and (d) same case with DA in the pipeline (95% accuracy). We can see in the latter case, diagonal dark cells have formed, which indicate correct predictions."
+      },
+      "confidence": 0.99,
+      "quantity": "classification accuracy",
+      "value": 95,
+      "unit": "%",
+      "context": "Multi-classifier scheme with 12 AlexNet1Ds trained with data augmentation on partitioned bursts 1,2,3, tested on burst 4, using two-level aggregation",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_a2cebe5b8edd0b6c_qr5",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "Among the 7 UAVs, without loss of generality, we choose UAV4 as the new device and other 6 UAVs as old devices. To simulate the real-world situation where the new UAV signal appears in the future burst 4, we form our training/validation sets using old UAV examples in bursts 1, 2, and 3. We shuffle the examples and use 90% of them as training set and 10% as validation set. We train a single AlexNet1D on the training set, and use the validation set as the old device intermediate test set to record thresholds. We form the new device test set using examples from UAV4 in burst 4, so that similar to the real case scenario, the new UAV is also from an unseen burst. In this case, the new UAV detection accuracy is defined as the number of examples with yex(b) labeled as “new”, divided by the total number examples in the new device test set. Our results show a new UAV detection accuracy of 68% with AlexNet1D, meaning a single neural network is not able to detect new UAVs from an unseen burst, with high accuracy."
+      },
+      "confidence": 0.99,
+      "quantity": "new UAV detection accuracy",
+      "value": 68,
+      "unit": "%",
+      "context": "Single AlexNet1D trained on 6 old UAVs (bursts 1,2,3), tested on new UAV (UAV4) in burst 4",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_a2cebe5b8edd0b6c_qr6",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "After comparing the ratios with the thresholds, we obtain individual accuracies for new UAV detection, shown in Table III. As shown in this table, the multi-classifier accuracy for new UAV detection equals 99%. Table IV shows the improvement of accuracy in multi-classifier scheme compared to single classifier. In all cases, training is done on bursts 1, 2, and 3 and test is done on the unseen burst 4. We see that classification accuracy improves from 50% for the best case of single classifier with previously existing methods to 95% with our multi-classifier scheme using two levels of aggregation and data augmentation. Moreover, as shown in Table IV, the 99% new UAV detection accuracy is 45% improvement over the single classifier result of 68% that we reported in Section III-E."
+      },
+      "confidence": 0.99,
+      "quantity": "new UAV detection accuracy",
+      "value": 99,
+      "unit": "%",
+      "context": "Multi-classifier scheme with 12 AlexNet1Ds trained on 6 old UAVs (partitioned bursts 1,2,3), tested on new UAV (UAV4) in burst 4",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_a2cebe5b8edd0b6c_p1",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "Figure 11b shows the numerical results for these three cases. The combination of Probability Sum and Majority Vote is shown as “PM” (45% accuracy), Majority Vote at both levels as “MM” (46% accuracy), and the two-level aggregation as “2level” (91% accuracy). The two-level aggregation improves the accuracy for multi-classifier scheme by more than 100%. Moreover, our score-based multi-classifier improves the accuracy of single classifiers using Probability Sum or Majority Vote (Figure 11a). This improvement is 85% and 82% for AlexNet1D and ResNet1D, respectively. Interestingly, the accuracy improvement in multi-classifier approach, compared to single ResNet1D, comes at no cost of increase in model size. There are ∼16M and ∼13.2M (=12 × 1.1) parameters, in ResNet1D and our multi-classifier scheme, respectively. In other words, the multi-classifier scheme with 12 AlexNet1Ds still has fewer parameters than a single ResNet1D, even though it yields 82% improvement in accuracy of ResNet1D."
+      },
+      "confidence": 0.98,
+      "metric": "classification accuracy",
+      "compared_to": "single classifier baseline"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_a2cebe5b8edd0b6c_p2",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "The individual accuracies without and with augmentation block, and their corresponding multi-classifier accuracies can be seen in Table III. It is observed that DA improves the overall accuracy from 91% to 95%. Figure 12 further shows the confusion matrices for four different cases of (a) a single AlexNet1D being trained on bursts 1, 2, 3 and tested on burst 4 using Probability Sum for per-example accuracy (49% accuracy), (b) same case with DA in the pipeline (56% accuracy), (c) multi-classifier scheme with two levels of aggregation (91% accuracy), and (d) same case with DA in the pipeline (95% accuracy). We can see in the latter case, diagonal dark cells have formed, which indicate correct predictions."
+      },
+      "confidence": 0.98,
+      "metric": "classification accuracy",
+      "compared_to": "multi-classifier without data augmentation"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_a2cebe5b8edd0b6c_p3",
+      "evidence": {
+        "section": "V. PERFORMANCE EVALUATION",
+        "original_text": "Table IV shows the improvement of accuracy in multi-classifier scheme compared to single classifier. In all cases, training is done on bursts 1, 2, and 3 and test is done on the unseen burst 4. We see that classification accuracy improves from 50% for the best case of single classifier with previously existing methods to 95% with our multi-classifier scheme using two levels of aggregation and data augmentation. Moreover, as shown in Table IV, the 99% new UAV detection accuracy is 45% improvement over the single classifier result of 68% that we reported in Section III-E."
+      },
+      "confidence": 0.98,
+      "metric": "new UAV detection accuracy",
+      "compared_to": "single classifier baseline"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_a2cebe5b8edd0b6c_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The main contribution of this paper is to address this problem by: (i) proposing a multi-classifier scheme with a two-step score-based aggregation method, (ii) using RF data augmentation to increase neural network robustness to hovering-induced variations, and (iii) extending the multiclassifier scheme for detecting a new UAV, not seen earlier during training. Importantly, our approach permits RF fingerprinting on manufacturer-proprietary waveforms that cannot be decoded or altered by the end-user. Results reveal a near two-fold accuracy in UAV classification through our multi-classifier method over the single-classifier case, with an overall accuracy of 95% when tested with data under unseen channel. Our multi-classifier scheme also improves new UAV detection accuracy to a near perfect 99%, up from 68% for a single neural network approach."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_a2cebe5b8edd0b6c_cl1",
+      "evidence": {
+        "section": "VI. CONCLUSION",
+        "original_text": "In this paper, we addressed the problem of classifying hovering UAVs that emit proprietary/unknown waveforms using RF fingerprinting with deep neural networks. We empirically showed the adverse effect of imperfect hovering on classification accuracy for 7 UAVs, which initially resulted in a low 49% accuracy using conventional single architecture methods. To tackle this problem, we proposed a multi-classifier scheme to separately learn from different dataset portions. To combine test results at the output of the neural networks, we proposed a novel two-level score-based aggregation method, that returned an overall accuracy of 91%. We used data augmentation to improve individual accuracies of the neural networks in the multi-classifier scheme, which ultimately boosted the classification accuracy upto 95%. Furthermore, our multi-classifier scheme yielded a new UAV detection accuracy of 99%, giving a high confidence that this approach will work in real-world applications."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_a2cebe5b8edd0b6c_lm1",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "While RF fingerprinting using deep learning has shown to be very successful for static devices [5]–[10], to the best of our knowledge, there are no works on applying this technique for classifying identical hovering UAVs. We note that this is different from the wellinvestigated problem of UAV type detection [11], where the objective is to distinguish between different make/models. Since the wireless transmitters, typically WiFi interface cards, are from different providers, fingerprinting these cards (and hence identifying the UAV) reduces to a simpler problem than classifying UAVs of the same make/model. Furthermore, the constant UAV hovering introduces complex channel variations between the transmitter UAV and the ground-based receiver, which needs to be carefully studied. Our previous experimental studies show that the standard deviation in position around the target location can be as high as 0.85 m for DJI M100 UAV using on-board GPS modules [12]. While we focus only on RF fingerprinting in this paper, our technique can be combined with multimodal sensors detecting acoustic or infrared patterns for enhanced classification accuracy. A recent work jointly uses WiFi and Bluetooth emissions [13], although this increases complexity for both the sensing hardware and the training/classification process."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_a2cebe5b8edd0b6c_lm2",
+      "evidence": {
+        "section": "II. RELATED WORK",
+        "original_text": "To the best of our knowledge, none of the previous works address RF fingerprinting in identical, in-flight UAVs transmitting a proprietary or unknown protocol. We start our investigation by collecting a dataset from COTS DJI M100 UAVs under realistic UAV hovering motion that greatly impacts the wireless channel. Since we cannot equalize the signal, we must rely only on fingerprinting using raw I/Q samples."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_a2cebe5b8edd0b6c_lm3",
+      "evidence": {
+        "section": "III. DATASET, TRAINING/TESTING PIPELINE",
+        "original_text": "In an RF anechoic chamber, we collect signals from 7 identical DJI M100 UAVs as transmitters. An Ettus USRP X310 [30] equipped with an UBX 160 USRP daughterboard is used to capture signals at the receiver side. We fly the UAVs one at a time at different distances of 6, 9, 12, and 15 feet from the receiver, while they transmit. The receiver collects I/Q samples only in the downlink 10 MHz channel where the UAV is transmitting, as described in Section III-A2. At each distance, we collect I/Q samples for ∼ 2 seconds, pause for ∼ 10 seconds, and then repeat this process 3 more times. The ∼ 10-second intervals of time partition the overall received signals into 4 non-overlapping bursts, each containing ∼ 140 interleaved short periods of data and noise. A high-level overview of the sequence collected at the receiver side for each UAV at a given distance is shown in Figure 3. To complete the dataset, the procedure shown in Figure 3 is collected from all the 7 UAVs, flying at 4 different distances from the receiver. The average calculated SNRs are approximately 33, 31, 28, and 26 dB for distances of 6, 9, 12, and 15, respectively."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_a2cebe5b8edd0b6c_fw1",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "While we focus only on RF fingerprinting in this paper, our technique can be combined with multimodal sensors detecting acoustic or infrared patterns for enhanced classification accuracy. A recent work jointly uses WiFi and Bluetooth emissions [13], although this increases complexity for both the sensing hardware and the training/classification process."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_a2cebe5b8edd0b6c_fw2",
+      "evidence": {
+        "section": "IV. PROPOSED ROBUST MULTI-CLASSIFIER APPROACH",
+        "original_text": "In our method of DA, first we normalize the training batch X according to mean µ, and standard deviation σ of the complete training set using (1). Next, the normalized batch passes through the DA block before being fed to the neural network (See Figure 9). The block contains a multitap complex FIR filter that is convolved with the data batch passing through it. The convolution happens in “same” mode, which means each slice is zero padded before passing through the filter, and the dimensions of the data batch do not change after filtering. The filter taps are independent and chosen from the same distribution. For the purpose of this paper, we choose an 11-tap FIR filter and we draw its coefficients from complex Gaussian distribution with mean µh=0 and standard deviation σh=0.125. However, FIR parameters such as number of taps, mean, and standard deviation can be varied for different datasets to optimize the method and achieve the best results."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

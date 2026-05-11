@@ -1,0 +1,635 @@
+{
+  "metadata": {
+    "doc_id": "doc_3e30368de2bee7eb",
+    "source_file": "09_Cross-View_Image_Geolocalization.md",
+    "title": "Cross-View Image Geolocalization",
+    "year": 2016,
+    "doi": null,
+    "abstract": "_The recent availability of large amounts of geotagged imagery has inspired a number of data driven solutions to the image geolocalization problem. Existing approaches predict the location of a query image by matching it to a database of georeferenced photographs. While there are many geotagged images available on photo sharing and street view sites, most are clustered around landmarks and urban areas. The vast majority of the Earth’s land area has no ground level reference photos available, which limits the applicability of all existing image geolocalization methods. On the other hand, there is no shortage of visual and geographic data that densely covers the Earth – we examine overhead imagery and land cover survey data – but the relationship between this data and ground level query photographs is complex. In this paper, we introduce a cross-view feature translation approach to greatly extend the reach of image geolocalization methods. We can often localize a query even if it has no corresponding groundlevel images in the database. A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km_[2] _region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest._",
+    "introduction": "Consider the photos in Figure 1. How can we determine where they were taken? One might try to use a searchby-image service (e.g., Google Images) to retrieve visually similar images. This will only solve our problem if we can find an instance-level match with a known location. This approach will likely succeed for famous landmarks, but not for the unremarkable scenes in Figure 1. If instead of instance-level matching we match based on scene-level features, as in im2gps [9], we can sometimes get a coarse geolocation based on the distribution of similar scenes. Is this our best hope for geolocalizing photographs? Fortu- \n\n\nFigure 1: The above ground level images were captured in Charleston, SC within the region indicated in this satellite image. What can we determine about their geolocations? In this work, we tackle the case for which ground level training imagery at the corresponding locations is not available. \n\nnately, no – there are numerous additional levels of image understanding that can help constrain the location of a photograph. For instance, in the popular “View from Your Window” contest[1] , humans discover a litany of geo-informative visual evidence related to architecture, climate, road markings, style of dress, etc. However, recognizing these properties and then mapping them to geographic locations is at the limit of human ability and far beyond computational methods. \n\nIn this paper, we take a small step in this direction by exploiting two previously unused geographic data sets – overhead appearance and land cover survey data. For each of these data sets we must learn the relationship between ground level views and the data. These data sets have the benefits of being (1) densely available for nearly all of the Earth and (2) rich enough such that the mapping from ground level appearance is sometimes unambiguous. For instance, a human might be able to verify that a putative match is correct (although it is infeasible for a human to do exhaustive searches manually). \n\n> 1http://dish.andrewsullivan.com/vfyw-contest/ \n\n1 \n\nThe im2gps approach of [9] was the first to predict image geolocation by matching visual appearance. Following this thread, [13, 5, 27] posed the geolocalization task as an image retrieval problem, focusing on landmark images on the Internet. [22, 20, 4] use the images captured from street view cars in order to handle more general query images. [1] developed an approach to build 3D point cloud models of famous buildings automatically from publicly available images. [10, 15, 21, 14] leverage such 3D information for more efficient and accurate localization. Note that all the above mentioned approaches assume at least one training image is taken from a similar vantage points as that of the query. A query image in an unsampled location has no hope of being accurately geolocated. Recently, [2] presented an algorithm that does not require ground-level training images. They leverage a digital elevation model to synthesize 3D surfaces in mountainous terrain and match the contour of mountains extracted from ground-level images to the 3D model. The paper extends the solution space of existing geolocalization methods from popular landmarks and big cities to mountainous regions. However, most photographs do not contain mountains. For our region of interest in this work reasoning about terrain shape would not be informative. \n\nMatching ground-level photos to aerial imagery and geographic survey data has remained unexplored despite these features being easily available and densely distributed on the surface of the earth. One major issue preventing the use of these features is that the mapping between them is very complex. For instance, the visual appearance of a building in ground-level vs. an aerial view is very different due the extremely wide baseline, varying focal lengths, non planarity of the scene, different lighting conditions and mismatched image quality. \n\nOur approach takes inspiration from recent works in cross-view data retrieval that tackle problems such as static cameras localization with satellite imagery [11], cross-view action recognition [16] and image-text retrieval [19, 23]. These approaches achieve cross-view retrieval by learning the co-occurrence of features in different views. The training data consists of corresponding features that describe the same content in multiple views and these techniques often involve solving a generalized eigenvalue problem to find the projection basis that maximizes the cross-view feature correlation. One example is Kernelized Canonical Correlation Analysis [7] which requires solving the eigenvalue problem of training kernel matrix. However, this approach is not scalable to very large datasets. \n\nInspired by [8, 18, 26], we propose a data-driven framework for cross-view image matching. To this end, we collected a new dataset that consists of ground-level images, aerial images, and land cover attribute images as the training data. At the test time, we leverage the scene matches \n\n\n**----- Start of picture text -----**<br>\n10+<br>9<br>8<br>7<br>6<br>5<br>4<br>3<br>2<br>1<br>(a) All database Images (b) Isolated images<br>**----- End of picture text -----**<br>\n\n\nFigure 2: The distribution of ground level images from Panoramio within the region indicated in Figure 1. (a) Most of the ground level images are concentrated in a few highly populated areas for which ground-to-ground level matching will suffice. (b) Each point marks an “isolated” image for which no nearby ground level image is available in the database. Such images must be localized using cross-view (ground-to-aerial) image matching. \n\nat ground-level to find possible matches to features in aerial and attribute images. The contributions in this paper include (1) we are able to geolocalize images without corresponding ground-level images in the database and therefore extend the current solution space; (2) We build a new dataset for cross-view matching and leverage aerial imagery and land cover attributes; (3) produce a dense prediction score over a large scale (40km _×_ 40km) search space.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "image geolocalization",
+      "cross-view matching",
+      "aerial imagery",
+      "land cover",
+      "feature translation"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:06:05.655429+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The recent availability of large amounts of geotagged imagery has inspired a number of data driven solutions to the image geolocalization problem. Existing approaches predict the location of a query image by matching it to a database of georeferenced photographs. While there are many geotagged images available on photo sharing and street view sites, most are clustered around landmarks and urban areas. The vast majority of the Earth’s land area has no ground level reference photos available, which limits the applicability of all existing image geolocalization methods. On the other hand, there is no shortage of visual and geographic data that densely covers the Earth – we examine overhead imagery and land cover survey data – but the relationship between this data and ground level query photographs is complex. In this paper, we introduce a cross-view feature translation approach to greatly extend the reach of image geolocalization methods. We can often localize a query even if it has no corresponding groundlevel images in the database."
+      },
+      "confidence": 0.98,
+      "term": "image geolocalization",
+      "normalized": "图像地理定位",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, we introduce a cross-view feature translation approach to greatly extend the reach of image geolocalization methods. We can often localize a query even if it has no corresponding groundlevel images in the database. A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.96,
+      "term": "cross-view feature translation",
+      "normalized": "跨视图特征转换",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c3",
+      "evidence": {
+        "section": "2.1. Ground-level Imagery",
+        "original_text": "We downloaded 6756 ground-level images from Panoramio. We do not apply any filters to the resulting images, even though many are likely impossible to geolocate (e.g., close up views of flowers). The great scene variety of photographs “in the wild” makes the dataset extremely challenging for geolocalization."
+      },
+      "confidence": 0.95,
+      "term": "ground-level imagery",
+      "normalized": "地面图像",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c4",
+      "evidence": {
+        "section": "2.2. Aerial Imagery",
+        "original_text": "The satellite imagery is downloaded from Bing Maps. Each 256 × 256 image covers a 180m × 180m region. The image resolution is 0.6 m/pixel. Training images are cropped from the center of the labeled geolocation. The map database images are densely sampled by a sliding window with half stride on the region of interest. We collect a total of 182,988 images for the map database. We rotate each aerial image to its dominant orientation for rotation invariant matching."
+      },
+      "confidence": 0.95,
+      "term": "aerial imagery",
+      "normalized": "航空图像",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c5",
+      "evidence": {
+        "section": "2.3. Land Cover Attribute Imagery",
+        "original_text": "The National Gap Analysis Program (GAP) conducted a national wide geology survey and produced the USGS GAP Land Cover Data Set. Figure 3 shows a snapshot of the dataset at our region of interest. The dataset contains two hierarchical levels of classes including 8 general classes (e.g., Developed & Other Human Use, Shrubland & Grassland, etc.) and 590 land use classes as the subclasses (e.g., Developed/Medium Intensity, Salt and Brackish Tidal Marsh, etc.) Each pixel in the attribute map is assigned to one general class and one subclass. The attribute image resolution is 30 m/pixel. We crop 5 × 5 images for the training data and the map database."
+      },
+      "confidence": 0.95,
+      "term": "land cover attribute imagery",
+      "normalized": "土地覆盖属性图像",
+      "std_label": ""
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c6",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Data-driven Feature Averaging (AVG): When images match well in the ground-level view they also tend to have similar overhead views and land cover attributes. Based on this observation, we propose a simple method to translate ground-level to aerial and attribute features by averaging the features of good scene matches. Figure 5a shows the pipeline of AVG. We first find the k most similar training scenes as we do for im2gps and then average their corresponding aerial or land cover features to form our predictions of the unknown features. Finally, we use the averaged features to match features in the map database."
+      },
+      "confidence": 0.94,
+      "term": "Data-driven Feature Averaging (AVG)",
+      "normalized": "数据驱动的特征平均",
+      "std_label": "AVG"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c7",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Discriminative Translation (DT): In the AVG approach, we only utilize the best scene matches to predict the ground truth aerial or land cover feature. But the dissimilar ground level training scenes can also be informative – scenes with very different ground level appearance tend to have distinct overhead appearance and ground cover attributes. Note that this can be violated when two photos at the same location (and thus with the same overhead appearance and attributes) have very different appearance (e.g., a macro flower photograph vs. a landscape shot). In order to capitalize on the benefits of negative scene matches, we propose a discriminative cross-view translation method. The pipeline of “DT” is shown in Figure 5b. The positive set of DT is the same as AVG and we add to that a relatively large set of negative training samples from the bottom 50% ranked scene matches. We train a support vector machine (SVM) on the fly with the aerial/attribute features of the positive and negative examples. Finally, we apply the trained classifier on the map database."
+      },
+      "confidence": 0.94,
+      "term": "Discriminative Translation (DT)",
+      "normalized": "判别式转换",
+      "std_label": "DT"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3e30368de2bee7eb_c8",
+      "evidence": {
+        "section": "2. Dataset",
+        "original_text": "To justify the need for training data from different views, Figure 2a shows the groundlevel image distribution in our training data. Because the ground-level images are sparsely distributed over the region of interest, ground-level retrieval methods in the vein of im2gps will fail when no nearby training images are close to query images as shown in Figure 2b. In our database, 98.76% of the space is not covered by any ground-level image if we consider each image occupies 180m x 180m field of view. In such cases, the proposed method can leverage co-occurrence information in training triplets to match “isolated images” to aerial and attribute images in the map database."
+      },
+      "confidence": 0.93,
+      "term": "isolated images",
+      "normalized": "孤立图像",
+      "std_label": ""
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this paper, we introduce a cross-view feature translation approach to greatly extend the reach of image geolocalization methods. We can often localize a query even if it has no corresponding groundlevel images in the database. A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.92,
+      "head": "doc_3e30368de2bee7eb_c2",
+      "relation_type": "enhances",
+      "relation_surface": "greatly extend the reach of",
+      "tail": "doc_3e30368de2bee7eb_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.91,
+      "head": "doc_3e30368de2bee7eb_c2",
+      "relation_type": "uses",
+      "relation_surface": "learn the relationship between",
+      "tail": "doc_3e30368de2bee7eb_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.91,
+      "head": "doc_3e30368de2bee7eb_c2",
+      "relation_type": "uses",
+      "relation_surface": "learn the relationship between",
+      "tail": "doc_3e30368de2bee7eb_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.91,
+      "head": "doc_3e30368de2bee7eb_c2",
+      "relation_type": "uses",
+      "relation_surface": "learn the relationship between",
+      "tail": "doc_3e30368de2bee7eb_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r5",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Data-driven Feature Averaging (AVG): When images match well in the ground-level view they also tend to have similar overhead views and land cover attributes. Based on this observation, we propose a simple method to translate ground-level to aerial and attribute features by averaging the features of good scene matches. Figure 5a shows the pipeline of AVG. We first find the k most similar training scenes as we do for im2gps and then average their corresponding aerial or land cover features to form our predictions of the unknown features. Finally, we use the averaged features to match features in the map database."
+      },
+      "confidence": 0.9,
+      "head": "doc_3e30368de2bee7eb_c6",
+      "relation_type": "uses",
+      "relation_surface": "average their corresponding aerial or land cover features",
+      "tail": "doc_3e30368de2bee7eb_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r6",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Data-driven Feature Averaging (AVG): When images match well in the ground-level view they also tend to have similar overhead views and land cover attributes. Based on this observation, we propose a simple method to translate ground-level to aerial and attribute features by averaging the features of good scene matches. Figure 5a shows the pipeline of AVG. We first find the k most similar training scenes as we do for im2gps and then average their corresponding aerial or land cover features to form our predictions of the unknown features. Finally, we use the averaged features to match features in the map database."
+      },
+      "confidence": 0.9,
+      "head": "doc_3e30368de2bee7eb_c6",
+      "relation_type": "uses",
+      "relation_surface": "average their corresponding aerial or land cover features",
+      "tail": "doc_3e30368de2bee7eb_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r7",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Discriminative Translation (DT): In the AVG approach, we only utilize the best scene matches to predict the ground truth aerial or land cover feature. But the dissimilar ground level training scenes can also be informative – scenes with very different ground level appearance tend to have distinct overhead appearance and ground cover attributes. Note that this can be violated when two photos at the same location (and thus with the same overhead appearance and attributes) have very different appearance (e.g., a macro flower photograph vs. a landscape shot). In order to capitalize on the benefits of negative scene matches, we propose a discriminative cross-view translation method. The pipeline of “DT” is shown in Figure 5b. The positive set of DT is the same as AVG and we add to that a relatively large set of negative training samples from the bottom 50% ranked scene matches. We train a support vector machine (SVM) on the fly with the aerial/attribute features of the positive and negative examples. Finally, we apply the trained classifier on the map database."
+      },
+      "confidence": 0.9,
+      "head": "doc_3e30368de2bee7eb_c7",
+      "relation_type": "uses",
+      "relation_surface": "train a support vector machine (SVM) on the fly with the aerial/attribute features",
+      "tail": "doc_3e30368de2bee7eb_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r8",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Discriminative Translation (DT): In the AVG approach, we only utilize the best scene matches to predict the ground truth aerial or land cover feature. But the dissimilar ground level training scenes can also be informative – scenes with very different ground level appearance tend to have distinct overhead appearance and ground cover attributes. Note that this can be violated when two photos at the same location (and thus with the same overhead appearance and attributes) have very different appearance (e.g., a macro flower photograph vs. a landscape shot). In order to capitalize on the benefits of negative scene matches, we propose a discriminative cross-view translation method. The pipeline of “DT” is shown in Figure 5b. The positive set of DT is the same as AVG and we add to that a relatively large set of negative training samples from the bottom 50% ranked scene matches. We train a support vector machine (SVM) on the fly with the aerial/attribute features of the positive and negative examples. Finally, we apply the trained classifier on the map database."
+      },
+      "confidence": 0.9,
+      "head": "doc_3e30368de2bee7eb_c7",
+      "relation_type": "uses",
+      "relation_surface": "train a support vector machine (SVM) on the fly with the aerial/attribute features",
+      "tail": "doc_3e30368de2bee7eb_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We can often localize a query even if it has no corresponding groundlevel images in the database. A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.89,
+      "head": "doc_3e30368de2bee7eb_c2",
+      "relation_type": "enhances",
+      "relation_surface": "can often localize a query even if it has no corresponding groundlevel images",
+      "tail": "doc_3e30368de2bee7eb_c8"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3e30368de2bee7eb_r10",
+      "evidence": {
+        "section": "4.3. Matching Performance",
+        "original_text": "The top row of Figure 7 shows the performance of matching ground to aerial features. The performance of DT is better than AVG especially at the low rank region. Figure 6e shows that the heat map of AVG is too uniform while Figure 6g shows that the heat map of DT concentrates around the ground truth location. This suggests that the predicted features from AVG fail to learn a discriminative representation for each query. This is unsurprising, as discriminative methods have been successful across many visual domains. For instance, in object detection, averaging descriptors from objects in the same class may produce a new feature that is also similar to many different classes. On the other hand, DT can leverage the negative training data to predict the aerial feature that is only similar to the given positive examples in a discriminative way."
+      },
+      "confidence": 0.88,
+      "head": "doc_3e30368de2bee7eb_c7",
+      "relation_type": "compares",
+      "relation_surface": "performance of DT is better than AVG",
+      "tail": "doc_3e30368de2bee7eb_c6"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3e30368de2bee7eb_d1",
+      "evidence": {
+        "section": "2. Dataset",
+        "original_text": "For the experiments in this paper we examine a 40km × 40km region around Charleston, SC. This region exhibits great scene variety (urban, agricultural, forest, marsh, beach, etc.) as shown in Figure 1. We take one ground-level image as query and match it to the map database of aerial images and land cover attributes. Our training data consists of triplets of ground-level images, aerial images, and attribute maps; see Figure 4. To justify the need for training data from different views, Figure 2a shows the groundlevel image distribution in our training data. Because the ground-level images are sparsely distributed over the region of interest, ground-level retrieval methods in the vein of im2gps will fail when no nearby training images are close to query images as shown in Figure 2b. In our database, 98.76% of the space is not covered by any ground-level image if we consider each image occupies 180m x 180m field of view. In such cases, the proposed method can leverage co-occurrence information in training triplets to match \"isolated images\" to aerial and attribute images in the map database. Note that the proposed method can be generalized nationwide or globally because the training data we use is widely available."
+      },
+      "confidence": 0.95,
+      "name": "Cross-view geolocalization dataset",
+      "modality": "multimodal",
+      "domain": "computer vision, geolocalization"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3e30368de2bee7eb_d2",
+      "evidence": {
+        "section": "2.1. Ground-level Imagery",
+        "original_text": "We downloaded 6756 ground-level images from Panoramio. We do not apply any filters to the resulting images, even though many are likely impossible to geolocate (e.g., close up views of flowers). The great scene variety of photographs \"in the wild\" makes the dataset extremely challenging for geolocalization."
+      },
+      "confidence": 0.9,
+      "name": "Ground-level imagery from Panoramio",
+      "modality": "image",
+      "domain": "computer vision, geolocalization"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3e30368de2bee7eb_d3",
+      "evidence": {
+        "section": "2.2. Aerial Imagery",
+        "original_text": "The satellite imagery is downloaded from Bing Maps. Each 256 × 256 image covers a 180m × 180m region. The image resolution is 0.6 m/pixel. Training images are cropped from the center of the labeled geolocation. The map database images are densely sampled by a sliding window with half stride on the region of interest. We collect a total of 182,988 images for the map database. We rotate each aerial image to its dominant orientation for rotation invariant matching."
+      },
+      "confidence": 0.95,
+      "name": "Aerial imagery from Bing Maps",
+      "modality": "image",
+      "domain": "computer vision, geolocalization"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3e30368de2bee7eb_d4",
+      "evidence": {
+        "section": "2.3. Land Cover Attribute Imagery",
+        "original_text": "The National Gap Analysis Program (GAP) conducted a national wide geology survey and produced the USGS GAP Land Cover Data Set. Figure 3 shows a snapshot of the dataset at our region of interest. The dataset contains two hierarchical levels of classes including 8 general classes (e.g., Developed & Other Human Use, Shrubland & Grassland, etc.) and 590 land use classes as the subclasses (e.g., Developed/Medium Intensity, Salt and Brackish Tidal Marsh, etc.) Each pixel in the attribute map is assigned to one general class and one subclass. The attribute image resolution is 30 m/pixel. We crop 5 × 5 images for the training data and the map database."
+      },
+      "confidence": 0.95,
+      "name": "USGS GAP Land Cover Data Set",
+      "modality": "tabular",
+      "domain": "geology, land cover"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3e30368de2bee7eb_d5",
+      "evidence": {
+        "section": "4.1. Test Sets and Parameter Settings",
+        "original_text": "To evaluate the performance, we construct two hold-out test sets Random and Isolated from the ground-level image database. Random: we randomly draw 1000 images from the ground-level image database. Some images in this set come from frequently photographed locations and thus the training images could contain instance-level matches. Isolated: We use 737 isolated images with no training images in the same 180m x 180m block. We are most interested in geolocalizing these isolated images because existing methods (e.g., im2gps) fail for all images in this set."
+      },
+      "confidence": 0.9,
+      "name": "Random and Isolated test sets",
+      "modality": "image",
+      "domain": "computer vision, geolocalization"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3e30368de2bee7eb_ds1",
+      "evidence": {
+        "section": "2. Dataset",
+        "original_text": "Our training data consists of triplets of ground-level images, aerial images, and attribute maps; see Figure 4."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Training data consists of triplets of ground-level images, aerial images, and attribute maps"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3e30368de2bee7eb_ds2",
+      "evidence": {
+        "section": "2.2. Aerial Imagery",
+        "original_text": "Each 256 × 256 image covers a 180m × 180m region. The image resolution is 0.6 m/pixel."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Aerial images are 256x256 pixels covering 180m x 180m region with 0.6 m/pixel resolution"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3e30368de2bee7eb_ds3",
+      "evidence": {
+        "section": "2.3. Land Cover Attribute Imagery",
+        "original_text": "The attribute image resolution is 30 m/pixel. We crop 5 × 5 images for the training data and the map database. Each pixel in the attribute map is assigned to one general class and one subclass."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Land cover attribute images are 5x5 pixels with 30 m/pixel resolution, each pixel assigned to one general class and one subclass"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3e30368de2bee7eb_ds4",
+      "evidence": {
+        "section": "2.1. Ground-level Imagery",
+        "original_text": "We downloaded 6756 ground-level images from Panoramio. We do not apply any filters to the resulting images, even though many are likely impossible to geolocate (e.g., close up views of flowers). The great scene variety of photographs \"in the wild\" makes the dataset extremely challenging for geolocalization."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Ground-level images downloaded from Panoramio without filtering, representing \"in the wild\" scene variety"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3e30368de2bee7eb_ds5",
+      "evidence": {
+        "section": "4.1. Test Sets and Parameter Settings",
+        "original_text": "Isolated: We use 737 isolated images with no training images in the same 180m x 180m block. We are most interested in geolocalizing these isolated images because existing methods (e.g., im2gps) fail for all images in this set."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Isolated test set defined as images with no training images in the same 180m x 180m block"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3e30368de2bee7eb_m1",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "im2gps: im2gps geolocalizes a query image by guessing the locations of the top k scene matches. im2gps or any image retrieval based method makes no use of aerial and attribute information and can only geolocate query images in locations with ground-level training imagery. We compute k ( x, x ) to measure the similarity of the query image and the training images."
+      },
+      "confidence": 0.95,
+      "name": "im2gps",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3e30368de2bee7eb_m2",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Direct Match (DM): In order to geolocate spatially isolated photographs, we need to match across views from ground level to overhead. The simplest method to match ground level images to aerial images is just to match the same features with no translation, i.e., to assume that ground level appearance and overhead appearance are correlated. This is not universally true, but a beach from ground level and overhead do share some rough texture similarities, as do other scene types, so this baseline performs slightly better than chance. We compute similarity with: The direct match baseline cannot be used for ground to attribute matching, because those features sets are distinct."
+      },
+      "confidence": 0.95,
+      "name": "Direct Match (DM)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3e30368de2bee7eb_m3",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Kernelized Canonical Correlation Analysis (KCCA): KCCA is a tool to learn the basis along the direction where features in different views are maximally correlated: where Σ xx and Σ yy represent the covariance matrices for ground-level feature and aerial/attribute feature in training triplets. Σ xy represent the cross-covariance matrix between them. The optimization can be posed as a generalized eigenvalue problem and solved as a regular eigenvalue problem. In KCCA, we use the “kernel trick” to represent a basis as a linear combination of training examples by wxi = αi⊤φ(x)and wyi = β i⊤φ(y).We compute the cross-view correlation score of query and training images by summing over the correlation scores on the top d bases: We use the cross-view correlation as the matching score. KCCA has several disadvantages for large scale cross-view matching. First, we need to compute the singular value decomposition for a non-sparse kernel matrix to solve the eigenvalue problem. The dimension of kernel matrix grows with the number of training samples. This makes the solution infeasible as training data increases. Second, KCCA assumes one-to-one correspondence between two views. But in our problem, it is common to have multiple groundlevel images taken at the same geolocation. In this case, we need to throw away some training data to enforce the one-to-one correspondence."
+      },
+      "confidence": 0.95,
+      "name": "Kernelized Canonical Correlation Analysis (KCCA)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3e30368de2bee7eb_m4",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Data-driven Feature Averaging (AVG): When images match well in the ground-level view they also tend to have similar overhead views and land cover attributes. Based on this observation, we propose a simple method to translate ground-level to aerial and attribute features by averaging the features of good scene matches. Figure 5a shows the pipeline of AVG. We first find the k most similar training scenes as we do for im2gps and then average their corresponding aerial or land cover features to form our predictions of the unknown features. Finally, we use the averaged features to match features in the map database:"
+      },
+      "confidence": 0.95,
+      "name": "Data-driven Feature Averaging (AVG)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3e30368de2bee7eb_m5",
+      "evidence": {
+        "section": "3.2. Matching",
+        "original_text": "Discriminative Translation (DT): In the AVG approach, we only utilize the best scene matches to predict the ground truth aerial or land cover feature. But the dissimilar ground level training scenes can also be informative – scenes with very different ground level appearance tend to have distinct overhead appearance and ground cover attributes. Note that this can be violated when two photos at the same location (and thus with the same overhead appearance and attributes) have very different appearance (e.g., a macro flower photograph vs. a landscape shot). In order to capitalize on the benefits of negative scene matches, we propose a discriminative cross-view translation method. The pipeline of “DT” is shown in Figure 5b. The positive set of DT is the same as AVG and we add to that a relatively large set of negative training samples from the bottom 50% ranked scene matches. We train a support vector machine (SVM) on the fly with the aerial/attribute features of the positive and negative examples. Finally, we apply the trained classifier on the map database: where the αi is the weight of support vectors. Note that unlike KCCA, DT allows many-to-one correspondence for training triplet and results in a more compact representation (the support vectors) for prediction. As a result, DT is more applicable to large training databases and more efficient for testing."
+      },
+      "confidence": 0.95,
+      "name": "Discriminative Translation (DT)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3e30368de2bee7eb_x1",
+      "evidence": {
+        "section": "4. Experiments",
+        "original_text": "To evaluate the performance, we construct two hold-out test sets Random and Isolated from the ground-level image database. Random: we randomly draw 1000 images from the ground-level image database. Some images in this set come from frequently photographed locations and thus the training images could contain instance-level matches. Isolated: We use 737 isolated images with no training images in the same 180m x 180m block. We are most interested in geolocalizing these isolated images because existing methods (e.g., im2gps) fail for all images in this set. For discriminative translation (DT), for each query we select the top 30 scene matches and 1500 random bad matches for training. We train the kernel SVM classifier by libsvm package [3]. For KCCA, we enforce one-to-one correspondence by only choosing one ground-level image from multiple images at the same location in the training data. We project the data onto first 500 learned bases to compute the cross-view correlation. Each cross-view matching algorithm returns a score for every map location (we visualize these as heat maps). For each query, we sort the scores and the evaluate the performance by the rank at the ground truth location. The second and fourth column of Figure 7 shows the fraction of query images where the ground truth location is ranked in the top 1% of map locations. For im2gps, we look at the top 30 scene matches for evaluation. Note that we use the same 30 matched images as our positive training examples for AVG and DT. That means the accuracy of im2gps indicates the fraction of query images that have the training data at the ground truth location for AVG and DT."
+      },
+      "confidence": 0.95,
+      "task": "cross-view image geolocalization performance evaluation",
+      "setup": "40km × 40km region around Charleston, SC, ground-level query images matched to aerial/attribute map database"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3e30368de2bee7eb_x2",
+      "evidence": {
+        "section": "2. Dataset",
+        "original_text": "For the experiments in this paper we examine a 40km × 40km region around Charleston, SC. This region exhibits great scene variety (urban, agricultural, forest, marsh, beach, etc.) as shown in Figure 1. We take one ground-level image as query and match it to the map database of aerial images and land cover attributes. Our training data consists of triplets of ground-level images, aerial images, and attribute maps; see Figure 4. To justify the need for training data from different views, Figure 2a shows the groundlevel image distribution in our training data. Because the ground-level images are sparsely distributed over the region of interest, ground-level retrieval methods in the vein of im2gps will fail when no nearby training images are close to query images as shown in Figure 2b. In our database, 98.76% of the space is not covered by any ground-level image if we consider each image occupies 180m x 180m field of view. In such cases, the proposed method can leverage co-occurrence information in training triplets to match “isolated images” to aerial and attribute images in the map database. Note that the proposed method can be generalized nationwide or globally because the training data we use is widely available."
+      },
+      "confidence": 0.95,
+      "task": "dataset construction for cross-view matching",
+      "setup": "40km × 40km region around Charleston, SC, ground-level images from Panoramio, aerial images from Bing Maps, land cover attributes from USGS GAP"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3e30368de2bee7eb_qr1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We perform experiments over a 1600 km² region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.99,
+      "quantity": "region size",
+      "value": 1600,
+      "unit": "km²",
+      "context": "experimental region around Charleston, SC",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3e30368de2bee7eb_qr2",
+      "evidence": {
+        "section": "2. Dataset",
+        "original_text": "In our database, 98.76% of the space is not covered by any ground-level image if we consider each image occupies 180m x 180m field of view. In such cases, the proposed method can leverage co-occurrence information in training triplets to match \"isolated images\" to aerial and attribute images in the map database."
+      },
+      "confidence": 0.99,
+      "quantity": "ground-level image coverage",
+      "value": 98.76,
+      "unit": "%",
+      "context": "region of interest, considering each image occupies 180m x 180m field of view",
+      "result_type": "baseline"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3e30368de2bee7eb_qr3",
+      "evidence": {
+        "section": "2.1. Ground-level Imagery",
+        "original_text": "We downloaded 6756 ground-level images from Panoramio. We do not apply any filters to the resulting images, even though many are likely impossible to geolocate (e.g., close up views of flowers). The great scene variety of photographs \"in the wild\" makes the dataset extremely challenging for geolocalization."
+      },
+      "confidence": 0.99,
+      "quantity": "ground-level images count",
+      "value": 6756,
+      "unit": "images",
+      "context": "downloaded from Panoramio",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3e30368de2bee7eb_qr4",
+      "evidence": {
+        "section": "2.2. Aerial Imagery",
+        "original_text": "The satellite imagery is downloaded from Bing Maps. Each 256 × 256 image covers a 180m × 180m region. The image resolution is 0.6 m/pixel. Training images are cropped from the center of the labeled geolocation. The map database images are densely sampled by a sliding window with half stride on the region of interest. We collect a total of 182,988 images for the map database."
+      },
+      "confidence": 0.0,
+      "quantity": "aerial images count",
+      "value": 182988,
+      "unit": "images",
+      "context": "map database, densely sampled by sliding window with half stride",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3e30368de2bee7eb_qr5",
+      "evidence": {
+        "section": "4.1. Test Sets and Parameter Settings",
+        "original_text": "Random: we randomly draw 1000 images from the ground-level image database. Some images in this set come from frequently photographed locations and thus the training images could contain instance-level matches."
+      },
+      "confidence": 0.99,
+      "quantity": "test set size",
+      "value": 1000,
+      "unit": "images",
+      "context": "Random hold-out set",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3e30368de2bee7eb_qr6",
+      "evidence": {
+        "section": "4.1. Test Sets and Parameter Settings",
+        "original_text": "Isolated: We use 737 isolated images with no training images in the same 180m x 180m block. We are most interested in geolocalizing these isolated images because existing methods (e.g., im2gps) fail for all images in this set."
+      },
+      "confidence": 0.99,
+      "quantity": "test set size",
+      "value": 737,
+      "unit": "images",
+      "context": "Isolated hold-out set",
+      "result_type": "measurement"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3e30368de2bee7eb_p1",
+      "evidence": {
+        "section": "4.3. Matching Performance",
+        "original_text": "The bottom row of Figure 7 shows the performance of matching based on predicting both aerial and attribute features. This approach performs better than each individual feature which suggests that the aerial and attribute features complement each other. In particular, we find that the best performance comes by combining the attribute-based rankings from the AVG method and the overhead appearance based rankings from the DT method. This \"hybrid\" method achieves 39.5% accuracy for Random and 17.37% for Isolated. Note in particular that the accuracy of im2gps is exactly zero for the isolated cases across all three bar plots, since in such cases ground-level reference imagery is not available. In contrast, im2gps enjoys strong performance in the random case, for which ground level reference imagery is often available."
+      },
+      "confidence": 0.95,
+      "metric": "accuracy at top 1% of ranked candidates",
+      "compared_to": "im2gps"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3e30368de2bee7eb_p2",
+      "evidence": {
+        "section": "4.3. Matching Performance",
+        "original_text": "The top row of Figure 7 shows the performance of matching ground to aerial features. The performance of DT is better than AVG especially at the low rank region. Figure 6e shows that the heat map of AVG is too uniform while Figure 6g shows that the heat map of DT concentrates around the ground truth location. This suggests that the predicted features from AVG fail to learn a discriminative representation for each query. The middle row of Figure 7 shows the performance of matching ground to attribute features. This approach is less accurate than matching to overhead appearance because attribute features are not discriminative enough by themselves. For instance, an attribute feature may correspond to many locations. Perhaps because the attribute representation is low dimensional and there are many duplicate instances in the database, DT does not perform as well as the simple AVG approach."
+      },
+      "confidence": 0.9,
+      "metric": "accuracy at top 1% of ranked candidates",
+      "compared_to": "Direct Match (DM), Kernelized Canonical Correlation Analysis (KCCA), Data-driven Feature Averaging (AVG), Discriminative Translation (DT)"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3e30368de2bee7eb_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The recent availability of large amounts of geotagged imagery has inspired a number of data driven solutions to the image geolocalization problem. Existing approaches predict the location of a query image by matching it to a database of georeferenced photographs. While there are many geotagged images available on photo sharing and street view sites, most are clustered around landmarks and urban areas. The vast majority of the Earth’s land area has no ground level reference photos available, which limits the applicability of all existing image geolocalization methods. On the other hand, there is no shortage of visual and geographic data that densely covers the Earth – we examine overhead imagery and land cover survey data – but the relationship between this data and ground level query photographs is complex. In this paper, we introduce a cross-view feature translation approach to greatly extend the reach of image geolocalization methods. We can often localize a query even if it has no corresponding groundlevel images in the database. A key idea is to learn the relationship between ground level appearance and overhead appearance and land cover attributes from sparsely available geotagged ground-level images. We perform experiments over a 1600 km2 region containing a variety of scenes and land cover types. For each query, our algorithm produces a probability density over the region of interest."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3e30368de2bee7eb_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In this paper, we take a small step in this direction by exploiting two previously unused geographic data sets – overhead appearance and land cover survey data. For each of these data sets we must learn the relationship between ground level views and the data. These data sets have the benefits of being (1) densely available for nearly all of the Earth and (2) rich enough such that the mapping from ground level appearance is sometimes unambiguous. For instance, a human might be able to verify that a putative match is correct (although it is infeasible for a human to do exhaustive searches manually). Matching ground-level photos to aerial imagery and geographic survey data has remained unexplored despite these features being easily available and densely distributed on the surface of the earth. One major issue preventing the use of these features is that the mapping between them is very complex. For instance, the visual appearance of a building in ground-level vs. an aerial view is very different due the extremely wide baseline, varying focal lengths, non planarity of the scene, different lighting conditions and mismatched image quality."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3e30368de2bee7eb_ca3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Our approach takes inspiration from recent works in cross-view data retrieval that tackle problems such as static cameras localization with satellite imagery [11], cross-view action recognition [16] and image-text retrieval [19, 23]. These approaches achieve cross-view retrieval by learning the co-occurrence of features in different views. The training data consists of corresponding features that describe the same content in multiple views and these techniques often involve solving a generalized eigenvalue problem to find the projection basis that maximizes the cross-view feature correlation. One example is Kernelized Canonical Correlation Analysis [7] which requires solving the eigenvalue problem of training kernel matrix. However, this approach is not scalable to very large datasets. Inspired by [8, 18, 26], we propose a data-driven framework for cross-view image matching. To this end, we collected a new dataset that consists of ground-level images, aerial images, and land cover attribute images as the training data. At the test time, we leverage the scene matches at ground-level to find possible matches to features in aerial and attribute images. The contributions in this paper include (1) we are able to geolocalize images without corresponding ground-level images in the database and therefore extend the current solution space; (2) We build a new dataset for cross-view matching and leverage aerial imagery and land cover attributes; (3) produce a dense prediction score over a large scale (40km × 40km) search space."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_3e30368de2bee7eb_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "In this paper we propose a cross-domain matching framework that greatly extends the domain of image geolocation. Most of the Earth’s surface has no ground level geotagged photos publicly (98% of the area of our experimental region, even though it is part of the densely populated Eastern coast of the US) and traditional image geolocation methods based on ground level image to image matching will fail for queries in such locations. Using our new dataset of ground-level, aerial, and attribute images we quantified the performance of several baseline and novel approaches for “cross-view” geolocation. In particular, our “discriminitive translation” approach in which an aerial image classifier is trained based on ground level scene matches can roughly geolocate 17% of isolated query images, compared to 0% for existing methods. While the experiments in this paper are at a modest scale (1600km2 region of interest), the approach scales up easily both in terms of data availability and computational complexity. Our approach is the first to use overhead imagery and land cover survey data to geolocate photographs, and it is complementary with the impressive mountain-based geolocation method of [2] which also uses a widely available geographic feature (digital elevation maps)."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_3e30368de2bee7eb_lm1",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "Figure 8 shows a random sample of successfully and unsuccessfully geolocated query images. Our system handles outdoor scenes better because they are more correlated to the aerial and attribute images. Photos focused on objects may fail because the correlation between objects and overhead appearance and/or attributes is weak."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_3e30368de2bee7eb_lm2",
+      "evidence": {
+        "section": "Experiments",
+        "original_text": "The middle row of Figure 7 shows the performance of matching ground to attribute features. This approach is less accurate than matching to overhead appearance because attribute features are not discriminative enough by themselves. For instance, an attribute feature may correspond to many locations. Perhaps because the attribute representation is low dimensional and there are many duplicate instances in the database, DT does not perform as well as the simple AVG approach."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_3e30368de2bee7eb_lm3",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "While the experiments in this paper are at a modest scale (1600km2 region of interest), the approach scales up easily both in terms of data availability and computational complexity."
+      },
+      "confidence": 0.85
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3e30368de2bee7eb_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Our approach is the first to use overhead imagery and land cover survey data to geolocate photographs, and it is complementary with the impressive mountain-based geolocation method of [2] which also uses a widely available geographic feature (digital elevation maps)."
+      },
+      "confidence": 0.88
+    }
+  ]
+}

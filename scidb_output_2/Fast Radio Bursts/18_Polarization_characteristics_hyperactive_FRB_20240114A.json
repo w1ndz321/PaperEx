@@ -1,0 +1,616 @@
+{
+  "metadata": {
+    "doc_id": "doc_bb314ce2a63af4c2",
+    "source_file": "18_Polarization_characteristics_hyperactive_FRB_20240114A.md",
+    "title": "Polarization Characteristics of the Hyperactive FRB 20240114A",
+    "year": 2024,
+    "doi": null,
+    "abstract": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 _._ 0 _±_ 1 _._ 0 rad m _[−]_[2] on February 23, 2024, and 353 _._ 7 _±_ 0 _._ 6 rad m _[−]_[2] on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio _>_ 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance.",
+    "introduction": "Corresponding author: Yi Feng; Di Li; Yong-Kun Zhang yifeng@zhejianglab.org; dili@tsinghua.edu.cn; ykzhang@nao.cas.cn \n\nFast radio bursts (FRBs) are bright radio bursts originating at cosmological distances first discovered by D. R. Lorimer et al. (2007). Their cosmological origins and high energies make them valuable tools for studying the cosmic web, Galactic halos, and baryons (V. Ravi et al. 2016, J. X. Prochaska et al. 2019, J. P. Macquart et al. 2020). However, the progenitors and radiation mecha- \n\nXie et al. \n\n2 \n\nnisms of FRBs remain unclear. A particularly intriguing class of FRBs is the repeating FRBs, which emit bursts multiple times. To date, more than 800 FRB sources have been discovered, of which only 66 are repeating FRBs, accounting for approximately 8.1% of the total[1] (J. Xu et al. 2023). \n\nLarge datasets of repeating FRBs are crucial for uncovering their properties. For example, 1,652 bursts from FRB 20121102A reveal that the burst energy distribution is bimodal and well-characterized by a combination of a log-normal function and a generalized Cauchy function (D. Li et al. 2021). Similarly, 1,863 bursts from FRB 20201124A reveal irregular short-term variations in the rotation measure (RM), enabling the systematic study of its polarization properties (H. Xu et al. 2022). Additionally, 1,076 bursts from FRB 20220912A allow for precise measurements of its cumulative energy distribution, spectral index of the synthetic spectrum, and polarization properties (Y.-K. Zhang et al. 2023a). A high burst rate is essential for obtaining a large number of bursts. For instance, FRB 20121102A and FRB 20201124A reached peak burst rates of 122 hr _[−]_[1] (D. Li et al. 2021) and 542 hr _[−]_[1] (Y.-K. Zhang et al. 2022), respectively. \n\nRecently, a high burst rate of FRB 20240114A was reported by the Canadian Hydrogen Intensity Mapping Experiment Fast Radio Burst (CHIME/FRB) collaboration (K. Shin & CHIME/FRB Collaboration 2024). According to the CHIME report, the dispersion measure (DM) value of FRB 20240114A is approximately 527.7 pccm _[−]_[3] . The maximum Galactic DM contribution is about 38.82 and 49.67 pccm _[−]_[3] for the YMW16 model (J. M. Yao et al. 2017) and the NE2001 model (J. M. Cordes & T. J. W. Lazio 2002), respectively. This repeating FRB was subsequently followed up by telescopes worldwide, including Parkes/Murriyang (P. A. Uttarkar et al. 2024a,b), the Westerbork RT1 25-m telescope (O. S. Ould-Boukattine et al. 2024a), the Five-hundredmeter Aperture Spherical radio Telescope (FAST) (J. Zhang et al. 2024a,b,c), the Northern Cross (NC) radio telescope (D. Pelliciari et al. 2024a,b), MeerKAT (J. Tian et al. 2024a), the upgraded Giant Metrewave Radio Telescope (uGMRT) (A. Kumar et al. 2024; U. Panda et al. 2024), European Very Long Baseline Interferometry (EVN) PRECISE (M. P. Snelders et al. 2024), the five small European radio telescopes (O. S. Ould-Boukattine et al. 2024b), the Nan¸cay Radio Telescope (NRT) (D. M. Hewitt et al. 2024), the Allen Telescope Array (ATA) (P. Joshi et al. 2024), and the \n\nEffelsberg 100-m Telescope (P. Limaye & L. Spitler 2024). MeerKAT localized FRB 20240114A to RA = 21h27m39.86s, Dec = +04d19m45.01s (J2000), with a positional uncertainty of 1.4 arcseconds, spatially coincident with the galaxy J212739.84+041945.8 (J. Tian et al. 2024b). Subsequent spectral observations using the Optical System for Imaging and low-IntermediateResolution Integrated Spectroscopy (OSIRIS) spectrograph on the Gran Telescopio Canarias (GTC) determined the host galaxy of this FRB to have a redshift of z = 0.1300 _±_ 0.0002 (M. Bhardwaj et al. 2024). The host galaxy is classified as a dwarf star-forming galaxy and makes a significant contribution to the DM (M. Bhardwaj et al. 2024). \n\nIn this paper, we confirm the hyperactivity of FRB 20240114A, report its polarization properties, and compare them with those of FRB 20201124A and FRB 20220912A. This paper is structured as follows: Section 2 details the observational setup and data acquisition methods employed with the GBT. Section 3 presents the results and discussion of the burst properties and polarization characteristics derived from our observations. Finally, Section 4 summarizes our conclusions.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": "天体物理学",
+      "level3": "射电天文学"
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Fast Radio Bursts",
+      "Polarization",
+      "Rotation Measure",
+      "Green Bank Telescope",
+      "Repeating FRBs"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:22:11.050123+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.99,
+      "term": "Fast radio bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.99,
+      "term": "FRB 20240114A",
+      "normalized": "FRB 20240114A",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.98,
+      "term": "rotation measure",
+      "normalized": "旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.98,
+      "term": "linear polarization fraction",
+      "normalized": "线性偏振度",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.98,
+      "term": "circular polarization",
+      "normalized": "圆偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.97,
+      "term": "radiation mechanism",
+      "normalized": "辐射机制",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.97,
+      "term": "fluence distribution",
+      "normalized": "能量通量分布",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.97,
+      "term": "waiting-time distribution",
+      "normalized": "等待时间分布",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c9",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Fast radio bursts (FRBs) are bright radio bursts originating at cosmological distances first discovered by D. R. Lorimer et al. (2007). Their cosmological origins and high energies make them valuable tools for studying the cosmic web, Galactic halos, and baryons (V. Ravi et al. 2016, J. X. Prochaska et al. 2019, J. P. Macquart et al. 2020). However, the progenitors and radiation mechanisms of FRBs remain unclear. A particularly intriguing class of FRBs is the repeating FRBs, which emit bursts multiple times. To date, more than 800 FRB sources have been discovered, of which only 66 are repeating FRBs, accounting for approximately 8.1% of the total[1] (J. Xu et al. 2023). Large datasets of repeating FRBs are crucial for uncovering their properties. For example, 1,652 bursts from FRB 20121102A reveal that the burst energy distribution is bimodal and well-characterized by a combination of a log-normal function and a generalized Cauchy function (D. Li et al. 2021). Similarly, 1,863 bursts from FRB 20201124A reveal irregular short-term variations in the rotation measure (RM), enabling the systematic study of its polarization properties (H. Xu et al. 2022). Additionally, 1,076 bursts from FRB 20220912A allow for precise measurements of its cumulative energy distribution, spectral index of the synthetic spectrum, and polarization properties (Y.-K. Zhang et al. 2023a). A high burst rate is essential for obtaining a large number of bursts. For instance, FRB 20121102A and FRB 20201124A reached peak burst rates of 122 hr [−] 1 (D. Li et al. 2021) and 542 hr [−] 1 (Y.-K. Zhang et al. 2022), respectively."
+      },
+      "confidence": 0.98,
+      "term": "repeating FRBs",
+      "normalized": "重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_bb314ce2a63af4c2_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.95,
+      "term": "Robert C. Byrd Green Bank Telescope",
+      "normalized": "罗伯特·C·伯德绿岸望远镜",
+      "std_label": "GBT"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb314ce2a63af4c2_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.95,
+      "head": "doc_bb314ce2a63af4c2_c2",
+      "relation_type": "measures",
+      "relation_surface": "observations conducted with",
+      "tail": "doc_bb314ce2a63af4c2_c10"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb314ce2a63af4c2_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.96,
+      "head": "doc_bb314ce2a63af4c2_c2",
+      "relation_type": "belongs_to",
+      "relation_surface": "is a repeating FRB",
+      "tail": "doc_bb314ce2a63af4c2_c9"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb314ce2a63af4c2_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.96,
+      "head": "doc_bb314ce2a63af4c2_c2",
+      "relation_type": "measures",
+      "relation_surface": "average rotation measures",
+      "tail": "doc_bb314ce2a63af4c2_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb314ce2a63af4c2_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.96,
+      "head": "doc_bb314ce2a63af4c2_c2",
+      "relation_type": "measures",
+      "relation_surface": "linear polarization fraction",
+      "tail": "doc_bb314ce2a63af4c2_c4"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_bb314ce2a63af4c2_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are transient radio bursts of extragalactic origin characterized by millisecond durations and high luminosities. We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 . 0 ± 1 . 0 rad m [−] 2 on February 23, 2024, and 353 . 7 ± 0 . 6 rad m [−] 2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.96,
+      "head": "doc_bb314ce2a63af4c2_c2",
+      "relation_type": "measures",
+      "relation_surface": "exhibit circular polarization",
+      "tail": "doc_bb314ce2a63af4c2_c5"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_bb314ce2a63af4c2_d1",
+      "evidence": {
+        "section": "3. RESULTS AND DISCUSSION",
+        "original_text": "In this study, we detected a total of 437 bursts from FRB 20240114A during two GBT observation sessions. The average burst rate is approximately 161 hr−1. During the 1.38-hour observation on March 1, 2024, 359 bursts from FRB 20240114A were detected, corresponding to a burst rate of 260 bursts per hour, which is the highest burst rate recorded to date with the GBT or any other (sub)-100-meter radio telescope. The burst information obtained from the observational analysis can be downloaded from the Blinkverse website. Considering the contribution of the ionosphere to the RMs, the values were corrected using a Python code, `IonFR`, along with global ionospheric map (GIM) products. These GIM products are available in the IONosphere EXchange (IONEX) format on NASA's website. For our GBT observations, the RM contribution from the ionosphere was 2.4 ± 0.4 rad m−2 on February 23 and 2.9 ± 0.4 rad m−2 on March 1, respectively. After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m−2, the average RM for the February 23 observation was 347.0 ± 1.0 rad m−2, while the average RM for the March 1 observation was 353.7 ± 0.6 rad m−2. In the 301 RM-detected bursts, approximately 81% show a linear polarization fraction greater than 90%. This means that FRB 20240114A is not depolarized much due to multipath propagation. Depolarization due to multipath propagation can be described by Y. Feng et al. (2022b): where fRM scattering represents the fractional reduction in linear polarization amplitude, σRM is the standard deviation of the RM, and λ is the wavelength. Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σRM rather than measuring σRM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σRM of 0.9 ± 0.3 rad m−2. Of the 301 bursts with detected RMs, 14% exhibit circular polarization with a signal-to-noise ratio greater than 5. The highest observed absolute fractional circular polarization is 65.2 ± 3.7%. FRB 20240114A is the fifth repeating FRB observed to exhibit circular polarization. The previously reported repeating FRBs with circular polarization are all active sources: FRB 20201124A (H. Xu et al. 2022), FRB 20190520B, FRB 20121102A (Y. Feng et al. 2022a), and FRB 20220912A (Y.-K. Zhang et al. 2023b; Y. Feng et al. 2023). Polarization angle swings were observed in some bursts of FRB 20240114A, similar to other repeating FRBs, including FRB 20180301A (R. Luo et al. 2020), FRB 20201124A (H. Xu et al. 2022; J. R. Niu et al. 2024), and FRB 20220912A (Y. Feng et al. 2023). Figure 2 presents the polarization angles, burst profiles, and dynamic spectra of representative bursts. Notably, bursts 36 and 394 clearly display polarization angle swings. Full polarization position angle, multicomponent intensity profiles, and frequency-time dynamic spectra for all 437 detected bursts are compiled in Appendix Figure A1."
+      },
+      "confidence": 0.95,
+      "name": "FRB 20240114A burst dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_bb314ce2a63af4c2_d2",
+      "evidence": {
+        "section": "3. RESULTS AND DISCUSSION",
+        "original_text": "We calculated the specific fluence by integrating the pulse signal over the determined frequency range of each burst. This method ensures that the fluence is derived directly from the observed emission within the identified frequency band, making it particularly relevant for narrowband FRBs, where fluence measurements are sensitive to the chosen frequency integration limits. The specific fluence distribution was then analyzed using a log-transformed kernel density estimation (KDE) approach, providing deeper insights into its statistical properties, as shown in Figure 4. The Kolmogorov–Smirnov (K-S) test yielded a p-value of 0.4939, suggesting a reasonable fit to the observed data. The mean and median fluence values, derived from KDE sampling, are 0.7923 Jy ms and 0.7105 Jy ms, respectively, indicating a right-skewed distribution. This asymmetry suggests the presence of high-fluence bursts that shift the mean upwards. The standard deviation of 2.2974 Jy ms further confirms the broad dispersion in fluence values. The right-skewed nature of the distribution is consistent with previously studied repeating FRBs (D. Li et al. 2021; D. J. Zhou et al. 2022; Y.-K. Zhang et al. 2023a; Y. Feng et al. 2024), where bursts exhibit a wide range of fluences. We analyzed the waiting-time distribution of FRB20240114A and found that it exhibits a bimodal structure, similar to previously studied repeating FRBs such as FRB20201124A and FRB20220912A. We modeled the distribution using two log-normal functions, yielding peaks at approximately 42.09 ms and 13.91 s, as shown in Figure 5. The K-S test for the log-normal fit gives a p-value of 0.23, indicating that while the model captures the overall trend, some deviations remain. The right peak represents the activity level of the FRB source over the statistical period, while the left peak at 42.09 ms is comparable to the characteristic short waiting times observed in other repeating FRBs. Notably, FRB 20220912A exhibits peaks at 51 ms and 18 s (Y.-K. Zhang et al. 2023a), while FRB 20201124A shows a short waiting-time peak at 39 ms in H. Xu et al. (2022) and 51 ms in Y.-K. Zhang et al. (2022), along with a longer peak at 10 s. The presence of short waiting times on the order of tens of milliseconds in multiple sources suggests a potentially intrinsic timescale associated with the burst emission mechanism, while the longer waiting-time peaks may reflect variations in the activity cycles of different FRBs sources."
+      },
+      "confidence": 0.9,
+      "name": "FRB 20240114A fluence and waiting-time distribution dataset",
+      "modality": "tabular",
+      "domain": "astronomy"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb314ce2a63af4c2_ds1",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The data were coherently dedispersed at a DM of 527.7 ,pc cm−3 and recorded as 8-bit samples in polarimetric search mode, following the psrfits standard format (A. W. Hotan et al. 2004). Full-Stokes spectra were captured every 40.96 µs with a channel width of 0.39 MHz."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Data recorded in psrfits standard format with full-Stokes spectra captured every 40.96 µs and 0.39 MHz channel width"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb314ce2a63af4c2_ds2",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "Radio frequency interference (RFI) was mitigated using the PSRCHIVE software package (A. W. Hotan et al. 2004). A median filter was applied to each burst in the frequency domain using the paz command, and RFI was manually mitigated in each burst using the pazi command. For DM optimization, we used DM-power (H.-H. Lin et al. 2022). Polarization calibration was performed by correcting for the gain and phase differences between the receptors. This was achieved through separate measurements of a noise diode signal aligned at a 45◦ angle relative to the linear receptors, modeled with the single-axis approach in the PSRCHIVE software package."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "RFI mitigation using median filter and manual excision, DM optimization using DM-power, polarization calibration using single-axis approach"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb314ce2a63af4c2_ds3",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The degrees of linear and circular polarization were calculated for bursts with detected RM. The presence of noise leads to an overestimation of the measured linear polarization. To mitigate this, we employ the frequency-averaged, de-biased total linear polarization (J. E. Everett & J. M. Weisberg 2001; C. K. Day et al. 2020): where σI is the off-pulse standard deviation of Stokes I, and Li represents the frequency-averaged linear polarization of time sample i. The degree of linear polarization is defined as L/I, where L = ΣiLde-bias,i and I = ΣiIi, with the summation performed over all time samples within a burst. Similarly, the degree of circular polarization is defined as V/I, where V = ΣiVi and Vi is the frequency-averaged circular polarization of time sample i. Uncertainties in the linear and circular polarization fractions are quantified using the following equations: where N denotes the number of time samples within the burst (with signal exceeding the noise by 3σ), and ρ represents L or V for the linear and circular polarization fractions, respectively."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "De-biased linear polarization calculation using frequency-averaged method with noise correction"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb314ce2a63af4c2_ds4",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The rotation measure (RM) was determined using the Stokes QU-fitting method (S. P. O'Sullivan et al. 2012), focusing on regions where the signal-to-noise ratio exceeded 3. Due to challenges in calculating RM from weaker signals or bursts with narrow emission bandwidths, RM values were successfully measured for 301 of the detected bursts. We corrected the linear polarization by derotating it using the measured RM."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "RM determination using Stokes QU-fitting method on regions with SNR > 3"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb314ce2a63af4c2_ds5",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The calibration process was implemented through the pac module of the PSRCHIVE software (A. W. Hotan et al. 2004), utilizing differential on- and off-source observations of the primary calibrator 3C 394 to quantify the absolute flux density of the P-band receiver's integrated noise diode. Prior to the main observations, the noise diode was observed again at the position of FRB 20240114A, and these data were used to flux calibrate each detected burst. Following standard procedures for coherent search mode calibration, the resulting flux densities were multiplied by a factor of 20 to account for an online processing scaling factor."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Flux calibration using differential on/off-source observations of calibrator 3C 394 and noise diode"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_bb314ce2a63af4c2_ds6",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The boundaries of the burst frequency range are systematically adjusted based on the behavior of the first derivative of the cumulative distribution function (CDF) of the spectrum. The spectrum is calculated as the cumulative sum of the pulse range for each channel, represented as: where si(t) represents the flux density at the t-th phase bin within the frequency i-th channel. The pulse range is determined either by cross-correlating a Gaussian template with the burst pulse profile or through interactive definition. Following this, the cumulative distribution function CDF(ν) is derived from the power spectrum as: where νmin is the minimum observation frequency. Subsequently, the CDF data is normalized using smoothing filters in conjunction with the Asymmetrically Reweighted Penalized Least Squares algorithm (S.-J. Baek et al. 2015, arPlS). The first derivative of the smoothed and normalized spectral CDF is computed to identify the frequency indices that define the start and end points of the frequency range, ensuring it encompasses the region where the CDF equals 0.5. If the first derivative remains consistently positive below this region, the lower boundary is set to the minimum frequency in the data; conversely, if it is positive above this region, the upper boundary is established at the maximum frequency. Finally, uncertainties in the lower and upper frequency limits are estimated using the bootstrap method (B. Efron 1979). We tested the algorithm using burst data from FRB 20220912A observed with FAST (Y.-K. Zhang et al. 2023a), with two examples illustrated in Figure 1. The results indicate that this algorithm accurately calculates the frequency range of the bursts, and removing interference bands within the bursts does not affect the computed results."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Frequency range determination algorithm based on CDF derivative and bootstrap uncertainty estimation"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb314ce2a63af4c2_m1",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "We used DRAFTS, a deep-learning-based single-pulse search tool, for burst searches (Y.-K. Zhang et al. 2024). We first de-dispersed the raw observational data with DM = 527.7 pc cm^{-3}, downsampled the data by a factor of 4, and then split it into segments of 512 samples each. Each segment was resized to 512 × 512 pixels and fed into DRAFTS’ classification model for inference. The classification model, based on ResNet (K. He et al. 2016) and trained on real FAST data, takes 512 × 512 time-frequency data as input and outputs the probability that the segment contains an FRB burst. We selected data segments where the model predicted a probability of over 50% for containing an FRB burst for further manual inspection. Low signal-to-noise ratio signals were excluded, and the specific times of the remaining bursts in the data were identified."
+      },
+      "confidence": 0.95,
+      "name": "DRAFTS",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb314ce2a63af4c2_m2",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The calibration process was implemented through the pac module of the PSRCHIVE software (A. W. Hotan et al. 2004), utilizing differential on- and off-source observations of the primary calibrator 3C 394 to quantify the absolute flux density of the P-band receiver’s integrated noise diode. Prior to the main observations, the noise diode was observed again at the position of FRB 20240114A, and these data were used to flux calibrate each detected burst. Following standard procedures for coherent search mode calibration, the resulting flux densities were multiplied by a factor of 20 to account for an online processing scaling factor. Radio frequency interference (RFI) was mitigated using the PSRCHIVE software package (A. W. Hotan et al. 2004). A median filter was applied to each burst in the frequency domain using the paz command, and RFI was manually mitigated in each burst using the pazi command."
+      },
+      "confidence": 0.95,
+      "name": "PSRCHIVE software",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb314ce2a63af4c2_m3",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "For DM optimization, we used DM-power (H.-H. Lin et al. 2022)."
+      },
+      "confidence": 0.95,
+      "name": "DM-power",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb314ce2a63af4c2_m4",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The rotation measure (RM) was determined using the Stokes QU-fitting method (S. P. O’Sullivan et al. 2012), focusing on regions where the signal-to-noise ratio exceeded 3. Due to challenges in calculating RM from weaker signals or bursts with narrow emission bandwidths, RM values were successfully measured for 301 of the detected bursts. We corrected the linear polarization by derotating it using the measured RM."
+      },
+      "confidence": 0.95,
+      "name": "Stokes QU-fitting method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb314ce2a63af4c2_m5",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "The degrees of linear and circular polarization were calculated for bursts with detected RM. The presence of noise leads to an overestimation of the measured linear polarization. To mitigate this, we employ the frequency-averaged, de-biased total linear polarization (J. E. Everett & J. M. Weisberg 2001; C. K. Day et al. 2020): where σI is the off-pulse standard deviation of Stokes I, and Li represents the frequency-averaged linear polarization of time sample i. The degree of linear polarization is defined as L/I, where L = ΣiLde-bias,i and I = ΣiIi, with the summation performed over all time samples within a burst. Similarly, the degree of circular polarization is defined as V/I, where V = ΣiVi and Vi is the frequency-averaged circular polarization of time sample i. Uncertainties in the linear and circular polarization fractions are quantified using the following equations: where N denotes the number of time samples within the burst (with signal exceeding the noise by 3σ), and ρ represents L or V for the linear and circular polarization fractions, respectively."
+      },
+      "confidence": 0.95,
+      "name": "frequency-averaged, de-biased total linear polarization calculation",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_bb314ce2a63af4c2_m6",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "In this study, we introduce a novel method to calculate the lower and upper frequency boundaries of bursts within the observed frequency band, aiming to mitigate the impact of noise on the accuracy of frequency range calculations for weak pulses. The boundaries of the burst frequency range are systematically adjusted based on the behavior of the first derivative of the cumulative distribution function (CDF) of the spectrum. The spectrum is calculated as the cumulative sum of the pulse range for each channel, represented as: where si(t) represents the flux density at the t-th phase bin within the frequency i-th channel. The pulse range is determined either by cross-correlating a Gaussian template with the burst pulse profile or through interactive definition. Following this, the cumulative distribution function CDF(ν) is derived from the power spectrum as: where νmin is the minimum observation frequency. Subsequently, the CDF data is normalized using smoothing filters in conjunction with the Asymmetrically Reweighted Penalized Least Squares algorithm (S.-J. Baek et al. 2015, arPlS). The first derivative of the smoothed and normalized spectral CDF is computed to identify the frequency indices that define the start and end points of the frequency range, ensuring it encompasses the region where the CDF equals 0.5. If the first derivative remains consistently positive below this region, the lower boundary is set to the minimum frequency in the data; conversely, if it is positive above this region, the upper boundary is established at the maximum frequency. Finally, uncertainties in the lower and upper frequency limits are estimated using the bootstrap method (B. Efron 1979). We tested the algorithm using burst data from FRB 20220912A observed with FAST (Y.-K. Zhang et al. 2023a), with two examples illustrated in Figure 1. The results indicate that this algorithm accurately calculates the frequency range of the bursts, and removing interference bands within the bursts does not affect the computed results."
+      },
+      "confidence": 0.95,
+      "name": "novel method for determining burst frequency range",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_bb314ce2a63af4c2_x1",
+      "evidence": {
+        "section": "2. OBSERVATIONS AND DATA PROCESSING",
+        "original_text": "FRB 20240114A was observed using the GBT’s P-Band receiver and the VEGAS digital backend(R. M. Prestage et al. 2015), covering a frequency range of 720–920 MHz. We conducted two observation sessions with the GBT on February 23, 2024, and March 1, 2024. Each observation session lasted 2 hours, with approximately 1.33 hours of on-source time after setup and calibration. The data were coherently dedispersed at a DM of 527.7 pc cm^{-3} and recorded as 8-bit samples in polarimetric search mode, following the psrfits standard format (A. W. Hotan et al. 2004). Full-Stokes spectra were captured every 40.96 μs with a channel width of 0.39 MHz."
+      },
+      "confidence": 0.95,
+      "task": "GBT observations of FRB 20240114A",
+      "setup": "Robert C. Byrd Green Bank Telescope (GBT) with P-Band receiver and VEGAS backend, 720–920 MHz, two sessions on Feb 23 and Mar 1, 2024, each 2 hours"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_bb314ce2a63af4c2_x2",
+      "evidence": {
+        "section": "3. RESULTS AND DISCUSSION",
+        "original_text": "In this study, we detected a total of 437 bursts from FRB 20240114A during two GBT observation sessions. The average burst rate is approximately 161 hr^{-1}. During the 1.38-hour observation on March 1, 2024, 359 bursts from FRB 20240114A were detected, corresponding to a burst rate of 260 bursts per hour, which is the highest burst rate recorded to date with the GBT or any other (sub)-100-meter radio telescope. The burst information obtained from the observational analysis can be downloaded from the Blinkverse website. Considering the contribution of the ionosphere to the RMs, the values were corrected using a Python code, `IonFR`, along with global ionospheric map (GIM) products (C. Sotomayor-Beltran et al. 2013). These GIM products are available in the IONosphere EXchange (IONEX) format on NASA’s website. For our GBT observations, the RM contribution from the ionosphere was 2.4 ± 0.4 rad m^{-2} on February 23 and 2.9 ± 0.4 rad m^{-2} on March 1, respectively. After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m^{-2}, the average RM for the February 23 observation was 347.0 ± 1.0 rad m^{-2}, while the average RM for the March 1 observation was 353.7 ± 0.6 rad m^{-2}. In the 301 RM-detected bursts, approximately 81% show a linear polarization fraction greater than 90%. This means that FRB 20240114A is not depolarized much due to multipath propagation. Depolarization due to multipath propagation can be described by Y. Feng et al. (2022b): where f_RM scattering represents the fractional reduction in linear polarization amplitude, σ_RM is the standard deviation of the RM, and λ is the wavelength. Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σ_RM rather than measuring σ_RM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σ_RM of 0.9 ± 0.3 rad m^{-2}. Of the 301 bursts with detected RMs, 14% exhibit circular polarization with a signal-to-noise ratio greater than 5. The highest observed absolute fractional circular polarization is 65.2 ± 3.7%. FRB 20240114A is the fifth repeating FRB observed to exhibit circular polarization. The previously reported repeating FRBs with circular polarization are all active sources: FRB 20201124A (H. Xu et al. 2022), FRB 20190520B, FRB 20121102A (Y. Feng et al. 2022a), and FRB 20220912A (Y.-K. Zhang et al. 2023b; Y. Feng et al. 2023). Polarization angle swings were observed in some bursts of FRB 20240114A, similar to other repeating FRBs, including FRB 20180301A (R. Luo et al. 2020), FRB 20201124A (H. Xu et al. 2022; J. R. Niu et al. 2024), and FRB 20220912A (Y. Feng et al. 2023). Figure 2 presents the polarization angles, burst profiles, and dynamic spectra of representative bursts. Notably, bursts 36 and 394 clearly display polarization angle swings. Full polarization position angle, multicomponent intensity profiles, and frequency-time dynamic spectra for all 437 detected bursts are compiled in Appendix Figure A1."
+      },
+      "confidence": 0.95,
+      "task": "burst detection and analysis",
+      "setup": "437 bursts detected from FRB 20240114A using GBT, data processed with DRAFTS, PSRCHIVE, DM-power, and polarization analysis"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_bb314ce2a63af4c2_x3",
+      "evidence": {
+        "section": "3. RESULTS AND DISCUSSION",
+        "original_text": "We calculated the specific fluence by integrating the pulse signal over the determined frequency range of each burst. This method ensures that the fluence is derived directly from the observed emission within the identified frequency band, making it particularly relevant for narrowband FRBs, where fluence measurements are sensitive to the chosen frequency integration limits. The specific fluence distribution was then analyzed using a log-transformed kernel density estimation (KDE) approach, providing deeper insights into its statistical properties, as shown in Figure 4. The Kolmogorov–Smirnov (K-S) test yielded a p-value of 0.4939, suggesting a reasonable fit to the observed data. The mean and median fluence values, derived from KDE sampling, are 0.7923 Jy ms and 0.7105 Jy ms, respectively, indicating a right-skewed distribution. This asymmetry suggests the presence of high-fluence bursts that shift the mean upwards. The standard deviation of 2.2974 Jy ms further confirms the broad dispersion in fluence values. The right-skewed nature of the distribution is consistent with previously studied repeating FRBs (D. Li et al. 2021; D. J. Zhou et al. 2022; Y.-K. Zhang et al. 2023a; Y. Feng et al. 2024), where bursts exhibit a wide range of fluences. We analyzed the waiting-time distribution of FRB20240114A and found that it exhibits a bimodal structure, similar to previously studied repeating FRBs such as FRB20201124A and FRB20220912A. We modeled the distribution using two log-normal functions, yielding peaks at approximately 42.09 ms and 13.91 s, as shown in Figure 5. The K-S test for the log-normal fit gives a p-value of 0.23, indicating that while the model captures the overall trend, some deviations remain. The right peak represents the activity level of the FRB source over the statistical period, while the left peak at 42.09 ms is comparable to the characteristic short waiting times observed in other repeating FRBs. Notably, FRB 20220912A exhibits peaks at 51 ms and 18 s (Y.-K. Zhang et al. 2023a), while FRB 20201124A shows a short waiting-time peak at 39 ms in H. Xu et al. (2022) and 51 ms in Y.-K. Zhang et al. (2022), along with a longer peak at 10 s. The presence of short waiting times on the order of tens of milliseconds in multiple sources suggests a potentially intrinsic timescale associated with the burst emission mechanism, while the longer waiting-time peaks may reflect variations in the activity cycles of different FRBs sources."
+      },
+      "confidence": 0.95,
+      "task": "fluence and waiting-time distribution analysis",
+      "setup": "specific fluence calculated by integrating pulse signal over determined frequency range, distribution analyzed using log-transformed kernel density estimation (KDE), waiting-time distribution modeled with two log-normal functions"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr1",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "During the 1.38-hour observation on March 1, 2024, 365 bursts from FRB 20240114A were detected, corresponding to a burst rate of 260 bursts per hour, which is the highest burst rate recorded to date with the GBT or any other (sub)-100-meter radio telescope. The burst information obtained from the observational analysis can be downloaded from the Blinkverse website. Considering the contribution of the ionosphere to the RMs, the values were corrected using a Python code, `IonFR`, along with global ionospheric map (GIM) products. These GIM products are available in the IONosphere EXchange (IONEX) format on NASA's website. For our GBT observations, the RM contribution from the ionosphere was 2.4 ± 0.4 rad m⁻² on February 23 and 2.9 ± 0.4 rad m⁻² on March 1, respectively. After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m⁻², the average RM for the February 23 observation was 347.0 ± 1.0 rad m⁻², while the average RM for the March 1 observation was 353.7 ± 0.6 rad m⁻²."
+      },
+      "confidence": 0.98,
+      "quantity": "burst rate",
+      "value": 264,
+      "unit": "bursts per hour",
+      "context": "FRB 20240114A during a 1.38-hour observation on March 1, 2024, with the GBT at 720-920 MHz",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr2",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m⁻², the average RM for the February 23 observation was 347.0 ± 1.0 rad m⁻², while the average RM for the March 1 observation was 353.7 ± 0.6 rad m⁻². In the 301 RM-detected bursts, approximately 81% show a linear polarization fraction greater than 90%. This means that FRB 20240114A is not depolarized much due to multipath propagation. Depolarization due to multipath propagation can be described by Y. Feng et al. (2022b): f_RM_scattering = exp(-2σ_RM²λ⁴), where f_RM_scattering represents the fractional reduction in linear polarization amplitude, σ_RM is the standard deviation of the RM, and λ is the wavelength. Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σ_RM rather than measuring σ_RM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σ_RM of 0.9 ± 0.3 rad m⁻²."
+      },
+      "confidence": 0.97,
+      "quantity": "rotation measure",
+      "value": 347.0,
+      "unit": "rad m⁻²",
+      "context": "FRB 20240114A observed on February 23, 2024, with GBT, after ionospheric correction",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr3",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m⁻², the average RM for the February 23 observation was 347.0 ± 1.0 rad m⁻², while the average RM for the March 1 observation was 353.7 ± 0.6 rad m⁻². In the 301 RM-detected bursts, approximately 81% show a linear polarization fraction greater than 90%. This means that FRB 20240114A is not depolarized much due to multipath propagation. Depolarization due to multipath propagation can be described by Y. Feng et al. (2022b): f_RM_scattering = exp(-2σ_RM²λ⁴), where f_RM_scattering represents the fractional reduction in linear polarization amplitude, σ_RM is the standard deviation of the RM, and λ is the wavelength. Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σ_RM rather than measuring σ_RM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σ_RM of 0.9 ± 0.3 rad m⁻²."
+      },
+      "confidence": 0.97,
+      "quantity": "rotation measure",
+      "value": 353.7,
+      "unit": "rad m⁻²",
+      "context": "FRB 20240114A observed on March 1, 2024, with GBT, after ionospheric correction",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr4",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "In the 301 RM-detected bursts, approximately 81% show a linear polarization fraction greater than 90%. This means that FRB 20240114A is not depolarized much due to multipath propagation. Depolarization due to multipath propagation can be described by Y. Feng et al. (2022b): f_RM_scattering = exp(-2σ_RM²λ⁴), where f_RM_scattering represents the fractional reduction in linear polarization amplitude, σ_RM is the standard deviation of the RM, and λ is the wavelength. Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σ_RM rather than measuring σ_RM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σ_RM of 0.9 ± 0.3 rad m⁻². Of the 301 bursts with detected RMs, 14% exhibit circular polarization with a signal-to-noise ratio greater than 5. The highest observed absolute fractional circular polarization is 65.2 ± 3.7%. FRB 20240114A is the fifth repeating FRB observed to exhibit circular polarization."
+      },
+      "confidence": 0.96,
+      "quantity": "linear polarization fraction",
+      "value": 81,
+      "unit": "%",
+      "context": "FRB 20240114A, among 301 bursts with detected RM, fraction with linear polarization > 90%",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr5",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "Of the 301 bursts with detected RMs, 14% exhibit circular polarization with a signal-to-noise ratio greater than 5. The highest observed absolute fractional circular polarization is 65.2 ± 3.7%. FRB 20240114A is the fifth repeating FRB observed to exhibit circular polarization. The previously reported repeating FRBs with circular polarization are all active sources: FRB 20201124A (H. Xu et al. 2022), FRB 20190520B, FRB 20121102A (Y. Feng et al. 2022a), and FRB 20220912A (Y.-K. Zhang et al. 2023b; Y. Feng et al. 2023). Polarization angle swings were observed in some bursts of FRB 20240114A, similar to other repeating FRBs, including FRB 20180301A (R. Luo et al. 2020), FRB 20201124A (H. Xu et al. 2022; J. R. Niu et al. 2024), and FRB 20220912A (Y. Feng et al. 2023). Figure 2 presents the polarization angles, burst profiles, and dynamic spectra of representative bursts. Notably, bursts 36 and 394 clearly display polarization angle swings."
+      },
+      "confidence": 0.96,
+      "quantity": "circular polarization fraction",
+      "value": 14,
+      "unit": "%",
+      "context": "FRB 20240114A, among 301 bursts with detected RM, fraction with circular polarization SNR > 5",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr6",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σ_RM rather than measuring σ_RM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σ_RM of 0.9 ± 0.3 rad m⁻². Of the 301 bursts with detected RMs, 14% exhibit circular polarization with a signal-to-noise ratio greater than 5. The highest observed absolute fractional circular polarization is 65.2 ± 3.7%. FRB 20240114A is the fifth repeating FRB observed to exhibit circular polarization. The previously reported repeating FRBs with circular polarization are all active sources: FRB 20201124A (H. Xu et al. 2022), FRB 20190520B, FRB 20121102A (Y. Feng et al. 2022a), and FRB 20220912A (Y.-K. Zhang et al. 2023b; Y. Feng et al. 2023). Polarization angle swings were observed in some bursts of FRB 20240114A, similar to other repeating FRBs, including FRB 20180301A (R. Luo et al. 2020), FRB 20201124A (H. Xu et al. 2022; J. R. Niu et al. 2024), and FRB 20220912A (Y. Feng et al. 2023)."
+      },
+      "confidence": 0.95,
+      "quantity": "σ_RM upper limit",
+      "value": 0.9,
+      "unit": "rad m⁻²",
+      "context": "Derived from burst 139 with linear polarization fraction 97 ± 2% observed between 721 MHz and 919 MHz",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr7",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "We calculated the specific fluence by integrating the pulse signal over the determined frequency range of each burst. This method ensures that the fluence is derived directly from the observed emission within the identified frequency band, making it particularly relevant for narrowband FRBs, where fluence measurements are sensitive to the chosen frequency integration limits. The specific fluence distribution was then analyzed using a log-transformed kernel density estimation (KDE) approach, providing deeper insights into its statistical properties, as shown in Figure 4. The Kolmogorov–Smirnov (K-S) test yielded a p-value of 0.4939, suggesting a reasonable fit to the observed data. The mean and median fluence values, derived from KDE sampling, are 0.7923 Jy ms and 0.7105 Jy ms, respectively, indicating a right-skewed distribution. This asymmetry suggests the presence of high-fluence bursts that shift the mean upwards. The standard deviation of 2.2974 Jy ms further confirms the broad dispersion in fluence values. The right-skewed nature of the distribution is consistent with previously studied repeating FRBs (D. Li et al. 2021; D. J. Zhou et al. 2022; Y.-K. Zhang et al. 2023a; Y. Feng et al. 2024), where bursts exhibit a wide range of fluences."
+      },
+      "confidence": 0.95,
+      "quantity": "specific fluence mean",
+      "value": 0.7923,
+      "unit": "Jy ms",
+      "context": "FRB 20240114A, derived from log-transformed kernel density estimation (KDE)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr8",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "We calculated the specific fluence by integrating the pulse signal over the determined frequency range of each burst. This method ensures that the fluence is derived directly from the observed emission within the identified frequency band, making it particularly relevant for narrowband FRBs, where fluence measurements are sensitive to the chosen frequency integration limits. The specific fluence distribution was then analyzed using a log-transformed kernel density estimation (KDE) approach, providing deeper insights into its statistical properties, as shown in Figure 4. The Kolmogorov–Smirnov (K-S) test yielded a p-value of 0.4939, suggesting a reasonable fit to the observed data. The mean and median fluence values, derived from KDE sampling, are 0.7923 Jy ms and 0.7105 Jy ms, respectively, indicating a right-skewed distribution. This asymmetry suggests the presence of high-fluence bursts that shift the mean upwards. The standard deviation of 2.2974 Jy ms further confirms the broad dispersion in fluence values. The right-skewed nature of the distribution is consistent with previously studied repeating FRBs (D. Li et al. 2021; D. J. Zhou et al. 2022; Y.-K. Zhang et al. 2023a; Y. Feng et al. 2024), where bursts exhibit a wide range of fluences."
+      },
+      "confidence": 0.95,
+      "quantity": "specific fluence median",
+      "value": 0.7105,
+      "unit": "Jy ms",
+      "context": "FRB 20240114A, derived from log-transformed kernel density estimation (KDE)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr9",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "We analyzed the waiting-time distribution of FRB20240114A and found that it exhibits a bimodal structure, similar to previously studied repeating FRBs such as FRB20201124A and FRB20220912A. We modeled the distribution using two log-normal functions, yielding peaks at approximately 42.09 ms and 13.91 s, as shown in Figure 5. The K-S test for the log-normal fit gives a p-value of 0.23, indicating that while the model captures the overall trend, some deviations remain. The right peak represents the activity level of the FRB source over the statistical period, while the left peak at 42.09 ms is comparable to the characteristic short waiting times observed in other repeating FRBs. Notably, FRB 20220912A exhibits peaks at 51 ms and 18 s (Y.-K. Zhang et al. 2023a), while FRB 20201124A shows a short waiting-time peak at 39 ms in H. Xu et al. (2022) and 51 ms in Y.-K. Zhang et al. (2022), along with a longer peak at 10 s. The presence of short waiting times on the order of tens of milliseconds in multiple sources suggests a potentially intrinsic timescale associated with the burst emission mechanism, while the longer waiting-time peaks may reflect variations in the activity cycles of different FRBs sources."
+      },
+      "confidence": 0.96,
+      "quantity": "waiting time distribution peak",
+      "value": 42.09,
+      "unit": "ms",
+      "context": "FRB 20240114A, modeled using two log-normal functions",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_bb314ce2a63af4c2_qr10",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "We analyzed the waiting-time distribution of FRB20240114A and found that it exhibits a bimodal structure, similar to previously studied repeating FRBs such as FRB20201124A and FRB20220912A. We modeled the distribution using two log-normal functions, yielding peaks at approximately 42.09 ms and 13.91 s, as shown in Figure 5. The K-S test for the log-normal fit gives a p-value of 0.23, indicating that while the model captures the overall trend, some deviations remain. The right peak represents the activity level of the FRB source over the statistical period, while the left peak at 42.09 ms is comparable to the characteristic short waiting times observed in other repeating FRBs. Notably, FRB 20220912A exhibits peaks at 51 ms and 18 s (Y.-K. Zhang et al. 2023a), while FRB 20201124A shows a short waiting-time peak at 39 ms in H. Xu et al. (2022) and 51 ms in Y.-K. Zhang et al. (2022), along with a longer peak at 10 s. The presence of short waiting times on the order of tens of milliseconds in multiple sources suggests a potentially intrinsic timescale associated with the burst emission mechanism, while the longer waiting-time peaks may reflect variations in the activity cycles of different FRBs sources."
+      },
+      "confidence": 0.96,
+      "quantity": "waiting time distribution peak",
+      "value": 13.91,
+      "unit": "s",
+      "context": "FRB 20240114A, modeled using two log-normal functions",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb314ce2a63af4c2_p1",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "During the 1.38-hour observation on March 1, 2024, 365 bursts from FRB 20240114A were detected, corresponding to a burst rate of 260 bursts per hour, which is the highest burst rate recorded to date with the GBT or any other (sub)-100-meter radio telescope. The burst information obtained from the observational analysis can be downloaded from the Blinkverse website. Considering the contribution of the ionosphere to the RMs, the values were corrected using a Python code, `IonFR`, along with global ionospheric map (GIM) products. These GIM products are available in the IONosphere EXchange (IONEX) format on NASA's website. For our GBT observations, the RM contribution from the ionosphere was 2.4 ± 0.4 rad m⁻² on February 23 and 2.9 ± 0.4 rad m⁻² on March 1, respectively. After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m⁻², the average RM for the February 23 observation was 347.0 ± 1.0 rad m⁻², while the average RM for the March 1 observation was 353.7 ± 0.6 rad m⁻²."
+      },
+      "confidence": 0.98,
+      "metric": "burst rate",
+      "compared_to": "GBT and other (sub)-100-meter radio telescopes"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb314ce2a63af4c2_p2",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "Additionally, we show the distributions of linear and circular polarization fractions for the sample from FRB 20220912A in Y.-K. Zhang et al. (2023b) and the sample from FRB 20201124A in J.-C. Jiang et al. (2022). It appears that the three repeating FRBs have similar distributions of linear and circular polarization fractions. This suggests that the radiation mechanisms of the three sources are identical. We calculated the specific fluence by integrating the pulse signal over the determined frequency range of each burst. This method ensures that the fluence is derived directly from the observed emission within the identified frequency band, making it particularly relevant for narrowband FRBs, where fluence measurements are sensitive to the chosen frequency integration limits. The specific fluence distribution was then analyzed using a log-transformed kernel density estimation (KDE) approach, providing deeper insights into its statistical properties, as shown in Figure 4. The Kolmogorov–Smirnov (K-S) test yielded a p-value of 0.4939, suggesting a reasonable fit to the observed data."
+      },
+      "confidence": 0.95,
+      "metric": "linear and circular polarization fraction distributions",
+      "compared_to": "FRB 20201124A and FRB 20220912A"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_bb314ce2a63af4c2_p3",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "We analyzed the waiting-time distribution of FRB20240114A and found that it exhibits a bimodal structure, similar to previously studied repeating FRBs such as FRB20201124A and FRB20220912A. We modeled the distribution using two log-normal functions, yielding peaks at approximately 42.09 ms and 13.91 s, as shown in Figure 5. The K-S test for the log-normal fit gives a p-value of 0.23, indicating that while the model captures the overall trend, some deviations remain. The right peak represents the activity level of the FRB source over the statistical period, while the left peak at 42.09 ms is comparable to the characteristic short waiting times observed in other repeating FRBs. Notably, FRB 20220912A exhibits peaks at 51 ms and 18 s (Y.-K. Zhang et al. 2023a), while FRB 20201124A shows a short waiting-time peak at 39 ms in H. Xu et al. (2022) and 51 ms in Y.-K. Zhang et al. (2022), along with a longer peak at 10 s. The presence of short waiting times on the order of tens of milliseconds in multiple sources suggests a potentially intrinsic timescale associated with the burst emission mechanism, while the longer waiting-time peaks may reflect variations in the activity cycles of different FRBs sources."
+      },
+      "confidence": 0.96,
+      "metric": "waiting time distribution bimodal structure",
+      "compared_to": "FRB 20201124A and FRB 20220912A"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_bb314ce2a63af4c2_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "We report on observations of FRB 20240114A conducted with the Robert C. Byrd Green Bank Telescope (GBT) at frequencies ranging from 720 to 920 MHz. A total of 437 bursts were detected, with a single observation recording 365 bursts over 1.38 hours, corresponding to a burst rate of 264 bursts per hour. The average rotation measures (RMs) were 347 .0 ± 1 .0 rad m −2 on February 23, 2024, and 353 .7 ± 0 .6 rad m −2 on March 1, 2024. Of the 301 bursts with detected RMs, 81% have a linear polarization fraction greater than 90%, and 14% exhibit circular polarization with a signal-to-noise ratio > 5. Our sample also displayed polarization angle swings. We compared the linear polarization fraction of FRB 20240114A with those of the repeating sources FRB 20201124A and FRB 20220912A. Our analysis reveals that all three exhibit similar distributions in both linear and circular polarization fractions. These results indicate that the three sources share the same radiation mechanism. We analyze the fluence and waiting-time distributions of FRB 20240114A, revealing a right-skewed fluence distribution and a bimodal waiting-time structure, suggesting intrinsic emission timescales and potential multiple burst populations. Additionally, We present a novel method to determine the frequency range of bursts based on their spectral characteristics. This algorithm is independent of spectral models and remains unaffected by the removal of interference-affected channels in the data, ensuring robust performance."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_bb314ce2a63af4c2_cl1",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "We report on the hyperactivity of FRB 20240114A and its polarization characteristics. Our key findings are as follows: 1. A total of 437 bursts were detected in total with the GBT at 720 to 920 MHz. During the 1.38-hour observation on March 1, 2024, 365 bursts were detected, corresponding to a burst rate of 264 events per hour. This is the highest burst rate observed to date with the GBT or any other (sub)-100-meter radio telescope. 2. The mean RM values were 347 .0 ± 1 .0 rad m −2 on February 23 and 353 .7 ± 0 .6 rad m −2 on March 1. The combined mean RM was 350 .3 ± 0 .2 rad m −2 . 3. Out of the 301 bursts with RM detection, 81% bursts exhibit a linear polarization fraction greater than 90%, and 14% of the bursts have circular polarization with signal-to-noise ratio > 5. We placed an upper limit on σ RM of 0 .9 ± 0 .3 rad m −2 . Some bursts from FRB 20240114A show downward drift in frequency and polarization angle swings. 4. We have compared the linear polarization fraction of FRB 20240114A with those of the repeating FRB 20201124A and FRB 20220912A. We find that all three sources show similar distributions in their linear and circular polarization fractions. Our findings imply that the radiation mechanisms of these three sources are consistent with each other. The observed bimodal features in both fluence and waiting times indicate the potential presence of multiple burst populations or emission mechanisms, highlighting the need for further studies to constrain the physical origins of repeating FRBs. 5. We propose a novel approach for determining the frequency range of bursts based on their intrinsic spectral properties. This method operates independently of specific spectral models and remains robust even in the presence of excised channels affected by radio frequency interference, ensuring reliable performance across diverse observational conditions. 5. We analyzed the fluence and waiting-time distributions of FRB 20240114. The analysis revealed that the fluence distribution exhibits a right-skewed characteristic. The waiting-time distribution exhibits a bimodal structure with peaks at 42.09 ms and 13.91 s, similar to other repeating FRBs. These results suggest intrinsic emission timescales and variability in activity cycles."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_bb314ce2a63af4c2_lm1",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "Considering the contribution of the ionosphere to the RMs, the values were corrected using a Python code, `IonFR` , along with global ionospheric map (GIM) products (C. Sotomayor-Beltran et al. 2013). These GIM products are available in the IONosphere EXchange (IONEX) format on NASA’s website. For our GBT observations, the RM contribution from the ionosphere was 2 .4 ± 0 .4 rad m −2 on February 23 and 2 .9 ± 0 .4 rad m −2 on March 1, respectively. After correcting for the ionospheric contribution to the RM and excluding bursts with RM error bars larger than 5 rad m −2 , the average RM for the February 23 observation was 347 .0 ± 1 .0 rad m −2 , while the average RM for the March 1 observation was 353 .7 ± 0 .6 rad m −2 . In the 301 RM-detected bursts, approximately 81% show a linear polarization fraction greater than 90%. This means that FRB 20240114A is not depolarized much due to multipath propagation. Depolarization due to multipath propagation can be described by Y. Feng et al. (2022b): Considering the narrow bandwidth of our observation and the high linear polarization fraction, we provide an upper limit on the σ RM rather than measuring σ RM precisely. We note that burst 139 has a linear polarization fraction of 97 ± 2%, observed between 721 MHz and 919 MHz. Using Eq. 5, we place an upper limit on σ RM of 0 .9 ± 0 .3 rad m −2 . Of the 301 bursts with detected RMs, 14% exhibit circular polarization with a signal-to-noise ratio greater than 5. The highest observed absolute fractional circular polarization is 65 .2 ± 3 .7%. FRB 20240114A is the fifth repeating FRB observed to exhibit circular polarization. The previously reported repeating FRBs with circular polarization are all active sources: FRB 20201124A (H. Xu et al. 2022), FRB 20190520B, FRB 20121102A (Y. Feng et al. 2022a), and FRB 20220912A (Y.-K. Zhang et al. 2023b; Y. Feng et al. 2023). Polarization angle swings were observed in some bursts of FRB 20240114A, similar to other repeating FRBs, including FRB 20180301A (R. Luo et al. 2020), FRB 20201124A (H. Xu et al. 2022; J. R. Niu et al. 2024), and FRB 20220912A (Y. Feng et al. 2023). Figure 2 presents the polarization angles, burst profiles, and dynamic spectra of representative bursts. Notably, bursts 36 and 394 clearly display polarization angle swings. Full polarization position angle, multicomponent intensity profiles, and frequency-time dynamic spectra for all 437 detected bursts are compiled in Appendix Figure A1."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_bb314ce2a63af4c2_fw1",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "The observed bimodal features in both fluence and waiting times indicate the potential presence of multiple burst populations or emission mechanisms, highlighting the need for further studies to constrain the physical origins of repeating FRBs."
+      },
+      "confidence": 0.96
+    }
+  ]
+}

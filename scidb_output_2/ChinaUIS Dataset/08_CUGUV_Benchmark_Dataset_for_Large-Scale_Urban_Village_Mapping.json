@@ -1,0 +1,465 @@
+{
+  "metadata": {
+    "doc_id": "doc_eb8b4c5e3860754e",
+    "source_file": "08_CUGUV_Benchmark_Dataset_for_Large-Scale_Urban_Village_Mapping.md",
+    "title": "CUGUV: a Benchmark Dataset Data Descriptor for Promoting Large-Scale Urban Village Mapping with Deep Learning Models",
+    "year": 2024,
+    "doi": "10.6084/m9.figshare.26198093",
+    "abstract": "**Delineating the extent of urban villages (UVs) is crucial for effective urban planning and management, as well as for providing targeted policy and financial support. Unlike field surveys, the interpretation of satellite imagery provides an efficient, near real-time, and objective means of mapping UV. However, current research efforts predominantly concentrate on individual cities, resulting in a scarcity of interpretable UV maps for numerous other cities. This gap in availability not only hinders public awareness of the distribution and evolution of UV but also limits the reliability and transferability of models due to the insufficient number and diversity of samples. To address this issue, we developed CUGUV, a benchmark dataset that includes a diverse collection of thousands of UV samples, carefully curated from 15 major cities across various geographical regions in China. The dataset can be accessed through this link: https://doi.org/10.6084/m9.figshare.26198093. This dataset can serve as a foundation for evaluating and improving the robustness and transferability of models. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Tests show that the proposed models achieve over 92% in overall accuracy, precision, and F1-scores, outperforming state-of-the-art models. This highlights the effectiveness of both the proposed dataset and model. This presented dataset and model bolsters our capability to better understand and accurately model these complex and diverse phenomena, ultimately leading to a notable improvement in the performance of large-scale UV mapping.**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": "人工智能",
+      "level3": "机器学习"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": "遥感技术",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "urban village mapping",
+      "benchmark dataset",
+      "deep learning",
+      "remote sensing",
+      "cross-city transferability"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:06:40.203841+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_eb8b4c5e3860754e_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Delineating the extent of urban villages (UVs) is crucial for effective urban planning and management, as well as for providing targeted policy and financial support. Unlike field surveys, the interpretation of satellite imagery provides an efficient, near real-time, and objective means of mapping UV. However, current research efforts predominantly concentrate on individual cities, resulting in a scarcity of interpretable UV maps for numerous other cities. This gap in availability not only hinders public awareness of the distribution and evolution of UV but also limits the reliability and transferability of models due to the insufficient number and diversity of samples. To address this issue, we developed CUGUV, a benchmark dataset that includes a diverse collection of thousands of UV samples, carefully curated from 15 major cities across various geographical regions in China. The dataset can be accessed through this link: https://doi.org/10.6084/m9.figshare.26198093. This dataset can serve as a foundation for evaluating and improving the robustness and transferability of models. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Tests show that the proposed models achieve over 92% in overall accuracy, precision, and F1-scores, outperforming state-of-the-art models. This highlights the effectiveness of both the proposed dataset and model. This presented dataset and model bolsters our capability to better understand and accurately model these complex and diverse phenomena, ultimately leading to a notable improvement in the performance of large-scale UV mapping."
+      },
+      "confidence": 0.99,
+      "term": "urban village",
+      "normalized": "城中村",
+      "std_label": "UV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb8b4c5e3860754e_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Delineating the extent of urban villages (UVs) is crucial for effective urban planning and management, as well as for providing targeted policy and financial support. Unlike field surveys, the interpretation of satellite imagery provides an efficient, near real-time, and objective means of mapping UV. However, current research efforts predominantly concentrate on individual cities, resulting in a scarcity of interpretable UV maps for numerous other cities. This gap in availability not only hinders public awareness of the distribution and evolution of UV but also limits the reliability and transferability of models due to the insufficient number and diversity of samples. To address this issue, we developed CUGUV, a benchmark dataset that includes a diverse collection of thousands of UV samples, carefully curated from 15 major cities across various geographical regions in China. The dataset can be accessed through this link: https://doi.org/10.6084/m9.figshare.26198093. This dataset can serve as a foundation for evaluating and improving the robustness and transferability of models. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Tests show that the proposed models achieve over 92% in overall accuracy, precision, and F1-scores, outperforming state-of-the-art models. This highlights the effectiveness of both the proposed dataset and model. This presented dataset and model bolsters our capability to better understand and accurately model these complex and diverse phenomena, ultimately leading to a notable improvement in the performance of large-scale UV mapping."
+      },
+      "confidence": 0.98,
+      "term": "CUGUV dataset",
+      "normalized": "CUGUV数据集",
+      "std_label": "CUGUV"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb8b4c5e3860754e_c3",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "In recent years, deep learning has achieved tremendous success in computer vision, image processing, and other fields. Compared to shallow learning machines that rely on artificially founded features, deep neural networks can more effectively interpret complex scenes by autonomously learning multi-level image features. Currently, various deep learning models, such as CNNs, FCNs, UNet, and SAM, have been successfully applied to the identification of UVs, achieving better performances than traditional methods. Additionally, some research has integrated social sensing data with remote sensing images to investigate the spatial distribution of UVs from the perspective of urban perception. Street view images and time-series human activity data have also been utilized in the identification of UVs. However, existing research primarily focuses on individual cities (notably Shenzhen, Guangzhou, Wuhan or Beijing), leaving a gap in the availability of an interpretable UVs map for most cities. Consequently, the public remains unaware of the distribution and evolution of UVs in those cities. Additionally, the insufficient number and diversity of samples limits the reliability and transferability of deep learning models, given the significant variations in UVs styles across cities. To address this issue, we constructed a large-scale benchmark UV dataset encompassing diverse cities and styles by collecting thousands of remote sensing scenes from across the country. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Following this, we conducted a series of tests to evaluate the performance of the dataset and compare the adaptability of our current model with that of state-of-the-art (SOTA) models."
+      },
+      "confidence": 0.97,
+      "term": "deep learning",
+      "normalized": "深度学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb8b4c5e3860754e_c4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We chose the Segformer model as the backbone of the multi-source heterogeneous data fusion framework, taking into account its capability of efficiently fusing multi-level features. We utilized Segformer for the extraction and learning of multiple features of urban villages, comprising a Hierarchical Transformer Encoder and a Multilayer Perceptron (MLP) Decoder. The encoder is designed based on vision transformers and hierarchical feature extraction techniques. In the Encoder, the input image is first partitioned into multiple non-overlapping patches, which are then embedded into high-dimensional space vectors through a linear layer. Transformer blocks within each layer are assigned to process the output from the previous layer, enabling the progressive extraction of more complex and high-level features. The MLP decoder boasts a straightforward structure solely based on fully connected layers, enabling reducing computational complexity while effectively fusing multi-scale features. The MLP encompasses multi-scale feature fusion, where the multi-layer outputs of the encoder are mapped to a uniform dimension through linear layers and fused. Subsequently, a segmentation map is generated, which is of the same size as the input image, through linear layers and upsampling operations. Segformer outperforms many existing methods in semantic segmentation benchmarks, particularly when dealing with diverse image sizes and scenarios, owing to its proficiency in modeling long-range dependencies and extracting multi-scale features. Furthermore, it is renowned for its cost-effectiveness in practical applications, mainly attributed to the lightweight MLP decoder."
+      },
+      "confidence": 0.96,
+      "term": "Segformer",
+      "normalized": "Segformer模型",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb8b4c5e3860754e_c5",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Spectral indices are designed to detect specific physiological or biochemical parameters, achieved by expanding spectral characteristics from a one-dimensional to a multi-dimensional representation. These indices are capable of sensitively detecting and distinguishing subtle absorption peaks, while simultaneously taking into account the synergistic effect between different bands and minimizing the influence of irrelevant wavelengths. In the study, spectral indices are anticipated to reveal novel features of urban villages, in addition to those captured by convolutional operations. We adopted four spectral indices calculated from Landsat-8 images to describe the regional characteristics of urban villages, including the Normalized Difference Vegetation Index (NDVI), the Normalized Difference Water Index (NDWI), the Normalized Difference Built-up Index (NDBI), and the Normalized Difference Impervious Surface Index (NDISI)."
+      },
+      "confidence": 0.95,
+      "term": "spectral indices",
+      "normalized": "光谱指数",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_eb8b4c5e3860754e_c6",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We obtained building data from various open-source datasets to achieve a three-dimensional description of urban blocks. This serves as a significant supplement and enhancement to traditional methods that rely solely on two-dimensional images. We adopted the same grid size (30 m) as used in Landsat images to calculate statistical indices of urban buildings, including building densities (BD) and mean building height (MBH), to aid in the identification of urban villages. Here, BD is calculated by Eq. (1). where Areai represents the area of the building i within a grid, A indicates the total area of a grid. UV is characterized by high building density; thus, the sparseness of buildings is an important factor for distinguishing UV from other regions. MBH is calculated as the average height of all buildings in a homogeneous region, which can be determined using Eq. (2). where Heighti represents the height of the building i, N is the total count of buildings within a grid. We use the MBH to help distinguish urban villages (UV) from other regions, considering that urban villages typically have relatively low building heights."
+      },
+      "confidence": 0.95,
+      "term": "building indices",
+      "normalized": "建筑指数",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb8b4c5e3860754e_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Delineating the extent of urban villages (UVs) is crucial for effective urban planning and management, as well as for providing targeted policy and financial support. Unlike field surveys, the interpretation of satellite imagery provides an efficient, near real-time, and objective means of mapping UV. However, current research efforts predominantly concentrate on individual cities, resulting in a scarcity of interpretable UV maps for numerous other cities. This gap in availability not only hinders public awareness of the distribution and evolution of UV but also limits the reliability and transferability of models due to the insufficient number and diversity of samples. To address this issue, we developed CUGUV, a benchmark dataset that includes a diverse collection of thousands of UV samples, carefully curated from 15 major cities across various geographical regions in China. The dataset can be accessed through this link: https://doi.org/10.6084/m9.figshare.26198093. This dataset can serve as a foundation for evaluating and improving the robustness and transferability of models. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Tests show that the proposed models achieve over 92% in overall accuracy, precision, and F1-scores, outperforming state-of-the-art models. This highlights the effectiveness of both the proposed dataset and model. This presented dataset and model bolsters our capability to better understand and accurately model these complex and diverse phenomena, ultimately leading to a notable improvement in the performance of large-scale UV mapping."
+      },
+      "confidence": 0.94,
+      "head": "doc_eb8b4c5e3860754e_c2",
+      "relation_type": "enhances",
+      "relation_surface": "can serve as a foundation for evaluating and improving",
+      "tail": "doc_eb8b4c5e3860754e_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb8b4c5e3860754e_r2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We chose the Segformer model as the backbone of the multi-source heterogeneous data fusion framework, taking into account its capability of efficiently fusing multi-level features. We utilized Segformer for the extraction and learning of multiple features of urban villages, comprising a Hierarchical Transformer Encoder and a Multilayer Perceptron (MLP) Decoder. The encoder is designed based on vision transformers and hierarchical feature extraction techniques. In the Encoder, the input image is first partitioned into multiple non-overlapping patches, which are then embedded into high-dimensional space vectors through a linear layer. Transformer blocks within each layer are assigned to process the output from the previous layer, enabling the progressive extraction of more complex and high-level features. The MLP decoder boasts a straightforward structure solely based on fully connected layers, enabling reducing computational complexity while effectively fusing multi-scale features. The MLP encompasses multi-scale feature fusion, where the multi-layer outputs of the encoder are mapped to a uniform dimension through linear layers and fused. Subsequently, a segmentation map is generated, which is of the same size as the input image, through linear layers and upsampling operations. Segformer outperforms many existing methods in semantic segmentation benchmarks, particularly when dealing with diverse image sizes and scenarios, owing to its proficiency in modeling long-range dependencies and extracting multi-scale features. Furthermore, it is renowned for its cost-effectiveness in practical applications, mainly attributed to the lightweight MLP decoder. Spectral indices are designed to detect specific physiological or biochemical parameters, achieved by expanding spectral characteristics from a one-dimensional to a multi-dimensional representation. These indices are capable of sensitively detecting and distinguishing subtle absorption peaks, while simultaneously taking into account the synergistic effect between different bands and minimizing the influence of irrelevant wavelengths. In the study, spectral indices are anticipated to reveal novel features of urban villages, in addition to those captured by convolutional operations. We adopted four spectral indices calculated from Landsat-8 images to describe the regional characteristics of urban villages, including the Normalized Difference Vegetation Index (NDVI), the Normalized Difference Water Index (NDWI), the Normalized Difference Built-up Index (NDBI), and the Normalized Difference Impervious Surface Index (NDISI)."
+      },
+      "confidence": 0.92,
+      "head": "doc_eb8b4c5e3860754e_c4",
+      "relation_type": "uses",
+      "relation_surface": "We chose the Segformer model as the backbone of the multi-source heterogeneous data fusion framework",
+      "tail": "doc_eb8b4c5e3860754e_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb8b4c5e3860754e_r3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We chose the Segformer model as the backbone of the multi-source heterogeneous data fusion framework, taking into account its capability of efficiently fusing multi-level features. We utilized Segformer for the extraction and learning of multiple features of urban villages, comprising a Hierarchical Transformer Encoder and a Multilayer Perceptron (MLP) Decoder. The encoder is designed based on vision transformers and hierarchical feature extraction techniques. In the Encoder, the input image is first partitioned into multiple non-overlapping patches, which are then embedded into high-dimensional space vectors through a linear layer. Transformer blocks within each layer are assigned to process the output from the previous layer, enabling the progressive extraction of more complex and high-level features. The MLP decoder boasts a straightforward structure solely based on fully connected layers, enabling reducing computational complexity while effectively fusing multi-scale features. The MLP encompasses multi-scale feature fusion, where the multi-layer outputs of the encoder are mapped to a uniform dimension through linear layers and fused. Subsequently, a segmentation map is generated, which is of the same size as the input image, through linear layers and upsampling operations. Segformer outperforms many existing methods in semantic segmentation benchmarks, particularly when dealing with diverse image sizes and scenarios, owing to its proficiency in modeling long-range dependencies and extracting multi-scale features. Furthermore, it is renowned for its cost-effectiveness in practical applications, mainly attributed to the lightweight MLP decoder. We obtained building data from various open-source datasets to achieve a three-dimensional description of urban blocks. This serves as a significant supplement and enhancement to traditional methods that rely solely on two-dimensional images. We adopted the same grid size (30 m) as used in Landsat images to calculate statistical indices of urban buildings, including building densities (BD) and mean building height (MBH), to aid in the identification of urban villages. Here, BD is calculated by Eq. (1). where Areai represents the area of the building i within a grid, A indicates the total area of a grid. UV is characterized by high building density; thus, the sparseness of buildings is an important factor for distinguishing UV from other regions. MBH is calculated as the average height of all buildings in a homogeneous region, which can be determined using Eq. (2). where Heighti represents the height of the building i, N is the total count of buildings within a grid. We use the MBH to help distinguish urban villages (UV) from other regions, considering that urban villages typically have relatively low building heights."
+      },
+      "confidence": 0.92,
+      "head": "doc_eb8b4c5e3860754e_c4",
+      "relation_type": "uses",
+      "relation_surface": "We chose the Segformer model as the backbone of the multi-source heterogeneous data fusion framework",
+      "tail": "doc_eb8b4c5e3860754e_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_eb8b4c5e3860754e_r4",
+      "evidence": {
+        "section": "Background & Summary",
+        "original_text": "In recent years, deep learning has achieved tremendous success in computer vision, image processing, and other fields. Compared to shallow learning machines that rely on artificially founded features, deep neural networks can more effectively interpret complex scenes by autonomously learning multi-level image features. Currently, various deep learning models, such as CNNs, FCNs, UNet, and SAM, have been successfully applied to the identification of UVs, achieving better performances than traditional methods. Additionally, some research has integrated social sensing data with remote sensing images to investigate the spatial distribution of UVs from the perspective of urban perception. Street view images and time-series human activity data have also been utilized in the identification of UVs. However, existing research primarily focuses on individual cities (notably Shenzhen, Guangzhou, Wuhan or Beijing), leaving a gap in the availability of an interpretable UVs map for most cities. Consequently, the public remains unaware of the distribution and evolution of UVs in those cities. Additionally, the insufficient number and diversity of samples limits the reliability and transferability of deep learning models, given the significant variations in UVs styles across cities. To address this issue, we constructed a large-scale benchmark UV dataset encompassing diverse cities and styles by collecting thousands of remote sensing scenes from across the country. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Following this, we conducted a series of tests to evaluate the performance of the dataset and compare the adaptability of our current model with that of state-of-the-art (SOTA) models."
+      },
+      "confidence": 0.93,
+      "head": "doc_eb8b4c5e3860754e_c3",
+      "relation_type": "enhances",
+      "relation_surface": "can more effectively interpret complex scenes by autonomously learning multi-level image features",
+      "tail": "doc_eb8b4c5e3860754e_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb8b4c5e3860754e_d1",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "The CUGUV dataset[43] can be downloaded for free from https://doi.org/10.6084/m9.figshare.26198093 and is available for further analysis. In the repository, the first three files contain labeled patches for the sets of training, validation, and test, respectively. In the files, pixels belonging to UV are assigned a value of 1, while non-UV pixels are assigned 0. The subsequent three files present the corresponding true color patches for each set. The samples have been meticulously divided into these three sets (training, validation, and test) in a 3:1:1 ratio, adhering to the conventional assignment methodology for machine learning tasks. Figures 2, 6 showcase samples from the dataset. In our study, we have successfully developed and released the CUGUV dataset[43], which comprises 2,604 standardized regular patches, each with a size of 512 × 512 pixels. These patches are derived from 845 UV polygons located in fifteen major cities, collectively covering This dataset captures the unique characteristics of urban villages, such as dense construction, informal layouts, and the presence of specific amenities. To ensure the quality and representativeness of the dataset, we employ a rigorous labeling process involving domain experts and a multi-stage verification mechanism. The CUGUV dataset possesses the following characteristics. (1) It is a relatively large set for UV mapping, comprising thousands of patches. Due to the diversity of UV, models trained using existing limited datasets may exhibit suboptimal performance when applied to other regions. By comprehensively collecting samples, CUGUV fills the gap in this field and facilitates large scale mapping endeavors. (2) CUGUV exhibits high heterogeneity. The diversity of samples is crucial for enhancing the transferability of deep learning models. CUGUV encompasses a multitude of types of urban villages across different cities, featuring a wide range of architectural forms, colors, materials, layouts, landscape patterns, and areas. Therefore, the benchmark dataset can be utilized for not only evaluating the usability and generalization capabilities of various models, but also aiding in the enhancement of those abilities. (3) CUGUV has significantly enhanced geographic robustness by incorporating cities from a wide array of geographical regions across China, each characterized by its unique urbanization level, city size, development status, urban structure, historical background, and cultural heritage. These geographical variations lead to distinct spectral, textural, and geometrical characteristics in UV patterns. As a result, models trained on the CUGUV dataset have the potential to perform nationwide UV mapping with improved adaptability to diverse urban environments."
+      },
+      "confidence": 0.95,
+      "name": "CUGUV",
+      "modality": "image",
+      "domain": "remote sensing, urban planning"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb8b4c5e3860754e_d2",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "In Table 2, we compare the proposed dataset with other urban villages datasets, including the RsSt-ShenzhenUV dataset[19], the Beijing and Xi’an UV datasets[10] and the S[2] UV datasets[44]. Our tests reveal that relying solely on sample sets collected from individual cities is impractical for conducting cross-city UV mapping, owing to the substantial diversity in UV styles among different cities. There is a pressing need for the establishment of a large-scale dataset that encapsulates the variability across multiple cities, thereby enabling the development of more robust and accurate UV mapping models."
+      },
+      "confidence": 0.8,
+      "name": "RsSt-ShenzhenUV dataset",
+      "modality": "image",
+      "domain": "remote sensing, urban planning"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb8b4c5e3860754e_d3",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "In Table 2, we compare the proposed dataset with other urban villages datasets, including the RsSt-ShenzhenUV dataset[19], the Beijing and Xi’an UV datasets[10] and the S[2] UV datasets[44]. Our tests reveal that relying solely on sample sets collected from individual cities is impractical for conducting cross-city UV mapping, owing to the substantial diversity in UV styles among different cities. There is a pressing need for the establishment of a large-scale dataset that encapsulates the variability across multiple cities, thereby enabling the development of more robust and accurate UV mapping models."
+      },
+      "confidence": 0.8,
+      "name": "Beijing and Xi’an UV datasets",
+      "modality": "image",
+      "domain": "remote sensing, urban planning"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_eb8b4c5e3860754e_d4",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "In Table 2, we compare the proposed dataset with other urban villages datasets, including the RsSt-ShenzhenUV dataset[19], the Beijing and Xi’an UV datasets[10] and the S[2] UV datasets[44]. Our tests reveal that relying solely on sample sets collected from individual cities is impractical for conducting cross-city UV mapping, owing to the substantial diversity in UV styles among different cities. There is a pressing need for the establishment of a large-scale dataset that encapsulates the variability across multiple cities, thereby enabling the development of more robust and accurate UV mapping models."
+      },
+      "confidence": 0.8,
+      "name": "S[2] UV datasets",
+      "modality": "image",
+      "domain": "remote sensing, urban planning"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb8b4c5e3860754e_ds1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The definition and labelling of urban villages require extreme efforts to maintain accuracy and consistency, as they often demonstrate diverse styles among cities. The team must undergo a thorough and standardized training process prior to embarking on their tasks, ensuring that all members possess a unified and profound understanding of the definition, characteristics, and styles of urban villages. This stage is particularly crucial for mitigating biases caused by differences in individual experience and regional cognition. Firstly, the team utilized high-resolution satellite images and aerial photographs, from Google Earth, to cultivate an intuitive understanding of the characteristics of urban villages. Urban villages possess distinctive characteristics that significantly differ from their surrounding urban areas, primarily manifesting in the following aspects: high building density, intricate roof structures, limited vegetation coverage, and a disordered layout. In addition, the buildings in urban villages often exhibit signs of aging, simplicity, and poor maintenance, reflected in their roof materials, colours, and the presence of building damages. These traits are conspicuous in high-resolution remote sensing imagery and serve as crucial visual cues for identifying UV scenes across cities. Then, each member selected samples based on their own understanding. Afterward, all members participated in voting and discussions to assess the quality of the selected samples, with a particular focus on cases with blurred boundaries and complex features. Based on these discussions, a set of commonly agreed-upon guidelines was established. Finally, each individual selected samples according to these guidelines, and the team conducted a comprehensive assessment of each member’s learning outcomes. This process aims to eliminate individual biases, strengthen internal consistency, and then ensure that each member can reach a consensus on labeling rules, thereby enhancing the accuracy and reliability of the labeling work."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Multi-stage expert labeling and verification process for urban village dataset creation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb8b4c5e3860754e_ds2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "Despite the establishment of quantitative criteria, biases may still arise in practical operations due to individual subjectivity or unforeseen factors. To mitigate these biases and enhance data quality, we have implemented a rigorous quality control process specifically designed to eliminate personal and random biases. An independent team, whose members had not participated in the initial labeling process, is involved in reviewing the dataset to ensure objectivity. Specifically, they individually examine the boundaries of each polygon, exclude incorrect samples, and modify any inaccuracies. This checking mechanism, which involves cross-validation from different perspectives, significantly enhances the reliability of the data. In instances of difficulty, group discussions or expert consultations were launched to make a determination. During the process, we imported street view photos from online maps (e.g., Google, Baidu) and UAV images to aid learning more details of buildings, roads, and surroundings (Fig. 4), facilitating the distinction of UVs from other blocks."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Cross-validation and independent review process for dataset quality control"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb8b4c5e3860754e_ds3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To feed deep learning models, we converted the samples of urban villages into regular image patches. Since this study exclusively aims at identifying UVs, the pixels representing UVs were assigned a value of 1, whereas pixels corresponding to non-urban villages were set to 0. Subsequently, we conducted precise cropping and adjustment of the UV samples, ensuring that all patches had a uniform size, taking into account their geographical locations and spatial extent. This measure not only eliminates potential issues caused by differences in image sizes but also facilitates smooth deep learning training."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Standardized image patch format for deep learning: 512x512 pixels, binary pixel values (1 for UV, 0 for non-UV)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb8b4c5e3860754e_ds4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To improve the quality of sample patches, we performed sample cleansing through computer-aided manual checks before using them. First, we developed a tool to identify and remove no-data pixels which indicate data missing, damage, wrong input or serious contamination. If these pixels merely accounted for a very small portion, we would repair them using interpolation methods. Otherwise, the patch with large portion of no-data pixels would be removed from the dataset. Subsequently, we utilized well-established algorithms to fill holes or blank areas that frequently arise at the margins of satellite images, such as criminisi algorithm[30], PDE based methods[2], etc. Finally, we re-checked those patches using street views and UAV images for guaranteeing their quality and accuracy."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Computer-aided manual sample cleansing and repair protocol for image patches"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_eb8b4c5e3860754e_ds5",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "The samples have been meticulously divided into these three sets (training, validation, and test) in a 3:1:1 ratio, adhering to the conventional assignment methodology for machine learning tasks."
+      },
+      "confidence": 0.95,
+      "spec_type": "metadata_standard",
+      "description": "Dataset partitioning standard: training, validation, and test sets in a 3:1:1 ratio"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb8b4c5e3860754e_m1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We chose the Segformer model as the backbone of the multi-source heterogeneous data fusion framework, taking into account its capability of efficiently fusing multi-level features. We utilized Segformer for the extraction and learning of multiple features of urban villages, comprising a Hierarchical Transformer Encoder and a Multilayer Perceptron (MLP) Decoder. The encoder is designed based on vision transformers and hierarchical feature extraction techniques. In the Encoder, the input image is first partitioned into multiple non-overlapping patches, which are then embedded into high-dimensional space vectors through a linear layer. Transformer blocks within each layer are assigned to process the output from the previous layer, enabling the progressive extraction of more complex and high-level features. The MLP decoder boasts a straightforward structure solely based on fully connected layers, enabling reducing computational complexity while effectively fusing multi-scale features. The MLP encompasses multi-scale feature fusion, where the multi-layer outputs of the encoder are mapped to a uniform dimension through linear layers and fused. Subsequently, a segmentation map is generated, which is of the same size as the input image, through linear layers and upsampling operations. Segformer outperforms many existing methods in semantic segmentation benchmarks, particularly when dealing with diverse image sizes and scenarios, owing to its proficiency in modeling long-range dependencies and extracting multi-scale features. Furthermore, it is renowned for its cost-effectiveness in practical applications, mainly attributed to the lightweight MLP decoder."
+      },
+      "confidence": 0.95,
+      "name": "Segformer",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb8b4c5e3860754e_m2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To improve the quality of sample patches, we performed sample cleansing through computer-aided manual checks before using them. First, we developed a tool to identify and remove no-data pixels which indicate data missing, damage, wrong input or serious contamination. If these pixels merely accounted for a very small portion, we would repair them using interpolation methods. Otherwise, the patch with large portion of no-data pixels would be removed from the dataset. Subsequently, we utilized well-established algorithms to fill holes or blank areas that frequently arise at the margins of satellite images, such as criminisi algorithm, PDE based methods, etc. Finally, we re-checked those patches using street views and UAV images for guaranteeing their quality and accuracy."
+      },
+      "confidence": 0.95,
+      "name": "Criminisi algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb8b4c5e3860754e_m3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We adopted four spectral indices calculated from Landsat-8 images to describe the regional characteristics of urban villages, including the Normalized Difference Vegetation Index (NDVI), the Normalized Difference Water Index (NDWI), the Normalized Difference Built-up Index (NDBI), and the Normalized Difference Impervious Surface Index (NDISI)."
+      },
+      "confidence": 0.95,
+      "name": "Normalized Difference Vegetation Index (NDVI)",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_eb8b4c5e3860754e_m4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We adopted the same grid size (30 m) as used in Landsat images to calculate statistical indices of urban buildings, including building densities (BD) and mean building height (MBH), to aid in the identification of urban villages. Here, BD is calculated by Eq. (1). where Areai represents the area of the building i within a grid, A indicates the total area of a grid. UV is characterized by high building density; thus, the sparseness of buildings is an important factor for distinguishing UV from other regions."
+      },
+      "confidence": 0.95,
+      "name": "Building Density (BD) calculation",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_eb8b4c5e3860754e_x1",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "The process for collecting and preparing the samples, is illustrated in Fig. The definition and labelling of urban villages require extreme efforts to maintain accuracy and consistency, as they often demonstrate diverse styles among cities. The team must undergo a thorough and standardized training process prior to embarking on their tasks, ensuring that all members possess a unified and profound understanding of the definition, characteristics, and styles of urban villages. This stage is particularly crucial for mitigating biases caused by differences in individual experience and regional cognition. Firstly, the team utilized high-resolution satellite images and aerial photographs, from Google Earth, to cultivate an intuitive understanding of the characteristics of urban villages. Urban villages possess distinctive characteristics that significantly differ from their surrounding urban areas, primarily manifesting in the following aspects: high building density, intricate roof structures, limited vegetation coverage, and a disordered layout. In addition, the buildings in urban villages often exhibit signs of aging, simplicity, and poor maintenance, reflected in their roof materials, colours, and the presence of building damages. These traits are conspicuous in high-resolution remote sensing imagery and serve as crucial visual cues for identifying UV scenes across cities. Then, each member selected samples based on their own understanding. Afterward, all members participated in voting and discussions to assess the quality of the selected samples, with a particular focus on cases with blurred boundaries and complex features. Based on these discussions, a set of commonly agreed-upon guidelines was established. Finally, each individual selected samples according to these guidelines, and the team conducted a comprehensive assessment of each member’s learning outcomes. This process aims to eliminate individual biases, strengthen internal consistency, and then ensure that each member can reach a consensus on labeling rules, thereby enhancing the accuracy and reliability of the labeling work."
+      },
+      "confidence": 0.95,
+      "task": "dataset preparation and labeling",
+      "setup": "multi-stage manual and computer-aided process using Google Earth imagery, street views, UAV images"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_eb8b4c5e3860754e_x2",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "All development and tests were performed on a workstation equipped with two NVIDIA RTX 3080 24GB GPUs, featuring cuDNN acceleration and NCCL distributed configuration. The deep learning models are developed and rigorously tested in Python, leveraging the PyTorch framework and MMsegmentation framework. In addition to our own models, several SOTA models, such as UNet, DeepLabV3plus, PSPNet, Swin Transformer, KNet, and Segformer, are also included for comparative analysis. The training parameters and strategies for all models are comprehensively summarized in Table 1 below. Throughout the training process, the value of mIoU serves as the threshold for saving model weights. We employ a range of widely adopted metrics, encompassing Overall Accuracy (OA), Recall, Precision, mean Intersection over Union (mIoU), and F1-Score, to assess the performance of models in mapping UVs. OA provides a general idea of how well the model is able to classify or predict the correct outcome. Recall represents the proportion of correctly predicted positive instances by the model out of all the actual positive instances. Precision measures the proportion of correctly predicted positive instances out of all the instances that the model predicted as positive. mIoU calculates the ratio of the area of intersection between the predicted segmentation and the ground truth segmentation to the area of union between them, averaged over all classes."
+      },
+      "confidence": 0.95,
+      "task": "model training and performance evaluation",
+      "setup": "workstation with NVIDIA RTX 3080 GPUs, PyTorch and MMsegmentation frameworks"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_eb8b4c5e3860754e_x3",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "To verify the adaptability of the model across cities, we conducted transferability tests. In these tests, we trained the model using samples from only one city and subsequently employed this trained model to identify UV in other cities. As a comparison, we included Segformer in the tests, given that its demonstrated accuracy is closest to that of the proposed model, as shown in Table 3. To mitigate potential bias from selecting non-representative cities that could distort the overall evaluation, we deliberately selected five cities—Beijing, Fuzhou, Guangzhou, Wuhan, and Xi’an—and conducted five individual tests using their respective samples. These five cities cover a broad geographical range and exhibit different characteristics of urban villages. The mIoU of these tests are summarized in Table 4."
+      },
+      "confidence": 0.95,
+      "task": "transferability tests across cities",
+      "setup": "training on single-city samples and testing on other cities"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_eb8b4c5e3860754e_x4",
+      "evidence": {
+        "section": "Methods",
+        "original_text": "We conducted a series of ablation tests utilizing Segformer as the baseline to thoroughly assess the effectiveness of our enhancements, emphasizing the significance and worth of our contributions and highlighting the value of each component. Specifically, we executed six comparative tests: S1, only using high-resolution images as input; S2, spectral indices; S3, building indices; S4, the combination of images with spectral indices, S5, the combination of images with building indices; S6, Our model. The outcomes of these comparative tests are summarized in Table 6."
+      },
+      "confidence": 0.95,
+      "task": "ablation experiment",
+      "setup": "six comparative tests with different input combinations"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb8b4c5e3860754e_qr1",
+      "evidence": {
+        "section": "Data records",
+        "original_text": "In our study, we have successfully developed and released the CUGUV dataset[43], which comprises 2,604 standardized regular patches, each with a size of 512 × 512 pixels. These patches are derived from 845 UV polygons located in fifteen major cities, collectively covering This dataset captures the unique characteristics of urban villages, such as dense construction, informal layouts, and the presence of specific amenities. To ensure the quality and representativeness of the dataset, we employ a rigorous labeling process involving domain experts and a multi-stage verification mechanism. The CUGUV dataset possesses the following characteristics. (1) It is a relatively large set for UV mapping, comprising thousands of patches. Due to the diversity of UV, models trained using existing limited datasets may exhibit suboptimal performance when applied to other regions. By comprehensively collecting samples, CUGUV fills the gap in this field and facilitates large scale mapping endeavors. (2) CUGUV exhibits high heterogeneity. The diversity of samples is crucial for enhancing the transferability of deep learning models. CUGUV encompasses a multitude of types of urban villages across different cities, featuring a wide range of architectural forms, colors, materials, layouts, landscape patterns, and areas. Therefore, the benchmark dataset can be utilized for not only evaluating the usability and generalization capabilities of various models, but also aiding in the enhancement of those abilities. (3) CUGUV has significantly enhanced geographic robustness by incorporating cities from a wide array of geographical regions across China, each characterized by its unique urbanization level, city size, development status, urban structure, historical background, and cultural heritage. These geographical variations lead to distinct spectral, textural, and geometrical characteristics in UV patterns. As a result, models trained on the CUGUV dataset have the potential to perform nationwide UV mapping with improved adaptability to diverse urban environments."
+      },
+      "confidence": 0.98,
+      "quantity": "dataset size",
+      "value": 2604,
+      "unit": "patches",
+      "context": "CUGUV benchmark dataset for urban village mapping",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_eb8b4c5e3860754e_p1",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Table 3 clearly indicates that our model achieves the highest overall accuracy (92.82%), mIoU (86.80%), Precision (92.72%), Recall (90.18%), and F1-score (92.77%), demonstrating superior performance among all compared models. This underscores the robustness and effectiveness of our proposed model, even when compared to a strong baseline like Segformer. Figure 7 offers a visual testament to the accuracy indicators presented in Table 3, specifically emphasizing the exceptional performance of our proposed method. The figure provides a compelling visual representation of how our model expertly outlines block boundaries and adeptly distinguishes buildings clusters of varying densities. This capability showcases the model’s ability to accurately discern and represent complex urban landscapes, highlighting its strengths in reducing misclassification and omission. Notably, Segformer’s performance, though slightly lower than our proposed model, significantly surpasses that of the remaining models in Table 3. In Fig. 7, we acknowledge that the Segformer model exhibits a notably lower number of false positives (FP) and false negatives (FN) compared to other models, albeit slightly higher than our proposed method."
+      },
+      "confidence": 0.95,
+      "metric": "Overall Accuracy (OA)",
+      "compared_to": "UNet, DeepLabV3plus, PSPNet, Swin Transformer, KNet, Segformer"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb8b4c5e3860754e_qr2",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Table 3 clearly indicates that our model achieves the highest overall accuracy (92.82%), mIoU (86.80%), Precision (92.72%), Recall (90.18%), and F1-score (92.77%), demonstrating superior performance among all compared models. This underscores the robustness and effectiveness of our proposed model, even when compared to a strong baseline like Segformer. Figure 7 offers a visual testament to the accuracy indicators presented in Table 3, specifically emphasizing the exceptional performance of our proposed method. The figure provides a compelling visual representation of how our model expertly outlines block boundaries and adeptly distinguishes buildings clusters of varying densities. This capability showcases the model’s ability to accurately discern and represent complex urban landscapes, highlighting its strengths in reducing misclassification and omission. Notably, Segformer’s performance, though slightly lower than our proposed model, significantly surpasses that of the remaining models in Table 3. In Fig. 7, we acknowledge that the Segformer model exhibits a notably lower number of false positives (FP) and false negatives (FN) compared to other models, albeit slightly higher than our proposed method."
+      },
+      "confidence": 0.95,
+      "quantity": "Overall Accuracy",
+      "value": 92.82,
+      "unit": "%",
+      "context": "Proposed model evaluated on CUGUV dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_eb8b4c5e3860754e_qr3",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Table 3 clearly indicates that our model achieves the highest overall accuracy (92.82%), mIoU (86.80%), Precision (92.72%), Recall (90.18%), and F1-score (92.77%), demonstrating superior performance among all compared models. This underscores the robustness and effectiveness of our proposed model, even when compared to a strong baseline like Segformer. Figure 7 offers a visual testament to the accuracy indicators presented in Table 3, specifically emphasizing the exceptional performance of our proposed method. The figure provides a compelling visual representation of how our model expertly outlines block boundaries and adeptly distinguishes buildings clusters of varying densities. This capability showcases the model’s ability to accurately discern and represent complex urban landscapes, highlighting its strengths in reducing misclassification and omission. Notably, Segformer’s performance, though slightly lower than our proposed model, significantly surpasses that of the remaining models in Table 3. In Fig. 7, we acknowledge that the Segformer model exhibits a notably lower number of false positives (FP) and false negatives (FN) compared to other models, albeit slightly higher than our proposed method."
+      },
+      "confidence": 0.95,
+      "quantity": "mean Intersection over Union",
+      "value": 86.8,
+      "unit": "%",
+      "context": "Proposed model evaluated on CUGUV dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_eb8b4c5e3860754e_p2",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Table 4 clearly illustrates that when applying models trained solely on samples from a single city to the remaining 12 cities, the accuracy of mapping UVs undergoes a significant decline compared to models trained on the entire CUGUV dataset (Table 3). Specifically, the mIoU of Segformer decreases from an average of approximately 82% to roughly 70%, whereas the mIoU of our model drops from an average of around 86% to approximately 73%. This underscores the significant diversity in UV styles among cities, making it impractical to conduct cross-city UV mapping solely based on sample sets captured from individual cities. It is noteworthy that when using the Segformer model, training with samples from Beijing yielded relatively better accuracy (around 75%), whereas with our model, training with samples from Wuhan or Guangzhou achieved superior accuracy (around 76%). This disparity may indicate differences in learning capabilities between the two models. However, both models recorded their lowest accuracy when using samples from Xi’an (around 63% and 65%, respectively), indicating a substantial difference in the UV characteristics of Xi’an compared to other cities. Compared to Segformer, our model demonstrates markedly superior transferability. The enhancement in performance, as indicated by a + 3% increase in mIoU, is comparable to the gains achieved when utilizing the entire CUGUV dataset. Notably, in specific instances, such as when employing the Wuhan sample set, the accuracy improvement surpasses 20%, underscoring the effectiveness of our multi-source data fusion framework in simultaneously boosting both the model’s mapping accuracy and transferability."
+      },
+      "confidence": 0.93,
+      "metric": "transferability (mIoU)",
+      "compared_to": "Segformer"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_eb8b4c5e3860754e_p3",
+      "evidence": {
+        "section": "technical Validation",
+        "original_text": "Table 5 demonstrates that models solely trained on spectral indices (S2) or building indices (S3) exhibit a notable decrease in accuracy compared to those trained on high-resolution images (S1). This underscores the limitation of using spectral and building indices independently, as they fail to provide sufficient information or fine resolution crucial for precise UV mapping. Conversely, combining these indices with high-resolution images (i.e., S4 and S5) achieves higher accuracy than relying solely on images (S1). Finally, the proposed framework (S6) achieved the highest accuracy by fusing all indices and images. This underscores the effectiveness of our data fusion strategy, which simultaneously enables the model to capture image details, spectral properties, and structural characteristics of UV radiation from multiple sources. By integrating this rich information, the model is able to gain a more comprehensive understanding of complex and diverse UV scenes, leading to improved accuracy and performance. This can also be verified by examining the details of their detection results (Fig. 8), where fewer errors (FP, FN) were observed in the S6 results."
+      },
+      "confidence": 0.92,
+      "metric": "Overall Accuracy",
+      "compared_to": "baseline Segformer (S1) and other ablation scenarios"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_eb8b4c5e3860754e_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "To address this issue, we developed CUGUV, a benchmark dataset that includes a diverse collection of thousands of UV samples, carefully curated from 15 major cities across various geographical regions in China. The dataset can be accessed through this link: https://doi.org/10.6084/m9.figshare.26198093. This dataset can serve as a foundation for evaluating and improving the robustness and transferability of models. Subsequently, we present an innovative framework that effectively integrates and learns from multiple data sources to better address the cross-city UV mapping task. Tests show that the proposed models achieve over 92% in overall accuracy, precision, and F1-scores, outperforming state-of-the-art models. This highlights the effectiveness of both the proposed dataset and model. This presented dataset and model bolsters our capability to better understand and accurately model these complex and diverse phenomena, ultimately leading to a notable improvement in the performance of large-scale UV mapping."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_eb8b4c5e3860754e_cl1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Table 3 clearly indicates that our model achieves the highest overall accuracy (92.82%), mIoU (86.80%), Precision (92.72%), Recall (90.18%), and F1-score (92.77%), demonstrating superior performance among all compared models. This underscores the robustness and effectiveness of our proposed model, even when compared to a strong baseline like Segformer. Figure 7 offers a visual testament to the accuracy indicators presented in Table 3 , specifically emphasizing the exceptional performance of our proposed method. The figure provides a compelling visual representation of how our model expertly outlines block boundaries and adeptly distinguishes buildings clusters of varying densities. This capability showcases the model’s ability to accurately discern and represent complex urban landscapes, highlighting its strengths in reducing misclassification and omission."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_eb8b4c5e3860754e_lm1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "Table 4 clearly illustrates that when applying models trained solely on samples from a single city to the remaining 12 cities, the accuracy of mapping UVs undergoes a significant decline compared to models trained on the entire CUGUV dataset (Table 3). Specifically, the mIoU of Segformer decreases from an average of approximately 82% to roughly 70%, whereas the mIoU of our model drops from an average of around 86% to approximately 73%. This underscores the significant diversity in UV styles among cities, making it impractical to conduct cross-city UV mapping solely based on sample sets captured from individual cities. It is noteworthy that when using the Segformer model, training with samples from Beijing yielded relatively better accuracy (around 75%), whereas with our model, training with samples from Wuhan or Guangzhou achieved superior accuracy (around 76%). This disparity may indicate differences in learning capabilities between the two models. However, both models recorded their lowest accuracy when using samples from Xi’an (around 63% and 65%, respectively), indicating a substantial difference in the UV characteristics of Xi’an compared to other cities."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_eb8b4c5e3860754e_fw1",
+      "evidence": {
+        "section": "Technical Validation",
+        "original_text": "For instance, we plan to continuously expand the dataset by incorporating samples from additional cities. We will also test and integrate new data sources and features, such as POI (Points of Interest) and nightlight data, to compensate the convolutional features. Additionally, we intend to explore the use of Sentinel-2 data to enhance the resolution of spectral feature data. Furthermore, the further improvement of the data fusion and deep learning frameworks is on our agenda. Ultimately, through continuous experimentation, we aim to gradually improve the accuracy of large-scale UV mapping. The next step also involves monitoring the evolutionary process of UVs over recent decades. The renovation of urban villages has been a significant policy agenda for the Chinese government, particularly for megalopolises[4][,][45][,][46] . The renovation approach has evolved beyond simplistic large-scale demolition and construction, instead emphasizing tailored, refined, and diversified transformations that are meticulously crafted to suit the unique conditions and characteristics of each UV. However, due to variations in economic development levels, policies and residents’ cooperation among different cities, there are disparities in the progress and achievements of urban village renovations[47][–][49] . Some cities may encounter significant difficulties and challenges. To gain a comprehensive understanding of the overall evolution trends of UV nationwide, as well as the effectiveness of renovation efforts across various cities and even individual communities, it is imperative to undertake long-term, large-scale urban village mapping, followed by a thorough assessment of their livability both before and after undergoing renovations. These long-term UV datasets and analysis reports on the evolution of urban villages will serve as invaluable resources for both theoretical research and decision-making processes undertaken by a diverse range of stakeholders."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

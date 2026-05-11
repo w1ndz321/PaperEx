@@ -1,0 +1,578 @@
+{
+  "metadata": {
+    "doc_id": "doc_433bcae075639936",
+    "source_file": "03c_ChinaCropPhen1km_high_resolution_crop_phenological_dataset.md",
+    "title": "ChinaCropPhen1km: A high-resolution crop phenological dataset for three staple crops in China during 2000-2015 based on LAI products",
+    "year": 2019,
+    "doi": "10.6084/m9.figshare.8313530",
+    "abstract": "- 5 Change and Natural Hazards, Faculty of Geographical Science, Beijing Normal University, Beijing 100875, China 2Key Laboratory of Land Surface Pattern and Simulation, Institute of Geographical Sciences and Natural Resources Research, Chinese Academy of Sciences, Beijing 100101, China",
+    "introduction": "25 Phenology is a key indicator of vegetation growth and development and plays an important role in vegetation monitoring (Qiu et al., 2015;Tao et al., 2017;Zhong et al., 2016). Accurate information on the timing of key crop phenological stages is critical for determining the optimal timing of agronomic management options, reliable simulations of crop growth and yield, and analyzing the plant response to climate change (Bolton and Friedl, 2013;Brown et al., 2012;Chen et al., 2018a;Sakamoto et al., 2013;Sakamoto et al., 2010;Wang et al., 2015;Zhang and Tao, 2013). \n\n1 \n\n50 \n\n30 Field phenological observations are time- and money-consuming. And the observational stations are limited and distributed sparsely. Therefore, the field phenological observations cannot meet the requirements of many purposes such as vegetation monitoring for remote areas with sparse observations and the grid-based earth system simulations. The satellite-based observations with a wide spatial coverage and short revisit times have become a powerful method to monitor vegetation growth and obtain vegetation information at regional and global scales. Previous studies have mainly used a vegetation index (VI) to 35 extract crop phenology. For examples, Pan et al. (2015) presented a method to construct Normalized Difference Vegetation Index (NDVI) time-series dataset derived from Environment and Disaster Monitoring and Prediction Satellite Constellation A/B (HJ-1 A/B) charge coupled device (CCD) sensor and extract phenology parameters. Zeng et al. (2016) detected corn and soybeans phenology with Moderate Resolution Imaging Spectroradiometer (MODIS) 250-m Wide Dynamic Range Vegetation Index (WDRVI) time-series data. Cao et al. (2015) developed an adaptive local iterative logistic fitting method to fit time40 series of Enhanced Vegetation Index (EVI) derived from MODIS and estimated green-up date of spring vegetation. Sakamoto (2018) refined the Shape Model Fitting method to estimate the timing of 36 crop-development stages of major U.S. crops from MODIS WDRVI time-series data. Crop phenology detected by these studies is relatively accurate. Nevertheless, it cannot be ignored that the VI are overly dependent on the band characteristics of sensors (Atzberger et al., 2014). By contrast, the Leaf Area Index (LAI) is more robust across diverse sensors and more sensitive than VI to large amounts of vegetation (Verger 45 et al., 2016). In addition, previous studies focused on only very limited areas or very few crops due to the high diversity and complexity of agricultural planting structures (Liao et al., 2019;Liu et al., 2017;Xu et al., 2017;Wang et al., 2012). \n\n45 \n\nTo implement a large-scale agricultural system simulation for multiple crops, there is an urgent need to acquire the gridded phenological dataset for each crop at a national or global scale. For example, crop model can simulate crop growth, development and predict crop yields. However, its applications to a large area are limited by the lack of accurate and spatially heterogeneous crop growth information (Curnel et al., 2011;Dorigo et al., 2007;Tao et al., 2009;Jin et al., 2018). According to some previous studies, it could improve the accuracy of model estimation at large scale by assimilating reliable remote sensing data into crop growth models (Bolten et al., 2010;Nearing et al., 2012;Ines et al., 2013;Chen et al., 2018a;Huang et al., 2015;Zhou et al., 2019;de Wit and van Diepen, 2007). Among the state variables used in the assimilation, phenology is one of the essential variables because of its critical roles in affecting dry matter accumulation and distribution during the growing stages and reflecting crop periodic biological changes influenced by various environmental conditions (e.g., climate) (Jin et al., 2018;Zheng et al., 2016). \n\n55 \n\nIn this study, using a remotely sensed Global Land Surface Satellite (GLASS) LAI product (2000-2015) (Xiao et al., 2014), we aim to 1) choose the most suitable smoothing method to reduce the noise of the LAI time-series for different crops and regions; 2) detect the phenological information of three staple crops (i.e., maize, rice and wheat) at 1-km spatial resolution across China, and evaluate its accuracy by comparing with the observed data at Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA); 3) explore the spatial patterns of different phenological stages. The resultant remote sensing LAI-based crop phenology dataset with 1-km spatial resolution across China (ChinaCropPhen1km) will benefit \n\n60 \n\n2 \n\n85 \n\nto understand crop phenological dynamics, climate change impacts and adaptations, and agricultural system modelling over a large area, temporally and spatially (Luo et al., 2019). \n\n- 65 **2 Data and methods**",
+    "primary_discipline": {
+      "level1": "农学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "crop phenology",
+      "Leaf Area Index (LAI)",
+      "remote sensing",
+      "agricultural monitoring",
+      "China"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:13:10.338344+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km. First, we compared three common smoothing methods and chose the most suitable one for different crops and regions. Then, we developed an optimal filter-based phenology detection (OFP) approach which combined both inflexion- and thresholdbased method and detected the key phenological stages of three staple crops at 1km spatial resolution across China. Finally, we established a high resolution gridded-phenology product for three staple crops in China during 2000-2015. Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The well-validated dataset can be applied for many purposes including improving agricultural system or earth system modelling over a large area."
+      },
+      "confidence": 0.99,
+      "term": "ChinaCropPhen1km",
+      "normalized": "中国作物物候1公里数据集",
+      "std_label": "ChinaCropPhen1km"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km. Crop phenology detected by these studies is relatively accurate. Nevertheless, it cannot be ignored that the VI are overly dependent on the band characteristics of sensors (Atzberger et al., 2014). By contrast, the Leaf Area Index (LAI) is more robust across diverse sensors and more sensitive than VI to large amounts of vegetation (Verger et al., 2016). In this study, using a remotely sensed Global Land Surface Satellite (GLASS) LAI product (2000-2015) (Xiao et al., 2014), we aim to 1) choose the most suitable smoothing method to reduce the noise of the LAI time-series for different crops and regions; 2) detect the phenological information of three staple crops (i.e., maize, rice and wheat) at 1-km spatial resolution across China, and evaluate its accuracy by comparing with the observed data at Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA); 3) explore the spatial patterns of different phenological stages. The resultant remote sensing LAI-based crop phenology dataset with 1-km spatial resolution across China (ChinaCropPhen1km) will benefit to understand crop phenological dynamics, climate change impacts and adaptations, and agricultural system modelling over a large area, temporally and spatially (Luo et al., 2019)."
+      },
+      "confidence": 0.98,
+      "term": "Leaf Area Index",
+      "normalized": "叶面积指数",
+      "std_label": "LAI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Then, we developed an optimal filter-based phenology detection (OFP) approach which combined both inflexion- and thresholdbased method and detected the key phenological stages of three staple crops at 1km spatial resolution across China. The method to retrieve the phenological information of three staple crops at national scale is presented schematically in Fig. 2. The data processes are as follows: 1) data preprocessing, 2) selecting the cropland sample grid to determine the suitable smoothing method, 3) determining the optimal filter-based phenology detection (OFP) approach, 4) generating ChinaCropPhen1km dataset. Based on the observations around the nearest AMS, we needed firstly to determine the restricted time windows responding to each key phenological stage for different crops. Then we sampled randomly 1000 grids every year in each province from the grids where the land use data was identified as cropland and retrieved the key phenological stages in the sampling grids according to the three smoothing methods and the above definitions of key stages. To determine the OFP approach in each province, we identified the inflection points and maximum value point of each LAI time-series curve at each grid within the restricted time windows. After detecting phenological information of the cropland sample grids, we calculated the RMSE values between the estimated phenological dates and observed dates, and averaged these RMSE values for each crop at a provincial scale. Finally, we chose the most suitable smoothing method for different crops in each province with minimum RMSE."
+      },
+      "confidence": 0.97,
+      "term": "optimal filter-based phenology detection",
+      "normalized": "最优滤波物候检测",
+      "std_label": "OFP"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c4",
+      "evidence": {
+        "section": "2.3.2",
+        "original_text": "Three commonly used methods were chosen in the study to smooth the LAI time-series curves, including the Double Logistic (DL) method, SavitzkyGolay (S-G) filter method, and Wavelet-based filter (WF) method. Based on locally adaptive moving window, Savitzky-Golay (S-G) filtering method can be used to smooth data and suppress disturbances with a local polynomial regression model (Savitzky and Golay, 1964). Algorithm can be summarized as follows: where, 𝐿𝐴𝐼represents the original LAI value, LAI∗ is the smoothed LAI value, j is running index of the LAI time series, 𝐶 is the coefficient of the i-th LAI value, n is the half-width of the smoothing window, and N is the width of the moving window to perform filtering (2n+1). The width of the moving window—N, not only determines the degree of smoothing, but also affects the ability to follow a rapid change. We selected three windows width (3, 4, 5) to identify a better width for different crops and regions."
+      },
+      "confidence": 0.96,
+      "term": "Savitzky-Golay filter",
+      "normalized": "Savitzky-Golay滤波器",
+      "std_label": "S-G filter"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Crop phenology provides essential information for land surface phenology dynamics monitoring and modelling, and crop management and production. Most previous studies mainly investigated crop phenology at site scale, however, land surface phenology dynamics monitoring and modelling at a large-scale need a high-resolution spatially explicit information on crop phenology dynamics. In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km. Accurate information on the timing of key crop phenological stages is critical for determining the optimal timing of agronomic management options, reliable simulations of crop growth and yield, and analyzing the plant response to climate change (Bolton and Friedl, 2013;Brown et al., 2012;Chen et al., 2018a;Sakamoto et al., 2013;Sakamoto et al., 2010;Wang et al., 2015;Zhang and Tao, 2013)."
+      },
+      "confidence": 0.98,
+      "term": "crop phenology",
+      "normalized": "作物物候",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c6",
+      "evidence": {
+        "section": "2.2.1",
+        "original_text": "An improved MODIS-based LAI dataset (GLASS LAI) from 2000 to 2015 was from Liang et al. (2013) (http://glassproduct.bnu.edu.cn/?pid=3&c=1). The GLASS LAI product was generated with general regression neural networks (GRNNs) trained by the fused LAI from MODIS and Carbon cYcle and Change in Land Observational Products from an Ensemble of Satellites (CYCLOPES) LAI products and the reprocessed MODIS reflectance of the BEnchmark Land Multisite ANalysis and Intercomparison of Products (BELMANIP) sites during the period 2001-2003 (Liang et al., 2013). By computing the Root Mean Square Error (RMSE) and determination coefficients (R[2] ) between several global LAI products and the high-resolution LAI reference map, it could be shown that the accuracy of the GLASS LAI (RMSE=0.78, R[2] =0.81) was fairly better than that of the MODIS LAI product (MOD15) and Geoland2/BioPar version 1 (GEOV1) (Xiao et al., 2016). Moreover, the intercomparison have indicated that GLASS LAI (8-day composites of 1-km spatial resolution) was more temporally continuous and spatially complete than the other LAI products (Xiao et al., 2014;Xiao et al., 2016). It has been applied to vegetation monitoring and crop model assimilation (Xiao et al., 2014;Chen et al., 2018a)."
+      },
+      "confidence": 0.97,
+      "term": "GLASS LAI product",
+      "normalized": "GLASS叶面积指数产品",
+      "std_label": "GLASS LAI"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_433bcae075639936_c7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The crop phenology observation records from 2000 to 2013 of maize, rice, and wheat crops were obtained from AMS, which were governed by CMA (https://data.cma.cn/). Such phenology information was observed and recorded by well-trained agricultural technicians in the experimental field, and then checked and managed by the Chinese Agricultural Meteorological Monitoring System (CAMMS). In this study, we selected the agrometeorological stations with more than 10 years of records of key phenological dates, including green-up date, emergence date, transplanting date, V3 stage (i.e., early vegetative stage of maize when the third leaf is fully expanded ) , heading date, and maturity date, for the three crops. Totally, there were 436 stations across main crop-cultivated areas in China (Fig. 1)."
+      },
+      "confidence": 0.98,
+      "term": "Agricultural Meteorological Stations",
+      "normalized": "农业气象站",
+      "std_label": "AMS"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_433bcae075639936_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km. First, we compared three common smoothing methods and chose the most suitable one for different crops and regions. Then, we developed an optimal filter-based phenology detection (OFP) approach which combined both inflexion- and thresholdbased method and detected the key phenological stages of three staple crops at 1km spatial resolution across China. Finally, we established a high resolution gridded-phenology product for three staple crops in China during 2000-2015. Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The well-validated dataset can be applied for many purposes including improving agricultural system or earth system modelling over a large area."
+      },
+      "confidence": 0.95,
+      "head": "doc_433bcae075639936_c1",
+      "relation_type": "derives",
+      "relation_surface": "produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on",
+      "tail": "doc_433bcae075639936_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_433bcae075639936_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Then, we developed an optimal filter-based phenology detection (OFP) approach which combined both inflexion- and thresholdbased method and detected the key phenological stages of three staple crops at 1km spatial resolution across China. The methods to detect remote-sensing-based phenology can generally be classified into three groups: inflexion-based method (Chen et al., 2016), threshold-based method (Manfron et al., 2017), and methods based on the mathematical or geometrical model fitting approach (Sakamoto et al., 2010). In this study, we used both inflexion- and threshold-based methods together to detect phenology. Firstly, we defined the inflection and maximum points of LAI time-series as the specific timing of key phenological stages for different crops (Fig. 3)."
+      },
+      "confidence": 0.94,
+      "head": "doc_433bcae075639936_c3",
+      "relation_type": "uses",
+      "relation_surface": "combined both inflexion- and thresholdbased method and detected the key phenological stages",
+      "tail": "doc_433bcae075639936_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_433bcae075639936_r3",
+      "evidence": {
+        "section": "3.1",
+        "original_text": "We further compared mean RMSE of different smoothing methods and selected the most suitable smoothing method with minimal mean RMSE for different provinces and crops (Table 1). If the RMSE values were same, we also compared the number of crop grids according to different smoothing methods, and selected the suitable method which had identified a larger number of crop girds. It is noted that the number of identified grids differ considerably even with same RMSE values. Totally, S-G filter was an overwhelming smoothing way for 95% crops and provinces, followed by WF and DL method. We ascribed the great performance of S-G to two reasons as follows. 1) One is its scientific smoothing principle: S-G filter applies an iterative weighted moving average filter to the time series, which can replace the noise data as well as keep the fidelity (Geng et al., 2014). By contrast, WF decomposes the time series into scaled and shifted wavelets to acquire timelocalization of a given signal (Qiu et al., 2014). DL uses a series of parameters to fit the time series (Beck et al., 2006). 2) The other is that S-G is more suitable for GLASS LAI. S-G can catch the local variations ― e.g. the bimodal curve characteristics from double cropping rice and the rotation of winter wheat and summer maize (Fig. 3-b, f) ― in time series and perform best for data without extreme noise such as GLASS LAI (Eklundh and Jönsson, 2015). DL is more useful for data with much noise, however, fails to catch local changes due to being unfit for data with double peaks. WF is also a powerful tool for processing non-stationary and noisy signals such as VI time-series rather than GLASS LAI (Rouyer et al., 2008; Sakamoto et al., 2006). Therefore, S-G is the most suitable for the complex cultivating systems across whole mainland of China."
+      },
+      "confidence": 0.92,
+      "head": "doc_433bcae075639936_c4",
+      "relation_type": "enhances",
+      "relation_surface": "was the most frequently chosen method as it not only could well smooth the time series but also keep the fidelity",
+      "tail": "doc_433bcae075639936_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_433bcae075639936_r4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The well-validated dataset can be applied for many purposes including improving agricultural system or earth system modelling over a large area. The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R[2] of 0.98, 0.97 and0.97, respectively."
+      },
+      "confidence": 0.93,
+      "head": "doc_433bcae075639936_c1",
+      "relation_type": "measures",
+      "relation_surface": "had a high accuracy with errors of retrieved phenological date less than 10 days",
+      "tail": "doc_433bcae075639936_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_433bcae075639936_r5",
+      "evidence": {
+        "section": "2.2.1",
+        "original_text": "By computing the Root Mean Square Error (RMSE) and determination coefficients (R[2] ) between several global LAI products and the high-resolution LAI reference map, it could be shown that the accuracy of the GLASS LAI (RMSE=0.78, R[2] =0.81) was fairly better than that of the MODIS LAI product (MOD15) and Geoland2/BioPar version 1 (GEOV1) (Xiao et al., 2016). Moreover, the intercomparison have indicated that GLASS LAI (8-day composites of 1-km spatial resolution) was more temporally continuous and spatially complete than the other LAI products (Xiao et al., 2014;Xiao et al., 2016). It has been applied to vegetation monitoring and crop model assimilation (Xiao et al., 2014;Chen et al., 2018a). In this study, using a remotely sensed Global Land Surface Satellite (GLASS) LAI product (2000-2015) (Xiao et al., 2014), we aim to 1) choose the most suitable smoothing method to reduce the noise of the LAI time-series for different crops and regions; 2) detect the phenological information of three staple crops (i.e., maize, rice and wheat) at 1-km spatial resolution across China, and evaluate its accuracy by comparing with the observed data at Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA); 3) explore the spatial patterns of different phenological stages. The resultant remote sensing LAI-based crop phenology dataset with 1-km spatial resolution across China (ChinaCropPhen1km) will benefit to understand crop phenological dynamics, climate change impacts and adaptations, and agricultural system modelling over a large area, temporally and spatially (Luo et al., 2019)."
+      },
+      "confidence": 0.91,
+      "head": "doc_433bcae075639936_c6",
+      "relation_type": "enhances",
+      "relation_surface": "was more temporally continuous and spatially complete than the other LAI products",
+      "tail": "doc_433bcae075639936_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_433bcae075639936_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The crop phenology observation records from 2000 to 2013 of maize, rice, and wheat crops were obtained from AMS, which were governed by CMA (https://data.cma.cn/). Such phenology information was observed and recorded by well-trained agricultural technicians in the experimental field, and then checked and managed by the Chinese Agricultural Meteorological Monitoring System (CAMMS). In this study, we selected the agrometeorological stations with more than 10 years of records of key phenological dates, including green-up date, emergence date, transplanting date, V3 stage (i.e., early vegetative stage of maize when the third leaf is fully expanded ) , heading date, and maturity date, for the three crops. Totally, there were 436 stations across main crop-cultivated areas in China (Fig. 1)."
+      },
+      "confidence": 0.94,
+      "head": "doc_433bcae075639936_c7",
+      "relation_type": "measures",
+      "relation_surface": "compared with the intensive phenological observations from",
+      "tail": "doc_433bcae075639936_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_433bcae075639936_d1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km. First, we compared three common smoothing methods and chose the most suitable one for different crops and regions. Then, we developed an optimal filter-based phenology detection (OFP) approach which combined both inflexion- and thresholdbased method and detected the key phenological stages of three staple crops at 1km spatial resolution across China. Finally, we established a high resolution gridded-phenology product for three staple crops in China during 2000-2015. Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The well-validated dataset can be applied for many purposes including improving agricultural system or earth system modelling over a large area. DOI of the referenced dataset: https://doi.org/10.6084/m9.figshare.8313530 (Luo et al., 2019)."
+      },
+      "confidence": 0.95,
+      "name": "ChinaCropPhen1km",
+      "modality": "tabular",
+      "domain": "agriculture, remote sensing, phenology"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_433bcae075639936_d2",
+      "evidence": {
+        "section": "2.2 Data",
+        "original_text": "An improved MODIS-based LAI dataset (GLASS LAI) from 2000 to 2015 was from Liang et al. (2013) (http://glassproduct.bnu.edu.cn/?pid=3&c=1). The GLASS LAI product was generated with general regression neural networks (GRNNs) trained by the fused LAI from MODIS and Carbon cYcle and Change in Land Observational Products from an Ensemble of Satellites (CYCLOPES) LAI products and the reprocessed MODIS reflectance of the BEnchmark Land Multisite ANalysis and Intercomparison of Products (BELMANIP) sites during the period 2001-2003 (Liang et al., 2013). By computing the Root Mean Square Error (RMSE) and determination coefficients (R2) between several global LAI products and the high-resolution LAI reference map, it could be shown that the accuracy of the GLASS LAI (RMSE=0.78, R2=0.81) was fairly better than that of the MODIS LAI product (MOD15) and Geoland2/BioPar version 1 (GEOV1) (Xiao et al., 2016). Moreover, the intercomparison have indicated that GLASS LAI (8-day composites of 1-km spatial resolution) was more temporally continuous and spatially complete than the other LAI products (Xiao et al., 2014;Xiao et al., 2016). It has been applied to vegetation monitoring and crop model assimilation (Xiao et al., 2014;Chen et al., 2018a)."
+      },
+      "confidence": 0.9,
+      "name": "GLASS LAI product",
+      "modality": "tabular",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_433bcae075639936_d3",
+      "evidence": {
+        "section": "2.2 Data",
+        "original_text": "In addition, the cultivated-land layer derived from the 1-km National Land Cover Dataset (NLCD) of China was used as cropland masks. Specifically, we detected the key phenological dates for dryland crops (i.e., maize and wheat) and paddy rice, which were restricted on the dry land and paddy field layer derived from the NLCD, respectively. NLCD was provided by Data Centre for Resources and Environmental Sciences, Chinese Academy of Sciences (http://www.resdc.cn/Default.aspx), which also included several epochs of land use datasets, i.e., 2000, 2005, 2010 and 2015 (Liu et al., 2005;Liu et al., 2014)."
+      },
+      "confidence": 0.9,
+      "name": "National Land Cover Dataset (NLCD) of China",
+      "modality": "tabular",
+      "domain": "land use"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_433bcae075639936_d4",
+      "evidence": {
+        "section": "2.2 Data",
+        "original_text": "The crop phenology observation records from 2000 to 2013 of maize, rice, and wheat crops were obtained from AMS, which were governed by CMA (https://data.cma.cn/). Such phenology information was observed and recorded by well-trained agricultural technicians in the experimental field, and then checked and managed by the Chinese Agricultural Meteorological Monitoring System (CAMMS). In this study, we selected the agrometeorological stations with more than 10 years of records of key phenological dates, including green-up date, emergence date, transplanting date, V3 stage (i.e., early vegetative stage of maize when the third leaf is fully expanded ) , heading date, and maturity date, for the three crops. Totally, there were 436 stations across main crop-cultivated areas in China (Fig. 1)."
+      },
+      "confidence": 0.9,
+      "name": "Crop phenology observation records from Agricultural Meteorological Stations (AMS)",
+      "modality": "tabular",
+      "domain": "agriculture, meteorology"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Accuracy standard for retrieved phenological dates: errors less than 10 days compared with ground observations"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "1km spatial resolution, annual data from 2000 to 2015 for three staple crops (maize, rice, wheat)"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds3",
+      "evidence": {
+        "section": "2.3 Methods",
+        "original_text": "In this study, we selected the agrometeorological stations with more than 10 years of records of key phenological dates, including green-up date, emergence date, transplanting date, V3 stage (i.e., early vegetative stage of maize when the third leaf is fully expanded ) , heading date, and maturity date, for the three crops. Totally, there were 436 stations across main crop-cultivated areas in China (Fig. 1). We defined the date of inflection point (the first derivative increases continuously after this point or the second derivative equals 0) of the LAI time-series curves as the green-up date of winter wheat, emergence date of spring wheat, transplanting date of rice and V3 stage (early vegetative stage of maize when the third leaf is fully expanded) of maize (Sakamoto, 2018;Sakamoto et al., 2005;Sakamoto et al., 2010). Heading date in the study was defined as the day when LAI reaching the maximum, as similar as some previous studies (Sakamoto et al., 2005;Chen et al., 2018b). That is to say, the maximum LAI points in the time-series curve are regarded as the heading dates. When crops reach maturity, the physiological activity will change largely, leading to an abrupt decrease in LAI (Sakamoto et al., 2005;Chen et al., 2018b). Therefore, we regarded an inflection point in the LAI time-series curve, where the first derivative is negative with the largest absolute value, as the maturity date."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Key phenological stages defined: green-up/emergence/transplanting/V3, heading, maturity dates"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds4",
+      "evidence": {
+        "section": "3 Results and Discussion",
+        "original_text": "The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R2 of 0.98, 0.97 and0.97, respectively."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Validation metrics: RMSE and R2 between retrieved dates and observed dates"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds5",
+      "evidence": {
+        "section": "2.3 Methods",
+        "original_text": "Due to the differences among these datasets on projected coordinate system, firstly, we projected or re-projected all raster data to “Asia North Albers Equal Area Conic” by using the Projection Raster tool in ArcGIS. Then, we combined 46 annual GLASS LAI images together and used a China provincial administrative vector map to mask images by province. Finally, a LAI timeseries was created for each pixel for further applications."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Data preprocessing: projection to Asia North Albers Equal Area Conic coordinate system"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds6",
+      "evidence": {
+        "section": "2.3 Methods",
+        "original_text": "Based on the observations around the nearest AMS, we needed firstly to determine the restricted time windows responding to each key phenological stage for different crops. Then we sampled randomly 1000 grids every year in each province from the grids where the land use data was identified as cropland and retrieved the key phenological stages in the sampling grids according to the three smoothing methods and the above definitions of key stages. To determine the OFP approach in each province, we identified the inflection points and maximum value point of each LAI time-series curve at each grid within the restricted time windows. After detecting phenological information of the cropland sample grids, we calculated the RMSE values between the estimated phenological dates and observed dates, and averaged these RMSE values for each crop at a provincial scale. Finally, we chose the most suitable smoothing method for different crops in each province with minimum RMSE."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Smoothing method selection based on RMSE minimization for each province and crop"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_433bcae075639936_ds7",
+      "evidence": {
+        "section": "2.3 Methods",
+        "original_text": "After removing the grids from where the land use data was identified as non-cropland, we then obtained cropland grids where the phenological information will be detected. Then, the most suitable smoothing method for different crops in each province were applied to reconstruct the LAI time series at 1-km grid scale. Finally, we detected the key phenological dates using OFP approach and determined the cultivated grids for each crop on the basis of three key phenological stages could be identified simultaneously. For example, if the green-up date, heading date and maturity date (corresponding to the inflection and maximum points in LAI time-series) of winter wheat could be simultaneously detected for a specific grid, then it could be regarded as the cultivated grid of winter wheat."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Cultivated grid identification rule: three key phenological stages must be simultaneously detected"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_433bcae075639936_m1",
+      "evidence": {
+        "section": "2.3 Methods",
+        "original_text": "The method to retrieve the phenological information of three staple crops at national scale is presented schematically in Fig. 2. The data processes are as follows: 1) data preprocessing, 2) selecting the cropland sample grid to determine the suitable smoothing method, 3) determining the optimal filter-based phenology detection (OFP) approach, 4) generating ChinaCropPhen1km dataset. Based on the observations around the nearest AMS, we needed firstly to determine the restricted time windows responding to each key phenological stage for different crops. Then we sampled randomly 1000 grids every year in each province from the grids where the land use data was identified as cropland and retrieved the key phenological stages in the sampling grids according to the three smoothing methods and the above definitions of key stages. To determine the OFP approach in each province, we identified the inflection points and maximum value point of each LAI time-series curve at each grid within the restricted time windows. After detecting phenological information of the cropland sample grids, we calculated the RMSE values between the estimated phenological dates and observed dates, and averaged these RMSE values for each crop at a provincial scale. Finally, we chose the most suitable smoothing method for different crops in each province with minimum RMSE."
+      },
+      "confidence": 0.95,
+      "name": "optimal filter-based phenology detection (OFP)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_433bcae075639936_m2",
+      "evidence": {
+        "section": "2.3.2.1 Double logistic (DL) method",
+        "original_text": "Double logistic is a method of merging local fitting parts to obtain the overall fitting result (Jonsson and Eklundh, 2004). In the local fitting process, the Double logistic function can be expressed as: where, 𝑥 determines the position of the left inflection point while 𝑥 gives the rate of change. Similarly, 𝑥 determines the position of the right inflection point while 𝑥 gives the rate of change at this point."
+      },
+      "confidence": 0.95,
+      "name": "Double Logistic (DL) method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_433bcae075639936_m3",
+      "evidence": {
+        "section": "2.3.2.2 Savitzky-Golay (S-G) filter method",
+        "original_text": "Based on locally adaptive moving window, Savitzky-Golay (S-G) filtering method can be used to smooth data and suppress disturbances with a local polynomial regression model (Savitzky and Golay, 1964). Algorithm can be summarized as follows: where, 𝐿𝐴𝐼represents the original LAI value, LAI∗ is the smoothed LAI value, j is running index of the LAI time series, 𝐶 is the coefficient of the i-th LAI value, n is the half-width of the smoothing window, and N is the width of the moving window to perform filtering (2n+1). The width of the moving window—N, not only determines the degree of smoothing, but also affects the ability to follow a rapid change. We selected three windows width (3, 4, 5) to identify a better width for different crops and regions."
+      },
+      "confidence": 0.95,
+      "name": "Savitzky-Golay (S-G) filter method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_433bcae075639936_m4",
+      "evidence": {
+        "section": "2.3.2.3 Wavelet-based filter (WF) method",
+        "original_text": "Wavelet-based filter method can reduce noise with reflecting the periodicity of seasonal vegetation change (Sakamoto et al., 2005). The input signals 𝑓𝑥 is transformed in the wavelet transform as follows: where a is a scaling parameter, b is a shifting parameter, and 𝜑 implies a mother wavelet. The advantage of the WF method is that it can maintain the time components of time-series data and hardly distort signals. The input signals 𝑓𝑥 is decomposed to linear combinations of wavelet functions in the multi-resolution approximation: where 𝑓𝑥 implies the approximate expression in level i, and 𝑔𝑥 implies the high-frequency components in level i. We used three types of mother wavelets: Daubechies (1988) (order=3–24), Coiflet (order=1–5), and Symlet (order=4–15) in the study."
+      },
+      "confidence": 0.95,
+      "name": "Wavelet-based filter (WF) method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_433bcae075639936_m5",
+      "evidence": {
+        "section": "2.3.3 Methods to detect the phenological information",
+        "original_text": "The methods to detect remote-sensing-based phenology can generally be classified into three groups: inflexion-based method (Chen et al., 2016), threshold-based method (Manfron et al., 2017), and methods based on the mathematical or geometrical model fitting approach (Sakamoto et al., 2010). In this study, we used both inflexion- and threshold-based methods together to detect phenology. Firstly, we defined the inflection and maximum points of LAI time-series as the specific timing of key phenological stages for different crops (Fig. 3). We defined the date of inflection point (the first derivative increases continuously after this point or the second derivative equals 0) of the LAI time-series curves as the green-up date of winter wheat, emergence date of spring wheat, transplanting date of rice and V3 stage (early vegetative stage of maize when the third leaf is fully expanded) of maize (Sakamoto, 2018;Sakamoto et al., 2005;Sakamoto et al., 2010). Heading date in the study was defined as the day when LAI reaching the maximum, as similar as some previous studies (Sakamoto et al., 2005;Chen et al., 2018b). That is to say, the maximum LAI points in the time-series curve are regarded as the heading dates. When crops reach maturity, the physiological activity will change largely, leading to an abrupt decrease in LAI (Sakamoto et al., 2005;Chen et al., 2018b). Therefore, we regarded an inflection point in the LAI time-series curve, where the first derivative is negative with the largest absolute value, as the maturity date."
+      },
+      "confidence": 0.95,
+      "name": "inflexion- and threshold-based phenology detection",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_433bcae075639936_x1",
+      "evidence": {
+        "section": "2.3.1 Data preprocessing",
+        "original_text": "Due to the differences among these datasets on projected coordinate system, firstly, we projected or re-projected all raster data to “Asia North Albers Equal Area Conic” by using the Projection Raster tool in ArcGIS. Then, we combined 46 annual GLASS LAI images together and used a China provincial administrative vector map to mask images by province. Finally, a LAI timeseries was created for each pixel for further applications."
+      },
+      "confidence": 0.95,
+      "task": "data preprocessing",
+      "setup": "ArcGIS projection, masking, LAI time-series creation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_433bcae075639936_x2",
+      "evidence": {
+        "section": "2.3.4 Determining the optimal filter-based phenology detection approach (OFP)",
+        "original_text": "Based on the observations around the nearest AMS, we needed firstly to determine the restricted time windows responding to each key phenological stage for different crops. Then we sampled randomly 1000 grids every year in each province from the grids where the land use data was identified as cropland and retrieved the key phenological stages in the sampling grids according to the three smoothing methods and the above definitions of key stages. To determine the OFP approach in each province, we identified the inflection points and maximum value point of each LAI time-series curve at each grid within the restricted time windows. After detecting phenological information of the cropland sample grids, we calculated the RMSE values between the estimated phenological dates and observed dates, and averaged these RMSE values for each crop at a provincial scale. Finally, we chose the most suitable smoothing method for different crops in each province with minimum RMSE."
+      },
+      "confidence": 0.95,
+      "task": "smoothing method comparison and selection",
+      "setup": "provincial-scale random sampling, RMSE calculation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_433bcae075639936_x3",
+      "evidence": {
+        "section": "2.3.5 Generating ChinaCropPhen1km dataset",
+        "original_text": "After removing the grids from where the land use data was identified as non-cropland, we then obtained cropland grids where the phenological information will be detected. Then, the most suitable smoothing method for different crops in each province were applied to reconstruct the LAI time series at 1-km grid scale. Finally, we detected the key phenological dates using OFP approach and determined the cultivated grids for each crop on the basis of three key phenological stages could be identified simultaneously. For example, if the green-up date, heading date and maturity date (corresponding to the inflection and maximum points in LAI time-series) of winter wheat could be simultaneously detected for a specific grid, then it could be regarded as the cultivated grid of winter wheat. Additionally, to evaluate the accuracy of the estimated phenological dates at a national scale, we calculated the mean of phenological dates detected from each crop pixel around corresponding AMS and compared them with the corresponding observations by using RMSE."
+      },
+      "confidence": 0.95,
+      "task": "dataset generation",
+      "setup": "cropland mask application, smoothing, OFP detection"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_433bcae075639936_x4",
+      "evidence": {
+        "section": "3.2 Validation of ChinaCropPhen1km",
+        "original_text": "The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R[2] of 0.98, 0.97 and0.97, respectively. As for the differences among crops, the retrieved accuracy of maize phenological stages was consistently the worst, with the biggest RMSE and errors (≥±10 days), and the lowest errors (≤±10 days) and R[2] . We ascribed the lower accuracy of maize phenology to the wider spatial heterogeneity environment and the complex rotation planting system relative to the other two crops (Qiu et al., 2018). The highest accuracy of rice phenology also supported the accuracy impact of complex planting system because paddy field is unfit for dryland crops such as maize, wheat, soybean, and other coarse cereals (Dong et al., 2015). More interestingly, the retrieved accuracy of three crops decreased as crop growing and developing up to maturity periods (Table 2), with the average RMSEs ranging from 3.7 to 7.2 days. The highest accuracy (RMSE=2.8, error=0.5%) was found for the green up/emergence stages of wheat, while accuracy of maturity stage for each crop were the lowest (average RMSE=7.2, error=19%)."
+      },
+      "confidence": 0.95,
+      "task": "validation of ChinaCropPhen1km dataset",
+      "setup": "comparison with AMS observations, RMSE calculation"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_433bcae075639936_qr1",
+      "evidence": {
+        "section": "Data and methods",
+        "original_text": "By computing the Root Mean Square Error (RMSE) and determination coefficients (R[2] ) between several global LAI products and the high-resolution LAI reference map, it could be shown that the accuracy of the GLASS LAI (RMSE=0.78, R[2] =0.81) was fairly better than that of the MODIS LAI product (MOD15) and Geoland2/BioPar version 1 (GEOV1) (Xiao et al., 2016). Moreover, the intercomparison have indicated that GLASS LAI (8-day composites of 1-km spatial resolution) was more temporally continuous and spatially complete than the other LAI products (Xiao et al., 2014;Xiao et al., 2016). It has been applied to vegetation monitoring and crop model assimilation (Xiao et al., 2014;Chen et al., 2018a)."
+      },
+      "confidence": 0.95,
+      "quantity": "RMSE",
+      "value": 0.78,
+      "unit": null,
+      "context": "accuracy comparison between GLASS LAI product and high-resolution LAI reference map",
+      "result_type": "baseline"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_433bcae075639936_p1",
+      "evidence": {
+        "section": "Data and methods",
+        "original_text": "By computing the Root Mean Square Error (RMSE) and determination coefficients (R[2] ) between several global LAI products and the high-resolution LAI reference map, it could be shown that the accuracy of the GLASS LAI (RMSE=0.78, R[2] =0.81) was fairly better than that of the MODIS LAI product (MOD15) and Geoland2/BioPar version 1 (GEOV1) (Xiao et al., 2016). Moreover, the intercomparison have indicated that GLASS LAI (8-day composites of 1-km spatial resolution) was more temporally continuous and spatially complete than the other LAI products (Xiao et al., 2014;Xiao et al., 2016). It has been applied to vegetation monitoring and crop model assimilation (Xiao et al., 2014;Chen et al., 2018a)."
+      },
+      "confidence": 0.95,
+      "metric": "accuracy of GLASS LAI product",
+      "compared_to": "MODIS LAI product (MOD15), Geoland2/BioPar version 1 (GEOV1)"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_433bcae075639936_qr2",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R[2] of 0.98, 0.97 and0.97, respectively."
+      },
+      "confidence": 0.98,
+      "quantity": "RMSE",
+      "value": 5.3,
+      "unit": "days",
+      "context": "retrieved phenological dates for rice compared with observations at national scale (2000-2015)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_433bcae075639936_qr3",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R[2] of 0.98, 0.97 and0.97, respectively."
+      },
+      "confidence": 0.98,
+      "quantity": "RMSE",
+      "value": 5.5,
+      "unit": "days",
+      "context": "retrieved phenological dates for wheat compared with observations at national scale (2000-2015)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_433bcae075639936_qr4",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R[2] of 0.98, 0.97 and0.97, respectively."
+      },
+      "confidence": 0.98,
+      "quantity": "RMSE",
+      "value": 6.7,
+      "unit": "days",
+      "context": "retrieved phenological dates for maize compared with observations at national scale (2000-2015)",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_433bcae075639936_p2",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "The comparison between retrieved phenological dates and phenological observations of each crop from 2000-2015 at national scale showed that all retrieved and observed dates were closely and averagely distributed 1:1 line for three crops (Fig. 5). Additionally, the RMSE values of retrieved phenological dates were consistently less than 10 days (Table 2). The RMSE averages of three key dates for rice were around 5.3 days, followed by wheat (5.5 days) and maize (6.7 days), corresponding to the related R[2] of 0.98, 0.97 and0.97, respectively. As for the differences among crops, the retrieved accuracy of maize phenological stages was consistently the worst, with the biggest RMSE and errors (≥±10 days), and the lowest errors (≤±10 days) and R[2] . We ascribed the lower accuracy of maize phenology to the wider spatial heterogeneity environment and the complex rotation planting system relative to the other two crops (Qiu et al., 2018). The highest accuracy of rice phenology also supported the accuracy impact of complex planting system because paddy field is unfit for dryland crops such as maize, wheat, soybean, and other coarse cereals (Dong et al., 2015)."
+      },
+      "confidence": 0.97,
+      "metric": "accuracy of retrieved phenological dates",
+      "compared_to": "phenological observations from Agricultural Meteorological Stations"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_433bcae075639936_qr5",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "More interestingly, the retrieved accuracy of three crops decreased as crop growing and developing up to maturity periods (Table 2), with the average RMSEs ranging from 3.7 to 7.2 days. The highest accuracy (RMSE=2.8, error=0.5%) was found for the green up/emergence stages of wheat, while accuracy of maturity stage for each crop were the lowest (average RMSE=7.2, error=19%). The reasonable explanation might be relative weaker interfere from other vegetation because the green-up/emergence stage occurs most early during plant growing period (some 80 DOY Table 3). With the land surface greening up, more and more information on plant growing statuses will be shot by satellites, which consequently mix with the crops’ information and interfere to retrieve accurately the phenological stages of crops. Of course, the interfering from anthropological activities should not be ignored with climate warming."
+      },
+      "confidence": 0.95,
+      "quantity": "RMSE",
+      "value": 2.8,
+      "unit": "days",
+      "context": "green up/emergence stages of wheat",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_433bcae075639936_qr6",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "More interestingly, the retrieved accuracy of three crops decreased as crop growing and developing up to maturity periods (Table 2), with the average RMSEs ranging from 3.7 to 7.2 days. The highest accuracy (RMSE=2.8, error=0.5%) was found for the green up/emergence stages of wheat, while accuracy of maturity stage for each crop were the lowest (average RMSE=7.2, error=19%). The reasonable explanation might be relative weaker interfere from other vegetation because the green-up/emergence stage occurs most early during plant growing period (some 80 DOY Table 3). With the land surface greening up, more and more information on plant growing statuses will be shot by satellites, which consequently mix with the crops’ information and interfere to retrieve accurately the phenological stages of crops. Of course, the interfering from anthropological activities should not be ignored with climate warming."
+      },
+      "confidence": 0.95,
+      "quantity": "average RMSE",
+      "value": 7.2,
+      "unit": "days",
+      "context": "maturity stage for each crop",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_433bcae075639936_p3",
+      "evidence": {
+        "section": "Results and Discussion",
+        "original_text": "We further compared mean RMSE of different smoothing methods and selected the most suitable smoothing method with minimal mean RMSE for different provinces and crops (Table 1). If the RMSE values were same, we also compared the number of crop grids according to different smoothing methods, and selected the suitable method which had identified a larger number of crop girds. It is noted that the number of identified grids differ considerably even with same RMSE values. Totally, S-G filter was an overwhelming smoothing way for 95% crops and provinces, followed by WF and DL method. We ascribed the great performance of S-G to two reasons as follows. 1) One is its scientific smoothing principle: S-G filter applies an iterative weighted moving average filter to the time series, which can replace the noise data as well as keep the fidelity (Geng et al., 2014). By contrast, WF decomposes the time series into scaled and shifted wavelets to acquire time-localization of a given signal (Qiu et al., 2014). DL uses a series of parameters to fit the time series (Beck et al., 2006). 2) The other is that S-G is more suitable for GLASS LAI. S-G can catch the local variations ― e.g. the bimodal curve characteristics from double cropping rice and the rotation of winter wheat and summer maize (Fig. 3-b, f) ― in time series and perform best for data without extreme noise such as GLASS LAI (Eklundh and Jönsson, 2015). DL is more useful for data with much noise, however, fails to catch local changes due to being unfit for data with double peaks. WF is also a powerful tool for processing non-stationary and noisy signals such as VI time-series rather than GLASS LAI (Rouyer et al., 2008; Sakamoto et al., 2006). Therefore, S-G is the most suitable for the complex cultivating systems across whole mainland of China."
+      },
+      "confidence": 0.95,
+      "metric": "smoothing method selection",
+      "compared_to": "Double Logistic (DL) method, Savitzky-Golay (S-G) filter method, Wavelet-based filter (WF) method"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_433bcae075639936_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In this study, we produced a 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on Global Land Surface Satellite (GLASS) Leaf Area Index (LAI) products, named as ChinaCropPhen1km. First, we compared three common smoothing methods and chose the most suitable one for different crops and regions. Then, we developed an optimal filter-based phenology detection (OFP) approach which combined both inflexion- and thresholdbased method and detected the key phenological stages of three staple crops at 1km spatial resolution across China. Finally, we established a high resolution gridded-phenology product for three staple crops in China during 2000-2015. Compared with the intensive phenological observations from the Agricultural Meteorological Stations (AMS) of China Meteorological Administration (CMA), the dataset had a high accuracy with errors of retrieved phenological date less than 10 days, and represented the spatiotemporal patterns of the observed phenological dynamics at site scale fairly well. The well-validated dataset can be applied for many purposes including improving agricultural system or earth system modelling over a large area."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_433bcae075639936_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "In the present study, we generated 1km-grid crop phenological dataset for three main crops from 2000 to 2015 based on GLASS LAI products, named as ChinaCropPhen1km. First, we compared three common smoothing methods and chose the most suitable one for different crops and regions. The results showed that S-G was the most frequently chosen method as it not only could well smooth the time series but also keep the fidelity. Next, we developed an OFP approach which combined both inflexion- and threshold-based method to detect the key phenological stages of three staple crops at spatial resolution of 1km across China. Finally, we established a high resolution gridded-phenology product for three staple crops in China during 2000-2015. The ChinaCropPhen1km dataset has been well validated using the intensive phenological observations of AMS, which substantiates a high accuracy with errors of retrieved phenological date less than 10 days. It can reflect the spatial differences in the local climatic and management factors. Thus, this first high-resolution crop phenological dataset can be applied for many purposes, including understanding land surface phenological dynamics, investigating climate change impacts and adaptations, and improving agricultural system or earth system modelling over a large area, temporally and spatially."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_433bcae075639936_lm1",
+      "evidence": {
+        "section": "3.5 Uncertainties of ChinaCropPhen1km",
+        "original_text": "Inevitably, there are still uncertainties in the generated dataset (i.e., ChinaCropPhen1km). On the one hand, GLASS LAI products might lead to some uncertainties in ChinaCropPhen1km. First of all, the noise of original GLASS LAI time-series could reduce the accuracy of detected phenological stages, which was resulted from many factors such as cloud, snow, aerosols, and water vapor (Xiao et al., 2014). Therefore, we compared several commonly used smoothing methods and chose the most suitable one with minimum RMSE for different crops in each province, which could reduce some uncertainties. Moreover, the GLASS LAI retrieval algorithm eliminates abrupt spikes and dips, which may result in the loss of neighboring smaller peaks in LAI profiles (Xiao et al., 2016). The number of detected pixels with double-season rice cultivated might be less than that of the actual situation due to the short interval between the two local maximum points (i.e., heading stages of early rice and late rice) (Fig. 3-f). On the other hand, mixed pixel might bring uncertainty in the results as it contained several land cover types and then weakened the identified signal of specific phenological stages. We ascribed the occurrence of mixed pixel to two reasons. One is the coarse spatial resolution of 1 km. For example, mixed pixel occurs widely in the mountainous regions (e.g., southern China) with complex terrain and diverse vegetation types. The other is that we determined the spatial distribution of each dryland crop (i.e., maize and wheat) based on the dryland layer of NLCD, which might include several crop types."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_433bcae075639936_fw1",
+      "evidence": {
+        "section": "3.5 Uncertainties of ChinaCropPhen1km",
+        "original_text": "In future studies, the application of crop-specific map and remote sensing products with finer spatial resolution is expected to solve the mixed pixel issues."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

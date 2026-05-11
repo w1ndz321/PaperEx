@@ -1,0 +1,527 @@
+{
+  "metadata": {
+    "doc_id": "doc_22f969f37298e776",
+    "source_file": "02_Deep_Learning_for_Slum_Mapping_in_Remote_Sensing_Images_Meta-analysis_Review.md",
+    "title": "A Review and Meta-Analysis of Slum Mapping Using Remote Sensing Imagery (2014–2024): Focus on Deep Learning Approaches",
+    "year": 2024,
+    "doi": null,
+    "abstract": "_**Abstract**_ **—The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these.**",
+    "introduction": "",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": "人工智能",
+      "level3": "深度学习"
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": "遥感技术",
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "slum mapping",
+      "remote sensing",
+      "deep learning",
+      "satellite imagery",
+      "urban informality"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:08:05.788398+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these."
+      },
+      "confidence": 0.99,
+      "term": "slum",
+      "normalized": "贫民窟",
+      "std_label": "informal settlement"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these."
+      },
+      "confidence": 0.98,
+      "term": "deep learning",
+      "normalized": "深度学习",
+      "std_label": "DL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these."
+      },
+      "confidence": 0.98,
+      "term": "remote sensing",
+      "normalized": "遥感",
+      "std_label": "RS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c4",
+      "evidence": {
+        "section": "III. A",
+        "original_text": "Yann LeCun introduced convolutional networks in 1989 [89], which fundamentally consist of three stages: convolution to generate linear activations, application of nonlinear activation functions like ReLU [90], and pooling [91] to reduce dimensionality. These layers, along with fully connected layers, help CNNs capture complex hierarchical image representations. Figure 3 shows the basic architecture of a CNN. Notable for their versatility and scalability, CNNs have excelled in various computer vision tasks. For instance, AlexNet [92] won the 2012 ImageNet challenge, demonstrating the power of deep CNNs. VGG networks [93] improved classification by deepening network structures, while ResNet [94] introduced skip connections to ease training deep networks. Fully Convolutional Networks (FCNs) [95] use an encoder-decoder structure to handle various input sizes, crucial for tasks like semantic segmentation."
+      },
+      "confidence": 0.97,
+      "term": "Convolutional Neural Networks",
+      "normalized": "卷积神经网络",
+      "std_label": "CNN"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c5",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "Slums, also known as informal settlements, are areas where people live in deplorable and vulnerable conditions. They pose a significant challenge to achieving equitable and sustainable development, particularly in the context of SDG 11 [1], which aims to“make cities and human settlements inclusive, safe, resilient, and sustainable.” The global population of urban slum dwellers is estimated to be one billion, disproportionately affecting the most impoverished nations [2], [3]. According to recent statistical data, approximately 1.6 billion individuals out of the total urban population of four billion are residing in slum areas [4], [5], and by 2050, this is expected to exceed 3 billion [6]. These statistics highlight the urgent need to address urban poverty and improve living conditions in informal settlements. Figure 1 shows the proportion of urban populations living in slums [7]. This provides an overview of the global distribution of slums and helps identify regions where urban poverty’s challenges are most severe."
+      },
+      "confidence": 0.96,
+      "term": "Sustainable Development Goal 11",
+      "normalized": "可持续发展目标11",
+      "std_label": "SDG 11"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c6",
+      "evidence": {
+        "section": "II. B",
+        "original_text": "Texture analysis plays a vital role in remote sensing for slum mapping, as it helps to distinguish informal settlements from formal urban areas based on their unique spatial configurations and architectural patterns. In this section, we emphasize the importance of texture analysis in slum mapping and present studies where this approach has achieved successful results. High-resolution satellite images reveal textural contrasts between slums and formal urban areas, serving as a key identifier for remote sensing techniques. There are two primary approaches for texture analysis: structural methods like mathematical morphology (MM) [34], [35], and statistical methods like the Grey Level Co-occurrence Matrix (GLCM) [36]. Structural approaches analyze images by examining geometric structures, while statistical techniques focus on pixel-intensity arrangements to identify disordered texture patterns. Several studies have demonstrated the effectiveness of integrating spectral information with texture analysis to improve classification accuracy. For instance, [29] integrated spectral information with GLCM variance to differentiate slums from formal regions. [37] found that local directional pattern (LDP) techniques outperformed GLCM in categorizing informal settlements due to LDP’s sensitivity to texture directional variance. [38] employed a Random Forest (RF) classifier with GLCM and differential morphological profiles (DMP) to detect slums, highlighting the power of machine learning algorithms in analyzing complex texture-based data for precise slum mapping. [39] compared statistical and spectral features and found that spectral characteristics better described urban slum textures than statistical descriptors. [40] found that scale and anisotropy affect texture indices, emphasizing the need to select appropriate scales for slum textures. [41] expanded upon previous research by incorporating statistical, spectral, and structural techniques, including morphological profiles (MP) and mathematical morphological profiles (MMP), to differentiate different textures present in slum areas. They employed the minimum redundancy maximum relevance (mRMR) feature selection method before using a support vector machine (SVM) classifier. These studies demonstrate the importance of texture analysis in slum mapping, as it enables the extraction of meaningful information from high-resolution satellite images to distinguish slums from formal urban areas accurately. The methodologies used in these studies, including GLCM, LDP, and morphological profiles, highlight the diversity of approaches available for texture analysis in remote sensing applications."
+      },
+      "confidence": 0.95,
+      "term": "texture analysis",
+      "normalized": "纹理分析",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c7",
+      "evidence": {
+        "section": "II. C",
+        "original_text": "OBIA considers an image to be a collection of objects and uses attributes such as size, shape, texture, and relationships with neighboring objects to extract meaningful information. OBIA, in slum mapping, segments satellite images into meaningful objects or groups of pixels. These objects are then analyzed based on their spatial, spectral, and textural properties. One of the earliest studies employing OBIA on slums was by [44]. This study used eCognition software [45] to differentiate informal settlements from other land-use types based on their unique attributes in Ikonos images over Cape Town. The eCognition software adheres to the principles of object-oriented programming. Additionally, it has a patented methodology for image segmentation that operates across many scales. However, the approach was complex and tailored to a specific dataset, posing challenges in generalizability. Subsequent studies have built upon [44], employing ontologybased approaches and refining the classification of slums [46]– [48]. [49] presented a thorough slum ontology known as the generic slum ontology (GSO). This ontology organizes concepts into three levels: environment, settlement, and object, providing a framework for classifying slums based on image data. This ontology-based approach has been applied in other studies [50], based on the vegetation, impervious surface, and bare soil (V-I-S) model [51]. The advancements in OBIA have seen the integration of additional indicators and image-based features to improve the accuracy of slum mapping [52]. [53] incorporated indicators such as plant cover, built-up area, iron cover, asphalt cover, and texture, along with NDVI, BAI, iron index, REI, coastal blue index, and texture for classification. [54] used WorldView-3 imagery and a Geographic ObjectBased Image Analysis (GEOBIA) processing chain framework to classify land cover in impoverished urban areas of Nairobi, Kenya, demonstrating the effectiveness of OBIA in capturing land cover characteristics in slum contexts. These studies demonstrate the diverse applications and effectiveness of OBIA in accurately identifying and characterizing informal settlements."
+      },
+      "confidence": 0.95,
+      "term": "Object-Based Image Analysis",
+      "normalized": "基于对象的图像分析",
+      "std_label": "OBIA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_22f969f37298e776_c8",
+      "evidence": {
+        "section": "IV",
+        "original_text": "The use of meta-analysis has emerged as a fundamental methodology in numerous academic fields. It allows researchers to combine data and conclusions from several studies to gain broader insights that may not be readily evident from any single study. The word “meta-analysis” was first used in academia to organize and consolidate the examination and amalgamation of numerous studies. [99] defines it as a systematic procedure for reviewing and combining various analyses. Over time, meta-analysis has undergone a process of evolution and refinement. In essence, it is not simply a compilation of several studies but rather a rigorous methodology that integrates findings from comparable studies, as detailed by [100]. The selection and evaluation of pertinent studies are fundamental components in the execution of a metaanalysis. Researchers often use established procedures to select studies uniformly, clearly, and thoroughly. One example of a generally acknowledged standard is the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) [101]. PRISMA, a framework developed to assist researchers in conducting systematic reviews [102] and meta-analyses, places significant emphasis on the importance of clear and comprehensive reporting. The use of the PRISMA protocol is not limited to any discipline. For example, research conducted by [103] and [104] has demonstrated the PRISMA protocol’s applicability in urban geography. Different perspectives can be gained by using meta-analysis in scholarly research. This helps researchers find recurring patterns, come up with stronger conclusions, and propose recommendations based on a wider range of data. In the context of slum mapping using deep learning, meta-analysis is particularly relevant due to the diverse methodologies, varying data sources, and the need for consolidated insights to guide future research and applications."
+      },
+      "confidence": 0.94,
+      "term": "meta-analysis",
+      "normalized": "荟萃分析",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these."
+      },
+      "confidence": 0.93,
+      "head": "doc_22f969f37298e776_c2",
+      "relation_type": "enhances",
+      "relation_surface": "has added a new dimension to this field as it allows automated analysis",
+      "tail": "doc_22f969f37298e776_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these."
+      },
+      "confidence": 0.92,
+      "head": "doc_22f969f37298e776_c3",
+      "relation_type": "uses",
+      "relation_surface": "based mapping of slums has emerged as a prominent research area",
+      "tail": "doc_22f969f37298e776_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "The major Sustainable Development Goals (SDG) 2030, set by the United Nations Development Program (UNDP), include sustainable cities and communities, no poverty, and reduced inequalities. Yet, millions of people live in slums or informal settlements under poor living conditions in many major cities around the world, especially in less developed countries. Emancipation of these settlements and their inhabitants through government intervention requires accurate data about slum location and extent. While ground survey data is the most reliable, such surveys are costly and time-consuming. An alternative is remotely sensed data obtained from very-high-resolution (VHR) imagery. With the advancement of new technology, remote sensing based mapping of slums has emerged as a prominent research area. The parallel rise of Artificial Intelligence, especially Deep Learning has added a new dimension to this field as it allows automated analysis of satellite imagery to identify complex spatial patterns associated with slums. This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations. We also identify prevailing challenges in this field, such as data limitations and a lack of model explainability, and suggest potential strategies for overcoming these."
+      },
+      "confidence": 0.91,
+      "head": "doc_22f969f37298e776_c4",
+      "relation_type": "enhances",
+      "relation_surface": "transformative impact",
+      "tail": "doc_22f969f37298e776_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r4",
+      "evidence": {
+        "section": "I. INTRODUCTION",
+        "original_text": "Slums, also known as informal settlements, are areas where people live in deplorable and vulnerable conditions. They pose a significant challenge to achieving equitable and sustainable development, particularly in the context of SDG 11 [1], which aims to“make cities and human settlements inclusive, safe, resilient, and sustainable.” The global population of urban slum dwellers is estimated to be one billion, disproportionately affecting the most impoverished nations [2], [3]. According to recent statistical data, approximately 1.6 billion individuals out of the total urban population of four billion are residing in slum areas [4], [5], and by 2050, this is expected to exceed 3 billion [6]. These statistics highlight the urgent need to address urban poverty and improve living conditions in informal settlements. Figure 1 shows the proportion of urban populations living in slums [7]. This provides an overview of the global distribution of slums and helps identify regions where urban poverty’s challenges are most severe. Slum dwellers face numerous social, economic, and health challenges that impact their quality of life. Socially, slums are characterized by high population density, inadequate housing, and limited access to essential services, leading to a lack of privacy and security for residents. Economically, the informal nature of slum settlements results in limited employment opportunities and financial instability. Health-wise, slums are breeding grounds for communicable diseases due to overcrowding, poor sanitation, and limited access to clean water and healthcare services [8]. Climate-induced migration makes these conditions worse, highlighting the need for effective interventions [9]–[11]. Herein, slum detection plays a crucial role in addressing these challenges by providing accurate and up-to-date information about the location and extent of informal settlements. Precise slum mapping enables policymakers and urban planners to allocate resources effectively, prioritize infrastructure development, and deliver essential services tailored to the needs of slum dwellers. By identifying areas that require intervention, slum mapping facilitates targeted actions that can significantly improve the living conditions in these communities [12]. The insights gained from slum detection can integrate informal settlements into the urban fabric, promote inclusivity and resilience in cities, and contribute to the overall well-being of slum residents."
+      },
+      "confidence": 0.9,
+      "head": "doc_22f969f37298e776_c1",
+      "relation_type": "belongs_to",
+      "relation_surface": "plays a crucial role in addressing these challenges",
+      "tail": "doc_22f969f37298e776_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r5",
+      "evidence": {
+        "section": "II. B",
+        "original_text": "Texture analysis plays a vital role in remote sensing for slum mapping, as it helps to distinguish informal settlements from formal urban areas based on their unique spatial configurations and architectural patterns. In this section, we emphasize the importance of texture analysis in slum mapping and present studies where this approach has achieved successful results. High-resolution satellite images reveal textural contrasts between slums and formal urban areas, serving as a key identifier for remote sensing techniques. There are two primary approaches for texture analysis: structural methods like mathematical morphology (MM) [34], [35], and statistical methods like the Grey Level Co-occurrence Matrix (GLCM) [36]. Structural approaches analyze images by examining geometric structures, while statistical techniques focus on pixel-intensity arrangements to identify disordered texture patterns. Several studies have demonstrated the effectiveness of integrating spectral information with texture analysis to improve classification accuracy. For instance, [29] integrated spectral information with GLCM variance to differentiate slums from formal regions. [37] found that local directional pattern (LDP) techniques outperformed GLCM in categorizing informal settlements due to LDP’s sensitivity to texture directional variance. [38] employed a Random Forest (RF) classifier with GLCM and differential morphological profiles (DMP) to detect slums, highlighting the power of machine learning algorithms in analyzing complex texture-based data for precise slum mapping. [39] compared statistical and spectral features and found that spectral characteristics better described urban slum textures than statistical descriptors. [40] found that scale and anisotropy affect texture indices, emphasizing the need to select appropriate scales for slum textures. [41] expanded upon previous research by incorporating statistical, spectral, and structural techniques, including morphological profiles (MP) and mathematical morphological profiles (MMP), to differentiate different textures present in slum areas. They employed the minimum redundancy maximum relevance (mRMR) feature selection method before using a support vector machine (SVM) classifier. These studies demonstrate the importance of texture analysis in slum mapping, as it enables the extraction of meaningful information from high-resolution satellite images to distinguish slums from formal urban areas accurately. The methodologies used in these studies, including GLCM, LDP, and morphological profiles, highlight the diversity of approaches available for texture analysis in remote sensing applications."
+      },
+      "confidence": 0.89,
+      "head": "doc_22f969f37298e776_c6",
+      "relation_type": "enhances",
+      "relation_surface": "plays a vital role in remote sensing for slum mapping",
+      "tail": "doc_22f969f37298e776_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r6",
+      "evidence": {
+        "section": "II. C",
+        "original_text": "OBIA considers an image to be a collection of objects and uses attributes such as size, shape, texture, and relationships with neighboring objects to extract meaningful information. OBIA, in slum mapping, segments satellite images into meaningful objects or groups of pixels. These objects are then analyzed based on their spatial, spectral, and textural properties. One of the earliest studies employing OBIA on slums was by [44]. This study used eCognition software [45] to differentiate informal settlements from other land-use types based on their unique attributes in Ikonos images over Cape Town. The eCognition software adheres to the principles of object-oriented programming. Additionally, it has a patented methodology for image segmentation that operates across many scales. However, the approach was complex and tailored to a specific dataset, posing challenges in generalizability. Subsequent studies have built upon [44], employing ontologybased approaches and refining the classification of slums [46]– [48]. [49] presented a thorough slum ontology known as the generic slum ontology (GSO). This ontology organizes concepts into three levels: environment, settlement, and object, providing a framework for classifying slums based on image data. This ontology-based approach has been applied in other studies [50], based on the vegetation, impervious surface, and bare soil (V-I-S) model [51]. The advancements in OBIA have seen the integration of additional indicators and image-based features to improve the accuracy of slum mapping [52]. [53] incorporated indicators such as plant cover, built-up area, iron cover, asphalt cover, and texture, along with NDVI, BAI, iron index, REI, coastal blue index, and texture for classification. [54] used WorldView-3 imagery and a Geographic ObjectBased Image Analysis (GEOBIA) processing chain framework to classify land cover in impoverished urban areas of Nairobi, Kenya, demonstrating the effectiveness of OBIA in capturing land cover characteristics in slum contexts. These studies demonstrate the diverse applications and effectiveness of OBIA in accurately identifying and characterizing informal settlements."
+      },
+      "confidence": 0.88,
+      "head": "doc_22f969f37298e776_c7",
+      "relation_type": "enhances",
+      "relation_surface": "segments satellite images into meaningful objects",
+      "tail": "doc_22f969f37298e776_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_22f969f37298e776_r7",
+      "evidence": {
+        "section": "IV",
+        "original_text": "The use of meta-analysis has emerged as a fundamental methodology in numerous academic fields. It allows researchers to combine data and conclusions from several studies to gain broader insights that may not be readily evident from any single study. The word “meta-analysis” was first used in academia to organize and consolidate the examination and amalgamation of numerous studies. [99] defines it as a systematic procedure for reviewing and combining various analyses. Over time, meta-analysis has undergone a process of evolution and refinement. In essence, it is not simply a compilation of several studies but rather a rigorous methodology that integrates findings from comparable studies, as detailed by [100]. The selection and evaluation of pertinent studies are fundamental components in the execution of a metaanalysis. Researchers often use established procedures to select studies uniformly, clearly, and thoroughly. One example of a generally acknowledged standard is the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) [101]. PRISMA, a framework developed to assist researchers in conducting systematic reviews [102] and meta-analyses, places significant emphasis on the importance of clear and comprehensive reporting. The use of the PRISMA protocol is not limited to any discipline. For example, research conducted by [103] and [104] has demonstrated the PRISMA protocol’s applicability in urban geography. Different perspectives can be gained by using meta-analysis in scholarly research. This helps researchers find recurring patterns, come up with stronger conclusions, and propose recommendations based on a wider range of data. In the context of slum mapping using deep learning, meta-analysis is particularly relevant due to the diverse methodologies, varying data sources, and the need for consolidated insights to guide future research and applications."
+      },
+      "confidence": 0.87,
+      "head": "doc_22f969f37298e776_c8",
+      "relation_type": "uses",
+      "relation_surface": "is particularly relevant due to the diverse methodologies",
+      "tail": "doc_22f969f37298e776_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_22f969f37298e776_d1",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "The Deep Learning model requires high-quality annotated data for training and evaluation. Figure 8 illustrates the distribution of data sources used in deep learning-based slum mapping studies. Sentinel satellites are the most commonly used data sources, accounting 22% of the studies, followed by Google Earth imagery at 20%. Pleiades and Quickbird comprise 12%, while WorldView 2 & 3 account for 10%. SPOT 5, 6, & 7 and Planet Labs represent 8% of the data sources. Other sources, such as PlanetScope, GeoEye, and TerraSAR-X, comprise the remaining 8%. This variety of data sources reflects the range of resolutions and spectral capabilities that researchers require for different aspects of slum mapping. The detailed imagery from providers like DigitalGlobe (e.g., Quickbird, WorldView) is crucial for fine-grained analysis and feature extraction within slum areas. QuickBird was a VHR commercial EO satellite launched in 2001 and decommissioned in 2015. It provided imagery at 60 cm in panchromatic (PAN) mode and 2.4 m in multispectral (MS) mode, capturing data in the blue, green, red, and near-infrared spectrum. QuickBird’s capabilities made it one of the leading sources for urban planning, environmental monitoring, and mapping services, offering detailed views that can be used for slum mapping and land-use studies [132], [141]. The WorldView series are commercial EO satellites operated by Maxar Technologies. It provides PAN imagery at 0.46 m and eight-band MS imagery at 1.84 m, using four commonly used colors (red, green, blue, and near-infrared 1) and four spectral bands (coastal, yellow, red edge, and near-infrared 2). WorldView-3’s 31 cm PAN resolution and MS bands—shortwave infrared (SWIR) and CAVIS (Cloud, Aerosol, Vapour, Ice, Snow)—help identify materials and terrain types. This makes WorldView satellites suitable for detailed mapping, including urban analysis and slum detection [108], [122], [123]. On the other hand, Sentinel satellites are advantageous for large-scale, regional studies. The Sentinel satellites are part of the Copernicus Programme, coordinated by the European Space Agency (ESA), providing a comprehensive EO system. Sentinel-1 provides radar imagery, ideal for monitoring urban expansion, land surface for motion risks, and infrastructure stability. Sentinel-2’s 10 m resolution allows for comprehensive images of large areas, which is vital for monitoring land changes and vegetation. It is also extensively used for slum mapping [126], [135], [139] as it is openly available. Google Earth provides accessible data that is frequently updated, which can be beneficial for time-series analyses and monitoring changes over time."
+      },
+      "confidence": 0.95,
+      "name": "Slum mapping datasets from various satellite platforms",
+      "modality": "image",
+      "domain": "remote sensing, urban geography"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_22f969f37298e776_d2",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Ground Truth Label Generation: Ground truth labels and masks are essential in these studies, as they act as reference data for training and evaluating models. Several studies used manual annotation of satellite images [105], [111], [122], [135]. This method entails the involvement of human experts who identify and demarcate urban villages, slum regions, and areas of deprivation. This process of manual annotation ensures accurate and reliable ground truth labels. Multiple studies integrated a variety of data sources, including remote sensing data, street view images, and social sensing data [107], [124], [129]. The ground truth labels were created by combining these various data types, allowing for more thorough and precise model training. This label-generating process is enriched with expert knowledge as it offers valuable perspectives on distinct characteristics in urban regions, aiding in the creation of reliable labels."
+      },
+      "confidence": 0.9,
+      "name": "Ground truth labels and masks for slum mapping",
+      "modality": "image",
+      "domain": "remote sensing, urban geography"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_22f969f37298e776_d3",
+      "evidence": {
+        "section": "VII. DISCUSSION",
+        "original_text": "A progressively encouraging approach in this domain is generating synthetic training data that accurately replicates urban environments, including the intricate and diverse characteristics of slums. There are numerous benefits to using synthetic data [154], [155]. It offers a cost-efficient alternative to gathering a large amount of real-world data. Moreover, it can be generated in significant quantities, covering a diverse range of situations and structural differences, which is essential for effectively training deep learning models. Due to its lack of specific data acquisition restrictions, this method significantly reduces the biases frequently present in conventional datasets. Synthetic datasets can also be tailored to emphasize specific attributes of slum regions, guaranteeing that models are adequately prepared to handle the wide range of variations and unique features in these settings."
+      },
+      "confidence": 0.85,
+      "name": "Synthetic training data for slum mapping",
+      "modality": "image",
+      "domain": "remote sensing, urban geography"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_22f969f37298e776_ds1",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Several studies used manual annotation of satellite images [105], [111], [122], [135]. This method entails the involvement of human experts who identify and demarcate urban villages, slum regions, and areas of deprivation. This process of manual annotation ensures accurate and reliable ground truth labels."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Manual annotation by human experts for ground truth label generation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_22f969f37298e776_ds2",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Multiple studies integrated a variety of data sources, including remote sensing data, street view images, and social sensing data [107], [124], [129]. The ground truth labels were created by combining these various data types, allowing for more thorough and precise model training. This label-generating process is enriched with expert knowledge as it offers valuable perspectives on distinct characteristics in urban regions, aiding in the creation of reliable labels."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Integration of multiple data sources for comprehensive ground truth labels"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_22f969f37298e776_ds3",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Data Augmentation: It plays a crucial role in augmenting the diversity and quantity of training data, thereby enhancing the accuracy and generalization capabilities of the model. In the context of slum mapping, where satellite imagery exhibits varied and complex urban textures, augmentation helps models adapt to the different visual characteristics of slums. Several key data augmentation techniques include random cropping and image tiling, which are used to focus on different parts of an image, ensuring the model can recognize slums from partial views. This is particularly useful when working with large areas, allowing the model to focus on detailed segments of the imagery, typically in sizes of 256x256 or 512x512 pixels. Flipping and rotation are also extensively used. Brightness adjustments and noise addition further enhance the feature set, ensuring that the model is robust. These transformations allow the model to learn generalized features that are resilient to changes in orientation, scale, and translation, a critical aspect for slum identification in heterogeneous urban landscapes [108], [122], [142]. Affine transformations, which include minimal shearing and stretching, help the model generalize across different sensor angles and perspectives, mimicking real-world variations."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Data augmentation techniques including random cropping, flipping, rotation, brightness adjustments, and noise addition"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_22f969f37298e776_ds4",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "To ensure effective learning, datasets are typically divided into training and testing subsets, often using an 80-20 or 70-30 split. Independent shuffling of the datasets is crucial to avoid biases related to the data, ensuring the model learns to generalize from a representative sample of urban landscapes."
+      },
+      "confidence": 0.95,
+      "spec_type": "format_rule",
+      "description": "Dataset division into training and testing subsets with independent shuffling"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_22f969f37298e776_ds5",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Specialized software tools such as ArcGIS, which facilitates complex spatial analysis, and ENVI, which aids in the processing of geospatial data, are essential for enhancing and refining these images [124], [145]."
+      },
+      "confidence": 0.85,
+      "spec_type": "env_requirement",
+      "description": "Use of specialized software tools like ArcGIS and ENVI for image pre-processing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_22f969f37298e776_m1",
+      "evidence": {
+        "section": "III. UNVEILING ARCHITECTURES: A DIVE INTO CONVOLUTIONAL NEURAL NETWORKS AND AUTOENCODERS",
+        "original_text": "Deep learning [78] has been recognized as one of the ten groundbreaking technologies of 2013 [79]. It involves neural networks (NN) with multiple hidden layers, distinguishing it from shallower learning models. The training procedure for the deep learning model involves forward propagation, where the model predicts outputs from inputs, and backpropagation, where errors are minimized by adjusting weights and biases. Top companies like Google, Microsoft, and Facebook have invested in deep learning for applications such as image segmentation and object detection, demonstrating superior performance in complex computational tasks. Due to its remarkable achievements, it has become increasingly popular as the preferred model in numerous application domains. Following this achievement and the enhanced accessibility of data and computational resources, it is gaining momentum even in remote sensing. Deep learning has enhanced the capabilities of remote sensing and urban analysis through the processing and analysis of complex data. Remote sensing uses deep learning algorithms for tasks such as land cover classification [80]–[82], object detection [83]–[85], and change detection [86]–[88]. These techniques excel at evaluating high-resolution satellite and aerial images, allowing for precise and detailed urban mapping. Within urban analysis, it allows for the automated extraction of complex patterns present in densely populated urban areas, helping in detecting slums. This section provides a concise overview of deep-learning architectures employed in slum mapping. Yann LeCun introduced convolutional networks in 1989 [89], which fundamentally consist of three stages: convolution to generate linear activations, application of nonlinear activation functions like ReLU [90], and pooling [91] to reduce dimensionality. These layers, along with fully connected layers, help CNNs capture complex hierarchical image representations. Figure 3 shows the basic architecture of a CNN. Notable for their versatility and scalability, CNNs have excelled in various computer vision tasks. For instance, AlexNet [92] won the 2012 ImageNet challenge, demonstrating the power of deep CNNs. VGG networks [93] improved classification by deepening network structures, while ResNet [94] introduced skip connections to ease training deep networks. Fully Convolutional Networks (FCNs) [95] use an encoder-decoder structure to handle various input sizes, crucial for tasks like semantic segmentation."
+      },
+      "confidence": 0.95,
+      "name": "Convolutional Neural Networks (CNNs)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_22f969f37298e776_m2",
+      "evidence": {
+        "section": "III. UNVEILING ARCHITECTURES: A DIVE INTO CONVOLUTIONAL NEURAL NETWORKS AND AUTOENCODERS",
+        "original_text": "An autoencoder is a NN designed to replicate its input data at its output. It consists of an encoder function h = f ( x ) that compresses the input into a lower-dimensional latent space and a decoder function r = g ( h ) that reconstructs the input from this compressed representation. Figure 4 shows the basic encoder-decoder structure of an autoencoder. They have been particularly effective in remote sensing for feature representation, as noted in [96]–[98]."
+      },
+      "confidence": 0.95,
+      "name": "Autoencoders",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_22f969f37298e776_m3",
+      "evidence": {
+        "section": "II. SLUM MAPPING USING REMOTE SENSING",
+        "original_text": "Texture analysis plays a vital role in remote sensing for slum mapping, as it helps to distinguish informal settlements from formal urban areas based on their unique spatial configurations and architectural patterns. In this section, we emphasize the importance of texture analysis in slum mapping and present studies where this approach has achieved successful results. High-resolution satellite images reveal textural contrasts between slums and formal urban areas, serving as a key identifier for remote sensing techniques. There are two primary approaches for texture analysis: structural methods like mathematical morphology (MM) [34], [35], and statistical methods like the Grey Level Co-occurrence Matrix (GLCM) [36]. Structural approaches analyze images by examining geometric structures, while statistical techniques focus on pixel-intensity arrangements to identify disordered texture patterns. Several studies have demonstrated the effectiveness of integrating spectral information with texture analysis to improve classification accuracy. For instance, [29] integrated spectral information with GLCM variance to differentiate slums from formal regions. [37] found that local directional pattern (LDP) techniques outperformed GLCM in categorizing informal settlements due to LDP’s sensitivity to texture directional variance. [38] employed a Random Forest (RF) classifier with GLCM and differential morphological profiles (DMP) to detect slums, highlighting the power of machine learning algorithms in analyzing complex texture-based data for precise slum mapping. [39] compared statistical and spectral features and found that spectral characteristics better described urban slum textures than statistical descriptors. [40] found that scale and anisotropy affect texture indices, emphasizing the need to select appropriate scales for slum textures. [41] expanded upon previous research by incorporating statistical, spectral, and structural techniques, including morphological profiles (MP) and mathematical morphological profiles (MMP), to differentiate different textures present in slum areas. They employed the minimum redundancy maximum relevance (mRMR) feature selection method before using a support vector machine (SVM) classifier. These studies demonstrate the importance of texture analysis in slum mapping, as it enables the extraction of meaningful information from high-resolution satellite images to distinguish slums from formal urban areas accurately. The methodologies used in these studies, including GLCM, LDP, and morphological profiles, highlight the diversity of approaches available for texture analysis in remote sensing applications."
+      },
+      "confidence": 0.95,
+      "name": "Texture Analysis (GLCM, LDP)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_22f969f37298e776_m4",
+      "evidence": {
+        "section": "II. SLUM MAPPING USING REMOTE SENSING",
+        "original_text": "OBIA considers an image to be a collection of objects and uses attributes such as size, shape, texture, and relationships with neighboring objects to extract meaningful information. OBIA, in slum mapping, segments satellite images into meaningful objects or groups of pixels. These objects are then analyzed based on their spatial, spectral, and textural properties. One of the earliest studies employing OBIA on slums was by [44]. This study used eCognition software [45] to differentiate informal settlements from other land-use types based on their unique attributes in Ikonos images over Cape Town. The eCognition software adheres to the principles of object-oriented programming. Additionally, it has a patented methodology for image segmentation that operates across many scales. However, the approach was complex and tailored to a specific dataset, posing challenges in generalizability. Subsequent studies have built upon [44], employing ontologybased approaches and refining the classification of slums [46]– [48]. [49] presented a thorough slum ontology known as the generic slum ontology (GSO). This ontology organizes concepts into three levels: environment, settlement, and object, providing a framework for classifying slums based on image data. This ontology-based approach has been applied in other studies [50], based on the vegetation, impervious surface, and bare soil (V-I-S) model [51]. The advancements in OBIA have seen the integration of additional indicators and image-based features to improve the accuracy of slum mapping [52]. [53] incorporated indicators such as plant cover, built-up area, iron cover, asphalt cover, and texture, along with NDVI, BAI, iron index, REI, coastal blue index, and texture for classification. [54] used WorldView-3 imagery and a Geographic ObjectBased Image Analysis (GEOBIA) processing chain framework to classify land cover in impoverished urban areas of Nairobi, Kenya, demonstrating the effectiveness of OBIA in capturing land cover characteristics in slum contexts. These studies demonstrate the diverse applications and effectiveness of OBIA in accurately identifying and characterizing informal settlements."
+      },
+      "confidence": 0.95,
+      "name": "Object-Based Image Analysis (OBIA)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_22f969f37298e776_m5",
+      "evidence": {
+        "section": "II. SLUM MAPPING USING REMOTE SENSING",
+        "original_text": "Data mining techniques have become increasingly popular in recent years for identifying slums. These methodologies use various tools to uncover new patterns in large datasets, with machine learning and deep learning being the cornerstone of these strategies. Several studies have applied data mining techniques to slum mapping. [58] developed an approach using symbolic machine learning and association analysis to extract image data from SPOT-5 satellite imagery in South Africa. [59] employed logistic regression (LR), SVM, and RF algorithms to classify urban areas as slums or non-slums using spectral, texture, and structural properties extracted from Google Earth imagery. [60] used WorldView-2 images and auxiliary spatial data to identify deprived regions in Mumbai, employing both RF classifiers and LR models. [61] tested SVM and RF for slum mapping in Bandung, Indonesia, using features extracted from a local slum ontology. [62] used the Bag of Visual Words framework and Speeded-Up Robust Features (SURF) for pixel-level classification of slums in Kalyan and Bangalore, India. [15] employed discriminant analysis, LR, and See5 decision trees to assess the spatial extent and changes of slums in three Kenyan sites. Deep learning techniques have also been explored for slum mapping. [116] used CNNs to identify informal settlements, comparing the CNN model against SVM using GLCM and LBP features. [113] employed deep convolutional networks for detecting small-scale deprivation zones in Bangalore using a U-Net-Compound model for accurate city poverty mapping. [121] examined the relationship between deprivation and image-based traits in different slums using CNN-learned spatial features. In [132], transfer learning was used to train a model on QuickBird images and apply it to Sentinel-2 and TerraSAR-X data for slum mapping. Transfer learning has also been used in [131], [138]. [18] suggests using fully convolutional networks (FCNs) with dilated convolutions to analyze temporal trends in transient slum clusters in Bangalore. In [63], a dilated kernel-based deep CNN (DK-DCNN) technique was used to detect urban slums in Indian cities, using GLCM texture features and WFT-based spectral features for classification."
+      },
+      "confidence": 0.95,
+      "name": "Data Mining Techniques (Machine Learning)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_22f969f37298e776_x1",
+      "evidence": {
+        "section": "IV. META-ANALYSIS",
+        "original_text": "The use of meta-analysis has emerged as a fundamental methodology in numerous academic fields. It allows researchers to combine data and conclusions from several studies to gain broader insights that may not be readily evident from any single study. The word “meta-analysis” was first used in academia to organize and consolidate the examination and amalgamation of numerous studies. [99] defines it as a systematic procedure for reviewing and combining various analyses. Over time, meta-analysis has undergone a process of evolution and refinement. In essence, it is not simply a compilation of several studies but rather a rigorous methodology that integrates findings from comparable studies, as detailed by [100]. The selection and evaluation of pertinent studies are fundamental components in the execution of a meta-analysis. Researchers often use established procedures to select studies uniformly, clearly, and thoroughly. One example of a generally acknowledged standard is the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) [101]. PRISMA, a framework developed to assist researchers in conducting systematic reviews [102] and meta-analyses, places significant emphasis on the importance of clear and comprehensive reporting. The use of the PRISMA protocol is not limited to any discipline. For example, research conducted by [103] and [104] has demonstrated the PRISMA protocol’s applicability in urban geography. Different perspectives can be gained by using meta-analysis in scholarly research. This helps researchers find recurring patterns, come up with stronger conclusions, and propose recommendations based on a wider range of data. In the context of slum mapping using deep learning, meta-analysis is particularly relevant due to the diverse methodologies, varying data sources, and the need for consolidated insights to guide future research and applications. In this information age, the methodology employed to sift through the vast literature is of the utmost significance. The objective of this study is to compile and evaluate studies that use deep learning in the context of mapping slums. This section provides an account of the approach employed for selecting and reviewing the papers. The study used scholarly articles obtained from three widely recognized academic databases, namely Web of Science, Scopus, and Science Direct. These databases are well-known for their extensive compilation of high-quality research articles spanning several academic fields. The publications chosen for this study were limited during the timeframe of 2014–2024. This selection was made to provide a thorough understanding of the latest developments in the field. A precise search query was created to ensure the articles were pertinent to the study’s subject. The search focused on the database record title, abstract, and keywords sections. The search query performed consisted of the terms: “slum” OR “informal settlement” AND “remote sensing” OR “satellite imagery” AND “deep learning” OR “neural networks”. The search was done on April 5, 2024. After performing the search query, the database yielded a cumulative count of 207 publications. However, not all these papers were relevant for our review. Consequently, further filtering procedures were implemented; review articles were excluded. The scope of this study was limited to papers authored exclusively in English. An examination of article duplication was conducted, and redundant articles were removed. Exclusions were made for grey literature, book sections or chapters, reports, and thesis publications. Also, studies that did not pertain directly to using deep learning techniques in examining slums were excluded. Studies without sufficient methodological details or validation processes were also excluded. Only studies that provided full-text access were included. Any articles inaccessible due to a paywall or lack of institutional access were removed from the analysis. Studies on change detection, land use, land cover, health, sanitation facilities, and settlement expansion were omitted. After filtering, 40 publications [105]–[144] were retained and included in the final evaluation, highlighting the growing yet still nascent exploration of this field. This approach ensures that the findings are robust, laying a solid foundation for future inquiries into deep learning applications in mapping slums. The PRISMA flow diagram was used to visually depict the process of paper selection. The breakdown of the items included and excluded from the selection process is provided in Figure 5. Our findings indicate a substantial potential for growth in the application of deep learning to slum mapping. This meta-analysis underscores the diversity in regional studies and data sources and the evolution of deep learning approaches in this domain. These insights can help improve urban planning and policy-making, directing resources more effectively to improve living conditions in slum areas."
+      },
+      "confidence": 0.95,
+      "task": "slum mapping using deep learning",
+      "setup": "meta-analysis of 40 studies from 2014-2024, using remote sensing imagery and deep learning models"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_22f969f37298e776_x2",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Data preparation for deep learning applications in slum detection is a multi-step procedure designed to handle the complexities of urban informal settlements, as seen in satellite imagery. In this section, we present the methods employed in pre-processing, preparation, and augmentation, with a focus on their methodological rationale and contextual significance in slum mapping. Pre-processing plays a crucial role in preparing remote sensing imagery for feature extraction and model training. This involves adjusting image attributes at the pixel or spectral level to better capture the physical characteristics of slum environments. For instance, spectral descriptors [106], [107] are created from high-resolution imagery to capture the unique material signatures within slum environments. GLCM measures delineate the textural characteristics of slums, and structural patterns are retrieved to distinguish land features. Image enhancement and atmospheric correction are used to obtain surface reflectance values needed to train models to accurately interpret real-world conditions [142], [145]. Pan-sharpening methods are applied to MS bands to increase the clarity and detail of the imagery [115], an essential step for resolving the fine-grained spatial structures prevalent in slums. Specialized software tools such as ArcGIS, which facilitates complex spatial analysis, and ENVI, which aids in the processing of geospatial data, are essential for enhancing and refining these images [124], [145]. Data cleaning involves de-skewing images to correct any tilt and cropping to focus on the areas of interest, removing irrelevant information that could confound the learning process [120]. Integrating datasets from diverse sources is a pivotal task as it allows for the consolidation of data, providing models with a comprehensive view of the urban landscape. Furthermore, binary masking delineates areas, while normalization standardizes data values, ensuring dataset consistency and comparability. Data augmentation plays a crucial role in augmenting the diversity and quantity of training data, thereby enhancing the accuracy and generalization capabilities of the model. In the context of slum mapping, where satellite imagery exhibits varied and complex urban textures, augmentation helps models adapt to the different visual characteristics of slums. Several key data augmentation techniques include random cropping and image tiling, which are used to focus on different parts of an image, ensuring the model can recognize slums from partial views. This is particularly useful when working with large areas, allowing the model to focus on detailed segments of the imagery, typically in sizes of 256x256 or 512x512 pixels. Flipping and rotation are also extensively used. Brightness adjustments and noise addition further enhance the feature set, ensuring that the model is robust. These transformations allow the model to learn generalized features that are resilient to changes in orientation, scale, and translation, a critical aspect for slum identification in heterogeneous urban landscapes [108], [122], [142]. Affine transformations, which include minimal shearing and stretching, help the model generalize across different sensor angles and perspectives, mimicking real-world variations. To ensure effective learning, datasets are typically divided into training and testing subsets, often using an 80-20 or 70-30 split. Independent shuffling of the datasets is crucial to avoid biases related to the data, ensuring the model learns to generalize from a representative sample of urban landscapes. Ground truth labels and masks are essential in these studies, as they act as reference data for training and evaluating models. Several studies used manual annotation of satellite images [105], [111], [122], [135]. This method entails the involvement of human experts who identify and demarcate urban villages, slum regions, and areas of deprivation. This process of manual annotation ensures accurate and reliable ground truth labels. Multiple studies integrated a variety of data sources, including remote sensing data, street view images, and social sensing data [107], [124], [129]. The ground truth labels were created by combining these various data types, allowing for more thorough and precise model training. This label-generating process is enriched with expert knowledge as it offers valuable perspectives on distinct characteristics in urban regions, aiding in the creation of reliable labels."
+      },
+      "confidence": 0.95,
+      "task": "data preparation for deep learning slum detection",
+      "setup": "multi-step procedure including pre-processing, cleaning, augmentation, and ground truth generation"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_22f969f37298e776_x3",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "The training process plays a crucial role in implementing deep learning models for slum detection. Here, we outline the approaches used in training, encompassing network designs, frameworks, optimizers, and loss functions, among other factors. The performance of deep learning models in slum detection depends on choosing suitable network topologies based on the datasets described in the previous section. These models must not only accurately represent the complexities of urban landscapes but also be able to adjust to the inherent variability found in slum areas. A diverse range of architectural models has been developed, including semantic segmentation using variations of the U-Net [105], [106], [113], [126], [142]. These models use deep learning techniques to accurately identify and outline the complex and irregular patterns found in slums. Additionally, hybrid models like GASlumNet [106] combine the strengths of well-established networks like ConvNeXt to enhance performance. Another method involves using pre-trained models that leverage the knowledge gained from other large image datasets. This allows for the necessary adjustments to be made in order to accurately map slum areas. The refinement of such models is enhanced through unique architectures and multimodal networks [119], [143], highlighting the intricate nature of slum detection. This is evident in networks that incorporate transformer-based fusion approaches [119], [143], which indicates a move towards using a variety of data sources. These deep learning models are carefully curated to turn raw data into practical insights about network topology. Deep learning for slum identification has used a variety of loss functions and optimization techniques to address the challenges posed by the complexity of urban informality. The Adam optimizer, as shown in Figure 9, has been a popular choice because of its ability to adjust the learning rate based on the significant variability found in slums. This optimizer, typically initialized with learning rates of 0.001, has played a pivotal role in various research, enabling consistent convergence and dependable performance. The commonly used loss function in conjunction with Adam optimization is the weighted cross-entropy (WCE) loss. This loss function addresses class imbalance by allocating varying weights to classes according to their frequency. It is particularly important in slum identification, as the slum areas may only make up a small part of the cityscape yet are of great importance. Simultaneously, the Dice loss function is frequently used to segment slum regions, boosting model sensitivity and specificity by aligning predicted and ground-truth segments. A study also suggests combining Dice loss with WCE to make a hybrid loss function [106] to effectively deal with the intricacies of slum detection. Dice loss, which emphasizes spatial overlap, and WCE, which handles imbalanced datasets, create a comprehensive learning process. The use of Adam and hybrid loss functions is the prevailing trend in deep learning methodologies for slum detection. However, the optimization algorithm and loss functions can be meticulously adjusted to tackle the unique requirements of the task. These methods train deep learning models to not only distinguish between slum and non-slum areas but also to enhance their understanding of the varying levels of informality within the urban landscape. This is crucial for accurate mapping and subsequent interventions. Deep learning frameworks, hyperparameter optimization, and regularisation techniques are crucial for improving the model performance for slum identification. TensorFlow and Keras are the dominant frameworks in this field (see Figure 10). Their user-friendly interface, extensive documentation, and strong community support make them ideal for academic and practical research. PyTorch, TensorFlow, Keras, and Theano are known for their adaptability and comprehensive libraries, enabling various network designs and training methods. PyTorch’s adaptability has been advantageous for developing topologies like U-Net in conjunction with ConvNeXt [106], while Keras and TensorFlow are popular for their user-friendly APIs and simplicity in applying transfer learning [130], [138]. These frameworks enable the creation of various deep learning models with intricate topologies and offer smooth support for computing, which is essential for handling large remote sensing datasets. Hyperparameter optimization is crucial for model performance as it directly impacts the model’s convergence rate and overall performance. Learning rates commonly commence at 10 − 3 or lower, whereas weight decay parameters are typically within the range of 10 − 4 to 10 − 5 to guarantee robust learning without encountering overfitting. Several techniques, such as the Cosine learning rate decay and warm-up procedures [111], are used to optimize the learning process dynamically. This meticulous calibration enables models to successfully navigate the complex features of slums. Regularization techniques are commonly employed to mitigate overfitting, a prevalent issue when training models on high-dimensional data. L2 regularization and Dropout ensure that every neuron contributes to learning by adapting to the model’s structure and training patterns. The use of Xavier and He initialization, as well as BatchNorm and Dropout, are used to make the model better at applying what it has learned from training data to situations it has never seen before in the real world."
+      },
+      "confidence": 0.95,
+      "task": "training deep learning models for slum detection",
+      "setup": "using various network topologies, loss functions (WCE, Dice), optimizers (Adam), frameworks (TensorFlow, Keras)"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_22f969f37298e776_x4",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Deep learning for slum detection involves evaluating models across a range of metrics that capture the characteristics of urban informality. These metrics interlace diverse architectural choices and preprocessing strategies discussed in previous sections to determine model applicability. The common metrics of accuracy, precision, recall, and the F1 score form the cornerstone of model evaluation. The true positive rate (TPR) and false positive rate (FPR) for ROC curve analysis are additions to these, providing insights into the trade-offs between sensitivity and specificity. Meanwhile, the Jaccard Index serves as an indispensable metric, especially pertinent for segmentation tasks, gauging the precision of overlap between the predicted slum areas and ground truth. The overall accuracy (OA) shows how well the model fits the data, while the Intersection over Union (IoU) or Jaccard Index looks at how well the segments overlap, which is important given the slums’ spatial interweaving. Precision and recall, along with the harmonizing F1-score, dissect the models’ ability to assess urban complexity. The Kappa coefficient tempers these measures, adding a layer of statistical robustness to the analysis. In class-wise accuracy, the spotlight shifts to models’ capabilities in differentiating slum typologies. The producer’s and user’s accuracy lend insight into the models’ reliability. The Area Under the Receiver Operating Characteristic (AUROC) shows how well a binary classification works, while the Area Under the Precision-Recall Curve (AUPRC) addresses the class imbalance in urban datasets. Visual inspections add a qualitative dimension to this quantitative array, ensuring that models hold up to statistical scrutiny and the human eye—a crucial check for models for policy and urban planning. The evaluation metrics employed in the reviewed studies reveal a multi-faceted approach to model assessment. OA, IoU, precision (P), recall (R), and F1-score (F1) are among the most commonly used metrics, providing a comprehensive view of model performance across different dimensions. The emphasis on these metrics confirms their importance in validating the reliability of deep learning models in slum mapping. Multiple metrics allow researchers to assess the accuracy, applicability, and fairness of the models across various urban contexts. The precision generally falls within 87% to 95%, demonstrating the models’ capacity to detect urban characteristics. Meanwhile, recall rates typically show significantly lower values, indicating the difficulty of accurately recording all relevant instances. The accuracy of the models reaches high values, typically above 90%, which highlights their overall usefulness. F1-score, Jaccard Index, Kappa (K), and mean intersection over union (mIoU) frequently surpass 0.8, reflecting a robust balance between precision and recall. This comprehensive evaluation suggests that deep learning and remote sensing data yield reliable results in slum mapping for urban planning and development."
+      },
+      "confidence": 0.95,
+      "task": "performance evaluation of slum detection models",
+      "setup": "using metrics like accuracy, precision, recall, F1-score, IoU, AUROC, AUPRC"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_22f969f37298e776_qr1",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "The evaluation metrics employed in the reviewed studies reveal a multi-faceted approach to model assessment. OA, IoU, precision (P), recall (R), and F1-score (F1) are among the most commonly used metrics, providing a comprehensive view of model performance across different dimensions. The emphasis on these metrics confirms their importance in validating the reliability of deep learning models in slum mapping. Multiple metrics allow researchers to assess the accuracy, applicability, and fairness of the models across various urban contexts. The precision generally falls within 87% to 95%, demonstrating the models’ capacity to detect urban characteristics. Meanwhile, recall rates typically show significantly lower values, indicating the difficulty of accurately recording all relevant instances. The accuracy of the models reaches high values, typically above 90%, which highlights their overall usefulness. F1-score, Jaccard Index, Kappa (K), and mean intersection over union (mIoU) frequently surpass 0.8, reflecting a robust balance between precision and recall. This comprehensive evaluation suggests that deep learning and remote sensing data yield reliable results in slum mapping for urban planning and development."
+      },
+      "confidence": 0.95,
+      "quantity": "overall accuracy",
+      "value": 90,
+      "unit": "%",
+      "context": "deep learning models for slum mapping across various urban contexts",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_22f969f37298e776_p1",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "The evaluation metrics employed in the reviewed studies reveal a multi-faceted approach to model assessment. OA, IoU, precision (P), recall (R), and F1-score (F1) are among the most commonly used metrics, providing a comprehensive view of model performance across different dimensions. The emphasis on these metrics confirms their importance in validating the reliability of deep learning models in slum mapping. Multiple metrics allow researchers to assess the accuracy, applicability, and fairness of the models across various urban contexts. The precision generally falls within 87% to 95%, demonstrating the models’ capacity to detect urban characteristics. Meanwhile, recall rates typically show significantly lower values, indicating the difficulty of accurately recording all relevant instances. The accuracy of the models reaches high values, typically above 90%, which highlights their overall usefulness. F1-score, Jaccard Index, Kappa (K), and mean intersection over union (mIoU) frequently surpass 0.8, reflecting a robust balance between precision and recall. This comprehensive evaluation suggests that deep learning and remote sensing data yield reliable results in slum mapping for urban planning and development."
+      },
+      "confidence": 0.95,
+      "metric": "precision",
+      "compared_to": "recall"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_22f969f37298e776_qr2",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "The evaluation metrics employed in the reviewed studies reveal a multi-faceted approach to model assessment. OA, IoU, precision (P), recall (R), and F1-score (F1) are among the most commonly used metrics, providing a comprehensive view of model performance across different dimensions. The emphasis on these metrics confirms their importance in validating the reliability of deep learning models in slum mapping. Multiple metrics allow researchers to assess the accuracy, applicability, and fairness of the models across various urban contexts. The precision generally falls within 87% to 95%, demonstrating the models’ capacity to detect urban characteristics. Meanwhile, recall rates typically show significantly lower values, indicating the difficulty of accurately recording all relevant instances. The accuracy of the models reaches high values, typically above 90%, which highlights their overall usefulness. F1-score, Jaccard Index, Kappa (K), and mean intersection over union (mIoU) frequently surpass 0.8, reflecting a robust balance between precision and recall. This comprehensive evaluation suggests that deep learning and remote sensing data yield reliable results in slum mapping for urban planning and development."
+      },
+      "confidence": 0.95,
+      "quantity": "F1-score",
+      "value": 0.8,
+      "unit": "",
+      "context": "deep learning models for slum mapping across various urban contexts",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_22f969f37298e776_p2",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Deep learning for slum identification has used a variety of loss functions and optimization techniques to address the challenges posed by the complexity of urban informality. The Adam optimizer, as shown in Figure 9, has been a popular choice because of its ability to adjust the learning rate based on the significant variability found in slums. This optimizer, typically initialized with learning rates of 0.001, has played a pivotal role in various research, enabling consistent convergence and dependable performance. The commonly used loss function in conjunction with Adam optimization is the weighted cross-entropy (WCE) loss. This loss function addresses class imbalance by allocating varying weights to classes according to their frequency. It is particularly important in slum identification, as the slum areas may only make up a small part of the cityscape yet are of great importance. Simultaneously, the Dice loss function is frequently used to segment slum regions, boosting model sensitivity and specificity by aligning predicted and groundtruth segments. A study also suggests combining Dice loss with WCE to make a hybrid loss function [106] to effectively deal with the intricacies of slum detection. Dice loss, which emphasizes spatial overlap, and WCE, which handles imbalanced datasets, create a comprehensive learning process. The use of Adam and hybrid loss functions is the prevailing trend in deep learning methodologies for slum detection. However, the optimization algorithm and loss functions can be meticulously adjusted to tackle the unique requirements of the task. These methods train deep learning models to not only distinguish between slum and non-slum areas but also to enhance their understanding of the varying levels of informality within the urban landscape. This is crucial for accurate mapping and subsequent interventions."
+      },
+      "confidence": 0.9,
+      "metric": "optimizer preference",
+      "compared_to": "SGD & SGD with momentum, Others"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_22f969f37298e776_p3",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Deep learning frameworks, hyperparameter optimization, and regularisation techniques are crucial for improving the model performance for slum identification. TensorFlow and Keras are the dominant frameworks in this field (see Figure 10). Their user-friendly interface, extensive documentation, and strong community support make them ideal for academic and practical research. PyTorch, TensorFlow, Keras, and Theano are known for their adaptability and comprehensive libraries, enabling various network designs and training methods. PyTorch’s adaptability has been advantageous for developing topologies like U-Net in conjunction with ConvNeXt [106], while Keras and TensorFlow are popular for their user-friendly APIs and simplicity in applying transfer learning [130], [138]. These frameworks enable the creation of various deep learning models with intricate topologies and offer smooth support for computing, which is essential for handling large remote sensing datasets."
+      },
+      "confidence": 0.9,
+      "metric": "deep learning framework preference",
+      "compared_to": "Keras, PyTorch, Others"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_22f969f37298e776_qr3",
+      "evidence": {
+        "section": "V. ANALYZING THE POINTS OF FOCUS",
+        "original_text": "Deep learning for slum identification has used a variety of loss functions and optimization techniques to address the challenges posed by the complexity of urban informality. The Adam optimizer, as shown in Figure 9, has been a popular choice because of its ability to adjust the learning rate based on the significant variability found in slums. This optimizer, typically initialized with learning rates of 0.001, has played a pivotal role in various research, enabling consistent convergence and dependable performance. The commonly used loss function in conjunction with Adam optimization is the weighted cross-entropy (WCE) loss. This loss function addresses class imbalance by allocating varying weights to classes according to their frequency. It is particularly important in slum identification, as the slum areas may only make up a small part of the cityscape yet are of great importance. Simultaneously, the Dice loss function is frequently used to segment slum regions, boosting model sensitivity and specificity by aligning predicted and groundtruth segments. A study also suggests combining Dice loss with WCE to make a hybrid loss function [106] to effectively deal with the intricacies of slum detection. Dice loss, which emphasizes spatial overlap, and WCE, which handles imbalanced datasets, create a comprehensive learning process. The use of Adam and hybrid loss functions is the prevailing trend in deep learning methodologies for slum detection. However, the optimization algorithm and loss functions can be meticulously adjusted to tackle the unique requirements of the task. These methods train deep learning models to not only distinguish between slum and non-slum areas but also to enhance their understanding of the varying levels of informality within the urban landscape. This is crucial for accurate mapping and subsequent interventions."
+      },
+      "confidence": 0.9,
+      "quantity": "learning rate",
+      "value": 0.001,
+      "unit": "",
+      "context": "Adam optimizer initialization for deep learning models in slum identification",
+      "result_type": "measurement"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_22f969f37298e776_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This article offers a detailed review and meta-analysis of research on slum mapping using remote sensing imagery (2014–2024), with a special focus on deep learning approaches. Our analysis reveals a trend towards increasingly complex neural network architectures, with advancements in data preprocessing and model training techniques significantly enhancing slum identification accuracy. We have attempted to identify key methodologies that are effective across diverse geographic contexts. While acknowledging the transformative impact of Neural Networks, especially Convolutional Neural Networks (CNNs), in slum detection, our review underscores the absence of a universally optimal model, suggesting the need for contextspecific adaptations."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_22f969f37298e776_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "The rapid progress of deep learning has resulted in significant breakthroughs in the domain of slum mapping using remote sensing data. This study consolidates findings from 40 studies between 2014 and 2024, picked from a database of scholarly contributions. The cumulative results of these studies provide a comprehensive portrayal of the transformative impact of deep learning methods on our capacity to identify, examine, and comprehend slums. The dynamic nature of CNN evolution is shown to have important consequences for slum mapping. Considering the intricate and dynamic characteristics of urban slums, it is imperative for researchers and urban planners to stay updated about the current deep-learning approaches. Nevertheless, there is a growing consensus among the community that, rather than continuously developing new architectural designs, there is considerable value in enhancing and optimizing current models to address the obstacles associated with slum mapping. The study continues by expressing an optimistic perspective, stating that CNNs are poised to play a leading role in the future of slum mapping. This advancement is expected to enable more urban insights, building upon the current successes in this field. Within the realm of slum mapping, data serves as a representation of the complex socio-spatial structure, and the core elements for achieving success in deep learning involve ensuring the granularity, quality, and representativeness of the data. The implementation of a data-centric approach has the potential to effectively address the disparity between advanced models and the practical challenges faced in slum areas. The advancements in deep learning for slum mapping have direct implications for urban development strategies. Accurate mapping can inform infrastructure development, resource allocation, and service delivery in informal settlements. Policymakers can utilize these models to monitor urban growth, plan sustainable development projects, and prioritize interventions in the neediest areas. This meta-analysis also suggests areas where further research could be beneficial, such as developing models that are better tailored to local conditions or that can integrate data from a variety of sources. Policymakers can use these findings to guide research funding towards these areas, ensuring that future developments continue to improve the quality and utility of slum maps."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_22f969f37298e776_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "One of the fundamental challenges in the application of remote sensing for slum detection and mapping lies in the conceptual ambiguity surrounding the definition of slums. There is a wide diversity in their appearance, both locally and globally. This leads to differences in assessments of a slum’s boundaries. Such ambiguities make it difficult to train and validate algorithms, impacting their geographic, contextual, and temporal transferability. Moreover, a gap often exists between the remote sensing community and users in understanding the data requirements for different user groups and the capabilities and limitations of remote sensing. This disconnect hinders the production of maps suitable for diverse user groups, including local and global policymakers. The limitations of remote sensing in slum detection and mapping become more pronounced when considering the difficulties in accessing basic amenities like sanitation and water. Remote sensing provides a valuable perspective on the physical layout and extent of slums but lacks the capability to directly assess the availability and quality of essential services such as clean water and sanitation facilities. This limitation is significant, as these aspects are crucial for understanding the living conditions within slums. Remote sensing data predominantly captures topographical and physical features visible from space, but detailed information about the internal conditions of buildings, the quality of water sources, and the presence of sanitation facilities require ground-based assessments or other data sources. This gap means that while satellite imagery can identify areas likely to be slums based on physical characteristics, it cannot provide comprehensive insight into the quality of life or the health risks associated with inadequate access to clean water and proper sanitation. The lack of high-resolution data in some regions exacerbates this challenge. Even where high-resolution imagery is available, distinguishing between different types of small-scale infrastructure, like water taps or toilets, is incredibly challenging."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_22f969f37298e776_fw1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "Future research should focus on developing techniques for generating synthetic datasets that can accurately reflect the complex nature of slums. Additionally, integrating newer architectures and hybrid models could improve accuracy and adaptability in diverse urban contexts as deep learning evolves. There’s also a need for studies focusing on technological advancement and considering the socio-economic implications, ensuring that these technologies are used responsibly and ethically. A combination of remote sensing data with other data sources, such as ground surveys, census data, and participatory mapping with local communities, is essential to address these issues. This multi-source approach enhances the accuracy of slum mapping and provides a more holistic view of the living conditions within these communities. By overcoming these challenges, remote sensing can significantly contribute to the understanding and improvement of living conditions in slums, aiding global and local efforts in urban planning and policy-making."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

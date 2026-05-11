@@ -1,0 +1,505 @@
+{
+  "metadata": {
+    "doc_id": "doc_265b0f72c950b013",
+    "source_file": "06_Introduction_to_single_antenna_radio_astronomical_polarimetry.md",
+    "title": "Introduction to Single-Antenna Polarimetry",
+    "year": 2024,
+    "doi": null,
+    "abstract": "This tutorial reviews the mathematical foundations of single-antenna radio polarimetry with the aim of fostering a conceptual understanding of the relationships between a physical description of signal propagation (gain, delay, reflection, down-conversion, etc.), the corresponding transformations of the electric field vector, and the equivalent operations on the Stokes parameters. The adopted framework is based on the work of Britton (2000) and Hamaker (2000) and applied to analyze the signal path described by Hamaker et al. (1996) with additional corrections for phase convention and reflection. Some objective criteria for selecting a model of the instrumental response are introduced and discussed, along with some practical guidelines that facilitate polarimetric calibration. Further relevant background material and lengthier mathematical proofs are included in the appendix, which introduces the vector, matrix, and tensor notation and concepts of linear algebra used in this work. The appendix also reviews some of the basics of analog and digital signal processing that are relevant to radio astronomy, and discusses some numerical instabilities that arise when modeling observations.",
+    "introduction": "The polarization of electromagnetic radiation reveals otherwise unattainable details about a wide variety of astrophysical phenomena, from high-energy cosmic ray air showers (Aab et al. 2014; Schellart et al. 2014) to solar coronal mass ejections (Kansabanik et al. 2024) and the relativistic precession of neutron stars (Desvignes et al. 2019). On larger scales, radio polarization has been used to study the plasma in the vicinity of a supermassive black hole (Event Horizon Telescope Collaboration et al. 2021), and the energy density of gravitational waves generated during inflation (Polnarev 1985; Planck Collaboration et al. 2020). \n\nAs a signal from an astrophysical source propagates to its point of reception, its state of polarization is altered, which can be used to study the physical properties of the media through which the signal has traveled. For example, observations of the polarized emission from radio pulsars are used to study the Earth’s ionosphere (Porayko et al. 2023) and map the large-scale structure of the Galactic magnetic field (Beck et al. 1996; Han et al. 2018). By revealing the strength and orientation of magnetic fields, polarization observations are fundamental to understanding their role in star formation, galaxy evolution, and high-energy phenomena. \n\nMeasuring polarization requires purpose-built instrumentation known as a _polarimeter_ , and the experimental activities related to measuring polarization are known as _polarimetry_ . A polarimeter typically distorts the polarization state of the signal in a manner that is unintended and cannot be deduced from theory. This unknown component of the instrumental response to an electromagnetic signal must be determined experimentally and calibrated before the polarization intrinsic to the astrophysical source can be interpreted. \n\nMethods of polarimetric calibration are based on a mathematical model that describes the propagation of a polarized signal along the path between the source and the point of detection. Accordingly, the primary aim of this paper is to foster a conceptual understanding of the mathematical foundations of polarimetry. The insights gained through this approach facilitate the development of practical guidelines for use when designing an experiment or analyzing observations. \n\nThis review focuses on polarimetric observations of point sources made using a single antenna, such as a single dish or a phased array formed by the phase-coherent addition of signals from multiple elements of an interferometric array. For a comprehensive introduction to both the theory and practice of radio polarimetry using interferometric arrays, including rigorous treatment of arbitrary brightness distributions and direction-dependent \n\nIntroduction to Single-Antenna Polarimetry \n\n3 \n\neffects, the pioneering series by Smirnov (2011a,b,c,d) and the lessons learned by Lenc et al. (2017) are highly recommended reading. The formalism employed by Smirnov and the framework presented in this tutorial are both heavily influenced by Hamaker (2000). \n\nBefore embarking on this approach, Section 2 of this paper reviews the geometric description of polarization introduced by Stokes (1852), beginning with an ideal, monochromatic source of electromagnetic radiation. In Section 3, the Stokes parameters are related to the second-order statistics of the electric field as represented by the coherency matrix. This connection is further explored in Section 4, where linear transformations of the electric field are related to Euclidean rotations and Lorentz boosts of the Stokes parameters. In Section 5, these transformations are applied to a decomposition of the signal path that extends the Hamaker et al. (1996) model to include the effects of reflection and downconversion. Inverting such transformations to recover the original polarization state is discussed in Section 6, which includes a first-order calibration solution based on the ideal feed assumptions. Section 7 introduces some criteria for selecting a more complete model of the instrumental response, and Section 8 concludes with some pointers to further reading. \n\nThroughout this article, mathematical expressions are greatly simplified by using complex-valued tensors, such as vectors and matrices, and the various operations that are performed on them. These are described in the appendix with an introduction to the fundamentals of multivariate linear algebra. The appendix also reviews the basics of signal processing, such as the analytic signal and down-conversion. It concludes with some discussion of numerical stability when modeling polarization observations.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "Polarimetry",
+      "Radio Astronomy",
+      "Stokes Parameters",
+      "Signal Processing",
+      "Calibration"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:08:43.306792+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This tutorial reviews the mathematical foundations of single-antenna radio polarimetry with the aim of fostering a conceptual understanding of the relationships between a physical description of signal propagation (gain, delay, reflection, down-conversion, etc.), the corresponding transformations of the electric field vector, and the equivalent operations on the Stokes parameters. The adopted framework is based on the work of Britton (2000) and Hamaker (2000) and applied to analyze the signal path described by Hamaker et al. (1996) with additional corrections for phase convention and reflection. Some objective criteria for selecting a model of the instrumental response are introduced and discussed, along with some practical guidelines that facilitate polarimetric calibration. Further relevant background material and lengthier mathematical proofs are included in the appendix, which introduces the vector, matrix, and tensor notation and concepts of linear algebra used in this work. The appendix also reviews some of the basics of analog and digital signal processing that are relevant to radio astronomy, and discusses some numerical instabilities that arise when modeling observations."
+      },
+      "confidence": 0.98,
+      "term": "polarimetry",
+      "normalized": "偏振测量",
+      "std_label": "Polarimetry"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This tutorial reviews the mathematical foundations of single-antenna radio polarimetry with the aim of fostering a conceptual understanding of the relationships between a physical description of signal propagation (gain, delay, reflection, down-conversion, etc.), the corresponding transformations of the electric field vector, and the equivalent operations on the Stokes parameters. The adopted framework is based on the work of Britton (2000) and Hamaker (2000) and applied to analyze the signal path described by Hamaker et al. (1996) with additional corrections for phase convention and reflection. Some objective criteria for selecting a model of the instrumental response are introduced and discussed, along with some practical guidelines that facilitate polarimetric calibration. Further relevant background material and lengthier mathematical proofs are included in the appendix, which introduces the vector, matrix, and tensor notation and concepts of linear algebra used in this work. The appendix also reviews some of the basics of analog and digital signal processing that are relevant to radio astronomy, and discusses some numerical instabilities that arise when modeling observations."
+      },
+      "confidence": 0.98,
+      "term": "Stokes parameters",
+      "normalized": "斯托克斯参数",
+      "std_label": "Stokes parameters"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c3",
+      "evidence": {
+        "section": "4.1. Jones Matrices",
+        "original_text": "In the narrow-band (or quasi-monochromatic) approximation of an electromagnetic wave (see Appendix A.2), the response of a single receptor is defined by a complex-valued row vector, _**r**_ = ( _r_ 0 _, r_ 1), such that the voltage induced in the receptor by the incident electric field _**e**_ ( _t_ ) is given by the scalar product, _v_ ( _t_ ) = _**r** ·_ _**e**_ ( _t_ ). The intensity of the response, _I_ = _⟨v_[2] ( _t_ ) _⟩_ , is maximum when the polarization of the incident wave matches that of the receptor, and reduces to zero when the incident wave is orthogonally polarized. The response of a dual-receptor feed is represented by a 2 _×_ 2 complex-valued Jones matrix with rows equal to the receptor vectors, such that any linear transformation of the electric field vector may be represented by _**e**[′]_ ( _t_ ) = **J** _**e**_ ( _t_ ). As discussed in more detail in Section 4.5, the congruence transformation is a special case of the more general radio interferometer measurement equation for a single point source (Hamaker 2000; Smirnov 2011a). For a single antenna, the coherency matrix is insensitive to the absolute phase of **J** . The receptors in an ideal feed are orthogonal, such the scalar product _**r**_ 0 _·_ _**r**[†]_ 1[= 0.] The response of a system that is composed of a series of elements is represented as a product of Jones matrices. Matrix multiplication is not commutative, and in general the order in which operations are performed must correctly reflect the order in which the elements in the signal path are encountered."
+      },
+      "confidence": 0.95,
+      "term": "Jones matrix",
+      "normalized": "琼斯矩阵",
+      "std_label": "Jones matrix"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c4",
+      "evidence": {
+        "section": "4.3. Mueller Matrices",
+        "original_text": "Using Equations (14) and (16), a congruence transformation of the coherency matrix can be expressed as an equivalent linear transformation of the associated Stokes parameters by a real-valued 4 _×_ 4 Mueller matrix **M** , as defined by _**S**[′]_ = **M** _**S**_ where _**S**[′]_ and _**S**_ are column vectors of Stokes parameters. Although there is a unique Mueller matrix for every Jones matrix, the converse is not true. This is most directly understood by noting that a 4 _×_ 4 real-valued matrix has 16 degrees of freedom (dof), and a 2 _×_ 2 complex-valued matrix has only 8 dof. Mueller matrices that do not have an equivalent Jones matrix are known as “impure” or “depolarizing” (e.g., Hamaker et al. 1996; Lu & Chipman 1996, and Appendix C.7). The definition of a pure Mueller matrix is derived in Appendix C.6. The signal path described by van Straten et al. (2010) extends the Hamaker et al. (1996) model with an impure correction for the complex phase convention, which is described in more detail in Section 5.1. Therefore, the van Straten et al. (2010) calibration model is best summarized using the equivalent transformation of the Stokes parameters by a Mueller matrix **M** , _**S**[′]_ = **Φ** **G** **D** **C** **P** **F** _**S**_ . From right to left, _**S**_ is the column vector with elements equal to the 4 Stokes parameters intrinsic to the astronomical source; **F** through **G** are the Mueller matrices derived from the Jones matrices defined in Equation (36) and discussed in Section 5; **Φ** is the phase convention correction (see Section 5.1); and _**S** ′_ is the column vector of observed Stokes parameters."
+      },
+      "confidence": 0.95,
+      "term": "Mueller matrix",
+      "normalized": "穆勒矩阵",
+      "std_label": "Mueller matrix"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This tutorial reviews the mathematical foundations of single-antenna radio polarimetry with the aim of fostering a conceptual understanding of the relationships between a physical description of signal propagation (gain, delay, reflection, down-conversion, etc.), the corresponding transformations of the electric field vector, and the equivalent operations on the Stokes parameters. The adopted framework is based on the work of Britton (2000) and Hamaker (2000) and applied to analyze the signal path described by Hamaker et al. (1996) with additional corrections for phase convention and reflection. Some objective criteria for selecting a model of the instrumental response are introduced and discussed, along with some practical guidelines that facilitate polarimetric calibration. Further relevant background material and lengthier mathematical proofs are included in the appendix, which introduces the vector, matrix, and tensor notation and concepts of linear algebra used in this work. The appendix also reviews some of the basics of analog and digital signal processing that are relevant to radio astronomy, and discusses some numerical instabilities that arise when modeling observations."
+      },
+      "confidence": 0.96,
+      "term": "polarimetric calibration",
+      "normalized": "偏振校准",
+      "std_label": "Polarimetric calibration"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c6",
+      "evidence": {
+        "section": "5.6. Faraday Rotation",
+        "original_text": "During propagation through the interstellar medium or the Earth’s ionosphere, an astrophysical signal experiences Faraday rotation. This phenomenon, also known as circular birefringence, arises because the natural modes of propagation in a magnetized (non-relativsitic and collisionless) plasma are circularly polarized, such that LCP and RCP components of the electric field propagate with different speeds. At a given frequency, the resulting differential delay between LCP and RCP components causes the electric field to rotate about the line of sight. For example, if the signal propagates in the direction of the magnetic field vector, then LCP is delayed with respect to RCP (Manchester 1972; Ferri`ere et al. 2021); the resulting transformation is equivalent to rotating the electric field by ∆Ψ around the line of sight (counter-clockwise as seen by the observer). The change in the position angle of the radiation, ∆Ψ = RM _c_[2] _ν[−]_[2] , where RM is the rotation measure, _c_ is the speed of light, and _ν_ is the frequency of the radiation. Note that birefringence is dispersive and the phase shift / rotation is proportional to _ν[−]_[2] ; this differs from the differential phase due to a path length difference, which is proportional to _ν_ . The RM is proportional to the path integral of the density of free electrons, _ne_ , times the strength of the magnetic field, _**B**_ , parallel to the direction of propagation _d_ _**z**_ (e.g., Han et al. 2006) RM = ( _e_[3] _/_ 2 _πm_[2] _e c_[4] ) ∫ _D_ 0 _ne_ _**B** · d_ _**z**_ , where _D_ is the distance to the astrophysical source and _e_ and _me_ are the charge and mass of the electron."
+      },
+      "confidence": 0.97,
+      "term": "Faraday rotation",
+      "normalized": "法拉第旋转",
+      "std_label": "Faraday rotation"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c7",
+      "evidence": {
+        "section": "3.6. Coherency Matrix",
+        "original_text": "The polarization state of electromagnetic radiation can also be described by the second-order statistics of _**e**_ ( _t_ ), as represented by the complex-valued 2 _×_ 2 coherency matrix (Born & Wolf 1980) _**ρ**_ = _⟨_ _**e**_ ( _t_ ) _⊗_ _**e**[†]_ ( _t_ ) _⟩_ = _⟨_ _**e**_ ( _t_ ) _**e**[†]_ ( _t_ ) _⟩_ . Here, the angular brackets denote an average over time, _⊗_ is the tensor product (Eqn. B11), and _**e**[†]_ ( _t_ ) is the Hermitian transpose of _**e**_ ( _t_ ) (Eqn. B3). For brevity, explicit dependence on time has been dropped in the rightmost expression. Note that each component of _**e**_ ( _t_ ) is multiplied by the complex conjugate of either itself or the other component, a process known as _square law detection_ . Consequently, as for the Stokes parameters, the components of the coherency matrix are independent of the absolute phase of _**e**_ ( _t_ ). The coherency matrix is self-adjoint, or Hermitian (i.e., _**ρ**_ = _**ρ**[†]_ ), and can be written as a linear combination of four Hermitian basis matrices (e.g., Fano 1957), _**ρ**_ = _Sµ_ _**σ**_ _µ_ , where _Sµ_ are the four real-valued Stokes parameters and the basis matrices consist of the 2 _×_ 2 identity matrix and the Pauli matrices, _**σ**_ 0 = ( 1 0 0 1 ) , _**σ**_ 1 = ( 1 0 0 _−_ 1 ) , _**σ**_ 2 = ( 0 1 1 0 ) , _**σ**_ 3 = ( 0 _−i_ _i_ 0 ) . For brevity in the remainder of this paper, the summation symbol is omitted from equations and Einstein notation is used to imply a sum over repeated indeces. (See Appendix B for more detail.) Conversely, the Stokes parameters can be represented as projections of the coherency matrix onto the basis matrices using the tensor double contraction (Eqn. B13), _Sµ_ = _**σ**_ _µ_ _·_ _**ρ**_ ."
+      },
+      "confidence": 0.95,
+      "term": "coherency matrix",
+      "normalized": "相干矩阵",
+      "std_label": "Coherency matrix"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c8",
+      "evidence": {
+        "section": "3.3. Poincar´e Sphere",
+        "original_text": "When only the polarization state is of interest, the polarization vector can be normalized by the total intensity, yielding _**S**_ **[´]** = _**S** /S_ 0, such that _|_ _**S**_ **[´]** _|_ = _p_ . When _**S**_ **[´]** is plotted as in Figure 2, every possible polarization state corresponds to a point on or inside a sphere of unity-radius known as the Poincar´e sphere. In this geometric representation, purely polarized states lie on the surface of the sphere, and the unpolarized state is at its center (the origin). Partially polarized states are represented by points within the sphere, and their distance from the center is directly proportional to their degree of polarization."
+      },
+      "confidence": 0.94,
+      "term": "Poincaré sphere",
+      "normalized": "庞加莱球",
+      "std_label": "Poincaré sphere"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c9",
+      "evidence": {
+        "section": "2. MONOCHROMATIC LIGHT",
+        "original_text": "On each cycle of the wave, the electric field vector traces an ellipse in the _x_ – _y_ plane, as shown in Figure 1. This figure depicts two angles that describe the geometry of this ellipse: the position angle _ψ_ and the ellipticity angle _χ_ . Stokes (1852) first demonstrated the utility of expressing the components of the electric field vector in terms of these angles, starting with an intermediate reference frame that is rotated about the _z_ -axis by the position angle _ψ_ , such that _ϵ[′] x_[=][ϵ] _x_[cos][ψ][+][ϵ] _y_[sin][ψ][and][ϵ] _[′]_ _y_[=][−ϵ] _x_[sin][ψ][+][ϵ] _y_[cos][ψ][.] In this reference frame, which is depicted with dashed lines and open arrow heads in Figure 1, the electric field is expressed as in equation (2) of Stokes (1852) _ϵ[′] x_[=][r][cos][χ][cos][(][ν][t][+][ϕ][)][and][ϵ] _[′]_ _y_[=][r][sin][χ][sin][(][ν][t][+][ϕ][)][,] where _r_ defines the size of the ellipse and _ϕ_ defines the position of the electric field vector at _t_ = 0. When _χ_ = 0, _ϵ[′] y_[= 0][and][the][electric][field][vector][oscil-] lates along a line defined by the _x[′]_ axis, which is oriented with respect to the _x_ axis by _ψ_ . When _χ >_ 0, the electric field travels in a clockwise direction about the ellipse, as seen by an observer looking toward the source, which is defined as a left-hand polarized wave (IEEE 1983). When _χ <_ 0, the counter-clockwise traverse of the electric field vector is defined as right-hand polarization. In the special cases of _χ_ = _±π/_ 4, the amplitudes of _ϵ[′] x_[and] _ϵ[′] y_[are equal and the electric field traces a circle in the] _[ x]_[–] _y_ plane. In general, polarization state depends on both the amplitudes of the electric field components and the relative phase between them."
+      },
+      "confidence": 0.96,
+      "term": "polarization ellipse",
+      "normalized": "偏振椭圆",
+      "std_label": "Polarization ellipse"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_265b0f72c950b013_c10",
+      "evidence": {
+        "section": "3.2. Degree of Polarization",
+        "original_text": "The degree of polarization _p_ = _|_ _**S** |/S_ 0 is a measure of the fraction of the total intensity that is polarized. When _p_ = 0, the light is unpolarized, also defined as _common_ light (Stokes 1852); when _p_ = 1, the light is 100% polarized, or _purely_ polarized; for partial polarization, 0 _< p <_ 1. As shown by Equation (C17) and the discussion that follows it, unpolarized or partially polarized radiation is equivalent to an incoherent superposition of two orthogonal purely polarized states. An unpolarized state can be decomposed into any pair of orthogonal purely polarized states of equal amplitude (Stokes 1852). In contrast, a 100% polarized wave can be described using a single Jones vector, _**e**_ 0, such that _**e**_ ( _t_ ) = _**e**_ 0 _z_ ( _t_ ), where _z_ ( _t_ ) is a complex-valued function that describes stochastic fluctuations of amplitude and phase. It has a mean of zero and variance of unity; that is, _⟨|z_ ( _t_ ) _|_[2] _⟩_ = 1, where angular brackets denote an average over time. Referring to Equations (5) and (6), monochromatic light is a special case of Equation (12) in which _z_ ( _t_ ) is a pure tone with constant frequency; therefore, strictly monochromatic light is 100% polarized."
+      },
+      "confidence": 0.95,
+      "term": "degree of polarization",
+      "normalized": "偏振度",
+      "std_label": "Degree of polarization"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_265b0f72c950b013_r2",
+      "evidence": {
+        "section": "4.3. Mueller Matrices",
+        "original_text": "Using Equations (14) and (16), a congruence transformation of the coherency matrix can be expressed as an equivalent linear transformation of the associated Stokes parameters by a real-valued 4 _×_ 4 Mueller matrix **M** , as defined by _**S**[′]_ = **M** _**S**_ where _**S**[′]_ and _**S**_ are column vectors of Stokes parameters. Although there is a unique Mueller matrix for every Jones matrix, the converse is not true. This is most directly understood by noting that a 4 _×_ 4 real-valued matrix has 16 degrees of freedom (dof), and a 2 _×_ 2 complex-valued matrix has only 8 dof. Mueller matrices that do not have an equivalent Jones matrix are known as “impure” or “depolarizing” (e.g., Hamaker et al. 1996; Lu & Chipman 1996, and Appendix C.7). The definition of a pure Mueller matrix is derived in Appendix C.6. The signal path described by van Straten et al. (2010) extends the Hamaker et al. (1996) model with an impure correction for the complex phase convention, which is described in more detail in Section 5.1. Therefore, the van Straten et al. (2010) calibration model is best summarized using the equivalent transformation of the Stokes parameters by a Mueller matrix **M** , _**S**[′]_ = **Φ** **G** **D** **C** **P** **F** _**S**_ . From right to left, _**S**_ is the column vector with elements equal to the 4 Stokes parameters intrinsic to the astronomical source; **F** through **G** are the Mueller matrices derived from the Jones matrices defined in Equation (36) and discussed in Section 5; **Φ** is the phase convention correction (see Section 5.1); and _**S** ′_ is the column vector of observed Stokes parameters."
+      },
+      "confidence": 0.93,
+      "head": "doc_265b0f72c950b013_c4",
+      "relation_type": "derives_from",
+      "relation_surface": "derived from",
+      "tail": "doc_265b0f72c950b013_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_265b0f72c950b013_r4",
+      "evidence": {
+        "section": "3.6. Coherency Matrix",
+        "original_text": "The polarization state of electromagnetic radiation can also be described by the second-order statistics of _**e**_ ( _t_ ), as represented by the complex-valued 2 _×_ 2 coherency matrix (Born & Wolf 1980) _**ρ**_ = _⟨_ _**e**_ ( _t_ ) _⊗_ _**e**[†]_ ( _t_ ) _⟩_ = _⟨_ _**e**_ ( _t_ ) _**e**[†]_ ( _t_ ) _⟩_ . Here, the angular brackets denote an average over time, _⊗_ is the tensor product (Eqn. B11), and _**e**[†]_ ( _t_ ) is the Hermitian transpose of _**e**_ ( _t_ ) (Eqn. B3). For brevity, explicit dependence on time has been dropped in the rightmost expression. Note that each component of _**e**_ ( _t_ ) is multiplied by the complex conjugate of either itself or the other component, a process known as _square law detection_ . Consequently, as for the Stokes parameters, the components of the coherency matrix are independent of the absolute phase of _**e**_ ( _t_ ). The coherency matrix is self-adjoint, or Hermitian (i.e., _**ρ**_ = _**ρ**[†]_ ), and can be written as a linear combination of four Hermitian basis matrices (e.g., Fano 1957), _**ρ**_ = _Sµ_ _**σ**_ _µ_ , where _Sµ_ are the four real-valued Stokes parameters and the basis matrices consist of the 2 _×_ 2 identity matrix and the Pauli matrices, _**σ**_ 0 = ( 1 0 0 1 ) , _**σ**_ 1 = ( 1 0 0 _−_ 1 ) , _**σ**_ 2 = ( 0 1 1 0 ) , _**σ**_ 3 = ( 0 _−i_ _i_ 0 ) . For brevity in the remainder of this paper, the summation symbol is omitted from equations and Einstein notation is used to imply a sum over repeated indeces. (See Appendix B for more detail.) Conversely, the Stokes parameters can be represented as projections of the coherency matrix onto the basis matrices using the tensor double contraction (Eqn. B13), _Sµ_ = _**σ**_ _µ_ _·_ _**ρ**_ ."
+      },
+      "confidence": 0.94,
+      "head": "doc_265b0f72c950b013_c2",
+      "relation_type": "derives_from",
+      "relation_surface": "derived from",
+      "tail": "doc_265b0f72c950b013_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_265b0f72c950b013_r5",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This tutorial reviews the mathematical foundations of single-antenna radio polarimetry with the aim of fostering a conceptual understanding of the relationships between a physical description of signal propagation (gain, delay, reflection, down-conversion, etc.), the corresponding transformations of the electric field vector, and the equivalent operations on the Stokes parameters. The adopted framework is based on the work of Britton (2000) and Hamaker (2000) and applied to analyze the signal path described by Hamaker et al. (1996) with additional corrections for phase convention and reflection. Some objective criteria for selecting a model of the instrumental response are introduced and discussed, along with some practical guidelines that facilitate polarimetric calibration. Further relevant background material and lengthier mathematical proofs are included in the appendix, which introduces the vector, matrix, and tensor notation and concepts of linear algebra used in this work. The appendix also reviews some of the basics of analog and digital signal processing that are relevant to radio astronomy, and discusses some numerical instabilities that arise when modeling observations."
+      },
+      "confidence": 0.92,
+      "head": "doc_265b0f72c950b013_c5",
+      "relation_type": "uses",
+      "relation_surface": "facilitate",
+      "tail": "doc_265b0f72c950b013_c2"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_265b0f72c950b013_d1",
+      "evidence": {
+        "section": "2. MONOCHROMATIC LIGHT",
+        "original_text": "An interactive notebook demonstrates the relation between ε(t) and e(t) by depicting the ellipses inscribed by these functions as r, ψ and χ are varied. The following discussion is based on a Cartesian coordinate system in which the electromagnetic wave propagates in the positive z direction and the electric field is completely described by two orthogonal linearlypolarized components in the x-y plane, which is perpendicular to the direction of wave propagation. Here, εx and εy are the real-valued projections of ε onto the x and y axes. In the special case of monochromatic light, ν is the constant frequency of the wave, ax and ay are the constant amplitudes of the orthogonal wave components, and ϕx and ϕy are the phases of these components at t = 0. On each cycle of the wave, the electric field vector traces an ellipse in the x–y plane, as shown in Figure 1. This figure depicts two angles that describe the geometry of this ellipse: the position angle ψ and the ellipticity angle χ. Stokes (1852) first demonstrated the utility of expressing the components of the electric field vector in terms of these angles, starting with an intermediate reference frame that is rotated about the z-axis by the position angle ψ, such that. In this reference frame, which is depicted with dashed lines and open arrow heads in Figure 1, the electric field is expressed as in equation (2) of Stokes (1852) where r defines the size of the ellipse and ϕ defines the position of the electric field vector at t = 0."
+      },
+      "confidence": 0.85,
+      "name": "Polarization ellipse geometry demonstration dataset",
+      "modality": "tabular",
+      "domain": "radio astronomy, polarimetry"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_265b0f72c950b013_d2",
+      "evidence": {
+        "section": "3.4. Polarization Ellipse",
+        "original_text": "The connection between the relative phases and amplitudes of the components of the electric field vector, the geometry of the ellipse traced by that vector, and the corresponding Stokes parameters are demonstrated using six special cases of purely polarized radiation: Stokes ±Q, ±U, and ±V. These cases are depicted in Figure 3. Stokes ±Q: If ay = 0 in Equation (1), then the radiation is 100% linearly polarized with the electric field vector oscillating along the x axis. In this case, χ = 0, ψ = 0, Stokes Q = S1 = S0 is positive, and Stokes S2 = S3 = 0. If ax = 0, then the radiation is 100% linearly polarized with electric field vector oscillating along the y axis. In this case, χ = 0, ψ = ±π/2, Stokes Q = S1 = −S0 is negative, and Stokes S2 = S3 = 0. Stokes ±U: If ax = ay and the relative phase difference, Δϕ = ϕx − ϕy = 0, then εx(t) = εy(t) and the radiation is 100% linearly polarized with the electric field vector oscillating along the line defined by y = x (i.e., offset by 45◦ with respect to the x axis). In this case, χ = 0, ψ = π/4, Stokes U = S2 = S0 is positive, and Stokes S1 = S3 = 0. If ax = ay, and Δϕ = ±π, then εx(t) = −εy(t) and the radiation is 100% linearly polarized with the electric field vector oscillating along the line defined by y = −x (i.e., offset by −45◦ with respect to the x axis). In this case, χ = 0, ψ = −π/4, Stokes U = S2 = −S0 is negative, and Stokes S1 = S3 = 0. Stokes ±V: If ax = ay and Δϕ = −π/2, then the phase of εy leads that of εx by 90◦ and the radiation is 100% circularly polarized with the electric field vector tracing a clockwise circle in the x−y plane, as seen by an observer looking toward the source; this is defined as a left-hand circularly polarized (LCP) wave. In this case, χ = π/4, ψ is undefined, Stokes V = S3 = S0 is positive, and Stokes S1 = S2 = 0. If ax = ay and Δϕ = π/2, then the phase of εx leads that of εy by 90◦ and the radiation is 100% circularly polarized with the electric field vector tracing a counterclockwise circle in the x−y plane, as seen by an observer looking toward the source; this is defined as a right-hand circularly polarized (RCP) wave. In this case, χ = −π/4, ψ is undefined, Stokes V = S3 = −S0 is negative, and Stokes S1 = S2 = 0."
+      },
+      "confidence": 0.9,
+      "name": "Special cases of purely polarized radiation dataset",
+      "modality": "tabular",
+      "domain": "radio astronomy, polarimetry"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_265b0f72c950b013_ds1",
+      "evidence": {
+        "section": "3.5. Adopted Standard",
+        "original_text": "Apart from the refinements described in Appendix F, the conventions and definitions adopted in this article are consistent with both Stokes (1852) and the Institute of Electrical and Electronics Engineers (IEEE 1983). In the IEEE standard, the right-hand rule is applied with the thumb pointing in the direction of wave propagation; it defines both the angle measured from a reference axis to the major axis of the polarization ellipse, and the direction in which the electric field rotates for right-hand elliptically polarized states. The IEEE standard also defines the Poincaré sphere such that left-hand elliptically polarized states occupy the upper hemisphere, where Stokes V is positive in a right-handed basis defined by Stokes Q, U and V. As more fully discussed in Hamaker & Bregman (1996) and van Straten et al. (2010), the International Astronomical Union (IAU 1974) defines Stokes V = −S3, which is negative for left-handed circular polarization and opposite to the convention adopted in this article."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized conventions for Stokes parameters and polarization definitions"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_265b0f72c950b013_ds2",
+      "evidence": {
+        "section": "3.6. Coherency Matrix",
+        "original_text": "The polarization state of electromagnetic radiation can also be described by the second-order statistics of e(t), as represented by the complex-valued 2×2 coherency matrix (Born & Wolf 1980). Here, the angular brackets denote an average over time, ⊗ is the tensor product (Eqn. B11), and e†(t) is the Hermitian transpose of e(t) (Eqn. B3). For brevity, explicit dependence on time has been dropped in the rightmost expression. Note that each component of e(t) is multiplied by the complex conjugate of either itself or the other component, a process known as square law detection. Consequently, as for the Stokes parameters, the components of the coherency matrix are independent of the absolute phase of e(t). The coherency matrix is self-adjoint, or Hermitian (i.e., ρ = ρ†), and can be written as a linear combination of four Hermitian basis matrices, where Sµ are the four real-valued Stokes parameters and the basis matrices consist of the 2×2 identity matrix and the Pauli matrices. For brevity in the remainder of this paper, the summation symbol is omitted from equations and Einstein notation is used to imply a sum over repeated indeces. (See Appendix B for more detail.) Conversely, the Stokes parameters can be represented as projections of the coherency matrix onto the basis matrices using the tensor double contraction (Eqn. B13)."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "Coherency matrix representation of polarization state"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_265b0f72c950b013_ds3",
+      "evidence": {
+        "section": "3.7. Invariant Interval",
+        "original_text": "As for the Lorentz four-vector in special relativity, the square of the invariant interval of the Stokes parameters is defined by (Barakat 1963; Britton 2000). This interval remains invariant (up to scalar multiples) under linear transformations of the electric field; therefore, |S| is linearly proportional to the scalar amplification of the source. This property proves useful during numerical analysis and modeling; for example, the invariant can be used to normalize the Stokes parameters and accurately compensate for random scintillationinduced fluctuations of the flux density of the source (as in van Straten 2004). In high-precision pulsar timing experiments, use of the invariant interval yields arrival time estimates with significantly reduced instrumental artifacts (e.g., van Straten et al. 2001). Through its linear relation to the determinant of the coherency matrix via Equation (C6), the invariant also helps to define the concept of a valid polarization state. As a direct consequence of the Cauchy-Schwarz inequality for random variables, a valid polarization state must satisfy. Any polarization state that fails to satisfy Equation (23) may be called invalid, nonphysical, and/or over-polarized. Although nonphysical, over-polarized states can arise during numerical analysis. For example, they can be produced through transformation by an impure Mueller matrix (e.g. Section 7.4). They can also arise when all four Stokes parameters are allowed to vary independently during modeling."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Criteria for valid polarization state based on invariant interval"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_265b0f72c950b013_ds4",
+      "evidence": {
+        "section": "5. SIGNAL PATH",
+        "original_text": "In this section, each of the elements in the signal path depicted in Figure 4 are discussed in more detail, beginning with the phase convention Φ and ending with Faraday rotation F. The receiver gains, G, and the deviations from an ideal feed, D, are analyzed using the polar decomposition and expressed using the axis-angle representation. Apart from Φ, the remaining matrices are purely unitary (rotation) matrices. The phase convention of an instrument is defined by the number of signal processing steps that result in complex conjugation of the analytic signal, which cannot be represented by a linear transformation of the electric field vector, such as a Jones matrix. Referring to Equations (18) through (20), complex conjugation of the electric field vector negates the sign of S3, a transformation represented by the impure Mueller matrix Φ that appears in Equation (42). Consequently, the measured sign of S3 is impacted by the treatment of the complex phase of the electric field, which depends on the phase convention adopted during the design and implementation of instrumentation and signal processing software; the method used to down-convert the radio signal; and the Nyquist zone that is digitally sampled."
+      },
+      "confidence": 0.85,
+      "spec_type": "env_requirement",
+      "description": "Signal path decomposition for polarimetric calibration"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_265b0f72c950b013_ds5",
+      "evidence": {
+        "section": "7. POLARIMETER MODEL SELECTION",
+        "original_text": "Regardless of the objects used to represent polarization state and transformations, when applied to experimental data analysis, a mathematical model of the instrumental response should be 1. physically motivated, such that model components describe elements of the signal path; 2. surjective, such that the parameter space spans all possible transformations of interest; 3. injective, such that each transformation is described by a unique set of parameters; 4. self-consistent, such that the assumed properties of the system are preserved; and 5. numerically stable, at least in the vicinity of the anticipated solution. In the following subsections, these criteria are discussed in the context of single-antenna observations of a point source, primarily using the models proposed by HBS96, B2000, and H2001 as examples. When referring to the model parameters used in these works, the original mathematical symbols are retained; these may conflict with the symbols employed in the previous sections of this paper."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Polarimetric calibration model selection criteria"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_265b0f72c950b013_m1",
+      "evidence": {
+        "section": "4.1",
+        "original_text": "In the narrow-band (or quasi-monochromatic) approximation of an electromagnetic wave (see Appendix A.2), the response of a single receptor is defined by a complex-valued row vector, r = (r0, r1), such that the voltage induced in the receptor by the incident electric field e(t) is given by the scalar product, v(t) = r · e(t). The intensity of the response, I = ⟨v2(t)⟩, is maximum when the polarization of the incident wave matches that of the receptor, and reduces to zero when the incident wave is orthogonally polarized. The response of a dual-receptor feed is represented by a 2 × 2 complex-valued Jones matrix with rows equal to the receptor vectors, such that any linear transformation of the electric field vector may be represented by e′(t) = J e(t). As discussed in more detail in Section 4.5, the congruence transformation is a special case of the more general radio interferometer measurement equation for a single point source (Hamaker 2000; Smirnov 2011a). For a single antenna, the coherency matrix is insensitive to the absolute phase of J. The receptors in an ideal feed are orthogonal, such the scalar product r0 · r†1 = 0. The response of a system that is composed of a series of elements is represented as a product of Jones matrices. Matrix multiplication is not commutative, and in general the order in which operations are performed must correctly reflect the order in which the elements in the signal path are encountered. For example, consider the system response described by equation (11) of Hamaker et al. (1996), e′(t) = G D C P F e(t). From the incident electric field e(t) on the right to the observed e′(t) on the left, astrophysical signals are subjected to Faraday rotation in both the interstellar medium and the ionosphere, F; the projection between the celestial reference frame and the receptor basis, P; the nominal antenna and feed configuration, C; deviations from an ideal feed, D; and complex receiver gains, G. These transformations are depicted in Figure 4 and defined and discussed in more detail in Section 5. Note that Figure 4 includes an additional phase convention correction Φ that cannot be represented using a Jones matrix and therefore does not appear in Equation (36). The phase convention correction can be represented by a Mueller matrix and is included in Equation (42) of Section 4.3."
+      },
+      "confidence": 0.95,
+      "name": "Jones matrix formalism",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_265b0f72c950b013_m2",
+      "evidence": {
+        "section": "4.3",
+        "original_text": "Using Equations (14) and (16), a congruence transformation of the coherency matrix can be expressed as an equivalent linear transformation of the associated Stokes parameters by a real-valued 4 × 4 Mueller matrix M, as defined by S′ = M S, where Mµν = σµ · (J σν J†). Although there is a unique Mueller matrix for every Jones matrix, the converse is not true. This is most directly understood by noting that a 4 × 4 real-valued matrix has 16 degrees of freedom (dof), and a 2 × 2 complex-valued matrix has only 8 dof. Mueller matrices that do not have an equivalent Jones matrix are known as “impure” or “depolarizing” (e.g., Hamaker et al. 1996; Lu & Chipman 1996, and Appendix C.7). The definition of a pure Mueller matrix is derived in Appendix C.6. The signal path described by van Straten et al. (2010) extends the Hamaker et al. (1996) model with an impure correction for the complex phase convention, which is described in more detail in Section 5.1. Therefore, the van Straten et al. (2010) calibration model is best summarized using the equivalent transformation of the Stokes parameters by a Mueller matrix M, S′ = Φ G D C P F S. From right to left, S is the column vector with elements equal to the 4 Stokes parameters intrinsic to the astronomical source; F through G are the Mueller matrices derived from the Jones matrices defined in Equation (36) and discussed in Section 5; Φ is the phase convention correction (see Section 5.1); and S′ is the column vector of observed Stokes parameters."
+      },
+      "confidence": 0.95,
+      "name": "Mueller matrix formalism",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_265b0f72c950b013_m3",
+      "evidence": {
+        "section": "4.6",
+        "original_text": "Any invertible Jones matrix J can be decomposed into a unique product known as its left polar decomposition, J = J B R, where J = |J|1/2 and |J| is the determinant of J; B is Hermitian (B† = B); R is unitary (R† = R−1); and both B and R are unimodular (|B| = |R| = 1). The requirement for a left polar decomposition stems from the definition of a Jones matrix as a pair of receptor row vectors (Eqn. 34). Polar decomposition into Hermitian and unitary matrices provides a practical framework for classifying and conceptualizing distinct polarization-altering effects, as discussed in more detail in Section 4.7. Isolating the determinant of the Jones matrix also has practical benefit. In single-antenna polarimetry, the coherency matrix is insensitive to the phase of J (Proof 4.2); therefore, without any loss of generality, the absolute phase is set to zero and J is replaced by the real-valued absolute gain, G = |J|, thereby eliminating a degenerate dof. The polar decomposition also enables unique determination of the Hermitian component of the instrumental response given only an observation of a source that is known to be completely unpolarized. To demonstrate this, first note that the Hermitian component of any Jones matrix J can be determined via the Gram matrix of its rows, JJ†, such that JJ† = G2 B2. For an unpolarized source ρ = I σ0; therefore, ρ′ = J ρ J† = I G2 B2. The unknown factor of T = I G2 can be eliminated by noting that |B| = 1; therefore, |ρ′| = T2 and B = (ρ′/T)1/2."
+      },
+      "confidence": 0.95,
+      "name": "Polar decomposition",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_265b0f72c950b013_m4",
+      "evidence": {
+        "section": "4.7",
+        "original_text": "As shown in Appendix C.4, B and R can be expressed using axis-angle representation, Bmˆ(β) = exp(−β mˆ · σ) = cosh β σ0 − sinh β mˆ · σ, Rnˆ(ϕ) = exp(−iϕ nˆ · σ) = cos ϕ σ0 − i sin ϕ nˆ · σ, where mˆ and nˆ are three-dimensional unit vectors, β and ϕ are real-valued scalars, and σ = (σ1, σ2, σ3) is a 3-vector whose components are the Pauli spin matrices. Each axis-angle representation has 3 dof in the vector that defines it. Combined with the 2 dof in the real and imaginary parts of the complex-valued scalar J, Equation (56) has 8 dof, as expected for a 2 × 2 matrix with independent real and imaginary parts. The axes and angles in Equations (59) and (60) have geometric interpretations in the four-dimensional space of the Stokes parameters. After a congruence transformation by a Hermitian matrix B, the associated Stokes four-vector is transformed by a Lorentz boost along the mˆ axis by a hyperbolic angle −2β (e.g., Appendix D.1). A Lorentz transformation of the Stokes four-vector mixes S0 with the polarization vector S, thereby altering both the intensity and the degree of polarization. Consequently, energy is not conserved. Hermititan matrices are equivalent to the polconversion defined by Hamaker (2000); they describe the diattenuation of a system (Lu & Chipman 1996) due to differential gain and non-orthogonality of the receptors. In contrast, congruence transformation by a unitary matrix rotates the Stokes polarization vector S about the nˆ axis by an angle −2ϕ, using the right-hand rule for rotation (e.g., Appendix D.2). This rotation in three-dimensional space leaves the total intensity and the degree of polarization unchanged. Unitary matrices are equivalent to the polrotation defined by Hamaker (2000); they describe the retardance of a system (Lu & Chipman 1996) due to differential phase and they represent any change of basis by projection onto a pair of orthonormal receptors (see Proof C.1). The axis-angle representations of Bmˆ(β) and Rnˆ(ϕ) exhibit a number of properties that prove useful during analysis. Both transformations are unimodular. Therefore, congruence transformation by Bmˆ(β) or Rnˆ(ϕ) preserves the determinant of the coherency matrix and the invariant interval of the Stokes parameters. Exponentiation of Bmˆ(β) or Rnˆ(ϕ) is equivalent to multiplying the angle by the power, which simplifies the derivation of quantities such as the inverse or the Hermitian square root. Further conceptual benefits of the axis-angle representation are discussed in more detail in Appendix C.5."
+      },
+      "confidence": 0.95,
+      "name": "Axis-angle representation",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_265b0f72c950b013_m5",
+      "evidence": {
+        "section": "4.6",
+        "original_text": "The Hermitian component of any Jones matrix J can be determined via the Gram matrix of its rows, JJ†, such that JJ† = G2 B2. For an unpolarized source ρ = I σ0; therefore, ρ′ = J ρ J† = I G2 B2. The unknown factor of T = I G2 can be eliminated by noting that |B| = 1; therefore, |ρ′| = T2 and B = (ρ′/T)1/2."
+      },
+      "confidence": 0.95,
+      "name": "Gram matrix method for Hermitian component",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_265b0f72c950b013_x1",
+      "evidence": {
+        "section": "6",
+        "original_text": "The response of each element of the signal path may include an unknown component that must be determined experimentally. This section briefly reviews methods of calibrating each component in Equation (42) and Figure 4, focusing primarily on the response of a single antenna (single dish or phased array). Where relevant, additional notes on interferometric calibration are included. For linearly-polarized receptors, S3 equals Stokes V, and complex conjugation negates the ellipticity angle. For circularly-polarized receptors, S3 equals Stokes U, and the position angle is negated by conjugation. Complex conjugation of the electric field vector also negates frequency in the spectral domain. Therefore, the phase convention used to represent the electric field can be determined by incorporating information from other sources. For example, owing to dispersion, frequency negation is immediately apparent during radio pulsar signal analysis, and the phase convention must be known to perform phase-coherent dispersion removal in radio pulsar observations (e.g., van Straten & Bailes 2011). Frequency negation can also be detected in continuum observations over regions of the radio spectrum that include strong, well-defined spectral lines. In an interferometer, complex conjugation of the visibility matrix computed for each antenna pair results in a 180◦ rotation of the image of the brightness distribution on the plane of the sky. The receiver gains matrix, G, is often determined using observations of an artificial reference source with a well-defined polarization state. For example, many receivers have a built-in source of broadband noise (e.g., a noise diode coupled to the receptors) that can be used to estimate gains as a function of radio frequency. Determination of G using only an artificial noise source is based on the ideal feed assumptions, in which the receptors are orthogonal and there is no cross-coupling between them (i.e., D is the identity matrix); and the artificial reference source illuminates the receptors equally (i.e., the receptors have identical responses to the reference source, in both amplitude and phase). Although these assumptions are common, it is more accurate to experimentally determine both D and the Stokes parameters intrinsic to the artificial reference source (e.g., van Straten 2004), as described in Section 6.3. Even when fully modeling the deviations from an ideal feed and polarization of the artificial reference source, the ideal feed assumptions can provide a useful, and sometimes necessary, first guess for G. Therefore, they are an important part of polarimetric calibration for both single antennas (e.g., von Hoensbroech & Xilouris 1997; Navarro et al. 1997; Gould & Lyne 1998; Han et al. 2009) and interferometric arrays (e.g., Johnston et al. 2008; Serylak et al. 2021). As shown in Section 5.2, the polar decomposition of the complex gains, G = G Bg Rg, has 3 dof: the absolute gain G, the differential gain γ, and the differential phase ϕ. To experimentally determine G requires a standard candle, i.e., a source with known flux density at the radio frequency of the observations. Absolute gain calibration (also known as flux calibration) is described in more detail in Section 7.2 of van Straten et al. (2012). In an interferometer, unique values of the complex gains must be determined for each element in the array. Differential gain mixes only S0 and S1, and differential phase mixes only S2 and S3. Therefore, given observations of an ideal artificial reference source with known polarization, the two unknown values of γ and ϕ can be solved independently. The following two subsections derive solutions for γ and ϕ based on the assumption that a pure linearly polarized reference source induces identical signals in the orthogonal receptors of an ideal feed. In the linear basis, the Stokes parameters intrinsic to such a source, S = Iref [1, 1, 0, 0]T, where Iref is the intensity of the reference source."
+      },
+      "confidence": 0.95,
+      "task": "polarimetric calibration",
+      "setup": "single antenna observations of point sources"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_265b0f72c950b013_x2",
+      "evidence": {
+        "section": "6.2.1",
+        "original_text": "As a rotation about the S1 axis, differential phase mixes only S2 and S3, and to determine ϕ requires observations of a polarized reference source with known intrinsic values of S2 and S3. In the linear basis, S2 and S3 correspond to Stokes U and Stokes V, respectively; in the circular basis, S2 and S3 correspond to Stokes Q and Stokes U. Given the measured Stokes parameters of the reference source, with observed values of S2′ and S3′, Equations (19) and (20) can be solved for the intrinsic and observed values of ⟨e∗0(t) e1(t)⟩; e.g. ⟨e∗0(t) e1(t)⟩ = (S2 + i S3)/2. To relate the intrinsic values to their observed values, consider the transformation of the intrinsic electric field vector e(t) into the observed electric field vector as described by Equation (70), e′(t) = G Rg e(t). The observed value of ⟨e′∗0(t) e′1(t)⟩ = G2 ⟨e∗0(t) e1(t)⟩ exp(−2iϕ) can then be used to solve for ϕ; i.e., ϕ = −arg(⟨e′∗0(t) e′1(t)⟩)/2. If the reference source produces an in-phase signal in each receptor, such that the differential phase between e0(t) and e1(t) equals zero, then ⟨e∗0(t) e1(t)⟩ is real-valued and ϕ = −arg(⟨e′∗0(t) e′1(t)⟩)/2."
+      },
+      "confidence": 0.95,
+      "task": "determination of differential phase",
+      "setup": "observations of a polarized reference source"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_265b0f72c950b013_x3",
+      "evidence": {
+        "section": "6.2.2",
+        "original_text": "As a boost along the S1 axis, differential gain mixes only S0 and S1; therefore, determination of γ requires observations of a polarized reference source with known intrinsic values of S0 and S1, where S1 corresponds to Stokes Q in the linear basis and to Stokes V in the circular basis. Given the measured Stokes parameters of the reference source, with observed values of S0′ and S1′, Equations (17) and (18) can be solved for the intrinsic and observed values of ⟨|e0(t)|2⟩ and ⟨|e1(t)|2⟩; e.g. ⟨|e0(t)|2⟩ = (S0 + S1)/2. To relate the intrinsic values to their observed values, consider the transformation of the intrinsic electric field vector e(t) into the observed electric field vector as described by Equation (67), e′(t) = G Bg e(t). The observed values of ⟨|e′0(t)|2⟩ = G2 ⟨|e0(t)|2⟩ exp(2β) and ⟨|e′1(t)|2⟩ = G2 ⟨|e1(t)|2⟩ exp(−2β) can be used to solve for Γ; i.e., Γ = exp(β) = ⟨|e′0(t)|2⟩/⟨|e′1(t)|2⟩. If the reference source produces a signal with equal power in each receptor, then ⟨|e1(t)|2⟩ = ⟨|e0(t)|2⟩ and Γ = ⟨|e′0(t)|2⟩/⟨|e′1(t)|2⟩."
+      },
+      "confidence": 0.95,
+      "task": "determination of differential gain",
+      "setup": "observations of a polarized reference source"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_265b0f72c950b013_x4",
+      "evidence": {
+        "section": "6.3",
+        "original_text": "For a single antenna, the deviations from an ideal feed, D, can be determined by modeling variations in the observed polarization of an astrophysical source as a function of parallactic angle (e.g., Stinebring et al. 1984; Xilouris 1991; McKinnon 1992; Heiles et al. 2001; Johnston 2002; van Straten 2004). In some treatments, D is estimated after the complex receiver gains, G, have been calibrated; in others, D and G are jointly determined. Some of the models used to describe D are discussed and compared in Section 7. In an interferometer, unique values of Ji = Gi Di must be determined for each element in the array, indexed by i. When used as a phased-array, only the Jones matrix of the sum, J = Σi Ji, must be determined. More broadly, deviations from the ideal feed assumptions include the unintended polarization intrinsic to the artificial reference source, ρref. If observations of the reference source are available, then ρref can be included in the model and jointly determined along with G and D. When doing so, the reference source can be modeled as a free-space signal that is transmitted into the feed, or as a guided signal on a transmission line that is coupled after reception. A free-space signal may be transmitted into the feed using a dipole with known orientation. Typically, the polarization of such an artificial reference signal is distorted by near-field effects, mutual coupling, resonances, and standing waves between the transmitting dipole, feed horn and antenna structure. When modeled as a free-space signal, the artificial reference source is transformed by the product, GD, as in van Straten (2004). Alternatively, the artificial reference source may be coupled to the astronomical signal after reception, at which point the two polarizations propagate as a pair of guided signals on separate transmission lines. This requires splitting the artificial reference source signal and coupling it identically to the two orthogonally-polarized signals, ideally before any amplification. Typically, the polarization of such a reference signal is distorted by mismatched impedance, insertion losses, reflections, and standing waves. When modeling an artificial reference source that is guided and coupled, ρref is transformed by only G, as in Bailes et al. (2020). In either case (free-space or guided transmission), the instrumental response to an artificial noise source typically differs from its response to an astrophysical source. However, in many experiments, the absolute polarization of the artificial reference source is irrelevant. For example, techniques used to update the differential gain and phase given known values of ρref and D (e.g., Ord et al. 2004) rely only on the temporal stability of these quantities. Therefore, any differences in the instrumental response to astrophysical and artificial sources can be absorbed by redefinition of ρref. This distinction is particularly important when using an astrophysical source as a polarized reference source (e.g., van Straten 2013). In this case, D may be corrupted by unmodeled ionospheric Faraday rotation (e.g., Rogers et al. 2024). To avoid also corrupting ρref, it is necessary to model the artificial reference source as though it is coupled after D, regardless of the actual receiver design."
+      },
+      "confidence": 0.95,
+      "task": "determination of deviations from ideal feed",
+      "setup": "modeling variations in observed polarization as a function of parallactic angle"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_265b0f72c950b013_x5",
+      "evidence": {
+        "section": "6.6",
+        "original_text": "To calibrate Faraday rotation, it is necessary to first estimate the Faraday Rotation Measure (RM). A wide variety of techniques have been developed for RM estimation, including directly modeling the variation in observed position angle ∆Ψ as a function of radio frequency (e.g., Noutsos et al. 2008); iteratively computing the weighted mean position-angle difference between two radio frequency bands (Han et al. 2006; Caleb et al. 2019); and searching for the peak in linearly-polarized flux after integrating over radio frequency as a function of trial RM (e.g., Hotan et al. 2005; Brentjens & de Bruyn 2005). In principle, Faraday rotation can be corrected by rotating the Stokes polarization vector S(ν) observed at each frequency by −∆Ψ(ν) about the Stokes V axis. This effectively yields the position angle as though observed at infinite radio frequency. However, such a correction would later have to be inverted when refining the RM estimate, which requires a set of observations made at finite radio frequencies. Therefore, the Faraday rotation at each frequency ν is corrected with respect to the linear polarization state observed at some fiducial frequency ν0 (typically the centre frequency of the band); i.e., S′(ν) = Rzˆ(∆Ψ(ν) − ∆Ψ(ν0)) S(ν). The RM may also vary as a function of time over the duration of the integration. For example, the ionosphere can cause the RM to vary by several rad m−2 on timescales of hours. These variations can be predicted using a model of the geomagnetic field and a map of ionospheric electron content (e.g., Porayko et al. 2019). Temporal variations in RM also cause the position angle observed at the fiducial frequency to vary with time; therefore, Faraday rotation at time t is corrected by S′(ν, t) = Rzˆ(∆Ψ(ν, t) − ∆Ψ(ν0, t)) S(ν, t)."
+      },
+      "confidence": 0.95,
+      "task": "Faraday rotation calibration",
+      "setup": "observations across radio frequencies"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_265b0f72c950b013_qr1",
+      "evidence": {
+        "section": "2. MONOCHROMATIC LIGHT",
+        "original_text": "The position angle, −π/2 ≤ ψ ≤ π/2, describes the orientation of the semi-major axis of the ellipse with respect to the x axis; it is positive when the x′ and y′ axes are rotated in a counter-clockwise direction with respect to the x and y axes. The tangent of the ellipticity angle, −π/4 ≤ χ ≤ π/4, is equal to the ratio between the semi-minor axis and the semi-major axis; it is positive for a left-hand polarized wave and negative for a right-hand polarized wave. The size of the ellipse is defined by r, which is equal to the length of the hypotenuse of the right triangle that contains χ. When χ < 0, the counter-clockwise traverse of the electric field vector is defined as right-hand polarization. In the special cases of χ = ±π/4, the amplitudes of ϵ′x and ϵ′y are equal and the electric field traces a circle in the x–y plane. In general, polarization state depends on both the amplitudes of the electric field components and the relative phase between them."
+      },
+      "confidence": 0.95,
+      "quantity": "position angle range",
+      "value": [
+        -90,
+        90
+      ],
+      "unit": "degrees",
+      "context": "monochromatic wave polarization ellipse orientation",
+      "result_type": "definition"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_265b0f72c950b013_qr2",
+      "evidence": {
+        "section": "2. MONOCHROMATIC LIGHT",
+        "original_text": "The tangent of the ellipticity angle, −π/4 ≤ χ ≤ π/4, is equal to the ratio between the semi-minor axis and the semi-major axis; it is positive for a left-hand polarized wave and negative for a right-hand polarized wave. The size of the ellipse is defined by r, which is equal to the length of the hypotenuse of the right triangle that contains χ. When χ = 0, ϵ′y = 0 and the electric field vector oscillates along a line defined by the x′ axis, which is oriented with respect to the x axis by ψ. When χ > 0, the electric field travels in a clockwise direction about the ellipse, as seen by an observer looking toward the source, which is defined as a left-hand polarized wave (IEEE 1983). When χ < 0, the counter-clockwise traverse of the electric field vector is defined as right-hand polarization. In the special cases of χ = ±π/4, the amplitudes of ϵ′x and ϵ′y are equal and the electric field traces a circle in the x–y plane."
+      },
+      "confidence": 0.95,
+      "quantity": "ellipticity angle range",
+      "value": [
+        -45,
+        45
+      ],
+      "unit": "degrees",
+      "context": "monochromatic wave polarization ellipse shape",
+      "result_type": "definition"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_265b0f72c950b013_qr3",
+      "evidence": {
+        "section": "3.2. Degree of Polarization",
+        "original_text": "The degree of polarization p = |S|/S0 is a measure of the fraction of the total intensity that is polarized. When p = 0, the light is unpolarized, also defined as common light (Stokes 1852); when p = 1, the light is 100% polarized, or purely polarized; for partial polarization, 0 < p < 1. As shown by Equation (C17) and the discussion that follows it, unpolarized or partially polarized radiation is equivalent to an incoherent superposition of two orthogonal purely polarized states. An unpolarized state can be decomposed into any pair of orthogonal purely polarized states of equal amplitude (Stokes 1852). In contrast, a 100% polarized wave can be described using a single Jones vector, e0, such that e(t) = e0 z(t), where z(t) is a complex-valued function that describes stochastic fluctuations of amplitude and phase. It has a mean of zero and variance of unity; that is, ⟨|z(t)|2⟩ = 1, where angular brackets denote an average over time."
+      },
+      "confidence": 0.95,
+      "quantity": "degree of polarization range",
+      "value": [
+        0,
+        1
+      ],
+      "unit": "dimensionless",
+      "context": "partial polarization of electromagnetic radiation",
+      "result_type": "definition"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_265b0f72c950b013_p1",
+      "evidence": {
+        "section": "4.3. Mueller Matrices",
+        "original_text": "Although there is a unique Mueller matrix for every Jones matrix, the converse is not true. This is most directly understood by noting that a 4×4 real-valued matrix has 16 degrees of freedom (dof), and a 2×2 complex-valued matrix has only 8 dof. Mueller matrices that do not have an equivalent Jones matrix are known as “impure” or “depolarizing” (e.g., Hamaker et al. 1996; Lu & Chipman 1996, and Appendix C.7). The definition of a pure Mueller matrix is derived in Appendix C.6. The signal path described by van Straten et al. (2010) extends the Hamaker et al. (1996) model with an impure correction for the complex phase convention, which is described in more detail in Section 5.1. Therefore, the van Straten et al. (2010) calibration model is best summarized using the equivalent transformation of the Stokes parameters by a Mueller matrix M, S′ = Φ G D C P F S. From right to left, S is the column vector with elements equal to the 4 Stokes parameters intrinsic to the astronomical source; F through G are the Mueller matrices derived from the Jones matrices defined in Equation (36) and discussed in Section 5; Φ is the phase convention correction (see Section 5.1); and S′ is the column vector of observed Stokes parameters."
+      },
+      "confidence": 0.9,
+      "metric": "model degrees of freedom",
+      "compared_to": "Jones matrix vs Mueller matrix"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_265b0f72c950b013_p2",
+      "evidence": {
+        "section": "7. POLARIMETER MODEL SELECTION",
+        "original_text": "Several different approaches to decomposing the single-antenna instrumental response have been proposed in the published literature. Broadly, these models can be divided into those based on Jones matrices and those based on Mueller matrices; e.g., the Jones matrix equation (11) of Hamaker et al. (1996, hereafter HBS96); the Jones matrix equation (19) of Britton (2000, hereafter B2000); and the Mueller matrix equation (22) of Heiles et al. (2001, hereafter H2001). In principle, a Mueller matrix has an additional 9 dof and can describe any linear transformation of the Stokes parameters, including non-linear transformations of the electric field such as complex conjugation. However, these additional dof are not employed in H2001, where the Mueller matrices are derived from Jones matrices. The model developed by H2001 includes only 5 of these 6 dof: the differential gain, ∆G (eq. 20) describes the mixing between Stokes I and Q; the symmetric cross-coupling amplitude and phase, ϵ and ϕ (eq. 18) describe the mixing of Stokes I with U and V; the differential phase, ψ (eq. 20) describes a rotation about the Stokes Q axis, which mixes Stokes U and V; and the ellipticity angle, α (eq. 15) describes a rotation about the Stokes U axis, which mixes Stokes Q and V. Missing from this list is the rotation about the Stokes V axis that corresponds to physically rotating the receiver about the line of sight, which mixes Stokes Q and U. As noted in H2001, this rotation can be constrained only through observation of a source with an accurately known position angle. The same conclusion is reached in Appendix B of van Straten (2004). In HBS96, the product of G and D has 8 dof (four complex-valued matrix elements: gp, gq, dp, and dq) because the relative phase between each pair of array elements is important when computing the visibility matrix (Eqn. 51). The absolute phase can be eliminated by replacing G with its polar decomposition."
+      },
+      "confidence": 0.9,
+      "metric": "model stability and degeneracy",
+      "compared_to": "Britton (2000) vs Heiles et al. (2001) vs Hamaker et al. (1996)"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_265b0f72c950b013_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This tutorial reviews the mathematical foundations of single-antenna radio polarimetry with the aim of fostering a conceptual understanding of the relationships between a physical description of signal propagation (gain, delay, reflection, down-conversion, etc.), the corresponding transformations of the electric field vector, and the equivalent operations on the Stokes parameters. The adopted framework is based on the work of Britton (2000) and Hamaker (2000) and applied to analyze the signal path described by Hamaker et al. (1996) with additional corrections for phase convention and reflection. Some objective criteria for selecting a model of the instrumental response are introduced and discussed, along with some practical guidelines that facilitate polarimetric calibration. Further relevant background material and lengthier mathematical proofs are included in the appendix, which introduces the vector, matrix, and tensor notation and concepts of linear algebra used in this work. The appendix also reviews some of the basics of analog and digital signal processing that are relevant to radio astronomy, and discusses some numerical instabilities that arise when modeling observations."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_265b0f72c950b013_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "The geometry of the polarization ellipse that defines the Stokes parameters is elegantly connected to that of the coherency matrix via the Pauli matrices. Geometry also relates linear transformations of the electric field to their impact on the Stokes parameters, leading to a physically meaningful and broadly applicable classification of polarimetric transformations. The properties of these transformations simplify the analysis of the elements of the signal path and yield both theoretical insights and practical guidelines that can be applied during calibration. These guidelines include criteria for evaluating and selecting a model of the instrumental response that performs well during numerical analysis of experimental data. Among those considered, the model introduced by Britton (2000) satisfies all of the selection criteria for single-antenna observations of a point source. In this physically-motivated and self-consistent model, there is a one-to-one mapping between parameters and linear transformations, which are described using equations that remain numerically stable during modeling."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_265b0f72c950b013_lm1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "This review focuses on polarimetric observations of point sources made using a single antenna, such as a single dish or a phased array formed by the phase-coherent addition of signals from multiple elements of an interferometric array. For a comprehensive introduction to both the theory and practice of radio polarimetry using interferometric arrays, including rigorous treatment of arbitrary brightness distributions and direction-dependent effects, the pioneering series by Smirnov (2011a,b,c,d) and the lessons learned by Lenc et al. (2017) are highly recommended reading. The formalism employed by Smirnov and the framework presented in this tutorial are both heavily influenced by Hamaker (2000)."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_265b0f72c950b013_lm2",
+      "evidence": {
+        "section": "Polarimeter Model Selection",
+        "original_text": "In principle, a Mueller matrix has an additional 9 dof and can describe any linear transformation of the Stokes parameters, including non-linear transformations of the electric field such as complex conjugation. However, these additional dof are not employed in H2001, where the Mueller matrices are derived from Jones matrices. Regardless of the objects used to represent polarization state and transformations, when applied to experimental data analysis, a mathematical model of the instrumental response should be physically motivated, such that model components describe elements of the signal path; surjective, such that the parameter space spans all possible transformations of interest; injective, such that each transformation is described by a unique set of parameters; self-consistent, such that the assumed properties of the system are preserved; and numerically stable, at least in the vicinity of the anticipated solution."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_265b0f72c950b013_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Radio polarimetry is a vibrant field of research that continues to yield transformative insights and discoveries in astrophysics, driven by both technological advances and innovative techniques. For example, the relatively recent discovery of polarization closure traces (Broderick & Pesce 2020; Samuel et al. 2022) enabled the first images of magnetic field structure near the M87 black hole using very long baseline interferometry (Event Horizon Telescope Collaboration et al. 2021). Novel techniques of high-fidelity polarimetry led to the discovery of a surprisingly high degree of linear polarization in low-frequency radio images of solar bursts (Dey et al. 2025). At even higher time resolution, measurements of the polarized radiation from pulsars, magnetars and fast radio bursts continue to reveal new insights into their nature and extreme environments (e.g., Camilo et al. 2006; Eatough et al. 2013; Michilli et al. 2018; Primak et al. 2022). tomography (e.g., Ganguly et al. 2000; Van Eck et al. 2017). Furthermore, the unprecedented sensitivity, resolution, and fields of view of new observatories necessitate further research and development of novel methods of direction-dependent interferometric calibration (e.g., Smirnov & Tasse 2015) and correction of ionospheric Faraday rotation (e.g., de Gasperin et al. 2019). Improved polarimetric fidelity also has the potential to increase the sensitivity of pulsar timing array experiments to the low-frequency stochastic gravitational wave background (e.g., Guillemot et al. 2023; Rogers et al. 2024; Guillemot et al. 2025). Given the breadth and potential impact of scientific knowledge that remains to be discove"
+      },
+      "confidence": 0.93
+    }
+  ]
+}

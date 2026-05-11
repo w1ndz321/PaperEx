@@ -1,0 +1,621 @@
+{
+  "metadata": {
+    "doc_id": "doc_1483b4d0298bd4da",
+    "source_file": "16_Multiyear_polarimetric_monitoring_CHIME_repeaters_with_FAST.md",
+    "title": "Multi-year Polarimetric Monitoring of Four CHIME-Discovered Repeating Fast Radio Bursts with FAST",
+    "year": 2023,
+    "doi": null,
+    "abstract": "Yi Feng[*][1,2] , Yong-Kun Zhang[3] , Jintao Xie[4] , Yuan-Pei Yang[5,6] , Yuanhong Qu[7,8] , Dengke Zhou[1] , Di Li[†][9,3] , Bing Zhang[‡][7,8] , Weiwei Zhu[3,10] , Wenbin Lu[11] , Jiaying Xu[1] , Chenchen Miao[1] , Shiyan Tian[12] , Pei Wang[3,10] , Ju-Mei Yao[13] , Chen-Hui Niu[14] , Jiarui Niu[3] , Heng Xu[3] , Jinchen Jiang[3] , Dejiang Zhou[3] , Zenan Liu[15] , Chao-Wei Tsai[3,10,16] , Zigao Dai[17] , Xuefeng Wu[6] , Fayin Wang[15] , Jinlin Han[3] , Kejia Lee[18,19,3] , Renxin Xu[18,19] , Yongfeng Huang[15, 20] , Yuanchuan Zou[12] , Jinhuang Cao[3] , Xianglei Chen[3] , Jianhua Fang[1] , Dongzi Li[21] , Ye Li[6] , Wanjin Lu[3] , Jiawei Luo[22] , Jintao Luo[23] , Rui Luo[24] , Fen Lyu[25] , Bojun Wang[3] , Weiyang Wang[16,18,19] , Qin Wu[15] , Mengyao Xue[3] , Di Xiao[6] , Wenfei Yu[26] , Jianping Yuan[13] , Chunfeng Zhang[3] , Junshuo Zhang[3, 16] , Lei Zhang[3] , Songbo Zhang[6] , Rushuang Zhao[27] , and Yuhao Zhu[3]",
+    "introduction": "Fast radio bursts (FRBs) are short (lasting from microseconds to milliseconds), bright radio transients first discovered by Ref. [1]. Their progenitors and radiation mechanisms remain unknown [2]. Repeating FRBs form a subset of FRBs that emit multiple bursts from the same source over time. Out of approximately 800 known FRBs, around 60 are classified as repeating FRBs[1)] [3]. The repetitive nature of these bursts enables astronomers to investigate various properties of each burst—such as their spectral, temporal, and polarimetric characteristics—providing valuable insights into their potential origins, radiation mechanisms, and surrounding environments. \n\nPolarization is a fundamental property of FRBs, carrying crucial information about their intrinsic characteristics and the environments in which they occur. Precise measurements of polarization properties form the foundation for studying the surrounding environment, radiation mechanisms, and classification of FRBs. These measurements provide key evidence for unraveling the physical origins, radiation mecha- \n\nnisms, and environmental features of these bursts. The Faraday effect, in particular, plays a significant role by causing the polarization plane of electromagnetic waves to rotate. This rotation is quantified by the rotation measure (RM), which encodes information about the medium the FRB traverses, such as magnetic field strength and electron density. For instance, observations of FRB 20121102A have revealed a remarkably high and time-varying RM, interpreted as evidence that this FRB resides in a dynamic, strongly magnetized, ionized environment [4, 5, 6]. Possible environments include expanding supernova remnants, pulsar wind nebulae, massive binary systems, and so on [7, 8, 9, 10, 11, 12, 13, 14, 15]. The RM of FRB 20190520B underwent rapid changes, increasing from approximately 3000 rad m[−][2] in March 2021 to about 10,000 rad m[−][2] in June 2021. It then reversed to approximately −24, 000 rad m[−][2] over the next five months [16]. This first-of-its-kind RM reversal strongly suggests that FRB 20190520B is located in a binary system, potentially accompanied by a massive star [16]. Similarly, the highly variable RM observed in FRB 20201124A revealed a dynamic environment close to the FRB’s central engine, at a distance \n\n> *Corresponding author. Email: yifeng@zhejianglab.org \n\n> †Corresponding author. Email: dili@mail.tsinghua.edu.cn \n\n> ‡Corresponding author. Email: bing.zhang@unlv.edu 1) https://blinkverse.zero2x.org \n\n000000-3 \n\nYi Feng, et al. Sci. China-Phys. Mech. Astron. \n\nxxx (2023) Vol. xx No. x \n\nscale of about 1 AU [17]. Oscillation structures as functions of frequency in the polarization profiles indicate the presence of a strong magnetic field around the source [17]. Additionally, prominent levels of circular polarization were observed in a substantial number of bursts from this active repeating FRB source, further supporting a magnetospheric origin for FRB emission [18]. \n\nThe polarization position angle (PA) and degrees of linear and circular polarization can be used to trace the intrinsic radiation mechanisms and propagation processes [19]. The models inside the magnetar magneotosphere invoking charged bunches via curvature radiation and inverse Compton scattering can mainly produce high linear polarization and non-negligible circular polarization in different viewing angles [18, 19, 20, 21]. The relativistic shock models outside the magnetosphere mainly produce linear polarized X-mode waves [22, 23]. Observationally, the burst with a 90% circular polarization degree and orthogonal modes in linear polarization detected in FRB 20201124A strongly constrain the FRB radiation mechanisms, among which the pulsar-like magnetospheric models are more plausible [24]. The PA of FRB 20180301A showed various short-timescale swings, which are hypothesized to originate within the magnetosphere of a magnetar [25]. The “S”-shaped PA swing also suggests a magnetospheric origin [26]. FRB 20201124A exhibited a sudden PA jump within about 1 ms. This jump could be due to the superposition of two orthogonal emission modes, and the millisecond timescale of the jump suggests that the FRB emission originates from the complex magnetosphere of a magnetar [27]. \n\nRecently, long-term systematic measurements of the polarization of repeating fast radio bursts have been released, and an overall picture of the polarization properties of repeating FRBs is beginning to emerge. For example, Ref. [28] presents a multiyear polarimetric study of 12 repeating FRBs using the CHIME telescope. They observe significant RM variations from many sources in their sample, including RM changes of several hundred rad/m[2] over month timescales from FRBs 20181119A, 20190303A, and 20190417A, as well as more modest RM variability (RM of a few tens of rad/m[2] ) from FRBs 20181030A, 20190208A, 20190213B, and 20190117A over equivalent timescales. Repeating FRBs occupy more dynamic magneto-ionic environments compared to pulsars in the Milky Way and the Magellanic Clouds. Ref. [29] presents a polarimetric study of 28 repeating FRBs observed by the CHIME telescope, analyzing 75 bursts (63 with significant RM measurements) between 2019 and 2024. They observe temporal RM variations in practically all repeating FRBs. Following the trend re- \n\nvealed by Ref. [28], Ref. [29] further categorizes the repeating FRBs into two distinct groups: those inhabiting dynamic RM environments and those in stable magneto-ionic media, based on σ(RM)/|RM|. RM sign changes were observed in FRBs 20190303A, 20200929C, and possibly 20180916B, joining FRB 20190520B [30] and FRB 20180301A [31], which indicate magnetic field reversals. The polarization properties of repeating FRBs have also been compared with those of non-repeating FRBs. Ref. [29] shows a marginal dichotomy in the distribution of electron-density-weighted parallel-component line-of-sight magnetic fields between repeating and non-repeating FRBs. \n\nIn this paper, we report on multi-year polarimetric monitoring of four repeating FRBs discovered by the Canadian Hydrogen Intensity Mapping Experiment (CHIME), namely FRBs 20190117A, 20190208A, 20190303A, and 20190417A, using the Five-hundred-meter Aperture Spherical Radio Telescope (FAST) [32, 33, 34]. The paper is structured as follows: Section 2 describes our observations and data processing procedures; the results are presented in Section 3, followed by a discussion in Section 4. Finally, Section 5 summarizes our conclusions.",
+    "primary_discipline": {
+      "level1": "天文学",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": null,
+    "keywords": [
+      "Fast Radio Bursts",
+      "Polarimetry",
+      "Rotation Measure",
+      "Radio Astronomy",
+      "FAST Telescope"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:24:14.247425+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Fast radio bursts (FRBs) are short (lasting from microseconds to milliseconds), bright radio transients first discovered by Ref. [1]. Their progenitors and radiation mechanisms remain unknown [2]. Repeating FRBs form a subset of FRBs that emit multiple bursts from the same source over time. Out of approximately 800 known FRBs, around 60 are classified as repeating FRBs[1)] [3]. The repetitive nature of these bursts enables astronomers to investigate various properties of each burst—such as their spectral, temporal, and polarimetric characteristics—providing valuable insights into their potential origins, radiation mechanisms, and surrounding environments."
+      },
+      "confidence": 0.99,
+      "term": "Fast radio bursts",
+      "normalized": "快速射电暴",
+      "std_label": "FRBs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Fast radio bursts (FRBs) are short (lasting from microseconds to milliseconds), bright radio transients first discovered by Ref. [1]. Their progenitors and radiation mechanisms remain unknown [2]. Repeating FRBs form a subset of FRBs that emit multiple bursts from the same source over time. Out of approximately 800 known FRBs, around 60 are classified as repeating FRBs[1)] [3]. The repetitive nature of these bursts enables astronomers to investigate various properties of each burst—such as their spectral, temporal, and polarimetric characteristics—providing valuable insights into their potential origins, radiation mechanisms, and surrounding environments."
+      },
+      "confidence": 0.99,
+      "term": "repeating FRBs",
+      "normalized": "重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Polarization is a fundamental property of FRBs, carrying crucial information about their intrinsic characteristics and the environments in which they occur. Precise measurements of polarization properties form the foundation for studying the surrounding environment, radiation mechanisms, and classification of FRBs. These measurements provide key evidence for unraveling the physical origins, radiation mechanisms, and environmental features of these bursts. The Faraday effect, in particular, plays a significant role by causing the polarization plane of electromagnetic waves to rotate. This rotation is quantified by the rotation measure (RM), which encodes information about the medium the FRB traverses, such as magnetic field strength and electron density."
+      },
+      "confidence": 0.98,
+      "term": "polarization",
+      "normalized": "偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Polarization is a fundamental property of FRBs, carrying crucial information about their intrinsic characteristics and the environments in which they occur. Precise measurements of polarization properties form the foundation for studying the surrounding environment, radiation mechanisms, and classification of FRBs. These measurements provide key evidence for unraveling the physical origins, radiation mechanisms, and environmental features of these bursts. The Faraday effect, in particular, plays a significant role by causing the polarization plane of electromagnetic waves to rotate. This rotation is quantified by the rotation measure (RM), which encodes information about the medium the FRB traverses, such as magnetic field strength and electron density. For instance, observations of FRB 20121102A have revealed a remarkably high and time-varying RM, interpreted as evidence that this FRB resides in a dynamic, strongly magnetized, ionized environment [4, 5, 6]. Possible environments include expanding supernova remnants, pulsar wind nebulae, massive binary systems, and so on [7, 8, 9, 10, 11, 12, 13, 14, 15]. The RM of FRB 20190520B underwent rapid changes, increasing from approximately 3000 rad m[−][2] in March 2021 to about 10,000 rad m[−][2] in June 2021. It then reversed to approximately −24, 000 rad m[−][2] over the next five months [16]. This first-of-its-kind RM reversal strongly suggests that FRB 20190520B is located in a binary system, potentially accompanied by a massive star [16]. Similarly, the highly variable RM observed in FRB 20201124A revealed a dynamic environment close to the FRB’s central engine, at a distance scale of about 1 AU [17]."
+      },
+      "confidence": 0.98,
+      "term": "rotation measure",
+      "normalized": "旋转量",
+      "std_label": "RM"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In this paper, we report on multi-year polarimetric monitoring of four repeating FRBs discovered by the Canadian Hydrogen Intensity Mapping Experiment (CHIME), namely FRBs 20190117A, 20190208A, 20190303A, and 20190417A, using the Five-hundred-meter Aperture Spherical Radio Telescope (FAST) [32, 33, 34]. The paper is structured as follows: Section 2 describes our observations and data processing procedures; the results are presented in Section 3, followed by a discussion in Section 4. Finally, Section 5 summarizes our conclusions."
+      },
+      "confidence": 0.97,
+      "term": "Five-hundred-meter Aperture Spherical Radio Telescope",
+      "normalized": "五百米口径球面射电望远镜",
+      "std_label": "FAST"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In this paper, we report on multi-year polarimetric monitoring of four repeating FRBs discovered by the Canadian Hydrogen Intensity Mapping Experiment (CHIME), namely FRBs 20190117A, 20190208A, 20190303A, and 20190417A, using the Five-hundred-meter Aperture Spherical Radio Telescope (FAST) [32, 33, 34]. The paper is structured as follows: Section 2 describes our observations and data processing procedures; the results are presented in Section 3, followed by a discussion in Section 4. Finally, Section 5 summarizes our conclusions."
+      },
+      "confidence": 0.97,
+      "term": "Canadian Hydrogen Intensity Mapping Experiment",
+      "normalized": "加拿大氢强度测绘实验",
+      "std_label": "CHIME"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c7",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Bursts 13 and 32 of FRB 20190417A exhibit circular polarization with signal-to-noise ratios greater than 7. The circular polarization fractions are 11.9 ± 1.0% and 35.7 ± 3.7%, respectively. Circular polarization is a relatively rare phenomenon among repeating FRBs. Although there are over 60 repeating FRB sources [3], circular polarization has been observed in only five of them: FRBs 20121102A, 20190520B [49], 20201124A [17], 20220912A [47, 50], and 20240114A [44]. The largest circular polarization fraction observed in our sample is 35.7 ± 3.7% for FRB 20190417A, which is smaller than the typical ∼60% to ∼90% seen in other repeating FRBs. For example, the largest circular polarization fraction is about 64% for FRB 20121102A [49], about 70% for FRB 20220912A [47], and about 65% for FRB 20240114A [44]. The highest recorded circular polarization fraction is approximately 90% for FRB 20201124A [24]. However, we note that the high polarization fractions observed in other repeaters are rare outliers, typically occurring in about 1 in 1000 bursts. Since FRB 20190417A has only two bursts with detected circular polarization, it is difficult to make a direct comparison to these outliers. To make a proper comparison, more bursts from FRB 20190417A will be needed."
+      },
+      "confidence": 0.98,
+      "term": "circular polarization",
+      "normalized": "圆偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c8",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For FRBs 20190208A and 20190303A, all bursts are highly linearly polarized, with linear polarization fractions ≳ 80%. Sixty-one percent of the bursts have linear polarization fractions greater than 90%. The median linear polarization fraction is 89.6% for FRB 20190208A and 99.2% for FRB 20190303A, both much larger than the median of 63% observed in the non-repeating FRB sample from Ref. [51]. In comparison, the median linear polarization fractions of FRB 20201124A (95.5%, [52]), FRB 20220912A (96.0%, [47]), and FRB 20240114A (93.6%, [44]) are also close to those observed in our sample. We further conducted a t-test to examine the similarity in linear polarization between repeating and non-repeating FRBs. For FRBs 20190208A and 20190303A, we used our FAST results just reported. For FRBs 20201124A (536 bursts), 20220912A (1076 bursts), and 20240114A (299 bursts), we used the samples from Ref. [52], [47], and [44], respectively. For the non-repeating FRBs, we used the 89 measured samples from Ref.[51]. For repeaters, all the samples used are detections. To maintain consistency, we did not include upper limits from nondetections for non-repeaters in Ref.[51]. The results are shown in Figure 1. In Figure 1, we also show their linear polarization distributions. For all pairwise comparisons among the repeating FRBs, the p-values were greater than 0.05 (corresponding to a logarithmic value of -1.3), suggesting that the linear polarization distributions among the five repeating FRBs are nearly identical. However, the p-values for comparisons between repeating and non-repeating FRBs were significantly smaller than those for comparisons among the repeating FRBs. The box plot, along with the t-test statistics and p-values, clearly reveals a distinct difference in the linear polarization distributions between the non-repeating and the five repeating FRBs."
+      },
+      "confidence": 0.98,
+      "term": "linear polarization",
+      "normalized": "线偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c9",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For FRB 20190417A, some bursts exhibit a low linear polarization fraction. As discussed in Ref. [36], the depolarization is likely caused by RM scattering due to multi-path transmission of signals in an inhomogeneous magneto-ionic environment. We parameterize the depolarization due to RM scattering [41] as : Lobs = Lint exp(−2σRM^2 λ^4), where f RM scattering is the fractional reduction in the linear polarization amplitude, σRM is the standard deviation of the RM, and λ is the wavelength. We determine σRM by fitting the data with the model in Eq. (3), assuming each burst has 100% intrinsic linear polarization. For FRB 20190417A, a weighted least squares fit was used. For λ in Eq. (3), we calculated the central frequency of each burst and converted the weighted frequency to the equivalent wavelength, λ. Additionally, for FRB 20190417A, we included the CHIME measurement with a linear polarization fraction of 14.7% at 665 MHz from Ref. [28]. The resulting σRM for FRB 20190417A is 5.19 ± 0.09 rad m[−][2] , which is consistent with the measurements of 6.1 ± 0.5 rad m[−][2] in Ref. [36]."
+      },
+      "confidence": 0.97,
+      "term": "depolarization",
+      "normalized": "去偏振",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c10",
+      "evidence": {
+        "section": "Results",
+        "original_text": "FRB 20190208A does not show significant RM variations. Our RM measurements are consistent with those from CHIME. Combining the CHIME data, the RM varies between approximately 10 and 32 rad m[−][2] . The small variation is likely due to measurement uncertainties, and FRB 20190208A likely resides in a non-magneto-ionic environment. In contrast, FRBs 20190117A, 20190303A, and 20190417A all show large RM variations: The RM of FRB 20190117A varies between approximately -165 and 80 rad m[−][2] , the RM of FRB 20190303A varies between approximately -917 and -205 rad m[−][2] , and the RM of FRB 20190417A varies between approximately 3946 and 5225 rad m[−][2] . The large RM variations for these three FRBs indicate that they are in a magneto-ionic environment. Notably, FRB 20190117A exhibits an RM reversal, joining the other two repeating FRBs, FRBs 20190520B and 20180301A. We discuss the implications of these RM measurements in the next section."
+      },
+      "confidence": 0.98,
+      "term": "RM variations",
+      "normalized": "旋转量变化",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c11",
+      "evidence": {
+        "section": "Results",
+        "original_text": "FRB 20190208A does not show significant RM variations. Our RM measurements are consistent with those from CHIME. Combining the CHIME data, the RM varies between approximately 10 and 32 rad m[−][2] . The small variation is likely due to measurement uncertainties, and FRB 20190208A likely resides in a non-magneto-ionic environment. In contrast, FRBs 20190117A, 20190303A, and 20190417A all show large RM variations: The RM of FRB 20190117A varies between approximately -165 and 80 rad m[−][2] , the RM of FRB 20190303A varies between approximately -917 and -205 rad m[−][2] , and the RM of FRB 20190417A varies between approximately 3946 and 5225 rad m[−][2] . The large RM variations for these three FRBs indicate that they are in a magneto-ionic environment. Notably, FRB 20190117A exhibits an RM reversal, joining the other two repeating FRBs, FRBs 20190520B and 20180301A. We discuss the implications of these RM measurements in the next section."
+      },
+      "confidence": 0.97,
+      "term": "RM reversal",
+      "normalized": "旋转量反转",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c12",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "We summarize the RM characteristics of published repeating FRBs in Table 4. The RM measurements of the four repeating FRBs mentioned in the previous section are listed in the table, along with other published repeating FRBs, for a total of 18 repeating FRBs with RM measurements. Some repeating FRBs have only one RM measurement and are listed in the right column. For repeating FRBs with multiple RM measurements, the table lists the average, minimum, maximum, the difference between the minimum and maximum RM, and σRM. Whether RM is reversed is also indicated with ‘yes’ or ‘no’. For the 14 repeating FRBs with multiple RM measurements, 9 (i.e., 64%) show RM variations greater than 50 rad m[−][2] . We take 50 rad m[−][2] as the threshold for RM variations from the FRB’s local environment because RM variation amplitudes of 10 rad m[−][2] to 30 rad m[−][2] can arise from apparent RM variations across the phase of a burst, intrinsic frequency evolution [17, 50], or large measurement uncertainties. The overall pattern of RM variations in repeating FRBs is consistent with the findings in Refs. [28, 29]. We note that RM variations smaller than 50 rad m[−][2] could result from limited observations or RM measurements. For example, the RM variations of FRB 20180916B and FRB 20190117A have been smaller than 50 rad m[−][2] over several years. Long-term, high-cadence observations would help reveal the true RM variations. The percentage of 64% could therefore represent a lower limit for the number of repeating FRBs residing in a dynamic magneto-ionic environment. For the 14 repeating FRBs with multiple RM measurements, 3 (i.e., 21%) exhibit RM reversal. Similarly, the 21% figure may also represent a lower limit, as limited observations may not capture the full extent of RM variations."
+      },
+      "confidence": 0.97,
+      "term": "dynamic magneto-ionic environment",
+      "normalized": "动态磁离子环境",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c13",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "We then discuss how the RM varies by using the structure function of RM variations. Structure function has been used in the analysis of FRB environments [54, 62]. The structure function of RM variations can be described as: D_RM = ⟨[RM(t) − RM(t + ∆t)]^2⟩, where D_RM represents the structure function of RM variations, corresponding to the average value over a time interval of ∆t, with the error represented by the quartile range within that ∆t interval (indicated by the pink dots in column (b) of Figure 3). Subsequently, we fit the structure function of RM variations on a log-log scale using a linear function, i.e., log D_RM = γ log ∆t + C, where γ corresponds to the power law index. The results are shown in Figure 3."
+      },
+      "confidence": 0.96,
+      "term": "RM structure function",
+      "normalized": "旋转量结构函数",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c14",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "Figure 3 shows that these FRB repeaters appear to have complex diverse patterns of their RM variations. Most of them exhibit random variation patterns, which might be contributed by a plasma screen with an turbulent medium near the FRB source. Due to the turbulent dynamics or the relative motion between the screen and the FRB source, an irregular RM variation would be caused by the fluctuating clumps along the line of sight, as proposed by Ref. [15]. In astrophysical plasma, the turbulence is ubiquitous and can naturally induce fluctuations in density and magnetic fields, leading the RM fluctuations. Assuming that the timescale of the relative motion is shorter than the dynamic timescale of turbulence, the random RM variation would be dominated by the relative motion between the screen and the FRB source. For the uniform relative motion with a transverse velocity as v⊥, the RM structure function D_RM(t) in the time domain should be directly related to the RM structure function D_RM(l) in space, where l = v⊥t is the transverse lengthscale on the plasma screen. For a given plasma screen, D_RM(l) depends on the power spectrum P(k) of the fluctuations of RM density (that is defined by the product of the electron density and the parallel magnetic field), where k = 2π/l is the spatial wavenumber. In turbulence, the power spectrum usually satisfies a powerlaw distribution, P(k) ∝ k^α for 2π/L < k < 2π/l_0, where L and l_0 are outer scale and inner scale, respectively. The power spectrum with α < −3 is called a ‘steep spectrum’ (such as Kolmogorov scaling with α = −11/3) and the power spectrum with α > −3 is called a ‘shallow spectrum’. Fluctuations in the steep and shallow spectra are dominated by large-scale clumps at ∼L and small-scale clumps at ∼l_0, respectively. For a thick plasma screen, the RM structure function satisfies: D_RM ∝ l^{−(α+2)} for l < L and D_RM ∝ const. for l > L, see Ref. [15] for a detailed discussion. In particular, Kolmogorov scaling with α = −11/3 leads to an RM structure function of D_RM ∝ l^{5/3} for l < L and D_RM ∝ const. for l > L. Most FRB repeaters discussed in this work show a power-law index of γ ∼ (0 − 0.8), which suggests that the index of the power spectrum of the fluctuation is α = −(γ + 2) ∼−(2.0 − 2.8). In this case, the plasma screens near these FRB repeaters have shallow spectra in the inertial ranges (i.e., l_0 < l < L) due to α > −3, if their RM variations are attributed to the turbulence. Therefore, the variation is dominated by small-scale RM density fluctuations. The RM density fluctuations depend on the fluctuations of both the electron density and the parallel magnetic field. Since the magnetic energy spectrum is usually steep as proposed in the literature [63, 64, 65], the observed results of the shallow spectra imply that a shallow electron density spectrum is more likely to dominate the RM fluctuations. Physically, a shallow electron density spectrum naturally arises in supersonic turbulence, e.g. in star-forming regions [66, 67]."
+      },
+      "confidence": 0.96,
+      "term": "turbulence",
+      "normalized": "湍流",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_1483b4d0298bd4da_c15",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "The non-repeating FRBs have only one RM measurement, or even no RM measurement, and thus RM variations cannot be analyzed. However, we can still compare the RMs of non-repeating and repeating FRBs. Ref. [36] compared the RMs of nine repeating FRBs and eleven non-repeating FRBs, and a K-S test between these two groups yields a p-value of 0.02, indicating a statistically significant difference between them. However, the sample size used in that study was only 21. Refs. [28, 29] compare the RMs of repeating and nonrepeating FRBs. The samples used are all from the CHIME telescope, which may introduce selection bias, as we will discuss below. Ref. [51] included RMs from 86 non-repeating FRBs, and Ref. [68] included RMs from 20 non-repeating FRBs. We perform K-S tests comparing RMs of repeating FRBs and non-repeating FRBs. For the RMs of repeating FRBs, two cases were considered. In case one, we selected the maximum |RM| for each FRB. In case two, we selected the earliest RM measurement, in order to mimic the selection of RMs for non-repeating FRBs. For each case, three groups of samples were considered: • The “fiducial” group consists of the 18 repeating FRBs listed in Table 4. • The “fiducial+3” group includes the 18 repeating FRBs and the three largest |RM| values in the DSA sample [68]. Since the DSA observations have a limited time span, nonrepeating FRBs in the DSA sample could potentially turn into repeating FRBs. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “selection bias” group excludes |RM| values greater than 10000 rad m[−][2] to assess the potential selection bias caused by CHIME’s insensitivity to RMs greater than ∼5000 rad m[−][2] due to intrachannel depolarization [51]. For the RMs of non-repeating FRBs, five groups of samples were considered: • The “CHIME” group includes the 86 non-repeating FRBs from Ref. [51]. • The “DSA” group includes the 20 non-repeating FRBs from Ref. [68]. • The “CHIME+DSA” group is the combination of the CHIME” and “DSA” groups. • The “CHIME+DSA-3” group is the “CHIME+DSA” group with the three largest |RM| values in the DSA sample excluded. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “DSA-3” group is the “DSA” group with the three largest |RM| values excluded from the DSA sample. The results are shown in Table 5. Additionally, we plot the RM distributions for three comparisons in Figure 4 for case one. For case two, the p-value for comparing the “CHIME+DSA” group of non-repeating FRBs with the “fiducial” group of repeating FRBs is 0.018, which reveals a marginal dichotomy in the distribution of their RMs. We caution that selection bias could play a role, as the p-values of the “selection bias” groups are much larger than those of the “fiducial” groups. Excluding two large RMs, the p- values can be about ten times larger. For example, p-value of 0.0084 (smaller than 0.05) becomes 0.057 (greater than 0.05). We note that Ref. [51] also compared RMs of repeating FRBs and non-repeating FRBs. In Ref. [51], the sample of repeating FRBs includes 13 sources, excluding two FRBs with large RMs, i.e., FRB 20180301A (|RM| ∼ 600 rad m[−][2] ) and FRB 20201124 (|RM| ∼ 900 rad m[−][2] ), compared to the “selection bias” group. Therefore, Ref. [51] found no evidence for a dichotomy in the repeating and non-repeating FRB RM distributions. Besides, the p-values of the “fiducial+3” groups are much smaller than those of the “fiducial” groups. Therefore, the small sample size of repeating FRBs could easily skew the results. Finally, comparing case one and case two, the selection of the maximum |RM| and the earliest RM measurement do influence the results of the K-S tests, but generally not enough to change the trend. For the thirteen K-S tests in each case, only one test changed from greater than 0.05 to smaller than 0.05."
+      },
+      "confidence": 0.97,
+      "term": "non-repeating FRBs",
+      "normalized": "非重复快速射电暴",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_1483b4d0298bd4da_r1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Polarization is a fundamental property of FRBs, carrying crucial information about their intrinsic characteristics and the environments in which they occur. Precise measurements of polarization properties form the foundation for studying the surrounding environment, radiation mechanisms, and classification of FRBs. These measurements provide key evidence for unraveling the physical origins, radiation mechanisms, and environmental features of these bursts. The Faraday effect, in particular, plays a significant role by causing the polarization plane of electromagnetic waves to rotate. This rotation is quantified by the rotation measure (RM), which encodes information about the medium the FRB traverses, such as magnetic field strength and electron density. For instance, observations of FRB 20121102A have revealed a remarkably high and time-varying RM, interpreted as evidence that this FRB resides in a dynamic, strongly magnetized, ionized environment [4, 5, 6]. Possible environments include expanding supernova remnants, pulsar wind nebulae, massive binary systems, and so on [7, 8, 9, 10, 11, 12, 13, 14, 15]. The RM of FRB 20190520B underwent rapid changes, increasing from approximately 3000 rad m[−][2] in March 2021 to about 10,000 rad m[−][2] in June 2021. It then reversed to approximately −24, 000 rad m[−][2] over the next five months [16]. This first-of-its-kind RM reversal strongly suggests that FRB 20190520B is located in a binary system, potentially accompanied by a massive star [16]. Similarly, the highly variable RM observed in FRB 20201124A revealed a dynamic environment close to the FRB’s central engine, at a distance scale of about 1 AU [17]."
+      },
+      "confidence": 0.95,
+      "head": "doc_1483b4d0298bd4da_c3",
+      "relation_type": "measures",
+      "relation_surface": "carrying crucial information about",
+      "tail": "doc_1483b4d0298bd4da_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_1483b4d0298bd4da_r2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Polarization is a fundamental property of FRBs, carrying crucial information about their intrinsic characteristics and the environments in which they occur. Precise measurements of polarization properties form the foundation for studying the surrounding environment, radiation mechanisms, and classification of FRBs. These measurements provide key evidence for unraveling the physical origins, radiation mechanisms, and environmental features of these bursts. The Faraday effect, in particular, plays a significant role by causing the polarization plane of electromagnetic waves to rotate. This rotation is quantified by the rotation measure (RM), which encodes information about the medium the FRB traverses, such as magnetic field strength and electron density. For instance, observations of FRB 20121102A have revealed a remarkably high and time-varying RM, interpreted as evidence that this FRB resides in a dynamic, strongly magnetized, ionized environment [4, 5, 6]. Possible environments include expanding supernova remnants, pulsar wind nebulae, massive binary systems, and so on [7, 8, 9, 10, 11, 12, 13, 14, 15]. The RM of FRB 20190520B underwent rapid changes, increasing from approximately 3000 rad m[−][2] in March 2021 to about 10,000 rad m[−][2] in June 2021. It then reversed to approximately −24, 000 rad m[−][2] over the next five months [16]. This first-of-its-kind RM reversal strongly suggests that FRB 20190520B is located in a binary system, potentially accompanied by a massive star [16]. Similarly, the highly variable RM observed in FRB 20201124A revealed a dynamic environment close to the FRB’s central engine, at a distance scale of about 1 AU [17]."
+      },
+      "confidence": 0.94,
+      "head": "doc_1483b4d0298bd4da_c4",
+      "relation_type": "measures",
+      "relation_surface": "encodes information about",
+      "tail": "doc_1483b4d0298bd4da_c12"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_1483b4d0298bd4da_r3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In this paper, we report on multi-year polarimetric monitoring of four repeating FRBs discovered by the Canadian Hydrogen Intensity Mapping Experiment (CHIME), namely FRBs 20190117A, 20190208A, 20190303A, and 20190417A, using the Five-hundred-meter Aperture Spherical Radio Telescope (FAST) [32, 33, 34]. The paper is structured as follows: Section 2 describes our observations and data processing procedures; the results are presented in Section 3, followed by a discussion in Section 4. Finally, Section 5 summarizes our conclusions."
+      },
+      "confidence": 0.96,
+      "head": "doc_1483b4d0298bd4da_c5",
+      "relation_type": "uses",
+      "relation_surface": "using",
+      "tail": "doc_1483b4d0298bd4da_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_1483b4d0298bd4da_r4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "FRB 20190208A does not show significant RM variations. Our RM measurements are consistent with those from CHIME. Combining the CHIME data, the RM varies between approximately 10 and 32 rad m[−][2] . The small variation is likely due to measurement uncertainties, and FRB 20190208A likely resides in a non-magneto-ionic environment. In contrast, FRBs 20190117A, 20190303A, and 20190417A all show large RM variations: The RM of FRB 20190117A varies between approximately -165 and 80 rad m[−][2] , the RM of FRB 20190303A varies between approximately -917 and -205 rad m[−][2] , and the RM of FRB 20190417A varies between approximately 3946 and 5225 rad m[−][2] . The large RM variations for these three FRBs indicate that they are in a magneto-ionic environment. Notably, FRB 20190117A exhibits an RM reversal, joining the other two repeating FRBs, FRBs 20190520B and 20180301A. We discuss the implications of these RM measurements in the next section."
+      },
+      "confidence": 0.95,
+      "head": "doc_1483b4d0298bd4da_c10",
+      "relation_type": "indicates",
+      "relation_surface": "indicate that",
+      "tail": "doc_1483b4d0298bd4da_c12"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_1483b4d0298bd4da_d1",
+      "evidence": {
+        "section": "3 Results",
+        "original_text": "We detected 1, 5, 13, 47 bursts for FRBs 20190117A, 20190208A, 20190303A, and 20190417A, respectively, with a total of 66 bursts. The numbers of detections are listed in Table 2. All the polarization pulse profiles and dynamic spectra are included in Supplementary Materials. The highest burst rates are 0.5, 2, 8, and 14 bursts hr−1 for FRBs 20190117A, 20190208A, 20190303A, and 20190417A, respectively. The mean burst rates are 0.08, 0.48, 1.53, and 2.26 bursts hr−1 for the same FRBs. While the mean burst rates were calculated over the entire exposure period, the highest burst rates were calculated based on each individual observation session. Notably, FRB 20190417A exhibits the highest burst rate among the four repeaters. This may be a selection effect, as we observed FRB 20190417A during an active period, allowing us to detect more bursts. The average burst rates for these four repeaters at CHIME are on the order of 0.1 bursts per hour, much lower than those at FAST. The fluence completeness limits at CHIME are a few Jy ms, much larger than the ∼0.02 Jy ms at FAST. This difference in burst rates could therefore be due to variations in sensitivity and burst rates at different frequencies. Although the burst rates are higher than those measured at CHIME, they are still much lower than those of FRBs 20121102A, 20201124A, 20220912A, 20240114A. For example, FRBs 20121102A, 20201124A, 20220912A, and 20240114A had peak burst rates of 122 hr−1 [45], 542 hr−1 [46], 390 hr−1 [47], and ∼500 hr−1 [48], respectively, all recorded at FAST. Even a (sub)-100-meter radio telescope recorded a burst rate of 260 hr−1 for FRB 20240114A [44]. Therefore, our sample does not represent the most active repeaters. The times of arrival, RM, degrees of linear and circular polarization, and the lower and upper frequencies of the 66 bursts are listed in Table 3."
+      },
+      "confidence": 0.95,
+      "name": "FAST Polarimetric Monitoring Dataset of Four CHIME-Discovered Repeating FRBs",
+      "modality": "tabular",
+      "domain": "astronomy, astrophysics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_1483b4d0298bd4da_d2",
+      "evidence": {
+        "section": "4 Discussions",
+        "original_text": "We summarize the RM characteristics of published repeating FRBs in Table 4. The RM measurements of the four repeating FRBs mentioned in the previous section are listed in the table, along with other published repeating FRBs, for a total of 18 repeating FRBs with RM measurements. Some repeating FRBs have only one RM measurement and are listed in the right column. For repeating FRBs with multiple RM measurements, the table lists the average, minimum, maximum, the difference between the minimum and maximum RM, and σRM. Whether RM is reversed is also indicated with ‘yes’ or ‘no’. For the 14 repeating FRBs with multiple RM measurements, 9 (i.e., 64%) show RM variations greater than 50 rad m−2. We take 50 rad m−2 as the threshold for RM variations from the FRB’s local environment because RM variation amplitudes of 10 rad m−2 to 30 rad m−2 can arise from apparent RM variations across the phase of a burst, intrinsic frequency evolution [17, 50], or large measurement uncertainties. The overall pattern of RM variations in repeating FRBs is consistent with the findings in Refs. [28, 29]. We note that RM variations smaller than 50 rad m−2 could result from limited observations or RM measurements. For example, the RM variations of FRB 20180916B and FRB 20190117A have been smaller than 50 rad m−2 over several years. Long-term, high-cadence observations would help reveal the true RM variations. The percentage of 64% could therefore represent a lower limit for the number of repeating FRBs residing in a dynamic magneto-ionic environment. For the 14 repeating FRBs with multiple RM measurements, 3 (i.e., 21%) exhibit RM reversal. Similarly, the 21% figure may also represent a lower limit, as limited observations may not capture the full extent of RM variations."
+      },
+      "confidence": 0.9,
+      "name": "Rotation Measure (RM) Characteristics Dataset for Repeating FRBs",
+      "modality": "tabular",
+      "domain": "astronomy, astrophysics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_1483b4d0298bd4da_d3",
+      "evidence": {
+        "section": "3 Results",
+        "original_text": "For FRBs 20190208A and 20190303A, all bursts are highly linearly polarized, with linear polarization fractions ≳ 80%. Sixty-one percent of the bursts have linear polarization fractions greater than 90%. The median linear polarization fraction is 89.6% for FRB 20190208A and 99.2% for FRB 20190303A, both much larger than the median of 63% observed in the non-repeating FRB sample from Ref. [51]. In comparison, the median linear polarization fractions of FRB 20201124A (95.5%, [52]), FRB 20220912A (96.0%, [47]), and FRB 20240114A (93.6%, [44]) are also close to those observed in our sample. We further conducted a t-test to examine the similarity in linear polarization between repeating and non-repeating FRBs. For FRBs 20190208A and 20190303A, we used our FAST results just reported. For FRBs 20201124A (536 bursts), 20220912A (1076 bursts), and 20240114A (299 bursts), we used the samples from Ref. [52], [47], and [44], respectively. For the non-repeating FRBs, we used the 89 measured samples from Ref.[51]. For repeaters, all the samples used are detections. To maintain consistency, we did not include upper limits from nondetections for non-repeaters in Ref.[51]. The results are shown in Figure 1. In Figure 1, we also show their linear polarization distributions. For all pairwise comparisons among the repeating FRBs, the p-values were greater than 0.05 (corresponding to a logarithmic value of -1.3), suggesting that the linear polarization distributions among the five repeating FRBs are nearly identical. However, the p-values for comparisons between repeating and non-repeating FRBs were significantly smaller than those for comparisons among the repeating FRBs. The box plot, along with the t-test statistics and p-values, clearly reveals a distinct difference in the linear polarization distributions between the non-repeating and the five repeating FRBs."
+      },
+      "confidence": 0.9,
+      "name": "Linear Polarization Comparison Dataset for Repeating and Non-repeating FRBs",
+      "modality": "tabular",
+      "domain": "astronomy, astrophysics"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_1483b4d0298bd4da_d4",
+      "evidence": {
+        "section": "4 Discussions",
+        "original_text": "We perform K-S tests comparing RMs of repeating FRBs and non-repeating FRBs. For the RMs of repeating FRBs, two cases were considered. In case one, we selected the maximum |RM| for each FRB. In case two, we selected the earliest RM measurement, in order to mimic the selection of RMs for non-repeating FRBs. For each case, three groups of samples were considered: • The “fiducial” group consists of the 18 repeating FRBs listed in Table 4. • The “fiducial+3” group includes the 18 repeating FRBs and the three largest |RM| values in the DSA sample [68]. Since the DSA observations have a limited time span, nonrepeating FRBs in the DSA sample could potentially turn into repeating FRBs. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “selection bias” group excludes |RM| values greater than 10000 rad m−2 to assess the potential selection bias caused by CHIME’s insensitivity to RMs greater than ∼5000 rad m−2 due to intrachannel depolarization [51]. For the RMs of non-repeating FRBs, five groups of samples were considered: • The “CHIME” group includes the 86 non-repeating FRBs from Ref. [51]. • The “DSA” group includes the 20 non-repeating FRBs from Ref. [68]. • The “CHIME+DSA” group is the combination of the CHIME” and “DSA” groups. • The “CHIME+DSA-3” group is the “CHIME+DSA” group with the three largest |RM| values in the DSA sample excluded. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “DSA-3” group is the “DSA” group with the three largest |RM| values excluded from the DSA sample. The results are shown in Table 5. Additionally, we plot the RM distributions for three comparisons in Figure 4 for case one. For case two, the p-value for comparing the “CHIME+DSA” group of non-repeating FRBs with the “fiducial” group of repeating FRBs is 0.018, which reveals a marginal dichotomy in the distribution of their RMs. We caution that selection bias could play a role, as the p-values of the “selection bias” groups are much larger than those of the “fiducial” groups. Excluding two large RMs, the p- values can be about ten times larger. For example, p-value of 0.0084 (smaller than 0.05) becomes 0.057 (greater than 0.05). We note that Ref. [51] also compared RMs of repeating FRBs and non-repeating FRBs. In Ref. [51], the sample of repeating FRBs includes 13 sources, excluding two FRBs with large RMs, i.e., FRB 20180301A (|RM| ∼ 600 rad m−2) and FRB 20201124 (|RM| ∼ 900 rad m−2), compared to the “selection bias” group. Therefore, Ref. [51] found no evidence for a dichotomy in the repeating and non-repeating FRB RM distributions. Besides, the p-values of the “fiducial+3” groups are much smaller than those of the “fiducial” groups. Therefore, the small sample size of repeating FRBs could easily skew the results. Finally, comparing case one and case two, the selection of the maximum |RM| and the earliest RM measurement do influence the results of the K-S tests, but generally not enough to change the trend. For the thirteen K-S tests in each case, only one test changed from greater than 0.05 to smaller than 0.05."
+      },
+      "confidence": 0.85,
+      "name": "RM Comparison Dataset for Repeating and Non-repeating FRBs",
+      "modality": "tabular",
+      "domain": "astronomy, astrophysics"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_1483b4d0298bd4da_ds1",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We observed four repeating FRBs 20190117A, 20190208A, 20190303A, and 20190417A discovered by CHIME with FAST from 2020 to 2023. As the positions of these repeaters are reported with error bars of 10-20 arcminutes, much larger than the beam size at FAST, we first needed to determine their positions within the FAST beam with all beams of the 19-beam receiver [35]. For the first observations of FRB 20190117A and FRB 20190208A, the observations were conducted using all beams of the 19-beam receiver in snapshotdec or onoff mode. For FRB 20190117A, we detected one burst in the central beam on 5 December 2021. Using this burst, the estimated position of FRB 20190117A is (Right Ascension–RA, Declination–Dec) = (22 h 06 m 43 s, +17◦ 20′ 28′′) (J2000) with an error circle of 2.6′. Similarly, using one burst detected from FRB 20190208A on 6 July 2021, the estimated position of FRB 20190208A is (RA, DEC) = (18 h 54 m 17 s, +46◦ 55′ 27′′) (J2000) with an error circle of 2.6′. For FRB 20190303A and FRB 20190417A, we used the positions reported in Ref. [36], i.e., (RA, DEC) = (13 h 51 m 58 s, +48◦ 07′ 20′′) (J2000) for FRB 20190303A, and (RA, DEC) = (19 h 39 m 22 s, +59◦ 18′ 58′′) (J2000) for FRB 20190417A. Subarcminute localization of these four FRBs was later achieved with CHIME baseband data [37]. The positions determined from CHIME baseband data and FAST are listed in Table 1. We note that the positions determined with FAST are consistent with the CHIME subarcminute localization. Such off-axis illumination at FAST does not affect the polarization measurements [25, 38]. The successive observations were conducted using the central beam of the 19-beam receiver pointed at the estimated positions. The 19-beam receiver, with the frequency range between 1000 and 1500 MHz, provides two data streams (one for each hand of linear polarization). The data streams are processed with the Reconfigurable Open Architecture Computing Hardware–version 2 (ROACH2) signal processor [35]. The output full-Stokes data files are recorded as 8 bit-sampled search mode PSRFITS [39] files every 49.152 µs with 4096 frequency channels. FRBs 20190117A, 20190208A, 20190303A were observed approximately once a month. FRB 20190417A was observed more frequently to investigate its possible periodicity (Zhang et al., in prep). The typical observation duration is half an hour. The dates, durations, and modes of all observations are listed in Table 2."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "FAST observation and data processing protocol for polarimetric FRB studies"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_1483b4d0298bd4da_ds2",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We used DRAFTS for burst searching, a deep learningbased tool for detection of radio transients [40]. When searching the data from FAST observations of the four FRBs, we first de-dispersed the FAST data using the fiducial dispersion measure (DM) values corresponding to the repeating FRBs: DM = 397 pc cm−3 for FRB 20190117A, DM = 580 pc cm−3 for FRB 20190208A, DM = 222 pc cm−3 for FRB 20190303A, and DM = 1378 pc cm−3 for FRB 20190417A. Subsequently, we unified the time resolution of the data to 196.608 µs (down-sampled by a factor of 4 from the typical time resolution of 49.152 µs for FAST) to enhance the signal-to-noise ratio (S/N). After down-sampling, we divided the data into segments of 512 time samples, resizing each segment to 512 × 512 pixels, and inputting them into the classification model in DRAFTS for inference. The model provided the probability of an FRB burst occurring within each segment. We selected the segments where the predicted probability exceeded 50% as potential burst candidates, excluding those with low S/N. Finally, we performed manual post-processing to determine the arrival time of the bursts based on their positions within the data segments. To remove radio frequency interference (RFI), we used the PSRCHIVE software package [39]. A median filter was applied to each burst in the frequency domain using the paz command, and RFI was manually mitigated in each burst using the pazi command. Polarization calibration was performed by correcting for differential gain and phase between the receptors. This was achieved through separate measurements of a noise diode signal injected at a 45◦ angle relative to the linear receptors, using the single-axis model with the PSRCHIVE software package. We measured the RM using the Stokes QU-fitting method [41], selecting positions where the signal-to-noise ratio exceeded 3 for RM fitting. We corrected the linear polarization by derotating it using the measured RM."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Burst detection and polarization calibration procedure using DRAFTS and PSRCHIVE"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_1483b4d0298bd4da_ds3",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We calculated the degrees of linear polarization and circular polarization for bursts with RM detection. The measured linear polarization is overestimated in the presence of noise. Therefore we use the frequency-averaged, de-biased total linear polarization [42, 43]: where σI is the Stokes I off-pulse standard deviation and Li is the measured frequency-averaged linear polarization of time sample i. We defined the degree of linear polarization as (ΣiLde-bias,i)/(ΣiIi) and that of circular polarization as (ΣiVi)/(ΣiIi), where the summation is over the time samples in one burst and Vi is the measured frequency-averaged circular polarization of time sample i. Defining I = ΣiIi, L = ΣiLde-bias,i and V = ΣiVi, uncertainties on the linear polarization fraction and circular polarization fraction are calculated as: where N is the number of time samples of the burst (signal exceeds the noise by 3σ), and ρ = L, V for linear and circular polarization fraction, respectively."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Method for calculating de-biased linear polarization fraction and uncertainties"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_1483b4d0298bd4da_ds4",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We then determined the frequency range of each burst. A detailed description of the method can be found in Ref. [44], while a brief introduction is provided here. The frequency range was calculated based on the cumulative distribution function (CDF) of the burst spectrum, as described in Ref. [44]. The CDF was normalized using smoothing filters and the Asymmetrically Reweighted Penalized Least Squares algorithm. The frequency indices marking the start and end points of the burst range were identified from the first derivative of the smoothed CDF. The lower and upper boundaries were determined based on the positivity of the first derivative relative to the CDF threshold of 0.5, with uncertainties assessed using the bootstrap method."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Method for determining burst frequency range using cumulative distribution function"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_1483b4d0298bd4da_m1",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We observed four repeating FRBs 20190117A, 20190208A, 20190303A, and 20190417A discovered by CHIME with FAST from 2020 to 2023. As the positions of these repeaters are reported with error bars of 10-20 arcminutes, much larger than the beam size at FAST, we first needed to determine their positions within the FAST beam with all beams of the 19-beam receiver [35]. For the first observations of FRB 20190117A and FRB 20190208A, the observations were conducted using all beams of the 19-beam receiver in snapshotdec or onoff mode[2)]. For FRB 20190117A, we detected one burst in the central beam on 5 December 2021. Using this burst, the estimated position of FRB 20190117A is (Right Ascension–RA, Declination–Dec) = (22 h 06 m 43 s , +17◦ 20′ 28′′ ) (J2000) with an error circle of 2.6′ . Similarly, using one burst detected from FRB 20190208A on 6 July 2021, the estimated position of FRB 20190208A is (RA, DEC) = (18 h 54 m 17 s , +46◦ 55′ 27′′ ) (J2000) with an error circle of 2.6′ . For FRB 20190303A and FRB 20190417A, we used the positions reported in Ref. [36], i.e., (RA, DEC) = (13 h 51 m 58 s , +48◦ 07′ 20′′ ) (J2000) for FRB 20190303A, and (RA, DEC) = (19 h 39 m 22 s , +59◦ 18′ 58′′ ) (J2000) for FRB 20190417A. Subarcminute localization of these four FRBs was later achieved with CHIME baseband data [37]. The positions determined from CHIME baseband data and FAST are listed in Table 1. We note that the positions determined with FAST are consistent with the CHIME subarcminute localization. Such off-axis illumination at FAST does not affect the polarization measurements [25, 38]. The successive observations were conducted using the central beam of the 19-beam receiver pointed at the estimated positions. The 19-beam receiver, with the frequency range between 1000 and 1500 MHz, provides two data streams (one for each hand of linear polarization). The data streams are processed with the Reconfigurable Open Architecture Computing Hardware–version 2 (ROACH2) signal processor [35]. The output full-Stokes data files are recorded as 8 bit-sampled search mode PSRFITS [39] files every 49.152 µs with 4096 frequency channels. FRBs 20190117A, 20190208A, 20190303A were observed approximately once a month. FRB 20190417A was observed more frequently to investigate its possible periodicity (Zhang et al., in prep). The typical observation duration is half an hour. The dates, durations, and modes of all observations are listed in Table 2."
+      },
+      "confidence": 0.95,
+      "name": "Five-hundred-meter Aperture Spherical Radio Telescope (FAST)",
+      "method_type": "instrument"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_1483b4d0298bd4da_m2",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We used DRAFTS[3)] for burst searching, a deep learningbased tool for detection of radio transients [40]. When searching the data from FAST observations of the four FRBs, we first de-dispersed the FAST data using the fiducial dispersion measure (DM) values corresponding to the repeating FRBs: DM = 397 pc cm−3 for FRB 20190117A, DM = 580 pc cm−3 for FRB 20190208A, DM = 222 pc cm−3 for FRB 20190303A, and DM = 1378 pc cm−3 for FRB 20190417A. Subsequently, we unified the time resolution of the data to 196.608 µs (down-sampled by a factor of 4 from the typical time resolution of 49.152 µs for FAST) to enhance the signal-to-noise ratio (S/N). After down-sampling, we divided the data into segments of 512 time samples, resizing each segment to 512 × 512 pixels, and inputting them into the classification model in DRAFTS for inference. The model provided the probability of an FRB burst occurring within each segment. We selected the segments where the predicted probability exceeded 50% as potential burst candidates, excluding those with low S/N. Finally, we performed manual post-processing to determine the arrival time of the bursts based on their positions within the data segments."
+      },
+      "confidence": 0.95,
+      "name": "DRAFTS",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_1483b4d0298bd4da_m3",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "To remove radio frequency interference (RFI), we used the PSRCHIVE software package [39]. A median filter was applied to each burst in the frequency domain using the paz command, and RFI was manually mitigated in each burst using the pazi command. Polarization calibration was performed by correcting for differential gain and phase between the receptors. This was achieved through separate measurements of a noise diode signal injected at a 45◦ angle relative to the linear receptors, using the single-axis model with the PSRCHIVE software package. We measured the RM using the Stokes QU-fitting method [41], selecting positions where the signal-to-noise ratio exceeded 3 for RM fitting. We corrected the linear polarization by derotating it using the measured RM."
+      },
+      "confidence": 0.95,
+      "name": "PSRCHIVE software package",
+      "method_type": "software"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_1483b4d0298bd4da_m4",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We measured the RM using the Stokes QU-fitting method [41], selecting positions where the signal-to-noise ratio exceeded 3 for RM fitting. We corrected the linear polarization by derotating it using the measured RM."
+      },
+      "confidence": 0.95,
+      "name": "Stokes QU-fitting method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_1483b4d0298bd4da_m5",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We then determined the frequency range of each burst. A detailed description of the method can be found in Ref. [44], while a brief introduction is provided here. The frequency range was calculated based on the cumulative distribution function (CDF) of the burst spectrum, as described in Ref. [44]. The CDF was normalized using smoothing filters and the Asymmetrically Reweighted Penalized Least Squares algorithm. The frequency indices marking the start and end points of the burst range were identified from the first derivative of the smoothed CDF. The lower and upper boundaries were determined based on the positivity of the first derivative relative to the CDF threshold of 0.5, with uncertainties assessed using the bootstrap method."
+      },
+      "confidence": 0.95,
+      "name": "frequency range determination via cumulative distribution function (CDF)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_1483b4d0298bd4da_x1",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We observed four repeating FRBs 20190117A, 20190208A, 20190303A, and 20190417A discovered by CHIME with FAST from 2020 to 2023. As the positions of these repeaters are reported with error bars of 10-20 arcminutes, much larger than the beam size at FAST, we first needed to determine their positions within the FAST beam with all beams of the 19-beam receiver [35]. For the first observations of FRB 20190117A and FRB 20190208A, the observations were conducted using all beams of the 19-beam receiver in snapshotdec or onoff mode[2)]. For FRB 20190117A, we detected one burst in the central beam on 5 December 2021. Using this burst, the estimated position of FRB 20190117A is (Right Ascension–RA, Declination–Dec) = (22 h 06 m 43 s , +17◦ 20′ 28′′ ) (J2000) with an error circle of 2.6′ . Similarly, using one burst detected from FRB 20190208A on 6 July 2021, the estimated position of FRB 20190208A is (RA, DEC) = (18 h 54 m 17 s , +46◦ 55′ 27′′ ) (J2000) with an error circle of 2.6′ . For FRB 20190303A and FRB 20190417A, we used the positions reported in Ref. [36], i.e., (RA, DEC) = (13 h 51 m 58 s , +48◦ 07′ 20′′ ) (J2000) for FRB 20190303A, and (RA, DEC) = (19 h 39 m 22 s , +59◦ 18′ 58′′ ) (J2000) for FRB 20190417A. Subarcminute localization of these four FRBs was later achieved with CHIME baseband data [37]. The positions determined from CHIME baseband data and FAST are listed in Table 1. We note that the positions determined with FAST are consistent with the CHIME subarcminute localization. Such off-axis illumination at FAST does not affect the polarization measurements [25, 38]. The successive observations were conducted using the central beam of the 19-beam receiver pointed at the estimated positions. The 19-beam receiver, with the frequency range between 1000 and 1500 MHz, provides two data streams (one for each hand of linear polarization). The data streams are processed with the Reconfigurable Open Architecture Computing Hardware–version 2 (ROACH2) signal processor [35]. The output full-Stokes data files are recorded as 8 bit-sampled search mode PSRFITS [39] files every 49.152 µs with 4096 frequency channels. FRBs 20190117A, 20190208A, 20190303A were observed approximately once a month. FRB 20190417A was observed more frequently to investigate its possible periodicity (Zhang et al., in prep). The typical observation duration is half an hour. The dates, durations, and modes of all observations are listed in Table 2."
+      },
+      "confidence": 0.95,
+      "task": "multi-year polarimetric monitoring of repeating FRBs",
+      "setup": "FAST telescope observations of four CHIME-discovered repeating FRBs (20190117A, 20190208A, 20190303A, 20190417A) from 2020 to 2023, using the 19-beam receiver (1000-1500 MHz) and ROACH2 signal processor."
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_1483b4d0298bd4da_x2",
+      "evidence": {
+        "section": "2 Observations and Data Reduction",
+        "original_text": "We used DRAFTS[3)] for burst searching, a deep learningbased tool for detection of radio transients [40]. When searching the data from FAST observations of the four FRBs, we first de-dispersed the FAST data using the fiducial dispersion measure (DM) values corresponding to the repeating FRBs: DM = 397 pc cm−3 for FRB 20190117A, DM = 580 pc cm−3 for FRB 20190208A, DM = 222 pc cm−3 for FRB 20190303A, and DM = 1378 pc cm−3 for FRB 20190417A. Subsequently, we unified the time resolution of the data to 196.608 µs (down-sampled by a factor of 4 from the typical time resolution of 49.152 µs for FAST) to enhance the signal-to-noise ratio (S/N). After down-sampling, we divided the data into segments of 512 time samples, resizing each segment to 512 × 512 pixels, and inputting them into the classification model in DRAFTS for inference. The model provided the probability of an FRB burst occurring within each segment. We selected the segments where the predicted probability exceeded 50% as potential burst candidates, excluding those with low S/N. Finally, we performed manual post-processing to determine the arrival time of the bursts based on their positions within the data segments. To remove radio frequency interference (RFI), we used the PSRCHIVE software package [39]. A median filter was applied to each burst in the frequency domain using the paz command, and RFI was manually mitigated in each burst using the pazi command. Polarization calibration was performed by correcting for differential gain and phase between the receptors. This was achieved through separate measurements of a noise diode signal injected at a 45◦ angle relative to the linear receptors, using the single-axis model with the PSRCHIVE software package. We measured the RM using the Stokes QU-fitting method [41], selecting positions where the signal-to-noise ratio exceeded 3 for RM fitting. We corrected the linear polarization by derotating it using the measured RM. We then determined the frequency range of each burst. A detailed description of the method can be found in Ref. [44], while a brief introduction is provided here. The frequency range was calculated based on the cumulative distribution function (CDF) of the burst spectrum, as described in Ref. [44]. The CDF was normalized using smoothing filters and the Asymmetrically Reweighted Penalized Least Squares algorithm. The frequency indices marking the start and end points of the burst range were identified from the first derivative of the smoothed CDF. The lower and upper boundaries were determined based on the positivity of the first derivative relative to the CDF threshold of 0.5, with uncertainties assessed using the bootstrap method."
+      },
+      "confidence": 0.95,
+      "task": "burst detection and data processing",
+      "setup": "Data processing pipeline using DRAFTS for burst search, PSRCHIVE for RFI removal and polarization calibration, and specific algorithms for RM measurement and frequency range determination."
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_1483b4d0298bd4da_x3",
+      "evidence": {
+        "section": "3 Results",
+        "original_text": "We detected 1, 5, 13, 47 bursts for FRBs 20190117A, 20190208A, 20190303A, and 20190417A, respectively, with a total of 66 bursts. The numbers of detections are listed in Table 2. All the polarization pulse profiles and dynamic spectra are included in Supplementary Materials. The highest burst rates are 0.5, 2, 8, and 14 bursts hr−1 for FRBs 20190117A, 20190208A, 20190303A, and 20190417A, respectively. The mean burst rates are 0.08, 0.48, 1.53, and 2.26 bursts hr−1 for the same FRBs. While the mean burst rates were calculated over the entire exposure period, the highest burst rates were calculated based on each individual observation session. Notably, FRB 20190417A exhibits the highest burst rate among the four repeaters. This may be a selection effect, as we observed FRB 20190417A during an active period, allowing us to detect more bursts. The average burst rates for these four repeaters at CHIME are on the order of 0.1 bursts per hour, much lower than those at FAST. The fluence completeness limits at CHIME are a few Jy ms, much larger than the ∼0.02 Jy ms at FAST. This difference in burst rates could therefore be due to variations in sensitivity and burst rates at different frequencies. Although the burst rates are higher than those measured at CHIME, they are still much lower than those of FRBs 20121102A, 20201124A, 20220912A, 20240114A. For example, FRBs 20121102A, 20201124A, 20220912A, and 20240114A had peak burst rates of 122 hr−1 [45], 542 hr−1 [46], 390 hr−1 [47], and ∼500 hr−1 [48], respectively, all recorded at FAST. Even a (sub)-100-meter radio telescope recorded a burst rate of 260 hr−1 for FRB 20240114A [44]. Therefore, our sample does not represent the most active repeaters. The times of arrival, RM, degrees of linear and circular polarization, and the lower and upper frequencies of the 66 bursts are listed in Table 3. Bursts 13 and 32 of FRB 20190417A exhibit circular polarization with signal-to-noise ratios greater than 7. The circular polarization fractions are 11.9 ± 1.0% and 35.7 ± 3.7%, respectively. Circular polarization is a relatively rare phenomenon among repeating FRBs. Although there are over 60 repeating FRB sources [3], circular polarization has been observed in only five of them: FRBs 20121102A, 20190520B [49], 20201124A [17], 20220912A [47, 50], and 20240114A [44]. The largest circular polarization fraction observed in our sample is 35.7 ± 3.7% for FRB 20190417A, which is smaller than the typical ∼60% to ∼90% seen in other repeating FRBs. For example, the largest circular polarization fraction is about 64% for FRB 20121102A [49], about 70% for FRB 20220912A [47], and about 65% for FRB 20240114A [44]. The highest recorded circular polarization fraction is approximately 90% for FRB 20201124A [24]. However, we note that the high polarization fractions observed in other repeaters are rare outliers, typically occurring in about 1 in 1000 bursts. Since FRB 20190417A has only two bursts with detected circular polarization, it is difficult to make a direct comparison to these outliers. To make a proper comparison, more bursts from FRB 20190417A will be needed."
+      },
+      "confidence": 0.95,
+      "task": "polarization property analysis and statistical comparison",
+      "setup": "Analysis of polarization fractions (linear and circular), depolarization modeling, RM variation analysis, and statistical tests (t-test, K-S test) comparing repeating and non-repeating FRBs."
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Bursts 13 and 32 of FRB 20190417A exhibit circular polarization with signal-to-noise ratios greater than 7. The circular polarization fractions are 11.9 ± 1.0% and 35.7 ± 3.7%, respectively. Circular polarization is a relatively rare phenomenon among repeating FRBs. Although there are over 60 repeating FRB sources [3], circular polarization has been observed in only five of them: FRBs 20121102A, 20190520B [49], 20201124A [17], 20220912A [47, 50], and 20240114A [44]. The largest circular polarization fraction observed in our sample is 35.7 ± 3.7% for FRB 20190417A, which is smaller than the typical ∼60% to ∼90% seen in other repeating FRBs. For example, the largest circular polarization fraction is about 64% for FRB 20121102A [49], about 70% for FRB 20220912A [47], and about 65% for FRB 20240114A [44]. The highest recorded circular polarization fraction is approximately 90% for FRB 20201124A [24]. However, we note that the high polarization fractions observed in other repeaters are rare outliers, typically occurring in about 1 in 1000 bursts. Since FRB 20190417A has only two bursts with detected circular polarization, it is difficult to make a direct comparison to these outliers. To make a proper comparison, more bursts from FRB 20190417A will be needed."
+      },
+      "confidence": 0.98,
+      "quantity": "circular polarization fraction",
+      "value": 35.7,
+      "unit": "%",
+      "context": "FRB 20190417A bursts detected with FAST",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For FRBs 20190208A and 20190303A, all bursts are highly linearly polarized, with linear polarization fractions ≳ 80%. Sixty-one percent of the bursts have linear polarization fractions greater than 90%. The median linear polarization fraction is 89.6% for FRB 20190208A and 99.2% for FRB 20190303A, both much larger than the median of 63% observed in the non-repeating FRB sample from Ref. [51]. In comparison, the median linear polarization fractions of FRB 20201124A (95.5%, [52]), FRB 20220912A (96.0%, [47]), and FRB 20240114A (93.6%, [44]) are also close to those observed in our sample. We further conducted a t-test to examine the similarity in linear polarization between repeating and non-repeating FRBs. For FRBs 20190208A and 20190303A, we used our FAST results just reported. For FRBs 20201124A (536 bursts), 20220912A (1076 bursts), and 20240114A (299 bursts), we used the samples from Ref. [52], [47], and [44], respectively. For the non-repeating FRBs, we used the 89 measured samples from Ref.[51]. For repeaters, all the samples used are detections. To maintain consistency, we did not include upper limits from nondetections for non-repeaters in Ref.[51]. The results are shown in Figure 1. In Figure 1, we also show their linear polarization distributions. For all pairwise comparisons among the repeating FRBs, the p-values were greater than 0.05 (corresponding to a logarithmic value of -1.3), suggesting that the linear polarization distributions among the five repeating FRBs are nearly identical. However, the p-values for comparisons between repeating and non-repeating FRBs were significantly smaller than those for comparisons among the repeating FRBs. The box plot, along with the t-test statistics and p-values, clearly reveals a distinct difference in the linear polarization distributions between the non-repeating and the five repeating FRBs."
+      },
+      "confidence": 0.97,
+      "quantity": "linear polarization fraction",
+      "value": null,
+      "unit": "%",
+      "context": "FRBs 20190208A and 20190303A bursts detected with FAST",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr3",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For FRB 20190417A, some bursts exhibit a low linear polarization fraction. As discussed in Ref. [36], the depolarization is likely caused by RM scattering due to multi-path transmission of signals in an inhomogeneous magneto-ionic environment. We parameterize the depolarization due to RM scattering [41] as : L_measured / L_intrinsic = exp(-2 σRM² λ⁴), where f_RM scattering is the fractional reduction in the linear polarization amplitude, σRM is the standard deviation of the RM, and λ is the wavelength. We determine σRM by fitting the data with the model in Eq. (3), assuming each burst has 100% intrinsic linear polarization. For FRB 20190417A, a weighted least squares fit was used. For λ in Eq. (3), we calculated the central frequency of each burst and converted the weighted frequency to the equivalent wavelength, λ. Additionally, for FRB 20190417A, we included the CHIME measurement with a linear polarization fraction of 14.7% at 665 MHz from Ref. [28]. The resulting σRM for FRB 20190417A is 5.19 ± 0.09 rad m⁻², which is consistent with the measurements of 6.1 ± 0.5 rad m⁻² in Ref. [36]."
+      },
+      "confidence": 0.98,
+      "quantity": "RM scattering standard deviation",
+      "value": 5.19,
+      "unit": "rad m⁻²",
+      "context": "FRB 20190417A depolarization due to multi-path propagation",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr4",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For FRB 20190117A, we detected only one burst with a linear polarization fraction of 28.9% at 1060 MHz. We also included two CHIME bursts, with linear polarization fractions of 19.5% at 515 MHz and 14.3% at 505 MHz. The resulting σRM for FRB 20190117A is 9.85 rad m⁻² for the FAST data and 2.78 ± 0.05 rad m⁻² for the CHIME data, respectively. The result of the fitting is shown in Figure 2. We did not use all the data from CHIME and FAST for the fit because the σRM values were not consistent. The inconsistency may be caused by variations in the magneto-ionic environment, as indicated by the RM reversal that occurred within about three weeks of FRB 20190117A, as presented below. Another possibility is that intrinsic effects are at play, and the linear polarization fraction measured at FAST is lower than expected. Such intrinsic effects have already been observed in FRB 20201124A [17] and FRB 20220912A [50]."
+      },
+      "confidence": 0.95,
+      "quantity": "RM scattering standard deviation",
+      "value": 2.78,
+      "unit": "rad m⁻²",
+      "context": "FRB 20190117A depolarization due to multi-path propagation (CHIME data)",
+      "result_type": "measurement"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr5",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "We summarize the RM characteristics of published repeating FRBs in Table 4. The RM measurements of the four repeating FRBs mentioned in the previous section are listed in the table, along with other published repeating FRBs, for a total of 18 repeating FRBs with RM measurements. Some repeating FRBs have only one RM measurement and are listed in the right column. For repeating FRBs with multiple RM measurements, the table lists the average, minimum, maximum, the difference between the minimum and maximum RM, and σRM. Whether RM is reversed is also indicated with ‘yes’ or ‘no’. For the 14 repeating FRBs with multiple RM measurements, 9 (i.e., 64%) show RM variations greater than 50 rad m⁻². We take 50 rad m⁻² as the threshold for RM variations from the FRB’s local environment because RM variation amplitudes of 10 rad m⁻² to 30 rad m⁻² can arise from apparent RM variations across the phase of a burst, intrinsic frequency evolution [17, 50], or large measurement uncertainties. The overall pattern of RM variations in repeating FRBs is consistent with the findings in Refs. [28, 29]. We note that RM variations smaller than 50 rad m⁻² could result from limited observations or RM measurements. For example, the RM variations of FRB 20180916B and FRB 20190117A have been smaller than 50 rad m⁻² over several years. Long-term, high-cadence observations would help reveal the true RM variations. The percentage of 64% could therefore represent a lower limit for the number of repeating FRBs residing in a dynamic magneto-ionic environment."
+      },
+      "confidence": 0.96,
+      "quantity": "RM variation threshold percentage",
+      "value": 64,
+      "unit": "%",
+      "context": "Repeating FRBs with multiple RM measurements",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr6",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "For the 14 repeating FRBs with multiple RM measurements, 3 (i.e., 21%) exhibit RM reversal. Similarly, the 21% figure may also represent a lower limit, as limited observations may not capture the full extent of RM variations."
+      },
+      "confidence": 0.95,
+      "quantity": "RM reversal percentage",
+      "value": 21,
+      "unit": "%",
+      "context": "Repeating FRBs with multiple RM measurements",
+      "result_type": "threshold"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_1483b4d0298bd4da_qr7",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "Figure 3 shows that these FRB repeaters appear to have complex diverse patterns of their RM variations. Most of them exhibit random variation patterns, which might be contributed by a plasma screen with an turbulent medium near the FRB source. Due to the turbulent dynamics or the relative motion between the screen and the FRB source, an irregular RM variation would be caused by the fluctuating clumps along the line of sight, as proposed by Ref. [15]. In astrophysical plasma, the turbulence is ubiquitous and can naturally induce fluctuations in density and magnetic fields, leading the RM fluctuations. Assuming that the timescale of the relative motion is shorter than the dynamic timescale of turbulence, the random RM variation would be dominated by the relative motion between the screen and the FRB source. For the uniform relative motion with a transverse velocity as v⊥, the RM structure function D_RM(t) in the time domain should be directly related to the RM structure function D_RM(l) in space, where l = v⊥ t is the transverse lengthscale on the plasma screen. For a given plasma screen, D_RM(l) depends on the power spectrum P(k) of the fluctuations of RM density (that is defined by the product of the electron density and the parallel magnetic field), where k = 2π/l is the spatial wavenumber. In turbulence, the power spectrum usually satisfies a power-law distribution, P(k) ∝ k^α for 2π/L < k < 2π/l₀, where L and l₀ are outer scale and inner scale, respectively. The power spectrum with α < −3 is called a ‘steep spectrum’ (such as Kolmogorov scaling with α = −11/3) and the power spectrum with α > −3 is called a ‘shallow spectrum’. Fluctuations in the steep and shallow spectra are dominated by large-scale clumps at ∼ L and small-scale clumps at ∼ l₀, respectively. For a thick plasma screen, the RM structure function satisfies: D_RM ∝ l^{-(α+2)} for l < L and D_RM ∝ const. for l > L, see Ref. [15] for a detailed discussion. In particular, Kolmogorov scaling with α = −11/3 leads to an RM structure function of D_RM ∝ l^{5/3} for l < L and D_RM ∝ const. for l > L. Most FRB repeaters discussed in this work show a power-law index of γ ∼ (0 − 0.8), which suggests that the index of the power spectrum of the fluctuation is α = −(γ + 2) ∼−(2.0 − 2.8). In this case, the plasma screens near these FRB repeaters have shallow spectra in the inertial ranges (i.e., l₀ < l < L) due to α > −3, if their RM variations are attributed to the turbulence. Therefore, the variation is dominated by small-scale RM density fluctuations."
+      },
+      "confidence": 0.95,
+      "quantity": "power-law index",
+      "value": null,
+      "unit": null,
+      "context": "RM structure function analysis for repeating FRBs",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_1483b4d0298bd4da_p1",
+      "evidence": {
+        "section": "Results",
+        "original_text": "Bursts 13 and 32 of FRB 20190417A exhibit circular polarization with signal-to-noise ratios greater than 7. The circular polarization fractions are 11.9 ± 1.0% and 35.7 ± 3.7%, respectively. Circular polarization is a relatively rare phenomenon among repeating FRBs. Although there are over 60 repeating FRB sources [3], circular polarization has been observed in only five of them: FRBs 20121102A, 20190520B [49], 20201124A [17], 20220912A [47, 50], and 20240114A [44]. The largest circular polarization fraction observed in our sample is 35.7 ± 3.7% for FRB 20190417A, which is smaller than the typical ∼60% to ∼90% seen in other repeating FRBs. For example, the largest circular polarization fraction is about 64% for FRB 20121102A [49], about 70% for FRB 20220912A [47], and about 65% for FRB 20240114A [44]. The highest recorded circular polarization fraction is approximately 90% for FRB 20201124A [24]. However, we note that the high polarization fractions observed in other repeaters are rare outliers, typically occurring in about 1 in 1000 bursts. Since FRB 20190417A has only two bursts with detected circular polarization, it is difficult to make a direct comparison to these outliers. To make a proper comparison, more bursts from FRB 20190417A will be needed."
+      },
+      "confidence": 0.97,
+      "metric": "circular polarization fraction",
+      "compared_to": "FRB 20121102A, FRB 20201124A, FRB 20220912A, FRB 20240114A"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_1483b4d0298bd4da_p2",
+      "evidence": {
+        "section": "Results",
+        "original_text": "For FRBs 20190208A and 20190303A, all bursts are highly linearly polarized, with linear polarization fractions ≳ 80%. Sixty-one percent of the bursts have linear polarization fractions greater than 90%. The median linear polarization fraction is 89.6% for FRB 20190208A and 99.2% for FRB 20190303A, both much larger than the median of 63% observed in the non-repeating FRB sample from Ref. [51]. In comparison, the median linear polarization fractions of FRB 20201124A (95.5%, [52]), FRB 20220912A (96.0%, [47]), and FRB 20240114A (93.6%, [44]) are also close to those observed in our sample. We further conducted a t-test to examine the similarity in linear polarization between repeating and non-repeating FRBs. For FRBs 20190208A and 20190303A, we used our FAST results just reported. For FRBs 20201124A (536 bursts), 20220912A (1076 bursts), and 20240114A (299 bursts), we used the samples from Ref. [52], [47], and [44], respectively. For the non-repeating FRBs, we used the 89 measured samples from Ref.[51]. For repeaters, all the samples used are detections. To maintain consistency, we did not include upper limits from nondetections for non-repeaters in Ref.[51]. The results are shown in Figure 1. In Figure 1, we also show their linear polarization distributions. For all pairwise comparisons among the repeating FRBs, the p-values were greater than 0.05 (corresponding to a logarithmic value of -1.3), suggesting that the linear polarization distributions among the five repeating FRBs are nearly identical. However, the p-values for comparisons between repeating and non-repeating FRBs were significantly smaller than those for comparisons among the repeating FRBs. The box plot, along with the t-test statistics and p-values, clearly reveals a distinct difference in the linear polarization distributions between the non-repeating and the five repeating FRBs."
+      },
+      "confidence": 0.96,
+      "metric": "linear polarization fraction",
+      "compared_to": "non-repeating FRBs, FRB 20201124A, FRB 20220912A, FRB 20240114A"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_1483b4d0298bd4da_p3",
+      "evidence": {
+        "section": "Discussions",
+        "original_text": "We perform K-S tests comparing RMs of repeating FRBs and non-repeating FRBs. For the RMs of repeating FRBs, two cases were considered. In case one, we selected the maximum |RM| for each FRB. In case two, we selected the earliest RM measurement, in order to mimic the selection of RMs for non-repeating FRBs. For each case, three groups of samples were considered: • The “fiducial” group consists of the 18 repeating FRBs listed in Table 4. • The “fiducial+3” group includes the 18 repeating FRBs and the three largest |RM| values in the DSA sample [68]. Since the DSA observations have a limited time span, non-repeating FRBs in the DSA sample could potentially turn into repeating FRBs. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “selection bias” group excludes |RM| values greater than 10000 rad m⁻² to assess the potential selection bias caused by CHIME’s insensitivity to RMs greater than ∼5000 rad m⁻² due to intrachannel depolarization [51]. For the RMs of non-repeating FRBs, five groups of samples were considered: • The “CHIME” group includes the 86 non-repeating FRBs from Ref. [51]. • The “DSA” group includes the 20 non-repeating FRBs from Ref. [68]. • The “CHIME+DSA” group is the combination of the CHIME” and “DSA” groups. • The “CHIME+DSA-3” group is the “CHIME+DSA” group with the three largest |RM| values in the DSA sample excluded. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “DSA-3” group is the “DSA” group with the three largest |RM| values excluded from the DSA sample. The results are shown in Table 5. Additionally, we plot the RM distributions for three comparisons in Figure 4 for case one. For case two, the p-value for comparing the “CHIME+DSA” group of non-repeating FRBs with the “fiducial” group of repeating FRBs is 0.018, which reveals a marginal dichotomy in the distribution of their RMs. We caution that selection bias could play a role, as the p-values of the “selection bias” groups are much larger than those of the “fiducial” groups. Excluding two large RMs, the p-values can be about ten times larger. For example, p-value of 0.0084 (smaller than 0.05) becomes 0.057 (greater than 0.05). We note that Ref. [51] also compared RMs of repeating FRBs and non-repeating FRBs. In Ref. [51], the sample of repeating FRBs includes 13 sources, excluding two FRBs with large RMs, i.e., FRB 20180301A (|RM| ∼ 600 rad m⁻²) and FRB 20201124 (|RM| ∼ 900 rad m⁻²), compared to the “selection bias” group. Therefore, Ref. [51] found no evidence for a dichotomy in the repeating and non-repeating FRB RM distributions. Besides, the p-values of the “fiducial+3” groups are much smaller than those of the “fiducial” groups. Therefore, the small sample size of repeating FRBs could easily skew the results."
+      },
+      "confidence": 0.95,
+      "metric": "RM distribution",
+      "compared_to": "non-repeating FRBs"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_1483b4d0298bd4da_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Fast radio bursts (FRBs) are bright, millisecond-duration radio emissions originating from cosmological distances. In this study, we report multi-year polarization measurements of four repeating FRBs initially discovered by the Canadian Hydrogen Intensity Mapping Experiment (CHIME): FRBs 20190117A, 20190208A, 20190303A, and 20190417A. We observed the four repeating FRBs with the Five-hundred-meter Aperture Spherical Radio Telescope (FAST), detecting a total of 66 bursts. Two bursts from FRB 20190417A exhibit a circular polarization signal-to-noise ratio greater than 7, with the highest circular polarization fraction recorded at 35.7%. While the bursts from FRBs 20190208A and 20190303A are highly linearly polarized, those from FRBs 20190117A and 20190417A show depolarization due to multi-path propagation, with σRM = 2.78 ± 0.05 rad m[−][2] and 5.19 ± 0.09 rad m[−][2] , respectively. The linear polarization distributions among five repeating FRBs—FRBs 20190208A, 20190303A, 20201124A, 20220912A, and 20240114A—are nearly identical but show distinct differences from those of nonrepeating FRBs. FRBs 20190117A, 20190303A, and 20190417A exhibit substantial rotation measure (RM) variations between bursts, joining other repeating FRBs in this behavior. Combining these findings with published results, 64% of repeating FRBs show RM variations greater than 50 rad m[−][2] , and 21% exhibit RM reversals. A significant proportion of repeating FRBs reside in a dynamic magneto-ionic environment. The structure function of RM variations shows a power-law index of γ ∼ (0 − 0.8), corresponding to a shallow power spectrum α = −(γ + 2) ∼−(2.0 − 2.8) of turbulence, if the RM variations are attributed to turbulence. This suggests that the variations are dominated by small-scale RM density fluctuations. We perform K-S tests comparing the RMs of repeating and non-repeating FRBs, which reveal a marginal dichotomy in the distribution of their RMs. We caution that the observed dichotomy may be due to the small sample size and selection biases."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_1483b4d0298bd4da_cl1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "We report multi-year polarization measurements of four repeating FRBs initially discovered by the CHIME telescope: FRBs 20190117A, 20190208A, 20190303A, and 20190417A, and analyzed polarization properties combined with published results. Our main results are the following. 1. We detected 1, 5, 13, 47 bursts for FRBs 20190117A, 20190208A, 20190303A, and 20190417A, respectively, with a total number of 66. 2. Two bursts from FRB 20190417A exhibited significant circular polarization, with a signal-to-noise ratio greater than 7 and a maximum circular polarization fraction of 35.7%. FRBs 20190208A and 20190303A were highly linearly polarized. FRBs 20190117A and 20190417A showed depolarization due to multi-path propagation, with RM scatter values of σRM = 2.78±0.05 rad m[−][2] and 5.19±0.09 rad m[−][2] , respectively. 3. The linear polarization distributions of five repeating FRBs—FRBs 20190208A, 20190303A, 20201124A, 20220912A, and 20240114A—are nearly identical. These distributions differ significantly from those of non-repeating FRBs. 4. FRBs 20190117A, 20190303A, and 20190417A exhibited substantial RM variations between bursts. Across all repeating FRBs with multiple RM measurements, 64% showed RM variations exceeding 50 rad m[−][2] , and 21% demonstrated RM reversals. A significant proportion of repeating fast radio bursts reside in a dynamic magneto-ionic environment. 5. The RM structure function follows a power-law index of γ ∼ (0 − 0.8), corresponding to a turbulence power spectrum of α = −(γ + 2) ∼−(2.0 − 2.8). These results suggest that small-scale RM density fluctuations dominate the RM variations. 6. K-S tests comparing the RMs of repeating and non-repeating FRBs show a slight distinction in their RM distributions. We note that the observed dichotomy could be attributed to the small sample size and potential selection biases."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_1483b4d0298bd4da_lm1",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "We caution that the observed dichotomy could be attributed to the small sample size and potential selection biases. Future studies should aim to increase the sample size from different telescopes and observing conditions of both repeating and non-repeating FRBs. We note that selection bias could play a role, as the p-values of the “selection bias” groups are much larger than those of the “fiducial” groups. Excluding two large RMs, the p-values can be about ten times larger. For example, p-value of 0.0084 (smaller than 0.05) becomes 0.057 (greater than 0.05). We note that Ref. [51] also compared RMs of repeating FRBs and non-repeating FRBs. In Ref. [51], the sample of repeating FRBs includes 13 sources, excluding two FRBs with large RMs, i.e., FRB 20180301A (|RM| ∼ 600 rad m[−][2] ) and FRB 20201124 (|RM| ∼ 900 rad m[−][2] ), compared to the “selection bias” group. Therefore, Ref. [51] found no evidence for a dichotomy in the repeating and non-repeating FRB RM distributions. Besides, the p-values of the “fiducial+3” groups are much smaller than those of the “fiducial” groups. Therefore, the small sample size of repeating FRBs could easily skew the results. Finally, comparing case one and case two, the selection of the maximum |RM| and the earliest RM measurement do influence the results of the K-S tests, but generally not enough to change the trend. For the thirteen K-S tests in each case, only one test changed from greater than 0.05 to smaller than 0.05."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_1483b4d0298bd4da_lm2",
+      "evidence": {
+        "section": "Discussion",
+        "original_text": "We caution that the spectral extent distribution may be subject to selection bias, as bursts reaching the edges of the FAST frequency band were excluded, and the FAST bandwidth is limited to only 500 MHz. The non-repeating FRBs have only one RM measurement, or even no RM measurement, and thus RM variations cannot be analyzed. However, we can still compare the RMs of non-repeating and repeating FRBs. Ref. [36] compared the RMs of nine repeating FRBs and eleven non-repeating FRBs, and a K-S test between these two groups yields a p-value of 0.02, indicating a statistically significant difference between them. However, the sample size used in that study was only 21. Refs. [28, 29] compare the RMs of repeating and nonrepeating FRBs. The samples used are all from the CHIME telescope, which may introduce selection bias, as we will discuss below. Ref. [51] included RMs from 86 non-repeating FRBs, and Ref. [68] included RMs from 20 non-repeating FRBs. We perform K-S tests comparing RMs of repeating FRBs and non-repeating FRBs. For the RMs of repeating FRBs, two cases were considered. In case one, we selected the maximum |RM| for each FRB. In case two, we selected the earliest RM measurement, in order to mimic the selection of RMs for non-repeating FRBs. For each case, three groups of samples were considered: • The “fiducial” group consists of the 18 repeating FRBs listed in Table 4. • The “fiducial+3” group includes the 18 repeating FRBs and the three largest |RM| values in the DSA sample [68]. Since the DSA observations have a limited time span, nonrepeating FRBs in the DSA sample could potentially turn into repeating FRBs. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “selection bias” group excludes |RM| values greater than 10000 rad m[−][2] to assess the potential selection bias caused by CHIME’s insensitivity to RMs greater than ∼5000 rad m[−][2] due to intrachannel depolarization [51]. For the RMs of non-repeating FRBs, five groups of samples were considered: • The “CHIME” group includes the 86 non-repeating FRBs from Ref. [51]. • The “DSA” group includes the 20 non-repeating FRBs from Ref. [68]. • The “CHIME+DSA” group is the combination of the CHIME” and “DSA” groups. • The “CHIME+DSA-3” group is the “CHIME+DSA” group with the three largest |RM| values in the DSA sample excluded. Here we assume that the three non-repeating FRBs with the largest |RM| values in the DSA sample are actually repeating FRBs. • The “DSA-3” group is the “DSA” group with the three largest |RM| values excluded from the DSA sample."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_1483b4d0298bd4da_fw1",
+      "evidence": {
+        "section": "Conclusion",
+        "original_text": "Future studies should aim to increase the sample size from different telescopes and observing conditions of both repeating and non-repeating FRBs."
+      },
+      "confidence": 0.93
+    }
+  ]
+}

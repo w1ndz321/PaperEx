@@ -1,0 +1,509 @@
+{
+  "metadata": {
+    "doc_id": "doc_925476100795d86f",
+    "source_file": "08_Drone_Detection_and_Defense_Systems_SDR_RF_Survey.md",
+    "title": "Drone Detection and Defense Systems: Survey and a Software‐Defined Radio‐Based Solution",
+    "year": 2022,
+    "doi": "10.3390/s22041453",
+    "abstract": "Telecommunications Department, University Politehnica of Bucharest, 060042 Bucharest, Romania; florin_lucian.chiper@upb.ro (F.‐L.C.); calin.vladeanu@upb.ro (C.V.); ion.marghescu@upb.ro (I.M.); razvan.craciunescu@upb.ro (R.C.); octavian.fratu@upb.ro (O.F.)",
+    "introduction": "Technical innovations continue to manifest at an ever‐increasing speed, causing fast and drastic changes to modern society. These changes, driven by the possibilities offered by new technologies, affect citizens, governments, and all public and private industry sec‐ tors. \n\nAs a result, the development of small, low‐cost unmanned aerial vehicles (UAVs), commonly known as drones, has resulted in an ever‐increasing number of these devices being utilized in a variety of applications [1]. UAVs have introduced new participants in aviation, quickly evolving beyond their military origin to become powerful business tools [2,3]. \n\nApplications of UAVs range from recreation to commercial and military applica‐ tions, including enjoyment, hobbies, games with drones, homemade entertainment vid‐ eos, recreational movies [4–6], low altitude flying base stations [7], and the operation of UAVs for military purposes [8–13]. \n\nThe following research questions were developed for this project: \n\n- What functions should a drone detection and defense system (DDDS) have in order to prove its functionality? \n\n- Which are the most popular methods used in the implementation of DDDSs? \n\n- Which are the main parameters that should be taken into consideration in research? \n\n- What gaps are in the current research of DDDSs? \n\n_Sensors_ **2022** , _22_ , 1453. https://doi.org/10.3390/s22041453 \n\nwww.mdpi.com/journal/sensors \n\n2 of 27 \n\n_Sensors_ **2022** , _22_ , 1453 \n\nA widely‐used methodology was utilized to conduct a systematic literature review based on preferred reporting items for systematic reviews and meta‐analyses (PRISMA) [14] in order to obtain the answers to our study questions. We conducted a literature search in scientific databases that encompass prominent computer science journals and conferences, such as IEEE Xplore, ACM digital library, ScienceDirect, SAGE Journals Online, and Springer Link, to discover key articles on the drone detection and defense systems topic. We used the following search string to discover the relevant publications and papers for our research: (‘Drone’ OR ‘UAV’) AND (Counter) in the domains of elec‐ trical engineering, applied physics, telecommunications, defense, and computer infor‐ mation systems, for the previous six years (2016–2021). In total, we gathered a set of 7349 potentially relevant publications, excluding grey literature and pre‐prints. \n\nWe next looked at the titles, keywords, and abstracts of the publications in order to find the papers and articles that described at least one distributed ledger modeling or sim‐ ulation approach. We chose a total of 99 publications in the process. We examined the references of the selected publications for other papers that were relevant to our inquiry in order to expand our literature collection. Figure 1 shows the overall number of articles produced as a result of this approach. \n\n\n**Figure 1.** PRISMA 2020 flow diagram for systematic reviews. \n\nThe additional references that were identified in the bodies of the selected publica‐ tions, or referencing those, were added to the literature list. We carefully studied the se‐ lected publications once the literature selection procedure was completed in order to de‐ termine the described applications and problems. The results of our analysis are reported in the following sections, which represent the core of the topical literature review. \n\nThe main contributions of our paper can be summarized as follows: \n\n- We provide a detailed review regarding the drone defense systems based on RF methods, focusing on the solutions that are based on software‐defined radio (SDR) platforms. To our best knowledge, other reviews that were performed concerning drone defense systems have not detailed that particular category of solutions; \n\n- We discuss the current worldwide status of the legal issues regarding the jamming function, that enables the systems to annihilate the drones after they are detected; \n\n- We present our own solution for an RF‐based drone defense system that was de‐ signed and implemented within the framework of the DronEnd research project. The system was developed using several SDR platforms and a custom‐made mount for \n\n3 of 27 \n\n_Sensors_ **2022** , _22_ , 1453 \n\ndynamically adjusting the orientation of the jamming antenna, which enables the de‐ tection, localization, and annihilation of drones in a given monitored area. \n\nThe rest of this article is organized as follows: Section 2 reviews the most recent inci‐ dents that involved the reckless flying of UAV systems and the regulations taken by dif‐ ferent governments and agencies around the world. \n\nSection 3 describes the system requirements of a drone defense system in correlation with their basic mechanism/sensing technologies, considering their advantages and draw‐ backs. Also, this section highlights the specific models and architectures used in research for drone detection and defense systems. Section 4 details aspects regarding RF‐based DDDSs and the use of SDR platforms in such systems. Section 5 contains a discussion regarding the challenges and the future research directions related to DDDSs. In Section 6, a solution for a drone detection and defense system based on SDR platforms, developed by the authors, is proposed and detailed, also highlighting the novel elements that are brought about, compared to the other existing solutions. The last section concludes the paper and includes the future perspectives of this work.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "电子、通信与自动控制技术",
+        "level2": null,
+        "level3": null
+      },
+      {
+        "level1": "军事学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "drone detection",
+      "software-defined radio",
+      "unmanned aerial vehicles",
+      "RF-based defense",
+      "counter-UAV systems"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:07:17.870355+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.98,
+      "term": "drone detection and defense system",
+      "normalized": "无人机检测与防御系统",
+      "std_label": "DDDS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.98,
+      "term": "software-defined radio",
+      "normalized": "软件定义无线电",
+      "std_label": "SDR"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.98,
+      "term": "radio frequency methods",
+      "normalized": "射频方法",
+      "std_label": "RF methods"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c4",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.97,
+      "term": "DronEnd system",
+      "normalized": "DronEnd系统",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c5",
+      "evidence": {
+        "section": "3.3",
+        "original_text": "The necessity of DDDS arose for the first time in military applications under special regulations that exceed other governmental or structure capabilities and responsibilities. In consequence, the neutralization techniques are more numerous than the detection techniques [30]. The most important DDDS countermeasures are as follows: Electromagnetic pulse (EMP) —a beam generated with the goal to damage the internal electronics of the target drone [115–117]; Interceptor drone/Collision Drone —a drone used to force the target drone to land or return home [118–123]; Lasers —directed rays used to destroy the target or blind the camera (dazzler) [124–129]; Magnetic —use powerful magnets in order to create a magnetic field around a protected area [130]; Prey birds —eagles or falcons specially trained to attack the enemy’s drone [131]; Shooting nets —a net is launched towards the target drone to prevent the propellers from rotating [132]; Projectiles —large‐caliber ammunition used to destroy the target [133]; Missiles —conventional ammunition, could be guided or unguided [133]; Guns— conventional weapons and ammunition [133]; Water cannons —a stream of water is directed towards the target drone [134]; RF/GNSS jamming —disrupt the communication of the target drone with the control station and/or global navigation satellite system (GNSS) [135–139]; Spoofing —decoys the drone by using imitation GNSS and control signals in order to take over the command [140–145]; Mixed countermeasure techniques —use two or more countermeasures in order to maximize the neutralization rate."
+      },
+      "confidence": 0.96,
+      "term": "RF jamming",
+      "normalized": "射频干扰",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c6",
+      "evidence": {
+        "section": "6.2",
+        "original_text": "Once the frequency that is used by the drone to communicate has been identified, a second necessary step is to obtain information about the position of the drone. This step was performed using AoA algorithms for detecting the angle of incidence of the detected RF signal. Such algorithms exploit the phase difference of the signals that are received from the drone using a multi‐antenna system. The SDR platform that was used as the hardware for providing the RF receive front‐end was the USRP X310 [177], on which two Twin‐RX RF modules [178] were mounted (covered frequency range of 10–6000 MHz, instantaneous bandwidth 80 MHz). Each of the Twin‐RX modules offers two coherent reception channels, and the local oscillator that was used can be shared by the two boards, so that in the end, a total of four coherent reception channels are obtained and are aligned in phase. The antenna system that was used was a linear system of four antennas, spaced at a distance equal to half the wavelength of the minimum frequency that the drones used for testing could transmit (2.4 GHz). In order to estimate the initial phase difference between the four reception channels, a calibration step was required after each system restart, which involves the transmission of a test signal that will be received through the RF cables of equal length on all four of the reception channels. A 5‐port RF splitter (Mini‐ Circuits ZN4PD1‐63HP‐S+ (Mini‐Circuits, New York, USA) [182]) was used in order to distribute the signals. Figure 4 shows both the antenna system that was used and the USRP X310 SDR platform during the calibration stage."
+      },
+      "confidence": 0.97,
+      "term": "angle of arrival",
+      "normalized": "到达角",
+      "std_label": "AoA"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c7",
+      "evidence": {
+        "section": "6.1",
+        "original_text": "A first step required for detecting the presence of a drone in the case of RF‐based drone defense systems is to monitor the radio spectrum through a spectrum sensing process in order to identify the signals that are transmitted by the drone. For the implementation of the spectrum sensing process in the DronEnd system, spectrum sensing algorithms based on the energy detection method have been used. Algorithms, such as 3EED [174] and 3EED with an adaptive threshold [175], that were previously developed, provide improved performance compared to the classical energy detection (CED) [176] algorithm and were used to identify the presence of the drones in the monitored area. The above‐mentioned algorithms were implemented on SDR platforms from the USRP family (USRP X310 (Ettus Research, Santa Clara, CA, USA) [177] equipped with Twin‐RX RF Daugterboards (Ettus Research, Santa Clara, CA, USA) [178], 10–6000 MHz frequency range). The frequency bands that are used by the drones that were used to test the DronEnd system (DJI Mavic Air (SZ DJI Technology Co., Ltd., Shenzhen, China) [179], DJI Phantom 4 Pro v2.0 (SZ DJI Technology Co., Ltd., Shenzhen, China) [180], and DJI Mini 2 (SZ DJI Technology Co., Ltd., Shenzhen, China) [181]) were the 2.4 GHz (2400–2500 MHz) and the 5 GHz (5730–5830 MHz) ISM bands, which can be covered using the above‐mentioned SDR platforms that can receive signals on frequencies up to 6 GHz. Because the position of the target drones was not initially known, omnidirectional antennas were used in this step."
+      },
+      "confidence": 0.96,
+      "term": "spectrum sensing",
+      "normalized": "频谱感知",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_925476100795d86f_c8",
+      "evidence": {
+        "section": "5",
+        "original_text": "As mentioned in Table 5, each of the different types of sensors (RF, radar, imaging, and acoustic) has its own drawbacks and limitations. As such, the performance of a DDDS that is implemented using a single type of sensor is directly affected by the disadvantages and limitations of that particular category. By combining several different sensor types in a single hybrid DDDS, the system could benefit from the advantages of each different category of sensors. A first benefit would be the increase in accuracy that such a hybrid system could achieve, when the information regarding the identification and localization of the drone would be obtained from multiple different sensors. A second benefit would be related to the possibility of detecting the target drone in situations when one of the sensor types would not allow the detection on its own. For example, if we consider a hybrid DSSS that is implemented using both RF and imaging sensors, the imaging sensors could be used for detecting autonomous drones (that cannot be identified using the RF sensors) and the RF sensors could be used for detecting drones in low visibility conditions (when the imaging sensors could not provide the detection). Very few implementations of such hybrid systems are described in the literature (for example those in [105,115]), and we consider that such an approach is a promising future research and development direction for DDDSs."
+      },
+      "confidence": 0.95,
+      "term": "hybrid DDDS",
+      "normalized": "混合无人机检测与防御系统",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_925476100795d86f_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.98,
+      "head": "doc_925476100795d86f_c4",
+      "relation_type": "uses",
+      "relation_surface": "uses",
+      "tail": "doc_925476100795d86f_c2"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_925476100795d86f_r2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.98,
+      "head": "doc_925476100795d86f_c4",
+      "relation_type": "uses",
+      "relation_surface": "based on RF methods",
+      "tail": "doc_925476100795d86f_c3"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_925476100795d86f_r3",
+      "evidence": {
+        "section": "6.3",
+        "original_text": "A final step is to transmit a jamming signal to the identified target drone in order to disrupt the communication between the drone and its operator. As the jamming signal should only be transmitted in the direction of the target drone, in order to avoid interference with other equipment in the area, a directional antenna was used for the jamming operation. Figure 6 shows the following components that were used to implement this step: the transmitting antenna, the motorized antenna mount, the stepper motor control module that was used to move the antenna mount, and the power amplifier. The angle of incidence that was detected by the AoA algorithm was processed (filtered) using a script implemented in the Matlab environment in order to remove any erroneous indications related to the position of the drone and was subsequently transmitted using a serial interface (UART) to the motor control module (MCM), which controls the stepper motors that are used to move the motorized support for positioning the jamming antenna. The MCM was based on a Microchip ATMega328p processor, which, using the angle information that is obtained using the AoA algorithm, controls the stepper motors. Two Nema 17 stepper motors, controlled using Texas instruments DRV8825 drivers, were used; one to adjust the azimuth and one to adjust the elevation of the jamming signal antenna. In the current configuration, given that the drone’s position was estimated only in the azimuth plane, the commands were transmitted only to one of the two motors (the one that was responsible for the azimuth movement)."
+      },
+      "confidence": 0.95,
+      "head": "doc_925476100795d86f_c4",
+      "relation_type": "enhances",
+      "relation_surface": "annihilates the detected drone by means of",
+      "tail": "doc_925476100795d86f_c5"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_925476100795d86f_r4",
+      "evidence": {
+        "section": "6.2",
+        "original_text": "Once the frequency that is used by the drone to communicate has been identified, a second necessary step is to obtain information about the position of the drone. This step was performed using AoA algorithms for detecting the angle of incidence of the detected RF signal. Such algorithms exploit the phase difference of the signals that are received from the drone using a multi‐antenna system. The SDR platform that was used as the hardware for providing the RF receive front‐end was the USRP X310 [177], on which two Twin‐RX RF modules [178] were mounted (covered frequency range of 10–6000 MHz, instantaneous bandwidth 80 MHz). Each of the Twin‐RX modules offers two coherent reception channels, and the local oscillator that was used can be shared by the two boards, so that in the end, a total of four coherent reception channels are obtained and are aligned in phase. The antenna system that was used was a linear system of four antennas, spaced at a distance equal to half the wavelength of the minimum frequency that the drones used for testing could transmit (2.4 GHz). In order to estimate the initial phase difference between the four reception channels, a calibration step was required after each system restart, which involves the transmission of a test signal that will be received through the RF cables of equal length on all four of the reception channels. A 5‐port RF splitter (Mini‐ Circuits ZN4PD1‐63HP‐S+ (Mini‐Circuits, New York, USA) [182]) was used in order to distribute the signals. Figure 4 shows both the antenna system that was used and the USRP X310 SDR platform during the calibration stage."
+      },
+      "confidence": 0.96,
+      "head": "doc_925476100795d86f_c4",
+      "relation_type": "uses",
+      "relation_surface": "performed using AoA algorithms",
+      "tail": "doc_925476100795d86f_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_925476100795d86f_r5",
+      "evidence": {
+        "section": "6.1",
+        "original_text": "A first step required for detecting the presence of a drone in the case of RF‐based drone defense systems is to monitor the radio spectrum through a spectrum sensing process in order to identify the signals that are transmitted by the drone. For the implementation of the spectrum sensing process in the DronEnd system, spectrum sensing algorithms based on the energy detection method have been used. Algorithms, such as 3EED [174] and 3EED with an adaptive threshold [175], that were previously developed, provide improved performance compared to the classical energy detection (CED) [176] algorithm and were used to identify the presence of the drones in the monitored area. The above‐mentioned algorithms were implemented on SDR platforms from the USRP family (USRP X310 (Ettus Research, Santa Clara, CA, USA) [177] equipped with Twin‐RX RF Daugterboards (Ettus Research, Santa Clara, CA, USA) [178], 10–6000 MHz frequency range). The frequency bands that are used by the drones that were used to test the DronEnd system (DJI Mavic Air (SZ DJI Technology Co., Ltd., Shenzhen, China) [179], DJI Phantom 4 Pro v2.0 (SZ DJI Technology Co., Ltd., Shenzhen, China) [180], and DJI Mini 2 (SZ DJI Technology Co., Ltd., Shenzhen, China) [181]) were the 2.4 GHz (2400–2500 MHz) and the 5 GHz (5730–5830 MHz) ISM bands, which can be covered using the above‐mentioned SDR platforms that can receive signals on frequencies up to 6 GHz. Because the position of the target drones was not initially known, omnidirectional antennas were used in this step."
+      },
+      "confidence": 0.96,
+      "head": "doc_925476100795d86f_c4",
+      "relation_type": "uses",
+      "relation_surface": "spectrum sensing algorithms",
+      "tail": "doc_925476100795d86f_c7"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_925476100795d86f_r6",
+      "evidence": {
+        "section": "5",
+        "original_text": "As mentioned in Table 5, each of the different types of sensors (RF, radar, imaging, and acoustic) has its own drawbacks and limitations. As such, the performance of a DDDS that is implemented using a single type of sensor is directly affected by the disadvantages and limitations of that particular category. By combining several different sensor types in a single hybrid DDDS, the system could benefit from the advantages of each different category of sensors. A first benefit would be the increase in accuracy that such a hybrid system could achieve, when the information regarding the identification and localization of the drone would be obtained from multiple different sensors. A second benefit would be related to the possibility of detecting the target drone in situations when one of the sensor types would not allow the detection on its own. For example, if we consider a hybrid DSSS that is implemented using both RF and imaging sensors, the imaging sensors could be used for detecting autonomous drones (that cannot be identified using the RF sensors) and the RF sensors could be used for detecting drones in low visibility conditions (when the imaging sensors could not provide the detection). Very few implementations of such hybrid systems are described in the literature (for example those in [105,115]), and we consider that such an approach is a promising future research and development direction for DDDSs."
+      },
+      "confidence": 0.94,
+      "head": "doc_925476100795d86f_c8",
+      "relation_type": "enhances",
+      "relation_surface": "increase in accuracy",
+      "tail": "doc_925476100795d86f_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_925476100795d86f_d1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "We conducted a literature search in scientific databases that encompass prominent computer science journals and conferences, such as IEEE Xplore, ACM digital library, ScienceDirect, SAGE Journals Online, and Springer Link, to discover key articles on the drone detection and defense systems topic. We used the following search string to discover the relevant publications and papers for our research: ('Drone' OR 'UAV') AND (Counter) in the domains of electrical engineering, applied physics, telecommunications, defense, and computer information systems, for the previous six years (2016–2021). In total, we gathered a set of 7349 potentially relevant publications, excluding grey literature and pre-prints. We next looked at the titles, keywords, and abstracts of the publications in order to find the papers and articles that described at least one distributed ledger modeling or simulation approach. We chose a total of 99 publications in the process. We examined the references of the selected publications for other papers that were relevant to our inquiry in order to expand our literature collection. Figure 1 shows the overall number of articles produced as a result of this approach. The additional references that were identified in the bodies of the selected publications, or referencing those, were added to the literature list. We carefully studied the selected publications once the literature selection procedure was completed in order to determine the described applications and problems."
+      },
+      "confidence": 0.95,
+      "name": "Literature collection for drone detection and defense systems",
+      "modality": "tabular",
+      "domain": "computer science, telecommunications, defense"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_925476100795d86f_d2",
+      "evidence": {
+        "section": "The Necessity of Drone Detection and Defense Systems: Incidents and Regulations",
+        "original_text": "The necessity of anti-drone defense systems has gained importance, considering the large number of dangerous occurrences that are mentioned in Table 1. In addition to the highlighted incidents, the number of small mishaps caused by unauthorized or illegal drones invading restricted regions is increasing by the day [30]. This is another reason for anti-drone technology becoming increasingly important. As the regulations concerning drone usage are also a significant aspect to be considered when designing a DDDS, we review in the following subsection several aspects in this matter."
+      },
+      "confidence": 0.9,
+      "name": "UAV-related incidents dataset",
+      "modality": "tabular",
+      "domain": "security, aviation"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_925476100795d86f_d3",
+      "evidence": {
+        "section": "Drone Detection and Defense Systems Based on RF Methods",
+        "original_text": "Usually, drones operate on different frequencies, but most commercial drones operate in Industrial, Scientific, and Medical (ISM) frequency bands of 433 MHz and 2.4/5.8 GHz. The simple power detection in these bands will not work due to the presence of other legitimate users in the same geographical area. Therefore, most of the modern RF detection systems provide the detection and identification of the special and unique signals that are generated by the UAV or the data protocols implemented in a UAV. There are two main functions that are necessary for the detection of the drones, as follows: The identification of the presence of the drones by scanning the frequency spectrum and localization of the drones. The annihilation function, which is necessary in order to allow the defense against the detected drones, can be performed by means of RF jamming, in order to interrupt the communication between the drones and their operators. Table 7 summarizes the main elements regarding the implementation of such systems. In the following paragraphs, each of the below mentioned categories will be detailed."
+      },
+      "confidence": 0.9,
+      "name": "RF signal dataset for drone detection",
+      "modality": "time_series",
+      "domain": "telecommunications, signal processing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_925476100795d86f_d4",
+      "evidence": {
+        "section": "DronEnd Detection and Defense System",
+        "original_text": "The tests were performed in an outdoor suburban scenario using the DJI Mavic Air, the DJI Phantom 4 Pro v2.0, and the DJI Mini 2 drones as targets and the annihilation of the drone, which resulted in a forced landing on the position where the drone was located when the jamming signal was turned on, was possible for distances of 40 m from the area where the DronEnd ground system was located."
+      },
+      "confidence": 0.85,
+      "name": "DronEnd system test dataset",
+      "modality": "tabular",
+      "domain": "telecommunications, security"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_925476100795d86f_ds1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "We have followed the preferred reporting items for systematic reviews and meta-analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "PRISMA guidelines for systematic literature review"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_925476100795d86f_ds2",
+      "evidence": {
+        "section": "DronEnd Detection and Defense System",
+        "original_text": "The tests were performed in an outdoor suburban scenario using the DJI Mavic Air, the DJI Phantom 4 Pro v2.0, and the DJI Mini 2 drones as targets and the annihilation of the drone, which resulted in a forced landing on the position where the drone was located when the jamming signal was turned on, was possible for distances of 40 m from the area where the DronEnd ground system was located."
+      },
+      "confidence": 0.85,
+      "spec_type": "env_requirement",
+      "description": "Outdoor suburban test environment for drone defense system validation"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_925476100795d86f_ds3",
+      "evidence": {
+        "section": "DronEnd Detection and Defense System",
+        "original_text": "The capture of the RF data was performed using a GNU Radio python script. As the instantaneous bandwidth captured using the Twin-RX RF daughterboard is smaller than 100 MHz, in order to cover the 100 MHz bandwidth of the 2.4 GHz and 5 GHz ISM bands, several sub-bands were concatenated."
+      },
+      "confidence": 0.9,
+      "spec_type": "format_rule",
+      "description": "RF signal capture using GNU Radio python script and USRP SDR platform"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_925476100795d86f_ds4",
+      "evidence": {
+        "section": "DronEnd Detection and Defense System",
+        "original_text": "In order to estimate the initial phase difference between the four reception channels, a calibration step was required after each system restart, which involves the transmission of a test signal that will be received through the RF cables of equal length on all four of the reception channels. A 5-port RF splitter (Mini-Circuits ZN4PD1-63HP-S+ (Mini-Circuits, New York, USA) [182]) was used in order to distribute the signals."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Calibration procedure for coherent reception channels using test signal and RF cables"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_925476100795d86f_m1",
+      "evidence": {
+        "section": "1. Introduction",
+        "original_text": "A widely‐used methodology was utilized to conduct a systematic literature review based on preferred reporting items for systematic reviews and meta‐analyses (PRISMA) [14] in order to obtain the answers to our study questions. We conducted a literature search in scientific databases that encompass prominent computer science journals and conferences, such as IEEE Xplore, ACM digital library, ScienceDirect, SAGE Journals Online, and Springer Link, to discover key articles on the drone detection and defense systems topic. We used the following search string to discover the relevant publications and papers for our research: ('Drone' OR 'UAV') AND (Counter) in the domains of electrical engineering, applied physics, telecommunications, defense, and computer information systems, for the previous six years (2016–2021). In total, we gathered a set of 7349 potentially relevant publications, excluding grey literature and pre‐prints. We next looked at the titles, keywords, and abstracts of the publications in order to find the papers and articles that described at least one distributed ledger modeling or simulation approach. We chose a total of 99 publications in the process. We examined the references of the selected publications for other papers that were relevant to our inquiry in order to expand our literature collection."
+      },
+      "confidence": 0.95,
+      "name": "PRISMA guidelines",
+      "method_type": "protocol"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_925476100795d86f_m2",
+      "evidence": {
+        "section": "4. Drone Detection and Defense Systems Based on RF Methods",
+        "original_text": "In most of the papers that are concerned with the identification of the drones RF fingerprinting techniques are used, which rely on the unique characteristics of the RF signal waveforms captured from different drones [153–157]. In [153], a classification of the detected drones is made using a deep residual neural network (DRNN), the results being validated using a USRP X310 SDR platform as a receiver and nine different drones as targets. The authors of [154] separate Wi‐Fi and Bluetooth signals from UAV transmitted signals based on their bandwidth and modulation features and classify the UAV signals using machine learning (ML) techniques. In [155], the detection of multiple drones is performed using the k‐nearest neighbor (KNN) algorithm after performing a short‐time Fourier transform (STFT) on the received signal. A real‐time testbed based on the USRP B210 SDR platform is also used for evaluating the performance of the proposed method. A combination of RF fingerprints and hierarchical learning is used in [156] for the classification of the detected drone signals. A Wi‐Fi statistical fingerprint approach is proposed in [157], which accounts for the particular characteristics of the Wi‐Fi control traffic produced by drones and their remote controllers."
+      },
+      "confidence": 0.95,
+      "name": "RF fingerprinting",
+      "method_type": "method"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_925476100795d86f_m3",
+      "evidence": {
+        "section": "4. Drone Detection and Defense Systems Based on RF Methods",
+        "original_text": "Only a few of the existing works include aspects that are related to both of the functions that were mentioned previously as necessary for the detection of the drones, identification and localization. Such an example is [152], where the authors proposed a drone detection system based on multi‐dimensional signal feature identification. After identifying the channel on which the drone communicates with the controller, features, such as signal frequency spectrum (SFS), wavelet energy entropy (WEE), and power spectral entropy (PSE), are extracted in order to allow a precise identification of the drone. In a subsequent step, MUSIC and RAP‐MUSIC algorithms are used for performing the localization of the drone, by using information, such as azimuth and elevation. The proposed solution is implemented and tested using USRP X310 SDR platforms and a circular antenna array, obtaining an average detection rate of more than 95%."
+      },
+      "confidence": 0.95,
+      "name": "MUSIC algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_925476100795d86f_m4",
+      "evidence": {
+        "section": "6. DronEnd Detection and Defense System",
+        "original_text": "For the implementation of the spectrum sensing process in the DronEnd system, spectrum sensing algorithms based on the energy detection method have been used. Algorithms, such as 3EED [174] and 3EED with an adaptive threshold [175], that were previously developed, provide improved performance compared to the classical energy detection (CED) [176] algorithm and were used to identify the presence of the drones in the monitored area. The above‐mentioned algorithms were implemented on SDR platforms from the USRP family (USRP X310 (Ettus Research, Santa Clara, CA, USA) [177] equipped with Twin‐RX RF Daugterboards (Ettus Research, Santa Clara, CA, USA) [178], 10–6000 MHz frequency range). The frequency bands that are used by the drones that were used to test the DronEnd system (DJI Mavic Air (SZ DJI Technology Co., Ltd., Shenzhen, China) [179], DJI Phantom 4 Pro v2.0 (SZ DJI Technology Co., Ltd., Shenzhen, China) [180], and DJI Mini 2 (SZ DJI Technology Co., Ltd., Shenzhen, China) [181]) were the 2.4 GHz (2400–2500 MHz) and the 5 GHz (5730–5830 MHz) ISM bands, which can be covered using the above‐mentioned SDR platforms that can receive signals on frequencies up to 6 GHz. Because the position of the target drones was not initially known, omnidirectional antennas were used in this step."
+      },
+      "confidence": 0.95,
+      "name": "3EED spectrum sensing algorithm",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_925476100795d86f_m5",
+      "evidence": {
+        "section": "6. DronEnd Detection and Defense System",
+        "original_text": "Once the frequency that is used by the drone to communicate has been identified, a second necessary step is to obtain information about the position of the drone. This step was performed using AoA algorithms for detecting the angle of incidence of the detected RF signal. Such algorithms exploit the phase difference of the signals that are received from the drone using a multi‐antenna system. The SDR platform that was used as the hardware for providing the RF receive front‐end was the USRP X310 [177], on which two Twin‐RX RF modules [178] were mounted (covered frequency range of 10–6000 MHz, instantaneous bandwidth 80 MHz). Each of the Twin‐RX modules offers two coherent reception channels, and the local oscillator that was used can be shared by the two boards, so that in the end, a total of four coherent reception channels are obtained and are aligned in phase. The antenna system that was used was a linear system of four antennas, spaced at a distance equal to half the wavelength of the minimum frequency that the drones used for testing could transmit (2.4 GHz). In order to estimate the initial phase difference between the four reception channels, a calibration step was required after each system restart, which involves the transmission of a test signal that will be received through the RF cables of equal length on all four of the reception channels. A 5‐port RF splitter (Mini‐Circuits ZN4PD1‐63HP‐S+ (Mini‐Circuits, New York, USA) [182]) was used in order to distribute the signals."
+      },
+      "confidence": 0.95,
+      "name": "AoA algorithms",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_925476100795d86f_x1",
+      "evidence": {
+        "section": "6. DronEnd Detection and Defense System",
+        "original_text": "The tests were performed in an outdoor suburban scenario using the DJI Mavic Air, the DJI Phantom 4 Pro v2.0, and the DJI Mini 2 drones as targets and the annihilation of the drone, which resulted in a forced landing on the position where the drone was located when the jamming signal was turned on, was possible for distances of 40 m from the area where the DronEnd ground system was located. The SDR platform that was used to generate the jamming signal was a USRP B200mini platform (70–6000 MHz frequency range) (Ettus Research, Santa Clara, CA, USA) [184]. Given that the maximum power that can be obtained at the output of the SDR platform is 10 dBm, a power amplifier (Mini‐Circuits ZHL‐2W‐63‐S+ (Mini‐Circuits, New York, NY, USA) [185]) was used to amplify the jamming signal in order to extend the range of the system, which offers a 42 dB gain and a maximum output power of 2 W. The antenna that was used to transmit the jamming signal was a Ubiquiti UMA‐D (Ubiquiti Inc., New York, NY, USA) directional antenna [186], which covers the 2.4–2.5 GHz and 5.1–5.9 GHz bands and offers a 10 dBi gain in the 2.4 GHz band and a 15 dBi gain in the band of 5.8 GHz. By using a directional antenna that targets the location of the drone for the transmission of the jamming signal, the interferences that are caused to other communication systems that are operating in the neighborhood are minimized."
+      },
+      "confidence": 0.95,
+      "task": "RF-based drone detection and defense system testing",
+      "setup": "USRP X310 SDR platform with Twin-RX RF daughterboards, DJI drones (Mavic Air, Phantom 4 Pro v2.0, Mini 2), outdoor suburban scenario"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_925476100795d86f_x2",
+      "evidence": {
+        "section": "6. DronEnd Detection and Defense System",
+        "original_text": "In order to estimate the initial phase difference between the four reception channels, a calibration step was required after each system restart, which involves the transmission of a test signal that will be received through the RF cables of equal length on all four of the reception channels. A 5‐port RF splitter (Mini‐Circuits ZN4PD1‐63HP‐S+ (Mini‐Circuits, New York, USA) [182]) was used in order to distribute the signals. Figure 4 shows both the antenna system that was used and the USRP X310 SDR platform during the calibration stage. Once the calibration step was completed, the four dipole antennas (VERT2450 [183]) that make up the antenna system were connected to the four receive channels of the USRP X310 SDR platform and, based on the phase difference of the signals that were received, the angle of incidence that corresponds to the drone location could be identified by using AoA algorithms. We used one of the classical AoA algorithms, the MUSIC algorithm, and the result was both displayed on a graphical user interface, as shown in Figure 5, and forwarded as an input to the software module that is responsible for setting the orientation of the jamming antenna."
+      },
+      "confidence": 0.95,
+      "task": "AoA algorithm calibration",
+      "setup": "USRP X310 SDR platform with Twin-RX RF modules, linear antenna array, RF splitter"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_925476100795d86f_qr1",
+      "evidence": {
+        "section": "4. Drone Detection and Defense Systems Based on RF Methods",
+        "original_text": "Such an example is [152], where the authors proposed a drone detection system based on multi-dimensional signal feature identification. After identifying the channel on which the drone communicates with the controller, features, such as signal frequency spectrum (SFS), wavelet energy entropy (WEE), and power spectral entropy (PSE), are extracted in order to allow a precise identification of the drone. In a subsequent step, MUSIC and RAP-MUSIC algorithms are used for performing the localization of the drone, by using information, such as azimuth and elevation. The proposed solution is implemented and tested using USRP X310 SDR platforms and a circular antenna array, obtaining an average detection rate of more than 95%."
+      },
+      "confidence": 0.95,
+      "quantity": "detection rate",
+      "value": 95,
+      "unit": "%",
+      "context": "RF-based drone detection system using multi-dimensional signal feature identification (SFS, WEE, PSE) and MUSIC/RAP-MUSIC algorithms for localization, implemented with USRP X310 SDR platforms and circular antenna array",
+      "result_type": "main_result"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_925476100795d86f_qr2",
+      "evidence": {
+        "section": "6. DronEnd Detection and Defense System",
+        "original_text": "The tests were performed in an outdoor suburban scenario using the DJI Mavic Air, the DJI Phantom 4 Pro v2.0, and the DJI Mini 2 drones as targets and the annihilation of the drone, which resulted in a forced landing on the position where the drone was located when the jamming signal was turned on, was possible for distances of 40 m from the area where the DronEnd ground system was located."
+      },
+      "confidence": 0.95,
+      "quantity": "annihilation distance",
+      "value": 40,
+      "unit": "m",
+      "context": "DronEnd ground defense system using RF jamming with directional antenna (Ubiquiti UMA-D) and power amplifier (Mini-Circuits ZHL-2W-63-S+), targeting DJI Mavic Air, DJI Phantom 4 Pro v2.0, and DJI Mini 2 drones in outdoor suburban scenario",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_925476100795d86f_p1",
+      "evidence": {
+        "section": "6. DronEnd Detection and Defense System",
+        "original_text": "To conclude, the main novel elements that are introduced by the DronEnd system, when compared to other drone detection and defense systems based on RF methods that were mentioned in Section 4, can be summarized as follows: Incorporates all of the three functions (identification, localization, and annihilation) that are necessary for a drone detection and defense system in an integrated and scalable platform, which can be reconfigured depending on the requirements of different use cases; Includes an agile and accurate identification subsystem, based on improved spectrum sensing algorithms, which performs a real-time identification of the signals that are transmitted by the drone and, moreover, allows a dynamic tracking of the signal transmitted by the drone, even when the transmit frequency is changed; Annihilates the detected drone by means of jamming, avoiding at the same time significant interference with nearby devices, as a directional antenna, targeted directly towards the target drone using a motorized antenna mount, is used."
+      },
+      "confidence": 0.9,
+      "metric": "detection and annihilation capabilities",
+      "compared_to": "other RF-based drone detection and defense systems"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_925476100795d86f_p2",
+      "evidence": {
+        "section": "4. Drone Detection and Defense Systems Based on RF Methods",
+        "original_text": "Most of the RF-based solutions that are described in the literature focus only on the detection of the drones and do not propose countermeasures for the annihilation of the detected drones. One of the reasons behind this might be the increase in the complexity and price of the system that will be generated by the inclusion of such countermeasures in the designed system. A second reason might be related to the fact that most of the references that will be commented on in this section include academic research, in which the target was not the design of a complete commercial system. A third reason could be the fact that jamming equipment is not legal in many areas worldwide, as discussed in Sections 2 and 3. However, as mentioned previously, the jamming solution can be used in most of the countries if the system that generates it is used for national security or public order purposes."
+      },
+      "confidence": 0.85,
+      "metric": "system integration",
+      "compared_to": "most RF-based solutions in literature"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_925476100795d86f_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "With the decrease in the cost and size of drones in recent years, their number has also increased exponentially. As such, the concerns regarding security aspects that are raised by their presence are also becoming more serious. The necessity of designing and implementing systems that are able to detect and provide defense actions against such threats has become apparent. In this paper, we perform a survey regarding the different drone detection and defense systems that were proposed in the literature, based on different types of methods (i.e., radio frequency (RF), acoustical, optical, radar, etc.), with an emphasis on RF‐based systems implemented using software‐defined radio (SDR) platforms. We have followed the preferred reporting items for systematic reviews and meta‐analyses (PRISMA) guidelines in order to provide a concise and thorough presentation of the current status of the subject. In the final part, we also describe our own solution that was designed and implemented in the framework of the DronEnd research project. The DronEnd system is based on RF methods and uses SDR platforms as the main hardware elements."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_925476100795d86f_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "The main contributions of our paper can be summarized as follows: We provide a detailed review regarding the drone defense systems based on RF methods, focusing on the solutions that are based on software‐defined radio (SDR) platforms. To our best knowledge, other reviews that were performed concerning drone defense systems have not detailed that particular category of solutions; We discuss the current worldwide status of the legal issues regarding the jamming function, that enables the systems to annihilate the drones after they are detected; We present our own solution for an RF‐based drone defense system that was designed and implemented within the framework of the DronEnd research project. The system was developed using several SDR platforms and a custom‐made mount for dynamically adjusting the orientation of the jamming antenna, which enables the detection, localization, and annihilation of drones in a given monitored area."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_925476100795d86f_cl1",
+      "evidence": {
+        "section": "6.4. Conclusion and Future Research Directions",
+        "original_text": "To conclude, the main novel elements that are introduced by the DronEnd system, when compared to other drone detection and defense systems based on RF methods that were mentioned in Section 4, can be summarized as follows: Incorporates all of the three functions (identification, localization, and annihilation) that are necessary for a drone detection and defense system in an integrated and scalable platform, which can be reconfigured depending on the requirements of different use cases; Includes an agile and accurate identification subsystem, based on improved spectrum sensing algorithms, which performs a real‐time identification of the signals that are transmitted by the drone and, moreover, allows a dynamic tracking of the signal transmitted by the drone, even when the transmit frequency is changed; Annihilates the detected drone by means of jamming, avoiding at the same time significant interference with nearby devices, as a directional antenna, targeted directly towards the target drone using a motorized antenna mount, is used."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_925476100795d86f_cl2",
+      "evidence": {
+        "section": "7. Conclusions and Future Work",
+        "original_text": "In this paper, a survey related to the current status of drone detection and defense systems was performed and our own solution for a drone defense system based on SDR platforms (DronEnd) was presented. Different aspects, such as regulatory issues and reported incidents that involved drones, were included in the survey. A classification of the drone detection systems that were based on the type of sensors that are used was performed. A detailed description of the RF‐based drone detection and defense systems was made, with an emphasis on the use of SDR platforms for the implementation of such systems. The drone defense system that was developed by the authors within the framework of the DronEnd research project is presented in the final part of the paper."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_925476100795d86f_lm1",
+      "evidence": {
+        "section": "5. Challenges and Future Perspectives for Drone Detection and Defense Systems",
+        "original_text": "An important limitation of RF‐based DDDSs is related to the impossibility of detecting and annihilating autonomous drones in cases when they have a predefined flying path and do not have any active data communication with an operator located on the ground. As mentioned in Table 5, each of the different types of sensors (RF, radar, imaging, and acoustic) has its own drawbacks and limitations. As such, the performance of a DDDS that is implemented using a single type of sensor is directly affected by the disadvantages and limitations of that particular category. By combining several different sensor types in a single hybrid DDDS, the system could benefit from the advantages of each different category of sensors. A first benefit would be the increase in accuracy that such a hybrid system could achieve, when the information regarding the identification and localization of the drone would be obtained from multiple different sensors. A second benefit would be related to the possibility of detecting the target drone in situations when one of the sensor types would not allow the detection on its own. For example, if we consider a hybrid DSSS that is implemented using both RF and imaging sensors, the imaging sensors could be used for detecting autonomous drones (that cannot be identified using the RF sensors) and the RF sensors could be used for detecting drones in low visibility conditions (when the imaging sensors could not provide the detection). Very few implementations of such hybrid systems are described in the literature (for example those in [105,115]), and we consider that such an approach is a promising future research and development direction for DDDSs."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_925476100795d86f_lm2",
+      "evidence": {
+        "section": "6.3. Annihilation of the Drone Using RF Jamming",
+        "original_text": "The tests were performed in an outdoor suburban scenario using the DJI Mavic Air, the DJI Phantom 4 Pro v2.0, and the DJI Mini 2 drones as targets and the annihilation of the drone, which resulted in a forced landing on the position where the drone was located when the jamming signal was turned on, was possible for distances of 40 m from the area where the DronEnd ground system was located."
+      },
+      "confidence": 0.9
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_925476100795d86f_fw1",
+      "evidence": {
+        "section": "6.4. Conclusion and Future Research Directions",
+        "original_text": "Several aspects are considered as future research directions, in order to improve the performance of the proposed system. The first direction is related to the possibility of replacing the mechanical motorized antenna mount that was used for targeting the directional jamming antenna with an equivalent static planar antenna array. By using such an approach, the orientation of the resulting antenna beam that was necessary for following the target drone would not involve any moving parts, as the steering would be obtained only by using signal processing methods. The advantages of such an approach would include a smaller delay, the possibility of adjusting the beamwidth by signal processing means, depending on the application necessity, and the absence of aging effects that might affect mechanical parts. However, as the transmit power level that is needed in order to obtain a large enough range for the system might be high, a challenge that would have to be addressed is the design of a power amplification stage for supplying the planar antenna array. The second direction is related to the addition of a second antenna array, in an orthogonal plane, compared to the one in which the current antenna array is located. By using such a setup, the identification of the target drone could be performed both in azimuth and elevation, allowing for a more precise steering of the directional antenna that is used for transmitting the jamming signal. The third research direction is related to a subject that was also commented on in Section 5, which is the implementation of a hybrid DDDS in order to improve the overall performance of the system. The addition of imaging sensors is considered, as such an approach would have a twofold contribution; it would improve the accuracy of the detected targets for the situations in which the target drone would be detected by both types of sensors, and it would allow the detection of the target drones also in the situations when only one type of sensor would be able to identify them."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_925476100795d86f_fw2",
+      "evidence": {
+        "section": "7. Conclusions and Future Work",
+        "original_text": "As future work, we intend to conduct a detailed testing of the DronEnd ground system, in order to verify the performance of our solution from the detection, localization, and annihilation points of view and we also plan to develop a flying version of the DronEnd system, by mounting an embedded SDR platform on a support drone and approaching the target drones from the air."
+      },
+      "confidence": 0.95
+    }
+  ]
+}

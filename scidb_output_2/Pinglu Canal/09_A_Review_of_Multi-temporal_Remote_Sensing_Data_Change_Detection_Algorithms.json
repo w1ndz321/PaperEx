@@ -1,0 +1,410 @@
+{
+  "metadata": {
+    "doc_id": "doc_4994d2db3883a228",
+    "source_file": "09_A_Review_of_Multi-temporal_Remote_Sensing_Data_Change_Detection_Algorithms.md",
+    "title": "Processing of multi-temporal images and change detection: a review of methods and challenges",
+    "year": 2008,
+    "doi": null,
+    "abstract": "aState Key Laboratory for Information Engineering in Surveying, Mapping and Remote Sensing, Wuhan University, 129 Luoyu Road, Wuhan, Hubei, 430079, China, geogjy@163.net bDepartment of Geography, Hong Kong Baptist University, Kowloon Tong, Kowloon, Hong Kong, China",
+    "introduction": "Processing of multi-temporal images and change detection has been an active research field in remote sensing for decades. Although plenty successful application cases have been reported on the monitoring and detecting environmental change, there are enormous challenges on applying multi-temporal imagery to derive timely information on the earth’s environment and human activities. In recent years, a great progress has been observed to overcome technological obstacles by the development of new platforms and sensors. The wider availability of large archives of historical images also makes long-term change detection and modelling possible. Such a development stimulates further investigation in developing more advanced image processing methods and new approaches in handling image data in the time dimension. Over the past years, researchers have put forward large numbers of change detection techniques of remote sensing image and summarized or classified them from different viewpoints (e.g. Singh, 1989; Lu _et al_ ., 2004). It has been generally agreed that change detection is a complicated and integrated process. No existing approach is optimal and applicable to all cases. Furthermore, at present the degree of automation is low to prevent real-time applications. The previous reviews have assorted the detection approaches and drawn many useful conclusions (Mouat _et al._ , 1993; Coppin and Bauer, 1996; Richard _et al._ , 2005). \n\nThis article does not intent to discuss specific methods or algorithms. Instead, the core problem discussed in this paper focus on the main three steps of change detection, including reprocessing, change detection methods and accuracy assessment. In re-processing step, the effect and methods of geometric \n\ncorrection and radiometric correction on change detection is discussed. \n\nIn change detection classification methods, we do not discuss algorithms that are specialized to application-specific object classes, our interest here is the new classification methods. Change detection approaches are characterized into two broad groups: bi-temporal change detection and temporal trajectory analysis. Almost all classifications for change detection algorithms are based on bi-temporal change detection and little care for temporal trajectory analysis. Here we consider both of them. For bi-temporal images change detection any kind of detection algorithm can be attributed to one of the following three kinds of methods: directly compare different data sources, compare extracted information and detect changes by bringing all the data sources into a uniform model. Temporal trajectory analysis can be decomposed into bi-temporal change detection and long time-serial analysis. Finally, this article classifies change detection methods from its essence into seven groups, including direct comparison, classification, object-oriented method, model method, time-series analysis, visual analysis and hybrid methods. \n\nIn accuracy assessment step, we summarize the present methods into exterior check and interior check and emphasis on that how to get the ground truth. In the end, it points out the challenges that the change detection is faced with and possible three counter measures from the viewpoint of theories and methods. \n\n757 \n\n_The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences. Vol. XXXVII. Part B7. Beijing 2008_",
+    "primary_discipline": {
+      "level1": "测绘科学技术",
+      "level2": "遥感技术",
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "信息科学与系统科学",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "multi-temporal images",
+      "change detection",
+      "remote sensing",
+      "accuracy assessment",
+      "temporal trajectory analysis"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:05:12.561468+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Change information of the earth’s surface is becoming more and more important in monitoring the local, regional and global resources and environment. The large collection of past and present remote sensing imagery makes it possible to analyze spatiotemporal pattern of environmental elements and impact of human activities in past decades. Research has been widely reported on methodology of remote sensing change detection and monitoring. The present reviews have assorted the detection approaches and drawn many useful conclusions. Based on the former classification methods, this article classifies change detection methods from its essence into seven groups, including direct comparison, classification, object-oriented method, model method, time-series analysis, visual analysis and hybrid methods. At the same time, in pre-processing, the effect and methods of geometric correction and radiometric correction is discussed, and in accuracy assessment, this paper summarize the present methods into exterior check and interior check and emphasis on that how to get the ground truth. The challenges that the change detection is currently facing and possible counter measures are also discussed."
+      },
+      "confidence": 0.99,
+      "term": "change detection",
+      "normalized": "变化检测",
+      "std_label": "CD"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c2",
+      "evidence": {
+        "section": "1. INTRODUCTION",
+        "original_text": "Processing of multi-temporal images and change detection has been an active research field in remote sensing for decades. Although plenty successful application cases have been reported on the monitoring and detecting environmental change, there are enormous challenges on applying multi-temporal imagery to derive timely information on the earth’s environment and human activities. In recent years, a great progress has been observed to overcome technological obstacles by the development of new platforms and sensors. The wider availability of large archives of historical images also makes long-term change detection and modelling possible. Such a development stimulates further investigation in developing more advanced image processing methods and new approaches in handling image data in the time dimension."
+      },
+      "confidence": 0.98,
+      "term": "multi-temporal remote sensing imagery",
+      "normalized": "多时相遥感影像",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c3",
+      "evidence": {
+        "section": "2.1 Radiometric correction",
+        "original_text": "Radiometric correction is to remove or reduce the inconsistency between the values surveyed by sensors and the spectral reflectivity and spectral radiation brightness of the objects, which encompasses absolute radiometric correction and relative radiometric correction. Absolute radiometric correction mainly rectifies the radiation distortion that is irrelevant to the radiation features of the object surface and is caused by the state of sensors, solar illumination, and dispersion and absorption of atmospheric etc. The typical methods mainly consist of adjusting the radiation value to the standard value with the transmission code of atmospheric radiation, adjusting the radiation value to the standard value with spectral curves in the lab, adjusting the radiation value to the standard value with dark object and transmission code of radiation, rectifying the scene by removing the dark objects and so on. Due to the fact that it is expensive and impractical to survey the atmospheric parameter and ground objects of the current data, and almost impossible to survey that of the historical data, it is difficult to implement absolute radiometric correction in most situations in reality. During relative radiometric correction, an image is regarded as reference image. And then adjust the radiation features of another image to make it match with the former one. Main methods consist of correction by histogram regularization and correction with fixed object. This kind of correction can remove or reduce the effects of atmosphere, sensor, and other noises. In addition, it has simple algorithm. So it has been widely used."
+      },
+      "confidence": 0.97,
+      "term": "radiometric correction",
+      "normalized": "辐射校正",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c4",
+      "evidence": {
+        "section": "2.2 Image registration",
+        "original_text": "Precise registration to the multi-temporal images is required by many change detection methods. The importance of accurate spatial registration of multi-temporal imagery is obvious because largely spurious results of change detection will be produced if there is misregistration. If high registration accuracy isn’t available, a great deal of false change area in the scene will be caused by image displacement. It is generally agreed that geometrical registration accuracy of sub-pixel level is accepted. It can be seen that geometrical registration accuracy of subpixel level is necessary to change detection. However, it is doubtful whether this result is suitable for all registration data sources & all detection objects and if suitable how much it is. Another problem is whether this result has no influence on all change detection methods and applications and if there is any influence how much it is. These problems are worth to be studied further. On the other hand, it is difficult to implement high accuracy registration between multi-temporal especially multi-sensor remote sensing images due to many factors, such as imaging models, imaging angles and conditions, curvature and rotation of the earth and so on. Especially in the mountainous region and urban area, general image registration methods are ineffective and ortho-rectification is needed."
+      },
+      "confidence": 0.98,
+      "term": "image registration",
+      "normalized": "影像配准",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c5",
+      "evidence": {
+        "section": "3. CHANGE DETECTION METHODS AND ALGORITHMS",
+        "original_text": "Change detection approaches can be characterized into two broad groups, namely, bi-temporal change detection and temporal trajectory analysis. The former measures changes based on a ‘two-epoch’ timescale, i.e. the comparison between two dates. The latter analyses the changes based on a ‘continuous’ timescale, i.e. the focus of the analysis is not only on what has changed between dates, but also on the progress of the change over the period. At present, most change detection methods belong to bi-temporal change detection approach. Almost all classifications for change detection algorithms are based on bi-temporal change detection with little attention on temporal trajectory analysis. For bi-temporal change detection, detection algorithms can be attributed to one of the three approaches, namely, directly comparing different data sources (direct comparison method), comparing extracted information (post-analysis comparison method) and integrating all data sources into a uniform model (uniform modelling method)."
+      },
+      "confidence": 0.97,
+      "term": "bi-temporal change detection",
+      "normalized": "双时相变化检测",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c6",
+      "evidence": {
+        "section": "3. CHANGE DETECTION METHODS AND ALGORITHMS",
+        "original_text": "Change detection approaches can be characterized into two broad groups, namely, bi-temporal change detection and temporal trajectory analysis. The former measures changes based on a ‘two-epoch’ timescale, i.e. the comparison between two dates. The latter analyses the changes based on a ‘continuous’ timescale, i.e. the focus of the analysis is not only on what has changed between dates, but also on the progress of the change over the period. At present, most change detection methods belong to bi-temporal change detection approach. Almost all classifications for change detection algorithms are based on bi-temporal change detection with little attention on temporal trajectory analysis. Comparing with the bi-temporal change detection, the temporal trajectory analysis emphasize more on discovering the trend of change by constructing the ‘curves’ or ‘profiles’ of multitemporal data. From the viewpoint of processing methods, temporal trajectory analysis can be decomposed into bi-temporal change detection and then relative post-processing is implemented after the bi-temporal change detection. On the other hand, the so-called long time-series analysis method can be employed for temporal trajectory analysis. Another important application of temporal trajectory analysis is realtime change detection such as video image sequences analysis."
+      },
+      "confidence": 0.97,
+      "term": "temporal trajectory analysis",
+      "normalized": "时间轨迹分析",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c7",
+      "evidence": {
+        "section": "3.1 Object-oriented method",
+        "original_text": "Object-oriented method is also called object-based comparison method. The basic strategy is to extract objects from multitemporal images using image segmentation and other feature extraction algorithms and distinguish the changes between corresponding objects. Typically this method is applied to applications such as change detection of man-made objects on high-resolution images, urban data updating, and military reconnaissance. This method compares the extracted objects directly, so it is not sensitive to data noises and geometric distortion. Two critical issues need to be addressed, namely, the methods to compare objects and to identify the changes between objects. Sui (2002) proposed the ‘buffer detection’ algorithm for the object comparison. Ancillary information, e.g. digital maps from GIS, can be used in the object-oriented method. Works with the focus on the integration of GIS for change detection includes. The powerful GIS functions provide efficient tools for multi-source data processing and change detection analysis, so that one can expect more works taking this approach as a generic trend in change detection (Lu et al. 2004)."
+      },
+      "confidence": 0.96,
+      "term": "object-oriented method",
+      "normalized": "面向对象方法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_4994d2db3883a228_c8",
+      "evidence": {
+        "section": "4. ACCURACY ASSESSMENT FOR CHANGE DETECTION",
+        "original_text": "The accuracy of change detection depends on many factors, including precise geometric registration and calibration or normalization, availability and quality of ground reference data, the complexity of landscape and environment, methods or algorithms used, the analyst’s skills and experience, and time and cost restrictions. Shao (2006) summarised the main errors in change detection including errors in data (e.g. image resolution, accuracy of location and image quality), errors caused by pre-processing (the accuracy of geometric correction and radiometric correction), errors caused by change detection methods and processes (e.g. classification and data extraction error), errors in field survey (e.g. accuracy of ground reference) and errors caused by post processing. Accuracy assessment techniques in change detection originate from those of remote sensing images classification. It is natural to extend the accuracy assessment techniques for processing single time image to that of bi-temporal or multitemporal images. Among various assessment techniques, the most efficient and widely-used is the error matrix of classification."
+      },
+      "confidence": 0.98,
+      "term": "accuracy assessment",
+      "normalized": "精度评估",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4994d2db3883a228_r1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Change information of the earth’s surface is becoming more and more important in monitoring the local, regional and global resources and environment. The large collection of past and present remote sensing imagery makes it possible to analyze spatiotemporal pattern of environmental elements and impact of human activities in past decades. Research has been widely reported on methodology of remote sensing change detection and monitoring."
+      },
+      "confidence": 0.95,
+      "head": "doc_4994d2db3883a228_c2",
+      "relation_type": "uses",
+      "relation_surface": "makes it possible to analyze",
+      "tail": "doc_4994d2db3883a228_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4994d2db3883a228_r2",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Based on the former classification methods, this article classifies change detection methods from its essence into seven groups, including direct comparison, classification, object-oriented method, model method, time-series analysis, visual analysis and hybrid methods. At the same time, in pre-processing, the effect and methods of geometric correction and radiometric correction is discussed, and in accuracy assessment, this paper summarize the present methods into exterior check and interior check and emphasis on that how to get the ground truth."
+      },
+      "confidence": 0.94,
+      "head": "doc_4994d2db3883a228_c3",
+      "relation_type": "precedes",
+      "relation_surface": "is discussed in pre-processing",
+      "tail": "doc_4994d2db3883a228_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4994d2db3883a228_r3",
+      "evidence": {
+        "section": "2.2 Image registration",
+        "original_text": "Precise registration to the multi-temporal images is required by many change detection methods. The importance of accurate spatial registration of multi-temporal imagery is obvious because largely spurious results of change detection will be produced if there is misregistration."
+      },
+      "confidence": 0.96,
+      "head": "doc_4994d2db3883a228_c4",
+      "relation_type": "precedes",
+      "relation_surface": "is required by",
+      "tail": "doc_4994d2db3883a228_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4994d2db3883a228_r4",
+      "evidence": {
+        "section": "3. CHANGE DETECTION METHODS AND ALGORITHMS",
+        "original_text": "Change detection approaches can be characterized into two broad groups, namely, bi-temporal change detection and temporal trajectory analysis. The former measures changes based on a ‘two-epoch’ timescale, i.e. the comparison between two dates. The latter analyses the changes based on a ‘continuous’ timescale, i.e. the focus of the analysis is not only on what has changed between dates, but also on the progress of the change over the period."
+      },
+      "confidence": 0.95,
+      "head": "doc_4994d2db3883a228_c5",
+      "relation_type": "compares",
+      "relation_surface": "measures changes based on a ‘two-epoch’ timescale",
+      "tail": "doc_4994d2db3883a228_c6"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4994d2db3883a228_r5",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Based on the former classification methods, this article classifies change detection methods from its essence into seven groups, including direct comparison, classification, object-oriented method, model method, time-series analysis, visual analysis and hybrid methods."
+      },
+      "confidence": 0.96,
+      "head": "doc_4994d2db3883a228_c7",
+      "relation_type": "belongs_to",
+      "relation_surface": "is classified as one of the seven groups",
+      "tail": "doc_4994d2db3883a228_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_4994d2db3883a228_r6",
+      "evidence": {
+        "section": "4. ACCURACY ASSESSMENT FOR CHANGE DETECTION",
+        "original_text": "The accuracy of change detection depends on many factors, including precise geometric registration and calibration or normalization, availability and quality of ground reference data, the complexity of landscape and environment, methods or algorithms used, the analyst’s skills and experience, and time and cost restrictions."
+      },
+      "confidence": 0.95,
+      "head": "doc_4994d2db3883a228_c8",
+      "relation_type": "measures",
+      "relation_surface": "depends on many factors",
+      "tail": "doc_4994d2db3883a228_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4994d2db3883a228_d1",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "Processing of multi-temporal images and change detection has been an active research field in remote sensing for decades. Although plenty successful application cases have been reported on the monitoring and detecting environmental change, there are enormous challenges on applying multi-temporal imagery to derive timely information on the earth’s environment and human activities. In recent years, a great progress has been observed to overcome technological obstacles by the development of new platforms and sensors. The wider availability of large archives of historical images also makes long-term change detection and modelling possible. Such a development stimulates further investigation in developing more advanced image processing methods and new approaches in handling image data in the time dimension. Over the past years, researchers have put forward large numbers of change detection techniques of remote sensing image and summarized or classified them from different viewpoints (e.g. Singh, 1989; Lu et al., 2004). It has been generally agreed that change detection is a complicated and integrated process. No existing approach is optimal and applicable to all cases. Furthermore, at present the degree of automation is low to prevent real-time applications. The previous reviews have assorted the detection approaches and drawn many useful conclusions (Mouat et al., 1993; Coppin and Bauer, 1996; Richard et al., 2005)."
+      },
+      "confidence": 0.9,
+      "name": "Multi-temporal remote sensing imagery archives",
+      "modality": "image",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_4994d2db3883a228_d2",
+      "evidence": {
+        "section": "ACCURACY ASSESSMENT FOR CHANGE DETECTION",
+        "original_text": "Accuracy assessment techniques in change detection originate from those of remote sensing images classification. It is natural to extend the accuracy assessment techniques for processing single time image to that of bi-temporal or multitemporal images. Among various assessment techniques, the most efficient and widely-used is the error matrix of classification. In recent years, some alternative methods are also used in analyzing and evaluating the change detection of land cover. Since it is often difficult, if not impossible, to collect reliable multitemporal ground reference datasets, some alternative approaches have to be employed for the assessment of change detection accuracy. There are three general approaches to obtain the ground references for bi-temporal change detection, namely, field survey with the assistance of historical GIS data, simultaneous, or within the time proximity, high-resolution images, and visual interpretation. Each of the three methods has its own advantages and disadvantages, and they are dependent upon the application. For long-time temporal trajectory change detection, it is more difficult to obtain the ground reference data. When the ground reference is unavailable, the consistency check rules are often employed to assess accuracy. Liu and Zhou (2004) proposed an accuracy analysis of time series of remote sensing change detection by rule-based rationality evaluation with post-classification comparison."
+      },
+      "confidence": 0.85,
+      "name": "Ground reference datasets for change detection",
+      "modality": "tabular",
+      "domain": "remote sensing"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4994d2db3883a228_ds1",
+      "evidence": {
+        "section": "IMAGE REGISTRATION",
+        "original_text": "Precise registration to the multi-temporal images is required by many change detection methods. The importance of accurate spatial registration of multi-temporal imagery is obvious because largely spurious results of change detection will be produced if there is misregistration. If high registration accuracy isn’t available, a great deal of false change area in the scene will be caused by image displacement. It is generally agreed that geometrical registration accuracy of sub-pixel level is accepted. It can be seen that geometrical registration accuracy of subpixel level is necessary to change detection. However, it is doubtful whether this result is suitable for all registration data sources & all detection objects and if suitable how much it is. Another problem is whether this result has no influence on all change detection methods and applications and if there is any influence how much it is. These problems are worth to be studied further. On the other hand, it is difficult to implement high accuracy registration between multi-temporal especially multi-sensor remote sensing images due to many factors, such as imaging models, imaging angles and conditions, curvature and rotation of the earth and so on. Especially in the mountainous region and urban area, general image registration methods are ineffective and ortho-rectification is needed."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Geometric registration accuracy of sub-pixel level for pixel-based change detection methods"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4994d2db3883a228_ds2",
+      "evidence": {
+        "section": "RADIOMETRIC CORRECTION",
+        "original_text": "Radiometric conditions can be influenced by many factors such as different imaging seasons or dates, different solar altitudes, different angles, different meteorologic conditions and different cover areas of cloud, rain or snow etc. And it may affect accuracy of most of change detection algorithms. So before change detection, it is usually necessary to carry out radiometric correction (Leonardo et al. 2006). Radiometric correction is to remove or reduce the inconsistency between the values surveyed by sensors and the spectral reflectivity and spectral radiation brightness of the objects, which encompasses absolute radiometric correction and relative radiometric correction. Absolute radiometric correction mainly rectifies the radiation distortion that is irrelevant to the radiation features of the object surface and is caused by the state of sensors, solar illumination, and dispersion and absorption of atmospheric etc. The typical methods mainly consist of adjusting the radiation value to the standard value with the transmission code of atmospheric radiation, adjusting the radiation value to the standard value with spectral curves in the lab, adjusting the radiation value to the standard value with dark object and transmission code of radiation, rectifying the scene by removing the dark objects and so on. Due to the fact that it is expensive and impractical to survey the atmospheric parameter and ground objects of the current data, and almost impossible to survey that of the historical data, it is difficult to implement absolute radiometric correction in most situations in reality."
+      },
+      "confidence": 0.9,
+      "spec_type": "quality_standard",
+      "description": "Radiometric correction for multi-temporal images to reduce inconsistency"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_4994d2db3883a228_ds3",
+      "evidence": {
+        "section": "ACCURACY ASSESSMENT FOR CHANGE DETECTION",
+        "original_text": "Accuracy assessment techniques in change detection originate from those of remote sensing images classification. It is natural to extend the accuracy assessment techniques for processing single time image to that of bi-temporal or multitemporal images. Among various assessment techniques, the most efficient and widely-used is the error matrix of classification. In recent years, some alternative methods are also used in analyzing and evaluating the change detection of land cover. Since it is often difficult, if not impossible, to collect reliable multitemporal ground reference datasets, some alternative approaches have to be employed for the assessment of change detection accuracy. There are three general approaches to obtain the ground references for bi-temporal change detection, namely, field survey with the assistance of historical GIS data, simultaneous, or within the time proximity, high-resolution images, and visual interpretation. Each of the three methods has its own advantages and disadvantages, and they are dependent upon the application. For long-time temporal trajectory change detection, it is more difficult to obtain the ground reference data. When the ground reference is unavailable, the consistency check rules are often employed to assess accuracy."
+      },
+      "confidence": 0.85,
+      "spec_type": "quality_standard",
+      "description": "Use of error matrix for accuracy assessment of change detection"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4994d2db3883a228_m1",
+      "evidence": {
+        "section": "2.1 Radiometric correction",
+        "original_text": "Radiometric correction is to remove or reduce the inconsistency between the values surveyed by sensors and the spectral reflectivity and spectral radiation brightness of the objects, which encompasses absolute radiometric correction and relative radiometric correction. Absolute radiometric correction mainly rectifies the radiation distortion that is irrelevant to the radiation features of the object surface and is caused by the state of sensors, solar illumination, and dispersion and absorption of atmospheric etc. The typical methods mainly consist of adjusting the radiation value to the standard value with the transmission code of atmospheric radiation, adjusting the radiation value to the standard value with spectral curves in the lab, adjusting the radiation value to the standard value with dark object and transmission code of radiation, rectifying the scene by removing the dark objects and so on. Due to the fact that it is expensive and impractical to survey the atmospheric parameter and ground objects of the current data, and almost impossible to survey that of the historical data, it is difficult to implement absolute radiometric correction in most situations in reality. During relative radiometric correction, an image is regarded as reference image. And then adjust the radiation features of another image to make it match with the former one. Main methods consist of correction by histogram regularization and correction with fixed object. This kind of correction can remove or reduce the effects of atmosphere, sensor, and other noises. In addition, it has simple algorithm. So it has been widely used."
+      },
+      "confidence": 0.95,
+      "name": "radiometric correction",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4994d2db3883a228_m2",
+      "evidence": {
+        "section": "2.2 Image registration",
+        "original_text": "Precise registration to the multi-temporal images is required by many change detection methods. The importance of accurate spatial registration of multi-temporal imagery is obvious because largely spurious results of change detection will be produced if there is misregistration. If high registration accuracy isn’t available, a great deal of false change area in the scene will be caused by image displacement. It is generally agreed that geometrical registration accuracy of sub-pixel level is accepted. It can be seen that geometrical registration accuracy of subpixel level is necessary to change detection. However, it is doubtful whether this result is suitable for all registration data sources & all detection objects and if suitable how much it is. Another problem is whether this result has no influence on all change detection methods and applications and if there is any influence how much it is. These problems are worth to be studied further. On the other hand, it is difficult to implement high accuracy registration between multi-temporal especially multi-sensor remote sensing images due to many factors, such as imaging models, imaging angles and conditions, curvature and rotation of the earth and so on. Especially in the mountainous region and urban area, general image registration methods are ineffective and ortho-rectification is needed."
+      },
+      "confidence": 0.95,
+      "name": "image registration",
+      "method_type": "preprocessing"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4994d2db3883a228_m3",
+      "evidence": {
+        "section": "3.1 Object-oriented method",
+        "original_text": "Object-oriented method is also called object-based comparison method. The basic strategy is to extract objects from multitemporal images using image segmentation and other feature extraction algorithms and distinguish the changes between corresponding objects. Typically this method is applied to applications such as change detection of man-made objects on high-resolution images, urban data updating, and military reconnaissance. This method compares the extracted objects directly, so it is not sensitive to data noises and geometric distortion. Two critical issues need to be addressed, namely, the methods to compare objects and to identify the changes between objects. Sui (2002) proposed the ‘buffer detection’ algorithm for the object comparison. Ancillary information, e.g. digital maps from GIS, can be used in the object-oriented method. Works with the focus on the integration of GIS for change detection includes. The powerful GIS functions provide efficient tools for multi-source data processing and change detection analysis, so that one can expect more works taking this approach as a generic trend in change detection (Lu et al. 2004)."
+      },
+      "confidence": 0.95,
+      "name": "object-oriented method",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4994d2db3883a228_m4",
+      "evidence": {
+        "section": "3.2 Model method",
+        "original_text": "The model method is a more application-oriented change detection method. Different from general change detection methods such as direct comparison and classification, this method can perceive the essential rules of application issues and take change as the core elements to construct mathematical models. The basic strategy is to adopt uniform models that integrate all procedures and methods. Generally this method can be grouped into two kinds, namely, models based on processing approaches (approach-based models) and models based on the course of processing (process-based models). The advantage of the model method is that it considers all factors for change detection and can obtain best results. And it is simple to apply and can be used for H-type change detection problem. However, the greatest challenge in this approach is how to construct suitable models. Even existing suitable models, the application problem is so complex that a lot of parameters is difficult to be obtained."
+      },
+      "confidence": 0.95,
+      "name": "model method",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4994d2db3883a228_m5",
+      "evidence": {
+        "section": "3.3 Time series analysis",
+        "original_text": "Time series analysis is mainly used for temporal trajectory analysis. In contrast to bi-temporal change detection, the temporal trajectory analysis is mostly based on low spatial resolution images such as AVHRR and MODIS, which have a high temporal resolution. The trade-off of using these images, however, is the lost of spatial details that makes autoclassification very difficult, so that the temporal trajectory analysis is commonly restricted in, for example, vegetation dynamics in large areas, or change trajectories of individual land cover classes. Quantitative parameters such as normalized difference vegetation index (NDVI) or area of given land cover class are often used as the dependent variables for the establishment of change trajectories. Two approaches are common for time series analysis, namely, long-time serial analysis and real-time image sequences analysis. For non-real-time long-time serial analysis change detection, dynamic Bayesian network seems a good tool. The method uses the time-series dynamic data to produce reliable probabilistic reasoning, which can make both static and dynamic analysis on the change detection of remote sensing images."
+      },
+      "confidence": 0.95,
+      "name": "time series analysis",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_4994d2db3883a228_m6",
+      "evidence": {
+        "section": "3.4 Hybrid methods",
+        "original_text": "A hybrid method refers to a comprehensive use of two or more methods mentioned above for change detection processing. There exist two typical hybrid kinds: one is to use different detection methods in different detection phases or procedures (procedure-based hybrid analysis) and another is to use different change detection methods respectively and then analyze their results comprehensively (result-based hybrid analysis). The advantage of this method is to make full use of virtues of many algorithms and obtain better change detection results than single method. However, for specific application case how to select hybrid methods is difficult and it is confused to harmonize detection results conflicts caused by different methods. These problems result in complex algorithm and low efficiency. For the procedure-based hybrid analysis, the combination of classification and algebraic method is popular. The combination of Classification and Object-oriented method is more and more. Previous researches have shown that a combination of two change detection techniques, such as image differencing and PCA, NDVI and PCA, or PCA and CVA, could improve the change detection results. For the resultbased hybrid analysis, decision-making fusion strategies such as voting and fuzzy logic etc. are widely applied. This method is very flexible but right of each method is difficult to decide and conflict results are often at risk."
+      },
+      "confidence": 0.0,
+      "name": "hybrid methods",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_4994d2db3883a228_x1",
+      "evidence": {
+        "section": "4. ACCURACY ASSESSMENT FOR CHANGE DETECTION",
+        "original_text": "Accuracy assessment techniques in change detection originate from those of remote sensing images classification. It is natural to extend the accuracy assessment techniques for processing single time image to that of bi-temporal or multitemporal images. Among various assessment techniques, the most efficient and widely-used is the error matrix of classification. In recent years, some alternative methods are also used in analyzing and evaluating the change detection of land cover. Since it is often difficult, if not impossible, to collect reliable multitemporal ground reference datasets, some alternative approaches have to be employed for the assessment of change detection accuracy. There are three general approaches to obtain the ground references for bi-temporal change detection, namely, field survey with the assistance of historical GIS data, simultaneous, or within the time proximity, high-resolution images, and visual interpretation. Each of the three methods has its own advantages and disadvantages, and they are dependent upon the application.. For long-time temporal trajectory change detection, it is more difficult to obtain the ground reference data. When the ground reference is unavailable, the consistency check rules are often employed to assess accuracy. Liu and Zhou (2004) proposed an accuracy analysis of time series of remote sensing change detection by rule-based rationality evaluation with post-classification comparison."
+      },
+      "confidence": 0.95,
+      "task": "accuracy assessment for change detection",
+      "setup": "error matrix of classification, field survey with GIS data, high-resolution images, visual interpretation"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_4994d2db3883a228_ca1",
+      "evidence": {
+        "section": "ABSTRACT",
+        "original_text": "Based on the former classification methods, this article classifies change detection methods from its essence into seven groups, including direct comparison, classification, object-oriented method, model method, time-series analysis, visual analysis and hybrid methods. At the same time, in pre-processing, the effect and methods of geometric correction and radiometric correction is discussed, and in accuracy assessment, this paper summarize the present methods into exterior check and interior check and emphasis on that how to get the ground truth. The challenges that the change detection is currently facing and possible counter measures are also discussed."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_4994d2db3883a228_ca2",
+      "evidence": {
+        "section": "INTRODUCTION",
+        "original_text": "This article does not intent to discuss specific methods or algorithms. Instead, the core problem discussed in this paper focus on the main three steps of change detection, including reprocessing, change detection methods and accuracy assessment. In re-processing step, the effect and methods of geometric correction and radiometric correction on change detection is discussed. In change detection classification methods, we do not discuss algorithms that are specialized to application-specific object classes, our interest here is the new classification methods. Change detection approaches are characterized into two broad groups: bi-temporal change detection and temporal trajectory analysis. Almost all classifications for change detection algorithms are based on bi-temporal change detection and little care for temporal trajectory analysis. Here we consider both of them. For bi-temporal images change detection any kind of detection algorithm can be attributed to one of the following three kinds of methods: directly compare different data sources, compare extracted information and detect changes by bringing all the data sources into a uniform model. Temporal trajectory analysis can be decomposed into bi-temporal change detection and long time-serial analysis. Finally, this article classifies change detection methods from its essence into seven groups, including direct comparison, classification, object-oriented method, model method, time-series analysis, visual analysis and hybrid methods."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_4994d2db3883a228_cl1",
+      "evidence": {
+        "section": "3. CHANGE DETECTION METHODS AND ALGORITHMS",
+        "original_text": "Aiming at different applications, a large number of change detection applications have been implemented and different change detection techniques have been tested. However, last conclusion is no single method is suitable and universal for all application cases even if for specific application choosing best method is unknown influenced by different data sources, image quality, characteristics of the study area, an analyst’s knowledge of the change detection methods and the skill in handling remote sensing data. Because of the difficulty in identifying a suitable method, in practice different change detection techniques are often tested and compared to provide a best result based on the accuracy assessment or qualitative assessment (Lu et al. 2004). Although accuracy assessment of change detection is not new topic, a comprehensive analysis and evaluation of change detection methods need to be studied further."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_4994d2db3883a228_lm1",
+      "evidence": {
+        "section": "2.2 Image registration",
+        "original_text": "It can be seen that geometrical registration accuracy of subpixel level is necessary to change detection. However, it is doubtful whether this result is suitable for all registration data sources & all detection objects and if suitable how much it is. Another problem is whether this result has no influence on all change detection methods and applications and if there is any influence how much it is. These problems are worth to be studied further. On the other hand, it is difficult to implement high accuracy registration between multi-temporal especially multi-sensor remote sensing images due to many factors, such as imaging models, imaging angles and conditions, curvature and rotation of the earth and so on. Especially in the mountainous region and urban area, general image registration methods are ineffective and ortho-rectification is needed."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_4994d2db3883a228_lm2",
+      "evidence": {
+        "section": "4. ACCURACY ASSESSMENT FOR CHANGE DETECTION",
+        "original_text": "At the present, accuracy assessment of change detection is mainly based on pixel and little work has been done to assess accuracy for feature-level or object-level change detection. Furthermore, more effort is needed on the accuracy assessment for change detection of long-time sequence images, especially when the ground reference data is insufficient or impossible to obtain. For these cases, the accuracy assessment methodology needs to be considered from a new viewpoint."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_4994d2db3883a228_fw1",
+      "evidence": {
+        "section": "5. DISCUSSION AND RECOMMENDATION",
+        "original_text": "Change detection of remote sensing image is mainly faced with three core problems: the first is the process from ground objects to image is not reversible; the second is the entire reconstruction from image change to change of the earth’s surface is impossible; and the third is significant changes are inevitably influenced by other unimportant changes because common changes exist with the ground objects. Obviously these three problems is rightly the reason why no an algorithm can satisfy all cases. If these three problems can not be solved, change detection techniques can not implanted completely. In order to solve these problems, we present possible approaches including the utilization of the multi-source data, priori information and intelligent methods. For the first problem, it is possible to adopt multi-source data to make up the deficiency between the ground objects and images. The multi-source data including multi-sensor remote sensing images, multi-temporal remote sensing images, GIS data, and the ground-related data etc. can be used to describe different characteristics of objects from different angles. The priori information and knowledge is very important for the second problem. Of course multi-source data is also necessary. For the third problem it is the core to employ intelligent change detection methods to increase detection data and reduce information loss during processing. Changes of the multi-temporal images are usually non-linear, so they are quite complicated. It seems that non-linear change detection theories and methods have great significance in solving change detection. Relative techniques including pattern recognition, ANN, kernel theory, data mining, knowledge discovery and so on should be more tightly integrated with change detection methods."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_4994d2db3883a228_fw2",
+      "evidence": {
+        "section": "5. DISCUSSION AND RECOMMENDATION",
+        "original_text": "With the continuous development of computer network, space technology and remote sensing, demand on automated, realtime and in-orbit processing become more urgent than ever before for change detection. To achieve this, the challenges to the technology include the full automation for image registration, image matching, feature extraction, image interpretation, image fusion, data-cleaning, image classification, and data mining and knowledge discovery from GIS database."
+      },
+      "confidence": 0.94
+    }
+  ]
+}

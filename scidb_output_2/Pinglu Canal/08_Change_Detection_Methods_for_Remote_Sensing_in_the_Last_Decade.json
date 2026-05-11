@@ -1,0 +1,1180 @@
+{
+  "metadata": {
+    "doc_id": "doc_3903a59d31747613",
+    "source_file": "08_Change_Detection_Methods_for_Remote_Sensing_in_the_Last_Decade.md",
+    "title": "A Comprehensive Survey of Change Detection in Remote Sensing: Algorithms, Benchmarks, and Future Trends",
+    "year": 2024,
+    "doi": "10.3390/rs16132355",
+    "abstract": "- 1 Department of Computer Science, University of Liverpool, Liverpool L69 3BX, UK 2 Department of Electronic Information Engineering, Beihang University, Beijing 100191, China; lyushuchang@buaa.edu.cn (S.L.); bhzhb@buaa.edu.cn (H.Z.); zhaoqi@buaa.edu.cn (Q.Z.)",
+    "introduction": "Change detection in remote sensing is the process of identifying changes in a scene from a pair of images captured in the same geographical area but at different time periods. With the rapid development of Earth observation technologies, acquiring large amounts of remote sensing images has become increasingly accessible. Consequently, change detection has emerged as a popular and fundamental task in the remote sensing community, with numerous real-world applications, such as urban development [1,2], agricultural surveys [3,4], land cover monitoring [5–7], disaster assessment [8], and military [9]. \n\nHowever, change detection poses some significant challenges [10–12], as paired images are often captured under varying conditions, such as different angles, different illuminations, and even different seasons, resulting in diverse and unknown changes in a scene. \n\n_Remote Sens._ **2024** , _16_ , 2355. https://doi.org/10.3390/rs16132355 \n\nhttps://www.mdpi.com/journal/remotesensing \n\n_Remote Sens._ **2024** , _16_ , 2355 \n\n2 of 36 \n\nThese challenges encompass a broad range of issues, including (1) variations in image quality arising from differences in spatial, spectral, and temporal resolutions; (2) the presence of diverse types of noise and artifacts; (3) errors during image registration; (4) difficulties in handling illumination, shadows, and changes in viewing angle; (5) complex and dynamic landscapes; and (6) scale and spatial heterogeneity of the landscape. \n\nOver the past few decades, numerous change detection methods have been proposed. Before the deep learning era, pointwise classification methods [3,13–22] witnessed great progress in change detection tasks. Most traditional methods focus on detecting the changed pixels and classifying them to generate a change map. A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings. \n\nIn recent years, the rapid development of deep learning technologies [23,24], particularly deep convolutional neural networks (CNNs), has led to the emergence of CNN models that have shown superior performance over traditional methods for change detection tasks, as evidenced by numerous studies [9,25–32]. This is mainly attributed to the exceptional representation and nonlinear characterization capabilities of CNNs, which make them a more effective choice for obtaining optimal performance in this field. \n\nRecently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing. \n\nWith the plethora of recent change detection methods that rely on deep learning strategies, many works have emerged to survey these methods. Some of these works consider deep learning methods in general [10–12,49–52]; while others focus on specific aspects, such as multisource remote sensing images and multiobjective scenarios [49], high-resolution remote sensing images [11], 3D point cloud data [51], multiscale attention methods [52], etc. Moreover, it is worth noting that the most recent survey method only accounts for algorithms up to 2021. Figure 1 depicts the statistical analysis of published papers related to the change detection algorithms over the past decade, as recorded in the DBLP https://dblp.org/ (accessed on 10 May 2024). Based on the findings, we can conclude that the topic will be further explored with deep learning, and an increasing number of research works will be published in the forthcoming years. However, in light of the increased focus on attention and transformer methods [47,53,54], diffusion methods [55,56], and Mamba architectures [57–59] in recent years, there has been a notable proliferation of proposed change detection tasks. Thus, it is imperative to conduct a comprehensive change detection survey that encompasses the latest state-of-the-art methodologies. \n\n_Remote Sens._ **2024** , _16_ , 2355 \n\n3 of 36 \n\n\n**Figure 1.** Statistics on the literature of change detection in the past decade. \n\nIn summary, this survey has three main contributions: \n\n- Compared to the previous survey works on change detection [10–12,49–52,60–62], our study provides a more comprehensive overview of the latest research on change detection in the past decade. Moreover, we systematically review the entirety of current algorithms to date and offer a relatively comprehensive depiction of the current state of the field. \n\n- Several systematical taxonomies of current change detection algorithms are presented from three perspectives: algorithm granularity, supervision modes, and learning frameworks. Furthermore, some influential works published with state-of-the-art performance on several dominant benchmarks are provided for future research. \n\n- Change detection learning schemes and their applications remain a rapidly developing research field, as illustrated in Figure 1, and many challenges need to be addressed. In this paper, we comprehensively review the existing challenges in this field and provide our perspective on future trends. \n\n**Scope:** This survey aims to cover the mainstream change detection algorithms from three perspectives, algorithm granularity, supervision modes, and learning frameworks, as depicted in Figure 2. The algorithms within the three taxonomies are carefully selected to ensure their orthogonality, thereby complementing each other and maintaining their distinctiveness. This survey focuses on the most representative works, despite the abundance of preprints or published works available. Additionally, we benchmark several predominant datasets and provide a detailed discussion of future research trends. \n\n**Organization:** This paper is organized as follows. In Section 2, we review the preliminary knowledge of change detection, i.e., task definition, dominant datasets, evaluation metrics, and some transformer basics. In Section 3, we take a closer look at existing methods and classify them from three perspectives. Section 4 benchmarks the state-of-the-art performance on several popular change detection datasets. Section 5 raises future research trends and discussions. Finally, we conclude this survey in Section 6. \n\n_Remote Sens._ **2024** , _16_ , 2355 \n\n4 of 36 \n\n\n**Figure 2.** Illustration of the pipeline of this survey. Different colors represent specific sections. Best viewed in color.",
+    "primary_discipline": {
+      "level1": "计算机科学技术",
+      "level2": null,
+      "level3": null
+    },
+    "secondary_disciplines": [
+      {
+        "level1": "测绘科学技术",
+        "level2": null,
+        "level3": null
+      }
+    ],
+    "keywords": [
+      "change detection",
+      "remote sensing",
+      "deep learning",
+      "survey",
+      "transformer"
+    ],
+    "extraction_info": {
+      "extraction_model": "deepseek-v3.2",
+      "extraction_timestamp": "2026-05-11T02:21:11.123863+00:00",
+      "extraction_method": "grouped_serial_5groups",
+      "retry_groups": null,
+      "failed_groups": null
+    }
+  },
+  "entries": [
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Change detection is an essential and widely utilized task in remote sensing that aims to detect and analyze changes occurring in the same geographical area over time, which has broad applications in urban development, agricultural surveys, and land cover monitoring. Detecting changes in remote sensing images is a complex challenge due to various factors, including variations in image quality, noise, registration errors, illumination changes, complex landscapes, and spatial heterogeneity. In recent years, deep learning has emerged as a powerful tool for feature extraction and addressing these challenges. Its versatility has resulted in its widespread adoption for numerous image-processing tasks. This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.99,
+      "term": "change detection",
+      "normalized": "变化检测",
+      "std_label": "CD"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c2",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Change detection is an essential and widely utilized task in remote sensing that aims to detect and analyze changes occurring in the same geographical area over time, which has broad applications in urban development, agricultural surveys, and land cover monitoring. Detecting changes in remote sensing images is a complex challenge due to various factors, including variations in image quality, noise, registration errors, illumination changes, complex landscapes, and spatial heterogeneity. In recent years, deep learning has emerged as a powerful tool for feature extraction and addressing these challenges. Its versatility has resulted in its widespread adoption for numerous image-processing tasks. This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.99,
+      "term": "remote sensing",
+      "normalized": "遥感",
+      "std_label": "RS"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c3",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In recent years, deep learning has emerged as a powerful tool for feature extraction and addressing these challenges. Its versatility has resulted in its widespread adoption for numerous image-processing tasks. This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.98,
+      "term": "deep learning",
+      "normalized": "深度学习",
+      "std_label": "DL"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In recent years, the rapid development of deep learning technologies [23,24], particularly deep convolutional neural networks (CNNs), has led to the emergence of CNN models that have shown superior performance over traditional methods for change detection tasks, as evidenced by numerous studies [9,25–32]. This is mainly attributed to the exceptional representation and nonlinear characterization capabilities of CNNs, which make them a more effective choice for obtaining optimal performance in this field."
+      },
+      "confidence": 0.98,
+      "term": "convolutional neural networks",
+      "normalized": "卷积神经网络",
+      "std_label": "CNNs"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.97,
+      "term": "attention models",
+      "normalized": "注意力模型",
+      "std_label": "Attention"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.97,
+      "term": "transformer models",
+      "normalized": "Transformer模型",
+      "std_label": "Transformer"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, in light of the increased focus on attention and transformer methods [47,53,54], diffusion methods [55,56], and Mamba architectures [57–59] in recent years, there has been a notable proliferation of proposed change detection tasks. Thus, it is imperative to conduct a comprehensive change detection survey that encompasses the latest state-of-the-art methodologies."
+      },
+      "confidence": 0.96,
+      "term": "Mamba architectures",
+      "normalized": "Mamba架构",
+      "std_label": "Mamba"
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.95,
+      "term": "algorithm granularity",
+      "normalized": "算法粒度",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c9",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.95,
+      "term": "supervision modes",
+      "normalized": "监督模式",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c10",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.95,
+      "term": "learning frameworks",
+      "normalized": "学习框架",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c11",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Pixel-based methods are commonly used for image segmentation tasks [91–94] in computer vision. These methods assign a label to each individual pixel in an image based on its spectral characteristics, with the goal of partitioning the image into regions of different classes. Traditional pixel-based methods often suffer from false positives and false negatives. Fortunately, with the advent of deep learning and its increased receptive field, such as the pyramid pooling module [95], atrous convolution [96], and attention module [33], pixel classification methods based on deep learning can achieve significantly improved performance. It is worth noting that most end-to-end CNN models fall under the category of pixel-based methods."
+      },
+      "confidence": 0.94,
+      "term": "pixel-based methods",
+      "normalized": "像素级方法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c12",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Region-based methods [97,98], also known as object-based methods, leverage image segmentation techniques first to group pixels into meaningful regions, such as objects, superpixels, or bounding boxes, based on their spatial, spectral, and contextual characteristics. These grouped regions are then used as the units for detecting and recognizing the changed results with either traditional or deep learning methods."
+      },
+      "confidence": 0.94,
+      "term": "region-based methods",
+      "normalized": "区域级方法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c13",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "The use of hybrid methods [19,38,99] has been identified as a powerful approach for change detection tasks. These methods leverage the advantages of multiple individual techniques such as pixel-based methods, region-based methods, or a combination of both to achieve improved accuracy in change detection. By integrating different methodologies, hybrid approaches can address the limitations of each method and provide a more robust and comprehensive solution for detecting changes in remote sensing imagery. These methods typically involve the parallel or successive use of pixel-based and region-based techniques to detect changes from different perspectives."
+      },
+      "confidence": 0.94,
+      "term": "hybrid methods",
+      "normalized": "混合方法",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c14",
+      "evidence": {
+        "section": "Taxonomy Based on Supervision Modes",
+        "original_text": "Unsupervised learning is a machine learning technique that discovers patterns and structures in data without guidance or labels, enabling the identification of hidden relationships and structures without prior knowledge. However, it can be difficult to interpret. It may suffer from the “curse of dimensionality”, where the number of features or dimensions of the data can lead to computational inefficiencies or inaccurate results."
+      },
+      "confidence": 0.93,
+      "term": "unsupervised learning",
+      "normalized": "无监督学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c15",
+      "evidence": {
+        "section": "Taxonomy Based on Supervision Modes",
+        "original_text": "Semisupervised learning aims at training the algorithm with a limited amount of labeled data and a large set of unlabeled data. It is advantageous when labeled data are scarce or expensive to obtain and can help improve model accuracy by leveraging unlabeled data. Still, its implementation can be difficult, and its performance depends on the quality of unlabeled data, which can introduce noise and lead to decreased performance."
+      },
+      "confidence": 0.93,
+      "term": "semisupervised learning",
+      "normalized": "半监督学习",
+      "std_label": null
+    },
+    {
+      "type": "concept",
+      "concept_id": "doc_3903a59d31747613_c16",
+      "evidence": {
+        "section": "Taxonomy Based on Supervision Modes",
+        "original_text": "Supervised learning is trained using labeled data to make accurate predictions on new, unseen data by learning patterns from input and corresponding output data. It is easy to implement with readily available labeled data and can be used to solve various problems, but it requires a large amount of labeled data that should be accurate and unbiased, and models may struggle with data different from the training data, leading to overfitting or underfitting."
+      },
+      "confidence": 0.93,
+      "term": "supervised learning",
+      "normalized": "监督学习",
+      "std_label": null
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "In recent years, deep learning has emerged as a powerful tool for feature extraction and addressing these challenges. Its versatility has resulted in its widespread adoption for numerous image-processing tasks. This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.92,
+      "head": "doc_3903a59d31747613_c3",
+      "relation_type": "enhances",
+      "relation_surface": "has emerged as a powerful tool for feature extraction and addressing these challenges",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In recent years, the rapid development of deep learning technologies [23,24], particularly deep convolutional neural networks (CNNs), has led to the emergence of CNN models that have shown superior performance over traditional methods for change detection tasks, as evidenced by numerous studies [9,25–32]. This is mainly attributed to the exceptional representation and nonlinear characterization capabilities of CNNs, which make them a more effective choice for obtaining optimal performance in this field."
+      },
+      "confidence": 0.92,
+      "head": "doc_3903a59d31747613_c4",
+      "relation_type": "enhances",
+      "relation_surface": "has shown superior performance over traditional methods for change detection tasks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.91,
+      "head": "doc_3903a59d31747613_c5",
+      "relation_type": "enhances",
+      "relation_surface": "have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.91,
+      "head": "doc_3903a59d31747613_c6",
+      "relation_type": "enhances",
+      "relation_surface": "have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, in light of the increased focus on attention and transformer methods [47,53,54], diffusion methods [55,56], and Mamba architectures [57–59] in recent years, there has been a notable proliferation of proposed change detection tasks. Thus, it is imperative to conduct a comprehensive change detection survey that encompasses the latest state-of-the-art methodologies."
+      },
+      "confidence": 0.9,
+      "head": "doc_3903a59d31747613_c7",
+      "relation_type": "enhances",
+      "relation_surface": "in recent years, there has been a notable proliferation of proposed change detection tasks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r6",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.9,
+      "head": "doc_3903a59d31747613_c8",
+      "relation_type": "belongs_to",
+      "relation_surface": "provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r7",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.9,
+      "head": "doc_3903a59d31747613_c9",
+      "relation_type": "belongs_to",
+      "relation_surface": "provide a detailed taxonomy of existing algorithms from three different perspectives: supervision modes",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r8",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.9,
+      "head": "doc_3903a59d31747613_c10",
+      "relation_type": "belongs_to",
+      "relation_surface": "provide a detailed taxonomy of existing algorithms from three different perspectives: frameworks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r9",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Pixel-based methods are commonly used for image segmentation tasks [91–94] in computer vision. These methods assign a label to each individual pixel in an image based on its spectral characteristics, with the goal of partitioning the image into regions of different classes. Traditional pixel-based methods often suffer from false positives and false negatives. Fortunately, with the advent of deep learning and its increased receptive field, such as the pyramid pooling module [95], atrous convolution [96], and attention module [33], pixel classification methods based on deep learning can achieve significantly improved performance. It is worth noting that most end-to-end CNN models fall under the category of pixel-based methods."
+      },
+      "confidence": 0.89,
+      "head": "doc_3903a59d31747613_c11",
+      "relation_type": "belongs_to",
+      "relation_surface": "Pixel-based methods are commonly used for image segmentation tasks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r10",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Region-based methods [97,98], also known as object-based methods, leverage image segmentation techniques first to group pixels into meaningful regions, such as objects, superpixels, or bounding boxes, based on their spatial, spectral, and contextual characteristics. These grouped regions are then used as the units for detecting and recognizing the changed results with either traditional or deep learning methods."
+      },
+      "confidence": 0.89,
+      "head": "doc_3903a59d31747613_c12",
+      "relation_type": "belongs_to",
+      "relation_surface": "Region-based methods leverage image segmentation techniques first to group pixels into meaningful regions",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r11",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "The use of hybrid methods [19,38,99] has been identified as a powerful approach for change detection tasks. These methods leverage the advantages of multiple individual techniques such as pixel-based methods, region-based methods, or a combination of both to achieve improved accuracy in change detection. By integrating different methodologies, hybrid approaches can address the limitations of each method and provide a more robust and comprehensive solution for detecting changes in remote sensing imagery. These methods typically involve the parallel or successive use of pixel-based and region-based techniques to detect changes from different perspectives."
+      },
+      "confidence": 0.89,
+      "head": "doc_3903a59d31747613_c13",
+      "relation_type": "belongs_to",
+      "relation_surface": "The use of hybrid methods has been identified as a powerful approach for change detection tasks",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r12",
+      "evidence": {
+        "section": "Taxonomy Based on Supervision Modes",
+        "original_text": "Unsupervised learning is a machine learning technique that discovers patterns and structures in data without guidance or labels, enabling the identification of hidden relationships and structures without prior knowledge. However, it can be difficult to interpret. It may suffer from the “curse of dimensionality”, where the number of features or dimensions of the data can lead to computational inefficiencies or inaccurate results."
+      },
+      "confidence": 0.88,
+      "head": "doc_3903a59d31747613_c14",
+      "relation_type": "belongs_to",
+      "relation_surface": "Unsupervised learning is a machine learning technique",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r13",
+      "evidence": {
+        "section": "Taxonomy Based on Supervision Modes",
+        "original_text": "Semisupervised learning aims at training the algorithm with a limited amount of labeled data and a large set of unlabeled data. It is advantageous when labeled data are scarce or expensive to obtain and can help improve model accuracy by leveraging unlabeled data. Still, its implementation can be difficult, and its performance depends on the quality of unlabeled data, which can introduce noise and lead to decreased performance."
+      },
+      "confidence": 0.88,
+      "head": "doc_3903a59d31747613_c15",
+      "relation_type": "belongs_to",
+      "relation_surface": "Semisupervised learning aims at training the algorithm with a limited amount of labeled data and a large set of unlabeled data",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "relation",
+      "relation_id": "doc_3903a59d31747613_r14",
+      "evidence": {
+        "section": "Taxonomy Based on Supervision Modes",
+        "original_text": "Supervised learning is trained using labeled data to make accurate predictions on new, unseen data by learning patterns from input and corresponding output data. It is easy to implement with readily available labeled data and can be used to solve various problems, but it requires a large amount of labeled data that should be accurate and unbiased, and models may struggle with data different from the training data, leading to overfitting or underfitting."
+      },
+      "confidence": 0.88,
+      "head": "doc_3903a59d31747613_c16",
+      "relation_type": "belongs_to",
+      "relation_surface": "Supervised learning is trained using labeled data to make accurate predictions on new, unseen data",
+      "tail": "doc_3903a59d31747613_c1"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d1",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "Specifically, Yellow River [74] consists of two SAR images of the Yellow River Estuary in China, each with dimensions of 7666 × 7692 pixels. These images were captured by the Radarsat-2 satellite in June 2008 and June 2009, respectively, and are commonly utilized for studying changes in this region, making it a valuable resource for various change detection methods applied to the SAR images."
+      },
+      "confidence": 0.95,
+      "name": "Yellow River",
+      "modality": "image",
+      "domain": "remote sensing, SAR"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d2",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "Bern [75] comprises two SAR images, each with dimensions of 301 × 301 pixels, covering the city of Bern, Switzerland. The images were acquired by the European Remote Sensing Satellite-2 (ERS-2) in April and May of 1999. Notably, the May 1999 image captured the impact of flooding caused by the Aare River on the airport in Bern City."
+      },
+      "confidence": 0.95,
+      "name": "Bern",
+      "modality": "image",
+      "domain": "remote sensing, SAR"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d3",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "Specifically, LEVIR-CD+ is a comprehensive remote sensing change detection resource, containing 985 pairs of very-high-resolution (VHR, 0.5 m/pixel) Google Earth images, each measuring 1024 × 1024 pixels. The dataset, as described by Chen et al. [76], centers on detecting building changes in American cities between 2002 and 2018, with a particular focus on building growth and decline."
+      },
+      "confidence": 0.95,
+      "name": "LEVIR-CD+",
+      "modality": "image",
+      "domain": "remote sensing, multispectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d4",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "CDD [77], also referred to as the season-varying dataset, is a collection of VHR (i.e., 0.03–1 m/pixel) images comprising seven pairs of images with dimensions of 4725 × 2700 pixels and four pairs with dimensions of 1900 × 1000 pixels. The dataset, sourced from Google Earth, focuses on capturing seasonal variations in natural objects of varying sizes."
+      },
+      "confidence": 0.95,
+      "name": "CDD",
+      "modality": "image",
+      "domain": "remote sensing, multispectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d5",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "The WHU-CD [78] dataset is one subset from the larger WHU Building dataset, tailored for the building CD task. The aerial imagery dataset covers the city of Christchurch, New Zealand, and contains images with a ground resolution of 0.3 m. The dataset is composed of a pair of images with a resolution of 32,508 × 15,354 pixels, capturing an area both before and after a 6.3-magnitude earthquake. According to the official protocol, it is split into a training (21,243 × 15,354) area and a testing (11,265 × 15,354) area."
+      },
+      "confidence": 0.95,
+      "name": "WHU-CD",
+      "modality": "image",
+      "domain": "remote sensing, multispectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d6",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "SECOND [79], as a semantic change detection dataset, is composed of 4662 pairs of aerial images obtained by several platforms and sensors. The dataset covers cities such as Hangzhou, Chengdu, and Shanghai, and each image pair has the same dimensions of 512 × 512 pixels, with a spatial resolution varying from 0.5 to 3 m/pixel. This dataset is particularly useful for researchers interested in studying human-made geographical and natural changes, covering six main categories. For the change category, the SECOND dataset focuses on six main land cover classes, i.e., nonvegetated ground surface, trees, low vegetation, water, buildings, and playgrounds."
+      },
+      "confidence": 0.95,
+      "name": "SECOND",
+      "modality": "image",
+      "domain": "remote sensing, multispectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d7",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "SYSU-CD [80] presents a category-agnostic CD dataset, comprising a set of 20,000 pairs of 0.5 m/pixel resolution aerial images from Hong Kong, spanning 2007 to 2014. It encompasses a range of various change scenarios such as urban construction, suburban expansion, groundwork, vegetation changes, road expansion, and sea construction."
+      },
+      "confidence": 0.95,
+      "name": "SYSU-CD",
+      "modality": "image",
+      "domain": "remote sensing, multispectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d8",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "River [81] comprises two hyperspectral images (HSI) sized 463 × 241 pixels. The images were captured on 3 May and 21 December 2013, respectively, and primarily cover a river in Jiangsu Province."
+      },
+      "confidence": 0.95,
+      "name": "River",
+      "modality": "image",
+      "domain": "remote sensing, hyperspectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d9",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "Hermiston [82], encompassing an agricultural area in Hermiston City, was obtained by a Hyperion sensor. The dataset contains a pair of HSIs collected on 1 May 2004, and 8 May 2007, respectively. The images have a resolution of 307 × 241 pixels and comprise a selection of 154 bands from a total of 242 spectral bands."
+      },
+      "confidence": 0.95,
+      "name": "Hermiston",
+      "modality": "image",
+      "domain": "remote sensing, hyperspectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d10",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "Farmland [83] consists of two HSIs acquired by Earth Observing-1 (EO-1) on 3 May 2006, and 23 April 2007, respectively. The dataset covers farmland near Yancheng, Jiangsu Province, and has 155 bands for experiments after removing the low-noise spectral bands. The spatial size is 450 × 140 pixels. The main changes in the dataset were caused by the cultivation of crops."
+      },
+      "confidence": 0.95,
+      "name": "Farmland",
+      "modality": "image",
+      "domain": "remote sensing, hyperspectral"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d11",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "In this survey, we introduce the California dataset [84], which includes both SAR images and multispectral images. A summary of this dataset is provided in Table 2. The California dataset [84] contains one multispectral image and two SAR images. The multispectral image was collected on 5 January 2017 by Landsat-8. Most bands in it have a resolution of 30 m. The SAR images were captured on February 18, 2017 by Sentinel-1A. The dataset covers the same region in Sacramento County, Yuba County, and Sutter County, California, where flooding has caused the changes."
+      },
+      "confidence": 0.95,
+      "name": "California",
+      "modality": "image",
+      "domain": "remote sensing, heterogeneous"
+    },
+    {
+      "type": "dataset",
+      "dataset_id": "doc_3903a59d31747613_d12",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "For the 3D change detection dataset, 3DCD [85] is employed to benchmark the state-of-the-art performance in this survey. 3DCD [85] comprises a total of 472 image pairs, each consisting of optical orthophotos cropped to the same size, along with the corresponding 2D change detection maps in raster format. The images were obtained by two aerial surveys in 2010 and 2017 separately. A total of 472 pairs of digital surface models (DSMs) produced from the rasterization of point clouds and the corresponding 3D change detection maps are also included in the dataset. The 2D change detection maps have a resolution of 0.5 m with a size of 400 × 400 pixels, while the 3D change detection maps have a resolution of 1 m with a size of 200 × 200 pixels. The dataset focuses on the urban area of Valladolid, Spain."
+      },
+      "confidence": 0.95,
+      "name": "3DCD",
+      "modality": "multimodal",
+      "domain": "remote sensing, 3D"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3903a59d31747613_ds1",
+      "evidence": {
+        "section": "2.2. Change Detection Datasets",
+        "original_text": "Table 2. The detailed information of several dominant change detection datasets. Note that the quantity of data is represented by the number of data pairs."
+      },
+      "confidence": 0.9,
+      "spec_type": "metadata_standard",
+      "description": "Change detection dataset summary table with data source, quantity, spatial resolution, and acquisition time"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3903a59d31747613_ds2",
+      "evidence": {
+        "section": "2.3. Evaluation Metrics",
+        "original_text": "Evaluation metrics are essential in evaluating the performance of a change detection model. This study presents a concise introduction and analysis of common evaluation metrics. These include true positive (TP) and true negative (TN), which indicate the number of correctly identified changed and unchanged pixels, respectively. On the other hand, false positives (FP) and false negatives (FN) refer to the number of pixels wrongly classified as changed or unchanged, respectively. A high precision value implies the algorithm’s ability to identify changed pixels accurately. In contrast, a high recall value suggests the algorithm can detect a higher proportion of changed pixels from the groundtruth data. The intersection over union (IoU) represents the ratio of intersection and concatenation of the predicted map and ground truth. The overall accuracy (OA) metric indicates the prediction’s accuracy. The F1 score is a harmonic average of precision and recall. Additionally, other metrics are designed for specific applications, such as the kappa coefficient (KC) [87], which measures classification accuracy based on the confusion matrix. RMSE (root mean squared error) and cRMSE (changed root mean squared error) [88] are commonly used for evaluating 3D change detection model change detection performance. cRMSE considers only errors in ground-truth pixels influenced by altitude. In semantic change detection (SCD), mean intersection over union (mIoU), separated kappa (Sek), and SCD-targeted F1 score (Fscd) are used to evaluate accuracy."
+      },
+      "confidence": 0.95,
+      "spec_type": "quality_standard",
+      "description": "Standardized evaluation metrics for change detection performance assessment"
+    },
+    {
+      "type": "data_specification",
+      "ds_id": "doc_3903a59d31747613_ds3",
+      "evidence": {
+        "section": "2.1. Task Definition",
+        "original_text": "Moreover, the whole pipeline of the change detection task can be divided into several subtasks, including the following: Image preprocessing: This involves removing noise, correcting geometric and radiometric distortions, and enhancing image quality to ensure the images are properly aligned and suitable for analysis. Image registration: This involves aligning the images spatially and temporally to ensure that corresponding pixels in each image are accurately compared."
+      },
+      "confidence": 0.95,
+      "spec_type": "env_requirement",
+      "description": "Image preprocessing and registration steps for change detection task"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m1",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings."
+      },
+      "confidence": 0.95,
+      "name": "support vector machines (SVMs)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings."
+      },
+      "confidence": 0.95,
+      "name": "random forests",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m3",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings."
+      },
+      "confidence": 0.95,
+      "name": "decision trees",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m4",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings."
+      },
+      "confidence": 0.95,
+      "name": "level sets",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m5",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings."
+      },
+      "confidence": 0.95,
+      "name": "Markov random fields (MRFs)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m6",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "A variety of machine learning models have been applied to the change detection task, including support vector machines (SVMs) [13,14], random forests [15], decision trees [16], level sets [17,18], Markov random fields (MRFs) [3,22], and conditional random fields (CRFs) [19–21]. Though some specific images can achieve considerable performance with the above methods, they still suffer from low accuracy and lack of generalization ability. Moreover, their performance is highly dependent on the decision classifiers and threshold settings."
+      },
+      "confidence": 0.95,
+      "name": "conditional random fields (CRFs)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m7",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In recent years, the rapid development of deep learning technologies [23,24], particularly deep convolutional neural networks (CNNs), has led to the emergence of CNN models that have shown superior performance over traditional methods for change detection tasks, as evidenced by numerous studies [9,25–32]. This is mainly attributed to the exceptional representation and nonlinear characterization capabilities of CNNs, which make them a more effective choice for obtaining optimal performance in this field."
+      },
+      "confidence": 0.95,
+      "name": "deep convolutional neural networks (CNNs)",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m8",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.95,
+      "name": "attention models",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m9",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.95,
+      "name": "transformer models",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m10",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, in light of the increased focus on attention and transformer methods [47,53,54], diffusion methods [55,56], and Mamba architectures [57–59] in recent years, there has been a notable proliferation of proposed change detection tasks. Thus, it is imperative to conduct a comprehensive change detection survey that encompasses the latest state-of-the-art methodologies."
+      },
+      "confidence": 0.95,
+      "name": "diffusion methods",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m11",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "However, in light of the increased focus on attention and transformer methods [47,53,54], diffusion methods [55,56], and Mamba architectures [57–59] in recent years, there has been a notable proliferation of proposed change detection tasks. Thus, it is imperative to conduct a comprehensive change detection survey that encompasses the latest state-of-the-art methodologies."
+      },
+      "confidence": 0.95,
+      "name": "Mamba architectures",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m12",
+      "evidence": {
+        "section": "Preliminary Knowledge",
+        "original_text": "For the fusion methods, element-wise subtraction [63,64], element-wise concatenation [65,66], and majority voting [67] are widely used."
+      },
+      "confidence": 0.95,
+      "name": "element-wise subtraction",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m13",
+      "evidence": {
+        "section": "Preliminary Knowledge",
+        "original_text": "For the fusion methods, element-wise subtraction [63,64], element-wise concatenation [65,66], and majority voting [67] are widely used."
+      },
+      "confidence": 0.95,
+      "name": "element-wise concatenation",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m14",
+      "evidence": {
+        "section": "Preliminary Knowledge",
+        "original_text": "For the fusion methods, element-wise subtraction [63,64], element-wise concatenation [65,66], and majority voting [67] are widely used."
+      },
+      "confidence": 0.95,
+      "name": "majority voting",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m15",
+      "evidence": {
+        "section": "Preliminary Knowledge",
+        "original_text": "Attention [33] algorithms are a type of machine learning algorithm that selectively focus on certain aspects of data or inputs while ignoring others. They assign different weights or importance values to different parts of the input based on their relevance to the task at hand. Attention algorithms have become increasingly popular in natural language processing (NLP) [89] and computer vision applications [90], as they enable models to focus on the most relevant information in a sentence or image. As depicted in Figure 4a, given the key (K), query (Q), and value (V), the attention mechanism can be defined as The scale factor dk represents the dimension of the keys in the attention mechanism. The resulting attention map is multiplied with V to focus on the most relevant regions. In practice, a multihead attention (MHA) module with h heads is often used instead of a single attention function shown in Equation (7). As shown in Figure 4b, the MHA involves performing multiple attention operations in parallel and concatenating the attention results as where the information from different heads is concatenated, then the concatenated outputs are fused together using a projection matrix WP, which allows the model to effectively incorporate information from multiple heads of attention. Based on the different sources of query (Q) and key (K), MHA can be divided into multihead self-attention (MHSA) and multihead cross-attention (MHCA). MHSA refers to the case where the Q and K for all heads come from the same sequences or tokens, while MHCA refers to the case where Q and K for different heads come from different sequences or tokens."
+      },
+      "confidence": 0.95,
+      "name": "Attention",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m16",
+      "evidence": {
+        "section": "Preliminary Knowledge",
+        "original_text": "Attention [33] algorithms are a type of machine learning algorithm that selectively focus on certain aspects of data or inputs while ignoring others. They assign different weights or importance values to different parts of the input based on their relevance to the task at hand. Attention algorithms have become increasingly popular in natural language processing (NLP) [89] and computer vision applications [90], as they enable models to focus on the most relevant information in a sentence or image. As depicted in Figure 4a, given the key (K), query (Q), and value (V), the attention mechanism can be defined as The scale factor dk represents the dimension of the keys in the attention mechanism. The resulting attention map is multiplied with V to focus on the most relevant regions. In practice, a multihead attention (MHA) module with h heads is often used instead of a single attention function shown in Equation (7). As shown in Figure 4b, the MHA involves performing multiple attention operations in parallel and concatenating the attention results as where the information from different heads is concatenated, then the concatenated outputs are fused together using a projection matrix WP, which allows the model to effectively incorporate information from multiple heads of attention. Based on the different sources of query (Q) and key (K), MHA can be divided into multihead self-attention (MHSA) and multihead cross-attention (MHCA). MHSA refers to the case where the Q and K for all heads come from the same sequences or tokens, while MHCA refers to the case where Q and K for different heads come from different sequences or tokens."
+      },
+      "confidence": 0.95,
+      "name": "multihead attention (MHA)",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m17",
+      "evidence": {
+        "section": "Preliminary Knowledge",
+        "original_text": "As shown in Figure 4c, the transformer architecture [54] comprises an encoder and a decoder, both of which contain multiple layers of multihead attention (MHA) and feedforward neural networks (FFNs). In particular, the FFN consists of two consecutive multilayer perceptrons (MLPs) with a nonlinear activation function. In addition to the MHSA, the decoder utilizes MHCA to attend to the relevant information or regions from different multimodal sequences. Unlike the CNNs and attention mechanism, the transformer adds positional encoding information to input and output embedding to capture positional information."
+      },
+      "confidence": 0.95,
+      "name": "Transformer",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m18",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Pixel-based methods are commonly used for image segmentation tasks [91–94] in computer vision. These methods assign a label to each individual pixel in an image based on its spectral characteristics, with the goal of partitioning the image into regions of different classes. Traditional pixel-based methods often suffer from false positives and false negatives. Fortunately, with the advent of deep learning and its increased receptive field, such as the pyramid pooling module [95], atrous convolution [96], and attention module [33], pixel classification methods based on deep learning can achieve significantly improved performance. It is worth noting that most end-to-end CNN models fall under the category of pixel-based methods."
+      },
+      "confidence": 0.95,
+      "name": "pixel-based methods",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m19",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Region-based methods [97,98], also known as object-based methods, leverage image segmentation techniques first to group pixels into meaningful regions, such as objects, superpixels, or bounding boxes, based on their spatial, spectral, and contextual characteristics. These grouped regions are then used as the units for detecting and recognizing the changed results with either traditional or deep learning methods."
+      },
+      "confidence": 0.95,
+      "name": "region-based methods",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m20",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "The use of hybrid methods [19,38,99] has been identified as a powerful approach for change detection tasks. These methods leverage the advantages of multiple individual techniques such as pixel-based methods, region-based methods, or a combination of both to achieve improved accuracy in change detection. By integrating different methodologies, hybrid approaches can address the limitations of each method and provide a more robust and comprehensive solution for detecting changes in remote sensing imagery. These methods typically involve the parallel or successive use of pixel-based and region-based techniques to detect changes from different perspectives."
+      },
+      "confidence": 0.95,
+      "name": "hybrid methods",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m21",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Unsupervised learning is a machine learning technique that discovers patterns and structures in data without guidance or labels, enabling the identification of hidden relationships and structures without prior knowledge. However, it can be difficult to interpret. It may suffer from the “curse of dimensionality”, where the number of features or dimensions of the data can lead to computational inefficiencies or inaccurate results."
+      },
+      "confidence": 0.95,
+      "name": "unsupervised learning",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m22",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Semisupervised learning aims at training the algorithm with a limited amount of labeled data and a large set of unlabeled data. It is advantageous when labeled data are scarce or expensive to obtain and can help improve model accuracy by leveraging unlabeled data. Still, its implementation can be difficult, and its performance depends on the quality of unlabeled data, which can introduce noise and lead to decreased performance."
+      },
+      "confidence": 0.95,
+      "name": "semisupervised learning",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m23",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Supervised learning is trained using labeled data to make accurate predictions on new, unseen data by learning patterns from input and corresponding output data. It is easy to implement with readily available labeled data and can be used to solve various problems, but it requires a large amount of labeled data that should be accurate and unbiased, and models may struggle with data different from the training data, leading to overfitting or underfitting."
+      },
+      "confidence": 0.95,
+      "name": "supervised learning",
+      "method_type": "algorithm"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m24",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "CNN-based methods [148] use CNNs (shown in Figure 5a) to automatically learn feature representations from the data, enabling the capture of complex patterns and spatial dependencies between pixels. This approach has demonstrated improved performance over traditional methods."
+      },
+      "confidence": 0.95,
+      "name": "CNN-based methods",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m25",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Attentionor transformer-based methods [149–153], also based on deep learning methods, employ self-attention mechanisms to weight different regions of the input images based on their relevance to the task or to capture long-range dependencies between pixels and generate feature representations (shown in Figure 5c). Some scholars [43] have attempted to combine CNN and transformer structures to leverage the advantages of both (shown in Figure 5b). These methods have demonstrated superior performance compared to both CNN-based methods and traditional methods, representing the new state of the art for change detection in remote sensing imagery."
+      },
+      "confidence": 0.95,
+      "name": "attention- or transformer-based methods",
+      "method_type": "model"
+    },
+    {
+      "type": "method",
+      "method_id": "doc_3903a59d31747613_m26",
+      "evidence": {
+        "section": "Methodology: A Survey",
+        "original_text": "Recently, Mamba architectures [57,58] have demonstrated outstanding performance across various foundational tasks in the remote sensing area, such as image classification [154], hyperspectral image classification [155], image dense prediction [156], image change captioning [157], and change detection [59] (shown in Figure 5d). Chen et al. [59] first introduced the Mamba structure into the change detection task. By modifying the corresponding structure, it can address tasks such as binary change detection (BCD), semantic change detection (SCD), and building damage assessment (BDA). CDMamba [59], based on the Mamba structure, introduces local information, which can effectively combine global and local features for handling CD tasks."
+      },
+      "confidence": 0.95,
+      "name": "Mamba methods",
+      "method_type": "model"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3903a59d31747613_x1",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "In Table 6, we provide a summary of several noteworthy methods on two dominant SAR datasets, i.e., the Yellow River dataset [74] and the Bern dataset [75]. Specifically, in the Yellow River dataset, the DDNet algorithm [161] outperforms other methods in terms of FP and KC metrics, while the SFCNet model [123] achieves the best performance on FN and OA metrics. In the Bern dataset, ShearNet [74] and ESMOFCM [187] exhibit superior performance, achieving an OA metric of 99.68%, and BIFLICM/D [188] achieves the best performance in the KC metric."
+      },
+      "confidence": 0.95,
+      "task": "SAR change detection",
+      "setup": "Yellow River dataset, Bern dataset"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3903a59d31747613_x2",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Table 7 presents a collection of state-of-the-art models on several preeminent multispectral image datasets, including the LEVIR-CD+ dataset [76], the CDD dataset [193], the WHU-CD dataset [78], and the SECOND dataset [79]. Specifically, in the LEVIR-CD+ dataset, MambaBCD-Base [59] demonstrates superior performance across all evaluation metrics when compared to other methods. In the CDD dataset, P2V-CD [194] achieves the best performance of the F1 score, demonstrating superior results in both precision and recall metrics. Similarly, in the WHU-CD dataset, MambaBCD-Base [59] demonstrates remarkable performance, achieving the highest score in precision, F1, OA, and IoU. MambaBCD-Small [59] achieves the highest score in the recall metric. These findings indicate the effectiveness of MambaBCD in the analysis of multispectral remote sensing data for building extraction tasks. In the SECOND dataset with multiple change detection categories, SSESN [195] achieves the highest score for the OA metric, while MambaSCD-Base [59] achieves the highest performance for the metrics mIoU and Sek."
+      },
+      "confidence": 0.95,
+      "task": "multispectral change detection",
+      "setup": "LEVIR-CD+ dataset, CDD dataset, WHU-CD dataset, SECOND dataset"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3903a59d31747613_x3",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "In Table 8, we present some representative methods on two dominant hyperspectral datasets, i.e., the River dataset [81] and the Hermiston dataset [82]. Specifically, in the River dataset, MSDFFN [83] outperforms other methods with respect to the recall, F1 score, OA, and KC metrics. Meanwhile, SSA-SiamNet [111] achieves the highest precision score compared to all other evaluated methods. In the Hermiston dataset, MSDFFN [83] achieves the best performance in terms of precision, recall, F1 score, and OA metrics. Conversely, GETNET [81] achieves the best results in the KC metric compared to other methods."
+      },
+      "confidence": 0.95,
+      "task": "hyperspectral change detection",
+      "setup": "River dataset, Hermiston dataset"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3903a59d31747613_x4",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Table 9 presents several dominant methods that have been applied to the heterogeneous dataset, i.e., the California dataset [207]. Specifically, DPFL-Net-4 [207] demonstrates superior performance compared to other methods when evaluated based on the OA, KC, and AUC metrics. Notably, it achieves state-of-the-art results in all three metrics and particularly outperforms other methods by a significant margin in the KC metric."
+      },
+      "confidence": 0.95,
+      "task": "heterogeneous change detection",
+      "setup": "California dataset"
+    },
+    {
+      "type": "experiment",
+      "experiment_id": "doc_3903a59d31747613_x5",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Table 10 presents some representative models on the 3D change detection dataset, i.e., the 3DCD dataset [88]. To be specific, we find that MTBIT [88] achieves state-of-the-art performance in both the RMSE and cRMSE metrics."
+      },
+      "confidence": 0.95,
+      "task": "3D change detection",
+      "setup": "3DCD dataset"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3903a59d31747613_qr1",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "In the Bern dataset, ShearNet [74] and ESMOFCM [187] exhibit superior performance, achieving an OA metric of 99.68%, and BIFLICM/D [188] achieves the best performance in the KC metric. The Yellow River dataset consists of two SAR images of the Yellow River Estuary in China, each with dimensions of 7666 × 7692 pixels. These images were captured by the Radarsat-2 satellite in June 2008 and June 2009, respectively, and are commonly utilized for studying changes in this region, making it a valuable resource for various change detection methods applied to the SAR images. Bern [75] comprises two SAR images, each with dimensions of 301 × 301 pixels, covering the city of Bern, Switzerland. The images were acquired by the European Remote Sensing Satellite-2 (ERS-2) in April and May of 1999. Notably, the May 1999 image captured the impact of flooding caused by the Aare River on the airport in Bern City."
+      },
+      "confidence": 0.95,
+      "quantity": "OA",
+      "value": 99.68,
+      "unit": "%",
+      "context": "SAR change detection on Bern dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3903a59d31747613_p1",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "In the Bern dataset, ShearNet [74] and ESMOFCM [187] exhibit superior performance, achieving an OA metric of 99.68%, and BIFLICM/D [188] achieves the best performance in the KC metric. The Yellow River dataset consists of two SAR images of the Yellow River Estuary in China, each with dimensions of 7666 × 7692 pixels. These images were captured by the Radarsat-2 satellite in June 2008 and June 2009, respectively, and are commonly utilized for studying changes in this region, making it a valuable resource for various change detection methods applied to the SAR images. Bern [75] comprises two SAR images, each with dimensions of 301 × 301 pixels, covering the city of Bern, Switzerland. The images were acquired by the European Remote Sensing Satellite-2 (ERS-2) in April and May of 1999. Notably, the May 1999 image captured the impact of flooding caused by the Aare River on the airport in Bern City."
+      },
+      "confidence": 0.95,
+      "metric": "OA",
+      "compared_to": "ShearNet, ESMOFCM"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3903a59d31747613_qr2",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, in the Yellow River dataset, the DDNet algorithm [161] outperforms other methods in terms of FP and KC metrics, while the SFCNet model [123] achieves the best performance on FN and OA metrics. In the Bern dataset, ShearNet [74] and ESMOFCM [187] exhibit superior performance, achieving an OA metric of 99.68%, and BIFLICM/D [188] achieves the best performance in the KC metric. The Yellow River dataset consists of two SAR images of the Yellow River Estuary in China, each with dimensions of 7666 × 7692 pixels. These images were captured by the Radarsat-2 satellite in June 2008 and June 2009, respectively, and are commonly utilized for studying changes in this region, making it a valuable resource for various change detection methods applied to the SAR images."
+      },
+      "confidence": 0.95,
+      "quantity": "OA",
+      "value": 99.68,
+      "unit": "%",
+      "context": "SAR change detection on Yellow River dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3903a59d31747613_p2",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, in the Yellow River dataset, the DDNet algorithm [161] outperforms other methods in terms of FP and KC metrics, while the SFCNet model [123] achieves the best performance on FN and OA metrics. In the Bern dataset, ShearNet [74] and ESMOFCM [187] exhibit superior performance, achieving an OA metric of 99.68%, and BIFLICM/D [188] achieves the best performance in the KC metric. The Yellow River dataset consists of two SAR images of the Yellow River Estuary in China, each with dimensions of 7666 × 7692 pixels. These images were captured by the Radarsat-2 satellite in June 2008 and June 2009, respectively, and are commonly utilized for studying changes in this region, making it a valuable resource for various change detection methods applied to the SAR images."
+      },
+      "confidence": 0.95,
+      "metric": "OA",
+      "compared_to": "DDNet, SFCNet"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3903a59d31747613_qr3",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, in the LEVIR-CD+ dataset, MambaBCD-Base [59] demonstrates superior performance across all evaluation metrics when compared to other methods. In the CDD dataset, P2V-CD [194] achieves the best performance of the F1 score, demonstrating superior results in both precision and recall metrics. Similarly, in the WHU-CD dataset, MambaBCD-Base [59] demonstrates remarkable performance, achieving the highest score in precision, F1, OA, and IoU. MambaBCD-Small [59] achieves the highest score in the recall metric. These findings indicate the effectiveness of MambaBCD in the analysis of multispectral remote sensing data for building extraction tasks. In the SECOND dataset with multiple change detection categories, SSESN [195] achieves the highest score for the OA metric, while MambaSCD-Base [59] achieves the highest performance for the metrics mIoU and Sek."
+      },
+      "confidence": 0.95,
+      "quantity": "OA",
+      "value": 99.68,
+      "unit": "%",
+      "context": "Multispectral change detection on LEVIR-CD+ dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3903a59d31747613_p3",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, in the LEVIR-CD+ dataset, MambaBCD-Base [59] demonstrates superior performance across all evaluation metrics when compared to other methods. In the CDD dataset, P2V-CD [194] achieves the best performance of the F1 score, demonstrating superior results in both precision and recall metrics. Similarly, in the WHU-CD dataset, MambaBCD-Base [59] demonstrates remarkable performance, achieving the highest score in precision, F1, OA, and IoU. MambaBCD-Small [59] achieves the highest score in the recall metric. These findings indicate the effectiveness of MambaBCD in the analysis of multispectral remote sensing data for building extraction tasks. In the SECOND dataset with multiple change detection categories, SSESN [195] achieves the highest score for the OA metric, while MambaSCD-Base [59] achieves the highest performance for the metrics mIoU and Sek."
+      },
+      "confidence": 0.95,
+      "metric": "OA",
+      "compared_to": "MambaBCD-Base, P2V-CD, SSESN"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3903a59d31747613_qr4",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, in the River dataset, MSDFFN [83] outperforms other methods with respect to the recall, F1 score, OA, and KC metrics. Meanwhile, SSA-SiamNet [111] achieves the highest precision score compared to all other evaluated methods. In the Hermiston dataset, MSDFFN [83] achieves the best performance in terms of precision, recall, F1 score, and OA metrics. Conversely, GETNET [81] achieves the best results in the KC metric compared to other methods. River [81] comprises two hyperspectral images (HSI) sized 463 × 241 pixels. The images were captured on 3 May and 21 December 2013, respectively, and primarily cover a river in Jiangsu Province. Hermiston [82], encompassing an agricultural area in Hermiston City, was obtained by a Hyperion sensor. The dataset contains a pair of HSIs collected on 1 May 2004, and 8 May 2007, respectively. The images have a resolution of 307 × 241 pixels and comprise a selection of 154 bands from a total of 242 spectral bands."
+      },
+      "confidence": 0.95,
+      "quantity": "OA",
+      "value": 99.68,
+      "unit": "%",
+      "context": "Hyperspectral change detection on River dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3903a59d31747613_p4",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, in the River dataset, MSDFFN [83] outperforms other methods with respect to the recall, F1 score, OA, and KC metrics. Meanwhile, SSA-SiamNet [111] achieves the highest precision score compared to all other evaluated methods. In the Hermiston dataset, MSDFFN [83] achieves the best performance in terms of precision, recall, F1 score, and OA metrics. Conversely, GETNET [81] achieves the best results in the KC metric compared to other methods. River [81] comprises two hyperspectral images (HSI) sized 463 × 241 pixels. The images were captured on 3 May and 21 December 2013, respectively, and primarily cover a river in Jiangsu Province. Hermiston [82], encompassing an agricultural area in Hermiston City, was obtained by a Hyperion sensor. The dataset contains a pair of HSIs collected on 1 May 2004, and 8 May 2007, respectively. The images have a resolution of 307 × 241 pixels and comprise a selection of 154 bands from a total of 242 spectral bands."
+      },
+      "confidence": 0.95,
+      "metric": "OA",
+      "compared_to": "MSDFFN, SSA-SiamNet, GETNET"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3903a59d31747613_qr5",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, DPFL-Net-4 [207] demonstrates superior performance compared to other methods when evaluated based on the OA, KC, and AUC metrics. Notably, it achieves state-of-the-art results in all three metrics and particularly outperforms other methods by a significant margin in the KC metric. The California dataset [84] contains one multispectral image and two SAR images. The multispectral image was collected on 5 January 2017 by Landsat-8. Most bands in it have a resolution of 30 m. The SAR images were captured on February 18, 2017 by Sentinel-1A. The dataset covers the same region in Sacramento County, Yuba County, and Sutter County, California, where flooding has caused the changes."
+      },
+      "confidence": 0.95,
+      "quantity": "OA",
+      "value": 99.68,
+      "unit": "%",
+      "context": "Heterogeneous change detection on California dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3903a59d31747613_p5",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "Specifically, DPFL-Net-4 [207] demonstrates superior performance compared to other methods when evaluated based on the OA, KC, and AUC metrics. Notably, it achieves state-of-the-art results in all three metrics and particularly outperforms other methods by a significant margin in the KC metric. The California dataset [84] contains one multispectral image and two SAR images. The multispectral image was collected on 5 January 2017 by Landsat-8. Most bands in it have a resolution of 30 m. The SAR images were captured on February 18, 2017 by Sentinel-1A. The dataset covers the same region in Sacramento County, Yuba County, and Sutter County, California, where flooding has caused the changes."
+      },
+      "confidence": 0.95,
+      "metric": "OA",
+      "compared_to": "DPFL-Net-4"
+    },
+    {
+      "type": "quantitative_result",
+      "qr_id": "doc_3903a59d31747613_qr6",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "To be specific, we find that MTBIT [88] achieves state-of-the-art performance in both the RMSE and cRMSE metrics. 3DCD [85] comprises a total of 472 image pairs, each consisting of optical orthophotos cropped to the same size, along with the corresponding 2D change detection maps in raster format. The images were obtained by two aerial surveys in 2010 and 2017 separately. A total of 472 pairs of digital surface models (DSMs) produced from the rasterization of point clouds and the corresponding 3D change detection maps are also included in the dataset. The 2D change detection maps have a resolution of 0.5 m with a size of 400 × 400 pixels, while the 3D change detection maps have a resolution of 1 m with a size of 200 × 200 pixels. The dataset focuses on the urban area of Valladolid, Spain."
+      },
+      "confidence": 0.95,
+      "quantity": "RMSE",
+      "value": 0.0,
+      "unit": "m",
+      "context": "3D change detection on 3DCD dataset",
+      "result_type": "main_result"
+    },
+    {
+      "type": "performance_result",
+      "perf_id": "doc_3903a59d31747613_p6",
+      "evidence": {
+        "section": "Benchmark Performance",
+        "original_text": "To be specific, we find that MTBIT [88] achieves state-of-the-art performance in both the RMSE and cRMSE metrics. 3DCD [85] comprises a total of 472 image pairs, each consisting of optical orthophotos cropped to the same size, along with the corresponding 2D change detection maps in raster format. The images were obtained by two aerial surveys in 2010 and 2017 separately. A total of 472 pairs of digital surface models (DSMs) produced from the rasterization of point clouds and the corresponding 3D change detection maps are also included in the dataset. The 2D change detection maps have a resolution of 0.5 m with a size of 400 × 400 pixels, while the 3D change detection maps have a resolution of 1 m with a size of 200 × 200 pixels. The dataset focuses on the urban area of Valladolid, Spain."
+      },
+      "confidence": 0.95,
+      "metric": "RMSE",
+      "compared_to": "MTBIT"
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3903a59d31747613_ca1",
+      "evidence": {
+        "section": "Abstract",
+        "original_text": "Change detection is an essential and widely utilized task in remote sensing that aims to detect and analyze changes occurring in the same geographical area over time, which has broad applications in urban development, agricultural surveys, and land cover monitoring. Detecting changes in remote sensing images is a complex challenge due to various factors, including variations in image quality, noise, registration errors, illumination changes, complex landscapes, and spatial heterogeneity. In recent years, deep learning has emerged as a powerful tool for feature extraction and addressing these challenges. Its versatility has resulted in its widespread adoption for numerous image-processing tasks. This paper presents a comprehensive survey of significant advancements in change detection for remote sensing images over the past decade. We first introduce some preliminary knowledge for the change detection task, such as problem definition, datasets, evaluation metrics, and transformer basics, as well as provide a detailed taxonomy of existing algorithms from three different perspectives: algorithm granularity, supervision modes, and frameworks in the methodology section. This survey enables readers to gain systematic knowledge of change detection tasks from various angles. We then summarize the state-of-the-art performance on several dominant change detection datasets, providing insights into the strengths and limitations of existing algorithms. Based on our survey, some future research directions for change detection in remote sensing are well identified. This survey paper sheds some light the topic for the community and will inspire further research efforts in the change detection task."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "claim",
+      "claim_id": "doc_3903a59d31747613_ca2",
+      "evidence": {
+        "section": "Introduction",
+        "original_text": "In recent years, the rapid development of deep learning technologies [23,24], particularly deep convolutional neural networks (CNNs), has led to the emergence of CNN models that have shown superior performance over traditional methods for change detection tasks, as evidenced by numerous studies [9,25–32]. This is mainly attributed to the exceptional representation and nonlinear characterization capabilities of CNNs, which make them a more effective choice for obtaining optimal performance in this field. Recently, attention models [33–38] have been proposed to capture spatial and temporal dependencies within image pairs for change detection tasks. These models leverage an attention mechanism to focus on crucial areas, enabling them to better identify subtle changes in the scene and distinguish them from usual scene variability. On the other hand, transformer models [4,39–46] employ a self-attention mechanism to learn global relationships between the image pixels, allowing them to capture long-term dependencies and spatial correlations. They have shown promising results in tasks that require modeling temporal sequences, such as video processing [47] and language translation [48]. Both attention models and transformer models have shown significant improvements over traditional methods and vanilla CNNs in change detection tasks, making them promising avenues for further research and development in the field of remote sensing."
+      },
+      "confidence": 0.96
+    },
+    {
+      "type": "conclusion",
+      "conclusion_id": "doc_3903a59d31747613_cl1",
+      "evidence": {
+        "section": "Conclusions",
+        "original_text": "This paper provides a comprehensive and in-depth survey of the recent advancements in change detection for remote sensing images which have been achieved over the past decade. Through the comprehensive review of fundamental knowledge and the classification of existing algorithms, this paper provides a detailed and organized understanding of the current state of the field. Additionally, the summary of the state-of-the-art performance on several datasets demonstrates the effectiveness of deep learning techniques in addressing the challenges of change detection. Finally, the identification of future research directions provides valuable insights into the potential avenues for further advancement of the field. It is our sincere hope that this survey paper will not only contribute to the current understanding of change detection in remote sensing but also inspire and guide future research efforts in this area."
+      },
+      "confidence": 0.98
+    },
+    {
+      "type": "limitation",
+      "limitation_id": "doc_3903a59d31747613_lm1",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Currently, the following issues still exist in change detection tasks: (1) Due to limited data volumes and insufficient data diversity, the generality of mainstream change detection algorithms is inadequate, meaning that the trained models can only be used under specific spatial resolutions and sensors. (2) Current change detection models often produce false positives in areas with complex backgrounds or some slight background changes. (3) How to generate large datasets with a vast amount of high-quality annotated data, and utilizing these datasets to train universally applicable large change detection models, remains a worthwhile research problem that has not yet been well explored."
+      },
+      "confidence": 0.95
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw1",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Generalization of the change detection algorithms: The generalization performance of change detection algorithms in remote sensing is critical for their practical applications, as they need to be capable of effectively detecting changes in new and unobserved data, diverse geographical locations, different sensors, and varying environmental conditions. To improve their generalization, future trends include the use of transfer learning to transfer knowledge learned from one task or domain to others; domain adaptation [211] aims to adapt models to different environmental conditions or sensors; multisensor fusion to integrate data from different sensors; and explainable AI to interpret the decision-making process of a model. These trends are expected to enhance the generalization and overall performance of change detection algorithms in remote sensing images."
+      },
+      "confidence": 0.94
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw2",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Learning with few samples: Few-shot learning [212,213] aims to train models with only a small amount of examples for each category, enabling them to generalize to new classes. The future trends in few-shot learning for change detection algorithms in remote sensing images include several key approaches, such as meta-learning, generative models, and domain generalization. Meta-learning involves enabling models to learn how to learn and quickly adapt to new classes. This approach allows models to leverage their past learning experiences and generalize to new tasks with fewer examples. Domain generalization [214] enables models to perform well on new and unseen domains. This approach involves training the model on data from different domains to improve its ability to generalize to new environments. By adapting to new geographical locations, sensors, or environmental conditions, these trends will enable algorithms to detect new types of changes with few examples, leading to better decision making and a deeper understanding of the environment. With the above strategies, similar performance can be achieved with only 1/3 or 1/4 of the annotation data, which can save a lot of annotation costs."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw3",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Deep dive in the transformer-based and Mamba-based algorithms: Transformer-based models [54,215–220] have achieved significant progress in computer vision. In particular, the self-attention-based methods [39,221,222] achieve better results than pure convolutionbased methods for representation learning. The development of transformer-based algorithms for change detection in remote sensing images represents an emerging area of research with significant potential. To shape the future development of these algorithms, several trends have been identified, including the enhancement of attention mechanisms to better capture complex patterns and dependencies, integration with other deep learning models to create more robust and accurate change detection systems, and the use of unsupervised and semisupervised learning approaches to develop robust and accurate transformer models that can learn from unlabeled or partially labeled data. Additionally, future research will focus on the development of transformer models that can handle and integrate different data modalities, such as optical, radar, and LiDAR, to enhance the accuracy of change detection. Finally, online and continual learning approaches [223,224] will enable transformer models to learn and adapt to new data streams, allowing for more accurate and robust change detection systems. Additionally, Mamba architecture [59] has shown significant potential in change detection tasks. Therefore, further research on how to improve upon the Mamba architecture for model acceleration and performance accuracy enhancement, as well as considering the integration of Mamba with transformer structures, could also be some promising research directions."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw4",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Efficient models for practical applications: Efficiency is a crucial factor in developing practical and scalable change detection algorithms for remote sensing images. Here are some of the future trends in the development of efficient models for change detection: Sparse and lightweight models [225–229]: To reduce the computational complexity and memory footprint of change detection algorithms, future research will focus on developing sparse and lightweight models. These models will be designed to perform the change detection task with a minimal number of parameters and operations while maintaining high accuracy. Compression techniques [230,231]: Compression techniques such as pruning, quantization, and knowledge distillation can reduce the size of deep learning models without sacrificing performance. Future research will explore ways to apply these techniques to change detection models, reducing their memory and computational requirements."
+      },
+      "confidence": 0.93
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw5",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Incorporate with synthetic data: To train a high-performing and generalized change detection model, a significant amount of labeled data is required, which in turn demands substantial manual efforts for data collection and annotation. One possible solution is to employ a generated synthetic dataset. Recently, diffusion-based generation models [55,232] have provided the opportunity to create higher-quality images and corresponding masks than previous generative models. For instance, DDPM-CD [233] leverages off-the-shelf, unlabeled remote sensing images in the training process by pretraining a denoising diffusion probabilistic model (DDPM) for the change detection task. TransC-GD-CD [234] utilizes a transformer-based conditional generative diffusion method for the CD task, tailored for generating CD data, which leverages the numerous sampling iterations of the DDPM, contributing to the generation of high-quality CD maps. Generative images with diffusion models exhibit fewer domain gaps than real images, offering greater potential for training change detection models without reliance on real data. Furthermore, depending on the specific application scenarios, generative images, and masks can be produced to cater to task-specific needs, including few-shot or long-tail tasks."
+      },
+      "confidence": 0.92
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw6",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Integration of multisource/modal and multiple datasets: As delineated in the preliminary section, numerous datasets exist for each data source. A plausible approach to enhancing model performance and generality is amalgamating these datasets for each data source to create a more extensive change detection dataset. It is important to recognize that dissimilarities may exist among datasets from different domains. Thus, minimizing these domain gaps represents another research concern. Additionally, further research could be conducted to investigate cross-domain multisource datasets [235] in order to improve model training. For instance, one could explore methods for distilling the knowledge [236] acquired from a vast amount of multispectral change data into secrecy SAR data, thereby achieving superior performance on corresponding SAR data. One potential avenue for future research is to explore the integration of multimodal data, specifically the incorporation of image and text pairs, to improve the accuracy of selected area change detection. It is possible that the creation of a large-scale image–text-based change detection dataset could facilitate progress in this direction. This approach could provide a more comprehensive understanding of changes occurring in a given area by incorporating both visual and textual data. The utilization of multimodal data has been shown to be effective in other areas of research, and it is possible that this approach could yield promising results in the field of selected area change detection. Further investigation in this direction may help to identify new patterns and insights related to selected area change detection."
+      },
+      "confidence": 0.91
+    },
+    {
+      "type": "future_work",
+      "future_work_id": "doc_3903a59d31747613_fw7",
+      "evidence": {
+        "section": "Future Trends",
+        "original_text": "Exploration based on foundation models: Recently, there has been a surge in the development of foundation models, such as Segment Anything [237], Painter [238], and SegGPT [239], that leverage large amounts of data and GPU resources. For example, Segment Anything, also known as SAM, is a highly effective method for segmenting all types of targets, making it highly versatile for remote sensing applications, especially for high-resolution images. To further improve change detection tasks, there are two promising research avenues. First, an automatic approach can be developed to generate a more extensive change detection dataset, which can help train more comprehensive aerial-specific foundation models. Second, integrating foundation models can address domain adaptation gaps and significantly enhance change detection performance."
+      },
+      "confidence": 0.92
+    }
+  ]
+}
