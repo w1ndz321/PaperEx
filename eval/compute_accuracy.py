@@ -1,28 +1,26 @@
 """
-compute_accuracy.py — Evidence 准确率评估 (LLM-as-Judge)
+compute_accuracy.py — Evidence 精确率评估
 
-对已匹配的 (extracted_entry, gold_entry) 对，用 LLM 判断：
-  1. evidence 原文是否真正支撑该知识声明？
-  2. 字段值是否与 evidence 一致？
-  3. evidence 是否足够详细 (>= 8 句)？
+两步:
+  1. Fidelity: evidence 原文能否在论文 MD 中找到（子串模糊匹配）？
+  2. LLM-as-Judge: 该 evidence 是否真正支撑该知识声明？
 
-输出: 准确率 per type + 各类错误分布
+输入: eval/gold/*.json + kg_output/sciencedb_10_datasets_papers/*.json + markdown/*.md
+输出: per-type fidelity rate + LLM judge scores (match/completeness/hallucination)
 """
 
-import json
-import sys
-import os
+import json, sys, re
 from pathlib import Path
 from collections import defaultdict
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from dotenv import load_dotenv
 load_dotenv()
-
 from openai import OpenAI
 
 GOLD_DIR = Path(__file__).parent / "gold"
 KG_DIR = Path(__file__).parent.parent / "kg_output" / "sciencedb_10_datasets_papers"
+MD_DIR = Path(__file__).parent.parent / "markdown" / "sciencedb_10_datasets_papers"
 
 TYPE_ORDER = ["concept", "relation", "dataset", "method", "experiment",
               "quantitative_result", "performance_result", "data_specification",
@@ -30,187 +28,174 @@ TYPE_ORDER = ["concept", "relation", "dataset", "method", "experiment",
 
 JUDGE_PROMPT = """你是一位学术论文知识抽取质量评估专家。判断一条知识条目的 evidence 是否准确。
 
-## 评估维度
-1. **evidence 匹配度** (1-5): evidence 原文是否真正支撑该知识声明？字段值是否与 evidence 一致？
-2. **evidence 完整性** (1-5): 是否包含足够的背景、条件、对比信息（至少 5-7 句）？
-3. **无幻觉** (是/否): evidence 内容是否全部来自原文（没有编造）？
+## 评估
+1. **evidence 支撑度 (1-5)**: evidence 原文是否真正支撑该知识声明？
+   - 5: evidence 完整包含该知识的所有信息
+   - 3: evidence 部分相关，但缺乏关键细节
+   - 1: evidence 与该知识无关
+2. **evidence 完整性 (1-5)**: evidence 是否包含足够的实验条件、数值、对比基准？
+   - 5: 8+ 句完整段落
+   - 3: 3-5 句，缺少部分上下文
+   - 1: 1-2 句，过于简略
+3. **无幻觉 (是/否)**: evidence 内容是否全部来自论文原文？
 
-## 输出格式
 ```json
-{
-  "evidence_match": 4,
-  "completeness": 3,
-  "no_hallucination": true,
-  "issues": ["evidence 缺少对比基准的数值"],
-  "brief": "一句话总结"
-}
+{"evidence_match": 4, "completeness": 3, "no_hallucination": true, "brief": "一句话"}
 ```"""
 
 
-def load_extracted(stem: str) -> dict:
-    path = KG_DIR / f"{stem}.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"entries": []}
+def load_paper_md(stem: str) -> str:
+    path = MD_DIR / f"{stem}.md"
+    return path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
 
 
-def load_gold(stem: str) -> dict:
-    path = GOLD_DIR / f"{stem}.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+def check_fidelity(evidence: str, md_text: str) -> tuple[bool, float]:
+    """检查 evidence 是否能在原文中找到。"""
+    if not evidence or not md_text:
+        return False, 0.0
 
+    # 精确子串匹配
+    if evidence[:100] in md_text:
+        return True, 1.0
 
-def get_entry_by_id(entries: list, eid: str, id_field: str) -> dict | None:
-    for e in entries:
-        if e.get(id_field) == eid:
-            return e
-    return None
+    # 分成 30-char chunks，统计命中率
+    chunks = [evidence[i:i+50] for i in range(0, len(evidence), 25)]
+    hits = sum(1 for c in chunks if len(c) > 20 and c in md_text)
+    rate = hits / len(chunks) if chunks else 0
+    return rate > 0.5, round(rate, 2)
 
 
 def judge_evidence(client, model, entry: dict) -> dict:
-    """LLM 评估单条 evidence。"""
+    """LLM 评判 evidence 是否支撑该知识。"""
     etype = entry.get("type", "")
     ev = entry.get("evidence", {}).get("original_text", "")
-    fields = {k: v for k, v in entry.items() if k not in ("type", "evidence", "confidence",
-              "concept_id", "relation_id", "dataset_id", "method_id", "experiment_id",
-              "perf_id", "qr_id", "ds_id", "conclusion_id", "claim_id", "future_work_id",
-              "limitation_id")}
+    fields = {k: v for k, v in entry.items()
+              if k not in ("type", "evidence", "confidence",
+                           "concept_id", "relation_id", "dataset_id", "method_id",
+                           "experiment_id", "perf_id", "qr_id", "ds_id",
+                           "conclusion_id", "claim_id", "future_work_id", "limitation_id")}
 
-    user_prompt = f"""## 知识类型: {etype}
-## 字段值: {json.dumps(fields, ensure_ascii=False)}
-## evidence 原文:
-{ev[:3000]}
-
-请评估。"""
+    user_prompt = f"知识类型: {etype}\n字段值: {json.dumps(fields, ensure_ascii=False)}\n\nevidence:\n{ev[:3000]}"
 
     try:
         resp = client.chat.completions.create(
             model=model, temperature=0.0, max_tokens=500,
             response_format={"type": "json_object"},
-            messages=[
-                {"role": "system", "content": JUDGE_PROMPT},
-                {"role": "user", "content": user_prompt},
-            ])
-        raw = resp.choices[0].message.content or ""
-        return json.loads(raw)
+            messages=[{"role": "system", "content": JUDGE_PROMPT},
+                      {"role": "user", "content": user_prompt}])
+        return json.loads(resp.choices[0].message.content or "{}")
     except Exception as e:
         return {"error": str(e), "evidence_match": 0, "completeness": 0, "no_hallucination": False}
 
 
 def compute_accuracy(stem: str, client, model, limit: int = 20) -> dict:
-    """评估单篇论文的 evidence 准确率。"""
-    gold = load_gold(stem)
-    extracted = load_extracted(stem)
+    gold = json.loads((GOLD_DIR / f"{stem}.json").read_text(encoding="utf-8"))
+    extracted = json.loads((KG_DIR / f"{stem}.json").read_text(encoding="utf-8"))
+    md_text = load_paper_md(stem)
 
-    gold_evals = gold.get("entries_eval", [])
-    extracted_entries = extracted.get("entries", [])
+    # 取 gold 中标注为 correct 的条目
+    correct_ids = {g["entry_id"] for g in gold.get("entries_eval", [])
+                   if g.get("action") == "correct" and g.get("entry_id")}
 
-    # 采样：优先取 gold 中标注为 "correct" 的
-    correct_evals = [g for g in gold_evals if g.get("action") == "correct"]
-    sample = correct_evals[:limit]
+    id_field_map = {
+        "concept": "concept_id", "relation": "relation_id", "dataset": "dataset_id",
+        "method": "method_id", "experiment": "experiment_id",
+        "quantitative_result": "qr_id", "performance_result": "perf_id",
+        "data_specification": "ds_id",
+        "conclusion": "conclusion_id", "claim": "claim_id",
+        "future_work": "future_work_id", "limitation": "limitation_id",
+    }
+
+    entries_to_eval = []
+    for e in extracted.get("entries", []):
+        eid = e.get(id_field_map.get(e.get("type", ""), ""), "")
+        if eid in correct_ids:
+            entries_to_eval.append(e)
+
+    # 抽样
+    if len(entries_to_eval) > limit:
+        import random
+        random.seed(42)
+        entries_to_eval = random.sample(entries_to_eval, limit)
 
     results = []
-    type_scores = defaultdict(lambda: {"match": [], "completeness": [], "hallucination": []})
+    type_scores = defaultdict(lambda: {"fidelity": [], "match": [], "comp": [], "hall": []})
 
-    for ge in sample:
-        etype = ge["type"]
-        entry_id = ge.get("entry_id", "")
-        if not entry_id:
-            continue
+    for e in entries_to_eval:
+        etype = e["type"]
+        ev = e.get("evidence", {}).get("original_text", "")
 
-        id_field = next((v for k, v in {
-            "concept": "concept_id", "relation": "relation_id", "dataset": "dataset_id",
-            "method": "method_id", "experiment": "experiment_id",
-            "quantitative_result": "qr_id", "performance_result": "perf_id",
-            "data_specification": "ds_id", "conclusion": "conclusion_id",
-            "claim": "claim_id", "future_work": "future_work_id", "limitation": "limitation_id",
-        }.items() if k == etype), "")
+        # Step 1: Fidelity
+        fid_ok, fid_rate = check_fidelity(ev, md_text)
 
-        entry = get_entry_by_id(extracted_entries, entry_id, id_field)
-        if not entry:
-            continue
-
-        judgment = judge_evidence(client, model, entry)
-        judgment["entry_id"] = entry_id
-        judgment["type"] = etype
+        # Step 2: LLM judge
+        judgment = judge_evidence(client, model, e)
+        eid = e.get(id_field_map.get(etype, ""), "")
+        judgment["entry_id"] = eid
+        judgment["fidelity"] = fid_ok
+        judgment["fidelity_rate"] = fid_rate
         results.append(judgment)
 
         if "error" not in judgment:
+            type_scores[etype]["fidelity"].append(1 if fid_ok else 0)
             type_scores[etype]["match"].append(judgment["evidence_match"])
-            type_scores[etype]["completeness"].append(judgment["completeness"])
-            type_scores[etype]["hallucination"].append(1 if judgment.get("no_hallucination") else 0)
+            type_scores[etype]["comp"].append(judgment["completeness"])
+            type_scores[etype]["hall"].append(1 if judgment.get("no_hallucination") else 0)
 
-    # 汇总
     type_acc = {}
     for t in TYPE_ORDER:
-        scores = type_scores[t]
-        if scores["match"]:
+        s = type_scores[t]
+        if s["match"]:
             type_acc[t] = {
-                "n": len(scores["match"]),
-                "avg_match": round(sum(scores["match"]) / len(scores["match"]), 2),
-                "avg_completeness": round(sum(scores["completeness"]) / len(scores["completeness"]), 2),
-                "hallucination_rate": round(1 - sum(scores["hallucination"]) / len(scores["hallucination"]), 3),
+                "n": len(s["match"]),
+                "fidelity": round(sum(s["fidelity"]) / len(s["fidelity"]), 3),
+                "avg_match": round(sum(s["match"]) / len(s["match"]), 2),
+                "avg_comp": round(sum(s["comp"]) / len(s["comp"]), 2),
+                "hall_rate": round(1 - sum(s["hall"]) / len(s["hall"]), 3),
             }
 
-    all_match = [s for v in type_scores.values() for s in v["match"]]
-    all_comp = [s for v in type_scores.values() for s in v["completeness"]]
-    all_hall = [s for v in type_scores.values() for s in v["hallucination"]]
+    all_m = [s for v in type_scores.values() for s in v["match"]]
+    all_c = [s for v in type_scores.values() for s in v["comp"]]
+    all_f = [s for v in type_scores.values() for s in v["fidelity"]]
+    all_h = [s for v in type_scores.values() for s in v["hall"]]
 
     return {
-        "stem": stem,
-        "evaluated": len(results),
+        "stem": stem, "evaluated": len(results),
         "type_accuracy": type_acc,
-        "overall_avg_match": round(sum(all_match) / len(all_match), 2) if all_match else 0,
-        "overall_avg_completeness": round(sum(all_comp) / len(all_comp), 2) if all_comp else 0,
-        "overall_hallucination_rate": round(1 - sum(all_hall) / len(all_hall), 3) if all_hall else 0,
-        "details": results,
+        "avg_fidelity": round(sum(all_f) / len(all_f), 3) if all_f else 0,
+        "avg_match": round(sum(all_m) / len(all_m), 2) if all_m else 0,
+        "avg_comp": round(sum(all_c) / len(all_c), 2) if all_c else 0,
+        "hall_rate": round(1 - sum(all_h) / len(all_h), 3) if all_h else 0,
     }
 
 
 def main():
     from kg_extract import load_config
     cfg = load_config()
-    if not cfg["api_key"]:
-        print("错误: 未设置 OPENAI_API_KEY")
-        return
-
     client = OpenAI(api_key=cfg["api_key"], base_url=cfg["base_url"] or None)
     model = cfg["model"]
-    limit = int(sys.argv[1]) if len(sys.argv) > 1 else 20
 
     results = []
     for gf in sorted(GOLD_DIR.glob("*.json")):
-        stem = gf.stem
-        r = compute_accuracy(stem, client, model, limit=limit)
+        r = compute_accuracy(gf.stem, client, model)
         results.append(r)
-        print(f"  {stem[:50]:<50} eval={r['evaluated']}条 match={r['overall_avg_match']:.1f}/5 comp={r['overall_avg_completeness']:.1f}/5 hall={r['overall_hallucination_rate']:.1%}")
+        print(f"  {gf.stem[:50]:<50} eval={r['evaluated']}条 fid={r['avg_fidelity']:.0%} match={r['avg_match']:.1f}/5 comp={r['avg_comp']:.1f}/5 hall={r['hall_rate']:.1%}")
 
     if not results:
         print("没有找到金标准文件")
         return
 
-    print(f"\n{'='*70}")
-    print(f"Evidence 准确率综合评估")
-    print(f"{'='*70}")
-
-    avg_match = sum(r["overall_avg_match"] for r in results) / len(results)
-    avg_comp = sum(r["overall_avg_completeness"] for r in results) / len(results)
-    avg_hall = sum(r["overall_hallucination_rate"] for r in results) / len(results)
-
-    print(f"\n  evidence 匹配度:    {avg_match:.1f}/5")
-    print(f"  evidence 完整性:    {avg_comp:.1f}/5")
-    print(f"  幻觉率:             {avg_hall:.1%}")
-
-    # 按类型
-    print(f"\n  各类型 accuracy:")
-    type_aggr = defaultdict(lambda: {"match": [], "comp": [], "hall": []})
-    for r in results:
-        for t, v in r["type_accuracy"].items():
-            type_aggr[t]["match"].append(v["avg_match"])
-            type_aggr[t]["comp"].append(v["avg_completeness"])
-            type_aggr[t]["hall"].append(v["hallucination_rate"])
-
-    for t in TYPE_ORDER:
-        ag = type_aggr[t]
-        if ag["match"]:
-            print(f"    {t:<22} match={sum(ag['match'])/len(ag['match']):.1f}/5  comp={sum(ag['comp'])/len(ag['comp']):.1f}/5  hall={sum(ag['hall'])/len(ag['hall']):.1%}  (n={len(ag['match'])}篇)")
+    print(f"\n{'='*65}")
+    print(f"  Evidence 精确率综合评估 ({len(results)} 篇)")
+    print(f"{'='*65}")
+    avg_fid = sum(r["avg_fidelity"] for r in results) / len(results)
+    avg_match = sum(r["avg_match"] for r in results) / len(results)
+    avg_comp = sum(r["avg_comp"] for r in results) / len(results)
+    avg_hall = sum(r["hall_rate"] for r in results) / len(results)
+    print(f"  evidence 原文命中率 (fidelity): {avg_fid:.1%}")
+    print(f"  evidence 支撑度 (LLM judge):    {avg_match:.1f}/5")
+    print(f"  evidence 完整性 (LLM judge):    {avg_comp:.1f}/5")
+    print(f"  幻觉率:                          {avg_hall:.1%}")
 
 
 if __name__ == "__main__":
